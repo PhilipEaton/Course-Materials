@@ -22,9 +22,9 @@ Mass measures inertia, while weight is a force.
 <div class="example">
 Using Newton’s second law,
 
-\\\[
+$$
 \vec{F}_{\text{net}} = m\vec{a}
-\\\]
+$$
 
 we see that the acceleration depends only on the net force.
 </div>
