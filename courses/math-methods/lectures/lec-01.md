@@ -425,62 +425,93 @@ This notation becomes extremely helpful when writing general matrix equations, d
 
 ## Solving Systems of Linear Equations:
 
-Let's look at how matrices can be used to solve systems of linear equations. Consider the example we gave above: 
-
-$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ 4x - y + 4 z &= 5\end{aligned}$$
-
-which can be rewritten in the following manner:
-
-$$ \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
-$$
-
-This is one way we could use matrices to rewrite this equation, another way to do it is to construct the **augmented matrix** for this system of linear equations. The augmented matrix is constructed by taking the coefficient matrix $\mathbf{A}$ and tacking the result vector onto the end, in the following manner:
-
-$$
-\begin{bmatrix}
-	2 & 3 & -3 & \vline & 6 \\
-	4 & -1 & 4 & \vline & 5
-\end{bmatrix}
-$$
-
-where the vertical line inside the matrix is a visual aid indicating there the coefficients end and the answers begin. The vertical line is not an actual mathematical operator, just an aid.
-
-
-Now we can take advantage of the addition method of solving a system of equations to solve this problem. Recall the addition method is used to eliminate variables between the two equations by multiplying one equation by a constant and then adding it to the other. For example, if we multiply the first equation by $-2$:
-
-$$
--2(2x + 3y - 3 z = 6) \quad \longrightarrow \quad   -4 x - 6 y + 6 z = -12 
-$$
-
-and add it to the second equation, we get
-
-$$
-\begin{array}{crcl}
-	&-4x - 6y + 6z & = & -12 \\
-	+ & 4x - y + 4z & = & 5  \\\hline
-	&0 - 7 y + 10 z &=& -7
-\end{array}
-$$
-
-We can then use this equation in place of the first or second equation. Note, this is not a new equation, it replaces one of out old equations. So we are left with:
+Let’s look at how matrices can help us solve systems of linear equations. Consider the example from earlier:
 
 $$
 \begin{aligned} 
-2x + 3y - 3 z &= 6 \\ 
-- 7 y + 10 z &= -7
+2x + 3y - 3z &= 6 \\
+4x - y + 4z &= 5
 \end{aligned}
 $$
 
-This would have an augmented matrix of the form:
+We can rewrite this system in matrix form:
+
+$$
+\underbrace{
+\begin{bmatrix}
+2 & 3 & -3 \\
+4 & -1 & 4
+\end{bmatrix}
+}_{\text{Let’s call this } \mathbf{A}}
+\underbrace{
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}
+}_{\vec{r}}
+=
+\underbrace{
+\begin{bmatrix}
+6 \\ 5
+\end{bmatrix}
+}_{\vec{b}}
+\quad\Longrightarrow\quad
+\mathbf{A} \vec{r} = \vec{b}
+$$
+
+This is one way to represent a system of equations using matrices. Another helpful approach is to build the **augmented matrix**, which combines the coefficient matrix with the result vector:
 
 $$
 \begin{bmatrix}
-	2 & 3 & -3 & \vline & 6 \\
-	0 & -7 & 10 & \vline & -7
+2 & 3 & -3 & | & 6 \\
+4 & -1 & 4 & | & 5
 \end{bmatrix}
 $$
 
-Notice this result is exactly what we would get if we had taken the first row of the original augmented matrix, multiplied it by $-2$, added it to the second row, and then stored the result in the second row. This reveals a useful shortcut: we can solve systems of linear equations using the addition method without needing to repeatedly write down the variables $x$, $y$, and $z$ each time. This approach simplifies the process considerably.
+The vertical line is just a visual divider separating the coefficients from the result column. It’s not an operation, just a helpful organizational tool.
+
+Now we can use the **addition method** to simplify the system. The idea is to eliminate one variable by multiplying one equation and adding it to another.
+
+Let’s multiply the first equation by $-2$:
+
+$$
+-2(2x + 3y - 3z = 6) \quad\Rightarrow\quad -4x - 6y + 6z = -12
+$$
+
+and add that to the second equation:
+
+$$
+\begin{array}{rcl}
+-4x - 6y + 6z &=& -12 \\
++ \; 4x - y + 4z &=& \phantom{-}5 \\\hline
+0 - 7y + 10z &=& -7
+\end{array}
+$$
+
+This gives us a new equation that we can use to replace one of the originals. Notice, we didn’t create any new information, meaning we still only have two equations in total. This means, if we want to use the new equation we just made, we eed to replace one of the old equations we were using. Let's keep the first one and replace the second:
+
+$$
+\begin{aligned}
+2x + 3y - 3z &= 6 \\
+-7y + 10z &= -7
+\end{aligned}
+$$
+
+And the corresponding augmented matrix becomes:
+
+$$
+\begin{bmatrix}
+2 & 3 & -3 & | & 6 \\
+0 & -7 & 10 & | & -7
+\end{bmatrix}
+$$
+
+What we just did is equivalent to taking the first row of the original matrix, multiplying it by $-2$, adding that to the second row, and then replacing the second row with the new result. This gives us a shortcut: we can solve systems using row operations directly on the matrix, without rewriting $x$, $y$, and $z$ over and over. That’s a big win for efficiency and organization.
+
+Note: this process uses matrices more as an organizational devise rather than using a matrix as a matrix. So, if this application feels a little underwhelming to you, know that we agree and will get to more interesting applications beginning in the next lecture.
+
+
+
+
 
 ### Gaussian Elimination (Row Reduction) Process
 
