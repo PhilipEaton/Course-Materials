@@ -515,9 +515,9 @@ Note: this process uses matrices more as an organizational devise rather than us
 
 ### Gaussian Elimination (Row Reduction) Process
 
-There is a standard process of systematically reducing elements of the augmented matrix to zero. This process is called Gaussian Elimination or, as it is more simply know, Row Reduction. 
+There is a standard process of systematically reducing elements of the augmented matrix to zero. This process is called Gaussian Elimination or, as it is more simply known, Row Reduction. 
 
-This process, as you will see in the following example, may seen extremely specific and not something we would use a lot in the ``real world'' when working on physics problems. This thought is incorrect. This processes is used in many situations, we just do it on computers rather than by hand. Here is a short list of places this processes can be used:
+This process, as you will see in the following example, may seem extremely specific and not something we would use a lot in the "real world" when working on physics problems. This thought would be incorrect. This processes is used in many situations, we just do it on computers rather than by hand. Here is a short list of some places this processes is regularly used:
 
 1. **Circuit Analysis (Kirchhoff's Laws)**: In electrical circuits, Kirchhoff's Current Law and Kirchhoff's Voltage Law often lead to systems of linear equations. For example, analyzing current and voltage in circuits with multiple loops and junctions frequently requires solving for unknown currents or voltages using a system of equations.
 2. **Forces and Equilibrium (Statics)**: In mechanical systems, especially in engineering, static equilibrium conditions require that the sum of forces and torques on an object be zero. This leads to systems of linear equations involving forces in different directions.
@@ -527,8 +527,10 @@ This process, as you will see in the following example, may seen extremely speci
 6. **Thermodynamics and Chemical Equilibrium**: In chemical reactions, conservation laws for mass and charge can lead to a system of linear equations that describes how different species in a reaction are balanced.
 
 
+The row reduction process is best learned by working through examples.
+
 {% include example.html content="
-Let’s go through an example of this method for the following system of linear equations:
+Consider the following system of linear equations:
 
 $$
 \begin{aligned}
@@ -536,7 +538,11 @@ $$
     -x + 4y + 2z &= 3 \\
     3x - y + z &= -4
 \end{aligned}
-\implies 
+$$ 
+
+We want to find values for $x$, $y$, and $z$ that satisfy these equations using the row reduction process. To start, we’ll build the augmented matrix:
+
+$$
 \begin{bmatrix}
     2 & 3 & -1 & \vline & 5 \\
     -1 & 4 & 2 & \vline & 3 \\
@@ -544,7 +550,9 @@ $$
 \end{bmatrix}
 $$
 
-First, lets get the very first element, the $a_{11}$ element, to be 1. This can be done in a couple of ways: i) we could multiply the first row by 1/2, or ii) we could swap row 1 and row 2 (multiplied by -1). Here, to avoid fractions for as long as possible, we will use the second option. This gives:
+Now we’ll systematically eliminate elements until we reach a simplified form. Rather than define what that looks like up front, we’ll work our way there and let the structure emerge naturally. So, follow along for now and we will tell you when the "simplified form" has emerged.
+
+Let’s focus on getting the top-left element, $a_{11}$, to be 1. We have a couple of options: (i) divide the first row by 2, or (ii) swap row 1 with row 2 (multiply by $-1$). To delay dealing with fractions for as long as possible, we’ll go with the second option:
 
 $$
 \begin{bmatrix}
@@ -554,7 +562,13 @@ $$
 \end{bmatrix}
 $$
 
-Now we can multiply the first row by $-2$, add it to the second row, and store the result in the second row to eliminate the first element of the second row. we can do something similar for the third row --  multiply the first row by $-3$, add it to the third row, and store the result in the third row. These processes give:
+Swapping rows is just like reordering the equations. We can write the equations down in any order we want, which means we can write rows in any order we want. The same idea applies to the columns in the variable matrix portion of the augmented matrix: the order of columns corresponding to variable order.
+
+Now we’ll do two row operations:
+- multiply the first row by $-2$, add it to the second row, and overwrite the second row.
+- multiply the first row by $-3$, add it to the third row, and overwrite the third row.
+
+This gives:
 
 $$
 \begin{bmatrix}
@@ -564,7 +578,9 @@ $$
 \end{bmatrix}
 $$
 
-We can eliminate the second term in the last row by multipliying the second row by $-1$, adding it to the third row, and storing the result in the third row:
+We’ve now eliminated the first element of rows 2 and 3.
+
+Next, we’ll eliminate the second element of the third row: multiply the second row by $-1$, add it to the third row, and store the result in row 3:
 
 $$
 \begin{bmatrix}
@@ -574,7 +590,7 @@ $$
 \end{bmatrix}
 $$
 
-Putting this back into a system of linear equations format gives:
+This is the "simplified form" we were aiming for. To see why it's helpful, we’ll convert the matrix back into a system of equations:
 
 $$
 \begin{bmatrix}
@@ -590,7 +606,11 @@ $$
 \end{aligned}
 $$
 
-From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the second equation gives:
+We can now solve from the bottom up. The third equation immediately gives:
+
+$$ z = -\tfrac{3}{2} $$
+
+Substitute this into the second equation:
 
 $$
 \begin{aligned}
@@ -602,7 +622,7 @@ $$
 \end{aligned}
 $$
 
-and putting both $z$ and $y$ into the first equation gives:
+Now substitute $y$ and $z$ into the first equation:
 
 $$
 \begin{aligned}
@@ -614,11 +634,11 @@ $$
 \end{aligned}
 $$
 
-So, we have the solution 
+So our final solution is:
 
 $$ x = - \frac{4}{11} \hspace{1cm} y = \frac{31}{22} \hspace{1cm} z = -\frac{3}{2} $$
 
-Depending on what the initial system of equations represented, these results could represent currents throughout a circuit, forces in a static equilibrium problem, and etc.
+Depending on what the original system was modeling, these values could represent currents in a circuit, forces in a statics problem, or something else entirely.
 " %}
 
 
