@@ -1,7 +1,7 @@
 ---
 layout: default
 title: PHYS 3350 – Mathematical Methods for Physics
-course_home: Course-Materials/courses/math-methods/
+course_home: /Course-Materials/courses/math-methods/
 ---
 
 # PHYS 3350 – Mathematical Methods for Physics
