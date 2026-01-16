@@ -66,15 +66,19 @@ There are multiple ways to represent the basis unit vectors, meaning there is no
 
 ### A Quick Detour: What is a Basis, Really?
 
-The three vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$ (or in column form, the vectors with a single 1 in one spot and 0s elsewhere) are what we call a **basis** for 3D space. A **basis** is **a set of vectors that can be used to build any other vector in that space via addition and scalar multiplication**. Mathematically, this would look like:
+The three vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$ are what we call a **basis** for 3D space. A **basis** is just a set of vectors that can be used to build any other vector in that space using addition and scalar multiplication.
 
-\\[
-\vec{v} = a \, \hat{i} + b \, \hat{j} + c \,\hat{k}
-\\]
+This ability to combine a set of vectors to recreate any vector in the space is called **spanning**. More formally, we say the vectors **span the space**. For example, in 3D, this looks like:
 
-where $a$, $b$, and $c$ are scalars. In simple 3D space, the proof of this equation is obvious, any vector in 3D space can be written in terms of the vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$, meaning these three vectors form a basis for 3D space. 
+\[
+\vec{v} = a \, \hat{i} + b \, \hat{j} + c \, \hat{k}
+\]
 
-You can think of it like this: suppose you have a big box of LEGO bricks. These brings come in three different pieces, say in three colors. If those three pieces are all distinctly different, and you can build anything you would like by snapping them together in various combinations, then those three pieces form a basis. A set of basis vectors works the same way—it's a minimal but complete set of building blocks for the space you are working in.
+where $a$, $b$, and $c$ are scalars. It’s easy to see that any vector in 3D space can be written this way, so $\hat{i}$, $\hat{j}$, and $\hat{k}$ together form a basis.
+
+There’s one more key property a set of basis vectors need to have: the basis vectors must also be  **linearly independent**. That means you can’t build one of them using a combination of the others. Each one brings something fundamentally new; they all point in different directions, and none of them are redundant.
+
+Here’s a helpful way to think about it: imagine a big box of LEGO bricks. Suppose the set has only three distinct pieces; say, in different shapes and/or colors. If you can build *anything* you want by snapping together just those three kinds of pieces in different ways, then those three form a basis. You don’t need any more, and you can’t get away with fewer.
 
 In our 3D space, the standard basis vectors:
 
@@ -88,7 +92,7 @@ are three fundamental "LEGO bricks", each being distinct in that they each point
 {% include result.html content="
 A set of basis vectors must satisfy two conditions:
 
-1) the vectors must span the space (i.e., any vector in the space can be creates using only the basis vectors), and  
+1) the vectors must span the space (i.e., any vector in the space can be created using only the basis vectors), and  
 2) the vectors must be linearly independent (none of them is a redundant combination of the others).
 " %}
 
