@@ -88,13 +88,11 @@ We will explore this concept further in Lecture 04 when we discuss Vector Operat
 
 An interesting observation arises from the two different representations of the position vector given above. Since both representations describe the exact same position vector, we should be able to write:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} 
 	&= \begin{bmatrix} +3 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ +1 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ -4 \end{bmatrix} 
 	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= +3\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + 1 \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} -4 \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} 
-\end{aligned}
-$$
+\end{aligned}$$
 
 and so we have a link between the two representations with:
 
