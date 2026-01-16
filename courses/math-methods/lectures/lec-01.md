@@ -291,10 +291,7 @@ $$
 
 This system of equations can be written as a matrix equation in the following manner:
 
-$$
-\begin{aligned} 2x + 3y - 3 z &= 6 \\ 
-4x - y + 4 z &= 5
-\end{aligned} \quad\implies\quad \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
+$$\underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
 $$
 
 where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \vec{r} \\) is the **variable vector**, and \\( \vec{b} \\) represents the **results vector**. 
@@ -354,7 +351,7 @@ This example highlights some key rules of **matrix multiplication**:
 
 1. Matrices can only be multiplied if the number of columns in the first matrix matches the number of rows in the second matrix. In other words, a matrix of size $n \times m$ can multiply a matrix of size $m \times p$ (in that order). However, you cannot reverse the order and multiply a $m \times p$ matrix by an $n \times m$ matrix.
 	
-	>	**Matrix multiplication is not commutative — the order of multiplication matters!**
+>	Matrix multiplication is not commutative — the order of multiplication matters!
 	
 2. The size of the resulting matrix can be determined by deleting the column count of the first matrix and the row count of the second matrix, using only the remaining row count of the first and the column count of the second. For example, when multiplying a $n \times m$ matrix by an $m \times p$ matrix, the result will be a matrix of size $n \times p$.
 
@@ -415,13 +412,6 @@ $$
 $$
 " %}
 
-
-
-
-
-
-
-\noindent
 Notice, in the previous example, that the first row, \\(\begin{bmatrix} 1 & 2 \end{bmatrix}\\), multiplied by the first column, \\(\begin{bmatrix} 7 & 9 \end{bmatrix}\\), results in the element \\(25\\) in the first row and first column of the resulting matrix. Similarly, the second row, \\(\begin{bmatrix} 3 & 4 \end{bmatrix}\\), multiplied by the second column, \\(\begin{bmatrix} 8 & 10 \end{bmatrix}\\), produces the element \\(64\\) in the second row and second column of the resulting matrix. This is the procedure in matrix multiplication:
 
 
@@ -536,7 +526,8 @@ This process, as you will see in the following example, may seen extremely speci
 5. **Vibrations and Normal Modes**: In systems of coupled oscillators (e.g., masses connected by springs), the equations of motion are often a set of coupled linear differential equations. These can be simplified into systems of linear algebraic equations to find normal modes and frequencies. We will look are examples of this at the end of this class.
 6. **Thermodynamics and Chemical Equilibrium**: In chemical reactions, conservation laws for mass and charge can lead to a system of linear equations that describes how different species in a reaction are balanced.
 
-<div class="example">
+
+{% include example.html content="
 Let’s go through an example of this method for the following system of linear equations:
 
 $$
@@ -628,7 +619,7 @@ So, we have the solution
 $$ x = - \frac{4}{11} \hspace{1cm} y = \frac{31}{22} \hspace{1cm} z = -\frac{3}{2} $$
 
 Depending on what the initial system of equations represented, these results could represent currents throughout a circuit, forces in a static equilibrium problem, and etc.
-</div>
+" %}
 
 
 
