@@ -89,8 +89,8 @@ We will explore this concept further in Lecture 04 when we discuss Vector Operat
 An interesting observation arises from the two different representations of the position vector given above. Since both representations describe the exact same position vector, we should be able to write:
 
 $$\begin{aligned}
-	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} 
-	&= \begin{bmatrix} +3 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ +1 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ -4 \end{bmatrix} 
+	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} \\
+	&= \begin{bmatrix} +3 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ +1 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ -4 \end{bmatrix} \\
 	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= +3\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + 1 \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} -4 \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} 
 \end{aligned}$$
 
@@ -257,11 +257,19 @@ then their sum and difference are calculated as follows:
 ### System of Linear Equations
 
 Recall from algebra that a system of linear equations is a set of $n$ linear equations of $m$ variables. For example, the following is a system on linear equations with two equations $n=2$ and three variables $m = 3$:
-$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ 4x - y + 4 z &= 5\end{aligned}
+
+$$
+\begin{aligned} 2x + 3y - 3 z &= 6 \\ 
+4x - y + 4 z &= 5
+\end{aligned}
 $$
 
 This system of equations can be written as a matrix equation in the following manner:
-$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ 4x - y + 4 z &= 5\end{aligned} \quad\implies\quad \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
+
+$$
+\begin{aligned} 2x + 3y - 3 z &= 6 \\ 
+4x - y + 4 z &= 5
+\end{aligned} \quad\implies\quad \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
 $$
 
 where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \vec{r} \\) is the **variable vector**, and \\( \vec{b} \\) represents the **results vector**. 
@@ -479,7 +487,10 @@ $$
 We can then use this equation in place of the first or second equation. Note, this is not a new equation, it replaces one of out old equations. So we are left with:
 
 $$
-\begin{aligned} 2x + 3y - 3 z &= 6 \\ - 7 y + 10 z &= -7\end{aligned}
+\begin{aligned} 
+2x + 3y - 3 z &= 6 \\ 
+- 7 y + 10 z &= -7
+\end{aligned}
 $$
 
 This would have an augmented matrix of the form:
@@ -573,10 +584,10 @@ From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the se
 
 \\[
 \begin{aligned}
-    11y + 3z &= 11
-    11y + 3\left(-\tfrac{3}{2}\right) &= 11 
-    11y -\tfrac{9}{2} &= 11 
-    11y  &= \tfrac{31}{2} 
+    11y + 3z &= 11\\
+    11y + 3\left(-\tfrac{3}{2}\right) &= 11  \\
+    11y -\tfrac{9}{2} &= 11 \\
+    11y  &= \tfrac{31}{2} \\
     y  &= \tfrac{31}{22} 
 \end{aligned}
 \\]
@@ -585,10 +596,10 @@ and putting both $z$ and $y$ into the first equation gives:
 
 \\[
 \begin{aligned}
-    x  - 4y - 2z &= -3 
-    x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 
-    x  - \tfrac{62}{11} + 3 &= -3 
-    x  - \tfrac{62}{11} &= -6 
+    x  - 4y - 2z &= -3 \\
+    x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 \\
+    x  - \tfrac{62}{11} + 3 &= -3 \\
+    x  - \tfrac{62}{11} &= -6 \\
     x  &= - \tfrac{4}{11} 
 \end{aligned}
 \\]
