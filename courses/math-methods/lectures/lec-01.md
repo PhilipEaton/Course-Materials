@@ -646,6 +646,8 @@ Depending on what the original system was modeling, these values could represent
 
 
 
+
+
 ## Summary: Core Skills You Should Know
 
 In this lecture, we introduced the foundational tools of linear algebra that we will build on throughout this course: vectors, matrices, and systems of linear equations.
