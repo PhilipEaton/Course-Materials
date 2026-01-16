@@ -135,6 +135,26 @@
       margin-bottom: 0.25rem;
     }
 
+    /* Course navigation (LaTeX handout style) */
+    .course-nav {
+      margin-bottom: 2rem;
+    }
+    
+    .course-nav-links {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    .course-nav a {
+      color: #003366;
+      text-decoration: none;
+    }
+    
+    .course-nav a:hover {
+      text-decoration: underline;
+    }
+
+
     /* Links – subtle like PDFs */
     a {
       color: #003366;
@@ -143,6 +163,10 @@
 </head>
 <body>
   <main>
+    {% if page.course_home %}
+      {% include course-nav.html %}
+    {% endif %}
+    
     {{ content }}
   </main>
 </body>
