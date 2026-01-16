@@ -316,7 +316,7 @@ This example highlights some key rules of **matrix multiplication**:
 
 1. Matrices can only be multiplied if the number of columns in the first matrix matches the number of rows in the second matrix. In other words, a matrix of size $n \times m$ can multiply a matrix of size $m \times p$ (in that order). However, you cannot reverse the order and multiply a $m \times p$ matrix by an $n \times m$ matrix.
 	
->	Matrix multiplication is not commutative — the order of multiplication matters!
+> Matrix multiplication is not commutative — **the order of multiplication matters!**
 	
 2. The size of the resulting matrix can be determined by deleting the column count of the first matrix and the row count of the second matrix, using only the remaining row count of the first and the column count of the second. For example, when multiplying a $n \times m$ matrix by an $m \times p$ matrix, the result will be a matrix of size $n \times p$.
 
