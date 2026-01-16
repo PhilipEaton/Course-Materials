@@ -162,7 +162,11 @@ We will talk more about vectors and their various operations in Lecture 04.
 ## Matrices
 
 In the most general terms, matrices are a rectangular configuration of numbers that can mean pretty much anything you want:
-$$ \text{Matrix named } A = \underline{\underline{A}} =  \mathbf{A} =  \begin{bmatrix} +4 & - 2 & 7  \\ -9 & 0 & -4 \\ +5 & -5 & 2 \end{bmatrix}  $$
+
+$$ 
+\text{Matrix named } A = \underline{\underline{A}} =  \mathbf{A} =  \begin{bmatrix} +4 & - 2 & 7  \\ -9 & 0 & -4 \\ +5 & -5 & 2 \end{bmatrix}  
+$$
+
 When writing by hand, the double underlined notation is often the easiest notation to use when indicating a variable is a matrix. In text, however, the bold-faced notation is most commonly used. 
 
 In physics matrices are used for a wide variety of reasons, but the most common of which is to represent some form of coordinate transformation or a transition in a system of some kind. Throughout out this unit on linear algebra we will see that matrices can be used to rotate, rescale, and  flip vectors. Let's looks into the key features of a matrix and then jump into one of the simplest ways we can use matrices -- solving systems of linear equations.
@@ -177,9 +181,11 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 - Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is labeled as $ a_{ij} $, where the first subscript points to the row and the second to the column.
 - The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. 
 - The elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**, which stretches from the top left to the bottom right of the matrix:
+
 	$$
 	\text{Main diagonal: } a_{11} \rightarrow a_{22} \rightarrow a_{33} \rightarrow \cdots \rightarrow a_{nn}
 	$$	
+
 - If all entries are zero, we call it a **zero matrix**. If all main diagonal entries are 1 and everything else is 0, we call it the **identity matrix** (we’ll meet this matrix soon).
 	
 
@@ -195,10 +201,10 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 	
 	Let’s break this down:  
 
-	- This matrix has 2 rows and 3 columns, so it is a $ 2 \times 3 $ matrix.
-	- The entry in the first row, second column is $ a_{12} = 2 $.
-	- The entry in the second row, third column is $ a_{23} = 6 $.
-	- Main diagonal: $ 1 \rightarrow 5 $.
+- This matrix has 2 rows and 3 columns, so it is a $ 2 \times 3 $ matrix.
+- The entry in the first row, second column is $ a_{12} = 2 $.
+- The entry in the second row, third column is $ a_{23} = 6 $.
+- Main diagonal: $ 1 \rightarrow 5 $.
 </div>
 
 Later on, when we perform operations like multiplying matrices or solving systems of equations, keeping track of rows and columns will be crucial. So make sure you’re comfortable with this anatomy since it’ll save you a lot of confusion later!
@@ -208,43 +214,43 @@ Now that we’ve gotten to know the basic structure of a matrix, let’s start d
 
 ### Matrix Addition and Subtraction
 
-**Two matrices can be added or subtracted only if they have the \textit{same shape**}. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction. 
+**Two matrices can be added or subtracted only if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction. 
 
 
 <div class="example">
-    For example, if we have the matrices
-	
-	\\[
-	\mathbf{A} = \begin{bmatrix}
-		1 & 2 \\
-		3 & 4
-	\end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix}
-		5 & 6 \\
-		7 & 8
-	\end{bmatrix},
-	\\]
-	
-	then their sum and difference are calculated as follows:
-	
-	\\[
-	\mathbf{C} = \mathbf{A} + \mathbf{B} = \begin{bmatrix}
-		1 + 5 & 2 + 6 \\
-		3 + 7 & 4 + 8
-	\end{bmatrix} = \begin{bmatrix}
-		6 & 8 \\
-		10 & 12
-	\end{bmatrix}
-	\\]
-	
-	\\[
-	\mathbf{D} = \mathbf{A} - \mathbf{B} = \begin{bmatrix}
-		1 - 5 & 2 - 6 \\
-		3 - 7 & 4 - 8
-	\end{bmatrix} = \begin{bmatrix}
-		-4 & -4 \\
-		-4 & -4
-	\end{bmatrix}
-	\\]
+For example, if we have the matrices
+
+$$
+\mathbf{A} = \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+\end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix}
+    5 & 6 \\
+    7 & 8
+\end{bmatrix},
+$$
+
+then their sum and difference are calculated as follows:
+
+\\[
+\mathbf{C} = \mathbf{A} + \mathbf{B} = \begin{bmatrix}
+    1 + 5 & 2 + 6 \\
+    3 + 7 & 4 + 8
+\end{bmatrix} = \begin{bmatrix}
+    6 & 8 \\
+    10 & 12
+\end{bmatrix}
+\\]
+
+\\[
+\mathbf{D} = \mathbf{A} - \mathbf{B} = \begin{bmatrix}
+    1 - 5 & 2 - 6 \\
+    3 - 7 & 4 - 8
+\end{bmatrix} = \begin{bmatrix}
+    -4 & -4 \\
+    -4 & -4
+\end{bmatrix}
+\\]
 </div>
 
 
@@ -265,6 +271,7 @@ where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \v
 At this point, it's important to discuss how matrices are generally described. The dimensions of a matrix are indicated by the number of rows and columns, expressed as (number of rows) \\(\times\\) (number of columns). For example, the matrix \\( \mathbf{A} \\) is a \\( 2 \times 3 \\) matrix (read as ``2 by 3") because it has 2 rows and 3 columns. The column vector \\( \vec{r} \\) is a \\( 3 \times 1 \\) matrix, while the results vector \\( \vec{b} \\) is a \\( 2 \times 1 \\) matrix. 
 
 Notice what happened here: we took a \\( 2 \times 3 \\) matrix, acted on a \\( 3 \times 1 \\) vector, and got a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. 
+
 \\[
 \overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
 2 & 3 & -3 \\
@@ -279,13 +286,16 @@ x \\ y \\ z
 6 \\ 5
 \end{bmatrix}}
 \\]
+
 The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, in this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
 
 Another takeaway here is that all vectors are matrices with either a single row or a single column and matrices can take on any shape. A vector represented by a single row is called a **row vector**, and when represented by a single column, it is called a **column vector**.
 
 This also means the two operations on vectors we discussed above are similarly true for matrices. When adding matrices you add elements of identical positions in their matrices together. For example,
 
-$$ \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} + \begin{bmatrix} -1 & 0 \\ 6 & -9 \end{bmatrix} = \begin{bmatrix} (+2) + (-1) & (+3) + (0) \\ (+4) + (+6) & (+5) + (-9) \end{bmatrix} = \begin{bmatrix} +1 & +3 \\ +10 & -4 \end{bmatrix}$$
+$$ 
+\begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} + \begin{bmatrix} -1 & 0 \\ 6 & -9 \end{bmatrix} = \begin{bmatrix} (+2) + (-1) & (+3) + (0) \\ (+4) + (+6) & (+5) + (-9) \end{bmatrix} = \begin{bmatrix} +1 & +3 \\ +10 & -4 \end{bmatrix}
+$$
 
 Notice that with this definition of matrix addition (and similarly, matrix subtraction), **you can only add or subtract matrices of the same size**! In the example above, we added two $2 \times 2$ matrices and obtained a single $2 \times 2$ matrix as the result. **You cannot add or subtract matrices of different sizes!**
 
@@ -296,6 +306,7 @@ $$ -3 \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} -3(+2) & -3
 Now, let’s revisit the matrix equation from earlier. We need to define another matrix operation: how a matrix operates on a vector (or even another matrix). This process is summarized by the statement: **rows into columns**.
 
 To see this in action, consider the following example:
+
 $$
 \begin{bmatrix} 1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = ? 
 $$
@@ -320,54 +331,57 @@ This example highlights some key rules of **matrix multiplication**:
 
 
 <div class="example">
-    Let's look at an example to illustrate this, using our matrix equation from earlier:
-	
-	$$ \mathbf{A} \vec{r} = \vec{b} \implies \begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix} \begin{bmatrix} x \\ y \\ z\end{bmatrix} = \begin{bmatrix} 6 \\ 5\end{bmatrix} $$
-	
-	Here, we have a $2 \times 3$ matrix multiplying a $3 \times 1$ matrix, so this multiplication is allowed. The result will be a $2 \times 1$ matrix (2 rows and 1 column).
-	
-	To compute this, we take each row of the left matrix and multiply it by the single column of the right matrix:
-	
-	- The first row with the first column gives:
-	$$ 2x + 3y - 3z $$
-	- The second row with the first column gives:
-	$$ 4x - y + 4z $$
-	
-	Combining these into a $2 \times 1$ matrix, we rewrite the matrix equation as:
-	
-	$$ \begin{bmatrix} 2x + 3y - 3z \\ 4x - y + 4z \end{bmatrix} = \begin{bmatrix} 6 \\ 5 \end{bmatrix} $$
-	
-	Equating elements on both sides, we obtain the system of equations:
-	
-	$$ \begin{aligned} 
-		2x + 3y - 3z &= 6 \\ 
-		4x - y + 4z &= 5 
-	\end{aligned} $$
-	
-	which is exactly the same system of linear equations we started with. This confirms that everything is consistent.
+Let's look at an example to illustrate this, using our matrix equation from earlier:
+
+$$ \mathbf{A} \vec{r} = \vec{b} \implies \begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix} \begin{bmatrix} x \\ y \\ z\end{bmatrix} = \begin{bmatrix} 6 \\ 5\end{bmatrix} $$
+
+Here, we have a $2 \times 3$ matrix multiplying a $3 \times 1$ matrix, so this multiplication is allowed. The result will be a $2 \times 1$ matrix (2 rows and 1 column).
+
+To compute this, we take each row of the left matrix and multiply it by the single column of the right matrix:
+
+- The first row with the first column gives:
+
+$$ 2x + 3y - 3z $$
+
+- The second row with the first column gives:
+
+$$ 4x - y + 4z $$
+
+Combining these into a $2 \times 1$ matrix, we rewrite the matrix equation as:
+
+$$ \begin{bmatrix} 2x + 3y - 3z \\ 4x - y + 4z \end{bmatrix} = \begin{bmatrix} 6 \\ 5 \end{bmatrix} $$
+
+Equating elements on both sides, we obtain the system of equations:
+
+$$ \begin{aligned} 
+    2x + 3y - 3z &= 6 \\ 
+    4x - y + 4z &= 5 
+\end{aligned} $$
+
+which is exactly the same system of linear equations we started with. This confirms that everything is consistent.
 </div>
 
 <div class="example">
-	One more example should serve to put matrix multiplication into full working order. Consider:
-	
-	\\[
-	\mathbf{A} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} 7 & 8 \\ 9 & 10 \end{bmatrix}
-	\\]
-	
-	To calculate \\( \mathbf{A} \mathbf{B} \\), we multiply each row of \\( \mathbf{A} \\) by each column of \\( \mathbf{B} \\), resulting in a \\( 3 \times 2 \\) matrix.
-	
-	\\[
-	\mathbf{A} \mathbf{B} = \begin{bmatrix} 
-		(1 \times 7) + (2 \times 9) & (1 \times 8) + (2 \times 10) \\ 
-		(3 \times 7) + (4 \times 9) & (3 \times 8) + (4 \times 10) \\ 
-		(5 \times 7) + (6 \times 9) & (5 \times 8) + (6 \times 10) 
-	\end{bmatrix}
-	= \begin{bmatrix} 
-		25 & 28 \\ 
-		57 & 64 \\ 
-		89 & 100 
-	\end{bmatrix}
-	\\]
+One more example should serve to put matrix multiplication into full working order. Consider:
+
+\\[
+\mathbf{A} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} 7 & 8 \\ 9 & 10 \end{bmatrix}
+\\]
+
+To calculate \\( \mathbf{A} \mathbf{B} \\), we multiply each row of \\( \mathbf{A} \\) by each column of \\( \mathbf{B} \\), resulting in a \\( 3 \times 2 \\) matrix.
+
+\\[
+\mathbf{A} \mathbf{B} = \begin{bmatrix} 
+    (1 \times 7) + (2 \times 9) & (1 \times 8) + (2 \times 10) \\ 
+    (3 \times 7) + (4 \times 9) & (3 \times 8) + (4 \times 10) \\ 
+    (5 \times 7) + (6 \times 9) & (5 \times 8) + (6 \times 10) 
+\end{bmatrix}
+= \begin{bmatrix} 
+    25 & 28 \\ 
+    57 & 64 \\ 
+    89 & 100 
+\end{bmatrix}
+\\]
 
 </div>
 
@@ -398,12 +412,14 @@ To make it easier to refer to specific entries inside a matrix, mathematicians a
 The subscript \\(ij\\) always follows the pattern: \textit{row, then column}. 
 
 For example, if
+
 \\[
 \mathbf{A} = \begin{bmatrix} 
 	2 & 5 & -1 \\ 
 	4 & 0 & 3 
 \end{bmatrix}
 \\]
+
 then:
 - $a_{11} = 2$ (first row, first column),
 - $a_{12} = 5$ (first row, second column),
@@ -442,23 +458,31 @@ This is one way we could use matrices to rewrite this equation, another way to d
 	4 & -1 & 4 & \vline & 5
 \end{bmatrix}
 \\]
+
 where the vertical line inside the matrix is a visual aid indicating there the coefficients end and the answers begin. The vertical line is not an actual mathematical operator, just an aid.
 
 
 Now we can take advantage of the addition method of solving a system of equations to solve this problem. Recall the addition method is used to eliminate variables between the two equations by multiplying one equation by a constant and then adding it to the other. For example, if we multiply the first equation by $-2$:
 
-$$-2(2x + 3y - 3 z = 6) \quad \longrightarrow \quad   -4 x - 6 y + 6 z = -12 $$
+$$
+-2(2x + 3y - 3 z = 6) \quad \longrightarrow \quad   -4 x - 6 y + 6 z = -12 
+$$
 
 and add it to the second equation, we get
 
-$$\begin{array}{crcl}
+$$
+\begin{array}{crcl}
 	&-4x - 6y + 6z & = & -12 \\
 	+ & 4x - y + 4z & = & 5  \\\hline
 	&0 - 7 y + 10 z &=& -7
-\end{array}$$
+\end{array}
+$$
 
 We can then use this equation in place of the first or second equation. Note, this is not a new equation, it replaces one of out old equations. So we are left with:
-$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ - 7 y + 10 z &= -7\end{aligned}$$
+
+$$
+\begin{aligned} 2x + 3y - 3 z &= 6 \\ - 7 y + 10 z &= -7\end{aligned}
+$$
 
 This would have an augmented matrix of the form:
 
@@ -486,93 +510,96 @@ This process, as you will see in the following example, may seen extremely speci
 
 <div class="example">
 Let’s go through an example of this method for the following system of linear equations:
-	
-	\\[
-	\begin{aligned}
-		2x + 3y - z &= 5 \\
-		-x + 4y + 2z &= 3 \\
-		3x - y + z &= -4
-	\end{aligned}
-	\implies 
-	\begin{bmatrix}
-		2 & 3 & -1 & \vline & 5 \\
-		-1 & 4 & 2 & \vline & 3 \\
-		3 & -1 & 1 & \vline & -4 
-	\end{bmatrix}
-	\\]
-	
-	First, lets get the very first element, the $a_{11}$ element, to be 1. This can be done in a couple of ways: i) we could multiply the first row by 1/2, or ii) we could swap row 1 and row 2 (multiplied by -1). Here, to avoid fractions for as long as possible, we will use the second option. This gives:
-	
-	\\[
-	\begin{bmatrix}
-		1 & -4 & -2 & \vline & -3 \\
-		2 & 3 & -1 & \vline & 5 \\
-		3 & -1 & 1 & \vline & -4 
-	\end{bmatrix}
-	\\]
-	
-	Now we can multiply the first row by $-2$, add it to the second row, and store the result in the second row to eliminate the first element of the second row. we can do something similar for the third row --  multiply the first row by $-3$, add it to the third row, and store the result in the third row. These processes give:
-	
-	\\[
-	\begin{bmatrix}
-		1 & -4 & -2 & \vline & -3 \\
-		0 & 11 & 3 & \vline & 11 \\
-		0 & 11 & 7 & \vline & 5 
-	\end{bmatrix}
-	\\]
-	
-	We can eliminate the second term in the last row by multipliying the second row by $-1$, adding it to the third row, and storing the result in the third row:
-	
-	\\[
-	\begin{bmatrix}
-		1 & -4 & -2 & \vline & -3 \\
-		0 & 11 & 3 & \vline & 11 \\
-		0 & 0 & 4 & \vline & -6 
-	\end{bmatrix}
-	\\]
-	
-	Putting this back into a system of linear equations format gives:
-	
-	\\[
-	\begin{bmatrix}
-		1 & -4 & -2 & \vline & -3 \\
-		0 & 11 & 3 & \vline & 11 \\
-		0 & 0 & 4 & \vline & -6 
-	\end{bmatrix}
-	\implies
-	\begin{aligned}
-		x  - 4y - 2z &= -3 \\
-		11y + 3z &= 11 \\
-		4z &= -6
-	\end{aligned}
-	\\]
-	
-	From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the second equation gives:
-    \\[
-	\begin{aligned}
-		11y + 3z &= 11
-		11y + 3\left(-\tfrac{3}{2}\right) &= 11 
-		11y -\tfrac{9}{2} &= 11 
-		11y  &= \tfrac{31}{2} 
-		y  &= \tfrac{31}{22} 
-	\end{aligned}
-    \\]
-	
-	and putting both $z$ and $y$ into the first equation gives:
-    \\[
-	\begin{aligned}
-		x  - 4y - 2z &= -3 
-		x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 
-		x  - \tfrac{62}{11} + 3 &= -3 
-		x  - \tfrac{62}{11} &= -6 
-		x  &= - \tfrac{4}{11} 
-	\end{aligned}
-    \\]
-	
-	So, we have the solution 
-	$$ x = - \frac{4}{11} \hspace{1cm} y = \frac{31}{22} \hspace{1cm} z = -\frac{3}{2} $$
-	
-	Depending on what the initial system of equations represented, these results could represent currents throughout a circuit, forces in a static equilibrium problem, and etc.
+
+\\[
+\begin{aligned}
+    2x + 3y - z &= 5 \\
+    -x + 4y + 2z &= 3 \\
+    3x - y + z &= -4
+\end{aligned}
+\implies 
+\begin{bmatrix}
+    2 & 3 & -1 & \vline & 5 \\
+    -1 & 4 & 2 & \vline & 3 \\
+    3 & -1 & 1 & \vline & -4 
+\end{bmatrix}
+\\]
+
+First, lets get the very first element, the $a_{11}$ element, to be 1. This can be done in a couple of ways: i) we could multiply the first row by 1/2, or ii) we could swap row 1 and row 2 (multiplied by -1). Here, to avoid fractions for as long as possible, we will use the second option. This gives:
+
+\\[
+\begin{bmatrix}
+    1 & -4 & -2 & \vline & -3 \\
+    2 & 3 & -1 & \vline & 5 \\
+    3 & -1 & 1 & \vline & -4 
+\end{bmatrix}
+\\]
+
+Now we can multiply the first row by $-2$, add it to the second row, and store the result in the second row to eliminate the first element of the second row. we can do something similar for the third row --  multiply the first row by $-3$, add it to the third row, and store the result in the third row. These processes give:
+
+\\[
+\begin{bmatrix}
+    1 & -4 & -2 & \vline & -3 \\
+    0 & 11 & 3 & \vline & 11 \\
+    0 & 11 & 7 & \vline & 5 
+\end{bmatrix}
+\\]
+
+We can eliminate the second term in the last row by multipliying the second row by $-1$, adding it to the third row, and storing the result in the third row:
+
+\\[
+\begin{bmatrix}
+    1 & -4 & -2 & \vline & -3 \\
+    0 & 11 & 3 & \vline & 11 \\
+    0 & 0 & 4 & \vline & -6 
+\end{bmatrix}
+\\]
+
+Putting this back into a system of linear equations format gives:
+
+\\[
+\begin{bmatrix}
+    1 & -4 & -2 & \vline & -3 \\
+    0 & 11 & 3 & \vline & 11 \\
+    0 & 0 & 4 & \vline & -6 
+\end{bmatrix}
+\implies
+\begin{aligned}
+    x  - 4y - 2z &= -3 \\
+    11y + 3z &= 11 \\
+    4z &= -6
+\end{aligned}
+\\]
+
+From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the second equation gives:
+
+\\[
+\begin{aligned}
+    11y + 3z &= 11
+    11y + 3\left(-\tfrac{3}{2}\right) &= 11 
+    11y -\tfrac{9}{2} &= 11 
+    11y  &= \tfrac{31}{2} 
+    y  &= \tfrac{31}{22} 
+\end{aligned}
+\\]
+
+and putting both $z$ and $y$ into the first equation gives:
+
+\\[
+\begin{aligned}
+    x  - 4y - 2z &= -3 
+    x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 
+    x  - \tfrac{62}{11} + 3 &= -3 
+    x  - \tfrac{62}{11} &= -6 
+    x  &= - \tfrac{4}{11} 
+\end{aligned}
+\\]
+
+So, we have the solution 
+
+$$ x = - \frac{4}{11} \hspace{1cm} y = \frac{31}{22} \hspace{1cm} z = -\frac{3}{2} $$
+
+Depending on what the initial system of equations represented, these results could represent currents throughout a circuit, forces in a static equilibrium problem, and etc.
 </div>
 
 
@@ -614,9 +641,9 @@ In the coming lectures, we will build on these ideas by introducing more advance
 
 Consider the following matrices:
 
-\\[
+$$
 \mathbf{A} = \begin{bmatrix} 2 & 3 \\ 1 & 4 \\ -1 & 2 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 5 & -2 \\ 3 & 6 \end{bmatrix}
-\\]
+$$
 
 a) Multiply the matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) to find the resulting matrix \\(\mathbf{C} = \mathbf{A} \cdot \mathbf{B}\\). If this operation is not allowed, explain why.
 b) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{C}\\). Does this result agree with the rules established earlier?
@@ -630,13 +657,13 @@ Consider the following circuit with three loops and three resistors. The circuit
 
 Using Kirchhoff's Voltage Law, we obtain the following system of equations for the currents \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) flowing through each loop:
 
-\\[
+$$
 \begin{aligned}
 	2 I_1 + 3 I_2 &= 10, \\
 	-2 I_1 + 4 I_3 &= 5, \\
 	3 I_2 - 4 I_3 &= -5.
 \end{aligned}
-\\]
+$$
 
 a) Write this system of linear equations in matrix form, \\(\mathbf{A} \vec{I} = \vec{V}\\), where \\(\mathbf{A}\\) is the matrix of coefficients, \\(\vec{I}\\) is the vector of unknown currents, and \\(\vec{V}\\) is the vector of voltage values.
 b) Write out the augmented matrix for this system of linear equations. Remember to include 0's if a variable is not present in an equation!	
