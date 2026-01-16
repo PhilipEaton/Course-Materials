@@ -211,9 +211,9 @@ Later on, when we perform operations like multiplying matrices or solving system
 Now that we’ve gotten to know the basic structure of a matrix, let’s start doing something with them! One of the simplest and most intuitive operations we can perform is combining matrices through addition and subtraction.
 
 
-### Matrix Addition and Subtraction
+### Matrix Addition and Subtraction and Scalar Multiplication
 
-**Two matrices can be added or subtracted *only* if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction, by adding and subtracting the elements from each matrix that are in the same location ($c_{ij} = a_{ij} + b_{ij}$ and $d_{ij} = a_{ij} - b_{ij}$). 
+**Two matrices can be added or subtracted *only* if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction, by adding and subtracting the elements from each matrix that are in the same location ($c_{ij} = a_{ij} + b_{ij}$ and $d_{ij} = a_{ij} - b_{ij}$). Notice this only makes sense if the matrices we are adding and subtracting have the same shape. This leads to a rule: **you can only add or subtract matrices of the same shape**!
 
 {% include example.html content="
 For example, if we have the matrices
@@ -252,7 +252,11 @@ $$
 " 
 %}
 
-As you might have guessed, adding and subtracting matrices is a fairly easy process. Multiplying matrices, on the other hand, is more nuanced and requires some more motivation and explanation. Let's begin with some motivation.
+To multiply a martix by a scalar value, you simply multiply all of the elements by the scalar, just like we did with vectors. Multiplying a matrix by a scalar doesn’t depend on the matrix’s size:
+
+$$ -3 \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} -3(+2) & -3(+3) \\ -3(+4) & -3(+5) \end{bmatrix} = \begin{bmatrix} -6 & -9 \\ -12 & -15 \end{bmatrix}$$
+
+As you might have guessed, adding and subtracting matrices and multiplying by a scalar is a fairly easy process. Multiplying matrices, on the other hand, is more nuanced and requires some more motivation and explanation. Let's begin with some motivation.
 
 
 
@@ -292,21 +296,7 @@ $$
 
 The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, for this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
 
-
-
-This also means the two operations on vectors we discussed above are similarly true for matrices. When adding matrices you add elements of identical positions in their matrices together. For example,
-
-$$ 
-\begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} + \begin{bmatrix} -1 & 0 \\ 6 & -9 \end{bmatrix} = \begin{bmatrix} (+2) + (-1) & (+3) + (0) \\ (+4) + (+6) & (+5) + (-9) \end{bmatrix} = \begin{bmatrix} +1 & +3 \\ +10 & -4 \end{bmatrix}
-$$
-
-Notice that with this definition of matrix addition (and similarly, matrix subtraction), **you can only add or subtract matrices of the same size**! In the example above, we added two $2 \times 2$ matrices and obtained a single $2 \times 2$ matrix as the result. **You cannot add or subtract matrices of different sizes!**
-
-Fortunately, multiplying a matrix by a scalar doesn’t depend on the matrix’s size—you simply multiply every element of the matrix by that scalar:
-
-$$ -3 \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} -3(+2) & -3(+3) \\ -3(+4) & -3(+5) \end{bmatrix} = \begin{bmatrix} -6 & -9 \\ -12 & -15 \end{bmatrix}$$
-
-Now, let’s revisit the matrix equation from earlier. We need to define another matrix operation: how a matrix operates on a vector (or even another matrix). This process is summarized by the statement: **rows into columns**.
+Now, we need to define how a matrix operates on a vector (or another matrix) in such a way that the way we rewrote the system of equations above works out properly. This operation can be summarized by the saying: **rows into columns**.
 
 To see this in action, consider the following example:
 
@@ -314,13 +304,13 @@ $$
 \begin{bmatrix} 1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = ? 
 $$
 
-To carry out this multiplication, we multiply each element in the row vector on the left by the corresponding element in the column vector on the right. Specifically, the first element of the row multiplies the first element of the column, the second element multiplies the second, and so on. Afterward, we sum the products:
+To carry out this multiplication, we multiply each element in the row vector on the left by the corresponding element in the column vector on the right. Specifically, the *first* element of the row multiplies the *first* element of the column, the *second* element multiplies the *second*, and so on. Afterward, we sum the products together to get the resulting element:
 
 $$ 
 \begin{bmatrix} 1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = (1)(3) + (2)(4) = 3 + 8 = 11  
 $$
 
-Notice that this result is a single number (or scalar), rather than a matrix or vector. Why? This follows from the “rows into columns” rule: when you multiply a $1 \times 2$ matrix by a $2 \times 1$ matrix, you get a $1 \times 1$ matrix, or a scalar.
+Notice this example resulted is a single number (a scalar), rather than a matrix or vector. Why? This follows from the “rows into columns” rule: when you multiply a $1 \times 2$ matrix by a $2 \times 1$ matrix, you get a $1 \times 1$ matrix, or a scalar.
 
 This example highlights some key rules of **matrix multiplication**:
 
