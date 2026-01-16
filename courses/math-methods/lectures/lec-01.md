@@ -550,7 +550,7 @@ $$
 \end{bmatrix}
 $$
 
-Now we’ll systematically eliminate elements until we reach a simplified form. Rather than define what that looks like up front, we’ll work our way there and let the structure emerge naturally. So, follow along for now and we will tell you when the "simplified form" has emerged.
+Now we’ll systematically eliminate elements until we reach a *simplified form*. Rather than define what that looks like up front, we’ll work our way there and let the structure emerge naturally. So, follow along for now and we will tell you when the *simplified form* has emerged.
 
 Let’s focus on getting the top-left element, $a_{11}$, to be 1. We have a couple of options: (i) divide the first row by 2, or (ii) swap row 1 with row 2 (multiply by $-1$). To delay dealing with fractions for as long as possible, we’ll go with the second option:
 
@@ -590,7 +590,7 @@ $$
 \end{bmatrix}
 $$
 
-This is the "simplified form" we were aiming for. To see why it's helpful, we’ll convert the matrix back into a system of equations:
+This is the *simplified form* we were aiming for. To see why it's helpful, we’ll convert the matrix back into a system of equations:
 
 $$
 \begin{bmatrix}
