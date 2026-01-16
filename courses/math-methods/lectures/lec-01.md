@@ -63,6 +63,11 @@ $$ \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \hspace{2cm} \hat{j} = \b
 There are multiple ways to represent the basis unit vectors, meaning there is no single unique representation to describe positions in 3D space. However, the approach we used is certainly the simplest. 
 
 
+
+
+
+
+
 ---
 
 ### A Quick Detour: What is a Basis, Really?
@@ -101,7 +106,15 @@ It turns out there are many possible bases for 3D space, not just the basis disc
 
 ---
 
-Now, that the column vectors, as we have written them, for a basis is the result of a few assumptions that we should address, particularly regarding how column vectors are added and how constants are multiplied to them. The methods we used above are so intuitive that many readers may not have realized we performed an operation that we had not explicitly defined as allowed. Specifically, when adding column vectors, you combine the corresponding elements from each vector, and when multiplying by a constant (i.e., a scalar), you multiply every element of the vector by that constant.
+
+
+
+
+
+Now, math particular people will notice that we did not actually define how manipul;ations of the column vectors representing our unit vectors above actually work and what is allowed. Specifically, we need to clarify how column vectors can be added together and how they can be multiplied by a scalar value. The methods we used above are so intuitive that many readers may not have realized we performed an operation that we had not yet explicitly defined. Let's correct that now. When:
+
+- adding column vectors, you combine the corresponding elements from each vector, and
+- multiplying by a constant (i.e., a scalar), you multiply every element by that constant.
 
 
 {% include example.html content="
