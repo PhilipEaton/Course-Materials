@@ -17,14 +17,11 @@ lecture notes, practice days, homework sets, and supplementary materials.
 ## Lecture Notes
 - [Lectures](lectures/)
 
-## Practice and Review
+## Practice Days
 - [Practice Days](practice/)
 
 ## Assignments
 - [Homework Sets](homework/)
-
-## Additional Materials
-- [Labs and Computational Exercises](labs/)
 
 ---
 
