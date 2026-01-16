@@ -96,7 +96,9 @@ A set of basis vectors must satisfy two conditions:
 2) the vectors must be linearly independent (none of them is a redundant combination of the others).
 " %}
 
-It turns out there are many possible bases for 3D space—not just this one. We could rotate our axes, or stretch them, or even choose weirdly slanted directions, and as long as the vectors are still linearly independent and span the space, they still form a valid basis. But the *standard basis* with its clean, perpendicular directions is by far the most convenient—especially when we’re just getting started.
+It turns out there are many possible bases for 3D space, not just the basis discussed previously. For example, we could rotate the proposed basis vectors, stretch them, or even choose weirdly slanted directions, and as long as the vectors are still linearly independent and span the space, they still form a valid basis. But the *standard basis* with its clean, perpendicular directions is by far the most convenient.
+
+---
 
 Now, that the column vectors, as we have written them, for a basis is the result of a few assumptions that we should address, particularly regarding how column vectors are added and how constants are multiplied to them. The methods we used above are so intuitive that many readers may not have realized we performed an operation that we had not explicitly defined as allowed. Specifically, when adding column vectors, you combine the corresponding elements from each vector, and when multiplying by a constant (i.e., a scalar), you multiply every element of the vector by that constant.
 
