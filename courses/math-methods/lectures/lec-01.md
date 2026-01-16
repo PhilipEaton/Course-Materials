@@ -31,22 +31,8 @@ The left-hand representation uses **unit basis vectors** $(\hat{i}, \hat{j}, \ha
 
 Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in independent directions**. This means that each unit vector has a length of 1 (they have no units) and is oriented perpendicularly to the others when plotted:
 
-\begin{center}
-    \begin{tikzpicture}[scale=2, >={Stealth[scale=1.2]}]
-        % Axes
-        \draw[->] (0,0,0) -- (1.5,0,0) node[below] {$y$};
-        \draw[->] (0,0,0) -- (0,1.5,0) node[anchor=north west] {$z$};
-        \draw[->] (0,0,0) -- (0,0,1.5) node[below right] {$x$};
-        
-        % Unit Vectors
-        \draw[->, red] (0,0,0) -- (1,0,0) node[anchor=south west] {$\hat{j}$};
-        \draw[->, blue] (0,0,0) -- (0,1,0) node[anchor=south east] {$\hat{k}$};
-        \draw[->, purple] (0,0,0) -- (0,0,1) node[pos = 1, above left] {$\hat{i}$};
-        
-        % Dots at the origin
-        \fill[black] (0,0,0) circle (0.5pt);
-    \end{tikzpicture}
-\end{center}
+![3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat.](images/lec01/basisvectors.svg)
+
 
 Specifically, the magnitude of $\hat{i}$ can be written as:
 
@@ -56,13 +42,7 @@ for all unit vectors; so, similarly:
 
 $$|\hat{j}| = 1 \hspace{1cm} |\hat{k}| = 1$$
 
-The basis set used in the above example not only point in indedependent directions, but point in orthogonal (perpendicular) directions. This makes $(\hat{i}, \hat{j}, \hat{k})$ mutually orthogonal, unit basis vectors, which have very nice properties when we get to multiplying vectors together.
-
-
-
-
-
-We will explore this concept further in Lecture 04 when we discuss Vector Operations, but for now, a general pictorial understanding will suffice.
+The basis set used in the above example not only point in indedependent directions, but point in orthogonal (perpendicular) directions. This makes $(\hat{i}, \hat{j}, \hat{k})$ mutually orthogonal, unit basis vectors, which have very nice properties when we get to multiplying vectors together. We will explore this concept further in Lecture 04 when we discuss Vector Operations, but for now, a general pictorial understanding will suffice.
 
 An interesting observation arises from the two different representations of the position vector given above. Since both representations describe the exact same position vector, we should be able to write:
 
