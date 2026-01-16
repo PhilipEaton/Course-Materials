@@ -6,7 +6,7 @@ nav_section: lectures
 nav_order: 1
 ---
 
-# Introduction: The Essentials of Linear Algebra
+# Lecture 01 -- The Essentials of Linear Algebra
 
 
 Linear algebra is a powerful tool in physics, widely used for modeling physical phenomena and solving mathematical systems. These applications range from analyzing interactions in particle systems (relevant in solid-state physics and discrete systems) to describing transition probabilities between quantum energy levels, as well as determining transition energies in quantum phenomena.
@@ -29,34 +29,37 @@ $$
 
 The left-hand representation uses **unit basis vectors** $(\hat{i}, \hat{j}, \hat{k})$, while the right-hand representation uses a **column vector** format.
 
-Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in specific, mutually orthogonal (perpendicular) directions**. This means that each unit vector has a length of 1 (they have no units) and is oriented perpendicularly to the others when plotted:
+Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in independent directions**. This means that each unit vector has a length of 1 (they have no units) and is oriented perpendicularly to the others when plotted:
+
+\begin{center}
+    \begin{tikzpicture}[scale=2, >={Stealth[scale=1.2]}]
+        % Axes
+        \draw[->] (0,0,0) -- (1.5,0,0) node[below] {$y$};
+        \draw[->] (0,0,0) -- (0,1.5,0) node[anchor=north west] {$z$};
+        \draw[->] (0,0,0) -- (0,0,1.5) node[below right] {$x$};
+        
+        % Unit Vectors
+        \draw[->, red] (0,0,0) -- (1,0,0) node[anchor=south west] {$\hat{j}$};
+        \draw[->, blue] (0,0,0) -- (0,1,0) node[anchor=south east] {$\hat{k}$};
+        \draw[->, purple] (0,0,0) -- (0,0,1) node[pos = 1, above left] {$\hat{i}$};
+        
+        % Dots at the origin
+        \fill[black] (0,0,0) circle (0.5pt);
+    \end{tikzpicture}
+\end{center}
+
+Specifically, the magnitude of $\hat{i}$ can be written as:
+
+$$ \text{Magnitude}(\hat{i}) = |\hat{i}| = 1 \hspace{1cm}$$ 
+
+for all unit vectors; so, similarly:
+
+$$|\hat{j}| = 1 \hspace{1cm} |\hat{k}| = 1$$
+
+The basis set used in the above example not only point in indedependent directions, but point in orthogonal (perpendicular) directions. This makes $(\hat{i}, \hat{j}, \hat{k})$ mutually orthogonal, unit basis vectors, which have very nice properties when we get to multiplying vectors together.
 
 
-\begin{minipage}{0.45\textwidth}
-	\begin{center}
-		\begin{tikzpicture}[scale=2, >={Stealth[scale=1.2]}]
-			% Axes
-			\draw[->] (0,0,0) -- (1.5,0,0) node[below] {$y$};
-			\draw[->] (0,0,0) -- (0,1.5,0) node[anchor=north west] {$z$};
-			\draw[->] (0,0,0) -- (0,0,1.5) node[below right] {$x$};
-			
-			% Unit Vectors
-			\draw[->, red] (0,0,0) -- (1,0,0) node[anchor=south west] {$\hat{j}$};
-			\draw[->, blue] (0,0,0) -- (0,1,0) node[anchor=south east] {$\hat{k}$};
-			\draw[->, purple] (0,0,0) -- (0,0,1) node[pos = 1, above left] {$\hat{i}$};
-			
-			% Dots at the origin
-			\fill[black] (0,0,0) circle (0.5pt);
-		\end{tikzpicture}
-	\end{center}
-\end{minipage}
-\hspace{0.05\textwidth}
-\begin{minipage}{0.45\textwidth}
-	The magnitude of $\hat{i}$ can be written as:
-	$$ \text{Magnitude}(\hat{i}) = |\hat{i}| = 1 \hspace{1cm}$$ 
-	and similarly:
-	$$|\hat{j}| = 1 \hspace{1cm} |\hat{k}| = 1$$
-\end{minipage}
+
 
 
 We will explore this concept further in Lecture 04 when we discuss Vector Operations, but for now, a general pictorial understanding will suffice.
