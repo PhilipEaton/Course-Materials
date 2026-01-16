@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lecture 1 – Classical Mechanics
+course_home: /courses/phys-for-life-sci-ii/
 ---
 
 # Lecture 1: Review of Classical Mechanics
