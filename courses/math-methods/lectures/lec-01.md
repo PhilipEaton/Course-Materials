@@ -269,7 +269,20 @@ where the matrix \( \mathbf{A} \) is called the **coefficient matrix**, \( \vec{
 At this point, it's important to discuss how matrices are generally described. The dimensions of a matrix are indicated by the number of rows and columns, expressed as (number of rows) \(\times\) (number of columns). For example, the matrix \( \mathbf{A} \) is a \( 2 \times 3 \) matrix (read as ``2 by 3") because it has 2 rows and 3 columns. The column vector \( \vec{r} \) is a \( 3 \times 1 \) matrix, while the results vector \( \vec{b} \) is a \( 2 \times 1 \) matrix. 
 
 Notice what happened here: we took a \( 2 \times 3 \) matrix, acted on a \( 3 \times 1 \) vector, and got a \( 2 \times 1 \) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \( 3 \times 1 \) vector in this case, must be the same number as the columns in the first, the \( 2 \times 3 \) matrix $\mathbf{A}$. 
-$$ \overset{{\color{red}2} {\color{black}\times} {\color{blue}3}}{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}} \overset{{\color{blue}3} {\color{black}\times} {\color{red}1}  }{\begin{bmatrix} x \\ y \\ z\end{bmatrix}} = \overset{{\color{red}2} {\color{black}\times}{\color{red}1} } {\begin{bmatrix} 6 \\ 5\end{bmatrix}} $$
+\[
+\overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
+2 & 3 & -3 \\
+4 & -1 & 4
+\end{bmatrix}}
+\;
+\overset{\textbf{3}\times\text{1}}{\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}}
+=
+\overset{\text{2}\times\text{1}}{\begin{bmatrix}
+6 \\ 5
+\end{bmatrix}}
+\]
 The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, in this case, the resulting object, $\vec{b}$, should be a \( 2 \times 1 \) vector, which it is!
 
 Another takeaway here is that all vectors are matrices with either a single row or a single column and matrices can take on any shape. A vector represented by a single row is called a **row vector**, and when represented by a single column, it is called a **column vector**.
