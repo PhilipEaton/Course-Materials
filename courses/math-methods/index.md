@@ -1,6 +1,6 @@
 ---
 layout: default
-title: PHYS 3350 – Mathematical Methods for Physics
+title: PHYS 3345 – Mathematical Methods for Engineers and Scientists
 course_home: /courses/math-methods/
 ---
 

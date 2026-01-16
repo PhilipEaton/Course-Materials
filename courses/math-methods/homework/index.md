@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Mathematical Methods – Homeworks
-course_home: Course-Materials/courses/math-methods/
+course_home: courses/math-methods/
 ---
 
 # Homework Sets
