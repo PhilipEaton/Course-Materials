@@ -6,45 +6,6 @@ nav_section: lectures
 nav_order: 1
 ---
 
-<div class="example">
-
-</div>
-
-<div class="Result">
-
-</div>
-
-<div class="warning">
-Mass and weight are not the same quantity.  
-Mass measures inertia, while weight is a force.
-</div>
-
-<div class="example">
-Using Newton’s second law,
-
-$$
-\vec{F}_{\text{net}} = m\vec{a}
-$$
-
-we see that the acceleration depends only on the net force.
-</div>
-
-{% include example.html content="
-This is **bold**, this is a list:
-
-- item 1
-- item 2
-
-$$
-\vec{F}=m\vec{a}
-$$
-" %}
-
-
-
-
-
-
 # Introduction: The Essentials of Linear Algebra
 
 
