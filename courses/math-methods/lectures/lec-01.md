@@ -35,9 +35,9 @@ This is **bold**, this is a list:
 - item 1
 - item 2
 
-\[
+$$
 \vec{F}=m\vec{a}
-\]
+$$
 " %}
 
 
