@@ -84,12 +84,13 @@ $$
 
 are three fundamental "LEGO bricks", each being distinct in that they each point in different directions. Any vector in 3D space can be expressed as a combination of these—like writing a recipe for a location: "go 3 units in the \\(\hat{i}\\) direction, then 1 unit in the \\(\hat{j}\\) direction, and finally $-$4 units in the \\(\hat{k}\\) direction."
 
-<div class="result">
+
+{% include result.html content="
 A set of basis vectors must satisfy two conditions:
 
 1) the vectors must span the space (i.e., any vector in the space can be creates using only the basis vectors), and  
 2) the vectors must be linearly independent (none of them is a redundant combination of the others).
-</div>
+" %}
 
 It turns out there are many possible bases for 3D space—not just this one. We could rotate our axes, or stretch them, or even choose weirdly slanted directions, and as long as the vectors are still linearly independent and span the space, they still form a valid basis. But the *standard basis* with its clean, perpendicular directions is by far the most convenient—especially when we’re just getting started.
 
