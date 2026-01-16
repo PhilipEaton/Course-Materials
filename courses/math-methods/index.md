@@ -1,7 +1,7 @@
 ---
 layout: default
 title: PHYS 2120 – Lectures
-course_home: /courses/phys-for-life-sci-ii/
+course_home: /courses/math-methods/
 ---
 
 # Lectures
