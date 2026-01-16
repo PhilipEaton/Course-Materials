@@ -433,12 +433,12 @@ The subscript \\(ij\\) always follows the pattern: \textit{row, then column}.
 
 For example, if
 
-\\[
+$$
 \mathbf{A} = \begin{bmatrix} 
 	2 & 5 & -1 \\ 
 	4 & 0 & 3 
 \end{bmatrix}
-\\]
+$$
 
 then:
 - $a_{11} = 2$ (first row, first column),
@@ -462,7 +462,11 @@ This notation becomes extremely helpful when writing general matrix equations, d
 
 Let's look at how matrices can be used to solve systems of linear equations. Consider the example we gave above: 
 
-$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ 4x - y + 4 z &= 5\end{aligned} \quad\implies\quad \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
+$$\begin{aligned} 2x + 3y - 3 z &= 6 \\ 4x - y + 4 z &= 5\end{aligned}$$
+
+which can be rewritten in the following manner:
+
+$$ \underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
 $$
 
 This is one way we could use matrices to rewrite this equation, another way to do it is to construct the **augmented matrix** for this system of linear equations. The augmented matrix is constructed by taking the coefficient matrix $\mathbf{A}$ and tacking the result vector onto the end, in the following manner:
