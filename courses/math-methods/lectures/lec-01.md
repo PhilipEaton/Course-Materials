@@ -31,14 +31,10 @@ The left-hand representation uses **unit basis vectors** $(\hat{i}, \hat{j}, \ha
 
 Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in independent directions**. This means that each unit vector has a length of 1 (they have no units) and is oriented perpendicularly to the others when plotted:
 
-
-![3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat.](../images/lec01/basisvectors.svg)
-
-
 <img
   src="{{ '/courses/math-methods/images/lec01/basisvectors.svg' | relative_url }}"
   alt="3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:100%;">
+  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 Specifically, the magnitude of $\hat{i}$ can be written as:
 
