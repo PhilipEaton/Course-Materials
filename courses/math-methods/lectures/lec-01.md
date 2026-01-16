@@ -277,7 +277,7 @@ $$
 
 where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \vec{r} \\) is the **variable vector**, and \\( \vec{b} \\) represents the **results vector**. 
 
-Notice what happened here, assuming it is allowed: we took a \\( 2 \times 3 \\) matrix, acted on a \\( 3 \times 1 \\) vector, and got a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. This is shown in bold overset numbers in the following:
+Assuming what we just did is possible, notice what in happening: we are taking a \\( 2 \times 3 \\) matrix, acting on a \\( 3 \times 1 \\) vector, and are getting a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. This is shown in bold overset numbers in the following:
 
 $$
 \overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
@@ -377,18 +377,17 @@ $$
 $$
 " %}
 
-Notice, in the previous example, that the first row, \\(\begin{bmatrix} 1 & 2 \end{bmatrix}\\), multiplied by the first column, \\(\begin{bmatrix} 7 & 9 \end{bmatrix}\\), results in the element \\(25\\) in the first row and first column of the resulting matrix. Similarly, the second row, \\(\begin{bmatrix} 3 & 4 \end{bmatrix}\\), multiplied by the second column, \\(\begin{bmatrix} 8 & 10 \end{bmatrix}\\), produces the element \\(64\\) in the second row and second column of the resulting matrix. This is the procedure in matrix multiplication:
+In the previous example, the first row, \\(\begin{bmatrix} 1 & 2 \end{bmatrix}\\), multiplied by the first column, \\(\begin{bmatrix} 7 & 9 \end{bmatrix}\\), results in the element \\(25\\) in the first row and first column of the resulting matrix. Similarly, the second row, \\(\begin{bmatrix} 3 & 4 \end{bmatrix}\\), multiplied by the second column, \\(\begin{bmatrix} 8 & 10 \end{bmatrix}\\), produces the element \\(64\\) in the second row and second column of the resulting matrix. This is the procedure in matrix multiplication:
 
-
-<div class="result">
-The i-th row and j-th column element of the resulting matrix is obtained by multiplying the i-th row of the first matrix with the j-th column of the second matrix.
-</div>
-
-
+{% include result.html content="
+The $i$-th row and $j$-th column element of the resulting matrix is obtained by multiplying the $i$-th row of the first matrix and the the $j$-th column of the second matrix.
+" %}
 
 ## Matrix Element Notation
 
-To make it easier to refer to specific entries inside a matrix, mathematicians and physicists use a standardized element notation. We define the elements of a matrix as follows:
+To make it easier to refer to specific entries inside a matrix, mathematicians and physicists use a standardized element notation. We have seen this a little previouslt, but it is always a good idea to see important ideas multiple times so the ideas have a chance to settle in. 
+
+We define the elements of a matrix as follows:
 
 > The element in the *i*-th row and *j*-th column of a matrix $\mathbf{A}$ is denoted as $a_{ij}$.
 
