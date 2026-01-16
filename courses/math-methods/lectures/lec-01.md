@@ -43,6 +43,8 @@ $$
 
 
 
+
+
 # Introduction: The Essentials of Linear Algebra
 
 
@@ -146,22 +148,23 @@ It turns out there are many possible bases for 3D space—not just this one. We 
 Now, that the column vectors, as we have written them, for a basis is the result of a few assumptions that we should address, particularly regarding how column vectors are added and how constants are multiplied to them. The methods we used above are so intuitive that many readers may not have realized we performed an operation that we had not explicitly defined as allowed. Specifically, when adding column vectors, you combine the corresponding elements from each vector, and when multiplying by a constant (i.e., a scalar), you multiply every element of the vector by that constant.
 
 
-<div class="example">
-    Let's consider adding the following matrices together:
-	$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} \qquad \qquad \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix}$$
-	Adding together, element by element, gives:
-	$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} (+1) + (-3) \\ (-4) + (+5) \\ (+2) + (0) \end{bmatrix} = \begin{bmatrix} -2 \\ +1 \\ +2 \end{bmatrix} $$
-	
-	We could also ask what happens when we multiply a vector by a constant. When you multiply a column vector by a constant, you multiply each element of the vector by that constant. For example:
-	$$ 3 \begin{bmatrix} 3 \\ -4 \\ -1 \end{bmatrix} = \begin{bmatrix} 3(+3) \\ 3(-4) \\ 3(-1) \end{bmatrix} = \begin{bmatrix} +9 \\ -12 \\ -3 \end{bmatrix} $$
-	and similarly for negative numbers. 
-	
-	In fact, this is how subtraction can be defined:
-	$$\begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} - \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix}  $$
-	$$\begin{bmatrix} (+1) - (-3) \\ (-4) - (+5) \\ (+2) - (0) \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix} } $$
-	$$\begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} } $$
-	Notice, directly subtracting the elements, the vertical steps, and treating subtraction as addition combined with the multiplication by -1 both give the same result. 
-</div>
+{% include example.html content="
+Let's consider adding the following matrices together:
+$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} \qquad \qquad \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix}$$
+Adding together, element by element, gives:
+$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} (+1) + (-3) \\ (-4) + (+5) \\ (+2) + (0) \end{bmatrix} = \begin{bmatrix} -2 \\ +1 \\ +2 \end{bmatrix} $$
+
+We could also ask what happens when we multiply a vector by a constant. When you multiply a column vector by a constant, you multiply each element of the vector by that constant. For example:
+$$ 3 \begin{bmatrix} 3 \\ -4 \\ -1 \end{bmatrix} = \begin{bmatrix} 3(+3) \\ 3(-4) \\ 3(-1) \end{bmatrix} = \begin{bmatrix} +9 \\ -12 \\ -3 \end{bmatrix} $$
+and similarly for negative numbers. 
+
+In fact, this is how subtraction can be defined:
+$$\begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} - \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix}  $$
+$$\begin{bmatrix} (+1) - (-3) \\ (-4) - (+5) \\ (+2) - (0) \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix} } $$
+$$\begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} } $$
+Notice, directly subtracting the elements, the vertical steps, and treating subtraction as addition combined with the multiplication by -1 both give the same result. 
+" %}
+
 
 We will talk more about vectors and their various operations in Lecture 04. 
 
@@ -200,7 +203,7 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 - If all entries are zero, we call it a **zero matrix**. If all main diagonal entries are 1 and everything else is 0, we call it the **identity matrix** (we’ll meet this matrix soon).
 	
 
-<div class="example">
+{% include example.html content="
 For example, consider the matrix below:
 
 $$
@@ -216,7 +219,7 @@ Let’s break this down:
 - The entry in the first row, second column is $ a_{12} = 2 $.
 - The entry in the second row, third column is $ a_{23} = 6 $.
 - Main diagonal: $ 1 \rightarrow 5 $.
-</div>
+" %}
 
 Later on, when we perform operations like multiplying matrices or solving systems of equations, keeping track of rows and columns will be crucial. So make sure you’re comfortable with this anatomy since it’ll save you a lot of confusion later!
 
@@ -227,8 +230,7 @@ Now that we’ve gotten to know the basic structure of a matrix, let’s start d
 
 **Two matrices can be added or subtracted only if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction. 
 
-
-<div class="example">
+{% include example.html content="
 For example, if we have the matrices
 
 $$
@@ -262,7 +264,8 @@ $$
     -4 & -4
 \end{bmatrix}
 $$
-</div>
+" 
+%}
 
 
 
@@ -347,7 +350,8 @@ This example highlights some key rules of **matrix multiplication**:
 2. The size of the resulting matrix can be determined by deleting the column count of the first matrix and the row count of the second matrix, using only the remaining row count of the first and the column count of the second. For example, when multiplying a $n \times m$ matrix by an $m \times p$ matrix, the result will be a matrix of size $n \times p$.
 
 
-<div class="example">
+
+{% include example.html content="
 Let's look at an example to illustrate this, using our matrix equation from earlier:
 
 $$ \mathbf{A} \vec{r} = \vec{b} \implies \begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix} \begin{bmatrix} x \\ y \\ z\end{bmatrix} = \begin{bmatrix} 6 \\ 5\end{bmatrix} $$
@@ -376,9 +380,10 @@ $$ \begin{aligned}
 \end{aligned} $$
 
 which is exactly the same system of linear equations we started with. This confirms that everything is consistent.
-</div>
+" %}
 
-<div class="example">
+
+{% include example.html content="
 One more example should serve to put matrix multiplication into full working order. Consider:
 
 $$
@@ -399,7 +404,7 @@ $$
     89 & 100 
 \end{bmatrix}
 $$
-</div>
+" %}
 
 
 
