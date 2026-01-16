@@ -88,20 +88,17 @@ We will explore this concept further in Lecture 04 when we discuss Vector Operat
 
 An interesting observation arises from the two different representations of the position vector given above. Since both representations describe the exact same position vector, we should be able to write:
 
-\\[
+$$
 \begin{aligned}
 	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} 
 	&= \begin{bmatrix} +3 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ +1 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ -4 \end{bmatrix} 
 	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= +3\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + 1 \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} -4 \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} 
 \end{aligned}
-\\]
+$$
 
 and so we have a link between the two representations with:
 
 $$ \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \hspace{2cm} \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \hspace{2cm} \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}   $$
-
-
-
 
 There are multiple ways to represent the basis unit vectors, meaning there is no single unique representation to describe positions in 3D space. However, the approach we used is certainly the simplest. 
 
@@ -121,11 +118,11 @@ You can think of it like this: suppose you have a big box of LEGO bricks. These 
 
 In our 3D space, the standard basis vectors:
 
-\\[
+$$
 \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \qquad
 \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \qquad
 \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
-\\]
+$$
 
 are three fundamental "LEGO bricks", each being distinct in that they each point in different directions. Any vector in 3D space can be expressed as a combination of these—like writing a recipe for a location: "go 3 units in the \\(\hat{i}\\) direction, then 1 unit in the \\(\hat{j}\\) direction, and finally $-$4 units in the \\(\hat{k}\\) direction."
 
@@ -178,32 +175,32 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 
 
 - A **matrix** is a rectangular array of numbers arranged in **rows** (horizontal) and **columns** (vertical).
-- The **shape** of a matrix tell us how many rows and how many columns it has. A matrix with \\( m \\) rows and \\( n \\) columns is called an **\\( m \times n \\)** matrix (read “\\( m \\) by \\( n \\)”). Rows come first, then columns—like writing an address: “row, column.” Remember, \textit{“Rail Car”}.
-- Each number inside the matrix is called an **element**. The entry located in the \\( i \\)-th row and \\( j \\)-th column is labeled as \\( a_{ij} \\), where the first subscript points to the row and the second to the column.
+- The **shape** of a matrix tell us how many rows and how many columns it has. A matrix with $ m $ rows and $ n $ columns is called an ** $ m \times n $ ** matrix (read “$ m $ by $ n $”). Rows come first, then columns—like writing an address: “row, column.” Remember, \textit{“Rail Car”}.
+- Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is labeled as $ a_{ij} $, where the first subscript points to the row and the second to the column.
 - The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. 
-- The elements \\( a_{11}, a_{22}, a_{33} \\) lie on the **main diagonal**, which stretches from the top left to the bottom right of the matrix:
-	\\[
+- The elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**, which stretches from the top left to the bottom right of the matrix:
+	$$
 	\text{Main diagonal: } a_{11} \rightarrow a_{22} \rightarrow a_{33} \rightarrow \cdots \rightarrow a_{nn}
-	\\]	
+	$$	
 - If all entries are zero, we call it a **zero matrix**. If all main diagonal entries are 1 and everything else is 0, we call it the **identity matrix** (we’ll meet this matrix soon).
 	
 
 <div class="example">
 	For example, consider the matrix below:
 	
-	\\[
+	$$
 	\mathbf{A} = \begin{bmatrix}
 		1 & 2 & 3 \\
 		4 & 5 & 6
 	\end{bmatrix}
-	\\]
+	$$
 	
 	Let’s break this down:  
 
-	- This matrix has 2 rows and 3 columns, so it is a \\( 2 \times 3 \\) matrix.
-	- The entry in the first row, second column is \\( a_{12} = 2 \\).
-	- The entry in the second row, third column is \\( a_{23} = 6 \\).
-	- Main diagonal: \\(1 \rightarrow 5\\).
+	- This matrix has 2 rows and 3 columns, so it is a $ 2 \times 3 $ matrix.
+	- The entry in the first row, second column is $ a_{12} = 2 $.
+	- The entry in the second row, third column is $ a_{23} = 6 $.
+	- Main diagonal: $ 1 \rightarrow 5 $.
 </div>
 
 Later on, when we perform operations like multiplying matrices or solving systems of equations, keeping track of rows and columns will be crucial. So make sure you’re comfortable with this anatomy since it’ll save you a lot of confusion later!
