@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Lecture 1 – Classical Mechanics
-course_home: {{ site.baseurl }}/courses/math-methods/
+course_home: /courses/math-methods/
 nav_section: lectures
 nav_order: 1
 ---

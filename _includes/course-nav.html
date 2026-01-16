@@ -1,14 +1,17 @@
 <nav aria-label="Course navigation" class="course-nav">
   <p class="course-nav-links">
-    <a href="{{ site.baseurl }}/">Home</a>
+    <a href="{{ '/' | relative_url }}">Home</a>
     ·
-    <a href="{{ page.course_home }}">Course Home</a>
+    <a href="{{ page.course_home | relative_url }}">Course Home</a>
     ·
-    <a href="{{ page.course_home }}lectures/">Lectures</a>
+    <a href="{{ page.course_home | append: 'lectures/' | relative_url }}">Lectures</a>
     ·
-    <a href="{{ page.course_home }}homework/">Homework</a>
+    <a href="{{ page.course_home | append: 'homework/' | relative_url }}">Homework</a>
     ·
-    <a href="{{ page.course_home }}practice/">Practice</a>
+    <a href="{{ page.course_home | append: 'practice/' | relative_url }}">Practice</a>
+    ·
+    <a href="{{ page.course_home | append: 'labs/' | relative_url }}">Labs</a>
   </p>
   <hr>
 </nav>
+
