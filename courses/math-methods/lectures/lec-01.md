@@ -124,8 +124,9 @@ are three fundamental "LEGO bricks", each being distinct in that they each point
 
 <div class="result">
 A set of basis vectors must satisfy two conditions:
-	1) the vectors must span the space (i.e., any vector in the space can be creates using only the basis vectors), and  
-	2) the vectors must be linearly independent (none of them is a redundant combination of the others).
+
+1) the vectors must span the space (i.e., any vector in the space can be creates using only the basis vectors), and  
+2) the vectors must be linearly independent (none of them is a redundant combination of the others).
 </div>
 
 It turns out there are many possible bases for 3D space—not just this one. We could rotate our axes, or stretch them, or even choose weirdly slanted directions, and as long as the vectors are still linearly independent and span the space, they still form a valid basis. But the *standard basis* with its clean, perpendicular directions is by far the most convenient—especially when we’re just getting started.
@@ -188,16 +189,16 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 	
 
 <div class="example">
-	For example, consider the matrix below:
-	
-	$$
-	\mathbf{A} = \begin{bmatrix}
-		1 & 2 & 3 \\
-		4 & 5 & 6
-	\end{bmatrix}
-	$$
-	
-	Let’s break this down:  
+For example, consider the matrix below:
+
+$$
+\mathbf{A} = \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6
+\end{bmatrix}
+$$
+
+Let’s break this down:  
 
 - This matrix has 2 rows and 3 columns, so it is a $ 2 \times 3 $ matrix.
 - The entry in the first row, second column is $ a_{12} = 2 $.
@@ -230,7 +231,7 @@ $$
 
 then their sum and difference are calculated as follows:
 
-\\[
+$$
 \mathbf{C} = \mathbf{A} + \mathbf{B} = \begin{bmatrix}
     1 + 5 & 2 + 6 \\
     3 + 7 & 4 + 8
@@ -238,9 +239,9 @@ then their sum and difference are calculated as follows:
     6 & 8 \\
     10 & 12
 \end{bmatrix}
-\\]
+$$
 
-\\[
+$$
 \mathbf{D} = \mathbf{A} - \mathbf{B} = \begin{bmatrix}
     1 - 5 & 2 - 6 \\
     3 - 7 & 4 - 8
@@ -248,7 +249,7 @@ then their sum and difference are calculated as follows:
     -4 & -4 \\
     -4 & -4
 \end{bmatrix}
-\\]
+$$
 </div>
 
 
@@ -278,7 +279,7 @@ At this point, it's important to discuss how matrices are generally described. T
 
 Notice what happened here: we took a \\( 2 \times 3 \\) matrix, acted on a \\( 3 \times 1 \\) vector, and got a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. 
 
-\\[
+$$
 \overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
 2 & 3 & -3 \\
 4 & -1 & 4
@@ -291,7 +292,7 @@ x \\ y \\ z
 \overset{\text{2}\times\text{1}}{\begin{bmatrix}
 6 \\ 5
 \end{bmatrix}}
-\\]
+$$
 
 The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, in this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
 
@@ -329,9 +330,7 @@ This example highlights some key rules of **matrix multiplication**:
 
 1. Matrices can only be multiplied if the number of columns in the first matrix matches the number of rows in the second matrix. In other words, a matrix of size $n \times m$ can multiply a matrix of size $m \times p$ (in that order). However, you cannot reverse the order and multiply a $m \times p$ matrix by an $n \times m$ matrix.
 	
-	\begin{center}
-		**Matrix multiplication is not commutative — the order of multiplication matters!**
-	\end{center}
+	>	**Matrix multiplication is not commutative — the order of multiplication matters!**
 	
 2. The size of the resulting matrix can be determined by deleting the column count of the first matrix and the row count of the second matrix, using only the remaining row count of the first and the column count of the second. For example, when multiplying a $n \times m$ matrix by an $m \times p$ matrix, the result will be a matrix of size $n \times p$.
 
@@ -370,13 +369,13 @@ which is exactly the same system of linear equations we started with. This confi
 <div class="example">
 One more example should serve to put matrix multiplication into full working order. Consider:
 
-\\[
+$$
 \mathbf{A} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} 7 & 8 \\ 9 & 10 \end{bmatrix}
-\\]
+$$
 
 To calculate \\( \mathbf{A} \mathbf{B} \\), we multiply each row of \\( \mathbf{A} \\) by each column of \\( \mathbf{B} \\), resulting in a \\( 3 \times 2 \\) matrix.
 
-\\[
+$$
 \mathbf{A} \mathbf{B} = \begin{bmatrix} 
     (1 \times 7) + (2 \times 9) & (1 \times 8) + (2 \times 10) \\ 
     (3 \times 7) + (4 \times 9) & (3 \times 8) + (4 \times 10) \\ 
@@ -387,8 +386,7 @@ To calculate \\( \mathbf{A} \mathbf{B} \\), we multiply each row of \\( \mathbf{
     57 & 64 \\ 
     89 & 100 
 \end{bmatrix}
-\\]
-
+$$
 </div>
 
 
@@ -402,10 +400,10 @@ Notice, in the previous example, that the first row, \\(\begin{bmatrix} 1 & 2 \e
 
 
 <div class="result">
-The *i*-th row and *j*-th column element of the resulting matrix is obtained by multiplying the *i*-th row of the first matrix with the *j*-th column of the second matrix.
+The i-th row and j-th column element of the resulting matrix is obtained by multiplying the i-th row of the first matrix with the j-th column of the second matrix.
 </div>
 
-\vspace{0.3cm}
+
 
 ## Matrix Element Notation
 
@@ -432,15 +430,10 @@ then:
 - $a_{23} = 3$ (second row, third column).
 
 
-\noindent
 It’s important to remember:
 - Matrix indexing starts at \\(1\\), not \\(0\\). (Computer programmers, take note!)
 - Each $a_{ij}$ refers to a **single element** of the matrix, not an entire row or column.
 
-
-\medskip
-
-\noindent
 This notation becomes extremely helpful when writing general matrix equations, defining operations like the transpose, or describing algorithms like Gaussian elimination more precisely.
 
 
@@ -458,12 +451,12 @@ $$
 
 This is one way we could use matrices to rewrite this equation, another way to do it is to construct the **augmented matrix** for this system of linear equations. The augmented matrix is constructed by taking the coefficient matrix $\mathbf{A}$ and tacking the result vector onto the end, in the following manner:
 
-\\[
+$$
 \begin{bmatrix}
 	2 & 3 & -3 & \vline & 6 \\
 	4 & -1 & 4 & \vline & 5
 \end{bmatrix}
-\\]
+$$
 
 where the vertical line inside the matrix is a visual aid indicating there the coefficients end and the answers begin. The vertical line is not an actual mathematical operator, just an aid.
 
@@ -495,12 +488,12 @@ $$
 
 This would have an augmented matrix of the form:
 
-\\[
+$$
 \begin{bmatrix}
 	2 & 3 & -3 & \vline & 6 \\
 	0 & -7 & 10 & \vline & -7
 \end{bmatrix}
-\\]
+$$
 
 Notice this result is exactly what we would get if we had taken the first row of the original augmented matrix, multiplied it by $-2$, added it to the second row, and then stored the result in the second row. This reveals a useful shortcut: we can solve systems of linear equations using the addition method without needing to repeatedly write down the variables $x$, $y$, and $z$ each time. This approach simplifies the process considerably.
 
@@ -520,7 +513,7 @@ This process, as you will see in the following example, may seen extremely speci
 <div class="example">
 Let’s go through an example of this method for the following system of linear equations:
 
-\\[
+$$
 \begin{aligned}
     2x + 3y - z &= 5 \\
     -x + 4y + 2z &= 3 \\
@@ -532,41 +525,41 @@ Let’s go through an example of this method for the following system of linear 
     -1 & 4 & 2 & \vline & 3 \\
     3 & -1 & 1 & \vline & -4 
 \end{bmatrix}
-\\]
+$$
 
 First, lets get the very first element, the $a_{11}$ element, to be 1. This can be done in a couple of ways: i) we could multiply the first row by 1/2, or ii) we could swap row 1 and row 2 (multiplied by -1). Here, to avoid fractions for as long as possible, we will use the second option. This gives:
 
-\\[
+$$
 \begin{bmatrix}
     1 & -4 & -2 & \vline & -3 \\
     2 & 3 & -1 & \vline & 5 \\
     3 & -1 & 1 & \vline & -4 
 \end{bmatrix}
-\\]
+$$
 
 Now we can multiply the first row by $-2$, add it to the second row, and store the result in the second row to eliminate the first element of the second row. we can do something similar for the third row --  multiply the first row by $-3$, add it to the third row, and store the result in the third row. These processes give:
 
-\\[
+$$
 \begin{bmatrix}
     1 & -4 & -2 & \vline & -3 \\
     0 & 11 & 3 & \vline & 11 \\
     0 & 11 & 7 & \vline & 5 
 \end{bmatrix}
-\\]
+$$
 
 We can eliminate the second term in the last row by multipliying the second row by $-1$, adding it to the third row, and storing the result in the third row:
 
-\\[
+$$
 \begin{bmatrix}
     1 & -4 & -2 & \vline & -3 \\
     0 & 11 & 3 & \vline & 11 \\
     0 & 0 & 4 & \vline & -6 
 \end{bmatrix}
-\\]
+$$
 
 Putting this back into a system of linear equations format gives:
 
-\\[
+$$
 \begin{bmatrix}
     1 & -4 & -2 & \vline & -3 \\
     0 & 11 & 3 & \vline & 11 \\
@@ -578,11 +571,11 @@ Putting this back into a system of linear equations format gives:
     11y + 3z &= 11 \\
     4z &= -6
 \end{aligned}
-\\]
+$$
 
 From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the second equation gives:
 
-\\[
+$$
 \begin{aligned}
     11y + 3z &= 11\\
     11y + 3\left(-\tfrac{3}{2}\right) &= 11  \\
@@ -590,11 +583,11 @@ From the third row we can see that $z = -\tfrac{3}{2}$. Putting this into the se
     11y  &= \tfrac{31}{2} \\
     y  &= \tfrac{31}{22} 
 \end{aligned}
-\\]
+$$
 
 and putting both $z$ and $y$ into the first equation gives:
 
-\\[
+$$
 \begin{aligned}
     x  - 4y - 2z &= -3 \\
     x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 \\
@@ -602,7 +595,7 @@ and putting both $z$ and $y$ into the first equation gives:
     x  - \tfrac{62}{11} &= -6 \\
     x  &= - \tfrac{4}{11} 
 \end{aligned}
-\\]
+$$
 
 So, we have the solution 
 
@@ -629,7 +622,7 @@ Throughout the lecture, we stressed the importance of understanding both the ope
 In the coming lectures, we will build on these ideas by introducing more advanced concepts like matrix inverses, determinants, and eigenvalues. These topics will give us powerful tools for solving increasingly complex problems and deepen our understanding of how systems behave.
 
 
-**Key Takeaway:** \quad Matrices and vectors are the essential ``building blocks'' of the linear world, and mastering them makes solving real problems across physics, engineering, and beyond possible.
+**Key Takeaway:** Matrices and vectors are the essential ``building blocks'' of the linear world, and mastering them makes solving real problems across physics, engineering, and beyond possible.
 
 
 
@@ -654,10 +647,10 @@ $$
 \mathbf{A} = \begin{bmatrix} 2 & 3 \\ 1 & 4 \\ -1 & 2 \end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix} 5 & -2 \\ 3 & 6 \end{bmatrix}
 $$
 
-a) Multiply the matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) to find the resulting matrix \\(\mathbf{C} = \mathbf{A} \cdot \mathbf{B}\\). If this operation is not allowed, explain why.
-b) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{C}\\). Does this result agree with the rules established earlier?
-c) Multiply the matrices \\(\mathbf{B}\\) and \\(\mathbf{A}\\) to find the resulting matrix \\(\mathbf{D} = \mathbf{B} \cdot \mathbf{A}\\). If this operation is not allowed, explain why.
-d) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{D}\\). Does this result agree with the rules established earlier?
+a) Multiply the matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) to find the resulting matrix \\(\mathbf{C} = \mathbf{A} \cdot \mathbf{B}\\). If this operation is not allowed, explain why.  
+b) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{C}\\). Does this result agree with the rules established earlier?  
+c) Multiply the matrices \\(\mathbf{B}\\) and \\(\mathbf{A}\\) to find the resulting matrix \\(\mathbf{D} = \mathbf{B} \cdot \mathbf{A}\\). If this operation is not allowed, explain why.  
+d) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{D}\\). Does this result agree with the rules established earlier?  
 
 
 **Problem 2:**
@@ -674,10 +667,10 @@ $$
 \end{aligned}
 $$
 
-a) Write this system of linear equations in matrix form, \\(\mathbf{A} \vec{I} = \vec{V}\\), where \\(\mathbf{A}\\) is the matrix of coefficients, \\(\vec{I}\\) is the vector of unknown currents, and \\(\vec{V}\\) is the vector of voltage values.
-b) Write out the augmented matrix for this system of linear equations. Remember to include 0's if a variable is not present in an equation!	
-c) Solve for the currents \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) using the Gaussian elimination process described in the Application section.
-d) Interpret your solution: what do the values of \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) indicate about the direction and magnitude of currents in each loop?
+a) Write this system of linear equations in matrix form, \\(\mathbf{A} \vec{I} = \vec{V}\\), where \\(\mathbf{A}\\) is the matrix of coefficients, \\(\vec{I}\\) is the vector of unknown currents, and \\(\vec{V}\\) is the vector of voltage values.  
+b) Write out the augmented matrix for this system of linear equations. Remember to include 0's if a variable is not present in an equation!	  
+c) Solve for the currents \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) using the Gaussian elimination process described in the Application section.  
+d) Interpret your solution: what do the values of \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) indicate about the direction and magnitude of currents in each loop?  
 
 
 
