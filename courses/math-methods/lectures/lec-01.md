@@ -70,9 +70,9 @@ The three vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$ are what we call a **basis
 
 This ability to combine a set of vectors to recreate any vector in the space is called **spanning**. More formally, we say the vectors **span the space**. For example, in 3D, this looks like:
 
-\[
+$$
 \vec{v} = a \, \hat{i} + b \, \hat{j} + c \, \hat{k}
-\]
+$$
 
 where $a$, $b$, and $c$ are scalars. It’s easy to see that any vector in 3D space can be written this way, so $\hat{i}$, $\hat{j}$, and $\hat{k}$ together form a basis.
 
