@@ -119,9 +119,7 @@ You can think of it like this: suppose you have a big box of LEGO bricks. These 
 In our 3D space, the standard basis vectors:
 
 $$
-\hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \qquad
-\hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \qquad
-\hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \qquad \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \qquad \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
 are three fundamental "LEGO bricks", each being distinct in that they each point in different directions. Any vector in 3D space can be expressed as a combination of these—like writing a recipe for a location: "go 3 units in the \\(\hat{i}\\) direction, then 1 unit in the \\(\hat{j}\\) direction, and finally $-$4 units in the \\(\hat{k}\\) direction."
