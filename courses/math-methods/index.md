@@ -1,46 +1,56 @@
 ---
 layout: default
-title: PHYS 2120 – Lectures
-course_home: /courses/math-methods/
+title: PHYS 3350 – Mathematical Methods for Physics
+course_home: Course-Materials/courses/math-methods/
 ---
 
-# Lectures
+# PHYS 3350 – Mathematical Methods for Physics
 
-<ul>
-{% assign course_prefix = page.course_home | append: "lectures/" %}
+These notes support **PHYS 3350**, a course on the mathematical techniques
+used throughout upper-division physics.
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'lectures'"
-  | sort: "nav_order" %}
+The materials below are organized similarly to a compiled course packet:
+lecture notes, practice days, homework sets, and supplementary materials.
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
+---
 
-<ul>
-{% assign course_prefix = page.course_home | append: "homework/" %}
+## Lecture Notes
+- [Lectures](lectures/)
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'homework'"
-  | sort: "nav_order" %}
+## Practice and Review
+- [Practice Days](practice/)
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
+## Assignments
+- [Homework Sets](homework/)
 
-<ul>
-{% assign course_prefix = page.course_home | append: "practice/" %}
+## Additional Materials
+- [Labs and Computational Exercises](labs/)
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'practice'"
-  | sort: "nav_order" %}
+---
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
+## How to Use These Notes
+
+- Lecture notes are intended to be read **before or after class**
+- Practice days are designed for **in-class group work**
+- Homework sets reinforce both conceptual and computational skills
+
+All mathematical expressions are rendered using MathML-backed LaTeX
+for accessibility and screen-reader compatibility.
+
+---
+
+## Accessibility Notes
+
+- All equations are available to assistive technologies
+- Figures include alternative text or descriptions
+- Content is structured using semantic headings
+- Printable versions can be generated via browser “Save as PDF”
+
+If you encounter any accessibility issues, please contact the instructor.
+
+---
+
+## Course Information
+
+Instructor: Philip Eaton, Ph.D.  
+Institution: Stockton University  
