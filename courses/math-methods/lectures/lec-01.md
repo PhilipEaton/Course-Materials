@@ -151,6 +151,11 @@ We will talk more about vectors and their various operations in Lecture 04.
 
 
 
+
+
+
+
+
 ## Matrices
 
 In the most general terms, matrices are a rectangular configuration of numbers that can mean pretty much anything you want:
@@ -161,24 +166,23 @@ $$
 
 When writing by hand, the double underlined notation is often the easiest notation to use when indicating a variable is a matrix. In text, however, the bold-faced notation is most commonly used. 
 
-In physics matrices are used for a wide variety of reasons, but the most common of which is to represent some form of coordinate transformation or a transition in a system of some kind. Throughout out this unit on linear algebra we will see that matrices can be used to rotate, rescale, and  flip vectors. Let's looks into the key features of a matrix and then jump into one of the simplest ways we can use matrices -- solving systems of linear equations.
+In physics matrices are used for a wide variety of reasons, but the most common of which is to represent some form of coordinate transformation or a transition in a system of some kind. We will see that matrices can be used to acheive a wide variety of affects, such as to rotate, rescale, and flip vectors to name a few examples. For now, let's looks into the key features of a matrix and then jump into one of the simplest ways we can use matrices -- solving systems of linear equations.
 
 ### Anatomy of a Matrix
 
-Let's cover the basic structure of a matrix. Just like we learned how to identify components of a vector—like its direction and magnitude—we should take a moment to understand the parts of a matrix. This will help us communicate clearly and make sure we’re all speaking the same mathematical language.
-
+To talk about matrices it is important that we know and underand the basic structure of matrices. This will help us communicate clearly and make sure we’re all speaking the same mathematical language. The following are the important features of a matrix:
 
 - A **matrix** is a rectangular array of numbers arranged in **rows** (horizontal) and **columns** (vertical).
-- The **shape** of a matrix tell us how many rows and how many columns it has. A matrix with $ m $ rows and $ n $ columns is called an $ m \times n $ matrix (read “$ m $ by $ n $”). Rows come first, then columns—like writing an address: “row, column.” Remember, *“Rail Car”*.
-- Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is labeled as $ a_{ij} $, where the first subscript points to the row and the second to the column.
-- The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. 
-- The elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**, which stretches from the top left to the bottom right of the matrix:
+- The **shape** of a matrix tells us how many rows and how many columns the matrix has. A matrix with $ m $ rows and $ n $ columns is called an $ m \times n $ matrix (read “$ m $ by $ n $”). Rows come first, then columns just like in, *“Rail Car”*. R for row followed by C for column.
+- Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is the $ij$-th element, typically labeled as $ a_{ij} $.  In this element notation the first index in the subscript points to the row and the second to the column.
+- The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. This means the elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**:
 
 	$$
 	\text{Main diagonal: } a_{11} \rightarrow a_{22} \rightarrow a_{33} \rightarrow \cdots \rightarrow a_{nn}
 	$$	
 
-- If all entries are zero, we call it a **zero matrix**. If all main diagonal entries are 1 and everything else is 0, we call it the **identity matrix** (we’ll meet this matrix soon).
+- If all entries are zero, we call it a **zero matrix**. 
+- If all entries are zero *except* the main diagonal, and the main diagonal entries are all 1, we call the matrix the **identity matrix** (we’ll see why later).
 	
 
 {% include example.html content="
@@ -206,7 +210,7 @@ Now that we’ve gotten to know the basic structure of a matrix, let’s start d
 
 ### Matrix Addition and Subtraction
 
-**Two matrices can be added or subtracted only if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction. 
+**Two matrices can be added or subtracted *only* if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction, by adding and subtracting the elements from each matrix that are in the same location ($c_{ij} = a_{ij} + b_{ij}$ and $d_{ij} = a_{ij} - b_{ij}$). 
 
 {% include example.html content="
 For example, if we have the matrices
