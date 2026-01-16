@@ -544,9 +544,9 @@ We want to find values for $x$, $y$, and $z$ that satisfy these equations using 
 
 $$
 \begin{bmatrix}
-    2 & 3 & -1 & \vline & 5 \\
-    -1 & 4 & 2 & \vline & 3 \\
-    3 & -1 & 1 & \vline & -4 
+    2 & 3 & -1 & | & 5 \\
+    -1 & 4 & 2 & | & 3 \\
+    3 & -1 & 1 & | & -4 
 \end{bmatrix}
 $$
 
@@ -556,9 +556,9 @@ Let’s focus on getting the top-left element, $a_{11}$, to be 1. We have a coup
 
 $$
 \begin{bmatrix}
-    1 & -4 & -2 & \vline & -3 \\
-    2 & 3 & -1 & \vline & 5 \\
-    3 & -1 & 1 & \vline & -4 
+    1 & -4 & -2 & | & -3 \\
+    2 & 3 & -1 & | & 5 \\
+    3 & -1 & 1 & | & -4 
 \end{bmatrix}
 $$
 
@@ -572,9 +572,9 @@ This gives:
 
 $$
 \begin{bmatrix}
-    1 & -4 & -2 & \vline & -3 \\
-    0 & 11 & 3 & \vline & 11 \\
-    0 & 11 & 7 & \vline & 5 
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 11 & 7 & | & 5 
 \end{bmatrix}
 $$
 
@@ -584,9 +584,9 @@ Next, we’ll eliminate the second element of the third row: multiply the second
 
 $$
 \begin{bmatrix}
-    1 & -4 & -2 & \vline & -3 \\
-    0 & 11 & 3 & \vline & 11 \\
-    0 & 0 & 4 & \vline & -6 
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 0 & 4 & | & -6 
 \end{bmatrix}
 $$
 
@@ -594,9 +594,9 @@ This is the "simplified form" we were aiming for. To see why it's helpful, we’
 
 $$
 \begin{bmatrix}
-    1 & -4 & -2 & \vline & -3 \\
-    0 & 11 & 3 & \vline & 11 \\
-    0 & 0 & 4 & \vline & -6 
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 0 & 4 & | & -6 
 \end{bmatrix}
 \implies
 \begin{aligned}
