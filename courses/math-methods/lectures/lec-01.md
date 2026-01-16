@@ -34,8 +34,11 @@ Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in in
 
 ![3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat.](../images/lec01/basisvectors.svg)
 
-![3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat.](PhilipEaton/Course-Materials/courses/math-methods/images/lec01/basisvectors.svg)
 
+<img
+  src="{{ '/courses/math-methods/images/lec01/basisvectors.svg' | relative_url }}"
+  alt="3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:100%;">
 
 Specifically, the magnitude of $\hat{i}$ can be written as:
 
