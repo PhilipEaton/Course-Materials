@@ -150,18 +150,27 @@ Now, that the column vectors, as we have written them, for a basis is the result
 
 {% include example.html content="
 Let's consider adding the following matrices together:
+
 $$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} \qquad \qquad \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix}$$
+
 Adding together, element by element, gives:
+
 $$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} (+1) + (-3) \\ (-4) + (+5) \\ (+2) + (0) \end{bmatrix} = \begin{bmatrix} -2 \\ +1 \\ +2 \end{bmatrix} $$
 
 We could also ask what happens when we multiply a vector by a constant. When you multiply a column vector by a constant, you multiply each element of the vector by that constant. For example:
+
 $$ 3 \begin{bmatrix} 3 \\ -4 \\ -1 \end{bmatrix} = \begin{bmatrix} 3(+3) \\ 3(-4) \\ 3(-1) \end{bmatrix} = \begin{bmatrix} +9 \\ -12 \\ -3 \end{bmatrix} $$
+
 and similarly for negative numbers. 
 
 In fact, this is how subtraction can be defined:
+
 $$\begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} - \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix}  $$
+
 $$\begin{bmatrix} (+1) - (-3) \\ (-4) - (+5) \\ (+2) - (0) \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix} } $$
+
 $$\begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} } $$
+
 Notice, directly subtracting the elements, the vertical steps, and treating subtraction as addition combined with the multiplication by -1 both give the same result. 
 " %}
 
