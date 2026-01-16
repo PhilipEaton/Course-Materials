@@ -174,6 +174,9 @@ To talk about matrices it is important that we know and underand the basic struc
 
 - A **matrix** is a rectangular array of numbers arranged in **rows** (horizontal) and **columns** (vertical).
 - The **shape** of a matrix tells us how many rows and how many columns the matrix has. A matrix with $ m $ rows and $ n $ columns is called an $ m \times n $ matrix (read “$ m $ by $ n $”). Rows come first, then columns just like in, *“Rail Car”*. R for row followed by C for column.
+    - A $ m \times 1 $ matrix is called a **column vector**, since it is a single column.
+    - A $ 1 \times n $ matrix is called a **row vector**, since it is a single row.
+    - Both of these objects have the same characteristics of a vector. This means vectors are a special matrices, thus the names column vector and row vector. 
 - Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is the $ij$-th element, typically labeled as $ a_{ij} $.  In this element notation the first index in the subscript points to the row and the second to the column.
 - The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. This means the elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**:
 
@@ -219,10 +222,10 @@ $$
 \mathbf{A} = \begin{bmatrix}
     1 & 2 \\
     3 & 4
-\end{bmatrix}, \quad \mathbf{B} = \begin{bmatrix}
+\end{bmatrix} \quad \mathbf{B} = \begin{bmatrix}
     5 & 6 \\
     7 & 8
-\end{bmatrix},
+\end{bmatrix}
 $$
 
 then their sum and difference are calculated as follows:
@@ -263,16 +266,14 @@ $$
 \end{aligned}
 $$
 
-This system of equations can be written as a matrix equation in the following manner:
+We claim this system of equations can be written as a matrix equation in the following manner:
 
 $$\underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
 $$
 
 where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \vec{r} \\) is the **variable vector**, and \\( \vec{b} \\) represents the **results vector**. 
 
-At this point, it's important to discuss how matrices are generally described. The dimensions of a matrix are indicated by the number of rows and columns, expressed as (number of rows) \\(\times\\) (number of columns). For example, the matrix \\( \mathbf{A} \\) is a \\( 2 \times 3 \\) matrix (read as ``2 by 3") because it has 2 rows and 3 columns. The column vector \\( \vec{r} \\) is a \\( 3 \times 1 \\) matrix, while the results vector \\( \vec{b} \\) is a \\( 2 \times 1 \\) matrix. 
-
-Notice what happened here: we took a \\( 2 \times 3 \\) matrix, acted on a \\( 3 \times 1 \\) vector, and got a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. 
+Notice what happened here, assuming it is allowed: we took a \\( 2 \times 3 \\) matrix, acted on a \\( 3 \times 1 \\) vector, and got a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. This is shown in bold overset numbers in the following:
 
 $$
 \overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
@@ -289,9 +290,9 @@ x \\ y \\ z
 \end{bmatrix}}
 $$
 
-The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, in this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
+The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, for this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
 
-Another takeaway here is that all vectors are matrices with either a single row or a single column and matrices can take on any shape. A vector represented by a single row is called a **row vector**, and when represented by a single column, it is called a **column vector**.
+
 
 This also means the two operations on vectors we discussed above are similarly true for matrices. When adding matrices you add elements of identical positions in their matrices together. For example,
 
