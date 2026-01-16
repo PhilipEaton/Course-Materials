@@ -29,6 +29,18 @@ $$
 we see that the acceleration depends only on the net force.
 </div>
 
+{% include example.html content="
+This is **bold**, this is a list:
+
+- item 1
+- item 2
+
+\[
+\vec{F}=m\vec{a}
+\]
+" %}
+
+
 
 
 # Introduction: The Essentials of Linear Algebra
@@ -176,7 +188,7 @@ Let's cover the basic structure of a matrix. Just like we learned how to identif
 
 
 - A **matrix** is a rectangular array of numbers arranged in **rows** (horizontal) and **columns** (vertical).
-- The **shape** of a matrix tell us how many rows and how many columns it has. A matrix with $ m $ rows and $ n $ columns is called an ** $ m \times n $ ** matrix (read “$ m $ by $ n $”). Rows come first, then columns—like writing an address: “row, column.” Remember, \textit{“Rail Car”}.
+- The **shape** of a matrix tell us how many rows and how many columns it has. A matrix with $ m $ rows and $ n $ columns is called an $ m \times n $ matrix (read “$ m $ by $ n $”). Rows come first, then columns—like writing an address: “row, column.” Remember, *“Rail Car”*.
 - Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is labeled as $ a_{ij} $, where the first subscript points to the row and the second to the column.
 - The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. 
 - The elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**, which stretches from the top left to the bottom right of the matrix:
