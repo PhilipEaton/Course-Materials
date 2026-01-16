@@ -249,6 +249,7 @@ $$
 " 
 %}
 
+As you might have guessed, adding and subtracting matrices is a fairly easy process. Multiplying matrices, on the other hand, is more nuanced and requires some more motivation and explanation. Let's begin with some motivation.
 
 
 
