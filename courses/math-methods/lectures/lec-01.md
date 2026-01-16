@@ -63,6 +63,7 @@ $$ \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \hspace{2cm} \hat{j} = \b
 There are multiple ways to represent the basis unit vectors, meaning there is no single unique representation to describe positions in 3D space. However, the approach we used is certainly the simplest. 
 
 
+---
 
 ### A Quick Detour: What is a Basis, Really?
 
