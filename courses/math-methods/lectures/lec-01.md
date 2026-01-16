@@ -411,10 +411,11 @@ then:
 
 
 It’s important to remember:
-- Matrix indexing starts at \\(1\\), not \\(0\\). (Computer programmers, take note!)
+- Typical matrix indexing starts at \\(1\\), not \\(0\\). (Computer programmers, take note!)
+    - This changes when you get into 4, or larger, dimensional spacetime where time is typically given as the 0 index and space is given 1, 2, 3, and etc. Though, we will not be working with those things in this course.
 - Each $a_{ij}$ refers to a **single element** of the matrix, not an entire row or column.
 
-This notation becomes extremely helpful when writing general matrix equations, defining operations like the transpose, or describing algorithms like Gaussian elimination more precisely.
+This notation becomes extremely helpful when writing general matrix equations, defining operations like the transpose, or describing algorithms more precisely.
 
 
 
