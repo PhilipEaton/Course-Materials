@@ -540,30 +540,19 @@ $$
 \mathbf{A} \vec{r} = \vec{b},
 $$
 
-where $\mathbf{A}$ is the coefficient matrix, $\vec{r}$ is the column vector of unknowns, and $\vec{b}$ is the result vector. Let's call $\mathbf{A}'$ the inverse of $\mathbf{A}$, *if it exists*. Using $\mathbf{A}'$ will let us solve for $\vec{r}$ directly via multiplication, similar to how multiplying by $\frac{1}{2}$ solved for $x$ in the previous example. But we must be careful: matrix multiplication is not commutative, so **order matters**. The inverse must be placed so that it acts on $\mathbf{A}$. In this case, that means multiplying on the left:
+where $\mathbf{A}$ is the coefficient matrix, $\vec{r}$ is the column vector of unknowns, and $\vec{b}$ is the result vector. Let's call $\mathbf{A}^{-1}$ the inverse of $\mathbf{A}$, *if it exists*, since this is paralleling the idea that we are looking for $\frac{1}{\mathbf{A}} = \mathbf{A}^{-1}$. Using $\mathbf{A}^{-1}$ will let us solve for $\vec{r}$ directly via multiplication, similar to how multiplying by $\frac{1}{2}$ solved for $x$ in the previous example. But we must be careful: matrix multiplication is not commutative, so **order matters**. The inverse must be placed so that it acts on $\mathbf{A}$. In this case, that means multiplying on the left:
 
 $$
 \begin{aligned}
 	\mathbf{A} \vec{r} &= \vec{b} \\
-	\mathbf{A}' \mathbf{A} \vec{r} &= \mathbf{A}' \vec{b} \\
-	\mathbf{A}' \mathbf{A}} \vec{r} &= \mathbf{A}' \vec{b} \\
-	\vec{r} &= \underbrace{\mathbf{A}' \vec{b}}_{\text{Answer}}
+	\mathbf{A}^{-1} \mathbf{A} \vec{r} &= \mathbf{A}^{-1} \vec{b} \\
+	\vec{r} &= \mathbf{A}^{-1} \vec{b}
 \end{aligned}
 $$
 
-where we have used the fact that we are assuming $\mathbf{A}'$ represents the inverse of $\mathbf{A}$ to allow the simplification: $\mathbf{A}'\mathbf{A} = 1$. Tehcnically, this operation would yeild the identity matirx $\mathbf{I}$, but we will get to that shortly. Notice how this solution stragety is igentical on concept to the simple algebra problem solved previously! 
+where we have used the fact that we are assuming $\mathbf{A}^{-1}$ represents the inverse of $\mathbf{A}$ to allow the simplification: $\mathbf{A}^{-1}\mathbf{A} = 1$. Tehcnically, this operation would yeild the identity matirx $\mathbf{I}$, but we will get to that shortly. The main point for now is to notice how this solution stragety is igentical on concept to the simple algebra problem solved previously. 
 
-<div style="text-align:center;">
-Notationally, the inverse of $\mathbf{A}$ is written as $\mathbf{A}^{-1}$.
-</div>
-
-So how do we know whether a matrix has an inverse? The answer comes straight from the determinant:
-
-**If the determinant is zero, the matrix does not have an inverse.**
-
-{% include warning.html content="
-Not all square matrices have inverses! If the determinant is zero, the matrix is said to be *singular* and \\textbf{can’t be inverted}.
-" %}
+So how do we know whether a matrix has an inverse and how do we go about finding it? The answer to the first part of this quation comes straight from the determinant: **If the determinant is zero, the matrix does not have an inverse.**
 
 For example, consider the determinant of the coefficient matrix above:
 
@@ -578,74 +567,13 @@ $$
 
 Because the determinant is nonzero, this matrix *can* be inverted.
 
-How do we actually find the inverse? One general approach is to use the row-reduction techniques we’ve already learned. Another option is to use a calculator—which is what we’ll rely on for most inverses going forward.
-
-
-
-
-
-
-You may be wondering why the determinant is important beyond what it reveals about geometric transformations (which we will explore further in the next lecture). One key reason is that the determinant tells us if a matrix can be **inverted**—that is, **if a matrix has an inverse**.
-
-Consider the following system of linear equations:
-
-$$
-\begin{aligned}
-	2x + 3y &= 7 \\
-	-3x + 9y &= -2
-\end{aligned} 
-\quad \Rightarrow \quad
-\begin{bmatrix}
-	2 & 3 \\ -3 & 9
-\end{bmatrix}
-\begin{bmatrix}
-	x \\ y
-\end{bmatrix} = 
-\begin{bmatrix}
-	7 \\ -2
-\end{bmatrix}
-$$
-
-Wouldn't it be helpful if we could multiply both sides by some matrix and immediately solve for $ x $ and $ y $? If we set this up as a matrix equation, we would be looking at solving something like this:
-
-$$
-\mathbf{A} \vec{r} = \vec{b}
-$$
-
-where $ \mathbf{A} $ is the matrix of coefficients, $ \vec{r} $ is the column vector of unknowns, and $ \vec{b} $ is the result vector. An inverse matrix, if it exists, would allow us to solve for $ \vec{r} $ directly in the following manner.  Remember, the order of multiplication for matrices matters! So, make sure that the inverse of $ \mathbf{A} $ is positioned correctly to act on $ \mathbf{A} $, whether on the left or the right.:
-
-$$
-\begin{aligned}
-	\mathbf{A} \vec{r} &= \vec{b} \\
-	\mathbf{A}' \mathbf{A} \vec{r} &= \mathbf{A}' \vec{b} \\
-	\underbrace{\mathbf{A}' \mathbf{A}}_\text{= 1} \vec{r} &= \mathbf{A}' \vec{b} \\
-	\vec{r} &= \underbrace{\mathbf{A}' \vec{b} }_\text{Answer}
-\end{aligned}
-$$
-
-In this case, $ \mathbf{A}' $ **would represent the inverse of** $ \mathbf{A} $.
-
-\begin{center}
-	Notationally, the inverse of $\mathbf{A}$ is written as $\mathbf{A}^{-1}$.
-\end{center}
-
-Why do we call it the inverse? Think of it this way: in algebra, if you have $ 2x = 4 $, you would multiply both sides by the inverse of $ 2 $, which is $ \frac{1}{2} $, to solve for $ x $. So, $\frac{1}{2}$ is the inverse of $2$, which makes a lot of sense! 
-
-Now, how can we determine if a matrix can be inverted? It’s simple: check if its determinant is zero. **If the determinant is zero, the matrix does not have an inverse**
-
 {% include warning.html content="
-Not all square matrices have inverses! **If the determinant is zero**, the matrix is said to be *singular* and \textbf{can't be inverted
+Not all square matrices have inverses! If the determinant is zero, the matrix is said to be *singular* and \\textbf{can’t be inverted}. That means the inverse of this kind of matrix does not exist.
 " %}
 
+But, how do we actually find the inverse? One general approach is to use the row-reduction techniques we’ve already learned. Another option is to use a calculator, which is what we’ll rely on for most inverses going forward.
 
 
-For example, the following matrix:
-
-$$ |\mathbf{A}| = \begin{vmatrix}
-	2 & 3 \\ -3 & 9
-\end{vmatrix} = (2)(9) - (3)(-3) = 18 + 9 = 27 $$
-
-can be inverted (or has an inverse) since its determinant is non-zero. But how do we actually find the inverse? One general method is to use the row reduction techniques we learned previously. Another option is to simply use a calculator, which we’ll rely on for finding most inverses in the future.
 
 
 
