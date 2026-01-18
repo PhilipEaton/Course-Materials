@@ -485,15 +485,21 @@ When should you use each of these three determinant methods? The following table
 
 | **Matrix Size**          | **Best Determinant Method** |
 |--------------------------|-----------------------------|
-| $2 \times 2$             | Use the diagonal formula: $ad - bc$ |
-| $3 \times 3$             | Use diagonal trick **or** cofactor method |
-| $4 \times 4$ or larger   | Cofactor method |
+| $2 \times 2$             | &nbsp; Use the diagonal formula: $ad - bc$ |
+| $3 \times 3$             | &nbsp; Use diagonal trick **or** cofactor method |
+| $4 \times 4$ or larger   | &nbsp; Cofactor method |
 
 Readers looking for a reliable rule of thumb: know the $2 \times 2$ diagonal shortcut ($ad - bc$) and the cofactor method. Those two techniques are enough to calculate the determinant of any square matrix, no matter the size.
 
 
-## Determinants and Matrix Invertibility
 
+
+
+
+
+
+
+## Determinants and Matrix Invertibility
 
 You may be wondering why the determinant is important beyond what it reveals about geometric transformations (which we will explore further in the next lecture). One key reason is that the determinant tells us if a matrix can be **inverted**—that is, **if a matrix has an inverse**.
 
