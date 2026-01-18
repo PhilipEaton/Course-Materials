@@ -662,15 +662,15 @@ $$
 This process leads us to a general form for the inverse of a $2 \\times 2$ matrix, 
 
 $$ 
-\\mathbf{B} = \\begin{bmatrix}
-	b_{11} & b_{12} \\\\ 
+\mathbf{B} = \begin{bmatrix}
+	b_{11} & b_{12} \\
 	b_{21} & b_{22}
-\\end{bmatrix} 
-\\implies 
-\\mathbf{B}^{-1} = \\frac{1}{\\text{det}(\\mathbf{B})} \\begin{bmatrix}
-	b_{22} & -b_{12} \\\\ 
+\end{bmatrix} 
+\implies 
+\mathbf{B}^{-1} = \frac{1}{\\text{det}(\mathbf{B})} \begin{bmatrix}
+	b_{22} & -b_{12} \\
 	-b_{21} & b_{11}
-\\end{bmatrix} 
+\end{bmatrix} 
 $$
 " %}
 
