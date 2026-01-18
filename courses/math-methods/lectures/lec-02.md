@@ -803,13 +803,15 @@ a) Calculate the Determinant of $\mathbf{I}$.
 	
 > Using the co-factor method along the first row gives: 
 >		
->		$$ \begin{vmatrix}
->			4 & 0 & 0 \\
->			0 & 3 & 1 \\
->			0 & 1 & 2
->		\end{vmatrix} = 4 \, \begin{vmatrix}
->		3 & 1 \\ 1 & 2
->		\end{vmatrix} + 0 \, C_{12} + 0 \, C_{13} = 4 ( 6 - 1 ) = 20 $$
+> $$ \begin{vmatrix}
+> 4 & 0 & 0 \\
+> 0 & 3 & 1 \\
+> 0 & 1 & 2
+> \end{vmatrix} = 
+> 4 \, \begin{vmatrix}
+> 3 & 1 \\ 1 & 2
+> \end{vmatrix} + 0 \, C_{12} + 0 \, C_{13} = 4 ( 6 - 1 ) = 20 
+> $$
 	
 b) Calculate the Trace of $\mathbf{I}$.
 	
