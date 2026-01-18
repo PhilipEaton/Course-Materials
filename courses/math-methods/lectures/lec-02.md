@@ -596,8 +596,8 @@ Start by setting up an augmented matrix like this:
 
 $$
 \begin{bmatrix}
-	2 & 3 & \vline & 1 & 0 \\
-	-3 & 9 & \vline & 0 & 1 \\
+	2 & 3 & | & 1 & 0 \\
+	-3 & 9 & | & 0 & 1 \\
 \end{bmatrix}
 $$
 
@@ -623,31 +623,31 @@ To find $\mathbf{A}^{-1}$, we use row reduction to transform the left side of th
 $$
 \begin{aligned}
 	\begin{bmatrix}
-		2 & 3 & \vline & 1 & 0 \\
-		-3 & 9 & \vline & 0 & 1 \\
+		2 & 3 & | & 1 & 0 \\
+		-3 & 9 & | & 0 & 1 \\
 	\end{bmatrix}
 	&\implies
 	\begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		1 & -3 & \vline & 0 & -\tfrac{1}{3} \\
-	\end{bmatrix}
-	\\[1ex]
-	&\implies
-	\begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		0 & -\tfrac{9}{2} & \vline & -\tfrac{1}{2} & -\tfrac{1}{3} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		1 & -3 & | & 0 & -\tfrac{1}{3} \\
 	\end{bmatrix}
 	\\[1ex]
 	&\implies
 	\begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		0 & 1 & \vline & \tfrac{1}{9} & \tfrac{2}{27} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		0 & -\tfrac{9}{2} & | & -\tfrac{1}{2} & -\tfrac{1}{3} \\
 	\end{bmatrix}
 	\\[1ex]
 	&\implies
 	\begin{bmatrix}
-		1 & 0 & \vline & \tfrac{1}{3} & -\tfrac{1}{9} \\
-		0 & 1 & \vline & \tfrac{1}{9} & \tfrac{2}{27} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		0 & 1 & | & \tfrac{1}{9} & \tfrac{2}{27} \\
+	\end{bmatrix}
+	\\[1ex]
+	&\implies
+	\begin{bmatrix}
+		1 & 0 & | & \tfrac{1}{3} & -\tfrac{1}{9} \\
+		0 & 1 & | & \tfrac{1}{9} & \tfrac{2}{27} \\
 	\end{bmatrix}
 \end{aligned}
 $$
@@ -709,8 +709,8 @@ Let’s look at the row reduction method once to understand the process, and the
 First, set up your matrix in the following way:
 
 $$ \begin{bmatrix}
-	2 & 3 & \vline & 1 & 0 \\
-	-3 & 9 & \vline & 0 & 1 \\
+	2 & 3 & | & 1 & 0 \\
+	-3 & 9 & | & 0 & 1 \\
 \end{bmatrix} $$
 
 The matrix
@@ -733,26 +733,26 @@ To find the inverse of $\mathbf{A}$, we can use row reduction to transform the l
 $$
 \begin{aligned}
 	\begin{bmatrix}
-		2 & 3 & \vline & 1 & 0 \\
-		-3 & 9 & \vline & 0 & 1 \\
+		2 & 3 & | & 1 & 0 \\
+		-3 & 9 & | & 0 & 1 \\
 	\end{bmatrix} &\implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		1 & -3 & \vline & 0 & -\frac{1}{3} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		1 & -3 & | & 0 & -\frac{1}{3} \\
 	\end{bmatrix} \
 	&\implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		0 & -\frac{9}{2} & \vline & -\tfrac{1}{2}& -\frac{1}{3} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		0 & -\frac{9}{2} & | & -\tfrac{1}{2}& -\frac{1}{3} \\
 	\end{bmatrix} \\
 	& \implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
-		0 & 1 & \vline & \tfrac{1}{9}& \frac{2}{27} \\
+		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
+		0 & 1 & | & \tfrac{1}{9}& \frac{2}{27} \\
 	\end{bmatrix} \\
 	\begin{bmatrix}
-		2 & 3 & \vline & 1 & 0 \\
-		-3 & 9 & \vline & 0 & 1 \\
+		2 & 3 & | & 1 & 0 \\
+		-3 & 9 & | & 0 & 1 \\
 	\end{bmatrix} &\implies \begin{bmatrix}
-		1 & 0 & \vline & \tfrac{1}{3} & -\frac{1}{9} \\
-		0 & 1 & \vline & \tfrac{1}{9}& \frac{2}{27} \\
+		1 & 0 & | & \tfrac{1}{3} & -\frac{1}{9} \\
+		0 & 1 & | & \tfrac{1}{9}& \frac{2}{27} \\
 	\end{bmatrix}
 \end{aligned}
 $$
@@ -929,32 +929,32 @@ d) Calculate the Inverse of $\mathbf{I}$.
 >           $$
 >			\begin{aligned}
 >				\begin{bmatrix}
->					4 & 0 & 0 & \vline & 1 & 0 & 0 \\
->					0 & 3 & 1 & \vline & 0 & 1 & 0\\
->					0 & 1 & 2 & \vline & 0 & 0 & 1
+>					4 & 0 & 0 & | & 1 & 0 & 0 \\
+>					0 & 3 & 1 & | & 0 & 1 & 0\\
+>					0 & 1 & 2 & | & 0 & 0 & 1
 >				\end{bmatrix} &\implies \begin{bmatrix}
->					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &\vline & 0 & 0 & 1\\
->					0 & 3 & 1 &\vline & 0 & 1 & 0
+>					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+>					0 & 1 & 2 &| & 0 & 0 & 1\\
+>					0 & 3 & 1 &| & 0 & 1 & 0
 >				\end{bmatrix} \\
 >				&\implies \begin{bmatrix}
->					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &\vline & 0 & 0 & 1\\
->					0 & 0 & -5 &\vline & 0 & 1 & -3
+>					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+>					0 & 1 & 2 &| & 0 & 0 & 1\\
+>					0 & 0 & -5 &| & 0 & 1 & -3
 >				\end{bmatrix}  \\
 >				&\implies \begin{bmatrix}
->					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &\vline & 0 & 0 & 1\\
->					0 & 0 & 1 &\vline & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
+>					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+>					0 & 1 & 2 &| & 0 & 0 & 1\\
+>					0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
 >				\end{bmatrix}   \\
 >				\begin{bmatrix}
->					4 & 0 & 0 & \vline & 1 & 0 & 0 \\
->					0 & 3 & 1 & \vline & 0 & 1 & 0\\
->					0 & 1 & 2 & \vline & 0 & 0 & 1
+>					4 & 0 & 0 & | & 1 & 0 & 0 \\
+>					0 & 3 & 1 & | & 0 & 1 & 0\\
+>					0 & 1 & 2 & | & 0 & 0 & 1
 >				\end{bmatrix}  &\implies \begin{bmatrix}
->					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 0 &\vline & 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
->					0 & 0 & 1 &\vline & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
+>					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+>					0 & 1 & 0 &| & 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
+>					0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
 >				\end{bmatrix}
 >			\end{aligned}
 
