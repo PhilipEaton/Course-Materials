@@ -704,110 +704,6 @@ $$
 You can also check that $\mathbf{A} \mathbf{A}^{-1}$ gives the identity matrix—it should!
 
 
-Let’s look at the row reduction method once to understand the process, and then we’ll use a calculator for all inverse matrices from here on.
-
-First, set up your matrix in the following way:
-
-$$ \begin{bmatrix}
-	2 & 3 & | & 1 & 0 \\
-	-3 & 9 & | & 0 & 1 \\
-\end{bmatrix} $$
-
-The matrix
-
-$$
-\begin{bmatrix}
-	1 & 0 \\
-	0 & 1 
-\end{bmatrix}
-$$
-
-is called the **identity matrix, $\mathbf{I}$. It functions similarly to the number $1$ in multiplications, acting as the **multiplicative identity** in matrix algebra. This means that when any matrix is multiplied by the identity matrix of the correct dimensions, the original matrix remains unchanged, just like when you multiple a nuber by 1:
-
-$$
-\mathbf{A}  \mathbf{I} = \mathbf{I}  \mathbf{A} = \mathbf{A}
-$$
-
-To find the inverse of $\mathbf{A}$, we can use row reduction to transform the left side of the augmented matrix above into the identity matrix. The resulting matrix on the right side will be the **inverse of **$\mathbf{A}$, or $\mathbf{A}^{-1}$. Here is how this process looks, step-by-step:
-
-$$
-\begin{aligned}
-	\begin{bmatrix}
-		2 & 3 & | & 1 & 0 \\
-		-3 & 9 & | & 0 & 1 \\
-	\end{bmatrix} &\implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
-		1 & -3 & | & 0 & -\frac{1}{3} \\
-	\end{bmatrix} \
-	&\implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
-		0 & -\frac{9}{2} & | & -\tfrac{1}{2}& -\frac{1}{3} \\
-	\end{bmatrix} \\
-	& \implies \begin{bmatrix}
-		1 & \tfrac{3}{2} & | & \tfrac{1}{2} & 0 \\
-		0 & 1 & | & \tfrac{1}{9}& \frac{2}{27} \\
-	\end{bmatrix} \\
-	\begin{bmatrix}
-		2 & 3 & | & 1 & 0 \\
-		-3 & 9 & | & 0 & 1 \\
-	\end{bmatrix} &\implies \begin{bmatrix}
-		1 & 0 & | & \tfrac{1}{3} & -\frac{1}{9} \\
-		0 & 1 & | & \tfrac{1}{9}& \frac{2}{27} \\
-	\end{bmatrix}
-\end{aligned}
-$$
-
-We claim that the matrix we found is the inverse of $\mathbf{A}$. First, let’s simplify it by factoring out $ \frac{1}{\text{det}(\mathbf{A})} $, giving us:
-
-
-$$ \mathbf{A}^{-1} = \frac{1}{27} \begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix} $$
-
-
-{% include result.html content="
-This leads us to a general form for the inverse of a $2 \times 2$ matrix, 
-$$ 
-\mathbf{B} = \begin{bmatrix}
-	b_{11} & b_{12} \\ 
-	b_{21} & b_{22}
-\end{bmatrix} 
-\implies 
-\mathbf{B}^{-1} = \frac{1}{\text{det}(\mathbf{B})} \begin{bmatrix}
-	b_{22} & -b_{12} \\ 
-	-b_{21} & b_{11}
-\end{bmatrix} 
-$$
-
-You should check this on your own!
-" %}
-
-
-How can we confirm that the matrix we found is indeed the inverse of $\mathbf{A}$? One way is to multiply them together to see if we obtain the identity matrix. Recall that a number multiplied by its inverse should yield 1. We have:
-
-$$
-\begin{aligned}
-\mathbf{A}^{-1} \mathbf{A} &= \frac{1}{27} \begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix} \begin{bmatrix}
-    2 & 3  \\
-    -3 & 9 
-\end{bmatrix}  \\
-&= \frac{1}{27} \begin{bmatrix}
-    (9)(2) + (-3)(-3) & (9)(3) + (-3)(9)\\
-    (3)(2) + (2)(-3)  & (3)(3) + (2)(9) 
-\end{bmatrix}   \\
-&= \frac{1}{27} \begin{bmatrix}
-    27 & 0\\
-    0  & 27 
-\end{bmatrix}  \\
-&= \begin{bmatrix}
-    1 & 0\\
-    0  & 1
-\end{bmatrix} \\
-\mathbf{A}^{-1} \mathbf{A} &= \mathbf{I}
-\end{aligned}
-$$
-
-You can verify on your own that the multiplication $\mathbf{A} \mathbf{A}^{-1}$ results in the identity matrix. 
-
-
 
 
 
@@ -870,6 +766,12 @@ $$
 $$
 
 The trace has important applications in physics and engineering, particularly in the study of linear operators and quantum mechanics. The trace of an operator in matrix form is related to the sum of its eigenvalues, which can provide insights into the properties of the system being analyzed. For example, in quantum mechanics, the trace is used to compute expected values and to describe the behavior of quantum states under transformations. Additionally, in thermodynamics, the trace of the density matrix is used to find the partition function, which is fundamental in statistical mechanics for calculating the thermodynamic properties of systems. 
+
+
+
+
+
+
 
 
 ## Application: Inertia Matrix
