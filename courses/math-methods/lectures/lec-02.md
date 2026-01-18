@@ -501,6 +501,90 @@ Readers looking for a reliable rule of thumb: know the $2 \times 2$ diagonal sho
 
 ## Determinants and Matrix Invertibility
 
+You might be wondering why the determinant matters beyond what it tells us about geometric transformations. One major reason is this: the determinant tells us whether a matrix can be **inverted**. In other words, **whether the matrix has an inverse**.
+
+What do we mean by inverted? Consider the following equation:
+
+$$ 2 x = 4 $$
+
+To solve this we can divide both sides by 2. However, we do not know how to divide by a matrix, we only know how to multiple. Well, dividing both sides by 2 is the same as multipleing both sides by $\frac{1}{2}$, the *inverse* of 2. This gives:
+
+$$ \Big(\frac{1}{2}\Big) \, 2 x = \Big(\frac{1}{2}\Big) \, 4 \qquad\implies\qquad x = 2 $$
+
+and we have solved for $x$. 
+
+To see how this parallels with matrices, consider this system of linear equations:
+
+$$
+\begin{aligned}
+	2x + 3y &= 7 \\
+	-3x + 9y &= -2
+\end{aligned} 
+\quad \Rightarrow \quad
+\begin{bmatrix}
+	2 & 3 \\ -3 & 9
+\end{bmatrix}
+\begin{bmatrix}
+	x \\ y
+\end{bmatrix} = 
+\begin{bmatrix}
+	7 \\ -2
+\end{bmatrix}
+$$
+
+Wouldn’t it be nice if we could just multiply both sides by something the representes the "inverse of $\mathbf{A}$ and instantly solve for $x$ and $y$?. For this to work, we know what ever it is we need to multiply by will need to be a $2 \times 2$ matrix (can you explain why using matrix multiplication rules?), since it will need to act on $\mathbf{A}$.
+
+Let's simplify, and generalize, this discussion by writting the current matrix equation as:
+
+$$
+\mathbf{A} \vec{r} = \vec{b},
+$$
+
+where $\mathbf{A}$ is the coefficient matrix, $\vec{r}$ is the column vector of unknowns, and $\vec{b}$ is the result vector. Let's call $\mathbf{A}'$ the inverse of $\mathbf{A}$, *if it exists*. Using $\mathbf{A}'$ will let us solve for $\vec{r}$ directly via multiplication, similar to how multiplying by $\frac{1}{2}$ solved for $x$ in the previous example. But we must be careful: matrix multiplication is not commutative, so **order matters**. The inverse must be placed so that it acts on $\mathbf{A}$. In this case, that means multiplying on the left:
+
+$$
+\begin{aligned}
+	\mathbf{A} \vec{r} &= \vec{b} \\
+	\mathbf{A}' \mathbf{A} \vec{r} &= \mathbf{A}' \vec{b} \\
+	\mathbf{A}' \mathbf{A}} \vec{r} &= \mathbf{A}' \vec{b} \\
+	\vec{r} &= \underbrace{\mathbf{A}' \vec{b}}_{\text{Answer}}
+\end{aligned}
+$$
+
+where we have used the fact that we are assuming $\mathbf{A}'$ represents the inverse of $\mathbf{A}$ to allow the simplification: $\mathbf{A}'\mathbf{A} = 1$. Tehcnically, this operation would yeild the identity matirx $\mathbf{I}$, but we will get to that shortly. Notice how this solution stragety is igentical on concept to the simple algebra problem solved previously! 
+
+<div style="text-align:center;">
+Notationally, the inverse of $\mathbf{A}$ is written as $\mathbf{A}^{-1}$.
+</div>
+
+So how do we know whether a matrix has an inverse? The answer comes straight from the determinant:
+
+**If the determinant is zero, the matrix does not have an inverse.**
+
+{% include warning.html content="
+Not all square matrices have inverses! If the determinant is zero, the matrix is said to be *singular* and \\textbf{can’t be inverted}.
+" %}
+
+For example, consider the determinant of the coefficient matrix above:
+
+$$
+|\mathbf{A}| = \begin{vmatrix}
+	2 & 3 \\ -3 & 9
+\end{vmatrix}
+= (2)(9) - (3)(-3)
+= 18 + 9
+= 27
+$$
+
+Because the determinant is nonzero, this matrix *can* be inverted.
+
+How do we actually find the inverse? One general approach is to use the row-reduction techniques we’ve already learned. Another option is to use a calculator—which is what we’ll rely on for most inverses going forward.
+
+
+
+
+
+
 You may be wondering why the determinant is important beyond what it reveals about geometric transformations (which we will explore further in the next lecture). One key reason is that the determinant tells us if a matrix can be **inverted**—that is, **if a matrix has an inverse**.
 
 Consider the following system of linear equations:
