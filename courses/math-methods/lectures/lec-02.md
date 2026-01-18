@@ -876,7 +876,7 @@ d) Calculate the Inverse of $\mathbf{I}$.
 > \end{aligned}
 > $$
 
-	So, the inverse of $\mathbf{I}$ is:
+So, the inverse of $\mathbf{I}$ is:
 	 
 > $$ 
 > \mathbf{I}^{-1} = \begin{bmatrix}
