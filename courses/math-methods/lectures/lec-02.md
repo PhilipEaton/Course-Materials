@@ -815,80 +815,80 @@ a) Calculate the Determinant of $\mathbf{I}$.
 	
 b) Calculate the Trace of $\mathbf{I}$.
 	
->		Summing the main diagonal gives:
->		
->		$$ \text{Tr}\left(\begin{bmatrix}
->			4 & 0 & 0 \\
->			0 & 3 & 1 \\
->			0 & 1 & 2
->		\end{bmatrix}\right) = 4 + 3 + 2 = 9 $$
+> Summing the main diagonal gives:
+> 	
+> $$ \text{Tr}\left(\begin{bmatrix}
+> 4 & 0 & 0 \\
+> 0 & 3 & 1 \\
+> 0 & 1 & 2
+> \end{bmatrix}\right) = 4 + 3 + 2 = 9 $$
 	
 c) Calculate the Transpose of $\mathbf{I}$.
 	
->		The transpose would be:
+> The transpose would be:
 >		
->		$$ \begin{bmatrix}
->			4 & 0 & 0 \\
->			0 & 3 & 1 \\
->			0 & 1 & 2
->		\end{bmatrix}^{T} = \begin{bmatrix}
->		4 & 0 & 0 \\
->		0 & 3 & 1 \\
->		0 & 1 & 2
->		\end{bmatrix} $$
+> $$ \begin{bmatrix}
+> 4 & 0 & 0 \\
+> 0 & 3 & 1 \\
+> 0 & 1 & 2
+> \end{bmatrix}^{T} = \begin{bmatrix}
+> 4 & 0 & 0 \\
+> 0 & 3 & 1 \\
+> 0 & 1 & 2
+> \end{bmatrix} $$
 >		
->		**When the transpose is the same as the original the matrix is called symmetric!**
+> **When the transpose is the same as the original the matrix is called symmetric!**
 	
 d) Calculate the Inverse of $\mathbf{I}$.
 	
->		And the inverse can be found using the row reduction method:
->		    
->           $$
->			\begin{aligned}
->				\begin{bmatrix}
->					4 & 0 & 0 & | & 1 & 0 & 0 \\
->					0 & 3 & 1 & | & 0 & 1 & 0\\
->					0 & 1 & 2 & | & 0 & 0 & 1
->				\end{bmatrix} &\implies \begin{bmatrix}
->					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &| & 0 & 0 & 1\\
->					0 & 3 & 1 &| & 0 & 1 & 0
->				\end{bmatrix} \\
->				&\implies \begin{bmatrix}
->					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &| & 0 & 0 & 1\\
->					0 & 0 & -5 &| & 0 & 1 & -3
->				\end{bmatrix}  \\
->				&\implies \begin{bmatrix}
->					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 2 &| & 0 & 0 & 1\\
->					0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
->				\end{bmatrix}   \\
->				\begin{bmatrix}
->					4 & 0 & 0 & | & 1 & 0 & 0 \\
->					0 & 3 & 1 & | & 0 & 1 & 0\\
->					0 & 1 & 2 & | & 0 & 0 & 1
->				\end{bmatrix}  &\implies \begin{bmatrix}
->					1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
->					0 & 1 & 0 &| & 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
->					0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
->				\end{bmatrix}
->			\end{aligned}
->           $$
+> And the inverse can be found using the row reduction method:
+> 	    
+> $$
+> \begin{aligned}
+> \begin{bmatrix}
+> 4 & 0 & 0 & | & 1 & 0 & 0 \\
+> 0 & 3 & 1 & | & 0 & 1 & 0\\
+> 0 & 1 & 2 & | & 0 & 0 & 1
+> \end{bmatrix} &\implies \begin{bmatrix}
+> 1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+> 0 & 1 & 2 &| & 0 & 0 & 1\\
+> 0 & 3 & 1 &| & 0 & 1 & 0
+> \end{bmatrix} \\
+> &\implies \begin{bmatrix}
+> 1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+> 0 & 1 & 2 &| & 0 & 0 & 1\\
+> 0 & 0 & -5 &| & 0 & 1 & -3
+> \end{bmatrix}  \\
+> &\implies \begin{bmatrix}
+> 1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+> 0 & 1 & 2 &| & 0 & 0 & 1\\
+> 0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
+> \end{bmatrix}   \\
+> \begin{bmatrix}
+> 4 & 0 & 0 & | & 1 & 0 & 0 \\
+> 0 & 3 & 1 & | & 0 & 1 & 0\\
+> 0 & 1 & 2 & | & 0 & 0 & 1
+> \end{bmatrix}  &\implies \begin{bmatrix}
+> 1 & 0 & 0 &| & \tfrac{1}{4}  & 0 & 0 \\
+> 0 & 1 & 0 &| & 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
+> 0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
+> \end{bmatrix}
+> \end{aligned}
+> $$
 
 	So, the inverse of $\mathbf{I}$ is:
 	 
->	$$ 
->    \mathbf{I}^{-1} = \begin{bmatrix}
->		 \tfrac{1}{4}  & 0 & 0 \\
->		 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
->		 0 & -\tfrac{1}{5} & \tfrac{3}{5}
->	\end{bmatrix} = \frac{1}{20} \begin{bmatrix}
->	5  & 0 & 0 \\
->	0 & 8 & - 4 \\
->	0 & -4 & 12
->	\end{bmatrix} 
->   $$
+> $$ 
+> \mathbf{I}^{-1} = \begin{bmatrix}
+> \tfrac{1}{4}  & 0 & 0 \\
+> 0 & \tfrac{2}{5} & - \tfrac{1}{5}\\
+> 0 & -\tfrac{1}{5} & \tfrac{3}{5}
+> \end{bmatrix} = \frac{1}{20} \begin{bmatrix}
+> 5  & 0 & 0 \\
+> 0 & 8 & - 4 \\
+> 0 & -4 & 12
+> \end{bmatrix} 
+> $$
 
 
 
