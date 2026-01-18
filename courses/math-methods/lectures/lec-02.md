@@ -489,8 +489,7 @@ When should you use each of these three determinant methods? The following table
 | $3 \times 3$             | Use diagonal trick **or** cofactor method |
 | $4 \times 4$ or larger   | Cofactor method |
 
-Readers looking for specific recommendations, then know the determinant of a $2 \times 2$ matrix diagonal formula $ad - bc$, and the cofactor method. Those two techniques are all you need to calculate the determinant of any sized matrix. 
-
+Readers looking for a reliable rule of thumb: know the $2 \times 2$ diagonal shortcut ($ad - bc$) and the cofactor method. Those two techniques are enough to calculate the determinant of any square matrix, no matter the size.
 
 
 ## Determinants and Matrix Invertibility
