@@ -8,39 +8,38 @@ nav_order: 2
 
 # Lecture 02 -- Determinant of a Matrix
 
-One of the unique operations we can perform involving a matrix, which we cannot do with other objects, is to calculate its **determinant**. The determinant can only be calculated for a **square matrix**, meaning a matrix with an equal number of rows and columns, or an $ n \times n $ matrix.
+One of the unique operations we can perform on a matrix, something we can’t do with just any mathematical object, is calculating the **determinant**. However, the determinant is only defined for **square matrices**, meaning matrices with the same number of rows and columns (an $n \times n$ matrix).
 
 {% include warning.html content="
-The derterminant can only be taken for a square ($n \times n$) matrix. 
+To repeat this: The derterminant can only be taken for a square ($n \times n$) matrix. 
 
-If you see a $2 \times 3$ or $3 \times 2$ matrix, **no determinant exists**!}.
+If you see a $2 \times 3$ or $3 \times 2$ matrix, **no determinant exists**!.
 " %}
 
-When a square matrix is interpreted as a transformation of coordinates—such as a rotation, rescaling, or reflection—the determinant reveals the effect of that transformation on a "volume" in the corresponding space. Here, ``volume” is in quotes because its meaning changes depending on the $n$-dimensions you are working within: area in 2D, volume in 3D, and so on. 
+When a square matrix is viewed as a coordinate transformation (like a rotation, rescaling, or reflection), its determinant tells us something about how that transformation affects “volume” in space. We’re using “volume” loosely here as it means different things depending on the number of dimensions you are avtively working in: area in 2D, volume in 3D, and so on.
 
-For instance, if the square matrix is $2 \times 2$, it can only act on a 2-dimensional vector. Thus, the determinant of a $2 \times 2$ matrix indicates how the **area** is changed by the transformation represented by the matrix. Similarly, if the matrix is $3 \times 3$, the determinant describes how a **3-dimensional volume** is affected by the transformation represented by the matrix. For those looking for a new vocabulary word, matrices that represent a coordinate transformation are called **transformation matrices**. We will spend time addressing each of these transformations in Lecture 03. 
+For example, a $2 \times 2$ matrix can only act on 2D vectors, so its determinant tells us how **area** changes under the transformation. A $3 \times 3$ matrix, on the other hand, affects **volume** in 3D space. If you’re looking for a vocabulary word, matrices that act this way are called **transformation matrices**. We’ll look at different types of transformations in Lecture 03.
 
-Because a matrix can transform space, its determinant reveals whether that transformation involves an overall rescaling and/or a reflection. 
+A transformation matrix can do a few different things, the most relivant things right now being an overall rescaling and/or a reflection of objects being transformed. So what does the determinant actually tell us? 
 
-A rescaling of the volume of space occurs depending on the size of the determinant of the transformation matrix. 
-
-- If the determinant of a transformation matrix is $\pm 1$, then the transformation represented by the matrix preserves volume, meaning the size of any region in space stays the same after the transformation.     
-    - In classical mechanics transformations that preserve volume are called *volume-preserving* or *incompressible*, such as the flow of an ideal fluid.
-- If the absolute value of the determinant is *not* $1$, then the transformation scales the volume of space by that factor. 
-    - For example, if the determinant is $2$, then any region of space will be stretched so its volume doubles. 
-
-A reflection of the space is signaled by the determinant of the transformation matrix being negative. This is called a *parity flip*, meaning you changed the handedness from right to left or vice versa.
-
-The determinant does not specify if any rotations occur as the result of a transformation, but it is generally safe to assume rotations are involved in almost all transformations.
+- The **size** of the determinant tells us whether the transformation involves rescaling. For example,
+  - if the determinant is 2, then every region of space doubles in volume. 
+  - if the determinant is $\pm 1$, then the size of a volume is left unchanged. 
+    - In classical mechanics, these are called *volume-preserving* or *incompressible* transformations, like the flow of an ideal fluid.
+- The **sign** of the determinant, positive or negative, tells us whether the transformation includes a reflection (also called a *parity flip*, which swaps handedness like right to left or vice versa).
+  - if the determinant is *positive*, then no parity flip has occurred.   
+  - if the determinant is *negative*, then a parity flip has occurred.   
 
 {% include warning.html content="
-A negative determinant doesn’t always mean a reflection alone has occurred; rotations could still have taken place as well. But if the sign is negative, then you know something definately was flipped. 
+A **negative** determinant signals a reflection is part of the overall transformation. That doesn’t mean *only* a reflection occurred, rotations may have happened too, but it does mean something definitely flipped.
 " %}
 
-With all this talk of determinants, it would be nice if we actually knew how to calculate them. The calculation of a determinant of a $2 \times 2$ and $3 \times 3$ matrix is fairly straightforward, but for larger matrices we generally use the **method of cofactors**. 
 
-Let's first see how the determinant is calculated for $2 \times 2$ and $3 \times 3$ matrices, and then look at the more general approach. 
+So far, we’ve been talking about what the determinant means. But how do we actually calculate a determinant?
 
+For $2 \times 2$ and $3 \times 3$ matrices, the calculations are pretty straightforward. For larger matrices, we’ll use a method called **cofactor expansion**.
+
+Let’s start with the easy cases first: how to calculate the determinant of $2 \times 2$ and $3 \times 3$ matrices. Then we’ll build up to the more general method from there.
 
 
 
@@ -49,42 +48,46 @@ Let's first see how the determinant is calculated for $2 \times 2$ and $3 \times
 
 ## Determinant of a $2 \times 2$ Matrix
 
-To calculate the determinant of a $2 \times 2$ matrix, start by writing out the matrix. Next, draw a diagonal line from the top left entry to the bottom right entry; this diagonal is known as the **main diagonal**, which we will discuss further below. Multiply the two elements on this diagonal. In the example below, this would yield $a\cdot s$.
-
-Then, draw another diagonal line from the top right element to the bottom left element and multiply the two numbers to obtain $b\cdot r$. This process looks something like:
-
+To calculate the determinant of a $2 \times 2$ matrix, start by writing out the matrix. Then, draw a diagonal from the top-left entry to the bottom-right. Remember, this diagonal is called the **main diagonal**. Multiply those two entries to get $a \cdot s$, see the matrix below.
 
 <img
   src="{{ '/courses/math-methods/images/lec02/2by2Det.png' | relative_url }}"
-  alt="Diagram illustrating the determinant of a 2×2 matrix. A square bracket encloses four entries labeled a (top left), b (top right), r (bottom left), and s (bottom right). Two diagonals cross the matrix: a blue diagonal from a to s indicating the product a times, and a red diagonal from b to r indicating the product b times r. The diagram visually emphasizes that the determinant is computed as a times s minus b times r."
+  alt="Diagram illustrating the determinant of a 2×2 matrix. A square bracket encloses four entries labeled a (top left), b (top right), r (bottom left), and s (bottom right). Two diagonals cross the matrix: a blue diagonal from a to s indicating the product a times s, and a red diagonal from b to r indicating the product b times r. The diagram visually emphasizes that the determinant is computed as a times s minus b times r."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-Then you take the first diagonal and subtract off the second diagonal: $a\cdot s - b\cdot r = as-br$ and that is the determinant of a $2 \times 2$ matrix:
+Next, draw a diagonal from the top-right to the bottom-left and multiply those values to get $b \cdot r$.
+
+Now subtract the second diagonal from the first like so $a \cdot s - b \cdot r$, and you are left with the determinant of the $2 \times 2$ matrix:
 
 $$
 \det(2\times 2 \text{ matrix}) = \begin{vmatrix}
-	a & b \\ r & s
-\end{vmatrix} = a s - b r 
+	a & b \\
+	r & s
+\end{vmatrix} = as - br
 $$
 
-
 {% include example.html content="
-As an example, let's take the determinant of 
+As an example, let's take the determinant of
 
-$$ \mathbf{A} = \begin{bmatrix}
-	1 & 2 \\ -3& 6
-\end{bmatrix} $$
+$$
+\mathbf{A} = \begin{bmatrix}
+	1 & 2 \\
+	-3 & 6
+\end{bmatrix}
+$$
 
-Using the process described above, the determinant of $\mathbf{A}$ will be:
+Using the process we just described, the determinant of $\mathbf{A}$ will be:
 
-$$ \text{det}(\mathbf{A}) = |\mathbf{A}| = \begin{vmatrix}
-	1 & 2 \\ -3& 6
-\end{vmatrix}  = (1)(6) - (2)(-3) = 6 - (-6) = 12 $$
+$$
+\text{det}(\mathbf{A}) = |\mathbf{A}| = \begin{vmatrix}
+	1 & 2 \\
+	-3 & 6
+\end{vmatrix}
+= (1)(6) - (2)(-3) = 6 - (-6) = 12
+$$
 
-From the value of the determinant we can see that this matrix will not cause any reflections (it is positive), but does scale areas (since it is only 2 dimensional) up by a factor of 12. We cannot say anything about rotations, unfortunately.
+So what does that mean? Since the determinant is *positive*, there's no reflection, and since the magnitude it's *not equal to 1*, it stretches areas (in this 2D case) by a factor of 12. We cannot say anything about rotations, unfortunately.
 " %}
-
-
 
 
 
@@ -97,6 +100,117 @@ From the value of the determinant we can see that this matrix will not cause any
 
 
 ## Determinant of a $3 \times 3$ Matrix
+
+The determinant of a $3 \times 3$ matrix is calculated slightly differently than for a $2 \times 2$. As you might have guessed, the method we're using here isn’t general and we'll cover the broader approach shortly. For now, let's focus on learning a trick to calculating the determinant of a $3 \times 3$ matrix.
+
+To compute the determinant of a $3 \times 3$ matrix, start by writing out the matrix:
+
+$$
+\begin{bmatrix}
+	a & b & c  \\
+	r & s & t  \\
+	x & y & z  
+\end{bmatrix}
+$$
+
+Next, repeat the first two columns to the right of the matrix, like this:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/3by3Det1.png' | relative_url }}"
+  alt="A diagram showing a 3 by 3 matrix with entries labeled a, b, c in the first row, r, s, t in the second row, and x, y, z in the third row. To the right of the matrix, the first two columns (a, b; r, s; x, y) are repeated. This illustrates the setup step for the diagonal method used to compute a 3 by 3 determinant."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+Start from the top-left entry and draw a diagonal line down and to the right, along the main diagonal again. Then draw two more diagonals that run parallel to it, starting from the second and third entries in the top row. You should get something like this:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/3by3Det2.png' | relative_url }}"
+  alt="A 3 by 3 matrix with its first two columns duplicated to the right. Blue arrows indicate three downward diagonals representing the positive determinant terms. The diagonals correspond to the products a times s times z, b times t times x, and c times r times y, which are added together as a part of the determinant calculation."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+Multiply the entries along each of those diagonals and then add them up. This gives:
+
+$$
+asz + btx + cry
+$$
+
+Now repeat this process for the diagonals that go **up and to the right**, starting from the bottom-left entry and moving up through the matrix:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/3by3Det3.png' | relative_url }}"
+  alt="A 3× by 3 matrix with its first two columns duplicated to the right. Red arrows indicate three upward diagonals representing the negative determinant terms. The diagonals correspond to the products x times s times c, y times t times a, and z times r times b, which are added together as part of the determinant calculation."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+Again, multiply the entries along each diagonal and add the results:
+
+$$
+xsc + yta + zrb
+$$
+
+To get the determinant, simply subtract the second result from the first:
+
+$$
+(asz + btx + cry) - (xsc + yta + zrb)
+$$
+
+That expression gives the determinant of the general $3 \times 3$ matrix above.
+
+{% capture ex %}
+As an example, let's take the determinant of
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+1 & 2 & 3 \\
+-3 & 6 & 4 \\
+-1 & -5 & 3
+\end{bmatrix}
+$$
+
+Using the process we just described, the determinant of $\mathbf{A}$ is:
+
+$$
+\text{det}(\mathbf{A}) = |\mathbf{A}| =
+\begin{vmatrix}
+1 & 2 & 3 \\
+-3 & 6 & 4 \\
+-1 & -5 & 3
+\end{vmatrix}
+$$
+
+Now, repeat the first two columns:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/3by3Det4.png' | relative_url }}"
+  alt="A diagram showing a numerical 3 by 3 matrix with rows (1, 2, 3), (-3, 6, 4), and (-1, -5, 3). To the right of the matrix, the first two columns (1, 2), (-3, 6), and (-1, -5) are duplicated. This illustrates the setup step for applying the diagonal method to compute the determinant of a 3 by 3 matrix."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+The downward diagonals give:
+
+$$
+(1)(6)(3) + (2)(4)(-1) + (3)(-3)(-5) = 18 - 8 + 45 = 55
+$$
+
+The upward diagonals give:
+
+$$
+(-1)(6)(3) + (-5)(4)(1) + (3)(-3)(2) = -18 - 20 - 18 = -56
+$$
+
+Now subtract:
+
+$$
+55 - (-56) = 111
+$$
+
+So the determinant of $\mathbf{A}$ is 111. That means the matrix does not cause a reflection (since the result is positive), but it does scale volumes up by a factor of 111.
+{% endcapture %}
+{% include example.html content=ex %}
+
+
+
+
+
+
 
 The determinant of a $3 \times 3$ matrix is calculated differently than that of a $2 \times 2$ matrix. As you may have guessed, the methods we are covering here are not general; we will explore a more general approach after this section.
 
@@ -144,6 +258,8 @@ $$
 
 which represents the determinant of the general $3 \times 3$ matrix above.
 
+Please note that what matters here is the **process**, not the specific equation we just derived. Memorizing formulas shouldn't be your primary goal when learning. Instead, focus on understanding the **concepts and reasoning** behind the physical laws and methods; that’s where the real value lies. So don’t spend too much time trying to commit the formula above to memory. Instead, practice the method and get comfortable with the steps involved in the process.
+
 
 {% capture ex %}
 As an example, let's take the determinant of 
@@ -157,23 +273,12 @@ $$
 \end{bmatrix}
 $$
 
-Using the process we just described, the determinant of $\mathbf{A}$ will be:
-
-$$
-\text{det}(\mathbf{A}) = |\mathbf{A}| =
-\begin{vmatrix}
-1 & 2 & 3 \\
--3 & 6 & 4 \\
--1 & -5 & 3
-\end{vmatrix}
-$$
-
-Let's repeat the first two columns:
+Let's begin by duplicating the first tow columns on the right side of the matrix:
 
 <img
   src="{{ '/courses/math-methods/images/lec02/3by3Det4.png' | relative_url }}"
   alt="A diagram showing a numerical 3 by 3 matrix with rows (1, 2, 3), (-3, 6, 4), and (-1, -5, 3). To the right of the matrix, the first two columns (1, 2), (-3, 6), and (-1, -5) are duplicated. This illustrates the setup step for applying the diagonal method to compute the determinant of a 3 by 3 matrix."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
 The first set of diagonals, down and to the right, will give: 
 
@@ -193,7 +298,9 @@ $$
 55 - (-56) = 111
 $$
 
-The determinant of matrix $\mathbf{A}$ is 111. The matrix does not appear to cause any reflections, but does scale volumes up by a factor of 111.
+The determinant of matrix $\mathbf{A}$ is 111. 
+
+What does this mean? The matrix does not parity flip (right handed corrdinates stay right handed), but does scale volumes up by a factor of 111.
 {% endcapture %}
 {% include example.html content=ex %}
 
