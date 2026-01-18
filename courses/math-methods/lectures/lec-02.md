@@ -507,7 +507,7 @@ What do we mean by inverted? Consider the following equation:
 
 $$ 2 x = 4 $$
 
-To solve this we can divide both sides by 2. However, we do not know how to divide by a matrix, we only know how to multiple. Well, dividing both sides by 2 is the same as multipleing both sides by $\frac{1}{2}$, the *inverse* of 2. This gives:
+To solve this we can divide both sides by 2. However, we do not know how to divide by a matrix, we only know how to multiply. Well, dividing both sides by 2 is the same as multipleing both sides by $\frac{1}{2}$, the *inverse* of 2. This gives:
 
 $$ \Big(\frac{1}{2}\Big) \, 2 x = \Big(\frac{1}{2}\Big) \, 4 \qquad\implies\qquad x = 2 $$
 
@@ -532,15 +532,18 @@ $$
 \end{bmatrix}
 $$
 
-Wouldn’t it be nice if we could just multiply both sides by something the representes the "inverse of $\mathbf{A}$ and instantly solve for $x$ and $y$?. For this to work, we know what ever it is we need to multiply by will need to be a $2 \times 2$ matrix (can you explain why using matrix multiplication rules?), since it will need to act on $\mathbf{A}$.
-
 Let's simplify, and generalize, this discussion by writting the current matrix equation as:
 
 $$
 \mathbf{A} \vec{r} = \vec{b},
 $$
 
-where $\mathbf{A}$ is the coefficient matrix, $\vec{r}$ is the column vector of unknowns, and $\vec{b}$ is the result vector. Let's call $\mathbf{A}^{-1}$ the inverse of $\mathbf{A}$, *if it exists*, since this is paralleling the idea that we are looking for $\frac{1}{\mathbf{A}} = \mathbf{A}^{-1}$. Using $\mathbf{A}^{-1}$ will let us solve for $\vec{r}$ directly via multiplication, similar to how multiplying by $\frac{1}{2}$ solved for $x$ in the previous example. But we must be careful: matrix multiplication is not commutative, so **order matters**. The inverse must be placed so that it acts on $\mathbf{A}$. In this case, that means multiplying on the left:
+where $\mathbf{A}$ is the coefficient matrix, $\vec{r}$ is the column vector of unknowns, and $\vec{b}$ is the result vector. 
+
+
+Wouldn’t it be nice if we could just multiply both sides by something the representes the "inverse of $\mathbf{A}$ and instantly solve for $x$ and $y$?. For this to work, we know what ever it is we need to multiply by will need to be a $2 \times 2$ matrix (can you explain why using matrix multiplication rules?), since it will need to act on $\mathbf{A}$.
+
+Let's call $\mathbf{A}^{-1}$ the inverse of $\mathbf{A}$, *if it exists*, since this is paralleling the idea that we are looking for $\frac{1}{\mathbf{A}} = \mathbf{A}^{-1}$. Using $\mathbf{A}^{-1}$ will let us solve for $\vec{r}$ directly via multiplication, similar to how multiplying by $\frac{1}{2}$ solved for $x$ in the previous example. But we must be careful: matrix multiplication is not commutative, so **order matters**. The inverse must be placed so that it acts on $\mathbf{A}$. In this case, that means multiplying on the left:
 
 $$
 \begin{aligned}
