@@ -397,8 +397,11 @@ For this first pass, we’ll expand along the first row. For each element in tha
 > For the element $1$ (row 1, column 1):
 > 
 > $$
-> \text{Cofactor of } 1 \, (a_{11}) = (-1)^{1+1} \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} 
-> = (+1)\big((4)(6) - (5)(0)\big) = 24
+> \begin{aligned}
+> \text{Cofactor of } 1 \, (a_{11}) &= (-1)^{1+1} \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} \\
+> &= (+1)\big((4)(6) - (5)(0)\big) 
+> &= 24
+> \end{aligned}
 > $$
 
 > For the element $2$ (row 1, column 2):
