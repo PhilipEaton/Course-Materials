@@ -4,50 +4,31 @@ title: PHYS 3345 – Mathematical Methods for Engineers and Scientists
 course_home: /courses/math-methods/
 ---
 
-# PHYS 3350 – Mathematical Methods for Physics
+# PHYS 3345 – Mathematical Methods for Engineers and Scientists
 
-These notes support **PHYS 3350**, a course on the mathematical techniques
-used throughout upper-division physics.
+These notes support PHYS 3345, a course on the mathematical techniques used throughout upper-division physics.
 
-The materials below are organized similarly to a compiled course packet:
-lecture notes, practice days, homework sets, and supplementary materials.
+The materials below are organized similarly to a compiled course packet: lecture notes, practice days & solutions, and homework sets. Solutions for homeworksets can be found in the course Blackboard page. 
 
 ---
 
 ## Lecture Notes
 - [Lectures](lectures/)
+- Lecture notes are intended to be read **before or after class**
 
 ## Practice Days
 - [Practice Days](practice/)
+- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
 
 ## Assignments
 - [Homework Sets](homework/)
+- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
+- Long homework sets (bi-weekly homework) similarly reinforce both conceptual and computational skills, but at a deeper level with more difficult problems. 
 
 ---
 
-## How to Use These Notes
-
-- Lecture notes are intended to be read **before or after class**
-- Practice days are designed for **in-class group work**
-- Homework sets reinforce both conceptual and computational skills
+## Accessibility Note
 
 All mathematical expressions are rendered using MathML-backed LaTeX
-for accessibility and screen-reader compatibility.
-
----
-
-## Accessibility Notes
-
-- All equations are available to assistive technologies
-- Figures include alternative text or descriptions
-- Content is structured using semantic headings
-- Printable versions can be generated via browser “Save as PDF”
-
-If you encounter any accessibility issues, please contact the instructor.
-
----
-
-## Course Information
-
-Instructor: Philip Eaton, Ph.D.  
-Institution: Stockton University  
+for accessibility and screen-reader compatibility. If you have any 
+issues, please reach out so they can be corrected.
