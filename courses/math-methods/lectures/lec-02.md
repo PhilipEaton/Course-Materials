@@ -454,7 +454,7 @@ For the element $1$ (row 3, column 1):
 For the element $0$ (row 3, column 2):
 
 > $$
-> \text{Cofactor of } 0 \, (a_{32}) = \text{Doesn't matter — it will be multiplied by 0 anyway.}
+> \text{Cofactor of } 0 \, (a_{32}) = \text{Doesn't matter, it will be multiplied by 0.}
 > $$
 
 For the element $6$ (row 3, column 3):
