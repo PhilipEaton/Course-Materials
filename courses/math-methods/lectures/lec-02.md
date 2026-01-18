@@ -837,7 +837,7 @@ c) Calculate the Transpose of $\mathbf{I}$.
 > 0 & 1 & 2
 > \end{bmatrix} $$
 >		
-> **When the transpose is the same as the original the matrix is called symmetric!**
+> ** This is a symmetric matrix since the transpose is the same as the original!**
 	
 d) Calculate the Inverse of $\mathbf{I}$.
 	
