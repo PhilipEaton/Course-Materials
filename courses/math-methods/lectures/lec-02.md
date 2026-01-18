@@ -436,34 +436,41 @@ $$
 \det(\mathbf{A}) = 24 + 10 - 12 = 22 \implies \det(\mathbf{A}) = 22
 $$
 
+---
 > **Good tip for the cofactor method:** Expand along rows or columns with lots of zeros!
 
 Let’s redo the same problem, but this time expand along the third row, which contains a zero.
 
 For the element $1$ (row 3, column 1):
 
-$$
-\text{Cofactor of } 1 \, (a_{31}) = (-1)^{3+1} \det \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix}
-= (2)(5) - (3)(4) = -2
-$$
+> $$
+> \begin{aligned}
+> \text{Cofactor of } 1 \, (a_{31}) &= (-1)^{3+1} \det \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \\
+> &= (2)(5) - (3)(4) \\
+> &= -2
+> \end{aligned}
+> $$
 
 For the element $0$ (row 3, column 2):
 
-$$
-\text{Cofactor of } 0 \, (a_{32}) = \text{Doesn't matter — it will be multiplied by 0 anyway.}
-$$
+> $$
+> \text{Cofactor of } 0 \, (a_{32}) = \text{Doesn't matter — it will be multiplied by 0 anyway.}
+> $$
 
 For the element $6$ (row 3, column 3):
 
-$$
-\text{Cofactor of } 6 \, (a_{33}) = (-1)^{3+3} \det \begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix}
-= (1)(4) - (2)(0) = 4
-$$
+> $$
+> \begin{aligned}
+> \text{Cofactor of } 6 \, (a_{33}) &= (-1)^{3+3} \det \begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix} \\
+> &= (1)(4) - (2)(0) \\
+> &= 4
+> \end{aligned}
+> $$
 
 Putting this together:
 
 $$
-\det(\mathbf{A}) = (1)(-2) + (0)C_{32} + (6)(4) = -2 + 0 + 24 = 22 \implies \det(\mathbf{A}) = 22
+\det(\mathbf{A}) = (1)(-2) + (0)C_{32} + (6)(4) = -2 + 0 + 24 = 22
 $$
 
 As expected, we obtain the same determinant even though we expanded along a completely different row.
