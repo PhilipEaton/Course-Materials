@@ -143,17 +143,28 @@ Finally, take the first result and subtract the second from it to obtain:
 which represents the determinant of the general \(3 \times 3\) matrix above.
 
 
-{% include example.html content="
+{% capture ex %}
 As an example, let's take the determinant of 
-$$ \mathbf{A} = \begin{bmatrix}
-	1 & 2 & 3 \\ -3& 6 & 4 \\ -1 & -5 & 3
-\end{bmatrix} $$
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+1 & 2 & 3 \\
+-3 & 6 & 4 \\
+-1 & -5 & 3
+\end{bmatrix}
+$$
 
 Using the process we just described, the determinant of $\mathbf{A}$ will be:
 
-$$ \text{det}(\mathbf{A}) = |\mathbf{A}| = \begin{vmatrix}
-	1 & 2 & 3 \\ -3& 6 & 4 \\ -1 & -5 & 3
-\end{vmatrix}  $$
+$$
+\text{det}(\mathbf{A}) = |\mathbf{A}| =
+\begin{vmatrix}
+1 & 2 & 3 \\
+-3 & 6 & 4 \\
+-1 & -5 & 3
+\end{vmatrix}
+$$
 
 Let's repeat the first two columns:
 
@@ -164,21 +175,25 @@ Let's repeat the first two columns:
 
 The first set of diagonals, down and to the right, will give: 
 
-$$ (1)(6)(3) + (2)(4)(-1) + (3)(-3)(-5) = 18 - 8 + 45 = 55$$
+$$
+(1)(6)(3) + (2)(4)(-1) + (3)(-3)(-5) = 18 - 8 + 45 = 55
+$$
 
 and the second set of diagonals, up and to the right, will give: 
 
-$$ (-1)(6)(3) + (-5)(4)(1) + (3)(-3)(2) = -18 - 20 -18 = -56$$
+$$
+(-1)(6)(3) + (-5)(4)(1) + (3)(-3)(2) = -18 - 20 - 18 = -56
+$$
 
 Finally, take the first number, from the down and to the right diagonals, and subtract the second number, from the up and to the right diagonals, to get:
 
-$$ 55 - (-56) = 111 $$
+$$
+55 - (-56) = 111
+$$
 
 The determinant of matrix $\mathbf{A}$ is 111. The matrix does not appear to cause any reflections, but does scale volumes up by a factor of 111.
-" %}
-
-
-
+{% endcapture %}
+{% include example.html content=ex %}
 
 
 
