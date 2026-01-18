@@ -667,7 +667,7 @@ $$
 	b_{21} & b_{22}
 \end{bmatrix} 
 \implies 
-\mathbf{B}^{-1} = \frac{1}{\\text{det}(\mathbf{B})} \begin{bmatrix}
+\mathbf{B}^{-1} = \frac{1}{\text{det}(\mathbf{B})} \begin{bmatrix}
 	b_{22} & -b_{12} \\
 	-b_{21} & b_{11}
 \end{bmatrix} 
@@ -676,7 +676,7 @@ $$
 
 (You should check that this gives the same inverse to the above example on your own!)
 
-How do we confirm that this really is the inverse of $\mathbf{A}$? Multiply them and check if you get the identity matrix:
+How do we confirm that this really is the inverse of $\mathbf{A}$? We can multiply them and check if you get the identity matrix:
 
 $$
 \begin{aligned}
