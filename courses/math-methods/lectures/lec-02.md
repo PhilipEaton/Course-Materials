@@ -399,7 +399,7 @@ For this first pass, we’ll expand along the first row. For each element in tha
 > $$
 > \begin{aligned}
 > \text{Cofactor of } 1 \, (a_{11}) &= (-1)^{1+1} \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} \\
-> &= (+1)\big((4)(6) - (5)(0)\big) 
+> &= (+1)\big((4)(6) - (5)(0)\big) \\
 > &= 24
 > \end{aligned}
 > $$
@@ -407,15 +407,21 @@ For this first pass, we’ll expand along the first row. For each element in tha
 > For the element $2$ (row 1, column 2):
 > 
 > $$
-> \text{Cofactor of } 2 \, (a_{12}) = (-1)^{1+2} \det \begin{bmatrix} 0 & 5 \\ 1 & 6 \end{bmatrix}
-> = -\big((0)(6) - (5)(1)\big) = 5
+> \begin{aligned}
+> \text{Cofactor of } 2 \, (a_{12}) &= (-1)^{1+2} \det \begin{bmatrix} 0 & 5 \\ 1 & 6 \end{bmatrix}\\
+> &= -\big((0)(6) - (5)(1)\big) \\
+> &= 5
+> \end{aligned}
 > $$
 
 > For the element $3$ (row 1, column 3):
 > 
 > $$
-> \text{Cofactor of } 3 \, (a_{13}) = (-1)^{1+3} \det \begin{bmatrix} 0 & 4 \\ 1 & 0 \end{bmatrix}
-> = (+1)\big((0)(0) - (4)(1)\big) = -4
+> \begin{aligned}
+> \text{Cofactor of } 3 \, (a_{13}) &= (-1)^{1+3} \det \begin{bmatrix} 0 & 4 \\ 1 & 0 \end{bmatrix} \\
+> &= (+1)\big((0)(0) - (4)(1)\big) \\
+> &= -4
+> \end{aligned}
 > $$
 
 The determinant of $\mathbf{A}$ is found by multiplying each entry in the first row by its cofactor and summing the results:
