@@ -1,14 +1,14 @@
 ---
 layout: default
-title: PHYS 3345 – Mathematical Methods for Engineers and Scientists
-course_home: /courses/math-methods/
+title: PHYS 2120 – Physics for Life Sciences I
+course_home: /courses/phys-for-life-sci-i/
 ---
 
-# PHYS 3345 – Mathematical Methods for Engineers and Scientists
+# PHYS 2120 – Physics for Life Sciences I
 
-These notes support PHYS 3345, a course on the mathematical techniques used throughout upper-division physics.
+This page supports PHYS 2110, a course on introducing concepts like motion, forces, energy, momentum, rotation, fluids, and thermal physics using algebra.
 
-The materials below are organized into the following groups: lecture notes, homework sets, and practice days & 
+The materials below are organized into the following groups: lecture notes, homework sets, and worksheets & 
 solutions. Solutions for homework sets can be found in the course Blackboard. 
 
 ---
@@ -20,7 +20,6 @@ solutions. Solutions for homework sets can be found in the course Blackboard.
 ## Assignments
 - [Homework Sets](homework/)
 - Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
-- Long homework sets (bi-weekly homework) similarly reinforce both conceptual and computational skills, but at a deeper level with more difficult problems. 
 
 
 ## Practice Days

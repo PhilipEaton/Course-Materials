@@ -1,46 +1,35 @@
 ---
 layout: default
-title: PHYS 2120 – Lectures
+title: PHYS 2120 – Physics for Life Sciences II
 course_home: /courses/phys-for-life-sci-ii/
 ---
 
-# Lectures
+# PHYS 2120 – Physics for Life Sciences II
 
-<ul>
-{% assign course_prefix = page.course_home | append: "lectures/" %}
+This page supports PHYS 2120, a course on introducing concepts like charge, electric and magentic fields, and optcs using algebra.
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'lectures'"
-  | sort: "nav_order" %}
+The materials below are organized into the following groups: lecture notes, homework sets, and worksheets & 
+solutions. Solutions for homework sets can be found in the course Blackboard. 
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
+---
 
-<ul>
-{% assign course_prefix = page.course_home | append: "homework/" %}
+## Lecture Notes
+- [Lectures](lectures/)
+- Lecture notes are intended to be read **before or after class**
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'homework'"
-  | sort: "nav_order" %}
+## Assignments
+- [Homework Sets](homework/)
+- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
 
-<ul>
-{% assign course_prefix = page.course_home | append: "practice/" %}
+## Practice Days
+- [Practice Days](practice/)
+- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
 
-{% assign items = site.pages
-  | where_exp: "p", "p.url contains course_prefix"
-  | where_exp: "p", "p.nav_section == 'practice'"
-  | sort: "nav_order" %}
+---
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-{% endfor %}
-</ul>
+## Accessibility Note
+
+All mathematical expressions are rendered using MathML-backed LaTeX
+for accessibility and screen-reader compatibility. If you have any 
+issues, please reach out so they can be corrected.
