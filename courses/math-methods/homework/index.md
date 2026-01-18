@@ -7,8 +7,10 @@ course_home: /courses/math-methods/
 # Homework Sets
 
 <ul>
+{% assign course_prefix = page.course_home | append: "homework/" %}
+
 {% assign items = site.pages
-  | where_exp: "p", "p.course_home == page.course_home"
+  | where_exp: "p", "p.url contains course_prefix"
   | where_exp: "p", "p.nav_section == 'homework'"
   | sort: "nav_order" %}
 
