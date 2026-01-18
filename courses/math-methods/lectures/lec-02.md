@@ -228,8 +228,6 @@ and the minor of \( a_{12} \) is found by eliminating the first row and the seco
   alt="A three-by-three matrix in which one row and one column are indicated as being removed. The remaining entries represent the smaller matrix, called the minor, that is used when computing a cofactor for a selected matrix element."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-
-
 $$
 M_{12} = \begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{vmatrix} = a_{21} a_{33} - a_{23} a_{31} 
 $$
