@@ -890,6 +890,15 @@ So, the inverse of $\mathbf{I}$ is:
 > \end{bmatrix} 
 > $$
 
+You can check this result by verifying that $\mathbf{I}^{-1} \mathbf{I}$ and $\mathbf{I} \mathbf{I}^{-1}$ both equate to the identity matrix:
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+$$
 
 
 
