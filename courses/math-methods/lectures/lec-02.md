@@ -8,7 +8,7 @@ nav_order: 2
 
 # Lecture 02 -- Determinant of a Matrix
 
-One of the unique operations we can perform involving a matrix, which we cannot do with other objects, is to calculate its **determinant**. The determinant can only be calculated for a **square matrix**, meaning a matrix with an equal number of rows and columns, or an \( n \times n \) matrix.
+One of the unique operations we can perform involving a matrix, which we cannot do with other objects, is to calculate its **determinant**. The determinant can only be calculated for a **square matrix**, meaning a matrix with an equal number of rows and columns, or an $ n \times n $ matrix.
 
 {% include warning.html content="
 The derterminant can only be taken for a square ($n \times n$) matrix. 
@@ -18,16 +18,16 @@ If you see a $2 \times 3$ or $3 \times 2$ matrix, **no determinant exists**!}.
 
 When a square matrix is interpreted as a transformation of coordinates—such as a rotation, rescaling, or reflection—the determinant reveals the effect of that transformation on a "volume" in the corresponding space. Here, ``volume” is in quotes because its meaning changes depending on the $n$-dimensions you are working within: area in 2D, volume in 3D, and so on. 
 
-For instance, if the square matrix is \(2 \times 2\), it can only act on a 2-dimensional vector. Thus, the determinant of a \(2 \times 2\) matrix indicates how the **area** is changed by the transformation represented by the matrix. Similarly, if the matrix is \(3 \times 3\), the determinant describes how a **3-dimensional volume** is affected by the transformation represented by the matrix. For those looking for a new vocabulary word, matrices that represent a coordinate transformation are called **transformation matrices**. We will spend time addressing each of these transformations in Lecture 03. 
+For instance, if the square matrix is $2 \times 2$, it can only act on a 2-dimensional vector. Thus, the determinant of a $2 \times 2$ matrix indicates how the **area** is changed by the transformation represented by the matrix. Similarly, if the matrix is $3 \times 3$, the determinant describes how a **3-dimensional volume** is affected by the transformation represented by the matrix. For those looking for a new vocabulary word, matrices that represent a coordinate transformation are called **transformation matrices**. We will spend time addressing each of these transformations in Lecture 03. 
 
 Because a matrix can transform space, its determinant reveals whether that transformation involves an overall rescaling and/or a reflection. 
 
 A rescaling of the volume of space occurs depending on the size of the determinant of the transformation matrix. 
 
-- If the determinant of a transformation matrix is \(\pm 1\), then the transformation represented by the matrix preserves volume, meaning the size of any region in space stays the same after the transformation.     
+- If the determinant of a transformation matrix is $\pm 1$, then the transformation represented by the matrix preserves volume, meaning the size of any region in space stays the same after the transformation.     
     - In classical mechanics transformations that preserve volume are called *volume-preserving* or *incompressible*, such as the flow of an ideal fluid.
-- If the absolute value of the determinant is *not* \(1\), then the transformation scales the volume of space by that factor. 
-    - For example, if the determinant is \(2\), then any region of space will be stretched so its volume doubles. 
+- If the absolute value of the determinant is *not* $1$, then the transformation scales the volume of space by that factor. 
+    - For example, if the determinant is $2$, then any region of space will be stretched so its volume doubles. 
 
 A reflection of the space is signaled by the determinant of the transformation matrix being negative. This is called a *parity flip*, meaning you changed the handedness from right to left or vice versa.
 
@@ -49,9 +49,9 @@ Let's first see how the determinant is calculated for $2 \times 2$ and $3 \times
 
 ## Determinant of a $2 \times 2$ Matrix
 
-To calculate the determinant of a \(2 \times 2\) matrix, start by writing out the matrix. Next, draw a diagonal line from the top left entry to the bottom right entry; this diagonal is known as the **main diagonal**, which we will discuss further below. Multiply the two elements on this diagonal. In the example below, this would yield \(a\cdot s\).
+To calculate the determinant of a $2 \times 2$ matrix, start by writing out the matrix. Next, draw a diagonal line from the top left entry to the bottom right entry; this diagonal is known as the **main diagonal**, which we will discuss further below. Multiply the two elements on this diagonal. In the example below, this would yield $a\cdot s$.
 
-Then, draw another diagonal line from the top right element to the bottom left element and multiply the two numbers to obtain \(b\cdot r\). This process looks something like:
+Then, draw another diagonal line from the top right element to the bottom left element and multiply the two numbers to obtain $b\cdot r$. This process looks something like:
 
 
 <img
@@ -61,11 +61,11 @@ Then, draw another diagonal line from the top right element to the bottom left e
 
 Then you take the first diagonal and subtract off the second diagonal: $a\cdot s - b\cdot r = as-br$ and that is the determinant of a $2 \times 2$ matrix:
 
-\[
+$$
 \det(2\times 2 \text{ matrix}) = \begin{vmatrix}
 	a & b \\ r & s
 \end{vmatrix} = a s - b r 
-\]
+$$
 
 
 {% include example.html content="
@@ -98,17 +98,17 @@ From the value of the determinant we can see that this matrix will not cause any
 
 ## Determinant of a $3 \times 3$ Matrix
 
-The determinant of a \(3 \times 3\) matrix is calculated differently than that of a \(2 \times 2\) matrix. As you may have guessed, the methods we are covering here are not general; we will explore a more general approach after this section.
+The determinant of a $3 \times 3$ matrix is calculated differently than that of a $2 \times 2$ matrix. As you may have guessed, the methods we are covering here are not general; we will explore a more general approach after this section.
 
-To compute the determinant of a \(3 \times 3\) matrix, start by writing out the matrix.
+To compute the determinant of a $3 \times 3$ matrix, start by writing out the matrix.
 
-\[
+$$
 \begin{bmatrix}
 	a & b & c  \\
 	r & s & t  \\
 	x & y & z  
 \end{bmatrix}
-\]
+$$
 
 Then repeat the first two columns in the last column. This will look something like this:
 
@@ -134,13 +134,15 @@ Next, repeat this process, but start with the bottom left entry and draw a diago
   alt="A 3× by 3 matrix with its first two columns duplicated to the right. Red arrows indicate three upward diagonals representing the negative determinant terms. The diagonals correspond to the products x times s times c, y times t times a, and z times r times b, which are added together as part of the determinant calculation."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-Multiply the elements along each of these diagonals individually, and then add the results for each diagonal. This process will yield \( xsc + yta + zrb \).
+Multiply the elements along each of these diagonals individually, and then add the results for each diagonal. This process will yield $ xsc + yta + zrb $.
 
 Finally, take the first result and subtract the second from it to obtain:
-\[
+
+$$
 (asz + btx + cry) - (xsc + yta + zrb)
-\]
-which represents the determinant of the general \(3 \times 3\) matrix above.
+$$
+
+which represents the determinant of the general $3 \times 3$ matrix above.
 
 
 {% capture ex %}
@@ -207,21 +209,21 @@ The determinant of matrix $\mathbf{A}$ is 111. The matrix does not appear to cau
 Now, let’s explore a general approach to calculating determinants that works consistently, regardless of the number of dimensions of the square matrix. This method, known as the **cofactor method**, is a powerful technique applicable to any square matrix. The cofactor method involves breaking down a larger matrix into smaller parts, calculating the determinants of these smaller matrices, and then combining them to find the determinant of the original matrix.
 
 Let's start by looking at the general form of a $3 \times 3$ matrix:
-\[
+$$
 \mathbf{A} = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix}
-\]
+$$
 
 The determinant of $\mathbf{A}$ can be calculated by **expanding along a row or a column**. Here, we’ll expand along the first row (though any row or column could be chosen). The formula for the determinant of a $3 \times 3$ matrix expanded along the first row is:
 
-\[
+$$
 \text{det}(\mathbf{A}) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
-\]
+$$
 
-where \( a_{1j} \) represents the elements of the matrix in the first row and the $j$-th column, and \( C_{1j} \) represents the **cofactor** of the $a_{ij}$ element, to be defined next.
+where $ a_{1j} $ represents the elements of the matrix in the first row and the $j$-th column, and $ C_{1j} $ represents the **cofactor** of the $a_{ij}$ element, to be defined next.
 
-To calculate each cofactor, we start by identifying the **minor** of each element. The minor of a matrix element \( a_{ij} \) is the determinant of the matrix that remains after removing the \( i \)-th row and \( j \)-th column from \( \mathbf{A} \).
+To calculate each cofactor, we start by identifying the **minor** of each element. The minor of a matrix element $ a_{ij} $ is the determinant of the matrix that remains after removing the $ i $-th row and $ j $-th column from $ \mathbf{A} $.
 
-For example, the minor of \( a_{11} \) is can be found by eliminating the first row and first column:
+For example, the minor of $ a_{11} $ is can be found by eliminating the first row and first column:
 
 
 <img
@@ -235,7 +237,7 @@ $$
 M_{11} = \begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix} = a_{22} a_{33} - a_{23} a_{32} 
 $$
 
-and the minor of \( a_{12} \) is found by eliminating the first row and the second column:
+and the minor of $ a_{12} $ is found by eliminating the first row and the second column:
 
 <img
   src="{{ '/courses/math-methods/images/lec02/Cofactor2.png' | relative_url }}"
@@ -252,25 +254,25 @@ The **cofactor** is defined as the signed minor in the following manner:
 $$ C_{ij} = (-1)^{i+j} M_{ij} $$
 
 
-For example, the cofactor \( C_{11} \) is then given by:
+For example, the cofactor $ C_{11} $ is then given by:
 
-\[
+$$
 C_{11} = (-1)^{1+1} M_{11} = (-1)^{2} M_{11} =  M_{11}
-\]
+$$
 
-Similarly, the cofactor for \( a_{12} \) is:
+Similarly, the cofactor for $ a_{12} $ is:
 
-\[
+$$
 C_{12} = (-1)^{1+2} M_{12} = (-1)^{3} M_{12}= -M_{12}
-\]
+$$
 
-Following this pattern, we calculate each cofactor \( C_{1j} \) in this manner.
+Following this pattern, we calculate each cofactor $ C_{1j} $ in this manner.
 
 With the cofactors calculated, we substitute back into the formula:
 
-\[
+$$
 \text{det}(\mathbf{A}) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
-\]
+$$
 
 This approach generalizes to larger matrices as well, where we can choose any row or column for expansion. By systematically calculating cofactors, the determinant of matrices of any size can be computed in the exact same manner.
 
@@ -278,69 +280,69 @@ This approach generalizes to larger matrices as well, where we can choose any ro
 {% capture ex %}
 Let's look at an example of this process. As a helpfulf note, it is generally easiest to choose to work along the row or column with the most zeros to minimize your work when using the cofactor method. This example will help show how this trick works. Consider taking the determinate of the matrix:
 
-\[
+$$
 \mathbf{A} = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{bmatrix}
-\]
+$$
 
-For this example, let's expand along the first row. For each element in the first row, we find the cofactor by removing the row and column of that element and calculating the determinant of the resulting \(2 \times 2\) submatrix.
+For this example, let's expand along the first row. For each element in the first row, we find the cofactor by removing the row and column of that element and calculating the determinant of the resulting $2 \times 2$ submatrix.
 
-For the element \(1\) (row 1, column 1):
+For the element $1$ (row 1, column 1):
 
-\[
+$$
 \text{Cofactor of } 1 \, (a_{11}) = (-1)^{1+1} \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} = \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} = (4)(6) - (5)(0) = 24
-\]
+$$
 
-For the element \(2\) (row 1, column 2):
+For the element $2$ (row 1, column 2):
 
-\[
+$$
 \text{Cofactor of } 2 \,(a_{12}) = (-1)^{1+2} \det \begin{bmatrix} 0 & 5 \\ 1 & 6 \end{bmatrix} = -\det \begin{bmatrix} 0 & 5 \\ 1 & 6 \end{bmatrix} = -\big((0)(6) - (5)(1)\big) = 5
-\]
+$$
 
-For the element \(3\) (row 1, column 3):
+For the element $3$ (row 1, column 3):
 
-\[
+$$
 \text{Cofactor of } 3 \, (a_{13}) = (-1)^{1+3} \det \begin{bmatrix} 0 & 4 \\ 1 & 0 \end{bmatrix} = \det \begin{bmatrix} 0 & 4 \\ 1 & 0 \end{bmatrix} = (0)(0) - (4)(1) = -4
-\]
+$$
 
-The determinant of \(\mathbf{A}\) is the sum of each element in the first row multiplied by its respective cofactor:
+The determinant of $\mathbf{A}$ is the sum of each element in the first row multiplied by its respective cofactor:
 
-\[
+$$
 \det(\mathbf{A}) = (1)(24) + (2)(5) + (3)(-4)
-\]
+$$
 
 Simplifying this gives the determinate of $\mathbf{A}$:
 
-\[
+$$
 \det(\mathbf{A}) = 24 + 10 - 12 = 22 \implies  \det(\mathbf{A}) = 22
-\]
+$$
 
 > **Good tip for the cofactor method: Expand along rows or columns with lots of zeros!**
 
 Let's redo the previous example, but expand along row 3, since it has a zero. This gives:
 
-For the element \(1\) (row 2, column 1):
+For the element $1$ (row 2, column 1):
 
-\[
+$$
 \text{Cofactor of } 1 \, (a_{31}) = (-1)^{3+1} \det \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = (2)(5) - (3)(4) = -2
-\]
+$$
 
-For the element \(0\) (row 3, column 2):
+For the element $0$ (row 3, column 2):
 
-\[
+$$
 \text{Cofactor of } 0  \, (a_{32}) = \text{Doesn't matter since it will be multiplied by 0 later!}
-\]
+$$
 
-For the element \(6\) (row 3, column 3):
+For the element $6$ (row 3, column 3):
 
-\[
+$$
 \text{Cofactor of } 6  \, (a_{33})= (-1)^{3+3} \det \begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix} = (1)(4) - (2)(0) = 4
-\]
+$$
 
-The determinant of \(\mathbf{A}\) is the sum of each element in the first row multiplied by its respective cofactor:
+The determinant of $\mathbf{A}$ is the sum of each element in the first row multiplied by its respective cofactor:
 
-\[
+$$
 \det(\mathbf{A}) = (1)(-2) + (0)C_{32} + (6)(4) = -2 + 0 + 24 = 22 \implies \det(\mathbf{A}) = 22
-\]
+$$
 
 and we get the same thing even though we expanded along a totally different row!
 {% endcapture %}
@@ -372,7 +374,7 @@ You may be wondering why the determinant is important beyond what it reveals abo
 
 Consider the following system of linear equations:
 
-\[
+$$
 \begin{aligned}
 	2x + 3y &= 7 \\
 	-3x + 9y &= -2
@@ -387,31 +389,32 @@ Consider the following system of linear equations:
 \begin{bmatrix}
 	7 \\ -2
 \end{bmatrix}
-\]
+$$
 
-Wouldn't it be helpful if we could multiply both sides by some matrix and immediately solve for \( x \) and \( y \)? If we set this up as a matrix equation, we would be looking at solving something like this:
+Wouldn't it be helpful if we could multiply both sides by some matrix and immediately solve for $ x $ and $ y $? If we set this up as a matrix equation, we would be looking at solving something like this:
 
-\[
+$$
 \mathbf{A} \vec{r} = \vec{b}
-\]
+$$
 
-where \( \mathbf{A} \) is the matrix of coefficients, \( \vec{r} \) is the column vector of unknowns, and \( \vec{b} \) is the result vector. An inverse matrix, if it exists, would allow us to solve for \( \vec{r} \) directly in the following manner.  Remember, the order of multiplication for matrices matters! So, make sure that the inverse of \( \mathbf{A} \) is positioned correctly to act on \( \mathbf{A} \), whether on the left or the right.:
+where $ \mathbf{A} $ is the matrix of coefficients, $ \vec{r} $ is the column vector of unknowns, and $ \vec{b} $ is the result vector. An inverse matrix, if it exists, would allow us to solve for $ \vec{r} $ directly in the following manner.  Remember, the order of multiplication for matrices matters! So, make sure that the inverse of $ \mathbf{A} $ is positioned correctly to act on $ \mathbf{A} $, whether on the left or the right.:
 
-{\allowdisplaybreaks
-\begin{align*}
-	\mathbf{A} \vec{r} &= \vec{b} \\[0.75ex]
-	\mathbf{A}' \mathbf{A} \vec{r} &= \mathbf{A}' \vec{b} \\[0.75ex]
-	\underbrace{\mathbf{A}' \mathbf{A}}_\text{= 1} \vec{r} &= \mathbf{A}' \vec{b} \\[0.75ex]
+$$
+\begin{aligned}
+	\mathbf{A} \vec{r} &= \vec{b} \\
+	\mathbf{A}' \mathbf{A} \vec{r} &= \mathbf{A}' \vec{b} \\
+	\underbrace{\mathbf{A}' \mathbf{A}}_\text{= 1} \vec{r} &= \mathbf{A}' \vec{b} \\
 	\vec{r} &= \underbrace{\mathbf{A}' \vec{b} }_\text{Answer}
-\end{align*}}
+\end{aligned}
+$$
 
-In this case, \( \mathbf{A}' \) **would represent the inverse of** \( \mathbf{A} \).
+In this case, $ \mathbf{A}' $ **would represent the inverse of** $ \mathbf{A} $.
 
 \begin{center}
 	Notationally, the inverse of $\mathbf{A}$ is written as $\mathbf{A}^{-1}$.
 \end{center}
 
-Why do we call it the inverse? Think of it this way: in algebra, if you have \( 2x = 4 \), you would multiply both sides by the inverse of \( 2 \), which is \( \frac{1}{2} \), to solve for \( x \). So, $\frac{1}{2}$ is the inverse of $2$, which makes a lot of sense! 
+Why do we call it the inverse? Think of it this way: in algebra, if you have $ 2x = 4 $, you would multiply both sides by the inverse of $ 2 $, which is $ \frac{1}{2} $, to solve for $ x $. So, $\frac{1}{2}$ is the inverse of $2$, which makes a lot of sense! 
 
 Now, how can we determine if a matrix can be inverted? It’s simple: check if its determinant is zero. **If the determinant is zero, the matrix does not have an inverse**
 
@@ -446,38 +449,38 @@ $$ \begin{bmatrix}
 
 The matrix
 
-\[
+$$
 \begin{bmatrix}
 	1 & 0 \\
 	0 & 1 
 \end{bmatrix}
-\]
+$$
 
-is called the **identity matrix, $\mathbf{I}$. It functions similarly to the number \(1\) in multiplications, acting as the **multiplicative identity** in matrix algebra. This means that when any matrix is multiplied by the identity matrix of the correct dimensions, the original matrix remains unchanged, just like when you multiple a nuber by 1:
+is called the **identity matrix, $\mathbf{I}$. It functions similarly to the number $1$ in multiplications, acting as the **multiplicative identity** in matrix algebra. This means that when any matrix is multiplied by the identity matrix of the correct dimensions, the original matrix remains unchanged, just like when you multiple a nuber by 1:
 
-\[
+$$
 \mathbf{A}  \mathbf{I} = \mathbf{I}  \mathbf{A} = \mathbf{A}
-\]
+$$
 
 To find the inverse of $\mathbf{A}$, we can use row reduction to transform the left side of the augmented matrix above into the identity matrix. The resulting matrix on the right side will be the **inverse of **$\mathbf{A}$, or $\mathbf{A}^{-1}$. Here is how this process looks, step-by-step:
 
-{\renewcommand{\arraystretch}{1.25}
-\begin{align*}
+$$
+\begin{aligned}
 	\begin{bmatrix}
 		2 & 3 & \vline & 1 & 0 \\
 		-3 & 9 & \vline & 0 & 1 \\
 	\end{bmatrix} &\implies \begin{bmatrix}
 		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
 		1 & -3 & \vline & 0 & -\frac{1}{3} \\
-	\end{bmatrix} \\[1.15ex]
+	\end{bmatrix} \
 	&\implies \begin{bmatrix}
 		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
 		0 & -\frac{9}{2} & \vline & -\tfrac{1}{2}& -\frac{1}{3} \\
-	\end{bmatrix} \\[1.15ex]
+	\end{bmatrix} \\
 	& \implies \begin{bmatrix}
 		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
 		0 & 1 & \vline & \tfrac{1}{9}& \frac{2}{27} \\
-	\end{bmatrix} \\[1.15ex]
+	\end{bmatrix} \\
 	\begin{bmatrix}
 		2 & 3 & \vline & 1 & 0 \\
 		-3 & 9 & \vline & 0 & 1 \\
@@ -485,16 +488,17 @@ To find the inverse of $\mathbf{A}$, we can use row reduction to transform the l
 		1 & 0 & \vline & \tfrac{1}{3} & -\frac{1}{9} \\
 		0 & 1 & \vline & \tfrac{1}{9}& \frac{2}{27} \\
 	\end{bmatrix}
-\end{align*}}
+\end{aligned}
+$$
 
-We claim that the matrix we found is the inverse of $\mathbf{A}$. First, let’s simplify it by factoring out \( \frac{1}{\text{det}(\mathbf{A})} \), giving us:
+We claim that the matrix we found is the inverse of $\mathbf{A}$. First, let’s simplify it by factoring out $ \frac{1}{\text{det}(\mathbf{A})} $, giving us:
 
 
 $$ \mathbf{A}^{-1} = \frac{1}{27} \begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix} $$
 
 
 {% include result.html content="
-This leads us to a general form for the inverse of a \(2 \times 2\) matrix, 
+This leads us to a general form for the inverse of a $2 \times 2$ matrix, 
 $$ 
 \mathbf{B} = \begin{bmatrix}
 	b_{11} & b_{12} \\ 
@@ -511,31 +515,31 @@ You should check this on your own!
 " %}
 
 
-How can we confirm that the matrix we found is indeed the inverse of \(\mathbf{A}\)? One way is to multiply them together to see if we obtain the identity matrix. Recall that a number multiplied by its inverse should yield 1. We have:
+How can we confirm that the matrix we found is indeed the inverse of $\mathbf{A}$? One way is to multiply them together to see if we obtain the identity matrix. Recall that a number multiplied by its inverse should yield 1. We have:
 
 $$
 \begin{aligned}
 \mathbf{A}^{-1} \mathbf{A} &= \frac{1}{27} \begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix} \begin{bmatrix}
     2 & 3  \\
     -3 & 9 
-\end{bmatrix}  \\[1.15ex]
+\end{bmatrix}  \\
 &= \frac{1}{27} \begin{bmatrix}
     (9)(2) + (-3)(-3) & (9)(3) + (-3)(9)\\
     (3)(2) + (2)(-3)  & (3)(3) + (2)(9) 
-\end{bmatrix}   \\[1.15ex]
+\end{bmatrix}   \\
 &= \frac{1}{27} \begin{bmatrix}
     27 & 0\\
     0  & 27 
-\end{bmatrix}  \\[1.15ex]
+\end{bmatrix}  \\
 &= \begin{bmatrix}
     1 & 0\\
     0  & 1
-\end{bmatrix} \\[1.15ex]
+\end{bmatrix} \\
 \mathbf{A}^{-1} \mathbf{A} &= \mathbf{I}
 \end{aligned}
 $$
 
-You can verify on your own that the multiplication \(\mathbf{A} \mathbf{A}^{-1}\) results in the identity matrix. 
+You can verify on your own that the multiplication $\mathbf{A} \mathbf{A}^{-1}$ results in the identity matrix. 
 
 
 
@@ -552,52 +556,52 @@ Let's look at some other commonly used matrix operations.
 
 Imagine you're storing data in a spreadsheet. Sometimes you want to swap rows and columns—say, to make a chart. The transpose does exactly that! 
 
-The transpose of a matrix \(\mathbf{A}\) is denoted by \(\mathbf{A}^T\) and is obtained by flipping the matrix over its main diagonal. This operation switches rows for columns and columns for rows.  Fun Fact: If a matrix equals its transpose, it’s called *symmetric*. Symmetric matrices show up all over physics, especially when your mathematical framework involves the extensive use of tensors, like in general relativity and other field theories. In the element notation, this is a flip of the indices, such that the element at position \(a_{ij}\) in matrix \(\mathbf{A}\) becomes \(a_{ji}\) in matrix \(\mathbf{A}^T\). For example, if we have a matrix 
+The transpose of a matrix $\mathbf{A}$ is denoted by $\mathbf{A}^T$ and is obtained by flipping the matrix over its main diagonal. This operation switches rows for columns and columns for rows.  Fun Fact: If a matrix equals its transpose, it’s called *symmetric*. Symmetric matrices show up all over physics, especially when your mathematical framework involves the extensive use of tensors, like in general relativity and other field theories. In the element notation, this is a flip of the indices, such that the element at position $a_{ij}$ in matrix $\mathbf{A}$ becomes $a_{ji}$ in matrix $\mathbf{A}^T$. For example, if we have a matrix 
 
-\[
+$$
 \mathbf{A} = \begin{bmatrix}
 	1 & 2 & 3 \\
 	4 & 5 & 6
 \end{bmatrix}
-\]
+$$
 
 its transpose is 
 
-\[
+$$
 \mathbf{A}^T = \begin{bmatrix}
 	1 & 4 \\
 	2 & 5 \\
 	3 & 6
 \end{bmatrix}
-\]
+$$
 
 In physics, the transpose of a matrix is particularly useful in various contexts, such as in linear transformations and systems of equations. For instance, when dealing with vectors and matrices in three-dimensional space, the transpose plays a critical role in changing the representation of a vector from row to column format. This is essential in expressing physical quantities like momentum and force in vector form, where one might need to multiply matrices that represent different physical systems. Moreover, the transpose is utilized in formulating orthogonal matrices, which have applications in rotational transformations and preserving vector lengths during these transformations. We will talk more above this later when we talk about orthogonal matrices in Lecture 05.
 
 ### Trace
 
-The trace can only be taken of a square matrix, so let's suppose \(\mathbf{A}\) in now a square matrix. The trace of $\mathbf{A}$ is denoted as \(\text{Tr}(\mathbf{A})\), is defined as the **sum of the elements on its main diagonal**. The term “trace” comes from the Latin *trahere*, meaning “to draw.” In early matrix notation, it was literally the main diagonal that you’d trace out! 
+The trace can only be taken of a square matrix, so let's suppose $\mathbf{A}$ in now a square matrix. The trace of $\mathbf{A}$ is denoted as $\text{Tr}(\mathbf{A})$, is defined as the **sum of the elements on its main diagonal**. The term “trace” comes from the Latin *trahere*, meaning “to draw.” In early matrix notation, it was literally the main diagonal that you’d trace out! 
 
-For a matrix \(\mathbf{A}\) of size \(n \times n\), the trace is given by:
+For a matrix $\mathbf{A}$ of size $n \times n$, the trace is given by:
 
-\[
+$$
 \text{Tr}(\mathbf{A}) = \sum_{i=1}^{n} a_{ii}
-\]
+$$
 
-where \(a_{ii}\) are the diagonal elements of \(\mathbf{A}\). For example, if we have a matrix 
+where $a_{ii}$ are the diagonal elements of $\mathbf{A}$. For example, if we have a matrix 
 
-\[
+$$
 \mathbf{A} = \begin{bmatrix}
 	1 & 2 & 3 \\
 	4 & 5 & 6 \\
 	7 & 8 & 9
 \end{bmatrix}
-\]
+$$
 
-the trace of \(\mathbf{A}\) is 
+the trace of $\mathbf{A}$ is 
 
-\[
+$$
 \text{Tr}(\mathbf{A}) = 1 + 5 + 9 = 15
-\]
+$$
 
 The trace has important applications in physics and engineering, particularly in the study of linear operators and quantum mechanics. The trace of an operator in matrix form is related to the sum of its eigenvalues, which can provide insights into the properties of the system being analyzed. For example, in quantum mechanics, the trace is used to compute expected values and to describe the behavior of quantum states under transformations. Additionally, in thermodynamics, the trace of the density matrix is used to find the partition function, which is fundamental in statistical mechanics for calculating the thermodynamic properties of systems. 
 
@@ -606,13 +610,13 @@ The trace has important applications in physics and engineering, particularly in
 
 Consider a rigid body with a distribution of mass defined by the following mass elements at specified coordinates in 3D space. The inertia tensor $\mathbf{I}$ (something you will see in Classical Mechanics) is given by:
 
-\[
+$$
 \mathbf{I} = \begin{bmatrix}
 	4 & 0 & 0 \\
 	0 & 3 & 1 \\
 	0 & 1 & 2
 \end{bmatrix}
-\]
+$$
 
 a) Calculate the Determinant of $\mathbf{I}$.
 	
@@ -666,17 +670,17 @@ d) Calculate the Inverse of $\mathbf{I}$.
 >					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
 >					0 & 1 & 2 &\vline & 0 & 0 & 1\\
 >					0 & 3 & 1 &\vline & 0 & 1 & 0
->				\end{bmatrix} \\[1.15ex]
+>				\end{bmatrix} \\
 >				&\implies \begin{bmatrix}
 >					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
 >					0 & 1 & 2 &\vline & 0 & 0 & 1\\
 >					0 & 0 & -5 &\vline & 0 & 1 & -3
->				\end{bmatrix}  \\[1.15ex]
+>				\end{bmatrix}  \\
 >				&\implies \begin{bmatrix}
 >					1 & 0 & 0 &\vline & \tfrac{1}{4}  & 0 & 0 \\
 >					0 & 1 & 2 &\vline & 0 & 0 & 1\\
 >					0 & 0 & 1 &\vline & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
->				\end{bmatrix}   \\[1.15ex]
+>				\end{bmatrix}   \\
 >				\begin{bmatrix}
 >					4 & 0 & 0 & \vline & 1 & 0 & 0 \\
 >					0 & 3 & 1 & \vline & 0 & 1 & 0\\
@@ -715,13 +719,13 @@ d) Calculate the Inverse of $\mathbf{I}$.
 
 Consider a three-dimensional stress tensor $\boldsymbol{\sigma}$, which describes the state of stress at a point in a material under loading conditions. The stress tensor is defined as follows:
 
-\[
+$$
 \boldsymbol{\sigma} = \begin{bmatrix}
 	4 & 2 & 0 \\
 	2 & 5 & 1 \\
 	0 & 1 & 3
 \end{bmatrix}
-\]
+$$
 
 The stress tensor (a fancy way of saying matrix in most situations) tells us about how the materials is compressed/stretched or is being twisted. 
 
