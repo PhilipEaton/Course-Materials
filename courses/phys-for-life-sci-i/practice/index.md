@@ -4,7 +4,7 @@ title: Physics for Life Sciences I – Practice
 course_home: /courses/phys-for-life-sci-i/
 ---
 
-# Homework Sets
+# Lecture Worksheets
 
 <ul>
 {% assign course_prefix = page.course_home | append: "practice/" %}
