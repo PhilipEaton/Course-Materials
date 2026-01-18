@@ -313,6 +313,156 @@ What does this mean? The matrix does not parity flip (right handed corrdinates s
 
 ### General Approach: Cofactor Method
 
+Now, let’s explore a general approach to calculating determinants that works consistently, regardless of the size of the square matrix. This method, known as the **cofactor method**, is a powerful technique that applies to *any* square matrix. The basic idea is to break a large matrix into smaller pieces, compute determinants of those smaller matrices, and then combine those results to obtain the determinant of the original matrix.
+
+Let’s start by looking at the general form of a $3 \times 3$ matrix:
+
+$$
+\mathbf{A} = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix}
+$$
+
+The determinant of $\mathbf{A}$ can be computed by **expanding along a row or a column**. Here, we will expand along the first row (though any row or column may be chosen). When expanding along the first row, the determinant is written as:
+
+$$
+\text{det}(\mathbf{A}) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
+$$
+
+Here, $a_{1j}$ refers to the element in the first row and $j$-th column, and $C_{1j}$ denotes the corresponding **cofactor**, which we define next.
+
+To compute a cofactor, we first identify the **minor** of a matrix element. The minor of an element $a_{ij}$ is the determinant of the matrix that remains after removing the $i$-th row and $j$-th column from $\mathbf{A}$.
+
+For example, the minor of $a_{11}$ is found by eliminating the first row and first column:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/Cofactor1.png' | relative_url }}"
+  alt="A three-by-three matrix labeled with entries a11, a12, and a13 in the top row; a21, a22, and a23 in the middle row; and a31, a32, and a33 in the bottom row. The entire top row is marked, and the middle column is marked, indicating the row and column chosen for a cofactor expansion."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+and taking the determinant of the resulting $2 \times 2$ matrix:
+
+$$
+M_{11} = \begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix} = a_{22} a_{33} - a_{23} a_{32}
+$$
+
+Similarly, the minor of $a_{12}$ is obtained by eliminating the first row and second column:
+
+<img
+  src="{{ '/courses/math-methods/images/lec02/Cofactor2.png' | relative_url }}"
+  alt="A three-by-three matrix in which one row and one column are indicated as being removed. The remaining entries represent the smaller matrix, called the minor, that is used when computing a cofactor for a selected matrix element."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+$$
+M_{12} = \begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{vmatrix} = a_{21} a_{33} - a_{23} a_{31}
+$$
+
+The **cofactor** is defined as the signed version of the minor:
+
+$$
+C_{ij} = (-1)^{i+j} M_{ij}
+$$
+
+For example, the cofactor $C_{11}$ is
+
+$$
+C_{11} = (-1)^{1+1} M_{11} = (-1)^2 M_{11} = M_{11}
+$$
+
+while the cofactor corresponding to $a_{12}$ is
+
+$$
+C_{12} = (-1)^{1+2} M_{12} = (-1)^3 M_{12} = -M_{12}
+$$
+
+Following this pattern, we compute each cofactor $C_{1j}$ in the same way.
+
+Once the cofactors are known, we substitute them back into the expansion formula:
+
+$$
+\text{det}(\mathbf{A}) = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
+$$
+
+This procedure generalizes directly to larger matrices. By choosing a row or column and systematically computing cofactors, the determinant of a square matrix of *any* size can be calculated using the same underlying method.
+
+{% capture ex %}
+Let’s look at an example to see this process in action. As a helpful note, it is generally easiest to expand along a row or column that contains the most zeros, since this minimizes the number of cofactors you actually need to compute.
+
+Consider calculating the determinant of the matrix:
+
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{bmatrix}
+$$
+
+For this first pass, we’ll expand along the first row. For each element in that row, we compute its cofactor by removing the corresponding row and column and finding the determinant of the resulting $2 \times 2$ matrix.
+
+> For the element $1$ (row 1, column 1):
+> 
+> $$
+> \text{Cofactor of } 1 \, (a_{11}) = (-1)^{1+1} \det \begin{bmatrix} 4 & 5 \\ 0 & 6 \end{bmatrix} 
+> = (+1)\big((4)(6) - (5)(0)\big) = 24
+> $$
+
+> For the element $2$ (row 1, column 2):
+> 
+> $$
+> \text{Cofactor of } 2 \, (a_{12}) = (-1)^{1+2} \det \begin{bmatrix} 0 & 5 \\ 1 & 6 \end{bmatrix}
+> = -\big((0)(6) - (5)(1)\big) = 5
+> $$
+
+> For the element $3$ (row 1, column 3):
+> 
+> $$
+> \text{Cofactor of } 3 \, (a_{13}) = (-1)^{1+3} \det \begin{bmatrix} 0 & 4 \\ 1 & 0 \end{bmatrix}
+> = (+1)\big((0)(0) - (4)(1)\big) = -4
+> $$
+
+The determinant of $\mathbf{A}$ is found by multiplying each entry in the first row by its cofactor and summing the results:
+
+$$
+\det(\mathbf{A}) = (1)(24) + (2)(5) + (3)(-4)
+$$
+
+Simplifying gives:
+
+$$
+\det(\mathbf{A}) = 24 + 10 - 12 = 22 \implies \det(\mathbf{A}) = 22
+$$
+
+> **Good tip for the cofactor method:** Expand along rows or columns with lots of zeros!
+
+Let’s redo the same problem, but this time expand along the third row, which contains a zero.
+
+For the element $1$ (row 3, column 1):
+
+$$
+\text{Cofactor of } 1 \, (a_{31}) = (-1)^{3+1} \det \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix}
+= (2)(5) - (3)(4) = -2
+$$
+
+For the element $0$ (row 3, column 2):
+
+$$
+\text{Cofactor of } 0 \, (a_{32}) = \text{Doesn't matter — it will be multiplied by 0 anyway.}
+$$
+
+For the element $6$ (row 3, column 3):
+
+$$
+\text{Cofactor of } 6 \, (a_{33}) = (-1)^{3+3} \det \begin{bmatrix} 1 & 2 \\ 0 & 4 \end{bmatrix}
+= (1)(4) - (2)(0) = 4
+$$
+
+Putting this together:
+
+$$
+\det(\mathbf{A}) = (1)(-2) + (0)C_{32} + (6)(4) = -2 + 0 + 24 = 22 \implies \det(\mathbf{A}) = 22
+$$
+
+As expected, we obtain the same determinant even though we expanded along a completely different row.
+{% endcapture %}
+{% include example.html content=ex %}
+
+
+
 Now, let’s explore a general approach to calculating determinants that works consistently, regardless of the number of dimensions of the square matrix. This method, known as the **cofactor method**, is a powerful technique applicable to any square matrix. The cofactor method involves breaking down a larger matrix into smaller parts, calculating the determinants of these smaller matrices, and then combining them to find the determinant of the original matrix.
 
 Let's start by looking at the general form of a $3 \times 3$ matrix:
