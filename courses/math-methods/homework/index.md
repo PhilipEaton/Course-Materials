@@ -4,7 +4,7 @@ title: Mathematical Methods – Homeworks
 course_home: /courses/math-methods/
 ---
 
-# Homework Sets sdkjfndkjfn
+# Homework Sets
 
 <ul>
 {% assign course_prefix = page.course_home | append: "homework/" %}
@@ -18,13 +18,3 @@ course_home: /courses/math-methods/
   <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
 {% endfor %}
 </ul>
-
-<p><strong>DEBUG:</strong> Homework pages detected:</p>
-<ul>
-{% for p in site.pages %}
-  {% if p.nav_section == 'homework' %}
-    <li>{{ p.url }} — {{ p.title }}</li>
-  {% endif %}
-{% endfor %}
-</ul>
-
