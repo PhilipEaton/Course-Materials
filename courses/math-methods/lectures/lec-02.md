@@ -202,7 +202,6 @@ The determinant of matrix $\mathbf{A}$ is 111. The matrix does not appear to cau
 
 
 
-
 ### General Approach: Cofactor Method
 
 Now, let’s explore a general approach to calculating determinants that works consistently, regardless of the number of dimensions of the square matrix. This method, known as the **cofactor method**, is a powerful technique applicable to any square matrix. The cofactor method involves breaking down a larger matrix into smaller parts, calculating the determinants of these smaller matrices, and then combining them to find the determinant of the original matrix.
@@ -276,7 +275,7 @@ With the cofactors calculated, we substitute back into the formula:
 This approach generalizes to larger matrices as well, where we can choose any row or column for expansion. By systematically calculating cofactors, the determinant of matrices of any size can be computed in the exact same manner.
 
 
-{% include example.html content="
+{% capture ex %}
 Let's look at an example of this process. As a helpfulf note, it is generally easiest to choose to work along the row or column with the most zeros to minimize your work when using the cofactor method. This example will help show how this trick works. Consider taking the determinate of the matrix:
 
 \[
@@ -344,7 +343,8 @@ The determinant of \(\mathbf{A}\) is the sum of each element in the first row mu
 \]
 
 and we get the same thing even though we expanded along a totally different row!
-" %}
+{% endcapture %}
+{% include example.html content=ex %}
 
 
 
