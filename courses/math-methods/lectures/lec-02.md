@@ -712,13 +712,17 @@ You can also check that $\mathbf{A} \mathbf{A}^{-1}$ gives the identity matrix�
 
 ## Other Matrix Operations
 
-Let's look at some other commonly used matrix operations.
+Let’s take a look at a few other commonly used matrix operations.
 
-### Transpose 
+### Transpose
 
-Imagine you're storing data in a spreadsheet. Sometimes you want to swap rows and columns—say, to make a chart. The transpose does exactly that! 
+Imagine you’re working in a spreadsheet and want to flip the rows and columns, maybe to make a chart easier to read or something. The **transpose** does exactly that.
 
-The transpose of a matrix $\mathbf{A}$ is denoted by $\mathbf{A}^T$ and is obtained by flipping the matrix over its main diagonal. This operation switches rows for columns and columns for rows.  Fun Fact: If a matrix equals its transpose, it’s called *symmetric*. Symmetric matrices show up all over physics, especially when your mathematical framework involves the extensive use of tensors, like in general relativity and other field theories. In the element notation, this is a flip of the indices, such that the element at position $a_{ij}$ in matrix $\mathbf{A}$ becomes $a_{ji}$ in matrix $\mathbf{A}^T$. For example, if we have a matrix 
+The transpose of a matrix $\mathbf{A}$ is written as $\mathbf{A}^T$ and is found by flipping the matrix over its main diagonal. This means rows become columns and columns become rows. In element notation, transposing a matrix means flipping the indices: the entry $a_{ij}$ in $\mathbf{A}$ becomes $a_{ji}$ in $\mathbf{A}^T$, notice the switching of the indices.
+
+
+{% include example.html content="
+For example, given
 
 $$
 \mathbf{A} = \begin{bmatrix}
@@ -727,7 +731,7 @@ $$
 \end{bmatrix}
 $$
 
-its transpose is 
+its transpose is
 
 $$
 \mathbf{A}^T = \begin{bmatrix}
@@ -736,20 +740,27 @@ $$
 	3 & 6
 \end{bmatrix}
 $$
+" %}
 
-In physics, the transpose of a matrix is particularly useful in various contexts, such as in linear transformations and systems of equations. For instance, when dealing with vectors and matrices in three-dimensional space, the transpose plays a critical role in changing the representation of a vector from row to column format. This is essential in expressing physical quantities like momentum and force in vector form, where one might need to multiply matrices that represent different physical systems. Moreover, the transpose is utilized in formulating orthogonal matrices, which have applications in rotational transformations and preserving vector lengths during these transformations. We will talk more above this later when we talk about orthogonal matrices in Lecture 05.
+
+In physics, transposes are useful in a variety of situations. For example, when dealing with vectors and matrices in 3D space, switching between row and column formats helps express physical quantities like momentum and force. Fun fact: if a matrix is equal to its own transpose, it’s called *symmetric*. Symmetric matrices pop up all over physics, especially in areas that rely heavily on tensors, like general relativity and most multidimensional field theories. You’ll see the transpose show up often when we get to classifying matrices in Lecture 05.
 
 ### Trace
 
-The trace can only be taken of a square matrix, so let's suppose $\mathbf{A}$ in now a square matrix. The trace of $\mathbf{A}$ is denoted as $\text{Tr}(\mathbf{A})$, is defined as the **sum of the elements on its main diagonal**. The term “trace” comes from the Latin *trahere*, meaning “to draw.” In early matrix notation, it was literally the main diagonal that you’d trace out! 
+The **trace** can only be taken for a square matrix. So let’s assume $\mathbf{A}$ is square for now.
 
-For a matrix $\mathbf{A}$ of size $n \times n$, the trace is given by:
+The trace of $\mathbf{A}$, written as $\text{Tr}(\mathbf{A})$, is defined as the **sum of the elements along the main diagonal**. The word “trace” comes from the Latin *trahere*, meaning “to draw.” In early matrix notation, you’d literally traced the diagonal to find the trace.
+
+For an $n \times n$ matrix, the trace is calculated as:
 
 $$
 \text{Tr}(\mathbf{A}) = \sum_{i=1}^{n} a_{ii}
 $$
 
-where $a_{ii}$ are the diagonal elements of $\mathbf{A}$. For example, if we have a matrix 
+where $a_{ii}$ are the elements along the main diagonal. 
+
+{% include example.html content="
+For example, if
 
 $$
 \mathbf{A} = \begin{bmatrix}
@@ -759,14 +770,16 @@ $$
 \end{bmatrix}
 $$
 
-the trace of $\mathbf{A}$ is 
+then
 
 $$
 \text{Tr}(\mathbf{A}) = 1 + 5 + 9 = 15
 $$
+" %}
 
-The trace has important applications in physics and engineering, particularly in the study of linear operators and quantum mechanics. The trace of an operator in matrix form is related to the sum of its eigenvalues, which can provide insights into the properties of the system being analyzed. For example, in quantum mechanics, the trace is used to compute expected values and to describe the behavior of quantum states under transformations. Additionally, in thermodynamics, the trace of the density matrix is used to find the partition function, which is fundamental in statistical mechanics for calculating the thermodynamic properties of systems. 
+The trace also shows up all over physics and engineering, especially when studying linear operators and quantum systems. In quantum mechanics, for instance, the trace is used to compute expected values and describe how quantum states evolve. In thermodynamics, the trace of the density matrix is used to find the partition function, a central concept in statistical mechanics that helps you calculate the thermodynamic properties of a system.
 
+One important property: the trace of a matrix is equal to the **sum of its eigenvalues**, which tells you something about the system’s behavior. We will touch back on this when we actually get to eigenvalues, so for now you can take this as a fun fact and move on. 
 
 
 
