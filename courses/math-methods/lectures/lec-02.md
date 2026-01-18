@@ -872,6 +872,7 @@ d) Calculate the Inverse of $\mathbf{I}$.
 >					0 & 0 & 1 &| & 0 & -\tfrac{1}{5} & \tfrac{3}{5}
 >				\end{bmatrix}
 >			\end{aligned}
+>           $$
 
 	So, the inverse of $\mathbf{I}$ is:
 	 
@@ -884,7 +885,8 @@ d) Calculate the Inverse of $\mathbf{I}$.
 >	5  & 0 & 0 \\
 >	0 & 8 & - 4 \\
 >	0 & -4 & 12
->	\end{bmatrix} $$
+>	\end{bmatrix} 
+>   $$
 
 
 
