@@ -19,7 +19,7 @@ solutions. Solutions for homework sets can be found in the course Blackboard.
 
 ## Assignments
 - [Homework Sets](homework/)
-- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
+- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relevant lecture.
 - Long homework sets (bi-weekly homework) similarly reinforce both conceptual and computational skills, but at a deeper level with more difficult problems. 
 
 

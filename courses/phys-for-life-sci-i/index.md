@@ -4,7 +4,7 @@ title: PHYS 2120 – Physics for Life Sciences I
 course_home: /courses/phys-for-life-sci-i/
 ---
 
-# PHYS 2120 – Physics for Life Sciences I
+# PHYS 2110 – Physics for Life Sciences I
 
 This page supports PHYS 2110, a course on introducing concepts like motion, forces, energy, momentum, rotation, fluids, and thermal physics using algebra.
 
@@ -19,12 +19,12 @@ solutions. Solutions for homework sets can be found in the course Blackboard.
 
 ## Assignments
 - [Homework Sets](homework/)
-- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
+- Homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relevant lecture.
 
 
-## Practice Days
+## Lecture Worksheets
 - [Practice Days](practice/)
-- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
+- Worksheets containing inclass examples and for Worksheets Days that occur throughout the course. 
 
 ---
 

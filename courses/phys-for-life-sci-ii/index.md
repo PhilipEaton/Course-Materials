@@ -19,12 +19,12 @@ solutions. Solutions for homework sets can be found in the course Blackboard.
 
 ## Assignments
 - [Homework Sets](homework/)
-- Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
+- Homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relevant lecture.
 
 
-## Practice Days
+## Lecture Worksheets
 - [Practice Days](practice/)
-- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
+- Worksheets containing inclass examples and for Worksheets Days that occur throughout the course. 
 
 ---
 
