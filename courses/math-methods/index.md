@@ -16,14 +16,15 @@ The materials below are organized similarly to a compiled course packet: lecture
 - [Lectures](lectures/)
 - Lecture notes are intended to be read **before or after class**
 
-## Practice Days
-- [Practice Days](practice/)
-- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
-
 ## Assignments
 - [Homework Sets](homework/)
 - Short homework sets are short and meant to reinforce both conceptual and computational skills directly related to the relivent lecture.
 - Long homework sets (bi-weekly homework) similarly reinforce both conceptual and computational skills, but at a deeper level with more difficult problems. 
+
+
+## Practice Days
+- [Practice Days](practice/)
+- Practice days are designed for **in-class group work**. See the course schedule in Blackboard for details.
 
 ---
 
