@@ -553,11 +553,13 @@ $$
 \end{aligned}
 $$
 
-where we have used the fact that we are assuming $\mathbf{A}^{-1}$ represents the inverse of $\mathbf{A}$ to allow the simplification: $\mathbf{A}^{-1}\mathbf{A} = 1$. Tehcnically, this operation would yeild the identity matirx $\mathbf{I}$, but we will get to that shortly. The main point for now is to notice how this solution stragety is igentical on concept to the simple algebra problem solved previously. 
+where we have used the fact that we are assuming $\mathbf{A}^{-1}$ represents the inverse of $\mathbf{A}$ to allow the simplification: $\mathbf{A}^{-1}\mathbf{A} = 1$. Tehcnically, this operation would yeild the identity matirx $\mathbf{I}$, but we will get to that shortly. The main point for now is to notice how this solution stragety is identical in concept to the simple algebra problem solved previously. 
 
-So how do we know whether a matrix has an inverse and how do we go about finding it? The answer to the first part of this quation comes straight from the determinant: **If the determinant is zero, the matrix does not have an inverse.**
+So how do we know whether a matrix has an inverse and how do we go about finding it? 
 
-For example, consider the determinant of the coefficient matrix above:
+The answer to the first part of this quation comes straight from the determinant: **If the determinant is zero, the matrix does not have an inverse.** Why? Because you cannot divide by 0. There are more technical reasons as to why an inverse would not exist for a matrix, which we will get to, but this conceptual justification is good enough for us right now.
+
+Let's check the coefficient matrix we just had. Does this matrix have an inverse? To answer this we calcualte its determinant:
 
 $$
 |\mathbf{A}| = \begin{vmatrix}
@@ -571,7 +573,11 @@ $$
 Because the determinant is nonzero, this matrix *can* be inverted.
 
 {% include warning.html content="
-Not all square matrices have inverses! If the determinant is zero, the matrix is said to be *singular* and \\textbf{can’t be inverted}. That means the inverse of this kind of matrix does not exist.
+Not all square matrices have inverses! 
+
+If the determinant is zero, the matrix is said to be *singular* and *can’t be inverted*. 
+
+That means the inverse of this kind of matrix does not exist.
 " %}
 
 But, how do we actually find the inverse? One general approach is to use the row-reduction techniques we’ve already learned. Another option is to use a calculator, which is what we’ll rely on for most inverses going forward.
@@ -583,6 +589,120 @@ But, how do we actually find the inverse? One general approach is to use the row
 
 
 ### Row Reduction Method of Finding an Inverse
+
+Let’s walk through the row reduction method once so we can see how it works. After that, we’ll stick to using calculators for finding matrix inverses.
+
+Start by setting up an augmented matrix like this:
+
+$$
+\begin{bmatrix}
+	2 & 3 & \vline & 1 & 0 \\
+	-3 & 9 & \vline & 0 & 1 \\
+\end{bmatrix}
+$$
+
+The matrix
+
+$$
+\begin{bmatrix}
+	1 & 0 \\
+	0 & 1
+\end{bmatrix}
+$$
+
+is called the **identity matrix**, $\mathbf{I}$. It works like the number $1$ in multiplication. That means:
+
+$$
+\mathbf{A} \mathbf{I} = \mathbf{A} = \mathbf{I} \mathbf{A} 
+$$
+
+The side $\mathbf{I}$ acts on does not matter!
+
+To find $\mathbf{A}^{-1}$, we use row reduction to transform the left side of the augmented matrix into the identity matrix. When we succeed, the right side becomes the inverse of $\mathbf{A}$. Here's what the steps look like:
+
+$$
+\begin{aligned}
+	\begin{bmatrix}
+		2 & 3 & \vline & 1 & 0 \\
+		-3 & 9 & \vline & 0 & 1 \\
+	\end{bmatrix}
+	&\implies
+	\begin{bmatrix}
+		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
+		1 & -3 & \vline & 0 & -\tfrac{1}{3} \\
+	\end{bmatrix}
+	\\[1ex]
+	&\implies
+	\begin{bmatrix}
+		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
+		0 & -\tfrac{9}{2} & \vline & -\tfrac{1}{2} & -\tfrac{1}{3} \\
+	\end{bmatrix}
+	\\[1ex]
+	&\implies
+	\begin{bmatrix}
+		1 & \tfrac{3}{2} & \vline & \tfrac{1}{2} & 0 \\
+		0 & 1 & \vline & \tfrac{1}{9} & \tfrac{2}{27} \\
+	\end{bmatrix}
+	\\[1ex]
+	&\implies
+	\begin{bmatrix}
+		1 & 0 & \vline & \tfrac{1}{3} & -\tfrac{1}{9} \\
+		0 & 1 & \vline & \tfrac{1}{9} & \tfrac{2}{27} \\
+	\end{bmatrix}
+\end{aligned}
+$$
+
+So the inverse of $\mathbf{A}$ is:
+
+$$
+\mathbf{A}^{-1} = \frac{1}{27} \begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix}
+$$
+
+{% include result.html content="
+This process leads us to a general form for the inverse of a $2 \\times 2$ matrix, 
+
+$$ 
+\\mathbf{B} = \\begin{bmatrix}
+	b_{11} & b_{12} \\\\ 
+	b_{21} & b_{22}
+\\end{bmatrix} 
+\\implies 
+\\mathbf{B}^{-1} = \\frac{1}{\\text{det}(\\mathbf{B})} \\begin{bmatrix}
+	b_{22} & -b_{12} \\\\ 
+	-b_{21} & b_{11}
+\\end{bmatrix} 
+$$
+" %}
+
+(You should check that this gives the same inverse to the above example on your own!)
+
+How do we confirm that this really is the inverse of $\mathbf{A}$? Multiply them and check if you get the identity matrix:
+
+$$
+\begin{aligned}
+\mathbf{A}^{-1} \mathbf{A} &= \frac{1}{27}
+\begin{bmatrix} 9 & -3 \\ 3 & 2 \end{bmatrix}
+\begin{bmatrix} 2 & 3 \\ -3 & 9 \end{bmatrix} \\
+&= \frac{1}{27}
+\begin{bmatrix}
+(9)(2) + (-3)(-3) & (9)(3) + (-3)(9) \\
+(3)(2) + (2)(-3) & (3)(3) + (2)(9)
+\end{bmatrix} \\
+&= \frac{1}{27}
+\begin{bmatrix}
+27 & 0 \\
+0 & 27
+\end{bmatrix}
+= \begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix} \\
+\Rightarrow \quad \mathbf{A}^{-1} \mathbf{A} &= \mathbf{I}
+\end{aligned}
+$$
+
+You can also check that $\mathbf{A} \mathbf{A}^{-1}$ gives the identity matrix—it should!
+
 
 Let’s look at the row reduction method once to understand the process, and then we’ll use a calculator for all inverse matrices from here on.
 
