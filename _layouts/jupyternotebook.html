@@ -24,6 +24,16 @@
     });
   </script>
 
+  <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css">
+
+  <script defer
+          src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+  <script defer
+          src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+
   <style>
     :root {
       --text-width: 60rem;     /* ~6.5 inches */
@@ -173,14 +183,14 @@
 
     .codeinput pre,
     .codeoutput pre {
-      margin: 0;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
-      word-break: break-word;
     }
-    .codeinput,
-    .codeoutput {
-      font-size: 0.90rem;
+
+    .codeinput code[class*="language-"],
+    .codeoutput code[class*="language-"] {
+      background: none; /* let your cell background show */
+      font-size: 0.95rem;
     }
 
     /* Course navigation (LaTeX handout style) */
