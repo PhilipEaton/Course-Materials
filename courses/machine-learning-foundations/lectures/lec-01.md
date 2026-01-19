@@ -264,71 +264,71 @@ penguins.head()
 
   <thead>
     <tr>
-      <th id="h-row" scope="col">Row</th>
-      <th id="h-species" scope="col">Species</th>
-      <th id="h-island" scope="col">Island</th>
-      <th id="h-bill-length" scope="col">Bill length (mm)</th>
-      <th id="h-bill-depth" scope="col">Bill depth (mm)</th>
-      <th id="h-flipper" scope="col">Flipper length (mm)</th>
-      <th id="h-mass" scope="col">Body mass (g)</th>
-      <th id="h-sex" scope="col">Sex</th>
+      <th id="raw-h-row" scope="col">Row</th>
+      <th id="raw-h-species" scope="col">Species</th>
+      <th id="raw-h-island" scope="col">Island</th>
+      <th id="raw-h-bill-length" scope="col">Bill length (mm)</th>
+      <th id="raw-h-bill-depth" scope="col">Bill depth (mm)</th>
+      <th id="raw-h-flipper" scope="col">Flipper length (mm)</th>
+      <th id="raw-h-mass" scope="col">Body mass (g)</th>
+      <th id="raw-h-sex" scope="col">Sex</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <th id="r0" scope="row">0</th>
-      <td headers="r0 h-species">Adelie</td>
-      <td headers="r0 h-island">Torgersen</td>
-      <td headers="r0 h-bill-length">39.1</td>
-      <td headers="r0 h-bill-depth">18.7</td>
-      <td headers="r0 h-flipper">181.0</td>
-      <td headers="r0 h-mass">3750.0</td>
-      <td headers="r0 h-sex">Male</td>
+      <th id="raw-r0" scope="row">0</th>
+      <td headers="raw-r0 h-species">Adelie</td>
+      <td headers="raw-r0 h-island">Torgersen</td>
+      <td headers="raw-r0 h-bill-length">39.1</td>
+      <td headers="raw-r0 h-bill-depth">18.7</td>
+      <td headers="raw-r0 h-flipper">181.0</td>
+      <td headers="raw-r0 h-mass">3750.0</td>
+      <td headers="raw-r0 h-sex">Male</td>
     </tr>
 
     <tr>
-      <th id="r1" scope="row">1</th>
-      <td headers="r1 h-species">Adelie</td>
-      <td headers="r1 h-island">Torgersen</td>
-      <td headers="r1 h-bill-length">39.5</td>
-      <td headers="r1 h-bill-depth">17.4</td>
-      <td headers="r1 h-flipper">186.0</td>
-      <td headers="r1 h-mass">3800.0</td>
-      <td headers="r1 h-sex">Female</td>
+      <th id="raw-r1" scope="row">1</th>
+      <td headers="raw-r1 h-species">Adelie</td>
+      <td headers="raw-r1 h-island">Torgersen</td>
+      <td headers="raw-r1 h-bill-length">39.5</td>
+      <td headers="raw-r1 h-bill-depth">17.4</td>
+      <td headers="raw-r1 h-flipper">186.0</td>
+      <td headers="raw-r1 h-mass">3800.0</td>
+      <td headers="raw-r1 h-sex">Female</td>
     </tr>
 
     <tr>
-      <th id="r2" scope="row">2</th>
-      <td headers="r2 h-species">Adelie</td>
-      <td headers="r2 h-island">Torgersen</td>
-      <td headers="r2 h-bill-length">40.3</td>
-      <td headers="r2 h-bill-depth">18.0</td>
-      <td headers="r2 h-flipper">195.0</td>
-      <td headers="r2 h-mass">3250.0</td>
-      <td headers="r2 h-sex">Female</td>
+      <th id="raw-r2" scope="row">2</th>
+      <td headers="raw-r2 h-species">Adelie</td>
+      <td headers="raw-r2 h-island">Torgersen</td>
+      <td headers="raw-r2 h-bill-length">40.3</td>
+      <td headers="raw-r2 h-bill-depth">18.0</td>
+      <td headers="raw-r2 h-flipper">195.0</td>
+      <td headers="raw-r2 h-mass">3250.0</td>
+      <td headers="raw-r2 h-sex">Female</td>
     </tr>
 
     <tr>
-      <th id="r3" scope="row">3</th>
-      <td headers="r3 h-species">Adelie</td>
-      <td headers="r3 h-island">Torgersen</td>
-      <td headers="r3 h-bill-length" aria-label="Missing value">NaN</td>
-      <td headers="r3 h-bill-depth" aria-label="Missing value">NaN</td>
-      <td headers="r3 h-flipper" aria-label="Missing value">NaN</td>
-      <td headers="r3 h-mass" aria-label="Missing value">NaN</td>
-      <td headers="r3 h-sex" aria-label="Missing value">NaN</td>
+      <th id="raw-r3" scope="row">3</th>
+      <td headers="raw-r3 h-species">Adelie</td>
+      <td headers="raw-r3 h-island">Torgersen</td>
+      <td headers="raw-r3 h-bill-length" aria-label="Missing value">NaN</td>
+      <td headers="raw-r3 h-bill-depth" aria-label="Missing value">NaN</td>
+      <td headers="raw-r3 h-flipper" aria-label="Missing value">NaN</td>
+      <td headers="raw-r3 h-mass" aria-label="Missing value">NaN</td>
+      <td headers="raw-r3 h-sex" aria-label="Missing value">NaN</td>
     </tr>
 
     <tr>
-      <th id="r4" scope="row">4</th>
-      <td headers="r4 h-species">Adelie</td>
-      <td headers="r4 h-island">Torgersen</td>
-      <td headers="r4 h-bill-length">36.7</td>
-      <td headers="r4 h-bill-depth">19.3</td>
-      <td headers="r4 h-flipper">193.0</td>
-      <td headers="r4 h-mass">3450.0</td>
-      <td headers="r4 h-sex">Female</td>
+      <th id="raw-r4" scope="row">4</th>
+      <td headers="raw-r4 h-species">Adelie</td>
+      <td headers="raw-r4 h-island">Torgersen</td>
+      <td headers="raw-r4 h-bill-length">36.7</td>
+      <td headers="raw-r4 h-bill-depth">19.3</td>
+      <td headers="raw-r4 h-flipper">193.0</td>
+      <td headers="raw-r4 h-mass">3450.0</td>
+      <td headers="raw-r4 h-sex">Female</td>
     </tr>
   </tbody>
 </table>
@@ -406,71 +406,71 @@ penguins.head()
 
   <thead>
     <tr>
-      <th id="h-row" scope="col">Row</th>
-      <th id="h-species" scope="col">Species</th>
-      <th id="h-island" scope="col">Island</th>
-      <th id="h-bill-length" scope="col">Bill length (mm)</th>
-      <th id="h-bill-depth" scope="col">Bill depth (mm)</th>
-      <th id="h-flipper" scope="col">Flipper length (mm)</th>
-      <th id="h-mass" scope="col">Body mass (g)</th>
-      <th id="h-sex" scope="col">Sex</th>
+      <th id="updated-h-row" scope="col">Row</th>
+      <th id="updated-h-species" scope="col">Species</th>
+      <th id="updated-h-island" scope="col">Island</th>
+      <th id="updated-h-bill-length" scope="col">Bill length (mm)</th>
+      <th id="updated-h-bill-depth" scope="col">Bill depth (mm)</th>
+      <th id="updated-h-flipper" scope="col">Flipper length (mm)</th>
+      <th id="updated-h-mass" scope="col">Body mass (g)</th>
+      <th id="updated-h-sex" scope="col">Sex</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <th id="r0" scope="row">0</th>
-      <td headers="r0 h-species">Adelie</td>
-      <td headers="r0 h-island">Torgersen</td>
-      <td headers="r0 h-bill-length">39.1</td>
-      <td headers="r0 h-bill-depth">18.7</td>
-      <td headers="r0 h-flipper">181.0</td>
-      <td headers="r0 h-mass">3750.0</td>
-      <td headers="r0 h-sex">Male</td>
+      <th id="updated-r0" scope="row">0</th>
+      <td headers="updated-r0 h-species">Adelie</td>
+      <td headers="updated-r0 h-island">Torgersen</td>
+      <td headers="updated-r0 h-bill-length">39.1</td>
+      <td headers="updated-r0 h-bill-depth">18.7</td>
+      <td headers="updated-r0 h-flipper">181.0</td>
+      <td headers="updated-r0 h-mass">3750.0</td>
+      <td headers="updated-r0 h-sex">Male</td>
     </tr>
 
     <tr>
-      <th id="r1" scope="row">1</th>
-      <td headers="r1 h-species">Adelie</td>
-      <td headers="r1 h-island">Torgersen</td>
-      <td headers="r1 h-bill-length">39.5</td>
-      <td headers="r1 h-bill-depth">17.4</td>
-      <td headers="r1 h-flipper">186.0</td>
-      <td headers="r1 h-mass">3800.0</td>
-      <td headers="r1 h-sex">Female</td>
+      <th id="updated-r1" scope="row">1</th>
+      <td headers="updated-r1 h-species">Adelie</td>
+      <td headers="updated-r1 h-island">Torgersen</td>
+      <td headers="updated-r1 h-bill-length">39.5</td>
+      <td headers="updated-r1 h-bill-depth">17.4</td>
+      <td headers="updated-r1 h-flipper">186.0</td>
+      <td headers="updated-r1 h-mass">3800.0</td>
+      <td headers="updated-r1 h-sex">Female</td>
     </tr>
 
     <tr>
-      <th id="r2" scope="row">2</th>
-      <td headers="r2 h-species">Adelie</td>
-      <td headers="r2 h-island">Torgersen</td>
-      <td headers="r2 h-bill-length">40.3</td>
-      <td headers="r2 h-bill-depth">18.0</td>
-      <td headers="r2 h-flipper">195.0</td>
-      <td headers="r2 h-mass">3250.0</td>
-      <td headers="r2 h-sex">Female</td>
+      <th id="updated-r2" scope="row">2</th>
+      <td headers="updated-r2 h-species">Adelie</td>
+      <td headers="updated-r2 h-island">Torgersen</td>
+      <td headers="updated-r2 h-bill-length">40.3</td>
+      <td headers="updated-r2 h-bill-depth">18.0</td>
+      <td headers="updated-r2 h-flipper">195.0</td>
+      <td headers="updated-r2 h-mass">3250.0</td>
+      <td headers="updated-r2 h-sex">Female</td>
     </tr>
 
     <tr>
-      <th id="r3" scope="row">3</th>
-      <td headers="r3 h-species">Adelie</td>
-      <td headers="r3 h-island">Torgersen</td>
-      <td headers="r3 h-bill-length">36.7</td>
-      <td headers="r3 h-bill-depth">19.3</td>
-      <td headers="r3 h-flipper">193.0</td>
-      <td headers="r3 h-mass">3450.0</td>
-      <td headers="r3 h-sex">Female</td>
+      <th id="updated-r3" scope="row">3</th>
+      <td headers="updated-r3 h-species">Adelie</td>
+      <td headers="updated-r3 h-island">Torgersen</td>
+      <td headers="updated-r3 h-bill-length">36.7</td>
+      <td headers="updated-r3 h-bill-depth">19.3</td>
+      <td headers="updated-r3 h-flipper">193.0</td>
+      <td headers="updated-r3 h-mass">3450.0</td>
+      <td headers="updated-r3 h-sex">Female</td>
     </tr>
 
     <tr>
-      <th id="r4" scope="row">4</th>
-      <td headers="r4 h-species">Adelie</td>
-      <td headers="r4 h-island">Torgersen</td>
-      <td headers="r4 h-bill-length">39.3</td>
-      <td headers="r4 h-bill-depth">20.6</td>
-      <td headers="r4 h-flipper">190.0</td>
-      <td headers="r4 h-mass">3650.0</td>
-      <td headers="r4 h-sex">Female</td>
+      <th id="updated-r4" scope="row">4</th>
+      <td headers="updated-r4 h-species">Adelie</td>
+      <td headers="updated-r4 h-island">Torgersen</td>
+      <td headers="updated-r4 h-bill-length">39.3</td>
+      <td headers="updated-r4 h-bill-depth">20.6</td>
+      <td headers="updated-r4 h-flipper">190.0</td>
+      <td headers="updated-r4 h-mass">3650.0</td>
+      <td headers="updated-r4 h-sex">Female</td>
     </tr>
   </tbody>
 </table>
@@ -519,89 +519,89 @@ penguins.head()
 
   <thead>
     <tr>
-      <th id="h-row" scope="col">Row</th>
-      <th id="h-species" scope="col">Species</th>
-      <th id="h-island" scope="col">Island</th>
-      <th id="h-bill-length" scope="col">Bill length (mm)</th>
-      <th id="h-bill-depth" scope="col">Bill depth (mm)</th>
-      <th id="h-flipper" scope="col">Flipper length (mm)</th>
-      <th id="h-mass" scope="col">Body mass (g)</th>
-      <th id="h-sex" scope="col">Sex</th>
-      <th id="h-species-enc" scope="col">Species encoded</th>
-      <th id="h-island-enc" scope="col">Island encoded</th>
-      <th id="h-sex-enc" scope="col">Sex encoded</th>
+      <th id="enc-h-row" scope="col">Row</th>
+      <th id="enc-h-species" scope="col">Species</th>
+      <th id="enc-h-island" scope="col">Island</th>
+      <th id="enc-h-bill-length" scope="col">Bill length (mm)</th>
+      <th id="enc-h-bill-depth" scope="col">Bill depth (mm)</th>
+      <th id="enc-h-flipper" scope="col">Flipper length (mm)</th>
+      <th id="enc-h-mass" scope="col">Body mass (g)</th>
+      <th id="enc-h-sex" scope="col">Sex</th>
+      <th id="enc-h-species-enc" scope="col">Species encoded</th>
+      <th id="enc-h-island-enc" scope="col">Island encoded</th>
+      <th id="enc-h-sex-enc" scope="col">Sex encoded</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <th id="r0" scope="row">0</th>
-      <td headers="r0 h-species">Adelie</td>
-      <td headers="r0 h-island">Torgersen</td>
-      <td headers="r0 h-bill-length">39.1</td>
-      <td headers="r0 h-bill-depth">18.7</td>
-      <td headers="r0 h-flipper">181.0</td>
-      <td headers="r0 h-mass">3750.0</td>
-      <td headers="r0 h-sex">Male</td>
-      <td headers="r0 h-species-enc">0</td>
-      <td headers="r0 h-island-enc">2</td>
-      <td headers="r0 h-sex-enc">1</td>
+      <th id="enc-r0" scope="row">0</th>
+      <td headers="enc-r0 h-species">Adelie</td>
+      <td headers="enc-r0 h-island">Torgersen</td>
+      <td headers="enc-r0 h-bill-length">39.1</td>
+      <td headers="enc-r0 h-bill-depth">18.7</td>
+      <td headers="enc-r0 h-flipper">181.0</td>
+      <td headers="enc-r0 h-mass">3750.0</td>
+      <td headers="enc-r0 h-sex">Male</td>
+      <td headers="enc-r0 h-species-enc">0</td>
+      <td headers="enc-r0 h-island-enc">2</td>
+      <td headers="enc-r0 h-sex-enc">1</td>
     </tr>
 
     <tr>
-      <th id="r1" scope="row">1</th>
-      <td headers="r1 h-species">Adelie</td>
-      <td headers="r1 h-island">Torgersen</td>
-      <td headers="r1 h-bill-length">39.5</td>
-      <td headers="r1 h-bill-depth">17.4</td>
-      <td headers="r1 h-flipper">186.0</td>
-      <td headers="r1 h-mass">3800.0</td>
-      <td headers="r1 h-sex">Female</td>
-      <td headers="r1 h-species-enc">0</td>
-      <td headers="r1 h-island-enc">2</td>
-      <td headers="r1 h-sex-enc">0</td>
+      <th id="enc-enc-r1" scope="row">1</th>
+      <td headers="enc-r1 h-species">Adelie</td>
+      <td headers="enc-r1 h-island">Torgersen</td>
+      <td headers="enc-r1 h-bill-length">39.5</td>
+      <td headers="enc-r1 h-bill-depth">17.4</td>
+      <td headers="enc-r1 h-flipper">186.0</td>
+      <td headers="enc-r1 h-mass">3800.0</td>
+      <td headers="enc-r1 h-sex">Female</td>
+      <td headers="enc-r1 h-species-enc">0</td>
+      <td headers="enc-r1 h-island-enc">2</td>
+      <td headers="enc-r1 h-sex-enc">0</td>
     </tr>
 
     <tr>
-      <th id="r2" scope="row">2</th>
-      <td headers="r2 h-species">Adelie</td>
-      <td headers="r2 h-island">Torgersen</td>
-      <td headers="r2 h-bill-length">40.3</td>
-      <td headers="r2 h-bill-depth">18.0</td>
-      <td headers="r2 h-flipper">195.0</td>
-      <td headers="r2 h-mass">3250.0</td>
-      <td headers="r2 h-sex">Female</td>
-      <td headers="r2 h-species-enc">0</td>
-      <td headers="r2 h-island-enc">2</td>
-      <td headers="r2 h-sex-enc">0</td>
+      <th id="enc-enc-r2" scope="row">2</th>
+      <td headers="enc-r2 h-species">Adelie</td>
+      <td headers="enc-r2 h-island">Torgersen</td>
+      <td headers="enc-r2 h-bill-length">40.3</td>
+      <td headers="enc-r2 h-bill-depth">18.0</td>
+      <td headers="enc-r2 h-flipper">195.0</td>
+      <td headers="enc-r2 h-mass">3250.0</td>
+      <td headers="enc-r2 h-sex">Female</td>
+      <td headers="enc-r2 h-species-enc">0</td>
+      <td headers="enc-r2 h-island-enc">2</td>
+      <td headers="enc-r2 h-sex-enc">0</td>
     </tr>
 
     <tr>
-      <th id="r4" scope="row">4</th>
-      <td headers="r4 h-species">Adelie</td>
-      <td headers="r4 h-island">Torgersen</td>
-      <td headers="r4 h-bill-length">36.7</td>
-      <td headers="r4 h-bill-depth">19.3</td>
-      <td headers="r4 h-flipper">193.0</td>
-      <td headers="r4 h-mass">3450.0</td>
-      <td headers="r4 h-sex">Female</td>
-      <td headers="r4 h-species-enc">0</td>
-      <td headers="r4 h-island-enc">2</td>
-      <td headers="r4 h-sex-enc">0</td>
+      <th id="enc-enc-r4" scope="row">4</th>
+      <td headers="enc-r4 h-species">Adelie</td>
+      <td headers="enc-r4 h-island">Torgersen</td>
+      <td headers="enc-r4 h-bill-length">36.7</td>
+      <td headers="enc-r4 h-bill-depth">19.3</td>
+      <td headers="enc-r4 h-flipper">193.0</td>
+      <td headers="enc-r4 h-mass">3450.0</td>
+      <td headers="enc-r4 h-sex">Female</td>
+      <td headers="enc-r4 h-species-enc">0</td>
+      <td headers="enc-r4 h-island-enc">2</td>
+      <td headers="enc-r4 h-sex-enc">0</td>
     </tr>
 
     <tr>
-      <th id="r5" scope="row">5</th>
-      <td headers="r5 h-species">Adelie</td>
-      <td headers="r5 h-island">Torgersen</td>
-      <td headers="r5 h-bill-length">39.3</td>
-      <td headers="r5 h-bill-depth">20.6</td>
-      <td headers="r5 h-flipper">190.0</td>
-      <td headers="r5 h-mass">3650.0</td>
-      <td headers="r5 h-sex">Male</td>
-      <td headers="r5 h-species-enc">0</td>
-      <td headers="r5 h-island-enc">2</td>
-      <td headers="r5 h-sex-enc">1</td>
+      <th id="enc-enc-r5" scope="row">5</th>
+      <td headers="enc-r5 h-species">Adelie</td>
+      <td headers="enc-r5 h-island">Torgersen</td>
+      <td headers="enc-r5 h-bill-length">39.3</td>
+      <td headers="enc-r5 h-bill-depth">20.6</td>
+      <td headers="enc-r5 h-flipper">190.0</td>
+      <td headers="enc-r5 h-mass">3650.0</td>
+      <td headers="enc-r5 h-sex">Male</td>
+      <td headers="enc-r5 h-species-enc">0</td>
+      <td headers="enc-r5 h-island-enc">2</td>
+      <td headers="enc-r5 h-sex-enc">1</td>
     </tr>
   </tbody>
 </table>
@@ -957,47 +957,47 @@ display(results_df)
 
   <thead>
     <tr>
-      <th id="h-row" scope="col">Row</th>
-      <th id="h-model" scope="col">Model</th>
-      <th id="h-accuracy" scope="col">Accuracy (or ARI)</th>
-      <th id="h-f1" scope="col">F1 score</th>
+      <th id="mc-h-row" scope="col">Row</th>
+      <th id="mc-h-model" scope="col">Model</th>
+      <th id="mc-h-accuracy" scope="col">Accuracy (or ARI)</th>
+      <th id="mc-h-f1" scope="col">F1 score</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <th id="r0" scope="row">0</th>
-      <td headers="r0 h-model">k-Nearest Neighbors</td>
-      <td headers="r0 h-accuracy">0.985075</td>
-      <td headers="r0 h-f1">0.985229</td>
+      <th id="mc-r0" scope="row">0</th>
+      <td headers="mc-r0 h-model">k-Nearest Neighbors</td>
+      <td headers="mc-r0 h-accuracy">0.985075</td>
+      <td headers="mc-r0 h-f1">0.985229</td>
     </tr>
 
     <tr>
-      <th id="r1" scope="row">1</th>
-      <td headers="r1 h-model">Logistic Regression</td>
-      <td headers="r1 h-accuracy">1.000000</td>
-      <td headers="r1 h-f1">1.000000</td>
+      <th id="mc-r1" scope="row">1</th>
+      <td headers="mc-r1 h-model">Logistic Regression</td>
+      <td headers="mc-r1 h-accuracy">1.000000</td>
+      <td headers="mc-r1 h-f1">1.000000</td>
     </tr>
 
     <tr>
-      <th id="r2" scope="row">2</th>
-      <td headers="r2 h-model">Naïve Bayes</td>
-      <td headers="r2 h-accuracy">0.895522</td>
-      <td headers="r2 h-f1">0.899955</td>
+      <th id="mc-r2" scope="row">2</th>
+      <td headers="mc-r2 h-model">Naïve Bayes</td>
+      <td headers="mc-r2 h-accuracy">0.895522</td>
+      <td headers="mc-r2 h-f1">0.899955</td>
     </tr>
 
     <tr>
-      <th id="r3" scope="row">3</th>
-      <td headers="r3 h-model">Decision Tree</td>
-      <td headers="r3 h-accuracy">0.985075</td>
-      <td headers="r3 h-f1">0.985229</td>
+      <th id="mc-r3" scope="row">3</th>
+      <td headers="mc-r3 h-model">Decision Tree</td>
+      <td headers="mc-r3 h-accuracy">0.985075</td>
+      <td headers="mc-r3 h-f1">0.985229</td>
     </tr>
 
     <tr>
-      <th id="r4" scope="row">4</th>
-      <td headers="r4 h-model">Random Forest</td>
-      <td headers="r4 h-accuracy">1.000000</td>
-      <td headers="r4 h-f1">1.000000</td>
+      <th id="mc-r4" scope="row">4</th>
+      <td headers="mc-r4 h-model">Random Forest</td>
+      <td headers="mc-r4 h-accuracy">1.000000</td>
+      <td headers="mc-r4 h-f1">1.000000</td>
     </tr>
   </tbody>
 </table>
