@@ -237,101 +237,7 @@ $$
 {% capture ex %}
 Suppose we rotate the vector $(1, 0, 0)$ by 90 degrees about the $z$-axis, then by 90 degrees about the $x$-axis.
 
-**First Rotation:**
-
-$$
-\mathbf{R}_z(90^\circ) = \begin{bmatrix}
-	0 & -1 & 0 \\
-	1 & 0 & 0 \\
-	0 & 0 & 1
-\end{bmatrix}
-\quad
-\vec{r} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
-\quad
-\Rightarrow \quad
-\mathbf{R}_z \vec{r} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
-$$
-
-**Second Rotation:**
-
-$$
-\mathbf{R}_x(90^\circ) = \begin{bmatrix}
-	1 & 0 & 0 \\
-	0 & 0 & -1 \\
-	0 & 1 & 0
-\end{bmatrix}
-\quad
-\Rightarrow \quad
-\vec{r}' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
-$$
-
-If you reverse the order (first rotate about $x$, then about $z$), the result is different:
-
-$$
-\mathbf{R}_x(90^\circ) \vec{r} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
-\quad
-\Rightarrow \quad
-\mathbf{R}_z(90^\circ) \vec{r} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
-$$
-
-The takeaway: **the order of matrix multiplication matters**. This is called **non-commutativity**.
-{% endcapture %}
-{% include example.html content=ex %}
-
-The fact that operations can be represented by matrices—and that the order of matrix multiplication often matters—is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters. Specifically, he discovered that position and momentum do **not** commute. This non-commutativity, expressed in the canonical commutation relation
-
-$$
-[\widehat{x}, \widehat{p}_x] = \widehat{x} \widehat{p}_x - \widehat{p}_x \widehat{x} = i \hbar
-$$
-
-was a key insight that led Heisenberg, with contributions from Born and Jordan, to develop *Matrix Mechanics*, one of the earliest formulations of Quantum Mechanics.
-
-At the time, matrices were relatively new to physics, and it was Jordan—familiar with recent mathematical developments—who introduced Heisenberg to matrices and helped guide the mathematical formulation. This collaboration laid the foundation for much of modern quantum theory.
-
-
-
-
-
-
-
-
-
-## Rotations
-
-To extend this to a 3-dimensional rotation matrix, we can include an unchanged $ z $-component as follows:
-
-$$
-\mathbf{R}_z(\theta) = \begin{bmatrix}
-	\cos(\theta) & -\sin(\theta) & 0 \\
-	\sin(\theta) & \cos(\theta) & 0 \\
-	0  & 0 & 1
-\end{bmatrix}
-$$
-
-This matrix represents a rotation by an angle $ \theta $ about the $ z $-axis in three-dimensional space, leaving the $ z $-coordinate unaffected. Through a similar logic, you can get the rotations matrices for rotations about the $x$ and $y$ axes. 
-
-For a rotation by an angle $ \alpha $ about the $ x $-axis:
-
-$$
-\mathbf{R}_x(\alpha) = \begin{bmatrix}
-	1 & 0 & 0 \\
-	0 & \cos(\alpha) & -\sin(\alpha) \\
-	0 & \sin(\alpha) & \cos(\alpha) 
-\end{bmatrix}
-$$
-
-For a rotation by an angle $ \beta $ about the $ y $-axis:
-
-$$
-\mathbf{R}_y(\beta) = \begin{bmatrix}
-	\cos(\beta) & 0 & \sin(\beta) \\
-	0 & 1 & 0 \\
-	-\sin(\beta) & 0 & \cos(\beta) 
-\end{bmatrix}
-$$
-
-{% capture ex %}
-Suppose we wish to rotate the vector $ (1,0,0) $ by 90 degrees about the $ z $-axis, followed by another 90-degree rotation about the $ x $-axis. The rotation matrices for each of these rotations, as well as the initial vector, are given by:
+The rotation matrices for each of these rotations, as well as the initial vector, are given by:
 
 $$
 \mathbf{R}_z(90^\circ) = \begin{bmatrix}
@@ -428,6 +334,27 @@ $$
 The final result is different from our previous result, showing that the order of rotations affects the outcome. In mathematics, this property is called **non-commutativity**, meaning the sequence in which the operations, in this case rotations, are applied is important for getting the correct final result.
 {% endcapture %}
 {% include example.html content=ex %}
+
+The fact that operations can be represented by matrices—and that the order of matrix multiplication often matters—is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters. Specifically, he discovered that position and momentum do **not** commute. This non-commutativity, expressed in the canonical commutation relation
+
+$$
+[\widehat{x}, \widehat{p}_x] = \widehat{x} \widehat{p}_x - \widehat{p}_x \widehat{x} = i \hbar
+$$
+
+was a key insight that led Heisenberg, with contributions from Born and Jordan, to develop *Matrix Mechanics*, one of the earliest formulations of Quantum Mechanics.
+
+At the time, matrices were relatively new to physics, and it was Jordan—familiar with recent mathematical developments—who introduced Heisenberg to matrices and helped guide the mathematical formulation. This collaboration laid the foundation for much of modern quantum theory.
+
+
+
+
+
+
+
+
+
+## Rotations
+
 
 The fact that operations can be represented by matrices, and that the order of matrix multiplication often matters, is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters—specifically, he discovered that position and momentum do not commute. This non-commutativity, expressed in the canonical commutation relation 
 $$
