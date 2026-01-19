@@ -392,11 +392,12 @@ This is especially true in 3D space or higher, where the order of applying rotat
 
 
 
+
 ## Reflections
 
-Another interesting coordinate transformation made possible using matrices is reflections. Reflections in geometry occur when you mirror a vector over one, or multiple, axes. In effect this take one of the coordinates from, say $x$ to $-x$ without changing any of the other coordinates. 
+Another interesting coordinate transformation made possible using matrices is **reflection**. Reflections occur when you mirror a vector across one (or more) axes. This effectively flips one of the coordinates, say $x$ becomes $-x$, while leaving the others unchanged.
 
-In general, a reflection matrix transforms points across a specified line in two dimensions or a plane in three dimensions. For instance, reflecting a point across the $ x $-axis in two dimensions can be represented by the following matrix:
+In general, a reflection matrix transforms points across a specific line (in 2D) or plane (in 3D). For example, reflecting a point across the $x$-axis in two dimensions is done using:
 
 $$
 \mathbf{R}_{x} = \begin{bmatrix}
@@ -405,20 +406,25 @@ $$
 \end{bmatrix}
 $$
 
-For example, if we apply this matrix to the vector $(2,5)$ we would get:
+If we apply this matrix to the vector $(2, 5)$:
 
-$$ \begin{bmatrix}
+$$
+\begin{bmatrix}
 	1 & 0 \\
 	0 & -1
-\end{bmatrix} \begin{bmatrix}
-2 \\ 5
-\end{bmatrix} = \begin{bmatrix}
-2 \\ -5
-\end{bmatrix} $$
+\end{bmatrix}
+\begin{bmatrix}
+	2 \\ 5
+\end{bmatrix}
+= 
+\begin{bmatrix}
+	2 \\ -5
+\end{bmatrix}
+$$
 
-which has carried the $y$ value to the negative of that value without changing the $x$ value. 
+we see that the $y$-value is flipped while the $x$-value remains unchanged.
 
-In three dimensions, reflecting a point across the $ xy $-plane can be represented as:
+In three dimensions, reflecting a point across the $xy$-plane is represented by:
 
 $$
 \mathbf{R}_{xy} = \begin{bmatrix}
@@ -429,35 +435,43 @@ $$
 $$
 
 {% capture ex %}
-Consider a situation in geometric optics where a light ray strikes a flat mirror, which lies along the $ x $-axis in a 2D plane, say attached to the ceiling (for some reason, maybe a dance party or something). Suppose a light ray initially travels along a vector directed 45 degrees above the $ x $-axis. This ray strikes the mirror and reflects causing its $ y $-component to change sign, while its $ x $-component remains the same, resulting in a reflection across the $ x $-axis--moving to the right and up to now moving to the right and down.
+Consider a scenario in geometric optics where a light ray strikes a flat mirror aligned with the $x$-axis in a 2D plane; maybe mounted to the ceiling for a dance party, who knows?
 
-To model this reflection mathematically, we can represent the mirror’s effect on the light ray using a reflection matrix. In 2D, a reflection matrix across the $ x $-axis can be written as:
-$$
-\mathbf{R}_{\text{x}} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
-$$
-This matrix flips the sign of the $ y $-component of any vector while leaving the $ x $-component unchanged, as we saw above.
+Suppose a light ray is initially traveling at a 45° angle above the $x$-axis. When it hits the mirror, its $y$-component flips sign, while its $x$-component stays the same, assuming $x$ is horizontal and $y$ is vertical. The ray goes from traveling up and to the right, to down and to the right—a perfect reflection across the $x$-axis.
 
-Suppose the incident light ray can be represented by the vector (the magnitude is unimportant in this example): 
+To model this reflection mathematically, we use the reflection matrix:
+$$
+\mathbf{R}_{x} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
+$$
+
+As we have seen, this flips the $y$-component and leaves the $x$-component untouched.
+
+Suppose the incoming light ray is:
 $$
 \vec{r}_0 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
 $$
 
-To find the direction of the reflected ray, we apply the reflection matrix:
+Then the reflected ray is:
 $$
-\vec{r}_{\text{reflected}} = \mathbf{R}_{\text{x}} \, \vec{r}_0 = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 \\ -1 \end{bmatrix}.
+\vec{r}_{\text{reflected}} = \mathbf{R}_x \, \vec{r}_0 
+= 
+\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} 
+\begin{bmatrix} 1 \\ 1 \end{bmatrix} 
+= 
+\begin{bmatrix} 1 \\ -1 \end{bmatrix}
 $$
-The resulting vector points 45 degrees below the $ x $-axis, showing that the ray has been reflected as expected.
 
-This example, models the action of a mirror perfectly aligned with the $ x $-axis reflecting a ray of light. In optics, this concept generalizes to more complex setups, such as reflections from angled mirrors or transformations in multi-dimensional systems, where reflection matrices are used to compute the paths and behaviors of light or other particles under reflection transformations.
+This new vector points 45° below the $x$-axis, just as we expect from a mirror reflection.
+
+In optics, this simple model generalizes to more complex setups, like: angled mirrors, curved surfaces, and higher-dimensional systems—where reflection matrices help track how light (or particles) change direction.
 {% endcapture %}
 {% include example.html content=ex %}
 
-
 ### Properties of Reflection Matrices
 
-A key property of reflection matrices is that they have a determinant of $ -1 $ (go ahead and check this for the two reflection matrices we wrote down previously), indicating that they change the "handedness" or orientation of the coordinate system. This is fundamentally different from rotation matrices, which preserve the orientation of the coordinate system. In particle physics, a change in the "handedness" of the system is referred to as a parity change. Reflection matrices in important for studying certain processes in particle physics which exhibit parity violation.
+A key feature of reflection matrices is that they have a determinant of $-1$ (go ahead and verify this for both reflection matrices we’ve seen so far). This tells us they **reverse the handedness** or orientation of the coordinate system.
 
-
+This is a fundamental difference from rotation matrices, which always preserve orientation (having determinant $+1$). In particle physics, flipping the handedness of a system is called a **parity transformation**. Reflection matrices are crucial for studying systems where **parity is violated**, which occurs in certain subatomic processes. So, while reflections may seem like a geometric curiosity, they actually connect to some of the deepest symmetries—and asymmetries—of the physical world.
 
 
 
