@@ -196,7 +196,9 @@ $$
 \begin{bmatrix} 0 \\ \tfrac{2}{\sqrt{2}} \end{bmatrix}
 $$
 
-This makes sense! The vector $(1,1)$ lies at a 45-degree angle from the $x$-axis. Rotating it another 45 degrees moves it directly along the $y$-axis, making its $x$-component zero. The vector’s magnitude is $|\vec{r}| = \sqrt{2}$, which matches the new $y$-component after simplifying $\tfrac{2}{\sqrt{2}}$.
+which makes sense! 
+
+Why? Because the vector $ (1,1) $ is already oriented at 45 degrees above the positive $ x $-axis. Rotating it by an additional 45 degrees brings it all the way to the $ y $-axis, making the $ x $-component zero. Furthermore, the length of this vector is $ |\vec{r}| = \sqrt{(1)^2 + (1)^2} = \sqrt{2} $, which agree with the $y$-component of the new vector after simplifying $ \tfrac{2}{\sqrt{2}} $.
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -295,128 +297,6 @@ At the time, matrices were relatively new to physics, and it was Jordan—famili
 
 
 ## Rotations
-
-The most straightforward way to find the rotation matrix is to examine how the unit vectors in the $xy$-plane are transformed under rotation. Imagine the original $xy$-coordinate system, and then draw a new coordinate system that has been rotated counterclockwise by an angle $\theta$ about the $z$-axis (pointing out of the page). The setup would look like this:
-
-
-<img
-  src="{{ '/courses/math-methods/images/lec03/rotatedcorrdinates.png' | relative_url }}"
-  alt="The image shows two sets of coordinate axes that share the same origin. The original axes are drawn in black, with the horizontal axis pointing to the right and labeled i-hat, and the vertical axis pointing upward and labeled j-hat. A rotated coordinate system is drawn in red. The red i-prime unit vector extends from the origin at an angle above the black horizontal axis. The red j-prime unit vector extends from the origin at an angle above the negative side of the black horizontal axis. Both red vectors form equal angles, labeled theta, with their adjacent black axes."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
-
-Using trigonometry, and the fact unit vectors have a length of $1$, we can see that the $x$-component of $\widehat{i}'$ is give as $\cos(\theta)$ and the $y$-component is given by $\sin(\theta)$. We can do the same thing $\widehat{j}'$, and the results can be written as:
-
-$$ \begin{aligned}
-	\cos(\theta) \,\widehat{i} + \sin(\theta) \,\widehat{j} = \widehat{i}'  \\
-	-\sin(\theta) \,\widehat{i} + \cos(\theta) \,\widehat{j} = \widehat{j}' \\
-\end{aligned} $$
-
-Check the $\widehat{j}'$ to make sure you agree! 
-
-Now, if we use the typical, and simplest, matrix representation for the unit vectors:
-$$\widehat{i} = \begin{bmatrix}
-	1 \\ 0
-\end{bmatrix} \qquad \text{and} \qquad \widehat{j} = \begin{bmatrix}
-0 \\ 1
-\end{bmatrix} $$
-We are left with the following result:
-$$ 
-	\begin{bmatrix}
-		\cos(\theta) \\ \sin(\theta)
-	\end{bmatrix} = \widehat{i}'  
-	\qquad \text{and} \qquad
-	\begin{bmatrix}
-		-\sin(\theta) \\ \cos(\theta)
-	\end{bmatrix} = \widehat{j}' 
-$$
-
-So, we need a matrix that will rotate $\widehat{i}$ to $\widehat{i}'$, and similarly $\widehat{j}$ to $\widehat{j}'$. Suppose we have the following matrix:
-
-$$  \mathbf{R} = \begin{bmatrix}
-	a & b \\ c& d
-\end{bmatrix} $$
-
-and we wish to force it to be the rotation matrix. This means we just need to find what the elements have to be to get the correct rotations of $\widehat{i}$ and $\widehat{j}$. 
-
-For instance, we will require the following to be true:
-
-$$ \mathbf{R} \, \widehat{i} = \widehat{i}' \quad \implies \quad  \begin{bmatrix}
-	a & b \\ c& d
-\end{bmatrix}  \begin{bmatrix}
-1 \\ 0
-\end{bmatrix} = \begin{bmatrix}
-\cos(\theta) \\ \sin(\theta)
-\end{bmatrix} \quad \implies \quad  \begin{bmatrix}
-a \\ c
-\end{bmatrix} = \begin{bmatrix}
-\cos(\theta) \\ \sin(\theta)
-\end{bmatrix}  $$
-this means $a = \cos(\theta)$ and $c = \sin(\theta)$. 
-
-Similarly, we enforce:
-$$ \mathbf{R} \, \widehat{j} = \widehat{j}' \quad \implies \quad \begin{bmatrix}
-	a & b \\ c& d
-\end{bmatrix}  \begin{bmatrix}
-	0 \\ 1
-\end{bmatrix} = \begin{bmatrix}
-	-\sin(\theta) \\ \cos(\theta)
-\end{bmatrix} \quad \implies \quad  \begin{bmatrix}
-	b \\ d
-\end{bmatrix} = \begin{bmatrix}
-	-\sin(\theta) \\ \cos(\theta)
-\end{bmatrix}  $$
-which tells us $b = -\sin(\theta)$ and $d = \cos(\theta)$. 
-
-
-{% capture ex %}
-The 2x2 rotation matrix $\mathbf{R}(\theta)$ that rotates a vector by an angle $\theta$ counterclockwise about the $z$-axis is given by:
-$$
-\mathbf{R}(\theta) = \begin{bmatrix}
-	\cos(\theta) & -\sin(\theta) \\
-	\sin(\theta) & \cos(\theta)
-\end{bmatrix}
-$$
-
-Please note, this matrix was designed to transform objects written in the original basis, in terms of $\widehat{i}$ and $\widehat{j}$, into their new representation in the rotated basis, $\widehat{i}'$ and $\widehat{j}'$.
-{% endcapture %}
-{% include result.html content=ex %}
-
-
-{% capture ex %}
-Suppose we wish to rotate the vector $ (1,1) $ by 45 degrees about the $ z $-axis. The rotation matrix and vector for this situation are given by:
-
-$$
-\mathbf{R}(45^\circ) = \begin{bmatrix}
-	\cos(45^\circ) & -\sin(45^\circ) \\
-	\sin(45^\circ) & \cos(45^\circ)
-\end{bmatrix} = \begin{bmatrix}
-	\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
-	\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
-\end{bmatrix} \qquad \vec{r} = \begin{bmatrix}
-	1 \\ 1
-\end{bmatrix}
-$$
-
-Applying the rotation matrix to the vector, we have:
-
-$$
-\vec{r}\,' = \mathbf{R}(45^\circ) \, \vec{r} = \begin{bmatrix}
-	\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
-	\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
-\end{bmatrix} \begin{bmatrix}
-	1 \\ 1
-\end{bmatrix} = \begin{bmatrix}
-	\tfrac{1}{\sqrt{2}} + (-\tfrac{1}{\sqrt{2}}) \\ \tfrac{1}{\sqrt{2}} + \tfrac{1}{\sqrt{2}}
-\end{bmatrix} = \begin{bmatrix}
-	0 \\ \tfrac{2}{\sqrt{2}}
-\end{bmatrix}
-$$
-
-which makes sense! 
-
-Why? Because the vector $ (1,1) $ is already oriented at 45 degrees above the positive $ x $-axis. Rotating it by an additional 45 degrees brings it all the way to the $ y $-axis, making the $ x $-component zero. Furthermore, the length of this vector is $ |\vec{r}| = \sqrt{(1)^2 + (1)^2} = \sqrt{2} $, which agree with the $y$-component of the new vector after simplifying $ \tfrac{2}{\sqrt{2}} $.
-{% endcapture %}
-{% include example.html content=ex %}
 
 To extend this to a 3-dimensional rotation matrix, we can include an unchanged $ z $-component as follows:
 
