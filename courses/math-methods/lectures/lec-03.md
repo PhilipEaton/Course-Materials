@@ -683,6 +683,70 @@ $$
 
 
 
+## Application: Light Ray Directions and Matrices
+
+In geometric optics, light rays are often represented by direction vectors, which describe the path light takes through space. When a light ray passes through optical components, like rotating elements or mirrors, its direction changes. We can model these changes using rotation and reflection matrices.
+
+Suppose we have a light ray traveling at a 45° angle above the $x$-axis. This direction vector can be written as:
+
+$$
+\vec{v} = \begin{bmatrix} \cos 45^\circ \\ \sin 45^\circ \end{bmatrix} = \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix}
+$$
+
+Now imagine this light ray:
+
+1. First passes through a device that rotates its direction counterclockwise by 30° (this could model, for example, a prism or a birefringent crystal),  
+2. Then reflects off a flat mirror that lies along the line $y = x$.
+
+We want to determine the final direction of the light ray after these two transformations.
+
+### Step 1: Rotation by 30$^\circ$
+
+The rotation matrix for a counterclockwise rotation by 30° is:
+
+$$
+\mathbf{R}(30^\circ) = \begin{bmatrix} \cos 30^\circ & -\sin 30^\circ \\ \sin 30^\circ & \cos 30^\circ \end{bmatrix} 
+= \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{bmatrix}
+$$
+
+Applying this to the original direction vector:
+
+$$
+\vec{v}_{\text{rotated}} = \mathbf{R}(30^\circ) \vec{v} 
+= \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{bmatrix}
+\begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} 
+= \begin{bmatrix} \frac{\sqrt{3} - 1}{2\sqrt{2}} \\ \frac{\sqrt{3} + 1}{2\sqrt{2}} \end{bmatrix}
+$$
+
+So after rotating by 30°, the light ray is now directed slightly more steeply—more vertical than horizontal.
+
+### Step 2: Reflection Across the Line $y = x$
+
+To reflect a vector across the line $y = x$, we use the reflection matrix:
+
+$$
+\mathbf{R}_{y=x} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+$$
+
+This matrix simply swaps the $x$- and $y$-components. So we apply:
+
+$$
+\vec{v}_{\text{final}} = \mathbf{R}_{y=x} \vec{v}_{\text{rotated}} = 
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} 
+\begin{bmatrix} \frac{\sqrt{3} - 1}{2\sqrt{2}} \\ \frac{\sqrt{3} + 1}{2\sqrt{2}} \end{bmatrix} 
+= \begin{bmatrix} \frac{\sqrt{3} + 1}{2\sqrt{2}} \\ \frac{\sqrt{3} - 1}{2\sqrt{2}} \end{bmatrix}
+$$
+
+This final vector represents the direction of the light ray after undergoing both the rotation and reflection. It has been rotated and then reflected across the 45° line, changing both its orientation and direction.
+
+### Physical Meaning
+
+This example shows how matrices let us simulate the behavior of light rays as they interact with mirrors, prisms, or other optical elements. Instead of drawing rays and measuring angles by hand, we can calculate their transformations using matrix algebra. This method becomes especially useful when analyzing more complex systems—like multiple reflections inside a laser cavity, or light passing through layers of lenses in a microscope.
+
+{% capture ex %}
+By chaining transformation matrices, you can model how the path of a light ray changes as it encounters mirrors, lenses, and other components. Reflections across axes or lines like $y = x$ are represented by reflection matrices, while rotations are captured using rotation matrices. Order matters!
+{% endcapture %}
+{% include result.html content=ex %}
 
 
 
@@ -716,23 +780,22 @@ We wish to find the final direction of the light ray after these two transformat
 The rotation matrix for a counterclockwise rotation by 30° is:
 
 $$
-\mathbf{R}(30^\circ) = \begin{bmatrix} \cos 30^\circ & -\sin 30^\circ \\ \sin 30^\circ & \cos 30^\circ \end{bmatrix} 
+\mathbf{R}_z(30^\circ) = \begin{bmatrix} \cos(30^\circ) & -\sin(30^\circ) \\ \sin(30^\circ) & \cos(30^\circ) \end{bmatrix} 
 = \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{bmatrix}
 $$
 
 Applying this to the original direction vector:
 
-
 $$
-\vec{v}_{\text{rotated}} = \mathbf{R}(30^\circ) \vec{v} = \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} 
+\vec{v}_{\text{rotated}} = \mathbf{R}_z(30^\circ) \vec{v} = \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} \\ \frac{1}{2} & \frac{\sqrt{3}}{2} \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} 
 = \begin{bmatrix} \frac{\sqrt{3} - 1}{2\sqrt{2}} \\ \frac{\sqrt{3} + 1}{2\sqrt{2}} \end{bmatrix}
 $$
 
-So after rotating by 30°, the light ray is now traveling in a slightly steeper direction, more in the $y$-direction than in the $x$-direction.
+After rotating by 30°, the light ray is now traveling in a slightly steeper direction, more in the $y$-direction than in the $x$-direction.
 
 ### Step 2: Reflection Across the Line $ y = x $
 
-To reflect a vector across the line $ y = x $, we use the reflection matrix:
+To reflect a vector across the line $ y = x $, we use the reflection matrix we found previously:
 
 $$
 \mathbf{R}_{y=x} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
@@ -746,15 +809,14 @@ $$
 = \begin{bmatrix} \frac{\sqrt{3} + 1}{2\sqrt{2}} \\ \frac{\sqrt{3} - 1}{2\sqrt{2}} \end{bmatrix}
 $$
 
-This new vector now represents the final direction of the light ray after both the rotation and the reflection. It has been bent by 30° and then mirrored across the 45° line.
+This new vector now represents the final direction of the light ray after both the rotation and the reflection. It has been rotated by 30° and then mirrored across the 45° line.
 
 ### Physical Meaning
 
 This example demonstrates how we can use matrices to simulate the physical transformations of light rays in an optical system. Rather than tracing rays with protractors and geometry, we can model these directional changes using algebra and matrix multiplication. This approach becomes especially powerful when modeling more complex systems, like multiple mirrors or lenses in a laser cavity or microscope.
 
-
 {% capture ex %}
-By chaining transformation matrices, you can model how the path of a light ray changes as it encounters mirrors, lenses, and other components. Reflections across axes or lines like $ y = x $ are represented by reflection matrices, while rotations are captured using rotation matrices. Order matters!
+By chaining transformation matrices, you can model how the path of a light ray changes as it encounters mirrors, lenses, and other components. Reflections across axes or lines, like $ y = x $, are represented by reflection matrices, while rotations are captured using rotation matrices. Order matters!
 {% endcapture %}
 {% include result.html content=ex %}
 
