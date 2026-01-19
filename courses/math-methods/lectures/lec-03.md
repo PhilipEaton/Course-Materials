@@ -24,6 +24,19 @@ If we want to transform a column vector (an $n \times 1$ matrix) into another co
 
 The convention of placing the transformation matrix on the left isn’t arbitrary, it’s mathematically required based on the structure of matrix multiplication and the dimensions of the vectors and matrices involved.
 
+{% capture ex %}
+To transform a **vector**, you apply the transformation matrix on the left:
+
+$$
+\vec{r}' = \mathbf{T} \vec{r}
+$$
+
+where $ \mathbf{T} $ transforms the original coordinates into the new ones. 
+
+Note: Some textbooks use the reverse convention, so always pay careful attention to how a transformation is being defined.
+{% endcapture %}
+{% include result.html content=ex %}
+
 
 
 ### Right to Left is the Order of Operations
@@ -647,17 +660,6 @@ which is exactly what we expect—a reflection of $ \widehat{i} $ across the lin
   src="{{ '/courses/math-methods/images/lec03/reflection2.png' | relative_url }}"
   alt="The image shows a horizontal red arrow labeled “Incoming Ray” pointing right toward a gray mirror line that is tilted upward to the right. At the point where the incoming ray meets the mirror, a second red arrow labeled “Outgoing Ray” reflects upwards, forming an angle with the mirror’s surface."
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
-  
-{% capture ex %}
-To transform a **vector**, you apply the transformation matrix on the left:
-
-$$
-\vec{r}' = \mathbf{R} \vec{r}
-$$
-
-where $ \mathbf{R} $ transforms the original coordinates into the new ones. Some textbooks use the reverse convention, so always check which direction is being used.
-{% endcapture %}
-{% include result.html content=ex %}
 
 {% capture ex %}
 To transform a **matrix**, you must rotate both its row and column space:
