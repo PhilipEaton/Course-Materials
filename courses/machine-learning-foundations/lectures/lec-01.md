@@ -45,8 +45,8 @@ Let's take some time to make sure everyone has their coding space set up.
 
 Run the follow cell:
 
-
-```python
+{% capture ex %}
+python
 import sys, platform
 import numpy as np, pandas as pd
 import matplotlib.pyplot as plt
@@ -67,23 +67,40 @@ x = np.linspace(0, 2*np.pi, 100)
 plt.plot(x, np.sin(x))
 plt.title("Jupyter is working!")
 plt.show()
+{% endcapture %}
+{% include example.html content=ex %}
 
-```
-
-    ✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]
-    ✅ Platform: macOS-14.6.1-arm64-arm-64bit
-    ✅ numpy: 1.26.4
-    ✅ pandas: 2.2.2
-    ✅ matplotlib: 3.8.4
-    ✅ seaborn: 0.13.2
-    ✅ scikit-learn: 1.4.2
-
-
+{% capture ex %}
+✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]
+✅ Platform: macOS-14.6.1-arm64-arm-64bit
+✅ numpy: 1.26.4
+✅ pandas: 2.2.2
+✅ matplotlib: 3.8.4
+✅ seaborn: 0.13.2
+✅ scikit-learn: 1.4.2
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
+{% endcapture %}
+{% include result.html content=ex %}
+
+
+
+
+{% capture ex %}
+
+{% endcapture %}
+{% include result.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include result.html content=ex %}
+
+
+    
     
 
 
