@@ -1,0 +1,729 @@
+---
+layout: default
+title: Machine Learning Foundations – Lecture 01
+course_home: /courses/machine-learning-foundations/
+nav_section: lectures
+nav_order: 1
+---
+
+# Lecture 01 -- The Essentials of Linear Algebra
+
+
+Linear algebra is a powerful tool in physics, widely used for modeling physical phenomena and solving mathematical systems. These applications range from analyzing interactions in particle systems (relevant in solid-state physics and discrete systems) to describing transition probabilities between quantum energy levels, as well as determining transition energies in quantum phenomena.
+
+One of the simplest yet most useful applications of linear algebra is solving systems of equations, which often represent models with constraints or relationships between physical quantities. Linear algebra provides an efficient method for organizing and solving these systems.
+
+At the core of linear algebra are **vectors** and **matrices**, along with their representations:
+
+- **Vectors**, as you may recall from introductory physics, represent quantities with both **magnitude and direction**, such as displacement, velocity, momentum, or force. In physics, vectors may represent either physical quantities or abstract quantities, and they obey rules of vector addition and scalar multiplication, as we will see later in this course.
+- **Matrices** serve as a more abstract yet crucial concept in physics. In their simplest form, matrices are rectangular arrays of numbers that operate on vectors. These operations often represent transformations of vectors, such as rotations, scaling (stretches), reflections (parity flips), and other similar effects.
+
+
+## Vectors
+
+As mentioned above, vectors are sets of numbers that represent both the magnitude and direction of a physical quantity. For example, if we define an origin and a three-dimensional coordinate system, we can specify the position of a particle as being located 3 meters to the right, 1 meter forward, and 4 meters down. Writing this in words can be cumbersome, so we represent vectors in a more concise mathematical form. This can be done in two ways:
+
+$$
+\vec{r} = +3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} \hspace{1cm} \text{or} \hspace{1cm} \vec{r} = \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} 
+$$
+
+The left-hand representation uses **unit basis vectors** $(\hat{i}, \hat{j}, \hat{k})$, while the right-hand representation uses a **column vector** format.
+
+Now, **unit basis vectors** are vectors with a **magnitude of 1 that point in independent directions**. This means that each unit vector has a length of 1 (they have no units) and all point in different directions when plotted:
+
+<img
+  src="{{ '/courses/math-methods/images/lec01/basisvectors.svg' | relative_url }}"
+  alt="3D coordinate axes showing unit vectors i-hat, j-hat, and k-hat."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+
+where the dashed arrows represent the corrdinate system and the solid arrows are the unit vectors. Notice the unit vector $\hat{i}$  points along the $x$-axis specitically and since it is a unit vector the magnitude of $\hat{i}$ can be written as:
+
+$$ \text{Magnitude}(\hat{i}) = |\hat{i}| = 1 \hspace{1cm}$$ 
+
+Similarly for the other unit vectors:
+
+$$|\hat{j}| = 1 \hspace{1cm} |\hat{k}| = 1$$
+
+and $\hat{j}$ points along the $y$-axis and $\hat{k}$ points along the $z$-axis.
+
+The basis set used in the above example not only point in indedependent directions, but point in orthogonal (perpendicular) directions. This makes $(\hat{i}, \hat{j}, \hat{k})$ mutually orthogonal, unit basis vectors, which have very nice properties when we get to multiplying vectors together. We will explore this concept further in Lecture 04 when we discuss Vector Operations, but for now, a general pictorial understanding will suffice.
+
+An interesting observation arises from the two different representations of the position vector given above. Since both representations describe the exact same position vector, we should be able to write:
+
+$$\begin{aligned}
+	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= \begin{bmatrix} +3 \\ +1 \\ -4 \end{bmatrix} \\
+	&= \begin{bmatrix} +3 \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ +1 \\ 0 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ -4 \end{bmatrix} \\
+	+3\,\hat{i} + 1\,\hat{j} - 4 \,\hat{k} &= +3\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} + 1 \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} -4 \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} 
+\end{aligned}$$
+
+and so we have a link between the two representations with:
+
+$$ \hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \hspace{2cm} \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \hspace{2cm} \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}   $$
+
+There are multiple ways to represent the basis unit vectors, meaning there is no single unique representation to describe positions in 3D space. However, the approach we used is certainly the simplest. 
+
+
+
+
+
+
+
+---
+
+### A Quick Detour: What is a Basis, Really?
+
+The three vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$ are what we call a **basis** for 3D space. A **basis** is just a set of vectors that can be used to build any other vector in that space using addition and scalar multiplication.
+
+This ability to combine a set of vectors to recreate any vector in the space is called **spanning**. More formally, we say the vectors **span the space**. For example, in 3D, this looks like:
+
+$$
+\vec{v} = a \, \hat{i} + b \, \hat{j} + c \, \hat{k}
+$$
+
+where $a$, $b$, and $c$ are scalars. It’s easy to see that any vector in 3D space can be written this way, so $\hat{i}$, $\hat{j}$, and $\hat{k}$ together form a basis.
+
+There’s one more key property a set of basis vectors need to have: the basis vectors must also be  **linearly independent**. That means you can’t build one of them using a combination of the others. Each one brings something fundamentally new; they all point in different directions, and none of them are redundant.
+
+Here’s a helpful way to think about it: imagine a big box of LEGO bricks. Suppose the set has only three distinct pieces; say, in different shapes and/or colors. If you can build *anything* you want by snapping together just those three kinds of pieces in different ways, then those three form a basis. You don’t need any more, and you can’t get away with fewer.
+
+In our 3D space, the standard basis vectors:
+
+$$
+\hat{i} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \qquad \hat{j} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \qquad \hat{k} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+$$
+
+are three fundamental "LEGO bricks", each being distinct in that they each point in different directions. Any vector in 3D space can be expressed as a combination of these—like writing a recipe for a location: "go 3 units in the \\(\hat{i}\\) direction, then 1 unit in the \\(\hat{j}\\) direction, and finally $-$4 units in the \\(\hat{k}\\) direction."
+
+
+{% include result.html content="
+A set of basis vectors must satisfy two conditions:
+
+1) the vectors must span the space (i.e., any vector in the space can be created using only the basis vectors), and  
+2) the vectors must be linearly independent (none of them is a redundant combination of the others).
+" %}
+
+It turns out there are many possible bases for 3D space, not just the basis discussed previously. For example, we could rotate the proposed basis vectors, stretch them, or even choose weirdly slanted directions, and as long as the vectors are still linearly independent and span the space, they still form a valid basis. But the *standard basis* with its clean, perpendicular directions is by far the most convenient.
+
+---
+
+
+
+
+
+
+Now, math particular people will notice that we did not actually define how manipul;ations of the column vectors representing our unit vectors above actually work and what is allowed. Specifically, we need to clarify how column vectors can be added together and how they can be multiplied by a scalar value. The methods we used above are so intuitive that many readers may not have realized we performed an operation that we had not yet explicitly defined. Let's correct that now. When:
+
+- adding column vectors, you combine the corresponding elements from each vector, and
+- multiplying by a constant (i.e., a scalar), you multiply every element by that constant.
+
+
+{% include example.html content="
+Let's consider adding the following matrices together:
+
+$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} \qquad \qquad \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix}$$
+
+Adding together, element by element, gives:
+
+$$ \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} (+1) + (-3) \\ (-4) + (+5) \\ (+2) + (0) \end{bmatrix} = \begin{bmatrix} -2 \\ +1 \\ +2 \end{bmatrix} $$
+
+We could also ask what happens when we multiply a vector by a constant. When you multiply a column vector by a constant, you multiply each element of the vector by that constant. For example:
+
+$$ 3 \begin{bmatrix} 3 \\ -4 \\ -1 \end{bmatrix} = \begin{bmatrix} 3(+3) \\ 3(-4) \\ 3(-1) \end{bmatrix} = \begin{bmatrix} +9 \\ -12 \\ -3 \end{bmatrix} $$
+
+and similarly for negative numbers. 
+
+In fact, this is how subtraction can be defined:
+
+$$\begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} - \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix}  $$
+
+$$\begin{bmatrix} (+1) - (-3) \\ (-4) - (+5) \\ (+2) - (0) \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ -9 \\ 2 \end{bmatrix} } $$
+
+$$\begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} \phantom{= \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + (-1) \begin{bmatrix} -3 \\ 5 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\ -4 \\ 2 \end{bmatrix} + \begin{bmatrix} +3 \\ -5 \\ 0 \end{bmatrix} = \begin{bmatrix} +4 \\ -9 \\ +2 \end{bmatrix} } $$
+
+Notice, directly subtracting the elements, the vertical steps, and treating subtraction as addition combined with the multiplication by -1 both give the same result. 
+" %}
+
+
+We will talk more about vectors and their various operations in Lecture 04. 
+
+
+
+
+
+
+
+
+
+
+
+## Matrices
+
+In the most general terms, matrices are a rectangular configuration of numbers that can mean pretty much anything you want:
+
+$$ 
+\text{Matrix named } A = \underline{\underline{A}} =  \mathbf{A} =  \begin{bmatrix} +4 & - 2 & 7  \\ -9 & 0 & -4 \\ +5 & -5 & 2 \end{bmatrix}  
+$$
+
+When writing by hand, the double underlined notation is often the easiest notation to use when indicating a variable is a matrix. In text, however, the bold-faced notation is most commonly used. 
+
+In physics matrices are used for a wide variety of reasons, but the most common of which is to represent some form of coordinate transformation or a transition in a system of some kind. We will see that matrices can be used to acheive a wide variety of affects, such as to rotate, rescale, and flip vectors to name a few examples. For now, let's looks into the key features of a matrix and then jump into one of the simplest ways we can use matrices -- solving systems of linear equations.
+
+### Anatomy of a Matrix
+
+To talk about matrices it is important that we know and underand the basic structure of matrices. This will help us communicate clearly and make sure we’re all speaking the same mathematical language. The following are the important features of a matrix:
+
+- A **matrix** is a rectangular array of numbers arranged in **rows** (horizontal) and **columns** (vertical).
+- The **shape** of a matrix tells us how many rows and how many columns the matrix has. A matrix with $ m $ rows and $ n $ columns is called an $ m \times n $ matrix (read “$ m $ by $ n $”). Rows come first, then columns just like in, *“Rail Car”*. R for row followed by C for column.
+    - A $ m \times 1 $ matrix is called a **column vector**, since it is a single column.
+    - A $ 1 \times n $ matrix is called a **row vector**, since it is a single row.
+    - Both of these objects have the same characteristics of a vector. This means vectors are a special matrices, thus the names column vector and row vector. 
+- Each number inside the matrix is called an **element**. The entry located in the $ i $-th row and $ j $-th column is the $ij$-th element, typically labeled as $ a_{ij} $.  In this element notation the first index in the subscript points to the row and the second to the column.
+- The **main diagonal** of a matrix begins with the top-left element and continues down and to the right, one down and one to the right, and etc. This means the elements $ a_{11}, a_{22}, a_{33} $ lie on the **main diagonal**:
+
+	$$
+	\text{Main diagonal: } a_{11} \rightarrow a_{22} \rightarrow a_{33} \rightarrow \cdots \rightarrow a_{nn}
+	$$	
+
+- If all entries are zero, we call it a **zero matrix**. 
+- If all entries are zero *except* the main diagonal, and the main diagonal entries are all 1, we call the matrix the **identity matrix** (we’ll see why later).
+	
+
+{% include example.html content="
+For example, consider the matrix below:
+
+$$
+\mathbf{A} = \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6
+\end{bmatrix}
+$$
+
+Let’s break this down:  
+
+- This matrix has 2 rows and 3 columns, so it is a $ 2 \times 3 $ matrix.
+- The entry in the first row, second column is $ a_{12} = 2 $.
+- The entry in the second row, third column is $ a_{23} = 6 $.
+- Main diagonal: $ 1 \rightarrow 5 $.
+" %}
+
+Later on, when we perform operations like multiplying matrices or solving systems of equations, keeping track of rows and columns will be crucial. So make sure you’re comfortable with this anatomy since it’ll save you a lot of confusion later!
+
+Now that we’ve gotten to know the basic structure of a matrix, let’s start doing something with them! One of the simplest and most intuitive operations we can perform is combining matrices through addition and subtraction.
+
+
+### Matrix Addition and Subtraction and Scalar Multiplication
+
+**Two matrices can be added or subtracted *only* if they have the same shape**. Given two matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) of size \\(m \times n\\), their sum \\(\mathbf{C} = \mathbf{A} + \mathbf{B}\\) and their difference \\(\mathbf{D} = \mathbf{A} - \mathbf{B}\\) are computed in a manner similar to vector addition and subtraction, by adding and subtracting the elements from each matrix that are in the same location ($c_{ij} = a_{ij} + b_{ij}$ and $d_{ij} = a_{ij} - b_{ij}$). Notice this only makes sense if the matrices we are adding and subtracting have the same shape. This leads to a rule: **you can only add or subtract matrices of the same shape**!
+
+{% include example.html content="
+For example, if we have the matrices
+
+$$
+\mathbf{A} = \begin{bmatrix}
+    1 & 2 \\
+    3 & 4
+\end{bmatrix} \quad \mathbf{B} = \begin{bmatrix}
+    5 & 6 \\
+    7 & 8
+\end{bmatrix}
+$$
+
+then their sum and difference are calculated as follows:
+
+$$
+\mathbf{C} = \mathbf{A} + \mathbf{B} = \begin{bmatrix}
+    1 + 5 & 2 + 6 \\
+    3 + 7 & 4 + 8
+\end{bmatrix} = \begin{bmatrix}
+    6 & 8 \\
+    10 & 12
+\end{bmatrix}
+$$
+
+$$
+\mathbf{D} = \mathbf{A} - \mathbf{B} = \begin{bmatrix}
+    1 - 5 & 2 - 6 \\
+    3 - 7 & 4 - 8
+\end{bmatrix} = \begin{bmatrix}
+    -4 & -4 \\
+    -4 & -4
+\end{bmatrix}
+$$
+" 
+%}
+
+To multiply a martix by a scalar value, you simply multiply all of the elements by the scalar, just like we did with vectors. Multiplying a matrix by a scalar doesn’t depend on the matrix’s size:
+
+$$ -3 \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} -3(+2) & -3(+3) \\ -3(+4) & -3(+5) \end{bmatrix} = \begin{bmatrix} -6 & -9 \\ -12 & -15 \end{bmatrix}$$
+
+As you might have guessed, adding and subtracting matrices and multiplying by a scalar is a fairly easy process. Multiplying matrices, on the other hand, is more nuanced and requires some more motivation and explanation. Let's begin with some motivation.
+
+
+
+### System of Linear Equations
+
+Recall from algebra that a system of linear equations is a set of $n$ linear equations of $m$ variables. For example, the following is a system on linear equations with two equations $n=2$ and three variables $m = 3$:
+
+$$
+\begin{aligned} 2x + 3y - 3 z &= 6 \\ 
+4x - y + 4 z &= 5
+\end{aligned}
+$$
+
+We claim this system of equations can be written as a matrix equation in the following manner:
+
+$$\underbrace{\begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix}}_\text{Let's call this $\mathbf{A}$} \underbrace{\begin{bmatrix} x \\ y \\ z\end{bmatrix}}_{\vec{r}} = \underbrace{\begin{bmatrix} 6 \\ 5\end{bmatrix}}_{\vec{b}} \quad\implies\quad \mathbf{A} \vec{r} = \vec{b}
+$$
+
+where the matrix \\( \mathbf{A} \\) is called the **coefficient matrix**, \\( \vec{r} \\) is the **variable vector**, and \\( \vec{b} \\) represents the **results vector**. 
+
+Assuming what we just did is possible, notice what in happening: we are taking a \\( 2 \times 3 \\) matrix, acting on a \\( 3 \times 1 \\) vector, and are getting a \\( 2 \times 1 \\) vector out as a result. This is sometimes called the ``rows into columns'' rule, where the rows of the second object, the \\( 3 \times 1 \\) vector in this case, must be the same number as the columns in the first, the \\( 2 \times 3 \\) matrix $\mathbf{A}$. This is shown in bold overset numbers in the following:
+
+$$
+\overset{\text{2}\times\textbf{3}}{\begin{bmatrix}
+2 & 3 & -3 \\
+4 & -1 & 4
+\end{bmatrix}}
+\;
+\overset{\textbf{3}\times\text{1}}{\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}}
+=
+\overset{\text{2}\times\text{1}}{\begin{bmatrix}
+6 \\ 5
+\end{bmatrix}}
+$$
+
+The resulting object will have the same number of rows as the first object, 2 rows from matrix $\mathbf{A}$, and the same number of columns as the second, 1 column from vector $\vec{r}$. This means, for this case, the resulting object, $\vec{b}$, should be a \\( 2 \times 1 \\) vector, which it is!
+
+Now, we need to define how a matrix operates on a vector (or another matrix) in such a way that the way we rewrote the system of equations above works out properly. This operation can be summarized by the saying: **rows into columns**.
+
+To see this in action, consider the following example:
+
+$$
+\begin{bmatrix} 1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = ? 
+$$
+
+To carry out this multiplication, we multiply each element in the row vector on the left by the corresponding element in the column vector on the right. Specifically, the *first* element of the row multiplies the *first* element of the column, the *second* element multiplies the *second*, and so on. Afterward, we sum the products together to get the resulting element:
+
+$$ 
+\begin{bmatrix} 1 & 2 \end{bmatrix} \begin{bmatrix} 3 \\ 4 \end{bmatrix} = (1)(3) + (2)(4) = 3 + 8 = 11  
+$$
+
+Notice this example resulted is a single number (a scalar), rather than a matrix or vector. Why? This follows from the “rows into columns” rule: when you multiply a $1 \times 2$ matrix by a $2 \times 1$ matrix, you get a $1 \times 1$ matrix, or a scalar.
+
+This example highlights some key rules of **matrix multiplication**:
+
+1. Matrices can only be multiplied if the number of columns in the first matrix matches the number of rows in the second matrix. In other words, a matrix of size $n \times m$ can multiply a matrix of size $m \times p$ (in that order). However, you cannot reverse the order and multiply a $m \times p$ matrix by an $n \times m$ matrix.
+	
+> Matrix multiplication is not commutative — **the order of multiplication matters!**
+	
+2. The size of the resulting matrix can be determined by deleting the column count of the first matrix and the row count of the second matrix, using only the remaining row count of the first and the column count of the second. For example, when multiplying a $n \times m$ matrix by an $m \times p$ matrix, the result will be a matrix of size $n \times p$.
+
+
+
+{% include example.html content="
+Let's look at an example to illustrate this, using our matrix equation from earlier:
+
+$$ \mathbf{A} \vec{r} = \vec{b} \implies \begin{bmatrix} 2 & 3 & -3 \\ 4 & -1 & 4 \end{bmatrix} \begin{bmatrix} x \\ y \\ z\end{bmatrix} = \begin{bmatrix} 6 \\ 5\end{bmatrix} $$
+
+Here, we have a $2 \times 3$ matrix multiplying a $3 \times 1$ matrix, so this multiplication is allowed. The result will be a $2 \times 1$ matrix (2 rows and 1 column).
+
+To compute this, we take each row of the left matrix and multiply it by the single column of the right matrix:
+
+- The first row with the first column gives:
+
+$$ 2x + 3y - 3z $$
+
+- The second row with the first column gives:
+
+$$ 4x - y + 4z $$
+
+Combining these into a $2 \times 1$ matrix, we rewrite the matrix equation as:
+
+$$ \begin{bmatrix} 2x + 3y - 3z \\ 4x - y + 4z \end{bmatrix} = \begin{bmatrix} 6 \\ 5 \end{bmatrix} $$
+
+Equating elements on both sides, we obtain the system of equations:
+
+$$ \begin{aligned} 
+    2x + 3y - 3z &= 6 \\ 
+    4x - y + 4z &= 5 
+\end{aligned} $$
+
+which is exactly the same system of linear equations we started with. This confirms that everything is consistent.
+" %}
+
+
+{% include example.html content="
+One more example should serve to put matrix multiplication into full working order. Consider:
+
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} 7 & 8 \\ 9 & 10 \end{bmatrix}
+$$
+
+To calculate \\( \mathbf{A} \mathbf{B} \\), we multiply each row of \\( \mathbf{A} \\) by each column of \\( \mathbf{B} \\), resulting in a \\( 3 \times 2 \\) matrix.
+
+$$
+\mathbf{A} \mathbf{B} = \begin{bmatrix} 
+    (1 \times 7) + (2 \times 9) & (1 \times 8) + (2 \times 10) \\ 
+    (3 \times 7) + (4 \times 9) & (3 \times 8) + (4 \times 10) \\ 
+    (5 \times 7) + (6 \times 9) & (5 \times 8) + (6 \times 10) 
+\end{bmatrix}
+= \begin{bmatrix} 
+    25 & 28 \\ 
+    57 & 64 \\ 
+    89 & 100 
+\end{bmatrix}
+$$
+" %}
+
+In the previous example, the first row, \\(\begin{bmatrix} 1 & 2 \end{bmatrix}\\), multiplied by the first column, \\(\begin{bmatrix} 7 & 9 \end{bmatrix}\\), results in the element \\(25\\) in the first row and first column of the resulting matrix. Similarly, the second row, \\(\begin{bmatrix} 3 & 4 \end{bmatrix}\\), multiplied by the second column, \\(\begin{bmatrix} 8 & 10 \end{bmatrix}\\), produces the element \\(64\\) in the second row and second column of the resulting matrix. This is the procedure in matrix multiplication:
+
+{% include result.html content="
+The $i$-th row and $j$-th column element of the resulting matrix is obtained by multiplying the $i$-th row of the first matrix and the the $j$-th column of the second matrix.
+" %}
+
+## Matrix Element Notation
+
+To make it easier to refer to specific entries inside a matrix, mathematicians and physicists use a standardized element notation. We have seen this a little previouslt, but it is always a good idea to see important ideas multiple times so the ideas have a chance to settle in. 
+
+We define the elements of a matrix as follows:
+
+> The element in the *i*-th row and *j*-th column of a matrix $\mathbf{A}$ is denoted as $a_{ij}$.
+
+
+\noindent
+The subscript \\(ij\\) always follows the pattern: \textit{row, then column}. 
+
+For example, if
+
+$$
+\mathbf{A} = \begin{bmatrix} 
+	2 & 5 & -1 \\ 
+	4 & 0 & 3 
+\end{bmatrix}
+$$
+
+then:
+- $a_{11} = 2$ (first row, first column),
+- $a_{12} = 5$ (first row, second column),
+- $a_{23} = 3$ (second row, third column).
+
+
+It’s important to remember:
+- Typical matrix indexing starts at \\(1\\), not \\(0\\). (Computer programmers, take note!)
+    - This changes when you get into 4, or larger, dimensional spacetime where time is typically given as the 0 index and space is given 1, 2, 3, and etc. Though, we will not be working with those things in this course.
+- Each $a_{ij}$ refers to a **single element** of the matrix, not an entire row or column.
+
+This notation becomes extremely helpful when writing general matrix equations, defining operations like the transpose, or describing algorithms more precisely.
+
+
+
+
+
+
+
+## Solving Systems of Linear Equations:
+
+Let’s look at how matrices can help us solve systems of linear equations. Consider the example from earlier:
+
+$$
+\begin{aligned} 
+2x + 3y - 3z &= 6 \\
+4x - y + 4z &= 5
+\end{aligned}
+$$
+
+We can rewrite this system in matrix form:
+
+$$
+\underbrace{
+\begin{bmatrix}
+2 & 3 & -3 \\
+4 & -1 & 4
+\end{bmatrix}
+}_{\text{Let’s call this } \mathbf{A}}
+\underbrace{
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}
+}_{\vec{r}}
+=
+\underbrace{
+\begin{bmatrix}
+6 \\ 5
+\end{bmatrix}
+}_{\vec{b}}
+\quad\Longrightarrow\quad
+\mathbf{A} \vec{r} = \vec{b}
+$$
+
+This is one way to represent a system of equations using matrices. Another helpful approach is to build the **augmented matrix**, which combines the coefficient matrix with the result vector:
+
+$$
+\begin{bmatrix}
+2 & 3 & -3 & | & 6 \\
+4 & -1 & 4 & | & 5
+\end{bmatrix}
+$$
+
+The vertical line is just a visual divider separating the coefficients from the result column. It’s not an operation, just a helpful organizational tool.
+
+Now we can use the **addition method** to simplify the system. The idea is to eliminate one variable by multiplying one equation and adding it to another.
+
+Let’s multiply the first equation by $-2$:
+
+$$
+-2(2x + 3y - 3z = 6) \quad\Rightarrow\quad -4x - 6y + 6z = -12
+$$
+
+and add that to the second equation:
+
+$$
+\begin{array}{rcl}
+-4x - 6y + 6z &=& -12 \\
++ \; 4x - y + 4z &=& \phantom{-}5 \\\hline
+0 - 7y + 10z &=& -7
+\end{array}
+$$
+
+This gives us a new equation that we can use to replace one of the originals. Notice, we didn’t create any new information, meaning we still only have two equations in total. This means, if we want to use the new equation we just made, we eed to replace one of the old equations we were using. Let's keep the first one and replace the second:
+
+$$
+\begin{aligned}
+2x + 3y - 3z &= 6 \\
+-7y + 10z &= -7
+\end{aligned}
+$$
+
+And the corresponding augmented matrix becomes:
+
+$$
+\begin{bmatrix}
+2 & 3 & -3 & | & 6 \\
+0 & -7 & 10 & | & -7
+\end{bmatrix}
+$$
+
+What we just did is equivalent to taking the first row of the original matrix, multiplying it by $-2$, adding that to the second row, and then replacing the second row with the new result. This gives us a shortcut: we can solve systems using row operations directly on the matrix, without rewriting $x$, $y$, and $z$ over and over. That’s a big win for efficiency and organization.
+
+Note: this process uses matrices more as an organizational devise rather than using a matrix as a matrix. So, if this application feels a little underwhelming to you, know that we agree and will get to more interesting applications beginning in the next lecture.
+
+
+
+
+
+### Gaussian Elimination (Row Reduction) Process
+
+There is a standard process of systematically reducing elements of the augmented matrix to zero. This process is called Gaussian Elimination or, as it is more simply known, Row Reduction. 
+
+This process, as you will see in the following example, may seem extremely specific and not something we would use a lot in the "real world" when working on physics problems. This thought would be incorrect. This processes is used in many situations, we just do it on computers rather than by hand. Here is a short list of some places this processes is regularly used:
+
+1. **Circuit Analysis (Kirchhoff's Laws)**: In electrical circuits, Kirchhoff's Current Law and Kirchhoff's Voltage Law often lead to systems of linear equations. For example, analyzing current and voltage in circuits with multiple loops and junctions frequently requires solving for unknown currents or voltages using a system of equations.
+2. **Forces and Equilibrium (Statics)**: In mechanical systems, especially in engineering, static equilibrium conditions require that the sum of forces and torques on an object be zero. This leads to systems of linear equations involving forces in different directions.
+3. **Quantum Mechanics (Matrix Mechanics)**: Quantum states are described by vectors, and observable quantities (such as energy) are represented by operators that act on these states (i.e., matrices). Eigenvalue problems (we will see these later) in quantum mechanics are often solved by setting up and solving systems of linear equations.
+4. **Optics (Ray Tracing and Lens Systems)**: In geometrical optics, ray tracing through a system of lenses can lead to a system of linear equations. These equations relate object and image distances with focal lengths and angles.
+5. **Vibrations and Normal Modes**: In systems of coupled oscillators (e.g., masses connected by springs), the equations of motion are often a set of coupled linear differential equations. These can be simplified into systems of linear algebraic equations to find normal modes and frequencies. We will look are examples of this at the end of this class.
+6. **Thermodynamics and Chemical Equilibrium**: In chemical reactions, conservation laws for mass and charge can lead to a system of linear equations that describes how different species in a reaction are balanced.
+
+
+The row reduction process is best learned by working through examples.
+
+{% include example.html content="
+Consider the following system of linear equations:
+
+$$
+\begin{aligned}
+    2x + 3y - z &= 5 \\
+    -x + 4y + 2z &= 3 \\
+    3x - y + z &= -4
+\end{aligned}
+$$ 
+
+We want to find values for $x$, $y$, and $z$ that satisfy these equations using the row reduction process. To start, we’ll build the augmented matrix:
+
+$$
+\begin{bmatrix}
+    2 & 3 & -1 & | & 5 \\
+    -1 & 4 & 2 & | & 3 \\
+    3 & -1 & 1 & | & -4 
+\end{bmatrix}
+$$
+
+Now we’ll systematically eliminate elements until we reach a *simplified form*. Rather than define what that looks like up front, we’ll work our way there and let the structure emerge naturally. So, follow along for now and we will tell you when the *simplified form* has emerged.
+
+Let’s focus on getting the top-left element, $a_{11}$, to be 1. We have a couple of options: (i) divide the first row by 2, or (ii) swap row 1 with row 2 (multiply by $-1$). To delay dealing with fractions for as long as possible, we’ll go with the second option:
+
+$$
+\begin{bmatrix}
+    1 & -4 & -2 & | & -3 \\
+    2 & 3 & -1 & | & 5 \\
+    3 & -1 & 1 & | & -4 
+\end{bmatrix}
+$$
+
+Swapping rows is just like reordering the equations. We can write the equations down in any order we want, which means we can write rows in any order we want. The same idea applies to the columns in the variable matrix portion of the augmented matrix: the order of columns corresponding to variable order.
+
+Now we’ll do two row operations:
+- multiply the first row by $-2$, add it to the second row, and overwrite the second row.
+- multiply the first row by $-3$, add it to the third row, and overwrite the third row.
+
+This gives:
+
+$$
+\begin{bmatrix}
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 11 & 7 & | & 5 
+\end{bmatrix}
+$$
+
+We’ve now eliminated the first element of rows 2 and 3.
+
+Next, we’ll eliminate the second element of the third row: multiply the second row by $-1$, add it to the third row, and store the result in row 3:
+
+$$
+\begin{bmatrix}
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 0 & 4 & | & -6 
+\end{bmatrix}
+$$
+
+This is the *simplified form* we were aiming for. To see why it's helpful, we’ll convert the matrix back into a system of equations:
+
+$$
+\begin{bmatrix}
+    1 & -4 & -2 & | & -3 \\
+    0 & 11 & 3 & | & 11 \\
+    0 & 0 & 4 & | & -6 
+\end{bmatrix}
+\implies
+\begin{aligned}
+    x  - 4y - 2z &= -3 \\
+    11y + 3z &= 11 \\
+    4z &= -6
+\end{aligned}
+$$
+
+We can now solve from the bottom up. The third equation immediately gives:
+
+$$ z = -\tfrac{3}{2} $$
+
+Substitute this into the second equation:
+
+$$
+\begin{aligned}
+    11y + 3z &= 11\\
+    11y + 3\left(-\tfrac{3}{2}\right) &= 11  \\
+    11y -\tfrac{9}{2} &= 11 \\
+    11y  &= \tfrac{31}{2} \\
+    y  &= \tfrac{31}{22} 
+\end{aligned}
+$$
+
+Now substitute $y$ and $z$ into the first equation:
+
+$$
+\begin{aligned}
+    x  - 4y - 2z &= -3 \\
+    x  - 4\left(\tfrac{31}{22}\right) - 2\left(-\tfrac{3}{2}\right) &= -3 \\
+    x  - \tfrac{62}{11} + 3 &= -3 \\
+    x  - \tfrac{62}{11} &= -6 \\
+    x  &= - \tfrac{4}{11} 
+\end{aligned}
+$$
+
+So our final solution is:
+
+$$ x = - \frac{4}{11} \hspace{1cm} y = \frac{31}{22} \hspace{1cm} z = -\frac{3}{2} $$
+
+Depending on what the original system was modeling, these values could represent currents in a circuit, forces in a statics problem, or something else entirely.
+" %}
+
+
+
+
+
+
+
+
+## Summary: Core Skills You Should Know
+
+In this lecture, we introduced the foundational tools of linear algebra that we will build on throughout this course: vectors, matrices, and systems of linear equations.
+
+- **Vectors** were reintroduced as mathematical objects that represent both magnitude and direction. We discussed two common representations: basis vector notation (using $\hat{i}$, $\hat{j}$, and $\hat{k}$) and column vector form. We also reviewed basic operations with vectors, including addition, subtraction, and scalar multiplication.
+- **Matrices** were introduced as rectangular arrays of numbers that can represent coordinate transformations, system transitions, or collections of coefficients. We reviewed basic matrix operations: addition, subtraction, scalar multiplication, and, most importantly, matrix multiplication. We emphasized the ``rows into columns'' rule for matrix multiplication and highlighted that matrix multiplication is not commutative.
+- **Systems of Linear Equations** were shown to have a natural and efficient representation using matrices. We developed the matrix form $\mathbf{A}\vec{r} = \vec{b}$ and learned how to solve systems using Gaussian elimination (also called row reduction), reinforcing the connection between matrix operations and familiar algebraic methods for solving equations.
+
+Throughout the lecture, we stressed the importance of understanding both the operations and the underlying structures. In physics and engineering, vectors and matrices are far more than mathematical formalities. They provide an efficient language for modeling real-world systems, from particle motion to quantum transitions to circuit analysis.
+
+In the coming lectures, we will build on these ideas by introducing more advanced concepts like matrix inverses, determinants, and eigenvalues. These topics will give us powerful tools for solving increasingly complex problems and deepen our understanding of how systems behave.
+
+
+**Key Takeaway:** Matrices and vectors are the essential ``building blocks'' of the linear world, and mastering them makes solving real problems across physics, engineering, and beyond possible.
+
+
+
+
+
+
+
+
+
+
+## Problems:
+
+- Please keep your work organized and neat.
+- Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
+- Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
+
+### Problem 1:
+
+Consider the following matrices:
+
+$$
+\mathbf{A} = \begin{bmatrix} 2 & 3 \\ 1 & 4 \\ -1 & 2 \end{bmatrix} \quad \mathbf{B} = \begin{bmatrix} 5 & -2 \\ 3 & 6 \end{bmatrix}
+$$
+
+a) Multiply the matrices \\(\mathbf{A}\\) and \\(\mathbf{B}\\) to find the resulting matrix \\(\mathbf{C} = \mathbf{A} \mathbf{B}\\). If this operation is not allowed, explain why.  
+
+b) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{C}\\). Does this result agree with the rules established earlier?  
+
+c) Multiply the matrices \\(\mathbf{B}\\) and \\(\mathbf{A}\\) to find the resulting matrix \\(\mathbf{D} = \mathbf{B} \mathbf{A}\\). If this operation is not allowed, explain why.  
+
+d) If the matrix multiplication is permitted, determine the size of the resulting matrix \\(\mathbf{D}\\). Does this result agree with the rules established earlier?  
+
+
+### Problem 2:
+
+Consider the following circuit with three loops and three resistors. The circuit contains two voltage sources, \\( V_1 = 10 \, \text{V} \\) and \\( V_2 = 5 \, \text{V} \\), and three resistors with values \\( R_1 = 2 \, \Omega \\), \\( R_2 = 3 \, \Omega \\), and \\( R_3 = 4 \, \Omega \\).
+
+Using Kirchhoff's Voltage Law, we obtain the following system of equations for the currents \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) flowing through each loop:
+
+$$
+\begin{aligned}
+	2 I_1 + 3 I_2 &= 10, \\
+	-2 I_1 + 4 I_3 &= 5, \\
+	3 I_2 - 4 I_3 &= -5.
+\end{aligned}
+$$
+
+a) Write this system of linear equations in matrix form, \\(\mathbf{A} \vec{I} = \vec{V}\\), where \\(\mathbf{A}\\) is the matrix of coefficients, \\(\vec{I}\\) is the vector of unknown currents, and \\(\vec{V}\\) is the vector of voltage values.  
+
+b) Write out the augmented matrix for this system of linear equations. (Remember to include 0's if a variable is not present in an equation!)	  
+
+c) Solve for the currents \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) using the Gaussian elimination process described in the Application section.  
+
+d) Interpret your solution: what do the values of \\( I_1 \\), \\( I_2 \\), and \\( I_3 \\) indicate about the direction and magnitude of currents in each loop?  
+
+
+
+
+
+
+
+
+
+
+
