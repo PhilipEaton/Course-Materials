@@ -83,7 +83,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
     
 
 
@@ -783,7 +783,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_22_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:50%;">
     
 
 
@@ -1137,27 +1137,27 @@ plot_model_boundaries(RandomForestClassifier(random_state=42), "Random Forest", 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
     
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_1.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_2.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_3.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_4.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
 
 
@@ -1204,7 +1204,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_32_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
     
 
 
@@ -1272,12 +1272,12 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_34_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_34_1.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
 
     
 
@@ -1345,7 +1345,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_36_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:50%;">
     
 
 
