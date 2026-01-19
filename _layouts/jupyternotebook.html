@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\[", right: "\\]", display: true},
+          {left: "\\(", right: "\\)", display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  <style>
+    :root {
+      --text-width: 60rem;     /* ~6.5 inches */
+      --line-height: 1.55;
+    }
+
+    body {
+      margin: 0;
+      padding: 3rem 1rem;
+      background: #ffffff;
+      color: #111;
+      font-family:
+        "Latin Modern Roman",
+        "Computer Modern",
+        "Georgia",
+        "Times New Roman",
+        serif;
+      line-height: var(--line-height);
+      font-size: 18px;
+    }
+
+    main {
+      max-width: var(--text-width);
+      margin: 0 auto;
+    }
+
+    /* Titles */
+    h1 {
+      font-size: 1.9rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    /* Paragraphs */
+    p {
+      margin: 0.75rem 0;
+    }
+
+    /* Display math spacing */
+    .katex-display {
+      margin: 1.5rem 0;
+    }
+
+    /* Figures */
+    figure {
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Tables */
+    table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    
+    /* Examples */
+    .example {
+      border-left: 4px solid #444;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background: #f9f9f9;
+    }
+    .example::before {
+      content: "Example.";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+        }
+
+    /* Results */
+    .result {
+      border-left: 4px solid #003366;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background: #f4f7fb;
+    }
+    .result::before {
+      content: "Result.";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Warnings */
+    .warning {
+      border-left: 4px solid #aa0000;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background: #fff5f5;
+     }
+
+    .warning::before {
+      content: "Common Mistake.";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Code Input */
+    .codeinput {
+      border-left: 4px solid #444;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background: #f9f9f9;
+    }
+    .codeinput::before {
+      content: "Input:";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+        }
+
+    /* Code Output */
+    .codeoutput {
+      border-left: 4px solid #009216;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background: #fafffa;
+    }
+    .codeoutput::before {
+      content: "Output:";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .codeinput pre,
+    .codeoutput pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .codeinput code,
+    .codeoutput code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+
+    /* Course navigation (LaTeX handout style) */
+    .course-nav {
+      margin-bottom: 2rem;
+    }
+    
+    .course-nav-links {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    .course-nav a {
+      color: #003366;
+      text-decoration: none;
+    }
+    
+    .course-nav a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Links – subtle like PDFs */
+    a {
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    {% if page.course_home %}
+      {% include course-nav.html %}
+    {% endif %}
+    
+    {{ content }}
+  </main>
+</body>
+</html>

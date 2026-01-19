@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: jupyternotebook
 title: Machine Learning Foundations – Lecture 01
 course_home: /courses/machine-learning-foundations/
 nav_section: lectures
@@ -728,10 +728,6 @@ X_test_scaled = scaler.transform(X_test)
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 
 
 
