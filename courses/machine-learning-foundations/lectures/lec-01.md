@@ -1055,7 +1055,7 @@ The classification report provides four key metrics for each class:
 That <strong>harmonic mean</strong> in the F1-score isn’t just a fancy choice—it serves an important purpose.  
 Unlike the regular (arithmetic) average (add things up and divide by the number of things), the harmonic mean <strong>penalizes extreme differences</strong> between precision and recall.  
 <br><br>
-If precision is <i>perfect</i> but recall is <i>terrible</i>, the F1-score drops dramatically, reflecting that your model isn't actually useful.
+If precision is <em>perfect</em> but recall is <em>terrible</em>, the F1-score drops dramatically, reflecting that your model isn't actually useful.
 <br><br>
 
 <strong>Mathematically:</strong>  
