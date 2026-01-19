@@ -572,7 +572,7 @@ $$
 \end{bmatrix}
 $$
 
-This result points 45$^\circ$ above the $x$-axis. This isn't correct. Remember, we’re trying to reflect across the $y = x$ line. If our incoming ray is along $ \widehat{i} $, we expect the reflected ray to point along $ \widehat{j} $. But that’s not what we’re getting.
+This result points 45$^\circ$ above the $x$-axis. This isn't correct. Remember, we’re trying to reflect across the $y = x$ line. If our incoming ray is along $ \widehat{i} $, we expect the reflected ray to point along $ \widehat{j} $. But that’s not what we’re getting. What we are getting it pictured here:
 
 <img
   src="{{ '/courses/math-methods/images/lec03/reflection1.png' | relative_url }}"
