@@ -161,7 +161,7 @@ $$
 \begin{bmatrix} b \\ d \end{bmatrix} = \begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
 $$
 
-So, $b = -\sin(\theta)$ and $d = \cos(\theta)$.
+giving $b = -\sin(\theta)$ and $d = \cos(\theta)$.
 
 {% capture ex %}
 The 2x2 rotation matrix $\mathbf{R}(\theta)$ that rotates a vector by an angle $\theta$ counterclockwise about the $z$-axis is given by:
@@ -192,7 +192,7 @@ $$
 Applying the rotation:
 
 $$
-\vec{r}\,' = \mathbf{R}(45^\circ) \vec{r} =
+\vec{r}' = \mathbf{R}(45^\circ) \vec{r} =
 \begin{bmatrix} 0 \\ \tfrac{2}{\sqrt{2}} \end{bmatrix}
 $$
 
