@@ -356,12 +356,16 @@ At the time, matrices were relatively new to physics, and it was Jordan who intr
 Previously we claimed that the determinant of a rotation matrix is always $+1$. This tells us that no combination of rotation matrices can ever create a reflection (which would have determinant $-1$ as we’ll soon see). Let’s confirm this for the $2 \times 2$ rotation matrix we derived earlier:
 
 $$
-\text{det}\big(\mathbf{R}_z(\theta)\big) = 
+\begin{aligned}
+\text{det}\big(\mathbf{R}_z(\theta)\big) &= 
 \begin{vmatrix}
 	\cos(\theta) & -\sin(\theta) \\
 	\sin(\theta) & \cos(\theta)
-\end{vmatrix}
-= \cos^2(\theta) - (-\sin^2(\theta)) = \cos^2(\theta) + \sin^2(\theta) = 1
+\end{vmatrix} \\
+&= \cos^2(\theta) - (-\sin^2(\theta)) \\ 
+&= \cos^2(\theta) + \sin^2(\theta) \\
+ \text{det}\big(\mathbf{R}_z(\theta)\big) & = 1
+\end{aligned}
 $$
 
 Formally, this property means rotation matrices are part of the **special orthogonal group**, denoted $SO(n)$, where $n$ is the dimension of the space (e.g., $SO(2)$ for 2D rotations, $SO(3)$ for 3D rotations).
