@@ -15,3 +15,10 @@ title: Teaching Materials
 ## Upper-Division Physics Courses
 
 - [PHYS 3350 – Mathematical Methods](courses/math-methods/)
+
+
+---
+
+## Data Science and Strategic Analysis (DSSA) Courses 
+
+- [DSSA 5201 – Machine Learning Foundations](courses/machine-learning-foundations/)
