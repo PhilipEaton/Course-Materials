@@ -444,6 +444,7 @@ Consider a scenario in geometric optics where a light ray strikes a flat mirror 
 Suppose a light ray is initially traveling at a 45° angle above the $x$-axis. When it hits the mirror, its $y$-component flips sign, while its $x$-component stays the same, assuming $x$ is horizontal and $y$ is vertical. The ray goes from traveling up and to the right, to down and to the right—a perfect reflection across the $x$-axis.
 
 To model this reflection mathematically, we use the reflection matrix:
+
 $$
 \mathbf{R}_{x} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
 $$
@@ -451,11 +452,13 @@ $$
 As we have seen, this flips the $y$-component and leaves the $x$-component untouched.
 
 Suppose the incoming light ray is:
+
 $$
 \vec{r}_0 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
 $$
 
 Then the reflected ray is:
+
 $$
 \vec{r}_{\text{reflected}} = \mathbf{R}_x \, \vec{r}_0 
 = 
