@@ -340,17 +340,6 @@ penguins.head()
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
-
 The snippet of code:
 
 > ```python
@@ -399,7 +388,7 @@ Before we can use the dataset in machine learning models, we need to:
 
 First, let's drop the rows that are missing data:
 
-
+{% capture ex %}
 ```python
 # Drop any rows that have missing values (NaN = “not a number”).
 # This helps prevent errors later when training our models.
@@ -408,10 +397,10 @@ penguins = penguins.dropna()
 # Display the first few rows of the dataset (by default, the first 5)
 penguins.head()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
-
-
+{% capture ex %}
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -493,8 +482,24 @@ penguins.head()
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
+
+
+
+
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 Notice the fourth row that was previously filled with `NaN` is gone! 
 
