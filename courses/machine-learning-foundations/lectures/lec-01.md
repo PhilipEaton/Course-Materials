@@ -68,7 +68,7 @@ plt.plot(x, np.sin(x))
 plt.title("Jupyter is working!")
 plt.show()
 {% endcapture %}
-{% include example.html content=ex %}
+{% include codeinput.html content=ex %}
 
 {% capture ex %}
 ✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]  
@@ -84,10 +84,18 @@ plt.show()
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:800px; width:80%;">
 {% endcapture %}
-{% include result.html content=ex %}
+{% include codeoutput.html content=ex %}
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
     
