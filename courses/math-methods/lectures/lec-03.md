@@ -548,6 +548,7 @@ $$
 $$
 
 So we try:
+
 $$
 \begin{aligned}
 	\mathbf{R}_z(45^\circ) \mathbf{R}_x &= \begin{bmatrix}
