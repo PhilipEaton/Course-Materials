@@ -589,13 +589,19 @@ $$
 \mathbf{R}_{y = x} = \mathbf{R}(45^\circ)\, \mathbf{R}_x\, \mathbf{R}(45^\circ)^T
 $$
 
-The matrix on the left rotates the columns, and the transpose on the right rotates the rows. Together, they rotate the whole transformation. While this version uses the transpose, the more general formula is:
+The matrix on the left rotates the columns, and the transpose on the right rotates the rows. Together, they generate the whole matrix transformation. 
+
+{% capture ex %}
+While this matrix transoformation derivation ended up using a transpose on the right, the more general formula is:
 
 $$
 \mathbf{R} \mathbf{A} \mathbf{R}^{-1}
 $$
 
-But since rotation matrices are orthogonal, their inverse equals their transpose. (We’ll cover this in more detail in Lecture 05.)
+Since rotation matrices are orthogonal, their inverse equals their transpose. (We’ll cover this in more detail in Lecture 05.)
+{% endcapture %}
+{% include warning.html content=ex %}
+
 
 Let’s compute it:
 
