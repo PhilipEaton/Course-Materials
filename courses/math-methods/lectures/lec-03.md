@@ -61,7 +61,7 @@ So, even though $\mathbf{T}_2$ appears in the left-most position in the expressi
 You can generalize this to any number of transformations:
 
 $$
-\mathbf{T}_n \cdots \mathbf{T}_2 \mathbf{T}_1 \vec{r} = \vec{r}\,'
+\mathbf{T}_n \cdots \mathbf{T}_2 \mathbf{T}_1 \vec{r} = \vec{R}
 $$
 
 Here, $\mathbf{T}_1$ happens first, then $\mathbf{T}_2$, and so on until $\mathbf{T}_n$ is applied last.
@@ -84,14 +84,14 @@ Grasping this structure is especially important in fields like 3D coordinate tra
 
 ## Rotations
 
-The most straightforward way to find the rotation matrix is to examine how the unit vectors in the $xy$-plane are transformed under rotation. Imagine the original $xy$-coordinate system, and then draw a new coordinate system that has been rotated counterclockwise by an angle $\theta$ about the $z$-axis (pointing out of the page). The setup would look like this:
+The most straightforward way to find the matrix representation of a rotation about the $z$-acis is to examine how the unit vectors in the $xy$-plane are transformed under rotation. Imagine the original $xy$-coordinate system, and then draw a new coordinate system that has been rotated counterclockwise by an angle $\theta$ about the $z$-axis (pointing out of the page). The setup would look like this:
 
 <img
   src="{{ '/courses/math-methods/images/lec03/rotatedcorrdinates.png' | relative_url }}"
   alt="The image shows two sets of coordinate axes that share the same origin. The original axes are drawn in black, with the horizontal axis pointing to the right and labeled i-hat, and the vertical axis pointing upward and labeled j-hat. A rotated coordinate system is drawn in red. The red i-prime unit vector extends from the origin at an angle above the black horizontal axis. The red j-prime unit vector extends from the origin at an angle above the negative side of the black horizontal axis. Both red vectors form equal angles, labeled theta, with their adjacent black axes."
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
-Using trigonometry—and the fact that unit vectors have length 1—we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
+Using trigonometry, and remember that unit vectors have length 1, we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
 
 $$
 \begin{aligned}
