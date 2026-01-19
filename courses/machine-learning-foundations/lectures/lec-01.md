@@ -1025,15 +1025,9 @@ display(results_df)
 
 
 
-{% capture ex %}
 
-{% endcapture %}
-{% include codeinput.html content=ex %}
 
-{% capture ex %}
 
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 
 #### Understanding Classification Metrics
 
@@ -1099,7 +1093,7 @@ The following is a helpful function that can be used to viziualize 2D decision b
 
 Run the following cell the load the helper function:
 
-
+{% capture ex %}
 ```python
 # ===============================================================
 # Helper Function: Visualize 2D Decision Boundaries
@@ -1150,11 +1144,13 @@ def plot_model_boundaries(model, model_name, X_scaled, y, cmap="viridis"):
     plt.ylabel("Principal Component 2")
     plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
 Now we can apply this function to the different models we trained to see how they are making their decisions. 
 
 
-
+{% capture ex %}
 ```python
 plot_model_boundaries(KNeighborsClassifier(n_neighbors=5), "k-Nearest Neighbors", X_train_scaled, y_train)
 plot_model_boundaries(LogisticRegression(max_iter=1000), "Logistic Regression", X_train_scaled, y_train)
@@ -1163,50 +1159,51 @@ plot_model_boundaries(DecisionTreeClassifier(max_depth=4, random_state=42), "Dec
 plot_model_boundaries(RandomForestClassifier(random_state=42), "Random Forest", X_train_scaled, y_train)
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_0.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing k-nearest neighbors decision boundaries in a two-dimensional feature space labeled Principal Component 1 and Principal Component 2. Data points from three classes appear as clustered dots. The background regions indicating predicted classes are irregular and highly curved, closely following the local structure of the data. Decision boundaries change sharply in regions where class clusters are near each other, illustrating the flexible, non-linear nature of k-nearest neighbors."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
     
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing logistic regression decision boundaries in a two-dimensional feature space labeled Principal Component 1 and Principal Component 2. Data points from three classes form clusters, while the background prediction regions are separated by mostly straight, diagonal boundaries. The linear boundaries divide the space into broad regions, illustrating that logistic regression models class separation using simple linear decision surfaces."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_2.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing naïve Bayes decision boundaries in a two-dimensional feature space labeled Principal Component 1 and Principal Component 2. The predicted class regions form smooth, curved shapes that are more structured than logistic regression but less irregular than k-nearest neighbors. The boundaries reflect probabilistic assumptions about feature distributions rather than exact cluster shapes."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_3.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing decision tree decision boundaries in a two-dimensional feature space labeled Principal Component 1 and Principal Component 2. The background prediction regions are divided into rectangular blocks with sharp horizontal and vertical edges. These axis-aligned regions illustrate how decision trees split the feature space using threshold-based rules."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_30_4.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing random forest decision boundaries in a two-dimensional feature space labeled Principal Component 1 and Principal Component 2. The predicted class regions appear as a patchwork of smaller, irregular shapes that are smoother than a single decision tree but still retain some block-like structure. This reflects the averaging of many decision trees to produce more stable and flexible boundaries."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 3 (continued): Visualize a Decision Tree
-</h2>
+
+
+
+
+
+## Step 3 (continued): Visualize a Decision Tree
 
 Decision trees can be visualized to show how the model splits data step by step.  
 
 Here’s a simplified version of our trained tree:
 
-
-
+{% capture ex %}
 ```python
 # Create a new, larger figure so the tree fits clearly on the screen
 plt.figure(figsize=(15, 8))
@@ -1230,28 +1227,34 @@ plt.title("Decision Tree Visualization")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_32_0.png' | relative_url }}"
-  alt=""
+  alt="Diagram of a trained decision tree classifier predicting penguin species. The tree begins with a split on flipper length and then branches through successive splits based on bill length, bill depth, island encoding, and body mass. Each node displays the splitting rule, Gini impurity, number of samples, and predicted class. Leaf nodes classify penguins as Adelie, Chinstrap, or Gentoo. The structure illustrates how a decision tree makes predictions through a sequence of threshold-based decisions."
   style="display:block; margin:1.5rem auto; max-width:800px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+
     
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 4: Compare Model Performance
-</h2>
+
+
+
+
+
+## Step 4: Compare Model Performance
 
 Let’s visualize the accuracy and $F_1$-score of each model side by side.
 
-
-
+{% capture ex %}
 ```python
 # Turn our list of results into a small DataFrame for easy plotting
 results_df = pd.DataFrame(results, columns=["Model", "Accuracy", "F1-Score"])
@@ -1299,28 +1302,34 @@ plt.xticks(rotation=30, ha='right')
 plt.tight_layout()  # Adjusts spacing so labels and titles fit nicely
 plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_34_0.png' | relative_url }}"
-  alt=""
+  alt="Bar chart titled “Model Comparison on Penguin Classification” comparing classification accuracy for five machine learning models: k-nearest neighbors, logistic regression, naïve Bayes, decision tree, and random forest. Logistic regression and random forest achieve the highest accuracy, near one hundred percent. k-nearest neighbors and decision tree also perform very well, slightly below the top models. Naïve Bayes shows the lowest accuracy among the five, though it still performs strongly overall."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_34_1.png' | relative_url }}"
-  alt=""
+  alt="Bar chart titled “Model Comparison on Penguin Classification” comparing F1 scores for five machine learning models: k-nearest neighbors, logistic regression, naïve Bayes, decision tree, and random forest. Logistic regression and random forest achieve the highest F1 scores, indicating strong balanced performance across classes. k-nearest neighbors and decision tree follow closely, while naïve Bayes has the lowest F1 score of the group."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
 
     
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 5: Try Clustering with k-Means and PCA
-</h2>
+
+
+
+
+## Step 5: Try Clustering with k-Means and PCA
 
 Now let’s remove the labels and see if the computer can **discover** the species on its own using clustering.
 
@@ -1330,7 +1339,7 @@ We’ll use:
     - Do not worry too much about this. We will talk about it later.
 
 
-
+{% capture ex %}
 ```python
 # Create a KMeans clustering model.
 # - n_clusters=3 tells the algorithm to group data into 3 clusters (we expect 3 penguin species)
@@ -1367,29 +1376,27 @@ fig.suptitle("Comparing k-Means Clusters to True Species Labels (PCA Projection)
 fig.subplots_adjust(wspace=0.3, top=0.88)  # manually adjust spacing for best fit
 
 plt.show()
-
-
-
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_36_0.png' | relative_url }}"
-  alt=""
+  alt="Two scatter plots comparing k-means clustering results to true penguin species labels in a two-dimensional principal component space. The left plot shows clusters produced by k-means without using species labels, forming three distinct groups based on feature similarity. The right plot shows the true species labels for the same data points. The comparison illustrates that k-means recovers some of the underlying structure of the species groups but does not perfectly align with the true labels."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
-    
-
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 As we can see k_means does not do a great job! 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 6: Wrap-Up
-</h2>
+
+
+
+
+
+
+## Step 6: Wrap-Up
 
 - We successfully trained and evaluated multiple machine learning models.
 - Even simple algorithms like **k-NN** and **Naïve Bayes** performed well.
