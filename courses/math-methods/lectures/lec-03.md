@@ -770,7 +770,7 @@ $$
 
 Now, let’s suppose this light ray:
 
-1)  First passes through a device that rotates its direction counterclockwise by 30° (this could model, for example, a prism or a crystal of some kind),
+1)  First passes through a device that rotates its direction counterclockwise by 30° (this could model, for example, a prism or a crystal of some kind),  
 2) Then reflects off a flat mirror that lies along the line $ y = x $.
 
 We wish to find the final direction of the light ray after these two transformations.
@@ -847,7 +847,7 @@ where $v$ is the magnitude of the velocity.
 
 Let's suppose the charged particle:
 
-1) First encounters a magnetic field that rotates the velocity by 45$^\circ$ counterclockwise.
+1) First encounters a magnetic field that rotates the velocity by 45$^\circ$ counterclockwise.  
 2) Then, it collides with a perfectly reflecting surface oriented along the line $y = -x$.
 
 
