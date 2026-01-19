@@ -53,38 +53,38 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sklearn
 
-print("✅ Python OK:", sys.version)
-print("✅ Platform:", platform.platform())
-print("✅ numpy:", np.__version__)
-print("✅ pandas:", pd.__version__)
-print("✅ matplotlib:", plt.matplotlib.__version__)
-print("✅ seaborn:", sns.__version__)
-print("✅ scikit-learn:", sklearn.__version__)
+print("✅ Python OK:", sys.version)  
+print("✅ Platform:", platform.platform())  
+print("✅ numpy:", np.__version__)  
+print("✅ pandas:", pd.__version__)  
+print("✅ matplotlib:", plt.matplotlib.__version__)  
+print("✅ seaborn:", sns.__version__)  
+print("✅ scikit-learn:", sklearn.__version__)  
 
-# Tiny smoke test plot
+\# Tiny smoke test plot
 import numpy as np
 x = np.linspace(0, 2*np.pi, 100)
 plt.plot(x, np.sin(x))
 plt.title("Jupyter is working!")
 plt.show()
 {% endcapture %}
-{% include example.html content=ex %}
+{% include codeinput.html content=ex %}
 
 {% capture ex %}
-✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]
-✅ Platform: macOS-14.6.1-arm64-arm-64bit
-✅ numpy: 1.26.4
-✅ pandas: 2.2.2
-✅ matplotlib: 3.8.4
-✅ seaborn: 0.13.2
-✅ scikit-learn: 1.4.2
+✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]  
+✅ Platform: macOS-14.6.1-arm64-arm-64bit  
+✅ numpy: 1.26.4  
+✅ pandas: 2.2.2  
+✅ matplotlib: 3.8.4  
+✅ seaborn: 0.13.2  
+✅ scikit-learn: 1.4.2  
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:800px; width:80%;">
 {% endcapture %}
-{% include result.html content=ex %}
+{% include codeoutput.html content=ex %}
 
 
 
@@ -92,12 +92,12 @@ plt.show()
 {% capture ex %}
 
 {% endcapture %}
-{% include result.html content=ex %}
+{% include codeinput.html content=ex %}
 
 {% capture ex %}
 
 {% endcapture %}
-{% include result.html content=ex %}
+{% include codeoutput.html content=ex %}
 
 
     
