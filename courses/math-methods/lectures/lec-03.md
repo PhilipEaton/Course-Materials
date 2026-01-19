@@ -624,7 +624,7 @@ $$
 \end{aligned}
 $$
 
-Now let’s apply this to $ \widehat{i} $:
+Now let’s apply this to $ \widehat{i} $ :  
 
 $$
 \mathbf{R}_{y = x} \widehat{i} =
