@@ -91,7 +91,7 @@ The most straightforward way to find the matrix representation of a rotation abo
   alt="The image shows two sets of coordinate axes that share the same origin. The original axes are drawn in black, with the horizontal axis pointing to the right and labeled i-hat, and the vertical axis pointing upward and labeled j-hat. A rotated coordinate system is drawn in red. The red i-prime unit vector extends from the origin at an angle above the black horizontal axis. The red j-prime unit vector extends from the origin at an angle above the negative side of the black horizontal axis. Both red vectors form equal angles, labeled theta, with their adjacent black axes."
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
-Using trigonometry, and remember that unit vectors have length 1, we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
+Using trigonometry, and remembering that unit vectors have length 1, we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
 
 $$
 \begin{aligned}
@@ -118,15 +118,24 @@ $$
 \widehat{j}' = \begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
 $$
 
-So, we want a matrix that rotates $\widehat{i}$ to $\widehat{i}'$ and $\widehat{j}$ to $\widehat{j}'$. Suppose we start with a general $2 \times 2$ matrix:
+So, we have the original vectors $\hat{i}$ and $\hat{j}$ and the new vectors $\hat{i}'$ and $\hat{j}'$ and would like to find the roation matrix that acts on the original vectors to give the new ones like so:
+
+$$
+\begin{aligned}
+	\mathbf{R}_z(\theta) \hat{i} = \widehat{i}'  \\
+	\mathbf{R}_z(\theta) \hat{j} = \widehat{j}'
+\end{aligned}
+$$
+
+where $\mathbf{R}_z(\theta)$ is the matrix which applies a counterclockwise rotation about the z axis by an angle of $\theta$. Since this matrix acts on a $2 \times 1$ vector and returns a $2 \times 1$ vector, this matrix needs to have a $2 \times 2$ shape. We can write this in matrix form as
 
 $$
 \mathbf{R} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
 $$
 
-We want to determine the values of $a$, $b$, $c$, and $d$ that make this matrix act as our rotation operator.
+where we need to determine the values of $a$, $b$, $c$, and $d$ such that we transform $\hat{i}$ and $\hat{j}$ into $\hat{i}'$ and $\hat{j}'$.
 
-Start by applying $\mathbf{R}$ to $\widehat{i}$:
+To do this we can start by applying $\mathbf{R}$ to $\widehat{i}$:
 
 $$
 \mathbf{R} \widehat{i} = \widehat{i}' \quad \Rightarrow \quad
