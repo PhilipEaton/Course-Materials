@@ -113,27 +113,29 @@ $$
 we find:
 
 $$
-\widehat{i}' = \begin{bmatrix} \cos(\theta) \\ \sin(\theta) \end{bmatrix}
+ \begin{bmatrix} \cos(\theta) \\ \sin(\theta) \end{bmatrix} = \widehat{i}'
 \qquad \text{and} \qquad
-\widehat{j}' = \begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
+\begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix} = \widehat{j}' 
 $$
 
-So, we have the original vectors $\hat{i}$ and $\hat{j}$ and the new vectors $\hat{i}'$ and $\hat{j}'$ and would like to find the roation matrix that acts on the original vectors to give the new ones like so:
+Now, we have the original basis vectors $\widehat{i}$ and $\widehat{j}$ and the new, rotated basis vectors $\widehat{i}'$ and $\widehat{j}'$. Our goal is to find the rotation matrix that transforms the original vectors into the rotated ones:
 
 $$
 \begin{aligned}
-	\mathbf{R}_z(\theta) \hat{i} = \widehat{i}'  \\
-	\mathbf{R}_z(\theta) \hat{j} = \widehat{j}'
+	\mathbf{R}_z(\theta) \, \widehat{i} &= \widehat{i}' \\
+	\mathbf{R}_z(\theta) \, \widehat{j} &= \widehat{j}'
 \end{aligned}
 $$
 
-where $\mathbf{R}_z(\theta)$ is the matrix which applies a counterclockwise rotation about the z axis by an angle of $\theta$. Since this matrix acts on a $2 \times 1$ vector and returns a $2 \times 1$ vector, this matrix needs to have a $2 \times 2$ shape. We can write this in matrix form as
+where $\mathbf{R}_z(\theta)$ is the matrix that performs a counterclockwise rotation about the $z$-axis by an angle $\theta$.
+
+Since this matrix acts on a $2 \times 1$ vector and returns another $2 \times 1$ vector, it must be a $2 \times 2$ matrix. We can write its general form as:
 
 $$
 \mathbf{R} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
 $$
 
-where we need to determine the values of $a$, $b$, $c$, and $d$ such that we transform $\hat{i}$ and $\hat{j}$ into $\hat{i}'$ and $\hat{j}'$.
+Our task is to determine the values of $a$, $b$, $c$, and $d$ that ensure this matrix rotates $\widehat{i}$ and $\widehat{j}$ into $\widehat{i}'$ and $\widehat{j}'$, respectively.
 
 To do this we can start by applying $\mathbf{R}$ to $\widehat{i}$:
 
