@@ -328,14 +328,14 @@ $$
 	1 \\ 0 \\ 0
 \end{bmatrix} = \begin{bmatrix}
 	0 \\ 1 \\ 0
-\end{bmatrix}
+\end{bmatrix} = \vec{r}''
 $$
 
-The final result is different from our previous result, showing that the order of rotations affects the outcome. In mathematics, this property is called **non-commutativity**, meaning the sequence in which the operations, in this case rotations, are applied is important for getting the correct final result.
+This result is different from our previous result ($\vec{r}' \ne \vec{r}''$), showing that the order of rotations affects the outcome. In mathematics, this property is called **non-commutativity**, meaning the sequence in which the operations, in this case rotations, are applied is important for getting the correct final result.
 {% endcapture %}
 {% include example.html content=ex %}
 
-The fact that operations can be represented by matrices—and that the order of matrix multiplication often matters—is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters. Specifically, he discovered that position and momentum do **not** commute. This non-commutativity, expressed in the canonical commutation relation
+The fact that operations can be represented by matrices, and that the order of matrix multiplication often matters, is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters. Specifically, he discovered that position and momentum do **not** commute. This non-commutativity, expressed in the canonical commutation relation
 
 $$
 [\widehat{x}, \widehat{p}_x] = \widehat{x} \widehat{p}_x - \widehat{p}_x \widehat{x} = i \hbar
@@ -343,26 +343,8 @@ $$
 
 was a key insight that led Heisenberg, with contributions from Born and Jordan, to develop *Matrix Mechanics*, one of the earliest formulations of Quantum Mechanics.
 
-At the time, matrices were relatively new to physics, and it was Jordan—familiar with recent mathematical developments—who introduced Heisenberg to matrices and helped guide the mathematical formulation. This collaboration laid the foundation for much of modern quantum theory.
+At the time, matrices were relatively new to physics, and it was Jordan who introduced Heisenberg to matrices and helped guide the a good portion of the mathematical formulation. This collaboration laid the foundation for much of modern quantum theory.
 
-
-
-
-
-
-
-
-
-## Rotations
-
-
-The fact that operations can be represented by matrices, and that the order of matrix multiplication often matters, is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters—specifically, he discovered that position and momentum do not commute. This non-commutativity, expressed in the canonical commutation relation 
-$$
-[\widehat{x}, \widehat{p}_x] = \widehat{x} \widehat{p}_x - \widehat{p}_x \widehat{x} = i \hbar
-$$
-was a key insight that led Heisenberg, with contributions from Born and Jordan, to develop *Matrix Mechanics*, one of the earliest formulations of Quantum Mechanics. In this approach, observable quantities like position and momentum are represented by matrices, and their non-commuting nature underlies the uncertainty principle.
-
-At the time, matrices were relatively new to physics, and it was Jordan, a mathematician familiar with recent mathematical developments, who introduced Heisenberg to matrices and guided him in this direction. This collaboration was instrumental in shaping the foundations of Quantum Mechanics.
 
 
 
