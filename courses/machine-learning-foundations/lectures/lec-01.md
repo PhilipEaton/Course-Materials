@@ -68,7 +68,7 @@ plt.plot(x, np.sin(x))
 plt.title("Jupyter is working!")  
 plt.show()  
 {% endcapture %}
-{% include codeinput.html content=ex %}
+{% include example.html content=ex %}
 
 {% capture ex %}
 ✅ Python OK: 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 10:07:17) [Clang 14.0.6 ]  
@@ -79,15 +79,13 @@ plt.show()
 ✅ seaborn: 0.13.2  
 ✅ scikit-learn: 1.4.2  
 
-{% raw %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:800px; width:80%;">
-{% endraw %}
 
 {% endcapture %}
-{% include codeoutput.html content=ex %}
+{% include result.html content=ex %}
 
     
     
