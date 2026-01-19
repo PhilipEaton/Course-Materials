@@ -256,36 +256,28 @@ penguins.head()
 {% include codeinput.html content=ex %}
 
 {% capture ex %}
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<table class="dataframe" role="table">
+  <caption>
+    Sample penguin measurements including species, island, bill dimensions,
+    flipper length, body mass, and sex.
+  </caption>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>species</th>
-      <th>island</th>
-      <th>bill_length_mm</th>
-      <th>bill_depth_mm</th>
-      <th>flipper_length_mm</th>
-      <th>body_mass_g</th>
-      <th>sex</th>
+    <tr>
+      <th scope="col">Row</th>
+      <th scope="col">Species</th>
+      <th scope="col">Island</th>
+      <th scope="col">Bill length (mm)</th>
+      <th scope="col">Bill depth (mm)</th>
+      <th scope="col">Flipper length (mm)</th>
+      <th scope="col">Body mass (g)</th>
+      <th scope="col">Sex</th>
     </tr>
   </thead>
+
   <tbody>
     <tr>
-      <th>0</th>
+      <th scope="row">0</th>
       <td>Adelie</td>
       <td>Torgersen</td>
       <td>39.1</td>
@@ -295,7 +287,7 @@ penguins.head()
       <td>Male</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th scope="row">1</th>
       <td>Adelie</td>
       <td>Torgersen</td>
       <td>39.5</td>
@@ -305,7 +297,7 @@ penguins.head()
       <td>Female</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th scope="row">2</th>
       <td>Adelie</td>
       <td>Torgersen</td>
       <td>40.3</td>
@@ -315,17 +307,17 @@ penguins.head()
       <td>Female</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th scope="row">3</th>
       <td>Adelie</td>
       <td>Torgersen</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td aria-label="Missing value">NaN</td>
+      <td aria-label="Missing value">NaN</td>
+      <td aria-label="Missing value">NaN</td>
+      <td aria-label="Missing value">NaN</td>
+      <td aria-label="Missing value">NaN</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th scope="row">4</th>
       <td>Adelie</td>
       <td>Torgersen</td>
       <td>36.7</td>
@@ -336,7 +328,7 @@ penguins.head()
     </tr>
   </tbody>
 </table>
-</div>
+
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
