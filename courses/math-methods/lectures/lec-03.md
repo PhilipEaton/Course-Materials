@@ -15,10 +15,10 @@ As we've discussed, matrices can represent a wide variety of coordinate transfor
 When we think of a matrix as a transformation, we think of it as acting on some original vector and transforming it into a new one:
 
 $$
-\mathbf{T} \vec{r} = \vec{r}\,'
+\mathbf{T} \vec{r} = \vec{R}
 $$
 
-Here, the matrix $\mathbf{T}$ transforms the original vector $\vec{r}$ into a new vector $\vec{r}\,'$. Notice that the transformation acts on the vector **to its right**. That’s not just a formatting choice, it’s built into how matrix multiplication has been defined.
+Here, the matrix $\mathbf{T}$ transforms the original vector $\vec{r}$ into a new vector $\vec{R}$. Notice that the transformation acts on the vector **to its right**. That’s not just a formatting choice, it’s built into how matrix multiplication has been defined.
 
 If we want to transform a column vector (an $n \times 1$ matrix) into another column vector (also $n \times 1$), we need to multiply it by an $n \times n$ matrix **on the left**. That’s the only way the dimensions work out correctly. You should try verifying this: write out the shapes of each object and check that trying to multiply from the right like $\vec{r} \mathbf{T}$ doesn’t make sense if $\vec{r}$ is a column vector.
 
@@ -30,7 +30,7 @@ The convention of placing the transformation matrix on the left isn’t arbitrar
 
 Transformtion matrices are applied via matrix multiplication and recall matrix multiplication has the rule that order matters. This means, when applying multiple transformations to an object, the order we write these transformations matters; the order transformations are being applied is read from **right to left**. To see why this is the case, consider the following.
 
-Suppose you start with a position vector $\vec{r}$ and apply a transformation matrix $\mathbf{T}_1$. You get the new vector $\vcec{r}_1$ in the following manner:
+Suppose you start with a position vector $\vec{r}$ and apply a transformation matrix $\mathbf{T}_1$. You get the new vector $\vec{r}_1$ in the following manner:
 
 $$
 \mathbf{T}_1 \vec{r} = \vec{r}_1
@@ -74,6 +74,206 @@ The order matrix transformations are applied is from the right to left.
 This right-to-left order isn’t just a mathematical technicality, it has real physical consequences. In physics, the sequence in which you apply rotations, reflections, and other transformations can dramatically change the result. For instance, in Quantum Field Theory, when writing down how a neutron decays into a proton, an electron, and an anti-electron neutrino, the math is read from right to left matching the physical sequence of interactions.
 
 Grasping this structure is especially important in fields like 3D coordinate transformations and quantum mechanics, where multiple matrices act on a system in a precise order. Getting that order wrong doesn’t just mess up the calculation, it changes what the math *means* physically.
+
+
+
+
+
+
+
+
+## Rotations
+
+The most straightforward way to find the rotation matrix is to examine how the unit vectors in the $xy$-plane are transformed under rotation. Imagine the original $xy$-coordinate system, and then draw a new coordinate system that has been rotated counterclockwise by an angle $\theta$ about the $z$-axis (pointing out of the page). The setup would look like this:
+
+<img
+  src="{{ '/courses/math-methods/images/lec03/rotatedcorrdinates.png' | relative_url }}"
+  alt="The image shows two sets of coordinate axes that share the same origin. The original axes are drawn in black, with the horizontal axis pointing to the right and labeled i-hat, and the vertical axis pointing upward and labeled j-hat. A rotated coordinate system is drawn in red. The red i-prime unit vector extends from the origin at an angle above the black horizontal axis. The red j-prime unit vector extends from the origin at an angle above the negative side of the black horizontal axis. Both red vectors form equal angles, labeled theta, with their adjacent black axes."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+Using trigonometry—and the fact that unit vectors have length 1—we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
+
+$$
+\begin{aligned}
+	\cos(\theta) \,\widehat{i} + \sin(\theta) \,\widehat{j} = \widehat{i}'  \\
+	-\sin(\theta) \,\widehat{i} + \cos(\theta) \,\widehat{j} = \widehat{j}'
+\end{aligned}
+$$
+
+Check the $\widehat{j}'$ expression to make sure you agree!
+
+Now, using the standard (and simplest) matrix representations for the unit vectors:
+
+$$
+\widehat{i} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+\qquad \text{and} \qquad
+\widehat{j} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+$$
+
+we find:
+
+$$
+\widehat{i}' = \begin{bmatrix} \cos(\theta) \\ \sin(\theta) \end{bmatrix}
+\qquad \text{and} \qquad
+\widehat{j}' = \begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
+$$
+
+So, we want a matrix that rotates $\widehat{i}$ to $\widehat{i}'$ and $\widehat{j}$ to $\widehat{j}'$. Suppose we start with a general $2 \times 2$ matrix:
+
+$$
+\mathbf{R} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+$$
+
+We want to determine the values of $a$, $b$, $c$, and $d$ that make this matrix act as our rotation operator.
+
+Start by applying $\mathbf{R}$ to $\widehat{i}$:
+
+$$
+\mathbf{R} \widehat{i} = \widehat{i}' \quad \Rightarrow \quad
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
+\begin{bmatrix} \cos(\theta) \\ \sin(\theta) \end{bmatrix}
+\quad \Rightarrow \quad
+\begin{bmatrix} a \\ c \end{bmatrix} = \begin{bmatrix} \cos(\theta) \\ \sin(\theta) \end{bmatrix}
+$$
+
+So, $a = \cos(\theta)$ and $c = \sin(\theta)$.
+
+Now do the same for $\widehat{j}$:
+
+$$
+\mathbf{R} \widehat{j} = \widehat{j}' \quad \Rightarrow \quad
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+\begin{bmatrix} 0 \\ 1 \end{bmatrix} =
+\begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
+\quad \Rightarrow \quad
+\begin{bmatrix} b \\ d \end{bmatrix} = \begin{bmatrix} -\sin(\theta) \\ \cos(\theta) \end{bmatrix}
+$$
+
+So, $b = -\sin(\theta)$ and $d = \cos(\theta)$.
+
+{% capture ex %}
+The 2x2 rotation matrix $\mathbf{R}(\theta)$ that rotates a vector by an angle $\theta$ counterclockwise about the $z$-axis is given by:
+
+$$
+\mathbf{R}(\theta) = \begin{bmatrix}
+	\cos(\theta) & -\sin(\theta) \\
+	\sin(\theta) & \cos(\theta)
+\end{bmatrix}
+$$
+
+Please note, this matrix was designed to transform objects written in the original basis, in terms of $\widehat{i}$ and $\widehat{j}$, into their new representation in the rotated basis, $\widehat{i}'$ and $\widehat{j}'$.
+{% endcapture %}
+{% include result.html content=ex %}
+
+{% capture ex %}
+Suppose we wish to rotate the vector $(1,1)$ by 45 degrees about the $z$-axis. The rotation matrix and vector are:
+
+$$
+\mathbf{R}(45^\circ) = \begin{bmatrix}
+	\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
+	\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
+\end{bmatrix}
+\qquad
+\vec{r} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+$$
+
+Applying the rotation:
+
+$$
+\vec{r}\,' = \mathbf{R}(45^\circ) \vec{r} =
+\begin{bmatrix} 0 \\ \tfrac{2}{\sqrt{2}} \end{bmatrix}
+$$
+
+This makes sense! The vector $(1,1)$ lies at a 45-degree angle from the $x$-axis. Rotating it another 45 degrees moves it directly along the $y$-axis, making its $x$-component zero. The vector’s magnitude is $|\vec{r}| = \sqrt{2}$, which matches the new $y$-component after simplifying $\tfrac{2}{\sqrt{2}}$.
+{% endcapture %}
+{% include example.html content=ex %}
+
+To extend this to 3D, we can build a rotation matrix about the $z$-axis that leaves the $z$-component unchanged:
+
+$$
+\mathbf{R}_z(\theta) = \begin{bmatrix}
+	\cos(\theta) & -\sin(\theta) & 0 \\
+	\sin(\theta) & \cos(\theta) & 0 \\
+	0 & 0 & 1
+\end{bmatrix}
+$$
+
+You can derive the rotation matrices for the $x$- and $y$-axes the same way:
+
+**Rotation about the $x$-axis:**
+
+$$
+\mathbf{R}_x(\alpha) = \begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & \cos(\alpha) & -\sin(\alpha) \\
+	0 & \sin(\alpha) & \cos(\alpha)
+\end{bmatrix}
+$$
+
+**Rotation about the $y$-axis:**
+
+$$
+\mathbf{R}_y(\beta) = \begin{bmatrix}
+	\cos(\beta) & 0 & \sin(\beta) \\
+	0 & 1 & 0 \\
+	-\sin(\beta) & 0 & \cos(\beta)
+\end{bmatrix}
+$$
+
+{% capture ex %}
+Suppose we rotate the vector $(1, 0, 0)$ by 90 degrees about the $z$-axis, then by 90 degrees about the $x$-axis.
+
+**First Rotation:**
+
+$$
+\mathbf{R}_z(90^\circ) = \begin{bmatrix}
+	0 & -1 & 0 \\
+	1 & 0 & 0 \\
+	0 & 0 & 1
+\end{bmatrix}
+\quad
+\vec{r} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+\quad
+\Rightarrow \quad
+\mathbf{R}_z \vec{r} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+$$
+
+**Second Rotation:**
+
+$$
+\mathbf{R}_x(90^\circ) = \begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 0 & -1 \\
+	0 & 1 & 0
+\end{bmatrix}
+\quad
+\Rightarrow \quad
+\vec{r}\,' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+$$
+
+If you reverse the order (first rotate about $x$, then about $z$), the result is different:
+
+$$
+\mathbf{R}_x(90^\circ) \vec{r} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}
+\quad
+\Rightarrow \quad
+\mathbf{R}_z(90^\circ) \vec{r} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+$$
+
+The takeaway: **the order of matrix multiplication matters**. This is called **non-commutativity**.
+{% endcapture %}
+{% include example.html content=ex %}
+
+The fact that operations can be represented by matrices—and that the order of matrix multiplication often matters—is crucial for understanding Quantum Mechanics. Heisenberg was among the first to recognize that the order in which the position and momentum operators act on a quantum state matters. Specifically, he discovered that position and momentum do **not** commute. This non-commutativity, expressed in the canonical commutation relation
+
+$$
+[\widehat{x}, \widehat{p}_x] = \widehat{x} \widehat{p}_x - \widehat{p}_x \widehat{x} = i \hbar
+$$
+
+was a key insight that led Heisenberg, with contributions from Born and Jordan, to develop *Matrix Mechanics*, one of the earliest formulations of Quantum Mechanics.
+
+At the time, matrices were relatively new to physics, and it was Jordan—familiar with recent mathematical developments—who introduced Heisenberg to matrices and helped guide the mathematical formulation. This collaboration laid the foundation for much of modern quantum theory.
 
 
 
