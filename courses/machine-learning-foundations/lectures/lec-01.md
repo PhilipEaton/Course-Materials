@@ -79,10 +79,12 @@ plt.show()
 ✅ seaborn: 0.13.2  
 ✅ scikit-learn: 1.4.2  
 
+{% raw %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:800px; width:80%;">
+{% endraw %}
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}
