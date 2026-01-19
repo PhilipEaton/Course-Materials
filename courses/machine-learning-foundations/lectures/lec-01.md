@@ -46,11 +46,11 @@ Let's take some time to make sure everyone has their coding space set up.
 Run the follow cell:
 
 {% capture ex %}
-import sys, platform
-import numpy as np, pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import sklearn
+import sys, platform  
+import numpy as np, pandas as pd  
+import matplotlib.pyplot as plt  
+import seaborn as sns  
+import sklearn  
 
 print("✅ Python OK:", sys.version)  
 print("✅ Platform:", platform.platform())  
