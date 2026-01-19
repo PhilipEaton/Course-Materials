@@ -81,7 +81,7 @@ plt.show()
 
 
 <img
-  src="{{ '/courses/machine-learning-foudations/images/lec01/output_1_1.png' | relative_url }}"
+  src="{{ '/courses/machine-learning-foundations/images/lec01/output_1_1.png' | relative_url }}"
   alt="Image of a sine wave to help check that python has been installed properly."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
     
