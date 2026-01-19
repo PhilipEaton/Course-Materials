@@ -237,7 +237,7 @@ $$
 {% capture ex %}
 Suppose we rotate the vector $(1, 0, 0)$ by 90 degrees about the $z$-axis, then by 90 degrees about the $x$-axis.
 
-The rotation matrices for each of these rotations, as well as the initial vector, are given by:
+The rotation matrices for each of these rotations, as well as the initial vector, can be writted as:
 
 $$
 \mathbf{R}_z(90^\circ) = \begin{bmatrix}
@@ -300,10 +300,10 @@ $$
 Thus, the final vector after both rotations is:
 
 $$
-\vec{r}\,' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\vec{r}' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
-In this case, the order of operations matters. To demonstrate this, we can try performing the rotations in the reverse order: first rotating about the $ x $-axis and then about the $ z $-axis. Starting with the initial vector:
+In this case, **the order of operations matters**. To demonstrate this, we can try performing the rotations in the reverse order: first rotating about the $ x $-axis and then about the $ z $-axis. Starting with the initial vector:
 
 $$
 \mathbf{R}_x(90^\circ) \vec{r} = \begin{bmatrix}
@@ -317,7 +317,7 @@ $$
 \end{bmatrix}
 $$
 
-Now, applying the rotation about the $ z $-axis:
+Now, apply the rotation about the $ z $-axis:
 
 $$
 \mathbf{R}_z(90^\circ) \left( \mathbf{R}_x(90^\circ) \vec{r} \right) = \begin{bmatrix}
