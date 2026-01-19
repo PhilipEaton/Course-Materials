@@ -487,13 +487,11 @@ This is a fundamental difference from rotation matrices, which always preserve o
 
 
 
+## Rescaling / Scaling
 
+Rescaling (or scaling) matrices are used to change the size of geometric objects. These matrices stretch or compress vectors by multiplying them by a scaling factor in one or more directions. 
 
-
-
-## Rescaling/Scaling
-
-Rescaling (or scaling) matrices are used to change the size of geometric objects in space without altering their shape. A rescaling matrix modifies the length of vectors in one or more dimensions by multiplying them by a scaling factor. The general form of a 2D rescaling matrix is:
+In two dimensions, a general rescaling matrix has the form:
 
 $$
 \mathbf{S} = \begin{bmatrix}
@@ -502,7 +500,7 @@ $$
 \end{bmatrix}
 $$
 
-where $ s_x $ and $ s_y $ are the scaling factors in the $ x $ and $ y $ directions, respectively. For 3D space, the scaling matrix can be expressed as:
+where $s_x$ and $s_y$ are the scaling factors along the $x$- and $y$-axes, respectively. In three dimensions, the scaling matrix becomes:
 
 $$
 \mathbf{S} = \begin{bmatrix}
@@ -512,11 +510,167 @@ $$
 \end{bmatrix}
 $$
 
-where $ s_z $ is the scaling factor in the $ z $ direction. 
+where $s_z$ is the scaling factor in the $z$-direction.
 
-### Properties of Rescaling/Scaling Matrices
+### Properties of Rescaling / Scaling Matrices
 
-Unlike rotation and reflection matrices, rescaling matrices can have determinants that are positive, negative, or zero, reflecting whether the transformation preserves orientation, reverses it, or collapses the space. Reflection matrices can be thought of as special cases of rescaling matrices where some axes are multiplied by $-1$, changing orientation but preserving magnitude.
+Unlike rotation or reflection matrices, rescaling matrices can have **any** determinant—positive, negative, or even zero—depending on how they stretch or compress space:
+
+- A **positive** determinant means the transformation preserves orientation.
+- A **negative** determinant means the transformation includes a reflection, flipping orientation.
+	- Simple reflection matrices are a special case of scaling matrices where one or more axes are multiplied by $-1$.
+- A **zero** determinant collapses space entirely (e.g., flattening 3D space onto a plane), which means the transformation is **not invertible**.
+
+
+
+
+
+
+
+## Transforming Matrices
+
+At this point, you might be wondering: how do we reflect across axes other than the $x$- or $y$-axis?
+
+And your instinct might be, “If I can rotate a mirror in real life, maybe I can just rotate the reflection matrix too!”
+
+That intuition is spot on, but we haven’t yet talked about how to rotate a matrix itself. So let’s try to figure it out this can be done by experimenting with reflection and rotation matrices.
+
+Suppose we want a reflection matrix for a mirror placed along the line $y = x$. That is, a mirror that lies 45$^\circ$ above the horizontal. One idea is to take the standard reflection across the $x$-axis, $ \mathbf{R}_x $, and rotate it by 45$^\circ$ using the rotation matrix:
+
+$$
+\mathbf{R}_z(45^\circ) = \begin{bmatrix}
+	\cos(45^\circ) & -\sin(45^\circ) \\
+	\sin(45^\circ) & \cos(45^\circ)
+\end{bmatrix} = \begin{bmatrix}
+	\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
+	\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
+\end{bmatrix}
+$$
+
+So we try:
+$$
+\begin{aligned}
+	\mathbf{R}_z(45^\circ) \mathbf{R}_x &= \begin{bmatrix}
+		\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
+		\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
+	\end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \\
+	&= \begin{bmatrix}
+		\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}} \\
+		\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}}
+	\end{bmatrix}
+\end{aligned}
+$$
+
+To check if this worked properly, let’s apply this matrix to the unit vector $ \widehat{i} $ (pointing along the $x$-axis):
+
+$$
+\left(\mathbf{R}(45^\circ) \mathbf{R}_x\right)\widehat{i} =
+\begin{bmatrix}
+	\tfrac{1}{\sqrt{2}} \\
+	\tfrac{1}{\sqrt{2}}
+\end{bmatrix}
+$$
+
+This result points 45$^\circ$ above the $x$-axis. This isn't correct. Remember, we’re trying to reflect across the $y = x$ line. If our incoming ray is along $ \widehat{i} $, we expect the reflected ray to point along $ \widehat{j} $. But that’s not what we’re getting.
+
+<img
+  src="{{ '/courses/math-methods/images/lec03/reflection1.png' | relative_url }}"
+  alt="The image shows a horizontal red arrow labeled “Incoming Ray” pointing right toward a gray mirror line that is tilted upward to the right. At the point where the incoming ray meets the mirror, a second red arrow labeled “Outgoing Ray” reflects upward and to the right, leaving pointing directly along the mirror's surface."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+
+So what went wrong?
+
+It turns out that multiplying a matrix on the **left** by a rotation matrix only rotates the matrix’s **columns**—not its rows. Since matrices encode transformations in both row and column space, this only gives us part of the picture.
+
+To rotate both rows *and* columns—that is, to rotate the entire coordinate system—we also need to apply the **transpose** of the rotation matrix on the **right**. The full transformation becomes:
+
+$$
+\mathbf{R}_{y = x} = \mathbf{R}(45^\circ)\, \mathbf{R}_x\, \mathbf{R}(45^\circ)^T
+$$
+
+The matrix on the left rotates the columns, and the transpose on the right rotates the rows. Together, they rotate the whole transformation. While this version uses the transpose, the more general formula is:
+
+$$
+\mathbf{R} \mathbf{A} \mathbf{R}^{-1}
+$$
+
+But since rotation matrices are orthogonal, their inverse equals their transpose. (We’ll cover this in more detail in Lecture 05.)
+
+Let’s compute it:
+
+$$
+\begin{aligned}
+	\mathbf{R}_{y=x} &= \mathbf{R}(45^\circ) \mathbf{R}_x \mathbf{R}(45^\circ)^T \\
+	&= \begin{bmatrix}
+		\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
+		\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
+	\end{bmatrix} 
+	\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} 
+	\begin{bmatrix}
+		\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}} \\
+		-\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}}
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{bmatrix}
+\end{aligned}
+$$
+
+Now let’s apply this to $ \widehat{i} $:
+
+$$
+\mathbf{R}_{y = x} \widehat{i} =
+\begin{bmatrix}
+	0 & 1 \\
+	1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+	1 \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+	0 \\ 1
+\end{bmatrix}
+$$
+
+which is exactly what we expect—a reflection of $ \widehat{i} $ across the line $y = x$.
+
+<img
+  src="{{ '/courses/math-methods/images/lec03/reflection2.png' | relative_url }}"
+  alt="The image shows a horizontal red arrow labeled “Incoming Ray” pointing right toward a gray mirror line that is tilted upward to the right. At the point where the incoming ray meets the mirror, a second red arrow labeled “Outgoing Ray” reflects upwards, forming an angle with the mirror’s surface."
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  
+{% capture ex %}
+To transform a **vector**, you apply the transformation matrix on the left:
+
+$$
+\vec{r}\,' = \mathbf{R} \vec{r}
+$$
+
+where $ \mathbf{R} $ transforms the original coordinates into the new ones. Some textbooks use the reverse convention, so always check which direction is being used.
+{% endcapture %}
+{% include result.html content=ex %}
+
+{% capture ex %}
+To transform a **matrix**, you must rotate both its row and column space:
+
+$$
+\mathbf{A}' = \mathbf{R} \mathbf{A} \mathbf{R}^T
+$$
+
+This works when $ \mathbf{R} $ is an orthogonal matrix. In general, the transformation is:
+
+$$
+\mathbf{A}' = \mathbf{R} \mathbf{A} \mathbf{R}^{-1}
+$$
+{% endcapture %}
+{% include result.html content=ex %}
+
+
+
+
+
 
 
 
@@ -542,7 +696,8 @@ $$
 $$
 
 So we try:
-\begin{align*}
+$$
+\begin{aligned}
 	\mathbf{R}(45^\circ) \mathbf{R}_x &= \begin{bmatrix}
 		\cos(45^\circ) & -\sin(45^\circ) \\
 		\sin(45^\circ) & \cos(45^\circ)
@@ -555,7 +710,8 @@ So we try:
 		\tfrac{1}{\sqrt{2}} & \tfrac{1}{\sqrt{2}} \\
 		\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}}
 	\end{bmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 To see if this worked, let’s apply this matrix to a vector pointing in the $ \widehat{i} $ direction (i.e., along the $ x $-axis):
 
@@ -587,7 +743,9 @@ $$
 The matrix on the left rotates the column space, and the transpose on the right rotates the row space. Together, they fully rotate the transformation matrix. While this formula uses the transpose, the more general expression is $ \mathbf{R} \mathbf{A} \mathbf{R}^{-1} $, but because rotation matrices are orthogonal, their inverse is the same as their transpose. We’ll learn more about orthogonal matrices in Lecture 05.
 
 Let’s compute it:
-\begin{align*}
+
+$$
+\begin{aligned}
 	\mathbf{R}_{y=x} &= \mathbf{R}(45^\circ) \mathbf{R}_x (\mathbf{R}(45^\circ))^\text{T} \\
 	&= \begin{bmatrix}
 		\tfrac{1}{\sqrt{2}} & -\tfrac{1}{\sqrt{2}} \\
@@ -610,7 +768,8 @@ Let’s compute it:
 		0 & 1 \\
 		1 & 0
 	\end{bmatrix}
-\end{align*}
+\end{aligned}
+$$
 
 Now apply this to the vector $ \widehat{i} $:
 $$
@@ -637,9 +796,11 @@ which correctly reflects the input vector along the line $ y = x $.
 
 {% capture ex %}
 To transform a **vector**, you only apply the transformation matrix to the column:
+
 $$
 \vec{r}\,' = \mathbf{R} \vec{r}
 $$
+
 where $ \mathbf{R} $ is the transformation from the current to the new coordinate system. Please note, some textbooks reverse the order and write transformations in terms of converting from the new to the old basis. Always check your convention!
 {% endcapture %}
 {% include result.html content=ex %}
