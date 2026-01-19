@@ -353,22 +353,38 @@ At the time, matrices were relatively new to physics, and it was Jordan who intr
 
 ### Properties of Rotation Matrices
 
-The determinant of a rotation matrix is always $ +1 $. This means rotations are not capable of recreating a reflection (determinate $-1$, as we will see) no matter what rotation matrices you use. We can check our $2 \times 2$ matrix to make sure it obeys this property:
+Previously we claimed that the determinant of a rotation matrix is always $+1$. This tells us that no combination of rotation matrices can ever create a reflection (which would have determinant $-1$ as we’ll soon see). Let’s confirm this for the $2 \times 2$ rotation matrix we derived earlier:
 
-$$ \begin{vmatrix}
+$$
+\text{det}\big(\mathbf{R}_z(\theta)\big) = 
+\begin{vmatrix}
 	\cos(\theta) & -\sin(\theta) \\
 	\sin(\theta) & \cos(\theta)
-\end{vmatrix} = \cos^2(\theta) - (-\sin^2(\theta)) = \cos^2(\theta)  + \sin^2(\theta) = 1 $$
-
-In more formal terms, this property indicates that rotation matrices belong to the **special orthogonal group**, commonly denoted as $ SO(n) $, where $ n $ is the dimension of the space (e.g., $ SO(2) $ for 2D rotations and $ SO(3) $ for 3D rotations). *Special* means the matrices all ave a determinate of $+1$, and we will discuss what *orthogonal* means for matrices in Lecture 05. Since the determinant of a rotation matrix equals $ +1 $, these matrices preserve the ``handedness" or orientation of the coordinate system, ensuring that any rotation does not reflect or invert the space. The special orthogonal groups are vital in the study of particle physics and quantum field theories, as rotations represent fundamental symmetries of nature.
-
-
-Another key property of rotation matrices, that we kind of showed above, is that successive rotations can be represented by the product of two or more rotation matrices. For example, if $ \mathbf{R}_1 $ and $ \mathbf{R}_2 $ are rotation matrices, then their product $ \mathbf{R} = \mathbf{R}_1 \mathbf{R}_2 $ is also a rotation matrix, representing the combined effect of the two rotations:
+\end{vmatrix}
+= \cos^2(\theta) - (-\sin^2(\theta)) = \cos^2(\theta) + \sin^2(\theta) = 1
 $$
-\mathbf{R} = \mathbf{R}_1 \mathbf{R}_2
-$$
-It is important to note that matrix multiplication is generally not commutative, meaning $ \mathbf{R}_1 \mathbf{R}_2 \neq \mathbf{R}_2 \mathbf{R}_1 $ in most cases. Thus, the order of operations matters when applying rotations sequentially, especially in three-dimensional space (or higher). This property is particularly useful in physics for describing complex transformations. For instance, in quantum mechanics, combined rotations correspond to transformations in the system’s state space.
 
+Formally, this property means rotation matrices are part of the **special orthogonal group**, denoted $SO(n)$, where $n$ is the dimension of the space (e.g., $SO(2)$ for 2D rotations, $SO(3)$ for 3D rotations).
+
+The term *special* means that the determinant is $+1$, and we’ll get into what *orthogonal* means in Lecture 05. For now, the key takeaway is that rotations preserve the “handedness” (or orientation) of the coordinate system. Further, they do not change the length of the vectors they transform.
+
+These special orthogonal groups are incredibly important in physics, especially in particle physics and quantum field theory, where rotations represent fundamental symmetries of nature.
+
+Another important property of rotation matrices, in that **successive rotations** can be represented by multiplying rotation matrices together. If $\mathbf{R}_1(\theta)$ and $\mathbf{R}_2(\phi)$ are rotation matrices, then their product is also a rotation matrix:
+
+$$
+\mathbf{R}(\theta,\phi) = \mathbf{R}_1(\theta) \mathbf{R}_2(\phi)
+$$
+
+This resulting matrix $\mathbf{R}$ represents the combined effect of applying $\mathbf{R}_2$ followed by $\mathbf{R}_1$ (remember: right to left!).
+
+It's important to note remember, we cannot stress this enough, that **matrix multiplication is not commutative**. That means:
+
+$$
+\mathbf{R}_1 \mathbf{R}_2 \neq \mathbf{R}_2 \mathbf{R}_1
+$$
+
+This is especially true in 3D space or higher, where the order of applying rotations significantly affects the outcome.
 
 
 
