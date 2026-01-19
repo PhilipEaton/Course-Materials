@@ -357,30 +357,32 @@ You should always do this when you first load data. It helps you understand the 
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</b>  
+<strong style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
-In data science, it’s considered best practice to <b>separate exploratory code</b> from your final, deliverable code.  
+In data science, it’s considered best practice to <strong>separate exploratory code</strong> from your final, deliverable code.  
 Exploratory commands such as <code>.head()</code>, <code>.info()</code>, or quick diagnostic plots are essential while you’re
 getting to know your data. However, they should not appear in the version you hand off to a client, supervisor, or production system.
 <br><br>
 Your final notebook or script should:
 <ul>
-<li>Generate <b>only the outputs your client or stakeholder requested</b>.</li>
-<li>Run <b>cleanly from start to finish</b> with no extra inspection cells or debugging output.</li>
-<li>Be <b>reproducible</b>—anyone should be able to rerun it and obtain the same results from <b>another</b> computer.</li>
+<li>Generate <strong>only the outputs your client or stakeholder requested</strong>.</li>
+<li>Run <strong>cleanly from start to finish</strong> with no extra inspection cells or debugging output.</li>
+<li>Be <strong>reproducible</strong>—anyone should be able to rerun it and obtain the same results from <strong>another</strong> computer.</li>
 </ul>
 Think of it like publishing a scientific paper: you can take all the notes you want during analysis, but the version you submit should be polished, clear, and professional.
 </div>
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 1b: Clean and Prepare the Data
-</h2>
+
+
+
+
+
+
+
+
+## Step 1b: Clean and Prepare the Data
+
 
 Before we can use the dataset in machine learning models, we need to:
 - Remove rows with missing values.
@@ -1048,15 +1050,15 @@ The classification report provides four key metrics for each class:
     padding: 14px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</b>  
+<strongstyle="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
-That <b>harmonic mean</b> in the F1-score isn’t just a fancy choice—it serves an important purpose.  
-Unlike the regular (arithmetic) average (add things up and divide by the number of things), the harmonic mean <b>penalizes extreme differences</b> between precision and recall.  
+That <strong>harmonic mean</strong> in the F1-score isn’t just a fancy choice—it serves an important purpose.  
+Unlike the regular (arithmetic) average (add things up and divide by the number of things), the harmonic mean <strong>penalizes extreme differences</strong> between precision and recall.  
 <br><br>
 If precision is <i>perfect</i> but recall is <i>terrible</i>, the F1-score drops dramatically, reflecting that your model isn't actually useful.
 <br><br>
 
-<b>Mathematically:</b>  
+<strong>Mathematically:</strong>  
 <div style="background-color: white; border-radius: 4px; padding: 8px; margin: 8px 0;">
 $$
 F_1 = 2 \times \left(\frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}\right)
@@ -1066,15 +1068,15 @@ $$
 <br>
 To see why this matters, compare the two averages:
 <ul style="margin-top: 6px; margin-bottom: 6px;">
-<li><b>Arithmetic Mean:</b> 
-    <b>Mathematically:</b>  
+<li><strong>Arithmetic Mean:</strong> 
+    <strong>Mathematically:</strong>  
 <div style="background-color: white; border-radius: 4px; padding: 8px; margin: 8px 0;">
 $$
     \frac{(1.0 + 0.2)}{2} = 0.6
 $$
 </div></li>
-<li><b>Harmonic Mean:</b> 
-    <b>Mathematically:</b>  
+<li><strong>Harmonic Mean:</strong> 
+    <strong>Mathematically:</strong>  
 <div style="background-color: white; border-radius: 4px; padding: 8px; margin: 8px 0;">
 $$
     2 \times \left(\frac{1.0 × 0.2}{1.0 + 0.2}\right) = 0.33
@@ -1082,9 +1084,9 @@ $$
 </div></li>
 </ul>
 
-The harmonic mean pulls the score down more strongly when one value is low, forcing the model to perform well on both <b>precision</b> and <b>recall</b> to get a high $F_1$.
+The harmonic mean pulls the score down more strongly when one value is low, forcing the model to perform well on both <strong>precision</strong> and <strong>recall</strong> to get a high $F_1$.
 <br><br>
-In professional data science practice, this makes $F_1$-score the go-to metric for <b>imbalanced datasets</b>—  like detecting rare diseases or fraudulent transactions—where simple accuracy can be misleading.
+In professional data science practice, this makes $F_1$-score the go-to metric for <strong>imbalanced datasets</strong>—  like detecting rare diseases or fraudulent transactions—where simple accuracy can be misleading.
 </div>
 
 
@@ -1410,7 +1412,7 @@ As we can see k_means does not do a great job!
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Key Takeaways:</b> 
+<strong>Key Takeaways:</strong> 
 
 - ML is not magic! It’s pattern recognition through math and logic.
 - We’ll explore each of these methods in detail throughout the course.
