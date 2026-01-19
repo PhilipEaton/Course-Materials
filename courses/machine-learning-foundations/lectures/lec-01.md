@@ -46,7 +46,6 @@ Let's take some time to make sure everyone has their coding space set up.
 Run the follow cell:
 
 {% capture ex %}
-python
 import sys, platform
 import numpy as np, pandas as pd
 import matplotlib.pyplot as plt
@@ -86,11 +85,8 @@ plt.show()
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}
-
     
     
-
-
 If everything is a green check mark ✅, then you are good to go! Skip down to **"Can We Predict a Penguin's Species?"**.
 
 If something failed, then let's cover some common errors:
@@ -108,15 +104,17 @@ If something failed, then let's cover some common errors:
     > !pip install <package>
     > ```
 
-<h1 style="
-    color: white;
-    background-color: #4bbe7e;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: left;
-">
-"Can We Predict a Penguin’s Species?"
-</h1>
+
+
+
+
+
+
+
+
+
+
+# Can We Predict a Penguin’s Species?
 
 Welcome to your first Machine Learning (ML) adventure!
 
@@ -139,18 +137,14 @@ Today will searve as an example of the tools we will use in class and will give 
 6. Try an unsupervised approach with clustering and PCA  
 7. Reflect on what we learned
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 0: Import needed Libraries and Functions
-</h2>
+
+## Step 0: Import needed Libraries and Functions
 
 Run the following cell to load in the required libraries and functions for this notebook.
 
 
+
+{% capture ex %}
 ```python
 # ===============================================================
 # === 0. Import Libraries ===
@@ -184,16 +178,18 @@ from sklearn.decomposition import PCA                       # Principal Componen
 sns.set(style="whitegrid", palette="muted", font_scale=1.1)  # Nice default theme for plots
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-<!-- Subsection Header -->
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Instructor Note: Why So Many Imports?
-</h3>
+
+
+
+
+
+
+
+### Instructor Note: Why So Many Imports?
+
 
 You might be wondering why we’re importing so many things from `sklearn` individually instead of just writing something like:
 
@@ -233,14 +229,9 @@ Importing the way we did above makes our code:
 So, while it looks like a lot of imports, this way helps us learn and keeps everything organized!
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 1a: Load the Data
-</h2>
+
+## Step 1a: Load the Data
+
 
 We’ll use Seaborn’s built-in version of the **Palmer Penguins** dataset.  
 Each row describes a penguin, with measurements such as bill length, flipper length, body mass, and more.
@@ -248,7 +239,7 @@ Each row describes a penguin, with measurements such as bill length, flipper len
 Let’s load it and take a quick peek.
 
 
-
+{% capture ex %}
 ```python
 # Load the "Palmer Penguins" dataset directly from Seaborn's built-in collection
 penguins = sns.load_dataset("penguins")
@@ -258,10 +249,10 @@ penguins = sns.load_dataset("penguins")
 penguins.head()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
-
-
+{% capture ex %}
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -343,8 +334,19 @@ penguins.head()
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
+{% capture ex %}
+
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 The snippet of code:
 
