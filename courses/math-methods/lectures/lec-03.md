@@ -198,7 +198,7 @@ $$
 
 which makes sense! 
 
-Why? Because the vector $ (1,1) $ is already oriented at 45 degrees above the positive $ x $-axis. Rotating it by an additional 45 degrees brings it all the way to the $ y $-axis, making the $ x $-component zero. Furthermore, the length of this vector is $ \lvert \vec{r} \rvert = \sqrt{(1)^2 + (1)^2} = \sqrt{2} $, which agree with the $y$-component of the new vector after simplifying $ \tfrac{2}{\sqrt{2}} $.
+Why? Because the vector $ (1,1) $ is already oriented at degrees above the positive $ x $-axis. Rotating it by an additional 45 degrees brings it all the way to the $ y $-axis, making the $ x $-component zero, which is it in our answer. Furthermore, the length of the original vector is $ \lvert \vec{r} \rvert = \sqrt{(1)^2 + (1)^2} = \sqrt{2} $, which agrees with the length of the new vector after simplifying $ \tfrac{2}{\sqrt{2}} = \sqrt{2}  $.
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -262,7 +262,7 @@ $$
 \end{bmatrix}
 \quad
 \Rightarrow \quad
-\vec{r}\,' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+\vec{r}' = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
 If you reverse the order (first rotate about $x$, then about $z$), the result is different:
