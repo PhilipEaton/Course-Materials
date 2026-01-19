@@ -652,7 +652,7 @@ which is exactly what we expect—a reflection of $ \widehat{i} $ across the lin
 To transform a **vector**, you apply the transformation matrix on the left:
 
 $$
-\vec{r}\,' = \mathbf{R} \vec{r}
+\vec{r}' = \mathbf{R} \vec{r}
 $$
 
 where $ \mathbf{R} $ transforms the original coordinates into the new ones. Some textbooks use the reverse convention, so always check which direction is being used.
