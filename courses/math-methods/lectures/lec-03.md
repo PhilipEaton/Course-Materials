@@ -6,85 +6,76 @@ nav_section: lectures
 nav_order: 3
 ---
 
-{% capture ex %}
-
-{% endcapture %}
-{% include example.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include warning.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include result.html content=ex %}
-
 # Lecture 03 -- Rotations and Coordinate Transformations
 
+As we've discussed, matrices can represent a wide variety of coordinate transformations: rotations, reflections, rescalings, and more. But we haven’t yet looked closely at how these transformations actually appear in matrix form, or how to properly interpret them. This lecture fills in those details.
 
 ## Matrix Transformations
 
-As mentioned previously, matrices can represent various coordinate transformations, such as rotations, rescaling, and more. The general form of such a transformation is given by
+When we think of a matrix as a transformation, we think of it as acting on some original vector and transforming it into a new one:
 
 $$
 \mathbf{T} \vec{r} = \vec{r}\,'
 $$
 
-where the matrix $\mathbf{T}$ acts on the vector $\vec{r}$, transforming it into a new set of coordinates, $\vec{r}\,'$. You can also operate on on object to the left of the transformation matrix using the transpose of the coordinate transformation operator:
+Here, the matrix $\mathbf{T}$ transforms the original vector $\vec{r}$ into a new vector $\vec{r}\,'$. Notice that the transformation acts on the vector **to its right**. That’s not just a formatting choice, it’s built into how matrix multiplication has been defined.
+
+If we want to transform a column vector (an $n \times 1$ matrix) into another column vector (also $n \times 1$), we need to multiply it by an $n \times n$ matrix **on the left**. That’s the only way the dimensions work out correctly. You should try verifying this: write out the shapes of each object and check that trying to multiply from the right like $\vec{r} \mathbf{T}$ doesn’t make sense if $\vec{r}$ is a column vector.
+
+The convention of placing the transformation matrix on the left isn’t arbitrary, it’s mathematically required based on the structure of matrix multiplication and the dimensions of the vectors and matrices involved.
 
 
-$$
- \vec{r}^\text{T} \mathbf{T}^\text{T} = (\vec{r}\,')^\text{T}
-$$
 
 ### Right to Left is the Order of Operations
 
-When working with matrices, it’s important to remember that the order transformations are applied is always from the **right to the left**.
+Transformtion matrices are applied via matrix multiplication and recall matrix multiplication has the rule that order matters. This means, when applying multiple transformations to an object, the order we write these transformations matters; the order transformations are being applied is read from **right to left**. To see why this is the case, consider the following.
 
-Let’s say you begin with a position vector $ \vec{r} $, and then apply a transformation matrix $ \mathbf{T}_1 $ to it. This gives you a new vector $ \vec{r}_1 $:
+Suppose you start with a position vector $\vec{r}$ and apply a transformation matrix $\mathbf{T}_1$. You get the new vector $\vcec{r}_1$ in the following manner:
 
 $$
 \mathbf{T}_1 \vec{r} = \vec{r}_1
 $$
 
-Now suppose you apply another transformation $ \mathbf{T}_2 $, which acts on the new vector $ \vec{r}_1 $, producing a final vector $ \vec{r}_2 $:
+Suppose you then apply a second transformation $\mathbf{T}_2$ to that:
 
 $$
 \mathbf{T}_2 \vec{r}_1 = \vec{r}_2
 $$
 
-We can substitute the expression for $ \vec{r}_1 $ into this equation:
+giving you $\vec{r}_2$ as a result.
+
+If we substitute the first equation into the second:
 
 $$
-\mathbf{T}_2 (\mathbf{T}_1 \vec{r}) = \vec{r}_2
+\mathbf{T}_2 \big(\mathbf{T}_1 \vec{r}\big) = \vec{r}_2
 $$
 
-Since matrix multiplication is associative (but not commutative), we can rewrite this as:
+Because matrix multiplication is **associative** (but not commutative!), we can write:
 
 $$
-(\mathbf{T}_2 \mathbf{T}_1) \vec{r} = \vec{r}_2
+\big(\mathbf{T}_2 \mathbf{T}_1\big) \vec{r} = \vec{r}_2
 $$
 
-Notice something important here: even though $ \mathbf{T}_2 $ appears on the left in the multiplication, it’s the second transformation that gets applied. The first transformation applied to $ \vec{r} $ is $ \mathbf{T}_1 $, and then $ \mathbf{T}_2 $ acts on the result. **The transformation closest to the vector gets applied first**.
+So, even though $\mathbf{T}_2$ appears in the left-most position in the expression, it’s applied *after* $\mathbf{T}_1$. Remember, transformation matrices act to the right. This means **the transformation closest to the vector gets applied first.** Thus, transofrmations are applied from right to left. 
 
-This can be generalized to any sequence of transformations:
+You can generalize this to any number of transformations:
 
 $$
-\mathbf{T}_n \cdots \mathbf{T}_2 \mathbf{T}_1 \vec{r} = \vec{r}\,' 
+\mathbf{T}_n \cdots \mathbf{T}_2 \mathbf{T}_1 \vec{r} = \vec{r}\,'
 $$
 
-Here, $ \mathbf{T}_1 $ is applied first, then $ \mathbf{T}_2 $, and so on, up to $ \mathbf{T}_n $, which is applied last.
+Here, $\mathbf{T}_1$ happens first, then $\mathbf{T}_2$, and so on until $\mathbf{T}_n$ is applied last.
 
 {% capture ex %}
-If you're chaining multiple transformations, the one closest to the vector is applied first, and the others follow in reverse order of how you write them. That is, **the order matrix transformations are applied is from the right to left.** 
+The order matrix transformations are applied is from the right to left.
 {% endcapture %}
 {% include result.html content=ex %}
 
-This ordering is not just a mathematical quirk—it has real physical consequences. In physics, the order in which rotations, reflections, and other transformations are applied often affects the outcome. For instance, in Quantum Field Theory, when describing particle interactions—such as a neutron decaying into a proton, an electron, and an anti-electron neutrino—the corresponding mathematical expressions are interpreted from right to left.
+This right-to-left order isn’t just a mathematical technicality, it has real physical consequences. In physics, the sequence in which you apply rotations, reflections, and other transformations can dramatically change the result. For instance, in Quantum Field Theory, when writing down how a neutron decays into a proton, an electron, and an anti-electron neutrino, the math is read from right to left matching the physical sequence of interactions.
 
-Grasping this right-to-left structure is especially important in areas like coordinate transformations, 3D rotations, and quantum mechanics, where multiple operators (matrices) act on a system in a specific sequence. Getting the order wrong doesn't just change the math, it can completely alter the physical meaning of the result.
+Grasping this structure is especially important in fields like 3D coordinate transformations and quantum mechanics, where multiple matrices act on a system in a precise order. Getting that order wrong doesn’t just mess up the calculation, it changes what the math *means* physically.
+
+
 
 
 
