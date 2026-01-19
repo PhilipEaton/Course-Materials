@@ -5,37 +5,12 @@ course_home: /courses/machine-learning-foundations/
 nav_section: lectures
 nav_order: 1
 ---
-<h1 style="
-    color: white;
-    background-color: #1e6b7b;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-">
-Lecture 01: Introduction to Machine Learning
-</h1>
 
+# Lecture 01: Introduction to Machine Learning
 
-<h1 style="
-    color: white;
-    background-color: #4bbe7e;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-">
-System Set-up
-</h1>
+## System Set-up
 
-<!-- Subsection Header -->
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-    text-align: left;
-">
 Let's take some time to make sure everyone has their coding space set up. 
-</h3>
 
 **Easiest way: Anaconda (All-in-One)**:
 
@@ -105,8 +80,10 @@ plt.show()
 
 
 
-    
-![png](output_1_1.png)
+<img
+  src="{{ '/courses/machine-learning-foudations/images/lec01/output_1_1.png' | relative_url }}"
+  alt="Image of a sine wave to help check that python has been installed properly."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
     
 
 
