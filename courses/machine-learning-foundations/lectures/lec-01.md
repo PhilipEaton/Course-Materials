@@ -395,87 +395,82 @@ penguins.head()
 {% include codeinput.html content=ex %}
 
 {% capture ex %}
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<table class="dataframe" role="table">
+  <caption>
+    Sample penguin measurements including species, island, bill dimensions,
+    flipper length, body mass, and sex.
+  </caption>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>species</th>
-      <th>island</th>
-      <th>bill_length_mm</th>
-      <th>bill_depth_mm</th>
-      <th>flipper_length_mm</th>
-      <th>body_mass_g</th>
-      <th>sex</th>
+    <tr>
+      <th id="h-row" scope="col">Row</th>
+      <th id="h-species" scope="col">Species</th>
+      <th id="h-island" scope="col">Island</th>
+      <th id="h-bill-length" scope="col">Bill length (mm)</th>
+      <th id="h-bill-depth" scope="col">Bill depth (mm)</th>
+      <th id="h-flipper" scope="col">Flipper length (mm)</th>
+      <th id="h-mass" scope="col">Body mass (g)</th>
+      <th id="h-sex" scope="col">Sex</th>
     </tr>
   </thead>
+
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>39.1</td>
-      <td>18.7</td>
-      <td>181.0</td>
-      <td>3750.0</td>
-      <td>Male</td>
+      <th id="r0" scope="row">0</th>
+      <td headers="r0 h-species">Adelie</td>
+      <td headers="r0 h-island">Torgersen</td>
+      <td headers="r0 h-bill-length">39.1</td>
+      <td headers="r0 h-bill-depth">18.7</td>
+      <td headers="r0 h-flipper">181.0</td>
+      <td headers="r0 h-mass">3750.0</td>
+      <td headers="r0 h-sex">Male</td>
     </tr>
+
     <tr>
-      <th>1</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>39.5</td>
-      <td>17.4</td>
-      <td>186.0</td>
-      <td>3800.0</td>
-      <td>Female</td>
+      <th id="r1" scope="row">1</th>
+      <td headers="r1 h-species">Adelie</td>
+      <td headers="r1 h-island">Torgersen</td>
+      <td headers="r1 h-bill-length">39.5</td>
+      <td headers="r1 h-bill-depth">17.4</td>
+      <td headers="r1 h-flipper">186.0</td>
+      <td headers="r1 h-mass">3800.0</td>
+      <td headers="r1 h-sex">Female</td>
     </tr>
+
     <tr>
-      <th>2</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>40.3</td>
-      <td>18.0</td>
-      <td>195.0</td>
-      <td>3250.0</td>
-      <td>Female</td>
+      <th id="r2" scope="row">2</th>
+      <td headers="r2 h-species">Adelie</td>
+      <td headers="r2 h-island">Torgersen</td>
+      <td headers="r2 h-bill-length">40.3</td>
+      <td headers="r2 h-bill-depth">18.0</td>
+      <td headers="r2 h-flipper">195.0</td>
+      <td headers="r2 h-mass">3250.0</td>
+      <td headers="r2 h-sex">Female</td>
     </tr>
+
     <tr>
-      <th>4</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>36.7</td>
-      <td>19.3</td>
-      <td>193.0</td>
-      <td>3450.0</td>
-      <td>Female</td>
+      <th id="r3" scope="row">3</th>
+      <td headers="r3 h-species">Adelie</td>
+      <td headers="r3 h-island">Torgersen</td>
+      <td headers="r3 h-bill-length" aria-label="Missing value">NaN</td>
+      <td headers="r3 h-bill-depth" aria-label="Missing value">NaN</td>
+      <td headers="r3 h-flipper" aria-label="Missing value">NaN</td>
+      <td headers="r3 h-mass" aria-label="Missing value">NaN</td>
+      <td headers="r3 h-sex" aria-label="Missing value">NaN</td>
     </tr>
+
     <tr>
-      <th>5</th>
-      <td>Adelie</td>
-      <td>Torgersen</td>
-      <td>39.3</td>
-      <td>20.6</td>
-      <td>190.0</td>
-      <td>3650.0</td>
-      <td>Male</td>
+      <th id="r4" scope="row">4</th>
+      <td headers="r4 h-species">Adelie</td>
+      <td headers="r4 h-island">Torgersen</td>
+      <td headers="r4 h-bill-length">36.7</td>
+      <td headers="r4 h-bill-depth">19.3</td>
+      <td headers="r4 h-flipper">193.0</td>
+      <td headers="r4 h-mass">3450.0</td>
+      <td headers="r4 h-sex">Female</td>
     </tr>
   </tbody>
 </table>
-</div>
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1023,7 +1018,7 @@ display(results_df)
 
 
 
-#### Understanding Classification Metrics
+### Understanding Classification Metrics
 
 When we evaluate a machine learning model, we don’t just care about how many predictions were right overall. We also want to know how the model got things right (and wrong).
 
