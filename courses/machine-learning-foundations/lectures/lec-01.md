@@ -487,25 +487,11 @@ penguins.head()
 
 
 
-
-
-
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
-
 Notice the fourth row that was previously filled with `NaN` is gone! 
 
 Now, we need to create a label encoder, which will convert text in the data (like "Male", "Female", or "Adelie") into numeric values that the machine learning models can understand.
 
-
+{% capture ex %}
 ```python
 # Start by opening the encoder and storing it with the name label_enc.
 # Create and fit separate label encoders for each categorical variable
@@ -520,17 +506,19 @@ penguins['species_enc'] = species_encoder.fit_transform(penguins['species'])
 penguins['island_enc']  = island_encoder.fit_transform(penguins['island'])
 penguins['sex_enc']     = sex_encoder.fit_transform(penguins['sex'])
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 ```python
 # Display the first few rows again to confirm our cleaned and encoded data.
 penguins.head()
 # Notice the additional encoded columns at the end.
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
-
-
+{% capture ex %}
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -630,14 +618,14 @@ penguins.head()
   </tbody>
 </table>
 </div>
-
-
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 We need to define the **features** and **target** in the data.
 - **Features** are the data we will be using to make decisions.
 - The  **Target** is the classification, number, etc. we are trying to predict given the features.
 
-
+{% capture ex %}
 ```python
 # Define our “features” (or "independent variables" or "predictors") as X — the input data used to make predictions.
 # These are the penguins’ measurable traits like bill size, flipper length, etc.
@@ -650,6 +638,8 @@ X = penguins[['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm',
 y = penguins['species_enc']
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
 Lastly, split your dataset into a ***training* set** and a ***test* set**.
 
@@ -664,7 +654,7 @@ Lastly, split your dataset into a ***training* set** and a ***test* set**.
 
 Here we will not stratify, but we could if we wanted to! 
 
-
+{% capture ex %}
 ```python
 # Split our data into two parts:
 #   80% for training (to teach the model)
@@ -678,20 +668,20 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-<!-- Subsection Header -->
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-One Stop Shop
-</h3>
+
+
+
+
+
+
+### One Stop Shop
 
 Below is the complete code for managing the data, assuming you have inspected the data and are encoding everything you need to encode.
 
-
+{% capture ex %}
 ```python
 # Load the "Palmer Penguins" dataset directly from Seaborn's built-in collection
 data = sns.load_dataset("penguins")
@@ -735,15 +725,25 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 2: Explore the Data (after cleaning)
-</h2>
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+
+
+
+
+
+
+## Step 2: Explore the Data (after cleaning)
+
 
 Let’s visualize a few relationships between features and species.  
 
@@ -782,7 +782,7 @@ We will learn that:
 
 
 
-
+{% capture ex %}
 ```python
 sns.pairplot(penguins,
              hue="species", # <- Target
@@ -792,23 +792,28 @@ plt.suptitle("Penguin Feature Relationships", y=1.02)
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec01/output_22_0.png' | relative_url }}"
-  alt=""
+  alt="A grid of scatter plots and density curves showing relationships among four penguin measurements: bill length, bill depth, flipper length, and body mass. Each point represents an individual penguin, colored by species: Adelie (blue), Chinstrap (orange), and Gentoo (green). Gentoo penguins generally have larger flipper lengths and body masses, while Adelie and Chinstrap penguins overlap more but differ in bill dimensions. The diagonal panels show the distribution of each measurement by species."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+
     
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Step 3: Train and Evaluate Model(s)
-</h2>
+
+
+
+## Step 3: Train and Evaluate Model(s)
 
 Today we will test several popular algorithms used throughout this course:
 - k-Nearest Neighbors (k-NN)
@@ -824,7 +829,7 @@ Each model will:
 3. Report its accuracy and classification metrics.
 
 
-
+{% capture ex %}
 ```python
 # Create a dictionary that links each model’s name (as a string)
 # to the actual model object from scikit-learn.
@@ -838,8 +843,10 @@ models = {
 }
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 ```python
 # --- Initialize results list for summary table ---
 results = []
@@ -878,8 +885,10 @@ print("\n=== Model Comparison Summary ===")
 display(results_df)
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    
+{% capture ex %}
     === k-NN ===
     Accuracy: 0.985
     Weighted F1-Score: 0.985
@@ -957,8 +966,6 @@ display(results_df)
     
     === Model Comparison Summary ===
 
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1016,7 +1023,21 @@ display(results_df)
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
+
+
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 #### Understanding Classification Metrics
 
