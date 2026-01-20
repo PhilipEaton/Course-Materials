@@ -75,36 +75,36 @@ These labels depend entirely on which angle you choose. The “adjacent” side 
 
 In this case, we want to find the opposite and adjacent sides using the hypotenuse and the given angle. This process is often described as “finding the components of the triangle.” To do this, we use cosine and sine:
 
-\[
+$$
 \cos(\theta) = \frac{\text{Adjacent}}{\text{Hypotenuse}}
 \qquad\implies\qquad
 \text{Adjacent} = (\text{Hypotenuse}) \times \cos(\theta)
-\]
+$$
 
-\[
+$$
 \sin(\theta) = \frac{\text{Opposite}}{\text{Hypotenuse}}
 \qquad\implies\qquad
 \text{Opposite} = (\text{Hypotenuse}) \times \sin(\theta)
-\]
+$$
 
 {% capture ex %}
 Suppose we have the triangle above with the following measurements: $\theta = 37^\circ$ and a hypotenuse of 65.
 
 We can find the adjacent side using cosine:
 
-\[
+$$
 \text{Adjacent} = (\text{Hypotenuse}) \times \cos(\theta)
 = (65)\cos(37^\circ)
 = 52
-\]
+$$
 
 Similarly, the opposite side is found using sine:
 
-\[
+$$
 \text{Opposite} = (\text{Hypotenuse}) \times \sin(\theta)
 = (65)\sin(37^\circ)
 = 39
-\]
+$$
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -164,6 +164,12 @@ Saying “$ 37^\circ $” alone does not tell someone which way to look. A direc
 - A reference direction
 - A direction to turn from that reference  
 
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/TurnofReference.png' | relative_url }}"
+  alt="The image shows a set of horizontal and vertical axes labeled North at the top, South at the bottom, East on the right, and West on the left. A blue arrow points into the upper-right quadrant, and curved arrows around it show two possible angle descriptions labeled “East of North’’ and “North of East.’’ A red arrow points into the lower-left quadrant with curved arrows showing the angle descriptions “South of West’’ and “West of South.’’ A boxed label near the upper left reads “Turn-of-Reference.’’ The diagram illustrates how vector directions can be named relative to different cardinal directions."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
+
 We write directions in the form:
 
 $$
@@ -179,12 +185,41 @@ This direction would be described as **$ 37^\circ $ North of East**.
 This idea will come up repeatedly when working with vectors in two dimensions.
 
  
+{% capture ex %}
+Suppose we have the triangle above with the following measurements: Opposite = 3 and Adjacent = 4. Let’s find the hypotenuse (magnitude) and the direction.
+
+We can find the magnitude using the Pythagorean Theorem:
+
+$$
+\begin{aligned}
+    (\text{Hypotenuse})^2 &= (\text{Adjacent})^2 + (\text{Opposite})^2 \\
+    (\text{Hypotenuse})^2 &= (4)^2 + (3)^2 \\
+    (\text{Hypotenuse})^2 &= 16 + 9 \\
+    (\text{Hypotenuse})^2 &= 25 \\
+    \text{Hypotenuse} &= \pm\sqrt{25} \\
+    \text{Hypotenuse} &= \pm 5
+\end{aligned}
+$$
+
+Since this is the length of a side of a triangle, we take $+5$ as the answer because a negative length does not make sense.
+
+The direction can be found using tangent:
+
+$$
+\theta = \tan^{-1}\!\Big( \frac{3}{4} \Big) = 37^\circ
+$$
+
+But is this angle descriptive enough?
+{% endcapture %}
+{% include example.html content=ex %}
+
+
 
 ## Scalars and Vectors
 
 In physics, quantities fall into two broad categories.
 
-## Scalars
+### Scalars
 
 A **scalar** is any quantity that only needs a magnitude to be fully described.
 
@@ -210,7 +245,7 @@ Vectors are the main focus of this lecture and much of the course.
 
  
 
-## Visual Representation of Vectors
+#### Visual Representation of Vectors
 
 Vectors are drawn as arrows:
 - The **length** of the arrow represents the magnitude  
@@ -220,7 +255,7 @@ Only these two features matter. The position of the arrow on the page does not.
 
  
 
-## Vector Notation and Comparison
+#### Vector Notation and Comparison
 
 When writing vectors symbolically, we place an arrow over the variable:
 
