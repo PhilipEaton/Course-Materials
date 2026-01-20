@@ -671,9 +671,11 @@ The scalar triple product often appears in electromagnetism, especially in flux 
 Let's calcualte the volume of a wonky box using the scalar triple product. Let:
 
 $$
-\vec{A} = 3 \hat{i} + 2 \hat{j} - \hat{k} \\
-\vec{B} = -\hat{i} + 4 \hat{j} + 2 \hat{k} \\
-\vec{C} = \hat{i} - \hat{j} + 5 \hat{k}
+\begin{aligned}
+\vec{A} &= 3 \hat{i} + 2 \hat{j} - \hat{k} \\
+\vec{B} &= -\hat{i} + 4 \hat{j} + 2 \hat{k} \\
+\vec{C} &= \hat{i} - \hat{j} + 5 \hat{k}
+\end{aligned}
 $$
 
 The volume of the parallelepiped they span is:
