@@ -191,8 +191,9 @@ $$
 \vec{A} \cdot \vec{B} &= A_x B_x \hat{i} \cdot \hat{i} + A_x B_y \hat{i} \cdot \hat{j} + A_x B_z \hat{i} \cdot \hat{k} \\
 &\quad + A_y B_x \hat{j} \cdot \hat{i} + A_y B_y \hat{j} \cdot \hat{j} + A_y B_z \hat{j} \cdot \hat{k} \\
 &\quad + A_z B_x \hat{k} \cdot \hat{i} + A_z B_y \hat{k} \cdot \hat{j} + A_z B_z \hat{k} \cdot \hat{k} \\
-\\
-&= A_x B_x (1) + A_y B_y (1) + A_z B_z (1) \\
+&= A_x B_x (1) + A_x B_y (0) + A_x B_z (0) \\
+&\quad + A_y B_x (0) + A_y B_y (1) + A_y B_z (0) \\
+&\quad + A_z B_x (0) + A_z B_y (0 )+ A_z B_z (1) \\
 \\
 \vec{A} \cdot \vec{B} &= A_x B_x + A_y B_y + A_z B_z
 \end{aligned}
@@ -206,7 +207,7 @@ $$
 
 This form makes it much easier to verify properties like distributivity—and you’re encouraged to try it yourself.
 
----
+To close this discussion, let's look at an example of using the dot product to answer a question about the work done by a constant force.
 
 {% capture ex %}
 Suppose two forces act on an object, and you want to calculate the total work done by both. The forces are:
