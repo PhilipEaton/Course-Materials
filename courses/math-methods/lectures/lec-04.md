@@ -635,6 +635,107 @@ The direction of $\vec{L}$ is determined by the right-hand rule.
 
 
 
+## Mixed Products
+
+In physics, we often encounter vector expressions that combine both dot and cross products. Let’s explore the most common type:
+
+
+### Scalar Triple Product
+
+The **scalar triple product** is defined as:
+
+$$
+\vec{A} \cdot (\vec{B} \times \vec{C})
+$$
+
+This operation produces a **scalar** and has a straightforward geometric interpretation.
+
+1. **Volume of a Parallelepiped**: Geometrically, the scalar triple product gives the **volume** of a parallelepiped, a three-dimensional “wonky box”, formed by the vectors $\vec{A}$, $\vec{B}$, and $\vec{C}$:
+
+   $$
+   \text{Volume} = \lvert \vec{A} \cdot (\vec{B} \times \vec{C}) \rvert
+   $$
+
+2. **Cyclic Property**: The scalar triple product is invariant under cyclic permutation:
+
+   $$
+   \vec{A} \cdot (\vec{B} \times \vec{C}) = \vec{B} \cdot (\vec{C} \times \vec{A}) = \vec{C} \cdot (\vec{A} \times \vec{B})
+   $$
+
+3. **Orientation and Sign**: The **sign** of the scalar triple product indicates whether the three vectors form a **right-handed** (positive) or **left-handed** (negative) system. This is helpful for reasoning about orientation in 3D space.
+
+The scalar triple product often appears in electromagnetism, especially in flux calculations and when defining handedness in coordinate systems.
+
+
+{% capture ex %}
+Let's calcualte the volume of a wonky box using the scalar triple product. Let:
+
+$$
+\vec{A} = 3 \hat{i} + 2 \hat{j} - \hat{k} \\
+\vec{B} = -\hat{i} + 4 \hat{j} + 2 \hat{k} \\
+\vec{C} = \hat{i} - \hat{j} + 5 \hat{k}
+$$
+
+The volume of the parallelepiped they span is:
+
+$$
+V = \lvert \vec{A} \cdot (\vec{B} \times \vec{C}) \rvert
+$$
+
+First, compute the cross product:
+
+$$
+\begin{aligned}
+\vec{B} \times \vec{C} &= 
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+-1 & 4 & 2 \\
+1 & -1 & 5
+\end{vmatrix} \\
+&= \hat{i}
+\begin{vmatrix}
+4 & 2 \\
+-1 & 5
+\end{vmatrix}
+- \hat{j}
+\begin{vmatrix}
+-1 & 2 \\
+1 & 5
+\end{vmatrix}
++ \hat{k}
+\begin{vmatrix}
+-1 & 4 \\
+1 & -1
+\end{vmatrix} \\
+&= \hat{i}(20 + 2) - \hat{j}(-5 - 2) + \hat{k}(-1 - 4) \\
+\vec{B} \times \vec{C} &= 22 \hat{i} + 7 \hat{j} - 5 \hat{k}
+\end{aligned}
+$$
+
+Now take the dot product with $\vec{A}$:
+
+$$
+\begin{aligned}
+\vec{A} \cdot (\vec{B} \times \vec{C}) &= 
+(3 \hat{i} + 2 \hat{j} - \hat{k}) \cdot (22 \hat{i} + 7 \hat{j} - 5 \hat{k}) \\
+&= (3)(22) + (2)(7) + (-1)(-5) \\
+&= 66 + 14 + 5 = 85
+\end{aligned}
+$$
+
+So the volume of the parallelepiped is:
+
+$$
+V = 85 \text{ (in whatever units are being used)}
+$$
+{% endcapture %}
+{% include example.html content=ex %}
+
+
+
+
+
+
 
 
 
