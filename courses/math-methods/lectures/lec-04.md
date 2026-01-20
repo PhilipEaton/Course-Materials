@@ -279,112 +279,153 @@ which is the same as we got previously.
 
 
 
-
-
 ## Cross (Vector) Product
 
-The cross product, also called the vector product because it yields a vector result, is another vector operation frequently used in physics. For example, it appears in the calculation of the angular momentum of a particle:
+The **cross product**, also called the **vector product** because it yields a **vector result**, is another vector operation frequently used in physics. For example, it appears in the calculation of the angular momentum of a particle:
 
 $$
-\vec{L} = \vec{r} \times \vec{P}
+\vec{L} = \vec{r} \times \vec{p}
 $$
 
-and in the expression for the magnetic force on a moving charged particle:
+where $\vec{L}$ is the angular momentum, $\vec{r}$ is the position relative to the pivot point, and $\vec{p}$ is the momentum of the particle.
+
+The cross product is also used the expression for the magnetic force on a moving charged particle:
 
 $$
-\vec{F}^B = q(\vec{v} \times \vec{B}).
+\vec{F}^B = q(\vec{v} \times \vec{B})
 $$
 
-Let's discuss the cross product similarly to our treatment of the dot product by first examining its geometric interpretation. The geometric interpretation of the cross product is that it measures the perpendicular component of one vector scaled by the length of the second vector. Mathematically, we can define the magnitude of the cross product of two vectors as:
+where $\vec{F}^B$ is the magnetic force applied to a matric with charge $q$ and velocity $\vec{v}$ passing through a magnetic field $\vec{B}$.
+
+Having a solid grast of what the cross product is doing, means, and how to calculate it is of vital importance. Let’s approach the cross product the same way we approached the dot product by starting with its geometric interpretation.
 
 
-$$ \lvert \vec{A} \times \vec{B} \rvert = \lvert \vec{A}\rvert \lvert\vec{B}\rvert \sin(\theta_{AB}) = A B \sin(\theta_{AB}) $$
-
-where $ A $ and $ B $ are the magnitudes of vectors $ \vec{A} $ and $ \vec{B} $, respectively, $ \theta_{AB} $ is the smallest angle between the two vectors when drawn tail-to-tail.
-
-Remember when we were looking at the vector diagram given in the discussion of the dot product where we found that the component of $ \vec{B} $ perpendicular to $ \vec{A} $ is given by:
-
-$$ B_{\perp A} = B \sin(\theta_{AB}) $$
-
-Using this lets us rewrite the magnitude of the cross product as:
-
-$$ \lvert\vec{A} \times \vec{B}\rvert = A B \sin(\theta_{AB}) = A B_{\perp A} $$
-
-You could also show that $A_{\perp B} = A \sin(\theta_{AB})$ using a similar vector diagram -- which gives:
-
-$$ \lvert\vec{A} \times \vec{B}\rvert = A B_{\perp A} = A_{\perp B} B $$
-
-So it ultimately doesn't matter which vector is considered as having the perpendicular component; the calculation yields the same magnitude.
-
-Now for the question, **``how do we get the direction?"**--we did say the result should be a vector after all. This is where something called the **right-hand-rule (RHR)** comes into play. The resulting vector from a cross product will:
-
-- point perpendicular to both of the original vectors involved in the cross product, and
-- point in the direction given by the RHR. 
 
 
-Here is how the RHR works for $\vec{A}\times\vec{B}$:
 
-1. Open your **right hand** to look like an oven mitt -- the kind with a place for your thumb and a place for all of your other fingers. Point the fingers of your right hand the direction of the first vector, $ \vec{A} $.
-	
-2. Wrap your fingers, not your thumb, so that they naturally curl towards the second vector, $ \vec{B} $, in the direction angle $\theta_{AB}$ is measured. 
-	
-3. Your thumb, extended perpendicular to your fingers, points in the direction of the cross product, $ \vec{A} \times \vec{B} $.
+### Geometric Definition of the Cross Product
 
-Notice, this rule implies the vector created from taking $ \vec{A} \times \vec{B} $ will point in the opposite direction as the vector that comes from $ \vec{B} \times \vec{A} $. Check this out for yourself! 
+Geometrically, the cross product measures the **perpendicular component** of one vector, scaled by the length of the other. The **magnitude** of the cross product is defined as:
 
-The cross product $ \vec{A} \times \vec{B} $ has several useful properties, similar to the ones for the dot product:
+$$ 
+\lvert \vec{A} \times \vec{B} \rvert = \lvert \vec{A}\rvert \lvert\vec{B}\rvert \sin(\theta_{AB}) = A B \sin(\theta_{AB}) 
+$$
 
+Here, $A$ and $B$ are the magnitudes of vectors $\vec{A}$ and $\vec{B}$, and $\theta_{AB}$ is the smallest angle between them (when drawn tail-to-tail).
 
-1. **Zero Cross Product**: Two vectors have a cross product of zero if they are parallel or anti-parallel-- point in the same or opposite direction -- as there is no perpendicular component:
+Recall from our earlier vector diagram (in the dot product section) that the component of $\vec{B}$ **perpendicular to** $\vec{A}$ was found to be:
 
-	$$
-	\vec{A} \times \vec{B} = \vec{0} \quad \text{if} \quad \vec{A} \parallel \vec{B} 
-	$$
-	
-2. **Orthogonality of Result**: The resulting vector $ \vec{A} \times \vec{B} $ is perpendicular to both $ \vec{A} $ and $ \vec{B} $, aligning with the right-hand rule. This means if you try to take $\vec{A}$ or $\vec{B}$ and take the dot product with $ \vec{A} \times \vec{B} $ you will get zero, always!
+$$
+B_{\perp A} = B \sin(\theta_{AB})
+$$
 
-	$$ \vec{A} \cdot (\vec{A} \times \vec{B}) = 0 \qquad \vec{B} \cdot (\vec{A} \times \vec{B}) = 0 $$
-	
-3. **Magnitude of the Cross Product**: The magnitude of $ \vec{A} \times \vec{B} $ represents the area of the parallelogram formed by $ \vec{A} $ and $ \vec{B} $ (we will talk about this in a bit):
+Using this, we can rewrite the magnitude of the cross product as:
 
-	$$
-	\lvert\vec{A} \times \vec{B}\rvert = \lvert\vec{A}\rvert \lvert\vec{B}\rvert \sin(\theta_{AB})
-	$$
+$$ 
+\lvert\vec{A} \times \vec{B}\rvert = A B \sin(\theta_{AB}) = A B_{\perp A} 
+$$
 
-	where, again, $ \theta_{AB} $ is the angle between $ \vec{A} $ and $ \vec{B} $ when draw tail-to-tail. This area interpretation is useful in physics when dealing with planar areas, but is only really useful in specific situations.
-	
-4.  **Anti-commutative Property**: The cross product is anti-commutative, meaning:
+You could also show that $A_{\perp B} = A \sin(\theta_{AB})$ using a similar diagram, which leads to:
 
-	$$
-	\vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})
-	$$
+$$ 
+\lvert\vec{A} \times \vec{B}\rvert = A B_{\perp A} = A_{\perp B} B 
+$$
 
-	We saw this in our discussion of the RHR just a little bit ago.
-	
-5. **Scalar Multiplication**: For any scalar $ c $, the cross product behaves as follows:
+Again, it doesn’t matter which vector is treated as having the perpendicular component, both interpretations yield the same magnitude.
 
-	$$
-	(c \vec{A}) \times \vec{B} = c (\vec{A} \times \vec{B}) = \vec{A} \times (c \vec{B})
-	$$
-
-	You can prove this in a similar manner as we did with the dot product. You can work this out if you are interested.
-	
-6. **Distributive Property**: The cross product distributes over vector addition:
-
-	$$
-	\vec{A} \times (\vec{B} + \vec{C}) = (\vec{A} \times \vec{B}) + (\vec{A} \times \vec{C})
-	$$
+This is a fine way to go about getting the magnitude of the cross product. But, as we mentioned above, the cross product yeilds a vector, which needs both a magnitude *and* a direction. Let's now discuss how we can get the driection.
 
 
-As with the dot product, the last property listed above can be difficult to see using only the geometric interpretation. To gain further insight, let’s consider the component-based interpretation of the cross product.
+### Determining the Direction: Right-Hand Rule
 
-For a right-handed coordinate system, where the unit vectors $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $ follow the cross product’s RHR, we have the following relationships:
+To determine the direction of the cross product, we use something called the **right-hand rule (RHR)**. Let's assume, without any motivation, that the result of a cross product will point:
+
+- **perpendicular to both** original vectors, and
+- in the direction given by the **RHR**.
+
+Here’s how to apply the RHR for $\vec{A} \times \vec{B}$:
+
+1. Open your **right hand** like an oven mitt (with your thumb extended and your fingers together).
+2. Point your fingers in the direction of the **first vector**, $\vec{A}$.
+3. Curl your fingers **toward** the **second vector**, $\vec{B}$, in the direction of the angle $\theta_{AB}$.
+4. Your **thumb**, now pointing perpendicular to your fingers, gives the direction of $\vec{A} \times \vec{B}$.
+
+Notice, this rule implies the vector created from taking $ \vec{A} \times \vec{B} $ will point in the opposite direction as the vector that comes from $ \vec{B} \times \vec{A} $:
+
+$$
+\vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})
+$$
+
+Try it yourself! Show that reversing the order of the vectors flips the direction of the resulting cross product.
+
+
+
+
+
+### Properties of the Cross Product
+
+The cross product $\vec{A} \times \vec{B}$ has several useful properties, and much like the dot product the geometric definition makes most of their proofs trivial:
+
+1. **Zero Cross Product**: Two vectors have a cross product of zero if they are **parallel** or **anti-parallel** since there’s no perpendicular component; that is, they point in the same or opposite direction:
+
+   $$
+   \vec{A} \times \vec{B} = \vec{0} \quad \text{if} \quad \vec{A} \parallel \vec{B}
+   $$
+
+2. **Orthogonality of Result**: The resulting vector $\vec{A} \times \vec{B}$ is **perpendicular to both** $\vec{A}$ and $\vec{B}$, in line with the right-hand rule.  
+   This means the dot product of $\vec{A} \times \vec{B}$ with either original vector is always zero:
+
+   $$
+   \vec{A} \cdot (\vec{A} \times \vec{B}) = 0 \qquad \vec{B} \cdot (\vec{A} \times \vec{B}) = 0
+   $$
+
+3. **Magnitude of the Cross Product**: The magnitude of $\vec{A} \times \vec{B}$ represents the **area of the parallelogram** formed by $\vec{A}$ and $\vec{B}$ (we’ll discuss this more shortly):
+
+   $$
+   \lvert \vec{A} \times \vec{B} \rvert = \lvert \vec{A}\rvert \, \lvert\vec{B}\rvert \,\sin(\theta_{AB})
+   $$
+
+   where $\theta_{AB}$ is the angle between $\vec{A}$ and $\vec{B}$ (drawn tail-to-tail).  This area interpretation is useful in physics when dealing with planar regions, though it’s only relevant in specific contexts.
+
+4. **Anti-commutative Property**: The cross product is **anti-commutative**, which means:
+
+   $$
+   \vec{A} \times \vec{B} = -(\vec{B} \times \vec{A})
+   $$
+
+   We saw this earlier when applying the right-hand rule.
+
+5. **Scalar Multiplication**:  For any scalar $c$, the cross product follows this rule:
+
+   $$
+   (c \vec{A}) \times \vec{B} = c (\vec{A} \times \vec{B}) = \vec{A} \times (c \vec{B})
+   $$
+
+   You can prove this using the geometric definition, just as we did for the dot product. Feel free to try it out if you're interested.
+
+6. **Distributive Property**:  The cross product is distributive over vector addition:
+
+   $$
+   \vec{A} \times (\vec{B} + \vec{C}) = (\vec{A} \times \vec{B}) + (\vec{A} \times \vec{C})
+   $$
+
+
+
+
+
+
+
+### Component-Based Definition of the Cross Product
+
+As with the dot product, the final property we listed for the cross product is hard to visualize using just the geometric interpretation. To gain more insight, let’s explore the **component-based** definition.
+
+In a **right-handed coordinate system**, where the unit vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$ follow the right-hand rule (RHR), the following relationships hold:
+
 $$
 \hat{i} \times \hat{j} = \hat{k} \qquad \hat{j} \times \hat{k} = \hat{i} \qquad \hat{k} \times \hat{i} = \hat{j}
 $$
 
-The first relation, $ \hat{i} \times \hat{j} = \hat{k} $, is typically used to define a coordinate system as right-handed. 
-
+The first relation, $\hat{i} \times \hat{j} = \hat{k}$, is often used to **define** a coordinate system as right-handed, as in the following figure.
 
 <img
   src="{{ '/courses/math-methods/images/lec04/UnitVectors.png' | relative_url }}"
@@ -392,42 +433,46 @@ The first relation, $ \hat{i} \times \hat{j} = \hat{k} $, is typically used to d
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
 
-This convention ensures consistency in calculations and aligns with the right-hand rule. The anti-commutation property of the cross product gives us the other 3 possible options for the unit vector cross products:
+This convention ensures consistency with the right-hand rule. Using the **anti-commutativity** property of the cross product, we get the remaining three permutations:
 
 $$
-\hat{j} \times \hat{i} = -\hat{k} \qquad \hat{k} \times \hat{j} = -\hat{i} \qquad \hat{i} \times \hat{k} = - \hat{j}
+\hat{j} \times \hat{i} = -\hat{k} \qquad \hat{k} \times \hat{j} = -\hat{i} \qquad \hat{i} \times \hat{k} = -\hat{j}
 $$
 
-because the unit vectors crossed with themselves will be zero:
+Also, recall the cross product of a vector with something parallel to it is zero. This means any vector crossed with itself is zero:
 
 $$
-\hat{i} \times \hat{i} = 0  \qquad \hat{j} \times \hat{j} = 0 \qquad \hat{k} \times \hat{k} = 0
+\hat{i} \times \hat{i} = \vec{0} \qquad \hat{j} \times \hat{j} = \vec{0} \qquad \hat{k} \times \hat{k} = \vec{0}
 $$
 
 From these results, we can take the cross product of two vectors in component for to get:
 
+$$ 
+\begin{aligned}
+\vec{A} \times \vec{B} &= A_x B_x \,\hat{i} \times \hat{i} + A_x B_y \,\hat{i} \times \hat{j} + A_x B_z \, \hat{i} \times \hat{k} \\[0.75ex]
+&+ A_y B_x \,\hat{j} \times \hat{i} + A_y B_y \, \hat{j} \times \hat{j} + A_y B_z \,\hat{j} \times \hat{k}\\[0.75ex]
+&+ A_z B_x \,\hat{k} \times  \hat{i} + A_z B_y \,\hat{k} \times  \hat{j} + A_z B_z \,\hat{k} \times \hat{k} \\[1.5ex]
+\vec{A} \times \vec{B} &= A_x B_x \,(0) + A_x B_y \,(+\hat{k}) + A_x B_z \,(-\hat{j}) \\[0.75ex]
+&+ A_y B_x \,(-\hat{k}) + A_y B_y \, (0)  + A_y B_z \,(+\hat{i}) \\[0.75ex]
+&+ A_z B_x \,(+\hat{j}) + A_z B_y \,(-\hat{i}) + A_z B_z \,(0) \\[1.5ex]
+\vec{A} \times \vec{B} &= A_x B_y \,\hat{k} - A_x B_z \,\hat{j} - A_y B_x \,\hat{k} + A_y B_z \,\hat{i} + A_z B_x \,\hat{j} - A_z B_y \,\hat{i} \\[1.5ex]
+\vec{A} \times \vec{B} &= \left(A_y B_z - A_z B_y \right) \,\hat{i} + \left( A_z B_x - A_x B_z \right) \,\hat{j} + \left(A_x B_y - A_y B_x  \right)\,\hat{k} \\[1.5ex]
+\end{aligned}   
+$$
 
-$$ \begin{aligned}
-		\vec{A} \times \vec{B} &= A_x B_x \,\hat{i} \times \hat{i} + A_x B_y \,\hat{i} \times \hat{j} + A_x B_z \, \hat{i} \times \hat{k} \\[0.75ex]
-		&+ A_y B_x \,\hat{j} \times \hat{i} + A_y B_y \, \hat{j} \times \hat{j} + A_y B_z \,\hat{j} \times \hat{k}\\[0.75ex]
-		&+ A_z B_x \,\hat{k} \times  \hat{i} + A_z B_y \,\hat{k} \times  \hat{j} + A_z B_z \,\hat{k} \times \hat{k} \\[1.5ex]
-		\vec{A} \times \vec{B} &= A_x B_x \,(0) + A_x B_y \,(+\hat{k}) + A_x B_z \,(-\hat{j}) \\[0.75ex]
-		&+ A_y B_x \,(-\hat{k}) + A_y B_y \, (0)  + A_y B_z \,(+\hat{i}) \\[0.75ex]
-		&+ A_z B_x \,(+\hat{j}) + A_z B_y \,(-\hat{i}) + A_z B_z \,(0) \\[1.5ex]
-		\vec{A} \times \vec{B} &= A_x B_y \,\hat{k} - A_x B_z \,\hat{j} - A_y B_x \,\hat{k} + A_y B_z \,\hat{i} + A_z B_x \,\hat{j} - A_z B_y \,\hat{i} \\[1.5ex]
-		\vec{A} \times \vec{B} &= \left(A_y B_z - A_z B_y \right) \,\hat{i} + \left( A_z B_x - A_x B_z \right) \,\hat{j} + \left(A_x B_y - A_y B_x  \right)\,\hat{k} \\[1.5ex]
-	\end{aligned}   $$
+This is how the cross product is calculated in coordinate form. However, this method is long, tedious, and prone to errors. Is there an easier way to perform this operation? Yes—by using a determinant! Though, this trick only works in three dimensions.
 
+#### 3D Trick: Determinant of a $3 \times 3$ Matrix
 
+There’s a nice shortcut for computing the cross product in three dimensions using a **determinant**.
 
-This is how the cross product is calculated in coordinate form. However, this method is long, somewhat complicated, and certainly tedious. Is there an easier way to perform this operation? Yes—by using a determinant! Though, this trick only works in three dimensions.
+To do this, set up a $3 \times 3$ matrix where:
 
+- the **first row** contains the unit vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$,
+- the **second row** contains the components of the **first** vector in the cross product,
+- and the **third row** contains the components of the **second** vector.
 
-
-
-### Method 1: Determinate of a $3\times 3$ Matrix
-
-To do this, first set up a matrix where the first row consists of the unit vectors $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $. The second row will be the components of whichever vector comes first in the cross product, and the third row will contain the components of the second vector. For example, for the cross product $ \vec{A} \times \vec{B} $, the matrix setup would look like this:
+For example, for $\vec{A} \times \vec{B}$, we write:
 
 $$
 \begin{bmatrix}
@@ -437,53 +482,67 @@ $$
 \end{bmatrix}
 $$
 
-Now, use the cofactor expansion along the first row to compute the determinant:
+Now take the derterminant by applying the **cofactor expansion** along the first row:
 
 $$
 \begin{vmatrix}
 	\hat{i} & \hat{j} & \hat{k} \\
 	A_x & A_y & A_z \\
 	B_x & B_y & B_z 
-\end{vmatrix} = \hat{i} \begin{vmatrix} A_y & A_z \\ B_y & B_z \end{vmatrix} - \hat{j} \begin{vmatrix} A_x & A_z \\ B_x & B_z \end{vmatrix} + \hat{k} \begin{vmatrix} A_x & A_y \\ B_x & B_y \end{vmatrix}
+\end{vmatrix} 
+= 
+\hat{i} \begin{vmatrix} A_y & A_z \\ B_y & B_z \end{vmatrix}
+- 
+\hat{j} \begin{vmatrix} A_x & A_z \\ B_x & B_z \end{vmatrix}
++ 
+\hat{k} \begin{vmatrix} A_x & A_y \\ B_x & B_y \end{vmatrix}
 $$
 
-Expanding the $2\times2$ determinants gives:
+Computing the $2 \times 2$ determinants:
 
 $$
-\begin{vmatrix}
-	\hat{i} & \hat{j} & \hat{k} \\
-	A_x & A_y & A_z \\
-	B_x & B_y & B_z 
-\end{vmatrix} = \hat{i} (A_y B_z - A_z B_y) - \hat{j} (A_x B_z - A_z B_x) + \hat{k} (A_x B_y - A_y B_x)
+\vec{A} \times \vec{B} = 
+\hat{i} (A_y B_z - A_z B_y)
+- 
+\hat{j} (A_x B_z - A_z B_x)
++ 
+\hat{k} (A_x B_y - A_y B_x)
 $$
 
+and rewriting, we recover the component form of the cross product:
 
-Rearranging this result, we see that it matches the component form of the cross product we derived earlier:
+$$
+\vec{A} \times \vec{B} = 
+(A_y B_z - A_z B_y)\,\hat{i} 
++ (A_z B_x - A_x B_z)\,\hat{j} 
++ (A_x B_y - A_y B_x)\,\hat{k}
+$$
 
-
-$$ \begin{vmatrix}
-	\hat{i} & \hat{j} & \hat{k} \\
-	A_x & A_y & A_z \\
-	B_x & B_y & B_z 
-\end{vmatrix} = \left( A_y B_z - A_z B_y \right) \, \hat{i} + \left( A_z B_x - A_x B_z \right) \, \hat{j} +  \left( A_x B_y - A_y B_x \right) \, \hat{k} = \vec{A} \times \vec{B}  $$
-
-This leaves us with a useful shortcut for calculating the cross product in 3 dimensions.
 
 {% capture ex %}
-In 3 dimensions, the cross product between two vectors can be calculated as follows:
+In three dimensions, the cross product between two vectors can be calculated as:
 
 $$
-\vec{A} \times \vec{B} = \begin{vmatrix}
+\vec{A} \times \vec{B} = 
+\begin{vmatrix}
 	\hat{i} & \hat{j} & \hat{k} \\
 	A_x & A_y & A_z \\
 	B_x & B_y & B_z 
 \end{vmatrix}
 $$
 
-{\color{red} **Warning!**} This trick only works in 3 dimensions! Calculating cross products in any space other than 3 dimensions requires you to use the component representation instead.
-
+**Warning**: This shortcut only works in **three dimensions**!  To compute cross products in other dimensions, you must use the full component-based definition.
 {% endcapture %}
-{% include example.html content=ex %}
+{% include result.html content=ex %}
+
+
+
+
+
+
+
+
+
 
 
 {% capture ex %}
