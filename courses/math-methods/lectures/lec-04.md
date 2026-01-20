@@ -719,7 +719,8 @@ $$
 \vec{A} \cdot (\vec{B} \times \vec{C}) &= 
 (3 \hat{i} + 2 \hat{j} - \hat{k}) \cdot (22 \hat{i} + 7 \hat{j} - 5 \hat{k}) \\
 &= (3)(22) + (2)(7) + (-1)(-5) \\
-&= 66 + 14 + 5 = 85
+&= 66 + 14 + 5 \\
+\vec{A} \cdot (\vec{B} \times \vec{C}) &= 85
 \end{aligned}
 $$
 
@@ -735,83 +736,6 @@ $$
 
 
 
-
-
-
-
-## Mixed Products
-
-In physics we often come upon vector operations that are a mixture of dot and cross products. Let's take a moment to consider the most common occurrences. 
-
-
-
-
-### Scalar Triple Product
-
-The **scalar triple product**, defined as:
-$$
-\vec{A} \cdot (\vec{B} \times \vec{C}),
-$$
-produces a scalar value and has a straightforward geometric interpretation.
-
-1. **Volume of a Parallelepiped**: Geometrically, the scalar triple product represents the volume of a parallelepiped (a 3 dimensional wonky box) that has a set of edges emanating from one corner of the box defined by the vectors $\vec{A}$, $\vec{B}$, and $\vec{C}$. 
-
-	$$
-	\text{Volume} = \lvert\vec{A} \cdot (\vec{B} \times \vec{C})\rvert
-	$$
-
-	This also means that the magnitude of the cross product defined the area spanned by the wonky rectangle created by the two vectors involved in the cross product. 
-
-2. **Cyclic Property**: The scalar triple product is invariant under a cyclic permutation:
-
-	$$
-	\vec{A} \cdot (\vec{B} \times \vec{C}) = \vec{B} \cdot (\vec{C} \times \vec{A}) = \vec{C} \cdot (\vec{A} \times \vec{B}).
-	$$
-
-3.  **Orientation and Sign**: The sign of the scalar triple product indicates whether the set of vectors $(\vec{A}, \vec{B}, \vec{C})$ forms a right-handed or left-handed system. This is helpful in understanding orientation in three-dimensional space.
-
-In electromagnetism, the scalar triple product often appears in calculating flux through a volume or when defining handedness in coordinate systems.
-
-
-{% capture ex %}
-Consider three vectors: 
-$$ \vec{A} = 3 \hat{i} + 2 \hat{j} - \hat{k} \qquad \vec{B} = -\hat{i} + 4 \hat{j} + 2 \hat{k}  \qquad   \vec{C} = \hat{i} - \hat{j} + 5 \hat{k} $$ 
-The volume $ V $ of a parallelepiped formed by three vectors will be given by the scalar triple product:
-$$
-V = \lvert\vec{A} \cdot (\vec{B} \times \vec{C})\rvert
-$$
-
-To find the volume, we must first calculate the cross product $ \vec{B} \times \vec{C} $
-
-$$
-\begin{aligned}
-	\vec{B} \times \vec{C} &= \begin{vmatrix}
-		\hat{i} & \hat{j} & \hat{k} \\
-		-1 & 4 & 2 \\
-		1 & -1 & 5
-	\end{vmatrix}  \\
-	&= \hat{i} \begin{vmatrix} 4 & 2 \\ -1 & 5 \end{vmatrix} - \hat{j} \begin{vmatrix} -1 & 2 \\ 1 & 5 \end{vmatrix} + \hat{k} \begin{vmatrix} -1 & 4 \\ 1 & -1 \end{vmatrix}
-		\\
-	&= \hat{i} (4 \cdot 5 - 2 \cdot (-1)) - \hat{j} (-1 \cdot 5 - 2 \cdot 1) + \hat{k} (1 - 4)\\
-	\vec{B} \times \vec{C} &= 22 \hat{i} + 7 \hat{j} - 3 \hat{k}
-\end{aligned}
-$$
-
-Now, take the dot product of $ \vec{A} = 3 \hat{i} + 2 \hat{j} - \hat{k} $ with the result of $ \vec{B} \times \vec{C} = 22 \hat{i} + 7 \hat{j} - 3 \hat{k} $:
-
-$$
-\begin{aligned}
-	\vec{A} \cdot (\vec{B} \times \vec{C}) &= (3 \hat{i} + 2 \hat{j} - \hat{k}) \cdot (22 \hat{i} + 7 \hat{j} - 3 \hat{k})  \\
-	&= (3 \cdot 22) + (2 \cdot 7) + (-1 \cdot -3)  \\
-	&= 66 + 14 + 3  \\
-	\vec{A} \cdot (\vec{B} \times \vec{C}) &= 83
-\end{aligned}
-$$
-
-Thus, the volume of the parallelepiped formed by the vectors $ \vec{A} $, $ \vec{B} $, and $ \vec{C} $ is the magnitude of the scalar triple product, which is  83 in whatever units are being used.
-
-{% endcapture %}
-{% include example.html content=ex %}
 
 
 
