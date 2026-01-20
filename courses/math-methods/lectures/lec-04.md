@@ -37,6 +37,8 @@ $$
 
 While this application is common, it doesn’t quite capture the full versatility of the dot product.
 
+### Geometric Interpretation of the Dot Product
+
 A more general and insightful interpretation is that the dot product measures **how much one vector points in the direction of another**. Formally:
 
 $$
@@ -53,103 +55,113 @@ This definition shows that the dot product gets larger as the two vectors point 
   src="{{ '/courses/math-methods/images/lec04/Components.png' | relative_url }}"
   alt="A diagram showing vector A drawn in blue along a slanted horizontal direction. Vector B, drawn in red, extends upward and to the left forming an angle theta A B with vector A. A dashed black line shows the projection of B onto A, labeled B parallel to A. A gray dashed vertical segment from the tip of B down to the projection line represents the perpendicular component, labeled A perpendicular to B. The angle theta A B between vectors A and B is marked near their tails."
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
-	
 
-In the figure to the above, the component of $\vec{B}$ perpendicular to $\vec{A}$ is denoted by $B_{\perp A}$. Using trigonometry we can write this component as:
+In the figure above, the component of $\vec{B}$ **perpendicular** to $\vec{A}$ is denoted by $B_{\perp A}$. Using basic trigonometry, we can write:
+
 $$
 B_{\perp A} = B \sin(\theta_{AB})
 $$
-Similarly, the component of $\vec{B}$ parallel to $\vec{A}$ can be written as:
+
+Similarly, the component of $\vec{B}$ **parallel** to $\vec{A}$ is:
+
 $$
 B_{\parallel A} = B \cos(\theta_{AB})
 $$
 
-Using this in the definition of the dot product from above, we find:
+If we plug this into the definition of the dot product from earlier, we get:
+
 $$
 \vec{A} \cdot \vec{B} = A B \cos(\theta_{AB}) = A B_{\parallel A}
 $$
 
+This gives an intuitive interpretation: the dot product tells us **how much of $\vec{B}$ points in the direction of $\vec{A}$**, scaled by the length of $\vec{A}$.
 
+You're welcome to show, using a similar diagram, that:
 
-
-Using a similar diagram, but the the components of $\vec{A}$ relative to $\vec{B}$ drawn out, we can likewise show that$ A_{\perp B} = A \sin(\theta_{AB}) $ and $ A_{\parallel B} = A \cos(\theta_{AB}) $, the second of which leads to us being able to write:
 $$
-\vec{A} \cdot \vec{B} = A B_{\parallel A} \qquad \text{ or } \qquad  \vec{A} \cdot \vec{B}  = A_{\parallel B} B
+A_{\perp B} = A \sin(\theta_{AB}) \qquad \text{and} \qquad A_{\parallel B} = A \cos(\theta_{AB})
 $$
 
-Notice it doesn't actually matter which vector is projected onto the other, the answer is the same either way. Here, **projected** is a mathematical term meaning to draw the component of one vector that lies along another. We will talk about the **projection operator** in a future lecture.
+The second of these leads to an alternate expression for the dot product:
 
-This interpretation of the dot product leads to several useful properties and applications. Here are some general properties of the dot product:
+$$
+\vec{A} \cdot \vec{B} = A B_{\parallel A} \qquad \text{or} \qquad \vec{A} \cdot \vec{B} = A_{\parallel B} B
+$$
 
+Notice that it doesn’t actually matter **which vector is projected onto the other**, the result is the same either way. Here, **projected** is a mathematical term meaning to draw the component of one vector that lies parallel, along another. We’ll explore the **projection operator** more formally in a future lecture.
 
+### Properties of the Dot Product
 
+The geometric interpretation of the dot product gives rise to several useful properties and applications. Here are some of the general properties you are welcome to workthrough and prove to yourself, if we haven't done so already:
 
 1. **Orthogonality**: If two vectors are orthogonal (i.e., perpendicular), their dot product is zero:
 
-	$$
-	\vec{A} \cdot \vec{B} = 0 \quad \text{if} \quad \theta_{AB} = 90^\circ
-	$$
+   $$
+   \vec{A} \cdot \vec{B} = 0 \quad \text{if} \quad \theta_{AB} = 90^\circ
+   $$
 
-	The only way for one vector to not have any component of itself parallel to another vector is for both vectors to be perpendicular.
-	
+   The only way for one vector to have zero component parallel to another is if the two are perpendicular.
+
 2. **Magnitude of a Vector**: The dot product of a vector with itself gives the square of its magnitude:
 
-	$$
-	\vec{A} \cdot \vec{A} = A^2
-	$$
+   $$
+   \vec{A} \cdot \vec{A} = A^2
+   $$
 
-	Thus, we can find the magnitude of a vector $ \vec{A} $ as:
-	
-	$$ \lvert\vec{A} \rvert = A = \sqrt{\vec{A} \cdot \vec{A}} $$.
-	
-3. **Commutativity**: The dot product is commutative, meaning that:
+   Thsi is an important notation note worth being more direct about. When we write the magnitude squared of a vector like $A^2$ what we really mean is the vector dotted with itself. This means the magnitude of a vector $ \vec{A} $ is more formally and technically written as:
 
-	$$
-	\vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}
-	$$
+   $$
+   |\vec{A}| = A = \sqrt{\vec{A} \cdot \vec{A}}
+   $$
 
-	This follows because both expressions represent the product of the magnitudes of the vectors and the cosine of the angle between them. The order we draw the vectors tail-to-tail will not change the angle between them
-	
-4. **Associativity with Scalars**: The dot product satisfies associativity with respect to scalar multiplication:
+3. **Commutativity**: The dot product is commutative:
 
-	$$
-	(c \vec{A}) \cdot \vec{B} = c (\vec{A} \cdot \vec{B})
-	$$
+   $$
+   \vec{A} \cdot \vec{B} = \vec{B} \cdot \vec{A}
+   $$
 
-	where $ c $ is a scalar. This can be demonstrated using the current, geometric-based definition of the dot product:
+   This holds because both expressions equal $AB\cos(\theta_{AB})$. Switching the order of the vectors doesn’t change the angle between them.
 
-	$$
-	\lvert c \vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}) = c \left(\lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB})\right)
-	$$
+4. **Associativity with Scalars**: The dot product behaves nicely with scalar multiplication:
 
-	where multiplication by a **positive scalar** does not change the angle between the two vectors. Thus, **for positive** $\mathbf{c}$, we have:
+   $$
+   (c \vec{A}) \cdot \vec{B} = c (\vec{A} \cdot \vec{B})
+   $$
 
-	$$
-	c \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}) = c \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB})
-	$$
+   where $c$ is a scalar. This follows from:
 
-	Now, if $ \mathbf{c} $ **is negative**, the angle between the two vectors will shift to $ 180^\circ - \theta_{AB} $, as you can verify with a quick sketch. This gives:
+   $$
+   |c\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c \left(|\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})\right)
+   $$
 
-	$$
-	\lvert c\rvert  \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(180^\circ - \theta_{AB}) = c (\lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}))
-	$$
+   - For **positive** $c$, the angle $\theta_{AB}$ is unchanged:
 
-	Since $ \cos(180^\circ - \theta_{AB}) = -\cos(\theta_{AB}) $, we find:
+   $$
+   c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
+   $$
 
-	$$
-	-\lvert c\rvert  \lvert\vec{A}\rvert  \lvert \vec{B}\rvert  \cos(\theta_{AB}) = c \lvert \vec{A}\rvert  \lvert \vec{B}\rvert  \cos(\theta_{AB})
-	$$
+   - For **negative** $c$, the angle shifts to $180^\circ - \theta_{AB}$, and:
 
-	where $ c = -\lvert c \rvert $. So, it doesn't matter if $c$ is positive or negative, a multiplication by a scalar is associative.
-	
-	
-5. **Distributivity**: The dot product is distributive over vector addition:
+   $$
+   |c|\,|\vec{A}|\,|\vec{B}|\,\cos(180^\circ - \theta_{AB}) = -|c|\,|\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
+   $$
 
-	$$
-	\vec{A} \cdot (\vec{B} + \vec{C}) = \vec{A} \cdot \vec{B} + \vec{A} \cdot \vec{C}
-	$$
+   So the property holds regardless of the sign of $c$.
 
-	This property allows us to expand dot products over sums of vectors.
+5. **Distributivity**: The dot product distributes over vector addition:
+
+   $$
+   \vec{A} \cdot (\vec{B} + \vec{C}) = \vec{A} \cdot \vec{B} + \vec{A} \cdot \vec{C}
+   $$
+
+   This is especially helpful for expanding dot products in component form or simplifying expressions in physics.
+
+
+
+
+
+
+
 
 
 The last property can be challenging to see with the geometric definition of the dot product alone. To gain more insight, let’s introduce a component-based definition of the dot product.
