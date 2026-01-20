@@ -51,7 +51,7 @@ Consider the following right triangle:
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/Triangle.png' | relative_url }}"
   alt="The image shows a right triangle with the right angle at the lower right corner. The bottom side of the triangle is labeled “Adjacent,” and the vertical side on the right is labeled “Opposite.” The slanted side connecting the bottom left corner to the top right corner is labeled “Hypotenuse.” At the bottom left corner, the angle between the hypotenuse and the adjacent side is marked with the Greek letter theta."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
+  style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
 
 The hypotenuse, which is the side opposite the right angle, is called the magnitude when the triangle represents a vector. The angle in the bottom left corner, $\theta$ (pronounced “theta”), helps us identify which sides are the “opposite’’ and the “adjacent.’’ The opposite side is the one across from the given angle, and the adjacent side is the one next to the angle that is not the hypotenuse.
@@ -72,6 +72,41 @@ These labels depend entirely on which angle you choose. The “adjacent” side 
  
 
 ### Breaking a Triangle into Components
+
+In this case, we want to find the opposite and adjacent sides using the hypotenuse and the given angle. This process is often described as “finding the components of the triangle.” To do this, we use cosine and sine:
+
+\[
+\cos(\theta) = \frac{\text{Adjacent}}{\text{Hypotenuse}}
+\qquad\implies\qquad
+\text{Adjacent} = (\text{Hypotenuse}) \times \cos(\theta)
+\]
+
+\[
+\sin(\theta) = \frac{\text{Opposite}}{\text{Hypotenuse}}
+\qquad\implies\qquad
+\text{Opposite} = (\text{Hypotenuse}) \times \sin(\theta)
+\]
+
+{% capture ex %}
+Suppose we have the triangle above with the following measurements: $\theta = 37^\circ$ and a hypotenuse of 65.
+
+We can find the adjacent side using cosine:
+
+\[
+\text{Adjacent} = (\text{Hypotenuse}) \times \cos(\theta)
+= (65)\cos(37^\circ)
+= 52
+\]
+
+Similarly, the opposite side is found using sine:
+
+\[
+\text{Opposite} = (\text{Hypotenuse}) \times \sin(\theta)
+= (65)\sin(37^\circ)
+= 39
+\]
+{% endcapture %}
+{% include example.html content=ex %}
 
 If the hypotenuse represents a vector, then it corresponds to the **magnitude** of that vector. The adjacent and opposite sides represent the vector’s components.
 
