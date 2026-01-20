@@ -26,7 +26,7 @@ However, this example may not fully illustrate the versatility of the dot produc
 
 A more general interpretation of the dot product is that it measures how much one vector aligns with another, scaled by the length of the second vector. In other words:
 
-$$ \vec{A} \cdot \vec{B} = |\vec{A}| |\vec{B}| \cos(\theta_{AB}) = A B \cos(\theta_{AB}) $$
+$$ \vec{A} \cdot \vec{B} = \lvert\vec{A}\rvert \lvert\vec{B}\rvert \cos(\theta_{AB}) = A B \cos(\theta_{AB}) $$
 
 where $ A $ and $ B $ are the magnitudes of vectors $ \vec{A} $ and $ \vec{B} $, respectively, and $ \theta_{AB} $ is the smallest angle between the two vectors when they are placed tail-to-tail.
 
@@ -82,7 +82,7 @@ This interpretation of the dot product leads to several useful properties and ap
 
 	Thus, we can find the magnitude of a vector $ \vec{A} $ as:
 	
-	$$ |\vec{A} | = A = \sqrt{\vec{A} \cdot \vec{A}} $$.
+	$$ \lvert\vec{A} \rvert = A = \sqrt{\vec{A} \cdot \vec{A}} $$.
 	
 3. **Commutativity**: The dot product is commutative, meaning that:
 
@@ -101,28 +101,28 @@ This interpretation of the dot product leads to several useful properties and ap
 	where $ c $ is a scalar. This can be demonstrated using the current, geometric-based definition of the dot product:
 
 	$$
-	|c \vec{A}| |\vec{B}| \cos(\theta_{AB}) = c \left(|\vec{A}| |\vec{B}| \cos(\theta_{AB})\right)
+	\lvert c \vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}) = c \left(\lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB})\right)
 	$$
 
 	where multiplication by a **positive scalar** does not change the angle between the two vectors. Thus, **for positive** $\mathbf{c}$, we have:
 
 	$$
-	c |\vec{A}| |\vec{B}| \cos(\theta_{AB}) = c |\vec{A}| |\vec{B}| \cos(\theta_{AB})
+	c \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}) = c \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB})
 	$$
 
 	Now, if $ \mathbf{c} $ **is negative**, the angle between the two vectors will shift to $ 180^\circ - \theta_{AB} $, as you can verify with a quick sketch. This gives:
 
 	$$
-	|c| |\vec{A}| |\vec{B}| \cos(180^\circ - \theta_{AB}) = c (|\vec{A}| |\vec{B}| \cos(\theta_{AB}))
+	\lvert c\rvert  \lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(180^\circ - \theta_{AB}) = c (\lvert\vec{A}\rvert  \lvert\vec{B}\rvert  \cos(\theta_{AB}))
 	$$
 
 	Since $ \cos(180^\circ - \theta_{AB}) = -\cos(\theta_{AB}) $, we find:
 
 	$$
-	-|c| |\vec{A}| |\vec{B}| \cos(\theta_{AB}) = c |\vec{A}| |\vec{B}| \cos(\theta_{AB})
+	-\lvert c\rvert  \lvert\vec{A}\rvert  \lvert \vec{B}\rvert  \cos(\theta_{AB}) = c \lvert \vec{A}\rvert  \lvert \vec{B}\rvert  \cos(\theta_{AB})
 	$$
 
-	where $ c = -|c| $. So, it doesn't matter if $c$ is positive or negative, a multiplication by a scalar is associative.
+	where $ c = -\lvert c \rvert $. So, it doesn't matter if $c$ is positive or negative, a multiplication by a scalar is associative.
 	
 	
 5. **Distributivity**: The dot product is distributive over vector addition:
@@ -219,7 +219,7 @@ $$
 Let's discuss the cross product similarly to our treatment of the dot product by first examining its geometric interpretation. The geometric interpretation of the cross product is that it measures the perpendicular component of one vector scaled by the length of the second vector. Mathematically, we can define the magnitude of the cross product of two vectors as:
 
 
-$$ |\vec{A} \times \vec{B}| = |\vec{A}| |\vec{B}| \sin(\theta_{AB}) = A B \sin(\theta_{AB}) $$
+$$ \lvert \vec{A} \times \vec{B} \rvert = \lvert \vec{A}\rvert \lvert\vec{B}\rvert \sin(\theta_{AB}) = A B \sin(\theta_{AB}) $$
 
 where $ A $ and $ B $ are the magnitudes of vectors $ \vec{A} $ and $ \vec{B} $, respectively, $ \theta_{AB} $ is the smallest angle between the two vectors when drawn tail-to-tail.
 
@@ -229,11 +229,11 @@ $$ B_{\perp A} = B \sin(\theta_{AB}) $$
 
 Using this lets us rewrite the magnitude of the cross product as:
 
-$$ |\vec{A} \times \vec{B}| = A B \sin(\theta_{AB}) = A B_{\perp A} $$
+$$ \lvert\vec{A} \times \vec{B}\rvert = A B \sin(\theta_{AB}) = A B_{\perp A} $$
 
 You could also show that $A_{\perp B} = A \sin(\theta_{AB})$ using a similar vector diagram -- which gives:
 
-$$ |\vec{A} \times \vec{B}| = A B_{\perp A} = A_{\perp B} B $$
+$$ \lvert\vec{A} \times \vec{B}\rvert = A B_{\perp A} = A_{\perp B} B $$
 
 So it ultimately doesn't matter which vector is considered as having the perpendicular component; the calculation yields the same magnitude.
 
@@ -269,7 +269,7 @@ The cross product $ \vec{A} \times \vec{B} $ has several useful properties, simi
 3. **Magnitude of the Cross Product**: The magnitude of $ \vec{A} \times \vec{B} $ represents the area of the parallelogram formed by $ \vec{A} $ and $ \vec{B} $ (we will talk about this in a bit):
 
 	$$
-	|\vec{A} \times \vec{B}| = |\vec{A}| |\vec{B}| \sin(\theta_{AB})
+	\lvert\vec{A} \times \vec{B}\rvert = \lvert\vec{A}\rvert \lvert\vec{B}\rvert \sin(\theta_{AB})
 	$$
 
 	where, again, $ \theta_{AB} $ is the angle between $ \vec{A} $ and $ \vec{B} $ when draw tail-to-tail. This area interpretation is useful in physics when dealing with planar areas, but is only really useful in specific situations.
@@ -445,11 +445,11 @@ $$
 
 Since $ \vec{v} $ is perpendicular to $ \vec{r} $ in a circular orbit, the magnitude of the cross product simplifies to:
 $$
-|\vec{L}| = |\vec{r}| |\vec{p}| \sin(\theta)
+\lvert\vec{L}\rvert = \lvert\vec{r}\rvert \lvert\vec{p}\rvert \sin(\theta)
 $$
 where $ \theta = 90^\circ $, so $ \sin(\theta) = 1 $. Therefore:
 $$
-|\vec{L}| = r \, m v
+\lvert\vec{L}\rvert = r \, m v
 $$
 
 Using this, we can rewrite the angular momentum as:
@@ -461,7 +461,7 @@ where $ \hat{n} $ is a unit vector perpendicular to the plane of $ \vec{r} $ and
 For a planet of mass $ m = 5.98 \times 10^{24} \, \text{kg} $ orbiting a star at a radius $ r = 1.5 \times 10^{11} \, \text{m} $ with a velocity $ v = 3 \times 10^4 \, \text{m/s} $, the angular momentum would be:
 
 $$
-|\vec{L}| = (5.98 \times 10^{24} \, \text{kg}) \cdot (3 \times 10^4 \, \text{m/s}) \cdot (1.5 \times 10^{11} \, \text{m}) = 2.69 \times 10^{40} \, \text{kg} \cdot \text{m}^2/\text{s}
+\lvert\vec{L}\rvert = (5.98 \times 10^{24} \, \text{kg}) \cdot (3 \times 10^4 \, \text{m/s}) \cdot (1.5 \times 10^{11} \, \text{m}) = 2.69 \times 10^{40} \, \text{kg} \cdot \text{m}^2/\text{s}
 $$
 
 with direction of $ \vec{L} $ being given by the right-hand rule.
@@ -496,7 +496,7 @@ produces a scalar value and has a straightforward geometric interpretation.
 1. **Volume of a Parallelepiped**: Geometrically, the scalar triple product represents the volume of a parallelepiped (a 3 dimensional wonky box) that has a set of edges emanating from one corner of the box defined by the vectors $\vec{A}$, $\vec{B}$, and $\vec{C}$. 
 
 	$$
-	\text{Volume} = |\vec{A} \cdot (\vec{B} \times \vec{C})|
+	\text{Volume} = \lvert\vec{A} \cdot (\vec{B} \times \vec{C})\rvert
 	$$
 
 	This also means that the magnitude of the cross product defined the area spanned by the wonky rectangle created by the two vectors involved in the cross product. 
@@ -517,7 +517,7 @@ Consider three vectors:
 $$ \vec{A} = 3 \hat{i} + 2 \hat{j} - \hat{k} \qquad \vec{B} = -\hat{i} + 4 \hat{j} + 2 \hat{k}  \qquad   \vec{C} = \hat{i} - \hat{j} + 5 \hat{k} $$ 
 The volume $ V $ of a parallelepiped formed by three vectors will be given by the scalar triple product:
 $$
-V = |\vec{A} \cdot (\vec{B} \times \vec{C})|
+V = \lvert\vec{A} \cdot (\vec{B} \times \vec{C})\rvert
 $$
 
 To find the volume, we must first calculate the cross product $ \vec{B} \times \vec{C} $
