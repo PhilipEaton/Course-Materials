@@ -535,6 +535,96 @@ $$
 {% endcapture %}
 {% include result.html content=ex %}
 
+{% capture ex %}
+Suppose you have a charged particle experiencing both electric and magnetic forces. The electric and magnetic fields are:
+
+$$
+\vec{E} = E \, \hat{i} \qquad \vec{B} = B\,\hat{j}
+$$
+
+The electromagnetic force on the particle is given by the **Lorentz force equation**:
+
+$$
+\vec{F}^{EM} = q \left( \vec{E} + \vec{v} \times \vec{B} \right)
+$$
+
+To compute this, we assume the particle is moving in three dimensions with velocity $\vec{v}$. We'll calculate the cross product using the **determinant trick**:
+
+$$
+\vec{v} \times \vec{B} =
+\begin{vmatrix}
+	\hat{i} & \hat{j} & \hat{k} \\
+	v_x & v_y & v_z \\
+	0 & B & 0
+\end{vmatrix}
+=
+- B \begin{vmatrix}
+\hat{i} & \hat{k} \\
+v_x &  v_z
+\end{vmatrix}
+= - B (v_z \hat{i} - v_x \hat{k}) = - B v_z \, \hat{i} + B v_x \,\hat{k}
+$$
+
+Now substitute this result into the Lorentz force equation:
+
+$$
+\vec{F}^{EM} = q \left( E \, \hat{i} - B v_z \, \hat{i} + B v_x \, \hat{k} \right)
+$$
+
+Simplifying:
+
+$$
+\vec{F}^{EM} = (q E - q B v_z)\, \hat{i} + q B v_x\, \hat{k}
+$$
+{% endcapture %}
+{% include example.html content=ex %}
+
+
+{% capture ex %}
+The angular momentum of a particle is defined as:
+
+$$
+\vec{L} = \vec{r} \times \vec{p}
+$$
+
+where $\vec{r}$ is the position vector relative to some origin and $\vec{p}$ is the momentum of the particle. Angular momentum is a key quantity in many areas of physics—especially orbital mechanics.
+
+Let’s consider a planet of mass $m$ orbiting a star at a distance $r$, with velocity $\vec{v}$ that is **perpendicular** to $\vec{r}$—i.e., a circular orbit. Then:
+
+$$
+\vec{p} = m \vec{v}
+\qquad \text{and} \qquad
+\vec{L} = \vec{r} \times m \vec{v}
+$$
+
+Since $\vec{r}$ and $\vec{v}$ are perpendicular, the magnitude becomes:
+
+$$
+\lvert\vec{L}\rvert = \lvert\vec{r}\rvert \cdot \lvert m \vec{v} \rvert \cdot \sin(90^\circ) = r m v
+$$
+
+Thus:
+
+$$
+\vec{L} = r m v \, \hat{n}
+$$
+
+where $\hat{n}$ is a unit vector **perpendicular to the orbital plane**, determined by the **right-hand rule**.
+
+Let’s plug in numbers. For a planet with:
+- Mass: $m = 5.98 \times 10^{24} \, \text{kg}$
+- Radius: $r = 1.5 \times 10^{11} \, \text{m}$
+- Orbital speed: $v = 3 \times 10^4 \, \text{m/s}$
+
+Then:
+
+$$
+\lvert\vec{L}\rvert = (5.98 \times 10^{24}) \cdot (3 \times 10^4) \cdot (1.5 \times 10^{11}) = 2.69 \times 10^{40} \, \text{kg} \cdot \text{m}^2/\text{s}
+$$
+
+The direction of $\vec{L}$ is determined by the right-hand rule.
+{% endcapture %}
+{% include example.html content=ex %}
 
 
 
