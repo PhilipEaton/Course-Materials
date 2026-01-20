@@ -226,83 +226,48 @@ $$
 
 The work done by each force is:
 
-**Force 1:**
+** Force 1 **
 
 $$
-\begin{aligned}
+\begin{aligned} 
 W_1 &= \vec{F}_1 \cdot \Delta \vec{x} \\
-&= (10)(5) + (-30)(-3) = 50 + 90 = 140\,\text{J}
-\end{aligned}
-$$
+&= \left(10\,\text{N} \,\hat{i} - 30\,\text{N}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) \\
+&=  50\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 90\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) 
+W_1 &= = 140\,\text{J} 
+\end{aligned} $$
 
-**Force 2:**
+** Force 2
 
 $$
-\begin{aligned}
+\begin{aligned} 
 W_2 &= \vec{F}_2 \cdot \Delta \vec{x} \\
-&= (-15)(5) + (-20)(-3) = -75 + 60 = -15\,\text{J}
-\end{aligned}
-$$
+&= \left(-15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) \\
+&=  -75\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 60\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) 
+W_2 &= = -15\,\text{J}  
+\end{aligned} $$
 
 **Total Work:**
-
-$$
-W_{\text{tot}} = W_1 + W_2 = 140\,\text{J} + (-15\,\text{J}) = 125\,\text{J}
-$$
-
-Alternatively, we could sum the forces first:
-
-$$
-\vec{F}_{\text{tot}} = \vec{F}_1 + \vec{F}_2 = (-5\,\text{N}) \hat{i} - 50\,\text{N} \hat{j}
-$$
-
-and compute:
-
-$$
-\begin{aligned}
-W_{\text{tot}} &= \vec{F}_{\text{tot}} \cdot \Delta \vec{x} \\
-&= (-5)(5) + (-50)(-3) = -25 + 150 = 125\,\text{J}
-\end{aligned}
-$$
-
-Same result, two valid approaches.
-{% endcapture %}
-{% include example.html content=ex %}
-
-
-
-
-
-
-
-{% capture ex %}
-Suppose you have an object being acted on by multiple forces. You want to calculate the work done to the object by these forces. The forces are given as:
-
-$$ \vec{F}_1 = 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j} \qquad \text{and} \qquad \vec{F}_2 = -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j} $$
-
-The displacement of the object is given as:
-
-$$ \Delta \vec{x} = 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j}   $$
-
-The work done by the first force can be found to be:
-
-$$ W_1 = \vec{F}_1 \cdot \Delta \vec{x} = \left(10\,\text{N} \,\hat{i} - 30\,\text{N}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  50\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 90\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = 140\,\text{J}  $$
-
-The work done by the second force can be found to be:
-
-$$ W_2 = \vec{F}_2 \cdot \Delta \vec{x} = \left(-15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  -75\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 60\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = -15\,\text{J}  $$
-
-The total work comes out to be:
 
 $$ W_{tot} = W_1 + W_2 = 125\,\text{J} $$
 
 Alternatively, we could have found the total force first:
 
-$$ \vec{F}_{tot} = \vec{F}_1 + \vec{F}_2 = \left( 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j}\right) + \left( -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) = -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} $$
+$$
+\begin{aligned} 
+\vec{F}_{tot} &= \vec{F}_1 + \vec{F}_2 \\
+&= \left( 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j}\right) + \left( -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right)  \\
+\vec{F}_{tot} &= -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} 
+\end{aligned} $$
 
-and then found the total work using that:
+and then found the total work:
 
-$$ W_{tot} = \vec{F}_{tot} \cdot \Delta \vec{x} = \left( -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} \right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  -25\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 150\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = 125\,\text{J}    $$
+$$ 
+\begin{aligned} 
+W_{tot} &= \vec{F}_{tot} \cdot \Delta \vec{x}  \\
+&= \left( -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} \right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right)  \\
+&=  -25\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 150\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right)  \\
+W_{tot} &= 125\,\text{J}    
+\end{aligned} $$
 
 which is the same as we got previously.
 {% endcapture %}
