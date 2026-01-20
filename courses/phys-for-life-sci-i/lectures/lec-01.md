@@ -18,7 +18,7 @@ In the sciences, especially in physics, we frequently work in situations where d
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/Position1.png' | relative_url }}"
   alt="The image shows a simple diagram of a dock on the lower left and a sonar site on the upper right. A straight purple arrow points from the dock toward the sonar site, representing the position of the site relative to the starting point. The dock is labeled “Dock,” and the sonar site is labeled “Sonar Site.” The arrow is labeled “Position,” indicating both the distance and the direction from the dock to the sonar site."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
+  style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
 
 At other times, we deal with characteristics that don’t require a direction to be fully described. For instance, \textit{mass} is a measure of the amount of stuff an object is made of. The kilogram is, quite literally, tied to a specific number of silicon atoms, though we’re not concerned with that level of detail here. What does matter is that the amount of stuff in an object doesn’t depend on which way the object is facing. It wouldn’t make sense for something to have a mass of 10 atoms when facing East but somehow be made of 12 atoms when facing North. That just doesn’t make sense.
@@ -26,7 +26,7 @@ At other times, we deal with characteristics that don’t require a direction to
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/MassExample.png' | relative_url }}"
   alt="The image shows three cartoon rock-like characters with faces. On the left, one character says, “Roary has a new diet trend!” In the upper right, a second character, Roary, is facing North and has a speech bubble that says, “Facing North I have a mass of 12 silicon atoms!” In the lower right, Roary is shown facing East and has a speech bubble that says, “Now that I have turned East, I have a mass of 10 silicon atoms!” The figures illustrate the idea of an object humorously claiming to change mass by simply rotating."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:100%;">
 
 
 
@@ -40,6 +40,23 @@ We will use this idea constantly when working with vectors.
  
 
 ### Trigonometry Review (Right Triangles)
+
+Trigonometry, sometimes casually called “triangle math,” will be used for two main purposes in this course:
+
+- Breaking a diagonal vector’s magnitude and direction into a set of horizontal and vertical components.
+- Combining horizontal and vertical components of a vector to obtain a single magnitude and direction.
+
+Consider the following right triangle:
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Triangle.png' | relative_url }}"
+  alt="The image shows a right triangle with the right angle at the lower right corner. The bottom side of the triangle is labeled “Adjacent,” and the vertical side on the right is labeled “Opposite.” The slanted side connecting the bottom left corner to the top right corner is labeled “Hypotenuse.” At the bottom left corner, the angle between the hypotenuse and the adjacent side is marked with the Greek letter theta."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
+
+
+The hypotenuse, which is the side opposite the right angle, is called the magnitude when the triangle represents a vector. The angle in the bottom left corner, $\theta$ (pronounced “theta”), helps us identify which sides are the “opposite’’ and the “adjacent.’’ The opposite side is the one across from the given angle, and the adjacent side is the one next to the angle that is not the hypotenuse.
+
+It is important to note that the adjacent side is not always the horizontal side, and the opposite side is not always the vertical side. These labels depend entirely on the angle you are using.
 
 Consider a right triangle with:
 - One right angle  
