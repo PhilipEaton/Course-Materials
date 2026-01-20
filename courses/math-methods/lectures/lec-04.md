@@ -739,47 +739,150 @@ $$
 
 
 
-
-
-
-
-
-
 ### Vector Triple Product
 
-The **vector triple product**, expressed as:
-$$
-\vec{A} \times (\vec{B} \times \vec{C}),
-$$
-results in a vector and can be simplified using the following identify known as ``BAC-CAB":
-$$
-\vec{A} \times (\vec{B} \times \vec{C}) = \vec{B} (\vec{A} \cdot \vec{C})  - \vec{C} (\vec{A} \cdot \vec{B}) 
-$$
-where the name ``BAC-CAB" comes from the order of the result then the triple product is written as given above. 
+The **vector triple product**, written as
 
-The vector triple product is encountered in various areas of physics, particularly in electromagnetism and rigid body dynamics. In electromagnetism, it plays a role in the derivation of the Biot-Savart Law and is useful for calculating magnetic forces, where multiple cross products appear in the expressions for magnetic fields and forces on moving charges. Additionally, in rigid body dynamics, the vector triple product identity simplifies expressions involving torque and angular momentum, especially when analyzing motion in non-inertial or rotating reference frames.
+$$
+\vec{A} \times (\vec{B} \times \vec{C})
+$$
 
+results in a **vector** and can be simplified using the following identity, commonly referred to as **BAC–CAB**:
+
+$$
+\vec{A} \times (\vec{B} \times \vec{C}) = \vec{B} (\vec{A} \cdot \vec{C}) - \vec{C} (\vec{A} \cdot \vec{B})
+$$
+
+The name *BAC–CAB* comes from the order of the resulting terms relative to how the original triple product is written.
+
+The vector triple product appears in several areas of physics, particularly in **electromagnetism** and **rigid body dynamics**. In electromagnetism, it arises naturally in derivations such as the Biot–Savart Law and in expressions for magnetic forces, where nested cross products frequently appear. In rigid body dynamics, this identity is useful for simplifying expressions involving torque and angular momentum, especially when analyzing motion in rotating or non-inertial reference frames.
 
 {% capture ex %}
-Consider a **current loop** placed in a magnetic field. The force on a segment of current $ I \, \mathrm{d}\vec{\ell} $ in a magnetic field $ \vec{B} $ is given by:
+Consider a **current loop** placed in a magnetic field. The force on a small segment of current $ I \,\mathrm{d}\vec{\ell} $ in a magnetic field $ \vec{B} $ is given by:
+
 $$
-\mathrm{d}\vec{F} = I \, \mathrm{d}\vec{\ell} \times \vec{B}
+\mathrm{d}\vec{F} = I \,\mathrm{d}\vec{\ell} \times \vec{B}
 $$
 
-If we consider the torque $ \vec{\tau} $ exerted by this force on a loop with position vector $ \vec{r} $, we have:
+If the segment is located at position $ \vec{r} $, the torque produced by this force is:
+
 $$
-\vec{\tau} = \vec{r} \times (I \, \mathrm{d}\vec{\ell} \times \vec{B})
+\mathrm{d}\vec{\tau} = \vec{r} \times (I \,\mathrm{d}\vec{\ell} \times \vec{B})
 $$
 
 Using the vector triple product identity, this expression simplifies to:
+
 $$
-\vec{\tau} = (I \, \mathrm{d}\vec{\ell}) \,  (\vec{r} \cdot \vec{B})  - \vec{B} \, (\vec{r} \cdot I \, \mathrm{d}\vec{\ell}) 
+\mathrm{d}\vec{\tau} = (I \,\mathrm{d}\vec{\ell}) (\vec{r} \cdot \vec{B}) - \vec{B} (\vec{r} \cdot I \,\mathrm{d}\vec{\ell})
 $$
 
-This form is particularly useful in analyzing the torque on magnetic dipoles or current-carrying coils in non-uniform magnetic fields.
-
+This form is particularly useful when analyzing the torque on magnetic dipoles or current-carrying loops in non-uniform magnetic fields.
 {% endcapture %}
 {% include example.html content=ex %}
+
+
+
+
+
+
+
+## Application
+
+Consider a magnetic dipole moment $ \vec{\mu} $ (for example, an atom or particle with nonzero spin) placed in a uniform magnetic field $ \vec{B} $. The torque exerted on the dipole is given by:
+
+$$
+\vec{\tau} = \vec{\mu} \times \vec{B}
+$$
+
+The potential energy of the magnetic dipole in the magnetic field is:
+
+$$
+U = - \vec{\mu} \cdot \vec{B}
+$$
+
+Suppose the vector $ \vec{\theta} $ represents the direction and magnitude of the angular displacement through which the dipole is rotated by some external agent.
+
+Given:
+
+- $ \vec{\mu} = 2 \hat{i} + 3 \hat{j} + \hat{k} \,\text{A}\cdot\text{m}^2 $ (magnetic dipole moment),
+- $ \vec{B} = \hat{i} - 2 \hat{j} + 4 \hat{k} \,\text{T} $ (magnetic field),
+- $ \vec{\theta} = \hat{i} + 3 \hat{j} - 2 \hat{k} $ (rotation vector, in radians),
+
+we will find the following quantities.
+
+---
+
+### 1. Torque on the Dipole
+
+The torque is given by the cross product:
+
+$$
+\vec{\tau} = \vec{\mu} \times \vec{B}
+$$
+
+Since this is a three-dimensional cross product, we can compute it using the determinant method:
+
+$$
+\vec{\tau} =
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+2 & 3 & 1 \\
+1 & -2 & 4
+\end{vmatrix}
+= \hat{i}(12 + 2) - \hat{j}(8 - 1) + \hat{k}(-4 - 3)
+$$
+
+This gives:
+
+$$
+\vec{\tau} = 14 \hat{i} - 7 \hat{j} - 7 \hat{k} \;\text{N}\cdot\text{m}
+$$
+
+---
+
+### 2. Potential Energy of the Dipole
+
+The potential energy is found using the dot product:
+
+$$
+U = - \vec{\mu} \cdot \vec{B}
+$$
+
+Substituting the given vectors:
+
+$$
+U = - (2 \cdot 1 + 3 \cdot (-2) + 1 \cdot 4) = 0 \;\text{J}
+$$
+
+---
+
+### 3. Work Done During Rotation
+
+The work done by the magnetic field as the dipole rotates through $ \vec{\theta} $ can be computed as:
+
+$$
+W = \vec{\theta} \cdot \vec{\tau} = \vec{\theta} \cdot (\vec{\mu} \times \vec{B})
+$$
+
+Substituting the torque vector:
+
+$$
+W = (\hat{i} + 3 \hat{j} - 2 \hat{k}) \cdot (14 \hat{i} - 7 \hat{j} - 7 \hat{k})
+$$
+
+Evaluating the dot product:
+
+$$
+W = 14 - 21 + 14 = 7 \;\text{J}
+$$
+
+
+
+
+
+
+
+
 
 
 
