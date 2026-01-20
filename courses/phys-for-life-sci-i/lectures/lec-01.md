@@ -8,7 +8,27 @@ nav_order: 1
 
 # Lecture 01 — Math Review and Vectors (Part 1)
 
+
+
 ## Why Trigonometry Shows Up in Physics
+
+In the sciences, especially in physics, we frequently work in situations where direction is a vital part of the description. For example, if you’re on a boat traveling out to a site to perform sonar readings, you need to know where you’re starting and, from there, where you’re headed. That means you need both the distance to the site \textit{and} the direction you must travel to get there. In this example, we’re talking about the \textit{position} of the site relative to the starting point, such as the dock where the boat is stored.
+
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Position1.ong' | relative_url }}"
+  alt="The image shows a simple diagram of a dock on the lower left and a sonar site on the upper right. A straight purple arrow points from the dock toward the sonar site, representing the position of the site relative to the starting point. The dock is labeled “Dock,” and the sonar site is labeled “Sonar Site.” The arrow is labeled “Position,” indicating both the distance and the direction from the dock to the sonar site."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+
+
+At other times, we deal with characteristics that don’t require a direction to be fully described. For instance, \textit{mass} is a measure of the amount of stuff an object is made of. The kilogram is, quite literally, tied to a specific number of silicon atoms, though we’re not concerned with that level of detail here. What does matter is that the amount of stuff in an object doesn’t depend on which way the object is facing. It wouldn’t make sense for something to have a mass of 10 atoms when facing East but somehow be made of 12 atoms when facing North. That just doesn’t make sense.
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/MassExample.png' | relative_url }}"
+  alt="The image shows three cartoon rock-like characters with faces. On the left, one character says, “Roary has a new diet trend!” In the upper right, a second character, Roary, is facing North and has a speech bubble that says, “Facing North I have a mass of 12 silicon atoms!” In the lower right, Roary is shown facing East and has a speech bubble that says, “Now that I have turned East, I have a mass of 10 silicon atoms!” The figures illustrate the idea of an object humorously claiming to change mass by simply rotating."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
+
+
 
 In physics, we often care not just about how much of something there is, but also about which way it points. Anytime direction matters, trigonometry becomes a useful tool. In particular, right triangles let us move back and forth between:
 
