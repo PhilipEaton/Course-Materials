@@ -154,10 +154,13 @@ Expanding (or the much more enjoyable word ``FOILing") gives:
 
 
 $$ \begin{aligned}
-	\vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} + A_x B_y \,\cancelto{0}{\hat{i} \cdot \hat{j}} + A_x B_z \,\cancelto{0}{\hat{i} \cdot \hat{k}} \\
-	&+ A_y B_x \,\cancelto{0}{\hat{j} \cdot \hat{i}} + A_y B_y \,\hat{j} \cdot \hat{j} + A_y B_z \,\cancelto{0}{\hat{j} \cdot \hat{k}} \\
-	 &+ A_z B_x \,\cancelto{0}{\hat{k} \cdot \hat{i}} + A_z B_y \,\cancelto{0}{\hat{k} \cdot \hat{j}} + A_z B_z \,\hat{k} \cdot \hat{k}\\
-	 \vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} +  A_y B_y \,\hat{j} \cdot \hat{j} + A_z B_z \,\hat{k} \cdot \hat{k} \\
+	\vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} + A_x B_y \,\hat{i} \cdot \hat{j} + A_x B_z \,\hat{i} \cdot \hat{k} \\
+	&+ A_y B_x \,\hat{j} \cdot \hat{i} + A_y B_y \,\hat{j} \cdot \hat{j} + A_y B_z \,\hat{j} \cdot \hat{k} \\
+	 &+ A_z B_x \,\hat{k} \cdot \hat{i} + A_z B_y \,\hat{k} \cdot \hat{j} + A_z B_z \,\hat{k} \cdot \hat{k}\\[0.75ex]
+	 \vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} + A_x B_y \,(0) + A_x B_z \,(0)\\
+	 &+ A_y B_x \,(0) + A_y B_y \,\hat{j} \cdot \hat{j} + A_y B_z \,(0) \\
+	 &+ A_z B_x \,(0) + A_z B_y \,(0) + A_z B_z \,\hat{k} \cdot \hat{k}\\[0.75ex]
+	 \vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} +  A_y B_y \,\hat{j} \cdot \hat{j} + A_z B_z \,\hat{k} \cdot \hat{k} \\[0.75ex]
 	 \vec{A} \cdot \vec{B} &= A_x B_x +  A_y B_y + A_z B_z
 \end{aligned}   $$
 
@@ -329,12 +332,15 @@ From these results, we can take the cross product of two vectors in component fo
 
 
 $$ \begin{aligned}
-	\vec{A} \times \vec{B} &= A_x B_x \,\CancelTo[\color{red}]{0}{\hat{i} \times \hat{i}} + A_x B_y \,\CancelTo[\color{blue}]{\hat{k}}{\hat{i} \times \hat{j}} + A_x B_z \,\CancelTo[\color{blue}]{-\hat{j}}{\hat{i} \times \hat{k}} \\
-	&+ A_y B_x \,\CancelTo[\color{blue}]{-\hat{k}}{\hat{j} \times \hat{i}} + A_y B_y \,\CancelTo[\color{red}]{0}{\hat{j} \times \hat{j}} + A_y B_z \,\CancelTo[\color{blue}]{\hat{i}}{\hat{j} \times \hat{k}} \\
-	&+ A_z B_x \,\CancelTo[\color{blue}]{\hat{j}}{\hat{k} \times  \hat{i}} + A_z B_y \,\CancelTo[\color{blue}]{-\hat{i}}{\hat{k} \times  \hat{j}} + A_z B_z \,\CancelTo[\color{red}]{0}{\hat{k} \times \hat{k}} \\
-	\vec{A} \times \vec{B} &= A_x B_y \,\hat{k} - A_x B_z \,\hat{j} - A_y B_x \,\hat{k} + A_y B_z \,\hat{i} + A_z B_x \,\hat{j} - A_z B_y \,\hat{i} \\
-	\vec{A} \times \vec{B} &= \left(A_y B_z - A_z B_y \right) \,\hat{i} + \left( A_z B_x - A_x B_z \right) \,\hat{j} + \left(A_x B_y - A_y B_x  \right)\,\hat{k} \\
-\end{aligned}   $$
+		\vec{A} \times \vec{B} &= A_x B_x \,\hat{i} \times \hat{i} + A_x B_y \,\hat{i} \times \hat{j} + A_x B_z \, \hat{i} \times \hat{k} \\[0.75ex]
+		&+ A_y B_x \,\hat{j} \times \hat{i} + A_y B_y \, \hat{j} \times \hat{j} + A_y B_z \,\hat{j} \times \hat{k}\\[0.75ex]
+		&+ A_z B_x \,\hat{k} \times  \hat{i} + A_z B_y \,\hat{k} \times  \hat{j} + A_z B_z \,\hat{k} \times \hat{k} \\[1.5ex]
+		\vec{A} \times \vec{B} &= A_x B_x \,(0) + A_x B_y \,(+\hat{k}) + A_x B_z \,(-\hat{j}) \\[0.75ex]
+		&+ A_y B_x \,(-\hat{k}) + A_y B_y \, (0)  + A_y B_z \,(+\hat{i}) \\[0.75ex]
+		&+ A_z B_x \,(+\hat{j}) + A_z B_y \,(-\hat{i}) + A_z B_z \,(0) \\[1.5ex]
+		\vec{A} \times \vec{B} &= A_x B_y \,\hat{k} - A_x B_z \,\hat{j} - A_y B_x \,\hat{k} + A_y B_z \,\hat{i} + A_z B_x \,\hat{j} - A_z B_y \,\hat{i} \\[1.5ex]
+		\vec{A} \times \vec{B} &= \left(A_y B_z - A_z B_y \right) \,\hat{i} + \left( A_z B_x - A_x B_z \right) \,\hat{j} + \left(A_x B_y - A_y B_x  \right)\,\hat{k} \\[1.5ex]
+	\end{aligned}   $$
 
 
 
