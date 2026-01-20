@@ -6,9 +6,7 @@ nav_section: homework
 nav_order: 3
 ---
 
-
-
-## Problem:
+## PHYS 3345 - Short Homework 03
 
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.

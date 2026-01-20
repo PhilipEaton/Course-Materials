@@ -7,7 +7,7 @@ nav_order: 2
 ---
 
 
-## Problem:
+## PHYS 3345 - Short Homework 02
 
 
 - Please keep your work organized and neat.
