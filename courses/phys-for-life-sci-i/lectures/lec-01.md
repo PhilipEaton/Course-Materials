@@ -334,7 +334,7 @@ First, you walk with your instructor from their office to a room in the Arts and
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/DisplacmentDistance.png' | relative_url }}"
   alt="The diagram shows three locations connected by arrows. On the left is a point labeled “Instructor’s Office (start).” From this point, a solid arrow goes up and to the right to a point labeled “Arts & Sciences room,” representing one displacement. From the Arts & Sciences room, a second solid arrow goes down and to the right to a point labeled “Coffee Shop (end),” representing another displacement. A long solid arrow runs directly from the Instructor’s Office to the Coffee Shop, showing the total displacement for the trip. Dashed blue lines show the actualy winding path you took from one location to the next. The figure illustrates how discplancement is difference from distance and how individual displacements add together to produce a single resultant displacement from start to end."
-  style="display:block; margin:1.5rem auto; max-width:600px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:800px; width:100%;">
 
 Now consider your  *displacement*. Displacement does not care about the path you followed. Instead, the displacement for the first leg of your trip is the straight-line vector that points from your starting location, the instructor’s office, directly to your final location, the Arts and Sciences building. From there, the second leg of your journey, the displacement points in a straight-line from the Arts and Sciences building towards the coffee shop. 
 
@@ -402,7 +402,22 @@ where, again, $\vec{R}$ is the resultant displacement and points from the starti
 
 
 {% capture ex %}
-## Example: Ultimate Frisbee
+## Example: Simple Vector Addition in 1D 
+
+{% include example.html content=ex %}
+
+
+
+{% capture ex %}
+## Example: Simple Vector Addition in 2D
+
+{% include example.html content=ex %}
+
+
+
+
+{% capture ex %}
+## Example: Harder Vector Addition in 2D - Ultimate Frisbee
 
 In this problem, an ultimate Frisbee player runs a pattern made up of three displacement vectors, $\vec{A}$, $\vec{B}$, and $\vec{C}$. We want the **resultant displacement**, meaning the single displacement vector $\vec{R}$ that takes the player from the starting point directly to the ending point.
 
@@ -562,6 +577,3 @@ The resultant displacement is:
 - **Direction:** $10.4^\circ$ South of East
 {% endcapture %}
 {% include example.html content=ex %}
-
-
-
