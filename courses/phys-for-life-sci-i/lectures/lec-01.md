@@ -268,13 +268,13 @@ Vectors can come in all direction and lengths. For instance, here are a could of
 
 Observing the three vectors we can see that $\vec{A}$ and $\vec{B}$ point in the same direction and $\vec{C}$ points in the opposite direction. Similarly, we can see that $\vec{A}$ and $\vec{C}$ have the same length and $\vec{B}$ is twice the length of the other two vectors. 
 
-Mathematicall, if one vector is twice as long as another and points in the same direction we would write this as:
+Mathematically, if one vector is twice as long as another and points in the same direction we would write this as:
 
 $$
 \vec{B} = 2\vec{A}
 $$
 
-However, is two vectors have the same length, but point in opposite directions we use a minus sign to flip the direction without changing the length:
+However, if two vectors have the same length but point in opposite directions, we use a minus sign to flip the direction without changing the length:
 
 $$
 \vec{C}  = -\vec{A}
@@ -312,7 +312,7 @@ $$
 $$
 
 
-## Displacement Is NOT the Same as Distance
+### Displacement Is NOT the Same as Distance
 
 Distance and displacement are often confused, but they are not the same thing.
 
@@ -323,7 +323,7 @@ Displacement, on the other hand, ignores the path entirely. It is the straight-l
 In physics, we almost always care about displacement rather than distance. Unless you are explicitly told otherwise, you should assume that displacement is the quantity being used.
 
 
-## A Walking Example
+### A Walking Example
 
 Imagine starting at your instructor’s office. From there, you walk to a room in the Arts and Sciences building, and then continue on to the campus coffee shop.
 
@@ -334,7 +334,7 @@ Now consider your **displacement**. Your displacement is the single straight-lin
 Even though your distance traveled is fairly large, your displacement may be much smaller.
 
 
-## Adding Displacements
+### Adding Displacements
 
 Displacements can be added together because they are vectors.
 
@@ -367,7 +367,7 @@ $$
 This is why vector addition is often described as being **commutative**.
 
 
-## Multiple Displacements
+### Multiple Displacements
 
 The same idea works for more than two vectors. If several displacements occur one after another, their sum gives the total displacement:
 
