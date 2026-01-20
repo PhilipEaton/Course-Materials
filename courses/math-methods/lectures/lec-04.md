@@ -275,64 +275,35 @@ Same result, two valid approaches.
 
 
 
-
-The last property can be challenging to see with the geometric definition of the dot product alone. To gain more insight, let’s introduce a component-based definition of the dot product.
-
-Consider a vector $ \vec{A} $ with components along the $ x $-, $ y $-, and $ z $-axes, which we’ll denote as $ A_x $, $ A_y $, and $ A_z $, respectively. If we imagine vectors of unit length (magnitude of 1) pointing along each axis, we can express $ \vec{A} $ in terms of its projections on each axis. Conveniently, we already have these unit vectors, denoted $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $ for the $ x $-, $ y $-, and $ z $-axes, respectively. This allows us to write:
-
-$$
-\vec{A} = A_x \,\hat{i} + A_y \,\hat{j} + A_z \,\hat{k}
-$$
-
-where the unit vectors for each axis obey the following properties -- coming directly from our previous discussion of the dot product:
-
-$$ \hat{i} \cdot \hat{i} = 1 \qquad  \hat{j} \cdot \hat{j} = 1 \qquad\hat{k} \cdot \hat{k} = 1 \quad \text{and} \quad \hat{i} \cdot \hat{j} = 0 \qquad  \hat{i} \cdot \hat{k} = 0 \qquad\hat{j} \cdot \hat{k} = 0 $$
-
-From these definitions we can investigate what the dot product of two vectors looks like in component form:
-
-$$ \vec{A} \cdot \vec{B} = \left( A_x \,\hat{i} + A_y \,\hat{j} + A_z \,\hat{k} \right) \cdot \left( B_x \,\hat{i} + B_y \,\hat{j} + B_z \,\hat{k} \right) $$
-
-Expanding (or the much more enjoyable word ``FOILing") gives:
-
-
-$$ \begin{aligned}
-	\vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} + A_x B_y \,\hat{i} \cdot \hat{j} + A_x B_z \,\hat{i} \cdot \hat{k} \\
-	&+ A_y B_x \,\hat{j} \cdot \hat{i} + A_y B_y \,\hat{j} \cdot \hat{j} + A_y B_z \,\hat{j} \cdot \hat{k} \\
-	 &+ A_z B_x \,\hat{k} \cdot \hat{i} + A_z B_y \,\hat{k} \cdot \hat{j} + A_z B_z \,\hat{k} \cdot \hat{k}\\[0.75ex]
-	 \vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} + A_x B_y \,(0) + A_x B_z \,(0)\\
-	 &+ A_y B_x \,(0) + A_y B_y \,\hat{j} \cdot \hat{j} + A_y B_z \,(0) \\
-	 &+ A_z B_x \,(0) + A_z B_y \,(0) + A_z B_z \,\hat{k} \cdot \hat{k}\\[0.75ex]
-	 \vec{A} \cdot \vec{B} &= A_x B_x \,\hat{i} \cdot \hat{i} +  A_y B_y \,\hat{j} \cdot \hat{j} + A_z B_z \,\hat{k} \cdot \hat{k} \\[0.75ex]
-	 \vec{A} \cdot \vec{B} &= A_x B_x +  A_y B_y + A_z B_z
-\end{aligned}   $$
-
-As a result of the definitions of the unit vectors and their dot products, the dot product between two vectors in components is given as:
-$$ \vec{A} \cdot \vec{B} = A_x B_x +  A_y B_y + A_z B_z $$
-
-This representation of the dot product makes the verification of the last property listed previously much easier -- you are welcome to check it on your own. 
-
-
-
 {% capture ex %}
 Suppose you have an object being acted on by multiple forces. You want to calculate the work done to the object by these forces. The forces are given as:
+
 $$ \vec{F}_1 = 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j} \qquad \text{and} \qquad \vec{F}_2 = -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j} $$
 
 The displacement of the object is given as:
+
 $$ \Delta \vec{x} = 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j}   $$
 
 The work done by the first force can be found to be:
+
 $$ W_1 = \vec{F}_1 \cdot \Delta \vec{x} = \left(10\,\text{N} \,\hat{i} - 30\,\text{N}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  50\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 90\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = 140\,\text{J}  $$
 
 The work done by the second force can be found to be:
+
 $$ W_2 = \vec{F}_2 \cdot \Delta \vec{x} = \left(-15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  -75\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 60\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = -15\,\text{J}  $$
 
 The total work comes out to be:
+
 $$ W_{tot} = W_1 + W_2 = 125\,\text{J} $$
 
 Alternatively, we could have found the total force first:
+
 $$ \vec{F}_{tot} = \vec{F}_1 + \vec{F}_2 = \left( 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j}\right) + \left( -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) = -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} $$
+
 and then found the total work using that:
+
 $$ W_{tot} = \vec{F}_{tot} \cdot \Delta \vec{x} = \left( -5\,\text{N} \,\hat{i} - 50\,\text{N} \,\hat{j} \right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) =  -25\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 150\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) = 125\,\text{J}    $$
+
 which is the same as we got previously.
 {% endcapture %}
 {% include example.html content=ex %}
