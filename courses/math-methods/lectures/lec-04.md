@@ -8,8 +8,9 @@ nav_order: 4
 
 # Lecture 04 -- Vector Operations: Cross and Dot Products
 
+Let's pause our discussion of matrix operations and using matrices as operators so we can discussion vector operations. It may seem string that we started matrices before finished out discussion of vectors, but understanding matrix operations, especially calculating the determinant of a $3 \times 3$ matrix, is really useful for the calculation of some vector operations. Specifically, the operations we will discuss here are the dot (or scalar) product and the cross (or vector) product. 
 
-Let's pause our discussion of matrix operations and using matrices as operators so we can discussion vector operations. It may seem unusual to start with matrices first, but understanding matrix operations, especially calculating the determinant of a $3 \times 3$ matrix, is useful for some vector operations. Specifically, the operations we will discuss here are the dot (or scalar) product and the cross (or vector) product.
+To help drive home the concept of "matrices representing operators" we will try, when possible and meaningful, to express these vector operations in a matrix form. 
 
 ## Dot (Scalar) Product
 
