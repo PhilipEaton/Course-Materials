@@ -16,8 +16,6 @@ In this lecture, we’ll focus on two key operations involving vectors:
 - The **dot product** (also called the **scalar product**)
 - The **cross product** (also called the **vector product**)
 
-To reinforce the idea that matrices can be thought of as **operators**, mathematical objects that represent an operation of some kind, we’ll express these operations in matrix form when it’s meaningful and helpful to do so.
-
 
 ## Dot (Scalar) Product
 
@@ -226,24 +224,24 @@ $$
 
 The work done by each force is:
 
-** Force 1 **
+**Force 1**
 
 $$
 \begin{aligned} 
 W_1 &= \vec{F}_1 \cdot \Delta \vec{x} \\
 &= \left(10\,\text{N} \,\hat{i} - 30\,\text{N}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) \\
-&=  50\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 90\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) 
-W_1 &= = 140\,\text{J} 
+&=  50\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 90\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) \\
+W_1 &= 140\,\text{J} 
 \end{aligned} $$
 
-** Force 2
+**Force 2**
 
 $$
 \begin{aligned} 
 W_2 &= \vec{F}_2 \cdot \Delta \vec{x} \\
 &= \left(-15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}\right) \cdot \left( 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j} \right) \\
-&=  -75\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 60\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) 
-W_2 &= = -15\,\text{J}  
+&=  -75\,\text{J} \, \left( \hat{i} \cdot \hat{i}\right) + 60\,\text{J} \, \left( \hat{j} \cdot \hat{j}\right) \\
+W_2 &= -15\,\text{J}  
 \end{aligned} $$
 
 **Total Work:**
