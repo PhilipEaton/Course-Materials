@@ -56,11 +56,11 @@ This process is often described as **finding the components** of a vector.
 
  
 
-# Combining Components into Magnitude and Direction
+## Combining Components into Magnitude and Direction
 
 We can also work in reverse. If we know the adjacent and opposite sides, we can find the magnitude and direction of the vector.
 
-## Magnitude (Hypotenuse)
+### Magnitude (Hypotenuse)
 
 The magnitude comes from the Pythagorean Theorem:
 
@@ -181,5 +181,94 @@ As a result, vectors can differ by:
 
 
 
+## Displacement
+
+The first vector quantity we will work with is called **displacement**.
+
+Displacement is the straight-line distance and direction from an initial position to a final position. It does not depend on the path taken between those two points. Only the starting location and the ending location matter.
+
+Displacement is a vector, which means it has:
+- A magnitude (how far apart the two points are)
+- A direction (which way the final position is relative to the starting position)
+
+We typically represent displacement using the symbol:
+
+$$
+\Delta x
+$$
+
+The Greek letter $\Delta$ (delta) means “change in,” and $x$ is commonly used to represent position. Written mathematically:
+
+$$
+\Delta x = x_{\text{final}} - x_{\text{initial}}
+$$
+
+
+## Displacement Is NOT the Same as Distance
+
+Distance and displacement are often confused, but they are not the same thing.
+
+Distance measures how much ground you cover as you move along a path. It depends on the route taken and adds up all motion, including turns, detours, and backtracking.
+
+Displacement, on the other hand, ignores the path entirely. It is the straight-line vector pointing from where you started to where you ended.
+
+In physics, we almost always care about displacement rather than distance. Unless you are explicitly told otherwise, you should assume that displacement is the quantity being used.
+
+
+## A Walking Example
+
+Imagine starting at your instructor’s office. From there, you walk to a room in the Arts and Sciences building, and then continue on to the campus coffee shop.
+
+Your step counter records every step along the way. The total number of steps corresponds to the **distance** you traveled.
+
+Now consider your **displacement**. Your displacement is the single straight-line vector that points directly from the instructor’s office to the coffee shop. It does not care about the hallways, staircases, or turns you made along the way.
+
+Even though your distance traveled is fairly large, your displacement may be much smaller.
+
+
+## Adding Displacements
+
+Displacements can be added together because they are vectors.
+
+- The displacement from the office to the Arts and Sciences room is one vector.
+- The displacement from that room to the coffee shop is a second vector.
+
+If you place these two vectors head-to-tail, the result is a single vector that points from the office directly to the coffee shop. This final vector is called the **resultant displacement**.
+
+
+## Vector Addition (Tail-to-Tip Method)
+
+To add vectors graphically, we use the **tail-to-tip** method:
+
+1. Place the tail of the second vector at the tip of the first vector.
+2. Draw a new vector from the tail of the first vector to the tip of the last vector.
+3. This new vector is the resultant.
+
+Symbolically, if vectors $\vec{A}$ and $\vec{B}$ are added to produce vector $\vec{C}$, we write:
+
+$$
+\vec{A} + \vec{B} = \vec{C}
+$$
+
+The order of addition does not matter:
+
+$$
+\vec{A} + \vec{B} = \vec{B} + \vec{A}
+$$
+
+This is why vector addition is often described as being **commutative**.
+
+
+## Multiple Displacements
+
+The same idea works for more than two vectors. If several displacements occur one after another, their sum gives the total displacement:
+
+$$
+\vec{A} + \vec{B} + \vec{C} + \vec{D} = \vec{R}
+$$
+
+Here, $\vec{R}$ is the resultant displacement from the starting point to the final point.
+
+This is exactly how your brain naturally keeps track of where you end up, even if you take a complicated path to get there.
 
 
