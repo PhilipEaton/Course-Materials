@@ -314,34 +314,55 @@ $$
 
 ### Displacement Is NOT the Same as Distance
 
-Distance and displacement are often confused, but they are not the same thing.
+Distance and displacement are often confused, but they are not the same thing. Distance measures how much ground you cover as you move along a path. It depends on the route taken and adds up all motion, including turns, detours, and backtracking. This is what the odometer of a car measures and what a step counter on your smart watch would read.
 
-Distance measures how much ground you cover as you move along a path. It depends on the route taken and adds up all motion, including turns, detours, and backtracking.
-
-Displacement, on the other hand, ignores the path entirely. It is the straight-line vector pointing from where you started to where you ended.
+Displacement, on the other hand, *ignores the path entirely*. It is the straight-line vector pointing from where you started to where you ended. The actualy path does not matter!
 
 In physics, we almost always care about displacement rather than distance. Unless you are explicitly told otherwise, you should assume that displacement is the quantity being used.
 
 
-### A Walking Example
+### A Walking Example to Introduce Vector Addition
 
-Imagine starting at your instructor’s office. From there, you walk to a room in the Arts and Sciences building, and then continue on to the campus coffee shop.
+Generally we will work with multiple displacements that get added together to find a total displacement for a trip, or something. 
 
-Your step counter records every step along the way. The total number of steps corresponds to the **distance** you traveled.
+To help exaplain this, let’s go on a quick journey together. This will be a mental one, unless you feel the urge to actually try it yourself, in which case please follow the script. 
 
-Now consider your **displacement**. Your displacement is the single straight-line vector that points directly from the instructor’s office to the coffee shop. It does not care about the hallways, staircases, or turns you made along the way.
+Suppose you were just at your instructor’s office asking questions about the difference between distance and displacement. Your instructor says, “Follow me, and remember to wear your step counter.” Your step counter is set to measure how far your have walked along in your journey, in meters. In other words, the step counter measures the  *distance* you have traveled.
 
-Even though your distance traveled is fairly large, your displacement may be much smaller.
+First, you walk with your instructor from their office to a room in the Arts and Sciences building. The step counter keeps ticking upward the entire time, recording every step along the path you take. From there, you walk to the campus coffee shop, again following the hallways, staircases, and doors needed to get there. By the time you arrive,  *your step counter displays the \textbf{total distance*} you walked from your instructor's office to the coffee shop. That number is your  *total distance traveled*. Distance depends on the exact path you took, including all turns, stairs, and detours along the way.
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/DisplacmentDistance.png' | relative_url }}"
+  alt="The diagram shows three locations connected by arrows. On the left is a point labeled “Instructor’s Office (start).” From this point, a solid arrow goes up and to the right to a point labeled “Arts & Sciences room,” representing one displacement. From the Arts & Sciences room, a second solid arrow goes down and to the right to a point labeled “Coffee Shop (end),” representing another displacement. A long solid arrow runs directly from the Instructor’s Office to the Coffee Shop, showing the total displacement for the trip. Dashed blue lines show the actualy winding path you took from one location to the next. The figure illustrates how discplancement is difference from distance and how individual displacements add together to produce a single resultant displacement from start to end."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:80%;">
+
+Now consider your  *displacement*. Displacement does not care about the path you followed. Instead, the displacement for the first leg of your trip is the straight-line vector that points from your starting location, the instructor’s office, directly to your final location, the Arts and Sciences building. From there, the second leg of your journey, the displacement points in a straight-line from the Arts and Sciences building towards the coffee shop. 
+
+The *total displacement* of your adventure points from your starting location, the office, to the final location, the coffee shop, and can be found by adding the first leg of your trip and the second to ge the total. This vector has both a magnitude, how far apart those two locations are, and a direction, which way the coffee shop is relative to the office. Even though you may have walked through hallways, around corners, or up and down stairs, your total displacement only depends on where you started and where you ended.
+
+In the figure above, the total length of the dashed path represents the route you actually walked. the length of this path woulf give you the  *distance* you traveled, or how many steps you took in total. The solid arrows, drawn from one point to the next, represent the  *displacements* for each part of the trip.
+
+These two quantities are not the same. Distance depends on the path you take, while displacement depends only on where you start and where you end. For this reason, the dashed path and the solid arrows generally have different lengths.
+
+In physics, distance is used far less often than displacement. In fact, unless you are specifically told otherwise, you should work with displacement rather than distance.
+
+
+
+
+
 
 
 ### Adding Displacements
 
-Displacements can be added together because they are vectors.
+The previous example helps illustrate how displacements add together (more on this in a second). The displacement from the office to the Arts and Sciences room is one vector. The displacement from that room to the coffee shop is another vector. If you add those two displacement vectors together, the result is a single displacement vector that points directly from the office to the coffee shop. That total displacement is exactly the same as if you had drawn one arrow from the start of the trip to the end.
 
-- The displacement from the office to the Arts and Sciences room is one vector.
-- The displacement from that room to the coffee shop is a second vector.
+This is why displacement is a vector quantity and why vector addition matters. Distance tells you how much ground you covered, while displacement tells you where you ended up relative to where you started.
 
-If you place these two vectors head-to-tail, the result is a single vector that points from the office directly to the coffee shop. This final vector is called the **resultant displacement**.
+
+
+
+
+
 
 
 ## Vector Addition (Tail-to-Tip Method)
@@ -350,26 +371,23 @@ To add vectors graphically, we use the **tail-to-tip** method:
 
 1. Place the tail of the second vector at the tip of the first vector.
 2. Draw a new vector from the tail of the first vector to the tip of the last vector.
-3. This new vector is the resultant.
+3. This new vector is the *resultant*.
 
-Symbolically, if vectors $\vec{A}$ and $\vec{B}$ are added to produce vector $\vec{C}$, we write:
+Symbolically, if vectors $\vec{A}$ and $\vec{B}$ are added to produce vector $\vec{R}$, the resultant, we write:
 
 $$
-\vec{A} + \vec{B} = \vec{C}
+\vec{A} + \vec{B} = \vec{R}
 $$
 
 The order of addition does not matter:
 
 $$
-\vec{A} + \vec{B} = \vec{B} + \vec{A}
+\vec{A} + \vec{B} = \vec{R} \quad\text{and}\quad \vec{B} + \vec{A} = \vec{R}
 $$
 
-This is why vector addition is often described as being **commutative**.
-
-
-### Multiple Displacements
-
 The same idea works for more than two vectors. If several displacements occur one after another, as pictured here:
+
+PICTURE NEEDED HERE!!!
 
 Their sum gives the total displacement:
 
@@ -377,9 +395,7 @@ $$
 \vec{A} + \vec{B} + \vec{C} + \vec{D} = \vec{R}
 $$
 
-Here, $\vec{R}$ is the resultant displacement from the starting point to the final point.
-
-This is exactly how your brain naturally keeps track of where you end up, even if you take a complicated path to get there.
+where, again, $\vec{R}$ is the resultant displacement and points from the starting point to the final point.
 
 
 
