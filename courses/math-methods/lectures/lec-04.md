@@ -140,11 +140,13 @@ The geometric interpretation of the dot product gives rise to several useful pro
    c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
    $$
 
-   - For **negative** $c$, the angle shifts to $180^\circ - \theta_{AB}$, and:
+   - For **negative** $c$, the angle shifts to $180^\circ - \theta_{AB}$ (multiplying a vector by a negative flips its direction; draw a sketch to see how this changes the angle between the vectors), and we can write:
 
    $$
    |c|\,|\vec{A}|\,|\vec{B}|\,\cos(180^\circ - \theta_{AB}) = -|c|\,|\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
    $$
+
+   where $c = -\lvert c\rvert$ so that $c$ is negative.
 
    So the property holds regardless of the sign of $c$.
 
