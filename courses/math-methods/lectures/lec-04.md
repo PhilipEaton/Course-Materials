@@ -174,10 +174,11 @@ Using the geometic defiition of the dot product you can convince yourself that t
 
 $$
 \hat{i} \cdot \hat{i} = 1  \qquad  \hat{j} \cdot \hat{j} = 1 \qquad \hat{k} \cdot \hat{k} = 1 \\
+\\
 \hat{i} \cdot \hat{j} = 0 \qquad \hat{i} \cdot \hat{k} = 0 \qquad \hat{j} \cdot \hat{k} = 0
 $$
 
-Given this, we can now compute the dot product of two vectors in component form:
+Given this, we can compute the dot product of two vectors in component form in the folloing manner:
 
 $$
 \vec{A} \cdot \vec{B} = (A_x \hat{i} + A_y \hat{j} + A_z \hat{k}) \cdot (B_x \hat{i} + B_y \hat{j} + B_z \hat{k})
