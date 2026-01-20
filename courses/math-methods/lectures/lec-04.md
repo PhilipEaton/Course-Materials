@@ -6,31 +6,48 @@ nav_section: lectures
 nav_order: 4
 ---
 
-# Lecture 04 -- Vector Operations: Cross and Dot Products
 
-Let's pause our discussion of matrix operations and using matrices as operators so we can discussion vector operations. It may seem string that we started matrices before finished out discussion of vectors, but understanding matrix operations, especially calculating the determinant of a $3 \times 3$ matrix, is really useful for the calculation of some vector operations. Specifically, the operations we will discuss here are the dot (or scalar) product and the cross (or vector) product. 
+# Lecture 04 – Vector Operations: Cross and Dot Products
 
-To help drive home the concept of "matrices representing operators" we will try, when possible and meaningful, to express these vector operations in a matrix form. 
+Let’s take a break from matrix operations and return to vector operations. It might seem a bit odd that we started matrices before finishing our discussion of vectors, but there’s a reason for that: understanding how to compute the determinant of a $3 \times 3$ matrix will come in handy when we go to calculate some vector operations.
+
+In this lecture, we’ll focus on two key operations involving vectors:
+
+- The **dot product** (also called the **scalar product**)
+- The **cross product** (also called the **vector product**)
+
+To reinforce the idea that matrices can be thought of as **operators**, mathematical objects that represent an operation of some kind, we’ll express these operations in matrix form when it’s meaningful and helpful to do so.
+
 
 ## Dot (Scalar) Product
 
-The dot product, also called the scalar product because the result is a scalar quantity, is widely used in physics. For instance, it appears in the calculation of work done by a constant force:
+The dot product, or scalar product, returns a **scalar quantity**. It’s widely used in physics, for example in the calculation of work done by a constant force:
 
-$$ W = \vec{F} \cdot \Delta \vec{x} $$
+$$
+W = \vec{F} \cdot \Delta \vec{x}
+$$
 
-where $ \vec{F} $ is the constant force and $ \Delta \vec{x} $ is the displacement. For a non-constant force, the work done can be determined by calculating the work for an infinitesimally small displacement $ d\vec{x} $, then integrating over the entire path taken by the object while under the influence of the force $\vec{F}$:
+where $W$ is the work done by the force $\vec{F}$ applied over the displacement $\Delta \vec{x}$. This formulation, as you may remember, ony works if the force is constant in magnitude and direction.
 
-$$ W = \int\limits_\text{Path} \vec{F} \cdot d\vec{x} $$
+If the force is not constant, we must calculate an infinitesimal amount of work done by the force over an infinitesimally small displacement $d\vec{x}$ and then add up all of these tiny contributions to get the whole. That is, we must integrate over the entire path:
 
-However, this example may not fully illustrate the versatility of the dot product. 
+$$
+W = \int\limits_\text{Path} \vec{F} \cdot d\vec{x}
+$$
 
+While this application is common, it doesn’t quite capture the full versatility of the dot product.
 
-A more general interpretation of the dot product is that it measures how much one vector aligns with another, scaled by the length of the second vector. In other words:
+A more general and insightful interpretation is that the dot product measures **how much one vector points in the direction of another**. Formally:
 
-$$ \vec{A} \cdot \vec{B} = \lvert\vec{A}\rvert \lvert\vec{B}\rvert \cos(\theta_{AB}) = A B \cos(\theta_{AB}) $$
+$$
+\vec{A} \cdot \vec{B} = |\vec{A}| |\vec{B}| \cos(\theta_{AB}) = AB \cos(\theta_{AB})
+$$
 
-where $ A $ and $ B $ are the magnitudes of vectors $ \vec{A} $ and $ \vec{B} $, respectively, and $ \theta_{AB} $ is the smallest angle between the two vectors when they are placed tail-to-tail.
+where:
+- $A$ and $B$ are the magnitudes of vectors $\vec{A}$ and $\vec{B}$,
+- $\theta_{AB}$ is the smallest angle between them when placed tail-to-tail.
 
+This definition shows that the dot product gets larger as the two vectors point more in the same direction—and becomes zero when the vectors are perpendicular.
 
 <img
   src="{{ '/courses/math-methods/images/lec04/Components.png' | relative_url }}"
@@ -38,7 +55,7 @@ where $ A $ and $ B $ are the magnitudes of vectors $ \vec{A} $ and $ \vec{B} $,
   style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 	
 
-In the figure to the left, the component of $\vec{B}$ perpendicular to $\vec{A}$ is denoted by $B_{\perp A}$. Using trigonometry we can write this component as:
+In the figure to the above, the component of $\vec{B}$ perpendicular to $\vec{A}$ is denoted by $B_{\perp A}$. Using trigonometry we can write this component as:
 $$
 B_{\perp A} = B \sin(\theta_{AB})
 $$
