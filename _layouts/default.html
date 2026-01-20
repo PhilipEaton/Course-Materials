@@ -208,6 +208,139 @@
     a {
       color: #003366;
     }
+
+
+    /* Print Style */
+    @media print {
+
+      /* Page geometry (LaTeX-ish) */
+      @page {
+        size: letter;
+        margin: 1in;
+      }
+
+      /* Hide navigation / site chrome */
+      header, nav, footer, .course-nav, .site-nav {
+        display: none !important;
+      }
+
+      /* Base typography */
+      body {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+
+        /* LaTeX-ish serif stack; will fall back gracefully */
+        font-family: "Latin Modern Roman", "CMU Serif", "Times New Roman", serif;
+        font-size: 11pt;
+        line-height: 1.35;
+      }
+
+      main {
+        max-width: none !important;
+        margin: 0 !important;
+      }
+
+      /* Headings (LaTeX-like hierarchy) */
+      h1 {
+        font-size: 16pt;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 18pt 0;
+      }
+
+      h2 {
+        font-size: 13pt;
+        font-weight: bold;
+        margin: 18pt 0 6pt 0;
+      }
+
+      h3 {
+        font-size: 11pt;
+        font-weight: bold;
+        margin: 12pt 0 4pt 0;
+      }
+
+      /* Paragraphs: justified text like LaTeX */
+      p {
+        margin: 0 0 8pt 0;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      /* Prevent ugly page breaks */
+      h1, h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      figure, table, pre, blockquote, .codeinput, .codeoutput {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Figure caption style */
+      figcaption {
+        font-size: 10pt;
+        text-align: center;
+        margin-top: 6pt;
+      }
+
+      /* Tables: LaTeX-ish rules */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10pt 0;
+        font-size: 10pt;
+      }
+
+      th, td {
+        border: 1px solid #000; /* classic “boxed” look */
+        padding: 4pt 6pt;
+        vertical-align: top;
+      }
+
+      thead th {
+        font-weight: bold;
+      }
+
+      /* Optional: Booktabs-like (no vertical rules) */
+      .booktabs th, .booktabs td { border-left: none; border-right: none; }
+      .booktabs thead th { border-top: 1px solid #000; border-bottom: 1px solid #000; }
+      .booktabs tbody td { border-bottom: 0.5px solid #000; }
+      .booktabs tbody tr:last-child td { border-bottom: 1px solid #000; }
+
+      /* Code blocks: compact like listings */
+      pre, code {
+        font-family: "Latin Modern Mono", "CMU Typewriter Text", ui-monospace, Menlo, Consolas, monospace;
+        font-size: 9.5pt;
+      }
+
+      pre {
+        margin: 8pt 0;
+        padding: 6pt 8pt;
+        border: 1px solid #000;
+        background: #fff;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      /* “Theorem-style” boxes (your example/result/warning) */
+      .example, .result, .warning {
+        border: 1px solid #000;
+        background: #fff !important;
+        padding: 8pt 10pt;
+        margin: 10pt 0;
+      }
+
+      /* Page-break helper */
+      .pagebreak {
+        break-before: page;
+        page-break-before: always;
+      }
+    }
+
   </style>
 </head>
 <body>
