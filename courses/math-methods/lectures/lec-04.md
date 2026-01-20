@@ -37,7 +37,7 @@ $$
 
 While this application is common, it doesn’t quite capture the full versatility of the dot product.
 
-### Geometric Interpretation of the Dot Product
+### Geometric-Based Definition of the Dot Product
 
 A more general and insightful interpretation is that the dot product measures **how much one vector points in the direction of another**. Formally:
 
@@ -158,6 +158,114 @@ The geometric interpretation of the dot product gives rise to several useful pro
 
    This is especially helpful for expanding dot products in component form or simplifying expressions in physics.
 
+
+
+### Component-Based Definition of the Dot Product
+
+The last property (distributivity) can be tricky to see using only the geometric definition of the dot product. To better understand where it comes from, let’s now introduce a **component-based** definition of the dot product.
+
+Suppose we have a vector $ \vec{A} $ with components along the $x$-, $y$-, and $z$-axes, which we’ll denote $ A_x $, $ A_y $, and $ A_z $. Using unit vectors along each axis—denoted $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $, we can express $ \vec{A} $ as:
+
+$$
+\vec{A} = A_x \,\hat{i} + A_y \,\hat{j} + A_z \,\hat{k}
+$$
+
+Using the geometic defiition of the dot product you can convince yourself that the following results are true:
+
+$$
+\hat{i} \cdot \hat{i} = 1  \qquad  \hat{j} \cdot \hat{j} = 1 \qquad \hat{k} \cdot \hat{k} = 1 \\
+\hat{i} \cdot \hat{j} = 0 \qquad \hat{i} \cdot \hat{k} = 0 \qquad \hat{j} \cdot \hat{k} = 0
+$$
+
+Given this, we can now compute the dot product of two vectors in component form:
+
+$$
+\vec{A} \cdot \vec{B} = (A_x \hat{i} + A_y \hat{j} + A_z \hat{k}) \cdot (B_x \hat{i} + B_y \hat{j} + B_z \hat{k})
+$$
+
+Expanding (or, if you prefer, “FOILing”) gives:
+
+$$
+\begin{aligned}
+\vec{A} \cdot \vec{B} &= A_x B_x \hat{i} \cdot \hat{i} + A_x B_y \hat{i} \cdot \hat{j} + A_x B_z \hat{i} \cdot \hat{k} \\
+&\quad + A_y B_x \hat{j} \cdot \hat{i} + A_y B_y \hat{j} \cdot \hat{j} + A_y B_z \hat{j} \cdot \hat{k} \\
+&\quad + A_z B_x \hat{k} \cdot \hat{i} + A_z B_y \hat{k} \cdot \hat{j} + A_z B_z \hat{k} \cdot \hat{k} \\
+\\
+&= A_x B_x (1) + A_y B_y (1) + A_z B_z (1) \\
+\\
+\vec{A} \cdot \vec{B} &= A_x B_x + A_y B_y + A_z B_z
+\end{aligned}
+$$
+
+So, in terms of components:
+
+$$
+\vec{A} \cdot \vec{B} = A_x B_x + A_y B_y + A_z B_z
+$$
+
+This form makes it much easier to verify properties like distributivity—and you’re encouraged to try it yourself.
+
+---
+
+{% capture ex %}
+Suppose two forces act on an object, and you want to calculate the total work done by both. The forces are:
+
+$$
+\vec{F}_1 = 10\,\text{N} \,\hat{i} - 30\,\text{N} \,\hat{j}
+\qquad
+\vec{F}_2 = -15\,\text{N} \,\hat{i} - 20\,\text{N} \,\hat{j}
+$$
+
+and the object is displaced by:
+
+$$
+\Delta \vec{x} = 5\,\text{m} \,\hat{i} - 3\,\text{m} \,\hat{j}
+$$
+
+The work done by each force is:
+
+**Force 1:**
+
+$$
+\begin{aligned}
+W_1 &= \vec{F}_1 \cdot \Delta \vec{x} \\
+&= (10)(5) + (-30)(-3) = 50 + 90 = 140\,\text{J}
+\end{aligned}
+$$
+
+**Force 2:**
+
+$$
+\begin{aligned}
+W_2 &= \vec{F}_2 \cdot \Delta \vec{x} \\
+&= (-15)(5) + (-20)(-3) = -75 + 60 = -15\,\text{J}
+\end{aligned}
+$$
+
+**Total Work:**
+
+$$
+W_{\text{tot}} = W_1 + W_2 = 140\,\text{J} + (-15\,\text{J}) = 125\,\text{J}
+$$
+
+Alternatively, we could sum the forces first:
+
+$$
+\vec{F}_{\text{tot}} = \vec{F}_1 + \vec{F}_2 = (-5\,\text{N}) \hat{i} - 50\,\text{N} \hat{j}
+$$
+
+and compute:
+
+$$
+\begin{aligned}
+W_{\text{tot}} &= \vec{F}_{\text{tot}} \cdot \Delta \vec{x} \\
+&= (-5)(5) + (-50)(-3) = -25 + 150 = 125\,\text{J}
+\end{aligned}
+$$
+
+Same result, two valid approaches.
+{% endcapture %}
+{% include example.html content=ex %}
 
 
 
