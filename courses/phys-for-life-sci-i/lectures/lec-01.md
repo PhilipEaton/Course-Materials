@@ -266,12 +266,12 @@ Vectors can come in all direction and lengths. For instance, here are a could of
   alt="The image shows three separate vectors. On the left, a long arrow labeled “A” points up and to the right. In the center, a shorter arrow labeled “B” also points up and to the right but at a shallower angle. On the right, a long arrow labeled “C” points down and to the right. Each vector label appears just to the left of its corresponding arrow."
   style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
-Observing the three vectors we can see that $\vec{A}$ and $\vec{B}$ point in the same direction and $\vec{C}$ points in the opposite direction. Similarly, we can see that $\vec{A}$ and $\vec{C}$ have the same length and $\vec{B}$ is twice the length of the other two vectors. 
+Observing the three vectors we can see that $\vec{A}$ and $\vec{B}$ point in the same direction and $\vec{C}$ points in the opposite direction. Similarly, we can see that $\vec{A}$ and $\vec{C}$ have the same length and $\vec{B}$ is half the length of the other two vectors. 
 
 Mathematically, if one vector is twice as long as another and points in the same direction we would write this as:
 
 $$
-\vec{B} = 2\vec{A}
+\vec{B} = \tfrac{1}{2} \vec{A}
 $$
 
 However, if two vectors have the same length but point in opposite directions, we use a minus sign to flip the direction without changing the length:
@@ -369,7 +369,9 @@ This is why vector addition is often described as being **commutative**.
 
 ### Multiple Displacements
 
-The same idea works for more than two vectors. If several displacements occur one after another, their sum gives the total displacement:
+The same idea works for more than two vectors. If several displacements occur one after another, as pictured here:
+
+Their sum gives the total displacement:
 
 $$
 \vec{A} + \vec{B} + \vec{C} + \vec{D} = \vec{R}
