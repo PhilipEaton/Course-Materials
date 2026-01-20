@@ -401,7 +401,8 @@ where, again, $\vec{R}$ is the resultant displacement and points from the starti
 
 
 
-## Full Vector Addition Problem (Ultimate Frisbee)
+{% capture ex %}
+## Example: Ultimate Frisbee
 
 In this problem, an ultimate Frisbee player runs a pattern made up of three displacement vectors, $\vec{A}$, $\vec{B}$, and $\vec{C}$. We want the **resultant displacement**, meaning the single displacement vector $\vec{R}$ that takes the player from the starting point directly to the ending point.
 
@@ -417,11 +418,11 @@ We want:
 2. The direction of $\vec{R}$ using turn-of-reference language
 
 
-## Step 1: Break Each Vector into Components
+### Step 1: Break Each Vector into Components
 
 We will treat right as $+x$ and up as $+y$.
 
-### Vector $\vec{A}$
+#### Vector $\vec{A}$
 
 $\vec{A}$ points straight up with magnitude $10\ \text{m}$.
 
@@ -430,7 +431,7 @@ So its components are:
 - $A_x = 0\ \text{m}$
 - $A_y = +10\ \text{m}$
 
-### Vector $\vec{B}$
+#### Vector $\vec{B}$
 
 $\vec{B}$ points to the right with magnitude $30\ \text{m}$.
 
@@ -439,7 +440,7 @@ So its components are:
 - $B_x = +30\ \text{m}$
 - $B_y = 0\ \text{m}$
 
-### Vector $\vec{C}$
+#### Vector $\vec{C}$
 
 $\vec{C}$ has magnitude $34\ \text{m}$ and is $37^\circ$ below the positive $x$ direction.
 
@@ -468,7 +469,7 @@ C_y = -(34)\sin(37^\circ) = -20.5\ \text{m}
 $$
 
 
-## Step 2: Add Components to Get the Resultant Components
+### Step 2: Add Components to Get the Resultant Components
 
 The resultant vector $\vec{R}$ is:
 
@@ -497,7 +498,7 @@ This already tells us something important:
 The player ends up mostly to the right, and slightly downward from the starting point.
 
 
-## Step 3: Find the Magnitude of the Resultant
+### Step 3: Find the Magnitude of the Resultant
 
 Use the Pythagorean Theorem:
 
@@ -524,7 +525,7 @@ R = 58.5\ \text{m}
 $$
 
 
-## Step 4: Find the Direction of the Resultant
+### Step 4: Find the Direction of the Resultant
 
 To find the direction angle, use tangent:
 
@@ -553,12 +554,14 @@ $$
 $$
 
 
-## Final Answer
+### Final Answer
 
 The resultant displacement is:
 
 - **Magnitude:** $58.5\ \text{m}$
 - **Direction:** $10.4^\circ$ South of East
+{% endcapture %}
+{% include example.html content=ex %}
 
 
 
