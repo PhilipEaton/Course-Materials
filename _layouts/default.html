@@ -280,6 +280,16 @@
         page-break-inside: avoid;
       }
 
+      .katex-display .katex {
+        font-size: 0.90em;
+      }
+
+      /* Allow page breaks through long display math */
+      .katex-display, .katex-display * {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+
       /* Figure size */
       img {
         max-width: 35% !important;

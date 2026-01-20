@@ -562,8 +562,12 @@ $$
 \hat{i} & \hat{k} \\
 v_x &  v_z
 \end{vmatrix}
-= - B (v_z \hat{i} - v_x \hat{k}) = - B v_z \, \hat{i} + B v_x \,\hat{k}
+= - B (v_z \hat{i} - v_x \hat{k}) 
 $$
+
+Leaving us with:
+
+$$ \vec{v} \times \vec{B} = - B v_z \, \hat{i} + B v_x \,\hat{k} $$
 
 Now substitute this result into the Lorentz force equation:
 
