@@ -68,6 +68,11 @@ Relative to the angle $ \theta $:
 It is important to note that the "adjacent" side is not always the horizontal side, and the "opposite" side is not always the vertical side. These labels depend entirely on the angle you are referencing.
  
 
+
+
+
+
+
 ### Breaking a Triangle into Components
 
 In this case, we want to find the opposite and adjacent sides using the hypotenuse and the given angle. This process is often described as “finding the components of the triangle.” To do this, we use cosine and sine:
@@ -105,23 +110,9 @@ $$
 {% endcapture %}
 {% include example.html content=ex %}
 
-If the hypotenuse represents a vector, then it corresponds to the **magnitude** of that vector. The adjacent and opposite sides represent the vector’s components.
 
-Using trigonometry:
 
-$$
-\cos(\theta) = \frac{\text{Adjacent}}{\text{Hypotenuse}}
-\qquad\Rightarrow\qquad
-\text{Adjacent} = (\text{Hypotenuse})\cos(\theta)
-$$
 
-$$
-\sin(\theta) = \frac{\text{Opposite}}{\text{Hypotenuse}}
-\qquad\Rightarrow\qquad
-\text{Opposite} = (\text{Hypotenuse})\sin(\theta)
-$$
-
-This process is often described as **finding the components** of a vector.
 
  
 
@@ -151,13 +142,14 @@ $$
 \theta = \tan^{-1}\!\left(\frac{\text{Opposite}}{\text{Adjacent}}\right)
 $$
 
-However, an angle by itself is usually **not descriptive enough**.
+Simply giving an angle is not enough to communicate a direction. For example, telling someone to “look 37 degrees” is not helpful unless they also know where to start looking and which way to turn the given 37 degrees. Without a **reference point** and **direction to turn**, the odds of getting the direction right are pretty low.
 
  
 
 ### Direction Requires a Turn-of-Reference
 
-Saying “$ 37^\circ $” alone does not tell someone which way to look. A direction must include:
+As we just saw, saying “look $ 37^\circ $” alone does not tell someone which way to look. A direction must include:
+
 - A reference direction
 - A direction to turn from that reference  
 
@@ -167,23 +159,21 @@ Saying “$ 37^\circ $” alone does not tell someone which way to look. A direc
   alt="The image shows a set of horizontal and vertical axes labeled North at the top, South at the bottom, East on the right, and West on the left. A blue arrow points into the upper-right quadrant, and curved arrows around it show two possible angle descriptions labeled “East of North’’ and “North of East.’’ A red arrow points into the lower-left quadrant with curved arrows showing the angle descriptions “South of West’’ and “West of South.’’ A boxed label near the upper left reads “Turn-of-Reference.’’ The diagram illustrates how vector directions can be named relative to different cardinal directions."
   style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
-We write directions in the form:
+We will write directions in the form:
 
 $$
 \theta = \text{Angle; Turn-of-Reference}
 $$
 
-For example:
+For example is the direction was given as $ 37^\circ $ North of East, the you would:
 - Face East
 - Turn $ 37^\circ $ toward North  
 
 This direction would be described as **$ 37^\circ $ North of East**.
 
-This idea will come up repeatedly when working with vectors in two dimensions.
-
  
 {% capture ex %}
-Suppose we have the triangle above with the following measurements: Opposite = 3 and Adjacent = 4. Let’s find the hypotenuse (magnitude) and the direction.
+Suppose we have the right triangle from previously with the following measurements: Opposite = 3 and Adjacent = 4. Let’s find the hypotenuse (magnitude) and the direction.
 
 We can find the magnitude using the Pythagorean Theorem:
 
@@ -206,7 +196,12 @@ $$
 \theta = \tan^{-1}\!\Big( \frac{3}{4} \Big) = 37^\circ
 $$
 
-But is this angle descriptive enough?
+But simply giving this angle is not enough. If we take right to be East and up the page/sceen to be North, then this angle would be referenced using East and then we would turn North. This makes the direction: 
+
+$$
+\theta = 37^\circ \text{; North of East}
+$$
+
 {% endcapture %}
 {% include example.html content=ex %}
 
