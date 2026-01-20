@@ -104,13 +104,13 @@ This interpretation of the dot product leads to several useful properties and ap
 	|c \vec{A}| |\vec{B}| \cos(\theta_{AB}) = c \left(|\vec{A}| |\vec{B}| \cos(\theta_{AB})\right)
 	$$
 
-	where multiplication by a **positive scalar** does not change the angle between the two vectors. Thus, **for positive **$\mathbf{c}$, we have:
+	where multiplication by a **positive scalar** does not change the angle between the two vectors. Thus, **for positive** $\mathbf{c}$, we have:
 
 	$$
 	c |\vec{A}| |\vec{B}| \cos(\theta_{AB}) = c |\vec{A}| |\vec{B}| \cos(\theta_{AB})
 	$$
 
-	Now, if **$ c $ is negative**, the angle between the two vectors will shift to $ 180^\circ - \theta_{AB} $, as you can verify with a quick sketch. This gives:
+	Now, if $ \mathbf{c} $ **is negative**, the angle between the two vectors will shift to $ 180^\circ - \theta_{AB} $, as you can verify with a quick sketch. This gives:
 
 	$$
 	|c| |\vec{A}| |\vec{B}| \cos(180^\circ - \theta_{AB}) = c (|\vec{A}| |\vec{B}| \cos(\theta_{AB}))
