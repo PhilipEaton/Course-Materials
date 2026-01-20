@@ -82,7 +82,7 @@ $$
 A_{\perp B} = A \sin(\theta_{AB}) \qquad \text{and} \qquad A_{\parallel B} = A \cos(\theta_{AB})
 $$
 
-The second of these leads to an alternate expression for the dot product:
+The second of these leads to an alternate expression for the dot product:  
 
 $$
 \vec{A} \cdot \vec{B} = A B_{\parallel A} \qquad \text{or} \qquad \vec{A} \cdot \vec{B} = A_{\parallel B} B
