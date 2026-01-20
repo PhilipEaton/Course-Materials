@@ -209,7 +209,7 @@ $$
 
 ## Scalars and Vectors
 
-In physics, quantities fall into two broad categories.
+Physical quantities in science fall into two broad categories: scalars and vectors.
 
 ### Scalars
 
@@ -220,61 +220,70 @@ Examples include:
 - Energy  
 - Temperature  
 
-Scalars do not have direction.
+Scalars do not have not need a direction to be fully defined.
 
  
 
 ### Vectors
 
-A **vector** is any quantity that requires both a magnitude and a direction.
+A **vector** is any quantity that requires both a magnitude and a direction to be fully described.
 
 Examples include:
 - Displacement  
 - Velocity  
 - Force  
 
-Vectors are the main focus of this lecture and much of the course.
+We will be working with vector quantities for this lecture and throughout most of the course.
 
  
 
 #### Visual Representation of Vectors
 
 Vectors are drawn as arrows:
+
 - The **length** of the arrow represents the magnitude  
 - The **direction** of the arrow represents the direction  
 
-Only these two features matter. The position of the arrow on the page does not.
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Vector.png' | relative_url }}"
+  alt="A vector represented by an arrow lebeled A pointing up and to the right."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
- 
+Only these two features matter; the position the arrow is drawn on the page does not.
 
-#### Vector Notation and Comparison
-
-When writing vectors symbolically, we place an arrow over the variable:
+When writing vectors symbolically, we place a little arrow over the variable:
 
 $$
 \vec{A}
 $$
 
-This is read as “the vector $ A $.”
+to both indicate the name of the vector and to remind us that it is, in fact, a vector. For example, the above symbol and the previous figure would be read as “the vector $ A $.”
 
-If one vector is twice as long as another and points in the same direction:
+Vectors can come in all direction and lengths. For instance, here are a could of different vectors: 
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Vectors.png' | relative_url }}"
+  alt="The image shows three separate vectors. On the left, a long arrow labeled “A” points up and to the right. In the center, a shorter arrow labeled “B” also points up and to the right but at a shallower angle. On the right, a long arrow labeled “C” points down and to the right. Each vector label appears just to the left of its corresponding arrow."
+  style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
+
+Observing the three vectors we can see that $\vec{A}$ and $\vec{B}$ point in the same direction and $\vec{C}$ points in the opposite direction. Similarly, we can see that $\vec{A}$ and $\vec{C}$ have the same length and $\vec{B}$ is twice the length of the other two vectors. 
+
+Mathematicall, if one vector is twice as long as another and points in the same direction we would write this as:
 
 $$
 \vec{B} = 2\vec{A}
 $$
 
-A minus sign flips the direction but does not change the magnitude:
+However, is two vectors have the same length, but point in opposite directions we use a minus sign to flip the direction without changing the length:
 
 $$
--\vec{A}
+\vec{C}  = -\vec{A}
 $$
-
-This vector has the same length as $ \vec{A} $, but points in the opposite direction.
 
 As a result, vectors can differ by:
-- Magnitude  
-- Direction  
-- Or both  
+- Magnitude, or  
+- Direction, or  
+- Both  
 
  
 
