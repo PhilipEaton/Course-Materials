@@ -12,7 +12,7 @@ nav_order: 1
 
 ## Why Trigonometry Shows Up in Physics
 
-In the sciences, especially in physics, we frequently work in situations where direction is a vital part of the description. For example, if you’re on a boat traveling out to a site to perform sonar readings, you need to know where you’re starting and, from there, where you’re headed. That means you need both the distance to the site \textit{and} the direction you must travel to get there. In this example, we’re talking about the \textit{position} of the site relative to the starting point, such as the dock where the boat is stored.
+In the sciences, especially in physics, we frequently work in situations where direction is a vital part of the description. For example, if you’re on a boat traveling out to a site to perform sonar readings, you need to know where you’re starting and, from there, where you’re headed. That means you need both the distance to the site *and* the direction you must travel to get there. In this example, we’re talking about the *position* of the site relative to the starting point, such as the dock where the boat is stored.
 
 
 <img
@@ -21,54 +21,51 @@ In the sciences, especially in physics, we frequently work in situations where d
   style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
 
-At other times, we deal with characteristics that don’t require a direction to be fully described. For instance, \textit{mass} is a measure of the amount of stuff an object is made of. The kilogram is, quite literally, tied to a specific number of silicon atoms, though we’re not concerned with that level of detail here. What does matter is that the amount of stuff in an object doesn’t depend on which way the object is facing. It wouldn’t make sense for something to have a mass of 10 atoms when facing East but somehow be made of 12 atoms when facing North. That just doesn’t make sense.
+At other times, we deal with characteristics that don’t require a direction to be fully described. For instance, *mass* is a measure of the amount of stuff an object is made of. The kilogram is, quite literally, tied to a specific number of silicon atoms, though we’re not concerned with that level of detail here. What does matter is that the amount of stuff in an object doesn’t depend on which way the object is facing. 
 
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/MassExample.png' | relative_url }}"
   alt="The image shows three cartoon rock-like characters with faces. On the left, one character says, “Roary has a new diet trend!” In the upper right, a second character, Roary, is facing North and has a speech bubble that says, “Facing North I have a mass of 12 silicon atoms!” In the lower right, Roary is shown facing East and has a speech bubble that says, “Now that I have turned East, I have a mass of 10 silicon atoms!” The figures illustrate the idea of an object humorously claiming to change mass by simply rotating."
   style="display:block; margin:1.5rem auto; max-width:800px; width:100%;">
 
+It wouldn’t make sense for something to have a mass of 10 atoms when facing East but somehow be made of 12 atoms when facing North. That just doesn’t make sense.
 
+Anytime direction matters, trigonometry becomes a useful tool. In particular, right triangles let us move back and forth between:
 
-In physics, we often care not just about how much of something there is, but also about which way it points. Anytime direction matters, trigonometry becomes a useful tool. In particular, right triangles let us move back and forth between:
-
-- A single magnitude and direction  
-- Separate horizontal and vertical components  
+- a single magnitude (hypotenuse) and direction, and  
+- separate horizontal and vertical components.  
 
 We will use this idea constantly when working with vectors.
 
- 
+
+
+
 
 ### Trigonometry Review (Right Triangles)
 
 Trigonometry, sometimes casually called “triangle math,” will be used for two main purposes in this course:
 
-- Breaking a diagonal vector’s magnitude and direction into a set of horizontal and vertical components.
-- Combining horizontal and vertical components of a vector to obtain a single magnitude and direction.
+- Breaking a diagonal vector’s magnitude (hypotenuse) and direction into a set of horizontal and vertical components.
+- Combining horizontal and vertical components of a vector to obtain a single magnitude (hypotenuse) and direction.
 
-Consider the following right triangle:
+Consider a right triangle with:
+
+- One right angle  
+- One other angle labeled $ \theta $ ("theta"), which we use as a general symbol for an angle 
+
+shown here:
 
 <img
   src="{{ '/courses/phys-for-life-sci-i/images/lec01/Triangle.png' | relative_url }}"
   alt="The image shows a right triangle with the right angle at the lower right corner. The bottom side of the triangle is labeled “Adjacent,” and the vertical side on the right is labeled “Opposite.” The slanted side connecting the bottom left corner to the top right corner is labeled “Hypotenuse.” At the bottom left corner, the angle between the hypotenuse and the adjacent side is marked with the Greek letter theta."
   style="display:block; margin:1.5rem auto; max-width:600px; width:60%;">
 
-
-The hypotenuse, which is the side opposite the right angle, is called the magnitude when the triangle represents a vector. The angle in the bottom left corner, $\theta$ (pronounced “theta”), helps us identify which sides are the “opposite’’ and the “adjacent.’’ The opposite side is the one across from the given angle, and the adjacent side is the one next to the angle that is not the hypotenuse.
-
-It is important to note that the adjacent side is not always the horizontal side, and the opposite side is not always the vertical side. These labels depend entirely on the angle you are using.
-
-Consider a right triangle with:
-- One right angle  
-- One other angle labeled $ \theta $ (theta), which we use as a general symbol for an angle  
-
 Relative to the angle $ \theta $:
 - The **hypotenuse** is the side opposite the right angle  
 - The **adjacent** side is next to $ \theta $, but not the hypotenuse  
 - The **opposite** side is across from $ \theta $  
 
-These labels depend entirely on which angle you choose. The “adjacent” side is not always horizontal, and the “opposite” side is not always vertical.
-
+It is important to note that the "adjacent" side is not always the horizontal side, and the "opposite" side is not always the vertical side. These labels depend entirely on the angle you are referencing.
  
 
 ### Breaking a Triangle into Components
