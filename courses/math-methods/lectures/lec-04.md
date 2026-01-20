@@ -810,8 +810,6 @@ Given:
 
 we will find the following quantities.
 
----
-
 ### 1. Torque on the Dipole
 
 The torque is given by the cross product:
@@ -838,7 +836,6 @@ $$
 \vec{\tau} = 14 \hat{i} - 7 \hat{j} - 7 \hat{k} \;\text{N}\cdot\text{m}
 $$
 
----
 
 ### 2. Potential Energy of the Dipole
 
@@ -854,14 +851,13 @@ $$
 U = - (2 \cdot 1 + 3 \cdot (-2) + 1 \cdot 4) = 0 \;\text{J}
 $$
 
----
 
 ### 3. Work Done During Rotation
 
 The work done by the magnetic field as the dipole rotates through $ \vec{\theta} $ can be computed as:
 
 $$
-W = \vec{\theta} \cdot \vec{\tau} = \vec{\theta} \cdot (\vec{\mu} \times \vec{B})
+W = \vec{\theta} \cdot \vec{\tau} 
 $$
 
 Substituting the torque vector:
@@ -882,80 +878,6 @@ $$
 
 
 
-
-
-
-
-
-
-## Application:
-
-Consider a magnetic dipole moment $ \vec{\mu} $ (this could be a particle with a non-zero spin or an atom with a magnetic momentum) placed in a uniform magnetic field $ \vec{B} $. The torque $ \vec{\tau} $ exerted on the dipole is given by the cross product of the magnetic dipole moment and the magnetic field:
-$$
-\vec{\tau} = \vec{\mu} \times \vec{B}
-$$
-Additionally, the potential energy $ U $ of the magnetic dipole in a magnetic field is given by:
-$$
-U = - \vec{\mu} \cdot \vec{B}
-$$
-Suppose the angle vector $ \vec{\theta} $ represents the angle the magnetic moment is forces to rotate through via some external input.
-
-Given the following vectors:
-
-- $ \vec{\mu} = 2 \hat{i} + 3 \hat{j} + \hat{k} \, \text{Am}^2 $ (magnetic dipole moment),
-- $ \vec{B} = \hat{i} - 2 \hat{j} + 4 \hat{k} \, \text{T} $ (magnetic field),
-- $ \vec{\theta} = \hat{i} + 3 \hat{j} - 2 \hat{k} $ (angle rotation vector in radians)
-
-
-Let's find the following: 
-
-
-1. The torque $ \vec{\tau} $ exerted on the dipole.
-	
-	The torque is given by the cross product:
-
-	$$
-	\vec{\tau} = \vec{\mu} \times \vec{B}
-	$$
-
-	Since this is 3 dimensions, we can take this cross product via the determinant method. Substituting the given values of $ \vec{\mu} $ and $ \vec{B} $ into the matrix and taking the determinant gives:
-
-	$$
-	\vec{\tau} = \begin{vmatrix}
-		\hat{i} & \hat{j} & \hat{k} \\
-		2 & 3 & 1 \\
-		1 & -2 & 4
-	\end{vmatrix} = \hat{i} (12 + 2) - \hat{j} (8 - 1) + \hat{k} (-4 - 3) = (14 \hat{i} - 7 \hat{j} - 7 \hat{k}) \, \text{N} \cdot \text{m}
-	$$
-	
-	
-2. The potential energy of the magnetic dipole in the magnetic field.
-	Substituting the given vectors into the definition of the potential energy of the magnetic dipole in an external magnetic field gives:
-	
-	$$
-	U = - \left( 2 \cdot 1 + 3 \cdot (-2) + 1 \cdot 4 \right) = 0 \, \text{J}
-	$$
-	
-3. The work done by the magnetic field on the dipole as it is rotate according to $\vec{\theta}$.
-	The work can be found by tkaing the dot product between $\vec{\theta}$ and $\vec{\tau}$:
-	
-	$$
-	W = \vec{\theta} \cdot \vec{\tau} =  \vec{\theta} \cdot \left(\vec{\mu} \times \vec{B}\right)
-	$$
-	
-	Substituting the cross product $ \vec{\mu} \times \vec{B} = 14 \hat{i} - 7 \hat{j} - 7 \hat{k} $:
-	
-	$$
-	W = \left( \hat{i} + 3 \hat{j} - 2 \hat{k}\right) \cdot \left(14 \hat{i} - 7 \hat{j} - 7 \hat{k}\right) = 14 - 21 + 14 = 7\,\text{J}
-	$$
-
-
-
-
-
-
-
-
 ## Problem:
 
 
@@ -964,7 +886,9 @@ Let's find the following:
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
 
 
-Consider an electric dipole with dipole moment $ \vec{p} $ (this could be a molecule like H$_2$O or something that inherently has an electric dipole) placed in a uniform electric field $ \vec{E} $. The torque $ \vec{\tau} $ exerted on the dipole is given by the cross product of the electric dipole moment and the electric field:
+Consider an electric dipole with dipole moment $ \vec{p} $ (this could be a molecule like H$_2$O or something that inherently has an electric dipole) placed in a uniform electric field $ \vec{E} $. 
+
+The torque $ \vec{\tau} $ exerted on the dipole is given by the cross product of the electric dipole moment and the electric field:
 
 $$
 \vec{\tau} = \vec{p} \times \vec{E}
@@ -987,7 +911,7 @@ Given the following vectors:
 
 Find the following: 
 
- a) The torque $ \vec{\tau} $ exerted on the electric dipole.  
+a) The torque $ \vec{\tau} $ exerted on the electric dipole.  
 
 b) The potential energy $ U $ of the electric dipole in the electric field.  
 
