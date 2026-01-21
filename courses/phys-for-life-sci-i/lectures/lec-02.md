@@ -71,7 +71,7 @@ The given information is:
   (so it points down and to the right)
 
 <img
-  src="{{ '/courses/phys-for-life-sci-i/images/lec01/UltimateFrisbee.png' | relative_url }}"
+  src="{{ '/courses/phys-for-life-sci-i/images/lec02/UltimateFrisbee.png' | relative_url }}"
   alt="The diagram shows three displacement vectors arranged head-to-tail. Vector A is a vertical arrow pointing upward with a magnitude of 10 meters. From the tip of vector A, vector B is drawn horizontally to the right with a magnitude of 30 meters. From the tip of vector B, vector C is drawn down and to the right at an angle of 37 degrees below the horizontal, with a magnitude of 34 meters. A dashed arrow labeled R runs from the starting point of vector A to the ending point of vector C, representing the resultant displacement for the entire motion."
   style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
