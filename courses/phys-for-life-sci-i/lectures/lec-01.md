@@ -527,25 +527,30 @@ We can represent these two displacements as vectors:
 - $\vec{A} = 4\ \text{m to the East}$
 - $\vec{B} = 3\ \text{m to the North}$
 
-To add these vectors algebraically, we first choose a coordinate system:
-- East is the positive horizontal direction
-- North is the positive vertical direction
+First let's choose out positive horizontal and vertical directions:
+- Horizontal: East
+- Vertical: North
 
-### Writing the Vectors in Component Form
+This is the first, and last, time we will explicity list our positive directions. From now on we will assume Right/East and Up/North are the positive directions. Putting this into a table, we have:
 
-Using this coordinate system, we can rewrite the vectors as:
+| Vector | East | North |
+|:------:|:-----------:|:------------:|
+| $\vec{A}$ |  |  |
+| $\vec{B}$ |  |  |
+|:------:|:-----------:|:------------:|
+| $\vec{R}$ |  |  |
 
-- $\vec{A} = +4\ \text{m; East},\ 0\ \text{m; North}$
-- $\vec{B} = 0\ \text{m; East},\ +3\ \text{m; North}$
+Using these positive directions, we can fill in this table to get:
 
-Now we organize the information in a table.
 
 | Vector | East (x) | North (y) |
 |:------:|:-----------:|:------------:|
-| $\vec{A}$ | $+4$ | $0$ |
-| $\vec{B}$ | $0$ | $+3$ |
+| $\vec{A}$ | $+4\ \text{m}$ | $0$ |
+| $\vec{B}$ | $0$ | $+3\ \text{m}$ |
 |:------:|:-----------:|:------------:|
-| $\vec{R}$ | $+4$ | $+3$ |
+| $\vec{R}$ | $+4\ \text{m}$ | $+3\ \text{m}$ |
+
+You shoud vertify that you agree with these rtesults.
 
 So the components of the resultant displacement $\vec{R}$ are:
 - $R_x = +4\ \text{m}$
@@ -553,11 +558,13 @@ So the components of the resultant displacement $\vec{R}$ are:
 
 ### Finding the Magnitude of the Resultant
 
-The magnitude of the resultant displacement comes from the Pythagorean Theorem:
+The magnitude of the resultant comes from combining the horizontal and vertical components of the resultant vector. This can *only* be done using Pythagorean Theorem:
 
 $$
 R = \sqrt{R_x^2 + R_y^2}
 $$
+
+to get:
 
 $$
 R = \sqrt{(4)^2 + (3)^2} = \sqrt{16 + 9} = 5\ \text{m}
@@ -572,11 +579,13 @@ $$
 \tan(\theta) = \frac{\text{North}}{\text{East}} = \frac{3}{4}
 $$
 
+and taking the inverse:
+
 $$
 \theta = \tan^{-1}\!\left(\frac{3}{4}\right) = 37^\circ
 $$
 
-Since the vector points toward the North and toward the East, the direction is:
+If you sketch out the resultant vector, and its components, you will see it is a right triangle with the angle we found being given off the horizontal. This means the reference direction is East and we have to turn North, giving the full direction as:
 
 - $37^\circ$ **North of East**
 
