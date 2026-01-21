@@ -239,17 +239,14 @@
       flex: 1;
     }
 
+    .two-column .katex {
+      font-size: 0.90em;
+    }
+
     /* Stack columns on small screens */
     @media (max-width: 768px) {
       .two-column {
         flex-direction: column;
-      }
-    }
-
-    /* Print-friendly */
-    @media print {
-      .two-column {
-        flex-direction: row;
       }
     }
 
@@ -404,6 +401,14 @@
       .work-space-sm { height: 5rem; }
       .work-space-md { height: 8rem; }
       .work-space-lg { height: 12rem; }
+
+      .two-column {
+        flex-direction: row;
+      }
+      .two-column .katex {
+        font-size: 1em;
+      }
+
     }
 
   </style>
