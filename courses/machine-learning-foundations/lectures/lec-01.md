@@ -16,36 +16,30 @@ Let's take some time to make sure everyone has their coding space set up.
 
 **Why**: Easiest install; ships with Python, Jupyter, and most libraries we’ll use.
 
-1. Download & install Anaconda
+1. *Download & install Anaconda*
     - Go to: [https://www.anaconda.com/download] → choose your OS → Python 3.x
     - During install:
         - Windows: allow the installer to add Anaconda to PATH (okay for this course).
         - macOS (Intel/Apple Silicon): pick the default installer for your chip (M1/M2 = Apple Silicon).
-2. Launch Jupyter Notebook
-    - Open Anaconda Navigator → click Jupyter Notebook, or
-    - From a terminal: `jupyter notebook`
-3. Create a course environment (recommended but optional)
-    - Open Anaconda Prompt / Terminal and run:
-        
-        > ```python
-        > conda create -n dssa-ml python=3.11 -y
-        > conda activate dssa-ml
-        > conda install -y numpy pandas matplotlib seaborn scikit-learn jupyterlab
-        > ```
-    - Then start Jupyter: `jupyter notebook` (or `jupyter lab` if you prefer JupyterLab)
+2. *Launch Jupyter Notebook*
+    - Opening Anaconda Navigator → click Jupyter Notebook, or
+    - Open a terminal and enter: `jupyter notebook`
+3. *Check Your Browser*
+    - A new window should have opened in your preferred browser, 
 
 
 **Optional way - Use and IDLE: VS Code + Python Extension**
 
 **Why**: Nice editor + notebooks in one app.
 - Install VS Code → Extensions → Python (Microsoft).
-- Open a folder → create a `.ipynb` or `.py` → make sure the kernel is your `dssa-ml` env.
+- Open a folder → create a `.ipynb` or `.py`
 
 **Quick Verification**
 
 Run the follow cell:
 
 {% capture ex %}
+```python
 import sys, platform  
 import numpy as np, pandas as pd  
 import matplotlib.pyplot as plt  
@@ -60,12 +54,13 @@ print("✅ matplotlib:", plt.matplotlib.__version__)
 print("✅ seaborn:", sns.__version__)  
 print("✅ scikit-learn:", sklearn.__version__)  
 
-\# Tiny smoke test plot  
+# Tiny smoke test plot  
 import numpy as np  
 x = np.linspace(0, 2*np.pi, 100)  
 plt.plot(x, np.sin(x))  
 plt.title("Jupyter is working!")  
 plt.show()  
+```
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
@@ -87,22 +82,9 @@ plt.show()
 {% include codeoutput.html content=ex %}
     
     
-If everything is a green check mark ✅, then you are good to go! Skip down to **"Can We Predict a Penguin's Species?"**.
+If everything is ✅, then you are good to go!
 
-If something failed, then let's cover some common errors:
-
-- “**Kernel not found / won’t start**” → In Jupyter, select Kernel → Change Kernel → `dssa-ml` (or your env name).
-- **ImportError for a library** → Install into the active environment:
-    > ```python
-    > conda activate dssa-ml
-    > conda install seaborn scikit-learn  # or: pip install seaborn scikit-learn
-    > ```
-- **Command not found** (jupyter/conda) → Close and reopen your terminal; on Windows use Anaconda Prompt.
-- **Apple Silicon (M1/M2) oddities** → Prefer conda installs over pip for scientific libibraries.
-- **Colab** → If a package is missing, install in a cell:
-    > ```python
-    > !pip install <package>
-    > ```
+If something broke, please reach out to me or using some generative AI tools to help troubleshoot your problems. 
 
 
 
@@ -121,19 +103,19 @@ If something failed, then let's cover some common errors:
 
 Welcome to your first Machine Learning (ML) adventure!
 
-In this demo, we’ll explore the **Palmer Penguins** dataset. The `pengiun` and `iris` data sets are friendly, visual, and are often used for in-class examples and demonstrations.
+In this lecture, we’ll explore the **Palmer Penguins** dataset using most, if not all, of the ML tools we will be learning throughout this course. In lectures we will generally work with either the `pengiun` or `iris` data sets since they are friendly, visual, and are often used for in-class examples and demonstrations. This also helps us avoid other interesting datasets that you may choose to examine sometime this semester.
 
-Our goal: **build ML models that can *predict the species of a penguin*** from its physical measurements.
+This Lecture's Goal: Build ML models to **predict the species of a penguin from its physical measurements**.
 
-That is, using formal data science language:
+Using formal data science language, this means we will use the features of the Palmer Penguins to predict the target classicfication, where
 
-- **Features**: the physical measurements
-- **Target**: species of a penguin
+- **Features** are the the physical measurements, and the
+- **Target** is the species of a penguin
 
-Today will searve as an example of the tools we will use in class and will give us a feel for the entire ML workflow that we’ll use throughout this course:
+This example will serve as demonstration of the ML tools and workflow we’ll be developing throughout this course. For this example we will take the following steps:
 
 0. Import needed Libraries
-2. Load and clean a dataset  
+2. Load and clean the dataset  
 3. Visualize relationships  
 4. Train several ML models and Evaluate their performance
 5. Compare the ML models performance  
@@ -143,9 +125,7 @@ Today will searve as an example of the tools we will use in class and will give 
 
 ## Step 0: Import needed Libraries and Functions
 
-Run the following cell to load in the required libraries and functions for this notebook.
-
-
+As is typical for most programming languages, we first need to import the libraries we will be using in our code. Run the following cell to load in the required libraries and functions for this project.
 
 {% capture ex %}
 ```python
@@ -193,14 +173,13 @@ sns.set(style="whitegrid", palette="muted", font_scale=1.1)  # Nice default them
 
 ### Instructor Note: Why So Many Imports?
 
-
-You might be wondering why we’re importing so many things from `sklearn` individually instead of just writing something like:
+You might be wondering why we import so many specific tools from `sklearn` instead of just importing the whole library at once, like this:
 
 > ```python
 > import sklearn as sk 
 > ```
 
-That’s a great question — and the short answer is that Scikit-learn (sklearn) is a **very large** library made up of many smaller modules.
+That’s a great question, and the short answer is that Scikit-learn (sklearn) is a **very large** library made up of many smaller modules. Pulling the whole sklearn library would be overkill and make our code take forever to get started. 
 
 When we write:
 
@@ -208,9 +187,19 @@ When we write:
 > from sklearn.preprocessing import StandardScaler
 > ```
 
-we’re only loading the specific tool we need (here, the scaler for normalizing data that we will be using a lot).
 
-If we only wrote:
+we’re telling Python, “I only need this one tool right now.”
+
+This keeps our code cleaner, clearer, and more efficient, and it also makes it obvious to a reader which tools are actually being used in the notebook.
+
+As an analogy, suppose you need a hammer to hang a painting upstairs. You have two options:
+
+1. Carry your entire toolbox upstairs, then pull out the hammer once you get there, or
+2. Take just the hammer fro mthe toolbox and then head upstairs.
+
+Both options get the job done, but one involves a lot less unnecessary effort.
+
+An additional reason we call the import the way we have is because if we only wrote:
 
 > ```python
 > import sklearn as sk 
@@ -224,20 +213,13 @@ we would still need to call functions like this:
 
 which makes coding annoying and the code itself harder to read/understand.
 
-Importing the way we did above makes our code:
-- **Clearer**: we see where each tool comes from
-- **Easier to learn**: you’ll start to recognize which modules handle what (e.g., sklearn.tree, sklearn.metrics)
-- **More efficient**: Python doesn’t load the entire library unnecessarily
-
-So, while it looks like a lot of imports, this way helps us learn and keeps everything organized!
+So, while it looks like a lot of imports, this way helps us keeps everything organized!
 
 
 
 ## Step 1a: Load the Data
 
-
-We’ll use Seaborn’s built-in version of the **Palmer Penguins** dataset.  
-Each row describes a penguin, with measurements such as bill length, flipper length, body mass, and more.
+As we said above, today we’ll use Seaborn’s built-in version of the **Palmer Penguins** dataset. In this dataset each row describes a penguin, with various measurements about the penguin, such as bill length, flipper length, body mass, and more.
 
 Let’s load it and take a quick peek.
 
@@ -343,7 +325,7 @@ The snippet of code:
 
 returns the first 5 rows of the data for us to inspect. 
 
-You should always do this when you first load data. It helps you understand the structure of the dataset, see what the column names are, and get a sense of the types of data you’re working with (e.g., numbers, text, or a mix of both).
+You should always do this when you first load data! It helps you understand the structure of the dataset, see what the column names are, and get a sense of the types of data you’re working with (e.g., numbers, text, or a mix of both).
 
 
 <div style="
@@ -380,8 +362,10 @@ Think of it like publishing a scientific paper: you can take all the notes you w
 
 
 Before we can use the dataset in machine learning models, we need to:
-- Remove rows with missing values.
-- Convert text columns (like `species` and `sex`) into numeric form.
+1. Remove rows with missing values.
+    - There are ways to restore missing data, but those processes get quite technical and are not within the scope of this course.
+2. Convert text columns (like `species` and `sex`) into numeric form.
+    - ML Models like numbers, not strings.
 
 First, let's drop the rows that are missing data:
 
@@ -481,7 +465,7 @@ penguins.head()
 
 Notice the fourth row that was previously filled with `NaN` is gone! 
 
-Now, we need to create a label encoder, which will convert text in the data (like "Male", "Female", or "Adelie") into numeric values that the machine learning models can understand.
+Now, we need to create a label encoder, which will convert text in the data (like "Male", "Female", or "Adelie") into numeric values that machine learning models can understand.
 
 {% capture ex %}
 ```python
@@ -608,9 +592,13 @@ penguins.head()
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
-We need to define the **features** and **target** in the data.
+The encoded columns at the right end are numerical stand ins for the text data originally present.
+
+### Identify Features and Target
+
+Next in the process of preparing our data, we need to define the **features** and **target** in the data.
 - **Features** are the data we will be using to make decisions.
-- The  **Target** is the classification, number, etc. we are trying to predict given the features.
+- **Targets** are the classifications, numbers, etc. we are trying to predict given the features.
 
 {% capture ex %}
 ```python
@@ -628,10 +616,12 @@ y = penguins['species_enc']
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
-Lastly, split your dataset into a ***training* set** and a ***test* set**.
 
-- **Training set** (≈70–80%) — used to fit/train your models.
-- **Test set** (≈20–30%) — held out until the end to evaluate how well the trained model generalizes (accuracy, consistency).
+### Training and Testing
+
+Lastly, we need to  split the dataset into a ***training* set** and a ***test* set**.
+- **Training set** (≈70–80%) — used to fit/train models.
+- **Test set** (≈20–30%) — held out until the end to evaluate how well the trained models generalizes (accuracy, consistency).
 
 > Tip: For classification, use a stratified split so the class proportions in train and test are similar.
 > This can be done in the following manner:
@@ -666,7 +656,7 @@ X_test_scaled = scaler.transform(X_test)
 
 ### One Stop Shop
 
-Below is the complete code for managing the data, assuming you have inspected the data and are encoding everything you need to encode.
+Below is the complete code for cleaning and processing the data we have developed in a peicemeal manner up to this point.
 
 {% capture ex %}
 ```python
@@ -727,8 +717,7 @@ X_test_scaled = scaler.transform(X_test)
 
 ## Step 2: Explore the Data (after cleaning)
 
-
-Let’s visualize a few relationships between features and species.  
+Before jumping right into fitting models and what not, let’s visualize the data a bit to see if we can see any obvious relationships between the features and the target.  
 
 **Why plot first?**  
 The human eye is *exceptionally* good at spotting patterns, clusters, trends, outliers, and boundaries, even when they’re subtle. With only a handful of features, simple plots can quickly reveal relationships that can guide our modeling choices.
@@ -737,24 +726,25 @@ The human eye is *exceptionally* good at spotting patterns, clusters, trends, ou
 - **Separation:** Do data points form distinct clouds in a scatter plot
     - e.g., to species cluster in a plot of bill depth vs. bill length?
 - **Shape of relationships:** Linear trend or curved? Tight or diffuse?
-- **Outliers and anomalies:** Any points far from the pack that might influence a model.
+- **Outliers and anomalies:** Are any points far from the pack that might influence a model?
 - **Class imbalance:** Are there far fewer points for one species?
     - Having one group dominate could hurt the generalizability of our models.
+    - We will talk more about this in Lecture 06.
 - **Feature usefulness:** Which axes seem to separate species most cleanly?
 
-**Caveats (your eyes are great—but not perfect)**
-- **Illusions of separation:** With few points, randomness can *look* meaningful. This is why we still use models and do not just make models from by-eye observations.
+**Caveats (your eyes are great, but not perfect)**
+- **Illusions of separation:** With only a few points, randomness can *look* meaningful. This is why we still use models and do not just make models from by-eye observations.
 - **Multiple comparisons:** In a big grid of plots, something could look “good” by chance.
 - **Scale effects:** Distance-based models (like k-NN, k-means) are sensitive to the scales of data.
-    - We’ll always standardize the features to make comparisons fair and to make models easier to interpret.
-- **High dimensions:** Patterns that look clean in 2D can vanish in higher dimensions or *vice versa*.
-- **Correlation ≠ causation:** Visual association is a clue, not proof.
+    - We’ll always standardize the features to make comparisons fair and make models easier to interpret.
+- **High dimensions:** Patterns that look clean in 2D projections can vanish in higher dimensions or *vice versa*.
+- **Correlation is NOT causation:** Visual association is a clue, not proof.
 
 **Connect to our modeling steps**
 We will learn that:
 - clear visual boundaries suggest **logistic regression** or **decision trees** may do well.
 - compact, circular/spherical clusters often suit **k-means**; elongated or uneven clusters may not.
-- strongly differing scales or variances remind us to **standardize** before k-NN/k-means.
+- strongly differing scales or variances remind us to **standardize** our data.
 - overlapping blobs might benefit from **nonlinear** models or **feature engineering**.
 
 
@@ -798,7 +788,9 @@ plt.show()
 
 ## Step 3: Train and Evaluate Model(s)
 
-Today we will test several popular algorithms used throughout this course:
+Now, with all that preprocessing and examination done, we can finally got to mdoeling! 
+
+We will use algorithms/models used that we will examine in more detail throughout this course:
 - k-Nearest Neighbors (k-NN)
 - k-Means
 - Logistic Regression
@@ -808,7 +800,7 @@ Today we will test several popular algorithms used throughout this course:
 
 Each model will:
 1. Be trained on the same training dataset.
-2. Make predictions on the same test set.  
+2. Check predictions on the same test set.  
 3. Report its accuracy and classification metrics.
 
 
@@ -1013,7 +1005,7 @@ display(results_df)
 
 ### Understanding Classification Metrics
 
-When we evaluate a machine learning model, we don’t just care about how many predictions were right overall. We also want to know how the model got things right (and wrong).
+When we evaluate a machine learning model, we don’t just care about how many predictions were right overall. We also want to know **how** the model got things right (and sometimes more importantly wrong).
 
 The classification report provides four key metrics for each class:
 
@@ -1234,7 +1226,7 @@ plt.show()
 
 ## Step 4: Compare Model Performance
 
-Let’s visualize the accuracy and $F_1$-score of each model side by side.
+Let’s visualize the accuracy and the $F_1$-score of each model side by side. We will discuss these fits measurements more in fuure lectures, for now we only need to know that higher is better.
 
 {% capture ex %}
 ```python
@@ -1313,12 +1305,12 @@ plt.show()
 
 ## Step 5: Try Clustering with k-Means and PCA
 
-Now let’s remove the labels and see if the computer can **discover** the species on its own using clustering.
+Now let’s remove the labels and see if the computer can **discover** the species on its own using clustering. This is called *unsupervised* modeling, since no target is given to supervise the results of the model.
 
 We’ll use:
 - **k-Means Clustering** to form 3 clusters since we know there are 3 species.
 - **PCA** (Principal Component Analysis) to reduce 6 dimensions into 2 for visualization.
-    - Do not worry too much about this. We will talk about it later.
+    - Do not worry too much about these, we will talk about them in more detail later.
 
 
 {% capture ex %}
@@ -1380,8 +1372,10 @@ As we can see k_means does not do a great job!
 
 ## Step 6: Wrap-Up
 
-- We successfully trained and evaluated multiple machine learning models.
-- Even simple algorithms like **k-NN** and **Naïve Bayes** performed well.
+We successfully trained and evaluated multiple machine learning models!
+
+Some fun observations are: 
+- Simple algorithms like **k-NN** and **Naïve Bayes** performed well.
 - **Random Forests** often yield top accuracy on structured datasets like this one.
 - **Clustering and PCA** can reveal natural structure even without labels.
 
