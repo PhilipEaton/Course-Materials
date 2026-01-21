@@ -229,6 +229,29 @@
       color: #003366;
     }
 
+    .two-column {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .two-column .column {
+      flex: 1;
+    }
+
+    /* Stack columns on small screens */
+    @media (max-width: 768px) {
+      .two-column {
+        flex-direction: column;
+      }
+    }
+
+    /* Print-friendly */
+    @media print {
+      .two-column {
+        flex-direction: row;
+      }
+    }
 
     /* Print Style */
     @media print {
