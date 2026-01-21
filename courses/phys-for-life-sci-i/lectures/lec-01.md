@@ -434,7 +434,7 @@ An effective way to stay organized is to place all vector components into a tabl
 Below is a general-purpose table structure that we will use repeatedly.
 
 | Vector | Horizontal Component (x) | Vertical Component (y) |
-|------|--------------------------|------------------------|
+|:------:|:--------------------------:|:------------------------:|
 | $\vec{A}$ | $A_x$ | $A_y$ |
 | $\vec{B}$ | $B_x$ | $B_y$ |
 | $\vec{C}$ | $C_x$ | $C_y$ |
@@ -491,7 +491,7 @@ where $-3$ meters to the right means go 3 meters to the left.
 Now, let's build our table:
 
 | Vector | Right | Up |
-|------|--------------------------|------------------------|
+|:------:|:--------------------------:|:------------------------:|
 | $\vec{A}$ | $+5$ | $0$ |
 | $\vec{B}$ | $-3$ | $0$ |
 |------|--------------------------|------------------------|
@@ -516,8 +516,84 @@ This example highlights several important ideas:
 
 
 {% capture ex %}
-## Example: Simple Vector Addition in 2D
+Now let’s look at a slightly more interesting case where the two vectors point in **different directions**.
 
+Suppose a person walks:
+- $4$ meters to the East
+- then $3$ meters to the North
+
+We can represent these two displacements as vectors:
+
+- $\vec{A} = 4\ \text{m to the East}$
+- $\vec{B} = 3\ \text{m to the North}$
+
+To add these vectors algebraically, we first choose a coordinate system:
+- East is the positive horizontal direction
+- North is the positive vertical direction
+
+### Writing the Vectors in Component Form
+
+Using this coordinate system, we can rewrite the vectors as:
+
+- $\vec{A} = +4\ \text{m; East},\ 0\ \text{m; North}$
+- $\vec{B} = 0\ \text{m; East},\ +3\ \text{m; North}$
+
+Now we organize the information in a table.
+
+| Vector | East (x) | North (y) |
+|:------:|:-----------:|:------------:|
+| $\vec{A}$ | $+4$ | $0$ |
+| $\vec{B}$ | $0$ | $+3$ |
+| **Sum** | $+4$ | $+3$ |
+
+So the components of the resultant displacement $\vec{R}$ are:
+- $R_x = +4\ \text{m}$
+- $R_y = +3\ \text{m}$
+
+### Finding the Magnitude of the Resultant
+
+The magnitude of the resultant displacement comes from the Pythagorean Theorem:
+
+$$
+R = \sqrt{R_x^2 + R_y^2}
+$$
+
+$$
+R = \sqrt{(4)^2 + (3)^2} = \sqrt{16 + 9} = 5\ \text{m}
+$$
+
+
+### Finding the Direction of the Resultant
+
+To find the direction, we use tangent:
+
+$$
+\tan(\theta) = \frac{\text{North}}{\text{East}} = \frac{3}{4}
+$$
+
+$$
+\theta = \tan^{-1}\!\left(\frac{3}{4}\right) = 37^\circ
+$$
+
+Since the vector points toward the North and toward the East, the direction is:
+
+- $37^\circ$ **North of East**
+
+### Final Result
+
+The resultant displacement is:
+- **Magnitude:** $5\ \text{m}$
+- **Direction:** $37^\circ$ North of East
+
+
+### Why This Is Useful
+
+This example reinforces several important ideas:
+
+- Vectors in different directions must be broken into components before adding.
+- Horizontal and vertical components are handled separately.
+- The magnitude and direction of a resultant vector come from its components.
+- Direction must be stated using both an angle and a turn-of-reference.
 {% endcapture %}
 {% include example.html content=ex %}
 
