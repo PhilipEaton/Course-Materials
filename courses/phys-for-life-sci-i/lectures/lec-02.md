@@ -86,9 +86,7 @@ We will treat right as $+x$ and up as $+y$.
 
 #### Vector $\vec{A}$
 
-$\vec{A}$ points straight up with magnitude $10\ \text{m}$.
-
-So its components are:
+$\vec{A}$ points up with magnitude $10\ \text{m}$.
 
 - $A_x = 0\ \text{m}$
 - $A_y = +10\ \text{m}$
@@ -104,112 +102,61 @@ So its components are:
 
 #### Vector $\vec{C}$
 
-$\vec{C}$ has magnitude $34\ \text{m}$ and is $37^\circ$ below the positive $x$ direction.
+$\vec{C}$ has magnitude $34\ \text{m}$ and is $37^\circ$ below the positive $x$ direction (South of East).
 
 That means:
 - The horizontal component is positive (to the right)
 - The vertical component is negative (down)
 
-So:
+Using soem trigonomentry, we have:
 
 $$
-C_x = (34\ \text{m})\cos(37^\circ)
-$$
-
-$$
-C_y = -(34\ \text{m})\sin(37^\circ)
-$$
-
-Numerically:
-
-$$
-C_x = (34)\cos(37^\circ) = 27.1\ \text{m}
+C_x = (34\ \text{m})\cos(37^\circ) = (34)\cos(37^\circ) = 27.1\ \text{m}
 $$
 
 $$
-C_y = -(34)\sin(37^\circ) = -20.5\ \text{m}
+C_y = -(34\ \text{m})\sin(37^\circ) = -(34)\sin(37^\circ) = -20.5\ \text{m}
 $$
 
 
 ### Step 2: Add Components to Get the Resultant Components
 
-The resultant vector $\vec{R}$ is:
+Putting these resulting into our typical organizational table gives:
 
-$$
-\vec{R} = \vec{A} + \vec{B} + \vec{C}
-$$
+| Vector | Right | Up |
+|:------:|:-----------:|:------------:|
+| $\vec{A}$ | $0$ | $+10\ \text{m}$ |
+| $\vec{B}$ | $+30\ \text{m}$ | $0$ |
+| $\vec{C}$ | $+27.1\ \text{m}$ | $-20.5\ \text{m}$ |
+|:------:|:-----------:|:------------:|
+| $\vec{R}$ | $+57.1\ \text{m}$ | $-10.5\ \text{m}$ |
 
-Add the $x$-components:
-
-$$
-R_x = A_x + B_x + C_x = 0 + 30 + 27.1 = 57.1\ \text{m}
-$$
-
-Add the $y$-components:
-
-$$
-R_y = A_y + B_y + C_y = 10 + 0 - 20.5 = -10.5\ \text{m}
-$$
-
-So the resultant components are:
-
-- $R_x = +57.1\ \text{m}$
-- $R_y = -10.5\ \text{m}$
-
-This already tells us something important:  
-The player ends up mostly to the right, and slightly downward from the starting point.
+This already tells us something important:  The player ends up mostly to the right, and slightly downward from the starting point.
 
 
 ### Step 3: Find the Magnitude of the Resultant
 
-Use the Pythagorean Theorem:
+Using the Pythagorean Theorem to get the magnitude:
 
 $$
-R^2 = R_x^2 + R_y^2
+\begin{aligned}
+R^2 &= R_x^2 + R_y^2 \\
+&= (57.1\ \text{m})^2 + (10.5\ \text{m})^2 \\
+R^2 &= 3416.5\ \text{m}^2 \\
+R &= \pm \sqrt{3416.5\ \text{m}^2 } \\
+R &= + 58.5\ \text{m} 
+\end{aligned}
 $$
-
-$$
-R^2 = (57.1\ \text{m})^2 + (10.5\ \text{m})^2
-$$
-
-$$
-R^2 = 3416.5\ \text{m}^2
-$$
-
-$$
-R = \sqrt{3416.5\ \text{m}^2} = 58.5\ \text{m}
-$$
-
-So the magnitude of the resultant displacement is:
-
-$$
-R = 58.5\ \text{m}
-$$
-
 
 ### Step 4: Find the Direction of the Resultant
 
-To find the direction angle, use tangent:
+To find the direction angle, we can use tangent:
 
 $$
-\tan(\theta) = \frac{|R_y|}{R_x} = \frac{10.5}{57.1} = 0.184
+\tan(\theta) = \frac{o}{a} = \frac{10.5}{57.1} \implies \theta = \tan^{-1}\left(\frac{10.5}{57.1}\right) = 10.4^\circ
 $$
 
-So:
-
-$$
-\theta = \tan^{-1}(0.184) = 10.4^\circ
-$$
-
-Now we need to describe the direction using turn-of-reference language.
-
-We have:
-- $R_x$ is positive (east/right)
-- $R_y$ is negative (south/down)
-
-So the vector points slightly **south of east**.
-
-That means the direction is:
+This angle is measure off of East turned toward the South; draw a picture to convince yourself this is correct. That means the direction is:
 
 $$
 10.4^\circ\ \text{South of East}
