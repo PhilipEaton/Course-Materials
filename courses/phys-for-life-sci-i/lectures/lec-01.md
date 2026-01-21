@@ -379,15 +379,32 @@ $$
 \vec{A} + \vec{B} = \vec{R}
 $$
 
+and this looks like:
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Tailtotip.png' | relative_url }}"
+  alt="The diagram illustrates the tail-to-tip method of vector addition. Vector A is drawn from a starting point up and to the right. Vector B begins at the tip of vector A and points down and to the right. A dashed arrow labeled R connects the tail of vector A to the tip of vector B, representing the resultant vector. A blue circle highlights the point where the tail of vector B meets the tip of vector A, emphasizing the tail-to-tip placement used when adding vectors."
+  style="display:block; margin:1.5rem auto; max-width:800px; width:100%;">
+
 The order of addition does not matter:
 
 $$
 \vec{A} + \vec{B} = \vec{R} \quad\text{and}\quad \vec{B} + \vec{A} = \vec{R}
 $$
 
+as we can see in this figure:
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Ordernotmatter.png' | relative_url }}"
+  alt="The diagram shows two vectors, labeled A and B, arranged in two different orders. In the top arrangement, vector A is drawn first and vector B is placed tail-to-tip with it, forming a bent path. A dashed arrow labeled R connects the starting point of the first vector to the ending point of the second vector, representing the resultant displacement. In the lower arrangement, the order of the vectors is reversed, with vector B drawn first and vector A placed tail-to-tip afterward. The dashed resultant arrow R is the same in both cases, showing that the final displacement does not depend on the order in which the vectors are added."
+  style="display:block; margin:1.5rem auto; max-width:800px; width:75%;">
+
 The same idea works for more than two vectors. If several displacements occur one after another, as pictured here:
 
-PICTURE NEEDED HERE!!!
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/Multiplevectoraddition.png' | relative_url }}"
+  alt="The diagram shows several vectors labeled A, B, C, and D arranged head-to-tail in a zigzag path. Vector A starts on the left and points up and to the right. Vector B begins at the tip of vector A and points down and to the right. Vector C starts at the tip of vector B and points slightly up and to the right, and vector D continues upward from the tip of vector C. A dashed arrow labeled R runs directly from the starting point of vector A to the ending point of vector D, representing the resultant vector. The figure illustrates how multiple displacement vectors add together to produce a single overall resultant displacement."
+  style="display:block; margin:1.5rem auto; max-width:800px; width:100%;">
 
 Their sum gives the total displacement:
 
