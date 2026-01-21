@@ -171,3 +171,154 @@ The resultant displacement is:
 - **Direction:** $10.4^\circ$ South of East
 {% endcapture %}
 {% include example.html content=ex %}
+
+
+
+
+
+
+## Velocity
+
+In Lecture 01, we spent a lot of time talking about **position** and **displacement**. Now we are ready to introduce the idea of **velocity**, which tells us *how quickly* position changes.
+
+At its core, velocity answers a very simple question:
+
+> How fast, and in what direction, is something changing its position?
+
+This question already hints at something important: velocity is not just about speed. Direction matters.
+
+
+
+
+
+### What Velocity Means Physically
+
+Velocity describes **how displacement changes with time**. Mathematically, we write this as
+
+$$
+\vec{v} = \frac{\Delta \vec{r}}{\Delta t}
+$$
+
+where:
+- $\Delta \vec{r}$ is the displacement vector, and  
+- $\Delta t$ is the time interval over which that displacement occurs.
+
+This definition tells us several important things immediately:
+
+- Velocity depends on **displacement**, not distance.
+- Velocity has both a **magnitude** and a **direction**.
+- Velocity is therefore a **vector quantity**.
+
+If an object moves quickly but keeps changing direction, its velocity is changing even if its speed stays the same.
+
+
+
+
+
+### Velocity vs. Speed
+
+In everyday language, the words *speed* and *velocity* are often used interchangeably. In physics, however, they mean different things.
+
+- **Speed** tells you *how fast* something is moving.
+- **Velocity** tells you *how fast* something is moving **and in what direction**.
+
+Speed is a scalar. Velocity is a vector.
+
+For example:
+- A car traveling at $20\ \text{m/s}$ has a speed of $20\ \text{m/s}$.
+- A car traveling at $20\ \text{m/s}$ **north** has a velocity of $20\ \text{m/s north}$.
+
+Throughout this course, we will almost always work with **velocity**, not speed.
+
+
+
+
+
+### Average Velocity
+
+When we talk about velocity over a finite time interval, we are usually referring to **average velocity**.
+
+Average velocity is defined as
+
+$$
+\vec{v}_{\text{avg}} = \frac{\Delta \vec{r}}{\Delta t}
+$$
+
+This looks identical to the general definition of velocity, and that is not an accident. Average velocity is simply the displacement divided by the time taken.
+
+A key point to emphasize is that **average velocity depends only on the starting and ending positions**, not on the path taken between them.
+
+This should sound familiar, because it mirrors how **displacement** works.
+
+
+
+
+
+### Average Velocity Depends on Displacement, Not Distance
+
+Suppose you walk:
+- $50\ \text{m}$ east,
+- then $50\ \text{m}$ west,
+
+and the entire trip takes $100\ \text{s}$.
+
+Your **total distance traveled** is $100\ \text{m}$, but your **displacement** is zero, because you ended up where you started.
+
+Using the definition of average velocity:
+
+$$
+\vec{v}_{\text{avg}} = \frac{0}{100\ \text{s}} = 0
+$$
+
+Even though you were clearly moving during the trip, your **average velocity is zero**.
+
+This example highlights an important idea that will come up repeatedly:
+
+> An object can travel a large distance and still have zero average velocity.
+
+
+
+
+
+### Uniform Velocity
+
+A special and very useful case occurs when an object moves with **uniform velocity**.
+
+Uniform velocity means:
+- The object covers equal displacements in equal time intervals.
+- Both the magnitude **and** direction of the velocity remain constant.
+
+In this case, the velocity does not change over time.
+
+If an object moves with uniform velocity, then
+
+$$
+\vec{v}_{\text{uniform}} = \frac{\Delta \vec{r}}{\Delta t}
+$$
+
+for **any** time interval you choose.
+
+Uniform velocity motion will show up repeatedly in our examples because it is mathematically simple and physically intuitive.
+
+
+
+
+
+### Instantaneous Velocity (Preview)
+
+So far, we have talked about velocity over a **time interval**. But what if we want to know an object’s velocity at a **specific moment**?
+
+For example:
+- What is your velocity at exactly noon?
+- What is the velocity of a car at the instant it passes a speed limit sign?
+
+This idea leads us to **instantaneous velocity**, which we will explore more carefully in the next sections.
+
+For now, the key idea is this:
+
+> Instantaneous velocity describes motion at a single moment in time, not over a long interval.
+
+We will return to this idea once we begin working with graphs.
+
+
+
