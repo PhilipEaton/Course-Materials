@@ -417,10 +417,99 @@ where, again, $\vec{R}$ is the resultant displacement and points from the starti
 
 
 
+## Vector Addition (Algebraic Method)
+
+The pictorial method of adding vectors is very helpful for building intuition, but it quickly becomes impractical when we want to do actual calculations. For that, we use the **algebraic method** of vector addition.
+
+The key idea behind the algebraic method is simple: vectors can only be added component by component. More specifically, the most important rules are:
+
+- Horizontal **can** add to Horizontal.
+- Vertical **can** add to Vertical.
+- Horizontal **cannot** add to Vertical.
+
+This means we need to keep track of, or calculate the, horizontal and vertical components of vectors separately throughout our problem.
+
+An effective way to stay organized is to place all vector components into a table. This makes it easy to see which quantities can be added together, which quantites you still need to figure out, and helps prevent simple mistakes.
+
+Below is a general-purpose table structure that we will use repeatedly.
+
+| Vector | Horizontal Component (x) | Vertical Component (y) |
+|------|--------------------------|------------------------|
+| $\vec{A}$ | $A_x$ | $A_y$ |
+| $\vec{B}$ | $B_x$ | $B_y$ |
+| $\vec{C}$ | $C_x$ | $C_y$ |
+|------|--------------------------|------------------------|
+| $\vec{R}$ | $R_x$ | $R_y$ |
+
+where $\vec{R} = \vec{A} + \vec{B} + \vec{C}$, and you just add or remove more rows as needed.
+
+In this table:
+- Each row represents a single vector.
+- The horizontal column contains all $x$-components.
+    - You will need to pick which horizontal direction is positive. For consistently, we will always assume right/East is positive.
+- The vertical column contains all $y$-components.
+    - You will need to pick which vertical direction is positive. For consistently, we will always assume up-the-page/North is positive.
+- The final row represents the summed components of the resultant vector $\vec{R}$.
+
+Because vectors can only be added add component by component, we write:
+
+$$
+R_x = A_x + B_x + C_x + \dots
+$$
+
+and
+
+$$
+R_y = A_y + B_y + C_y + \dots
+$$
+
+Once we have $R_x$ and $R_y$, we can then:
+1. Find the magnitude of the resultant vector using the Pythagorean Theorem.
+2. Find the direction using inverse tangent and turn-of-reference language.
+
+since these components represent the horizontal and vertical sides of a right triangle. 
+
+
 
 {% capture ex %}
-## Example: Simple Vector Addition in 1D 
+Suppose a person walks:
+- $5$ meters to the right
+- then $3$ meters to the left
 
+We can represent these two displacements as vectors:
+
+- $\vec{A} = 5\ \text{m to the right}$
+- $\vec{B} = 3\ \text{m to the left}$
+
+However, isn't "left" just "negative right"? In this case we can rewrite the second vector to get:
+
+- $\vec{A} = +5\ \text{m; right}$
+- $\vec{B} = -3\ \text{m; right}$
+
+where $-3$ meters to the right means go 3 meters to the left. 
+
+Now, let's build our table:
+
+| Vector | Right | Up |
+|------|--------------------------|------------------------|
+| $\vec{A}$ | $+5$ | $0$ |
+| $\vec{B}$ | $-3$ | $0$ |
+|------|--------------------------|------------------------|
+| $\vec{R}$ | $+2$ | $0$ |
+
+and we have the resultant displacement:
+
+- $2\ \text{m}$ to the right
+
+Even though the person walked a *total distance* of $8\ \text{m}$, their **displacement** depends only on the start and end positions.
+
+### Why This Is Useful
+
+This example highlights several important ideas:
+
+- Vectors include direction, which we represent using signs in one dimension.
+- Opposite directions subtract automatically when vectors are added.
+- Displacement is different from distance, even in simple cases.
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -446,6 +535,11 @@ The given information is:
 - $\vec{B} = 30\ \text{m}$ (to the right)
 - $\vec{C} = 34\ \text{m}$ at an angle of $37^\circ$ below the positive $x$ direction  
   (so it points down and to the right)
+
+<img
+  src="{{ '/courses/phys-for-life-sci-i/images/lec01/UltimateFrisbee.png' | relative_url }}"
+  alt="The diagram shows three displacement vectors arranged head-to-tail. Vector A is a vertical arrow pointing upward with a magnitude of 10 meters. From the tip of vector A, vector B is drawn horizontally to the right with a magnitude of 30 meters. From the tip of vector B, vector C is drawn down and to the right at an angle of 37 degrees below the horizontal, with a magnitude of 34 meters. A dashed arrow labeled R runs from the starting point of vector A to the ending point of vector C, representing the resultant displacement for the entire motion."
+  style="display:block; margin:1.5rem auto; max-width:800px; width:60%;">
 
 We want:
 1. The magnitude of $\vec{R}$
