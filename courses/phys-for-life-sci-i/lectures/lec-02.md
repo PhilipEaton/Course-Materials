@@ -14,6 +14,11 @@ TESTING!!!!!
 
 
 
+
+
+
+
+
 ## Review: Trigonometry and Adding Vectors (from Last Lecture)
 
 In the previous lecture, we introduced how trigonometry is used in physics to work with vectors. The main idea is that right triangles allow us to move back and forth between:
