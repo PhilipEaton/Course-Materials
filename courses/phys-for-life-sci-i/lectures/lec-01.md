@@ -421,6 +421,7 @@ where, again, $\vec{R}$ is the resultant displacement and points from the starti
 {% capture ex %}
 ## Example: Simple Vector Addition in 1D 
 
+{% endcapture %}
 {% include example.html content=ex %}
 
 
@@ -428,6 +429,7 @@ where, again, $\vec{R}$ is the resultant displacement and points from the starti
 {% capture ex %}
 ## Example: Simple Vector Addition in 2D
 
+{% endcapture %}
 {% include example.html content=ex %}
 
 
