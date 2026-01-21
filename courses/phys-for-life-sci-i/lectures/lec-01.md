@@ -544,7 +544,8 @@ Now we organize the information in a table.
 |:------:|:-----------:|:------------:|
 | $\vec{A}$ | $+4$ | $0$ |
 | $\vec{B}$ | $0$ | $+3$ |
-| **Sum** | $+4$ | $+3$ |
+|:------:|:-----------:|:------------:|
+| $\vec{R}$ | $+4$ | $+3$ |
 
 So the components of the resultant displacement $\vec{R}$ are:
 - $R_x = +4\ \text{m}$
