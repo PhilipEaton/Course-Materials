@@ -256,7 +256,7 @@
       /* Page geometry (LaTeX-ish) */
       @page {
         size: letter;
-        margin: 1in;
+        margin: 0.8in;
       }
 
       /* Hide navigation / site chrome */
@@ -267,6 +267,7 @@
       /* Base typography */
       body {
         padding: 0 !important;
+        padding-top: 0;
         margin: 0 !important;
         background: #fff !important;
         color: #000 !important;
@@ -288,6 +289,10 @@
         font-weight: normal;
         text-align: center;
         margin: 0 0 18pt 0;
+      }
+
+      h1:first-child {
+        margin-top: 0;
       }
 
       h2 {
