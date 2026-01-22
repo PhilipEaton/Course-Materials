@@ -52,60 +52,60 @@ We are not training to be ML engineers that build and implement algorithms from 
 
 1. **Choose a dataset**  
    - Use one of the following data sets:
-#### Iris (the flowers)
- <div style="margin-left: 30px">
-     
+### Iris (the flowers)
+<div style="margin-left: 30px">
+   
 **Target:** species  
 {% capture ex %}
- ```python
- from sklearn.datasets import load_iris
- data_original = load_iris(as_frame=True)
- ```
- {% endcapture %}
+```python
+from sklearn.datasets import load_iris
+data_original = load_iris(as_frame=True)
+```
+{% endcapture %}
 {% include codeinput.html content=ex %}
- </div> 
+</div> 
 
 
- #### Wine (multiclass, 3 classes) — slightly harder
- <div style="margin-left: 30px">
-     
- **Target**: wine cultivar
- {% capture ex %}
- ```python
- from sklearn.datasets import load_wine  
- data_original = load_wine(as_frame=True)
- ```
- {% endcapture %}
+### Wine (multiclass, 3 classes) — slightly harder
+<div style="margin-left: 30px">
+   
+**Target**: wine cultivar
+{% capture ex %}
+```python
+from sklearn.datasets import load_wine  
+data_original = load_wine(as_frame=True)
+```
+{% endcapture %}
 {% include codeinput.html content=ex %}
- </div>
+</div>
 
- #### Breast Cancer Wisconsin (binary) — interpretable, imbalanced-ish
- <div style="margin-left: 30px">
-     
- **Target**: diagnosis (0 = malignant, 1 = benign)
- {% capture ex %}
- ```python
- from sklearn.datasets import load_breast_cancer  
- data_original = load_breast_cancer(as_frame=True)
- ```
- {% endcapture %}
+### Breast Cancer Wisconsin (binary) — interpretable, imbalanced-ish
+<div style="margin-left: 30px">
+   
+**Target**: diagnosis (0 = malignant, 1 = benign)
+{% capture ex %}
+```python
+from sklearn.datasets import load_breast_cancer  
+data_original = load_breast_cancer(as_frame=True)
+```
+{% endcapture %}
 {% include codeinput.html content=ex %}
- </div> 
+</div> 
 
- #### Digits (multiclass, 10 classes)
- <div style="margin-left: 30px">
-     
- **Target**: digit label (0–9)
- {% capture ex %}
- ```python
- from sklearn.datasets import load_digits  
- data_original = load_digits(as_frame=True)
- ```
- {% endcapture %}
+### Digits (multiclass, 10 classes)
+<div style="margin-left: 30px">
+   
+**Target**: digit label (0–9)
+{% capture ex %}
+```python
+from sklearn.datasets import load_digits  
+data_original = load_digits(as_frame=True)
+```
+{% endcapture %}
 {% include codeinput.html content=ex %}
- </div>
+</div>
 
-#### Titanic (binary) - Takes a bit of effort to get working
+### Titanic (binary) - Takes a bit of effort to get working
 <div style="margin-left: 30px">
 
 **Target**: survived (0 = No, 1 = Yes)
