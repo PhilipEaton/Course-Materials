@@ -1073,52 +1073,39 @@ df_results
 {% include codeinput.html content=ex %}
 
 {% capture ex %}
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" aria-describedby="distance-metric-caption">
+  <caption id="distance-metric-caption">Classification accuracy using different distance metrics</caption>
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Distance Metric</th>
-      <th>Accuracy</th>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Distance Metric</th>
+      <th scope="col">Accuracy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th scope="row">0</th>
       <td>euclidean</td>
       <td>0.911111</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th scope="row">1</th>
       <td>manhattan</td>
       <td>0.911111</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th scope="row">2</th>
       <td>minkowski</td>
       <td>0.911111</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th scope="row">3</th>
       <td>cosine</td>
       <td>0.777778</td>
     </tr>
   </tbody>
 </table>
-</div>
+
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1901,56 +1888,43 @@ display(results_df)
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" aria-describedby="kmeans-metrics-caption">
+  <caption id="kmeans-metrics-caption">Inertia and silhouette scores for different values of k in k-means clustering</caption>
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>k</th>
-      <th>Inertia</th>
-      <th>Silhouette</th>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">k</th>
+      <th scope="col">Inertia</th>
+      <th scope="col">Silhouette</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th scope="row">0</th>
       <td>2</td>
       <td>3720.112349</td>
       <td>0.706617</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th scope="row">1</th>
       <td>3</td>
       <td>364.473321</td>
       <td>0.846700</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th scope="row">2</th>
       <td>4</td>
       <td>314.873350</td>
       <td>0.679849</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th scope="row">3</th>
       <td>5</td>
       <td>273.619951</td>
       <td>0.509465</td>
     </tr>
   </tbody>
 </table>
-</div>
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
