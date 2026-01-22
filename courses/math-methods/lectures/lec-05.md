@@ -479,14 +479,19 @@ Given a square matrix $ \mathbf{A} $, we can decompose it into a symmetric matri
 $$ \mathbf{A} = \mathbf{A}_S + \mathbf{A}_A $$
 
 We can take the transpose of this, and leverage the symmetric and antisymmetric nature of these components to get:
+
 $$ \mathbf{A}^\text{T} = \mathbf{A}_S^\text{T} + \mathbf{A}_A^\text{T} \quad\implies\quad \mathbf{A}^\text{T} = \mathbf{A}_S - \mathbf{A}_A $$
 
 Adding $\mathbf{A}$ and $\mathbf{A}^\text{T}$ gives:
+
 $$ \mathbf{A} + \mathbf{A}^\text{T} = 2 \mathbf{A}_S \quad\implies\quad \mathbf{A}_S = \frac{1}{2} \left( \mathbf{A} + \mathbf{A}^\text{T} \right)  $$
+
 and similarly subtracting gives:
+
 $$ \mathbf{A} - \mathbf{A}^\text{T} = 2 \mathbf{A}_A \quad\implies\quad \mathbf{A}_A = \frac{1}{2} \left( \mathbf{A} - \mathbf{A}^\text{T} \right)  $$
 
 This means a matrix, written in terms of these components, can be written as:
+
 $$ \mathbf{A} = \mathbf{A}_S + \mathbf{A}_A = \frac{1}{2} \left( \mathbf{A} + \mathbf{A}^\text{T} \right) + \frac{1}{2} \left( \mathbf{A} - \mathbf{A}^\text{T} \right)  $$
 
 
@@ -653,17 +658,21 @@ You can do a similar proof with $\mathbf{A} \mathbf{A}^\text{T}$, though it is s
 
 {% capture ex %}
 Rotation matrices and reflection matrices are orthogonal. How can we check? Let take one of the rotation matrices given in the review, say:
+
 $$ \mathbf{R}_x(\alpha) = \begin{bmatrix}
    1 & 0 & 0 \\
    0 & \cos(\alpha) & -\sin(\alpha) \\
    0 & \sin(\alpha) & \cos(\alpha) 
 \end{bmatrix} $$ 
+
 if we take its transpose, we get:
+
 $$\mathbf{R}_x(\alpha)^\text{T} = \begin{bmatrix}
    1 & 0 & 0 \\
    0 & \cos(\alpha) & \sin(\alpha) \\
    0 & -\sin(\alpha) & \cos(\alpha) 
 \end{bmatrix} $$
+
 Now, let's act that on the original matrix. If the transpose of this matrix is truly its inverse, then we should get an identity matrix back:
 
 $$
