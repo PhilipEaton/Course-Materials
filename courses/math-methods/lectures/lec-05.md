@@ -719,6 +719,8 @@ You can show that acting in the opposite order gives the same result. This shows
 
 
 
+
+
 ## Application:
 
 
