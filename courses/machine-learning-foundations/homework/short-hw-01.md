@@ -677,9 +677,6 @@ def plot_model_boundaries(model, model_name, X_scaled, y, cmap="viridis"):
 #### Run this set of code to see the decision boundaries. 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
 ```python
 plot_model_boundaries(KNeighborsClassifier(n_neighbors=5), "k-Nearest Neighbors", X_train_scaled, y_train)
 plot_model_boundaries(LogisticRegression(max_iter=1000), "Logistic Regression", X_train_scaled, y_train)
@@ -688,6 +685,9 @@ plot_model_boundaries(DecisionTreeClassifier(max_depth=4, random_state=42), "Dec
 plot_model_boundaries(RandomForestClassifier(random_state=42), "Random Forest", X_train_scaled, y_train)
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 ---
 
