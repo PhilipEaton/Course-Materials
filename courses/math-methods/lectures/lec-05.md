@@ -103,7 +103,7 @@ These matrices flip the sign of the coordinates along the respective axis while 
 Recall that to apply a matrix transformation to a vector written as a **column vector**, we multiply the transformation matrix on the **left**. The result is a new column vector:
 
 $$
-\mathbf{T} \, \vec{r} = \vec{r}\,' \implies \mathbf{T} \begin{bmatrix} a \\ b \\ c \end{bmatrix} = \begin{bmatrix} a' \\ b' \\ c' \end{bmatrix}
+\mathbf{T} \\, \vec{r} = \vec{r}\\,' \implies \mathbf{T} \begin{bmatrix} a \\ b \\ c \end{bmatrix} = \begin{bmatrix} a' \\ b' \\ c' \end{bmatrix}
 $$
 
 This convention is the most common in physics and engineering, where vectors are typically represented as column vectors and matrices act on them from the left.
