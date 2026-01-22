@@ -436,7 +436,7 @@ There’s no single number that defines a “good” accuracy, and entirely depe
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</strong>  
+<strong style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
 Accuracy can make your model look better than it really is.  
 As a data scientist, it’s your responsibility to ensure that the metrics you report
@@ -599,7 +599,7 @@ The goal isn’t for the DummyClassifier to be “good” — it’s to remind y
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</strong>  
+<strong style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
 Always compare your machine learning model’s performance to a <strong>baseline model</strong>.
 <br><br>
@@ -1666,7 +1666,7 @@ plt.show()
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</strong>  
+<strong style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
 Always <strong>standardize or normalize your features</strong> before using models that rely on distance, like k-NN or k-Means.  
 <br><br>
