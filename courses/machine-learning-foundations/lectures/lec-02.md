@@ -9,9 +9,7 @@ nav_order: 2
 # Lecture 02: Instance-Based & Cluster-Based Learning  
 
 {% capture ex %}
-```python
 
-```
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
@@ -75,21 +73,16 @@ warnings.filterwarnings("ignore")  # keep output clean for class demos
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 
 
 
 
 
-
-## k-Nearest Neighbors (k-NN) & k-Means Clustering  
+# k-Nearest Neighbors (k-NN) & k-Means Clustering  
 
 ---
 
-# Learning Goals
+## Learning Goals
 By the end of this session, you will be able to:
 - Explain the difference between **supervised** and **unsupervised** learning.  
 - Describe how **k-NN** (classification) and **k-Means** (clustering) operate conceptually.  
@@ -99,14 +92,9 @@ By the end of this session, you will be able to:
 
 ---
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Supervised vs. Unsupervised Learning
-</h2>
+
+## Supervised vs. Unsupervised Learning
+
 
 There are two main types of machine learning models: **supervised** and **unsupervised**.  
 
@@ -194,6 +182,8 @@ This is why we call it an **instance-based** or **lazy** learner:
 
 
 
+
+{% capture ex %}
 ```python
 # HOW MANY NEIBHBORS?
 num_neighbors = 2
@@ -230,12 +220,19 @@ plt.legend()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_5_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
     
 
 
@@ -265,7 +262,7 @@ A **decision boundary** is a colored plot that separates these decision regions.
 For example, if we have the three groups from the previous example, then the k_NN decision boundaries would look something like:
 
 
-
+{% capture ex %}
 ```python
 # HOW MANY NEIBHBORS?
 num_neighbors = 5
@@ -295,13 +292,20 @@ plt.ylabel("Feature 2")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_8_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
-    
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+ 
 
 
 #### What Is a Decision Boundary?
@@ -335,7 +339,7 @@ The boundaries are determined by *distances* to the training points:
 - A small value of **k** → very detailed, wiggly boundaries (possibly overfitting).
 - A large value of **k** → smoother, simpler boundaries (possibly underfitting).
 
-
+{% capture ex %}
 ```python
 fig, axes = plt.subplots(3, 1, figsize=(5, 14))
 
@@ -355,12 +359,20 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_11_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
 
     
 
@@ -471,11 +483,11 @@ We will need to do the following:
     padding: 10px;
     border-radius: 5px;
 ">
-⚖️ <b>Warning:</b> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means. We will discuss this today.
+<b>Warning:</b> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means. We will discuss this today.
 </div>
 
 
-
+{% capture ex %}
 ```python
 # --- Load dataset ---
 iris = load_iris(as_frame=True)
@@ -502,8 +514,13 @@ acc = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {acc:.3f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Accuracy: 0.933
+{% capture ex %}
+Accuracy: 0.933
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
 
@@ -525,7 +542,7 @@ A **baseline model** gives us a simple reference point to evaluate how well our 
 
 
 
-
+{% capture ex %}
 ```python
 # --- Baseline model ---
 baseline = DummyClassifier(strategy="uniform") 
@@ -538,10 +555,18 @@ print(f"Baseline (most frequent class) Accuracy: {baseline_acc:.3f}")
 print(f"k-NN Accuracy: {acc:.3f}")
 print(f"Improvement over baseline: {100 * (acc - baseline_acc):.1f}%")
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Baseline (most frequent class) Accuracy: 0.367
-    k-NN Accuracy: 0.933
-    Improvement over baseline: 56.7%
+{% capture ex %}
+Baseline (most frequent class) Accuracy: 0.367
+k-NN Accuracy: 0.933
+Improvement over baseline: 56.7%
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
 
 
 Notice our model's accuracy was much better than the baseline. This suggests our model is potentially learning something meaningful from the data. 
@@ -599,14 +624,9 @@ Comparing to a baseline keeps your results honest, interpretable, and profession
 </div>
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Finding the Best k — The “Elbow Method”
-</h3>
+
+### Finding the Best k — The “Elbow Method”
+
 
 When using **k-NN**, the number of neighbors (`k`) is a *hyperparameter* of the model we must choose. That is, it is not somthing the model selects, or can be taught to select, but it something we have to manually imput ourselves.
 
@@ -617,7 +637,7 @@ To find a good balance, we can test several values of `k` and plot **accuracy vs
 The point where the accuracy stops improving noticeably — the *elbow* — is often a good choice.
 
 
-
+{% capture ex %}
 ```python
 # --- Evaluate accuracy for different k values ---
 k_values = range(1, 21)
@@ -640,12 +660,19 @@ plt.grid(True)
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_22_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
     
 
 
@@ -686,38 +713,46 @@ In practice, values between 3 and 15 often work well, but the best k depends on 
     - Don’t rely on a single rule — instead, plot model accuracy versus k (like your elbow plot!)
     - Choose the smallest k that gives high accuracy without sharp fluctuations.
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Implementation Note: Matching `X_train` and `X_test`
-</h3>
+
+### Implementation Note: Matching `X_train` and `X_test`
+
 
 When we split our dataset into **training** and **testing** sets, we’re simulating how a model will perform on *new, unseen data*.
 
 This means all preprocessing steps —  like scaling, encoding, or feature selection —  must be applied **consistently** across both sets.
 
-### Common Mistake
+#### Common Mistake
 
 A frequent beginner error is to “fit” the scaler separately on the test set, like this:
+
+{% capture ex %}
 ```python
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)   # Fit the transformation to the training data
 X_test_scaled = scaler.fit_transform(X_test)     # Fit the transformation to the test data
                                                  # ❌ wrong!
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+
 This leaks information from the test set into the model.
 
-### Correct Approach 
+#### Correct Approach 
+
 Always ***fit a transformation*** only **on the training data**, then ***transformation*** to **the test data**:
+
+{% capture ex %}
 ```python
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)   # Fit the transformation to the training data
 X_test_scaled = scaler.transform(X_test)         # Transformation the test data
                                                  # ✅ correct!
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+
 
 The same rule applies for:
 - LabelEncoder or OneHotEncoder
@@ -726,7 +761,7 @@ The same rule applies for:
 
 Always fit on the trianing data and transform the test data.
 
-### Why It Matters
+#### Why It Matters
 
 When we deploy a model, it will only see new data. If our scaling or encoding is inconsistent, the model will make nonsense predictions — even if it looked perfect in training.
 
@@ -734,7 +769,7 @@ Treat your preprocessing like part of your model:
 >once fitted on training data, it should be reused exactly as-is for testing and deployment.
 
 
-
+{% capture ex %}
 ```python
 # --- Load data ---
 iris = load_iris()
@@ -788,12 +823,22 @@ print(f"✅ Correct Scaling — Test Accuracy: {acc_right:.3f}")
 
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    ❌ Incorrect Scaling — Test Accuracy: 0.956
-    ✅ Correct Scaling — Test Accuracy: 0.911
+{% capture ex %}
+❌ Incorrect Scaling — Test Accuracy: 0.956
+✅ Correct Scaling — Test Accuracy: 0.911
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
-### Why the Accuracy Changes
+
+
+
+
+
+#### Why the Accuracy Changes
 
 In the incorrect version, the test set is scaled *independently* — so its mean and variance differ from the training set.  That means the model sees data that’s numerically inconsistent with what it learned from.
 
@@ -802,14 +847,8 @@ Even though the model and parameters are the same, the test data “lived” in 
 When trasnformed correctly, both training and test data are transformed using the **same mean and standard deviation**. Now the model is comparing like with like.
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Confusion Matrix
-</h3>
+
+### Confusion Matrix
 
 As we saw, accuracy tells us the *overall* percentage of correct predictions, but it doesn’t tell us *what kinds* of mistakes our model is making.
 
@@ -841,12 +880,12 @@ There are 2 types of misclassifications:
 | **Actual No Disease**  | False Positive   | True Negative    |
 
 
-## Let's do it. 
+#### Let's do it. 
 
 Let’s visualize the confusion matrix for our k-NN model of the iris flowers.
 
 
-
+{% capture ex %}
 ```python
 # --- Confusion Matrix ---
 y_pred = knn.predict(X_test_scaled)
@@ -861,15 +900,23 @@ plt.ylabel("Actual")
 plt.title("k-NN Confusion Matrix")
 plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Accuracy: 0.956
-
-
+{% capture ex %}
+Accuracy: 0.956
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_29_1.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+
 
     
 
@@ -890,7 +937,7 @@ Cross-validation splits the data into *k folds* (e.g., 5). The model trains on 4
 The average score tells us how well the model generalizes.
 
 
-
+{% capture ex %}
 ```python
 # Run 5-fold cross-validation
 cv_scores = cross_val_score(KNeighborsClassifier(n_neighbors=5),
@@ -900,21 +947,24 @@ print(f"Cross-Validation Scores: {cv_scores}")
 print(f"Mean CV Accuracy: {cv_scores.mean():.3f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Cross-Validation Scores: [0.9047619  0.95238095 1.         0.9047619  1.        ]
-    Mean CV Accuracy: 0.952
-
+{% capture ex %}
+Cross-Validation Scores: [0.9047619  0.95238095 1.         0.9047619  1.        ]
+Mean CV Accuracy: 0.952
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 We will discuss this in more detail in Lecture 06.
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Comparing Distance Metrics in k-NN
-</h2>
+
+
+
+
+
+
+## Comparing Distance Metrics in k-NN
 
 The k-NN algorithm depends on how we measure “closeness” between points. Different **distance metrics** can produce different neighborhood shapes and, therefore, different predictions.
 
@@ -923,26 +973,20 @@ Let’s compare a few common ones:
 | Metric | Formula | Notes |
 |---------|----------|-------|
 | **Euclidean** | $$ \sqrt{\sum_i (p_i - q_i)^2} $$ | Straight-line (“as the crow flies”) distance |
-| **Manhattan** | $$ \sum_i |p_i - q_i| $$ | City-block distance — useful for grid-like or discrete data |
-| **Minkowski** | $$ \left(\sum_i |p_i - q_i|^p \right)^{1/p} $$ | General form (p=1 → Manhattan, p=2 → Euclidean) |
-| **Cosine** | $$ 1 - \frac{p \cdot q}{||p||\,||q||} $$ | Measures *angle* similarity; useful for text or high-dimensional data |
+| **Manhattan** | $$ \sum_i \lvert p_i - q_i \rvert $$ | City-block distance — useful for grid-like or discrete data |
+| **Minkowski** | $$ \left(\sum_i \lvert p_i - q_i \rvert^p \right)^{1/p} $$ | General form (p=1 → Manhattan, p=2 → Euclidean) |
+| **Cosine** | $$ 1 - \frac{p \cdot q}{\lvert\lvert p \rvert \rvert\,\,\lvert\lvert q \rvert \rvert} $$ | Measures *angle* similarity; useful for text or high-dimensional data |
 
 We’ll test each metric on the Iris dataset and see how it affects accuracy.
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Quick Visualizations
-</h3>
+
+### Quick Visualizations
 
 Let’s visualize how these metrics measure distance between the same two points:
 
 
-
+{% capture ex %}
 ```python
 # Visual comparison of Euclidean and Manhattan distances
 a = np.array([1, 4])
@@ -990,8 +1034,10 @@ print(f"Manhattan = {dist_man:.2f}")
 print(f"Minkowski (p=1.5) ≈ {dist_min:.2f}")
 print(f"Cosine Distance = {cos_dist:.2f}")
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_35_0.png' | relative_url }}"
   alt=""
@@ -1000,28 +1046,34 @@ print(f"Cosine Distance = {cos_dist:.2f}")
     
 
 
-    Euclidean = 4.24
-    Manhattan = 6.00
-    Minkowski (p=1.5) ≈ 4.76
-    Cosine Distance = 0.53
+Euclidean = 4.24  
+Manhattan = 6.00  
+Minkowski (p=1.5) ≈ 4.76  
+Cosine Distance = 0.53  
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Weighted k-NN — Giving Closer Points More Influence
-</h2>
+
+
+
+
+## Weighted k-NN — Giving Closer Points More Influence
 
 In standard k-NN, all neighbors contribute equally to the prediction. But it can be smarter to **weigh closer points more heavily**.
 
 The *weighted* version uses the inverse of distance:  
 > closer neighbors get more “voting power.”
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Compare k-NN performance using different distance metrics ---
 
@@ -1110,15 +1162,9 @@ df_results
 </div>
 
 
+---
 
-<h2 style="
-    color: white;
-    background-color: #4bbe7e;
-    padding: 10px;
-    border-radius: 8px;
-">
-What Is k-Means Clustering?
-</h2>
+## What Is k-Means Clustering?
 
 k-Means is an **unsupervised learning** algorithm used to find **groups (clusters)** in unlabeled data.
 
@@ -1156,7 +1202,15 @@ It keeps doing this until the cluster boundaries no longer change significantly.
 That’s it!
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Create a simple 2D dataset ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1249,7 +1303,15 @@ plt.show()
 
 ## Problems can and do arise in unsupervised learning! 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Create a simple 2D dataset ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1327,14 +1389,8 @@ plt.show()
 
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Decision Boundaries
-</h3>
+
+### Decision Boundaries
 
 Just like in k-NN, we can visualize how k-Means divides the feature space.
 
@@ -1347,7 +1403,15 @@ Each region in this plot corresponds to the points *closest to one centroid* —
 Notice how each centroid’s region is separated by straight-line boundaries — this happens because k-Means uses **Euclidean distance** (straight-line distance).
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=300, centers=3, cluster_std=1.0, random_state=42)
@@ -1392,14 +1456,8 @@ plt.show()
 
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-The Effect of Choosing k
-</h2>
+
+### The Effect of Choosing k
 
 As you change the value of k in k-means, you change the number of groups/clusters the model will search for. It has no way of knowing how many groups it should expect to see, so does exactly as told and breaks the data points into k groups. 
 
@@ -1410,7 +1468,15 @@ As you change the value of k in k-means, you change the number of groups/cluster
 We’ll later use the **Elbow Method** to help identify a reasonable k value quantitatively.
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Generate sample data ---
 X, _ = make_blobs(n_samples=300, centers=3, cluster_std=1.0, random_state=42)
@@ -1457,23 +1523,11 @@ plt.show()
     
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-General Things to Rememer
-</h2>
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Random Initialization Matters!
-</h3>
+## General Things to Rememer
+
+
+### Random Initialization Matters!
 
 k-Means starts with random centroid positions, so different initial seeds can produce different outcomes — especially if clusters overlap or data has outliers.
 
@@ -1486,7 +1540,15 @@ In the following example:
 Modern implementations (like scikit-learn’s) handle this by running the algorithm multiple times (`n_init=10` by default) and keeping the best solution — the one with the lowest total *inertia* (within-cluster variance) which we will discuss soon.
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Different random seeds to illustrate initialization differences ---
 seeds = [1, 2, 12, 42]
@@ -1531,14 +1593,7 @@ plt.show()
     
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Feature Scaling Matters!
-</h3>
+### Feature Scaling Matters!
 
 Both **k-Means** and **k-NN** rely on distance calculations; usually Euclidean distance:
 
@@ -1557,7 +1612,15 @@ In the following example:
   This allows both features to contribute equally in claiming points.
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Create sample data ---
 # Feature 1: small numeric range
@@ -1630,14 +1693,8 @@ If you skip scaling, one feature can silently dominate the distance metric and d
 </div>
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-How Compact Are Our Clusters? Introducing Inertia
-</h2>
+
+## How Compact Are Our Clusters? Introducing Inertia
 
 When k-Means runs, it tries to make each cluster as **tight** as possible.   The algorithm minimizes a measure called **inertia**, which is the total *within-cluster variance*.
 
@@ -1654,7 +1711,15 @@ A **lower inertia** means the clusters are more compact — the points fit their
 - Shorter lines → tighter clusters → lower inertia.  
 - Longer lines → looser clusters → higher inertia.
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=150, centers=3, cluster_std=0.9, random_state=42)
@@ -1703,14 +1768,8 @@ plt.show()
     
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Changing k and Inertia
-</h3>
+
+### Changing k and Inertia
 
 Notice, as `k` increases inertia always decreases. This makes sense, the more clusters you prescribe, the closer each point will be to its centroid.
 
@@ -1718,7 +1777,15 @@ Let's plot the Inertia as a function of k:
 
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 inertias = []
 k_values = range(1, 10)
@@ -1762,14 +1829,8 @@ The "elbow" point represents a good tradeoff: adding more clusters beyond this p
 </div>
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-How Well-Separated Are the Clusters? Introducing Silhouette Score
-</h2>
+
+## How Well-Separated Are the Clusters? Introducing Silhouette Score
 
 While **inertia** measures how tight the clusters are, **silhouette score** measures how **distinct** they are from one another.
 
@@ -1788,7 +1849,15 @@ The score ranges from **–1 to 1**:
 - **–1:** points likely in the wrong cluster
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1909,14 +1978,8 @@ display(results_df)
 </div>
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Changing k and Silhouette
-</h3>
+
+### Changing k and Silhouette
 
 Notice, as `k` increases the silhouette also changes! 
 
@@ -1927,7 +1990,15 @@ In fact, this is one of the most common and reliable tools used to find a good k
 Let's plot the Silhouette as a function of k:
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=400, centers=5, cluster_std=1.0, random_state=42)
@@ -2026,14 +2097,8 @@ plt.show()
 </div>
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Evaluating Clustering Without Labels
-</h2>
+
+## Evaluating Clustering Without Labels
 
 In supervised learning (like k-NN), we can directly compare predictions to known answers, and we can calculate **accuracy**, **precision**, or **recall** because we know the truth.
 
@@ -2056,14 +2121,8 @@ So how do we know if it did a *good* job?
   Human intuition is often the best first check.
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Comparing Clusters to Known Labels (If Possible)
-</h3>
+
+### Comparing Clusters to Known Labels (If Possible)
 
 When evaluating clustering algorithms like **k-Means**, we often want to know **how similar** our predicted clusters are to the **true labels** (if we have them).  
 
@@ -2111,7 +2170,15 @@ In short:
 > ARI tells you *how close* your clustering results are to the true labels, accounting for potentialy random agreements.
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # Compare k-Means clusters to actual labels (if available)
 clusters = kmeans.fit_predict(X_train)
@@ -2139,14 +2206,8 @@ print(f"Adjusted Rand Index (vs. true labels): {ari:.3f}")
 </div>
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Visualizing Multi-Feature Data in 2D
-</h2>
+
+## Visualizing Multi-Feature Data in 2D
 
 Many real-world datasets have more than two features — sometimes dozens or even hundreds. But most of our visualizations (like scatter plots and decision boundaries) can only show **two axes**.
 
@@ -2173,7 +2234,15 @@ We will not discuss PCA in any greater detail since the mathematics behind it ge
 > **PCA lets us see high-dimensional data in 2D by finding the two directions that best capture its structure.**
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # --- Load dataset ---
 iris = load_iris(as_frame=True)
@@ -2211,7 +2280,15 @@ plt.show()
     
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # === Exploring the Handwritten Digits Dataset ===
 from sklearn.datasets import load_digits
@@ -2307,14 +2384,9 @@ plt.show()
     
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-What Kind of Data Can (and Should) Be Used in k-Means?
-</h2>
+
+## What Kind of Data Can (and Should) Be Used in k-Means?
+
 
 k-Means is a powerful and simple clustering algorithm — but it **does not work equally well for all types of data**.  
 
@@ -2368,14 +2440,8 @@ and the distance between points reflects similarity — then k-Means can likely 
 When in doubt, visualize first: if you can “see” clusters by eye in a scatter plot, k-Means probably will too.
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Limitations of Each Algorithm
-</h2>
+
+## Limitations of Each Algorithm
 
 No model is perfect — both **k-NN** and **k-Means** are powerful in the right context, but each has clear limitations you should recognize before using them.
 
@@ -2406,14 +2472,8 @@ No model is perfect — both **k-NN** and **k-Means** are powerful in the right 
 - Works only with **numeric features**; categorical variables must be encoded first.
 
 
-<h2 style="
-    color: white;
-    background-color: #e28f41;
-    padding: 10px;
-    border-radius: 8px;
-">
-Variants and Extensions to Explore on your Own
-</h2>
+
+## Variants and Extensions to Explore on your Own
 
 The basic algorithms you’ve learned this week are only the *starting points* — real-world ML expands them in creative ways.
 
@@ -2434,7 +2494,15 @@ The basic algorithms you’ve learned this week are only the *starting points* �
 - **Spectral Clustering:** uses graph theory to handle complex, non-spherical structures.
 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # =====================================================
 # Demo: When k-Means Fails (Non-Spherical Clusters)
@@ -2528,9 +2596,17 @@ plt.show()
     
 
 
-# One-Cell Code for the day
+## One-Cell Code for the day
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+{% capture ex %}
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}
 ```python
 # =====================================================
 # One-Cell: k-NN & k-Means on the Iris Dataset
