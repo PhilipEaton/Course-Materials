@@ -103,7 +103,7 @@ These matrices flip the sign of the coordinates along the respective axis while 
 Recall that to apply a matrix transformation to a vector written as a **column vector**, we multiply the transformation matrix on the **left**. The result is a new column vector:
 
 $$
-\mathbf{T} \\, \vec{r} = \vec{r}\\,' \implies \mathbf{T} \begin{bmatrix} a \\ b \\ c \end{bmatrix} = \begin{bmatrix} a' \\ b' \\ c' \end{bmatrix}
+\mathbf{T} \vec{r} = \vec{r}' \implies \mathbf{T} \begin{bmatrix} a \\ b \\ c \end{bmatrix} = \begin{bmatrix} a' \\ b' \\ c' \end{bmatrix}
 $$
 
 This convention is the most common in physics and engineering, where vectors are typically represented as column vectors and matrices act on them from the left.
@@ -688,8 +688,8 @@ $$
    \end{bmatrix}\\[1.0ex]
    &= \begin{bmatrix}
       1 & 0 & 0 \\
-      0 & \cos^2(\alpha) + \sin^2(\alpha) & -\cos(\alpha)\sin(\alpha) + \sin(\alpha)\cos(\alpha) \\
-      0 & -\sin(\alpha)\cos(\alpha) + \cos(\alpha)\sin(\alpha) & \cos^2(\alpha) + \sin^2(\alpha)
+      0 & 1 & -\cos(\alpha)\sin(\alpha) + \sin(\alpha)\cos(\alpha) \\
+      0 & -\sin(\alpha)\cos(\alpha) + \cos(\alpha)\sin(\alpha) & 1
    \end{bmatrix} \\[1.0ex]
    &= \begin{bmatrix}
       1 & 0 & 0 \\
@@ -699,6 +699,8 @@ $$
    \mathbf{R}_x(\alpha)^\text{T} \mathbf{R}_x(\alpha) &= \mathbf{I}
 \end{aligned}
 $$
+
+where we made use of the fact that $\cos^2(\alpha) + \sin^2(\alpha) = 1$ to simplify going from the first to second line.
 
 You can show that acting in the opposite order gives the same result. This shows that the transpose of this rotation matrix is, in fact, its inverse. This is true for all rotation and reflection matrices. 
 {% endcapture %}
