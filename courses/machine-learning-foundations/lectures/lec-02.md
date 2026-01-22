@@ -227,7 +227,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_5_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -299,7 +299,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_8_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -366,7 +366,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_11_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -420,7 +420,7 @@ There’s no single number that defines a “good” accuracy, and entirely depe
 | -------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | **< 60%**      | Usually poor — model not learning much beyond random guessing    | Complex data, unbalanced classes, or wrong model choice                      |
 | **60–70%**     | Barely acceptable, only “okay” for noisy or highly variable data | Social science / behavior prediction / subjective ratings                    |
-| **70–80%**     | Reasonably good for real-world data; often a solid baseline      | Customer churn, sentiment analysis, handwriting recognition                  |
+| **70–60%**     | Reasonably good for real-world data; often a solid baseline      | Customer churn, sentiment analysis, handwriting recognition                  |
 | **80–90%**     | Strong performance — model generalizes well                      | Many classical ML problems (e.g., species classification, medical diagnosis) |
 | **90–95%**     | Very strong — often “production-ready” if not overfitting        | Well-defined tasks with clean data (e.g., digit recognition, spam filters)   |
 | **>95%**       | Excellent — *or suspiciously perfect*                            | Only realistic when the problem is simple or the model is overfitting        |
@@ -667,7 +667,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_22_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -909,7 +909,7 @@ Accuracy: 0.956
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_29_1.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1041,7 +1041,7 @@ print(f"Cosine Distance = {cos_dist:.2f}")
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_35_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
     
 
@@ -1277,7 +1277,7 @@ Converged after 8 iterations.
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_40_1.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1378,7 +1378,7 @@ Converged after 11 iterations.
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_43_1.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1446,7 +1446,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_45_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;"> 
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;"> 
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1513,7 +1513,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_47_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1583,7 +1583,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_49_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1666,7 +1666,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_51_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1758,7 +1758,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_54_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1801,7 +1801,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_56_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -1914,7 +1914,7 @@ display(results_df)
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_59_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
 <div>
 <style scoped>
@@ -2073,7 +2073,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_61_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -2272,7 +2272,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_68_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -2345,7 +2345,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
 
@@ -2376,7 +2376,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_2.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -2588,7 +2588,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_73_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -2783,7 +2783,7 @@ print(f"Approx. Matched Accuracy: {cluster_acc:.3f}")
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_75_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
     
 
