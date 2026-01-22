@@ -760,6 +760,7 @@ $$
 **Calculate the Angular Momentum**
 
 The angular momentum $ \vec{L} $ is given by:
+
 $$
 \vec{L} = \mathbf{I} \vec{\omega} = \begin{pmatrix} 
 	I_{xx} & 0 & 0 \\
@@ -776,7 +777,9 @@ $$
 	I_{zz} \omega_z 
 \end{pmatrix}
 $$
+
 Substituting the values to get the angular momentum gives:
+
 $$
 \vec{L} = \begin{pmatrix} 
 	2 \cdot 1 \\
@@ -793,6 +796,7 @@ $$
 **Rotation Matrix (Orthogonal Matrix)**
 
 Suppose the body undergoes a rotation described by a rotation matrix $ \mathbf{R}(\theta) $. Let the rotation matrix be a simple 90-degree rotation about the $ z $-axis given by:
+
 $$
 \mathbf{R}_z(90^\circ) = \begin{pmatrix}
 	\cos 90^\circ & -\sin 90^\circ & 0 \\
@@ -846,6 +850,7 @@ $$
 $$
 
 We can now compute $ \vec{\omega} \times \vec{L} $ using matrix multiplication:
+
 $$
 \begin{aligned}
 \vec{\omega} \times \vec{L} &= [\vec{\omega}]_\times \vec{L}\\
@@ -875,9 +880,9 @@ $$
 \end{pmatrix}
 \end{aligned}
 $$
+ 
 
-
-
+ 
 
 
 
