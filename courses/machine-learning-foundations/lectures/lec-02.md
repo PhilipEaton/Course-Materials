@@ -8,16 +8,6 @@ nav_order: 2
 
 # Lecture 02: Instance-Based & Cluster-Based Learning  
 
-{% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
-
 ## Setup: Import Libraries
 
 Let's import the libraries and functions we will need for this lecture:
@@ -101,9 +91,9 @@ There are two main types of machine learning models: **supervised** and **unsupe
 The distinction lies in whether or not the algorithm is trained using *labeled* data — that is, whether it already knows the “right answers” during training.
 
 | Type | Goal | Examples | Data Has Labels? |
-|------|------|-----------|------------------|
-| **Supervised** | Learn to predict known outcomes from examples | Classification (e.g., k-NN, Logistic Regression, Decision Trees), Regression (e.g., Linear Regression) | ✅ Yes |
-| **Unsupervised** | Find structure or patterns hidden in the data | Clustering (e.g., k-Means), Dimensionality Reduction (e.g., PCA) | ❌ No |
+|------|------|-----------|:------------------:|
+| **Supervised** | Learn to predict known outcomes from examples | Classification (e.g., k-NN, Logistic Regression, Decision Trees), Regression (e.g., Linear Regression) | Yes |
+| **Unsupervised** | Find structure or patterns hidden in the data | Clustering (e.g., k-Means), Dimensionality Reduction (e.g., PCA) | No |
 
 
 
@@ -243,7 +233,7 @@ plt.show()
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>What would happen if we changed k from 5 to 1?</li>
       <li>Does the red star’s predicted class depend only on its closest points?</li>
@@ -446,19 +436,19 @@ There’s no single number that defines a “good” accuracy, and entirely depe
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</b>  
+<b style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
 Accuracy can make your model look better than it really is.  
 As a data scientist, it’s your responsibility to ensure that the metrics you report
 actually reflect the model’s performance and limitations.  
 <br><br>
-If <b>random guessing gives you 50%</b>, then <b>70% is a big win</b>.  <br>
-But <b>if guessing gives you 90%</b> (like in imbalanced data), then <b>92% is not impressive</b>.
+If <strong>random guessing gives you 50%</strong>, then <strong>70% is a big win</strong>.  <br>
+But <strong>if guessing gives you 90%</strong> (like in imbalanced data), then <strong>92% is not impressive</strong>.
 <br><br>
-Or, take for example, if <b>99 % of patients don’t have a disease you are sceening for</b>, 
-a model that always predicts “no disease” achieves <b>99 % accuracy</b>—but fails completely at detecting the people who are sick (loads of false negatives).
-When the event you’re predicting is rare, <b>accuracy alone can be misleading</b>.  
-That’s when metrics like <b>precision</b>, <b>recall</b>, and <b>F1-score</b> become essential.
+Or, take for example, if <strong>99 % of patients don’t have a disease you are sceening for</strong>, 
+a model that always predicts “no disease” achieves <strong>99 % accuracy</strong>—but fails completely at detecting the people who are sick (loads of false negatives).
+When the event you’re predicting is rare, <strong>accuracy alone can be misleading</strong>.  
+That’s when metrics like <strong>precision</strong>, <strong>recall</strong>, and <strong>F1-score</strong> become essential.
 </div>
 
 
@@ -483,7 +473,7 @@ We will need to do the following:
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Warning:</b> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means. We will discuss this today.
+<strong>Warning:</strong> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means. We will discuss this today.
 </div>
 
 
@@ -595,7 +585,7 @@ Notice our model's accuracy was much better than the baseline. This suggests our
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Key Takeaway:</b> 
+<strong>Key Takeaway:</strong> 
 
 The goal isn’t for the DummyClassifier to be “good” — it’s to remind you what “bad but honest” looks like.  If your trained model doesn’t perform better than one of these, your model hasn’t learned anything meaningful yet.
 </div>
@@ -609,9 +599,9 @@ The goal isn’t for the DummyClassifier to be “good” — it’s to remind y
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</b>  
+<b style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
-Always compare your machine learning model’s performance to a <b>baseline model</b>.
+Always compare your machine learning model’s performance to a <strong>baseline model</strong>.
 <br><br>
 Baselines help you confirm that your model is actually learning something meaningful.
 If your model doesn’t outperform a simple baseline, it’s a signal to:
@@ -683,7 +673,7 @@ plt.show()
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>Where does the accuracy begin to level off?</li>
       <li>Why does very small `k` sometimes perform worse on test data?</li>
@@ -921,14 +911,8 @@ Accuracy: 0.956
     
 
 
-<h3 style="
-    color: white;
-    background-color: #f4b942;
-    padding: 8px;
-    border-radius: 6px;
-">
-Cross-Validation: Measuring Generalization
-</h3>
+
+### Cross-Validation: Measuring Generalization
 
 A single train/test split might give us a lucky (or unlucky) result. To get a more stable measure of performance, we can use **cross-validation**.
 
@@ -1153,11 +1137,11 @@ df_results
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>Which metric produced the highest accuracy? </li>
-      <li>Why might <b>cosine distance</b> behave differently than <b>Euclidean</b>?</li>
-      <li>What kind of datasets would favor <b>Manhattan</b> distance?</li>
+      <li>Why might <strong>cosine distance</strong> behave differently than <strong>Euclidean</strong>?</li>
+      <li>What kind of datasets would favor <strong>Manhattan</strong> distance?</li>
     </ul>
 </div>
 
@@ -1293,7 +1277,7 @@ Converged after 8 iterations.
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Key Takeaways:</b> 
+<strong>Key Takeaways:</strong> 
 
 - Each iteration moves centroids toward the center of their assigned points.  
 - The algorithm stops when these movements become minimal.  
@@ -1682,14 +1666,14 @@ plt.show()
     padding: 12px;
     border-radius: 6px;
 ">
-<b style="color:#1b4965;">Professional Practice:</b>  
+<b style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
-Always <b>standardize or normalize your features</b> before using models that rely on distance, like k-NN or k-Means.  
+Always <strong>standardize or normalize your features</strong> before using models that rely on distance, like k-NN or k-Means.  
 <br><br>
 In real-world datasets, different features often have very different numeric ranges (e.g., “age” in years vs. “income” in dollars).  
 If you skip scaling, one feature can silently dominate the distance metric and distort your model’s understanding of similarity.  
 <br><br>
-<i>Tip:</i> In practice, use <code>StandardScaler</code> (for zero mean and unit variance) or <code>MinMaxScaler</code> (for values between 0 and 1) from <code>scikit-learn</code> before training.
+<em>Tip:</em> In practice, use <code>StandardScaler</code> (for zero mean and unit variance) or <code>MinMaxScaler</code> (for values between 0 and 1) from <code>scikit-learn</code> before training.
 </div>
 
 
@@ -1820,7 +1804,7 @@ The "elbow" point represents a good tradeoff: adding more clusters beyond this p
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>Where’s the “elbow” on your plot?</li>
       <li>Why does adding more clusters always reduce inertia?</li>
@@ -2090,7 +2074,7 @@ plt.show()
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>How would silhouette score change if we chose k=2 vs k=6?</li>
       <li>What does a low score suggest about our data’s structure?</li>
@@ -2199,7 +2183,7 @@ Adjusted Rand Index (vs. true labels): 0.409
     padding: 10px;
     border-radius: 5px;
 ">
-<b>Discussion:</b> 
+<strong>Discussion:</strong> 
     <ul>
       <li>Why is this metric not always possible for real-world data? </li>
       <li>What would it mean if ARI is close to 1?</li>
