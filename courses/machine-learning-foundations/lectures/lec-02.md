@@ -216,7 +216,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_5_0.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot titled “How k-NN Classifies a New Point (k=2).” The plot shows three colored clusters of training data points in a two-dimensional feature space labeled Feature 1 (horizontal axis) and Feature 2 (vertical axis). A red star marks a new data point near the center-left of the plot. Two nearby training points are highlighted with red circles to indicate the nearest neighbors used by the k-nearest neighbors algorithm. The new point is classified based on the labels of these closest neighbors."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -288,7 +288,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_8_0.png' | relative_url }}"
-  alt=""
+  alt="Decision boundary plot for a k-nearest neighbors classifier with k=5, showing three class regions in a two-dimensional feature space and a new point classified based on its location."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -355,7 +355,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_11_0.png' | relative_url }}"
-  alt=""
+  alt="Three-panel plot showing k-nearest neighbors decision boundaries for k = 1, 5, and 11, demonstrating how small k produces complex boundaries while larger k yields smoother, more generalized regions."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -656,7 +656,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_22_0.png' | relative_url }}"
-  alt=""
+  alt="Line plot titled “k-NN Elbow Method (Accuracy vs. Number of Neighbors).” The horizontal axis shows the number of neighbors k ranging from 1 to 20, and the vertical axis shows classification accuracy. Accuracy increases rapidly from low values at small k, peaks around k values between approximately 6 and 12, and then declines or fluctuates slightly for larger k. The plot illustrates how model performance depends on the choice of k, with intermediate values providing the best balance between underfitting and overfitting."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -898,7 +898,7 @@ Accuracy: 0.956
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_29_1.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix titled “k-NN Confusion Matrix” for a three-class classification problem with classes setosa, versicolor, and virginica. The horizontal axis shows predicted classes and the vertical axis shows actual classes. All 15 setosa samples are correctly classified as setosa, and all 15 versicolor samples are correctly classified as versicolor. Of the 15 virginica samples, 13 are correctly classified as virginica and 2 are misclassified as versicolor. This indicates strong overall performance with minor confusion between the versicolor and virginica classes."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1024,7 +1024,7 @@ print(f"Cosine Distance = {cos_dist:.2f}")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_35_0.png' | relative_url }}"
-  alt=""
+  alt="Illustration comparing Euclidean (straight-line) and Manhattan (grid-based) distances between two points in a two-dimensional feature space."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
     
@@ -1221,7 +1221,7 @@ Converged after 8 iterations.
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_40_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot titled “k-Means: Centroid Movement and Convergence.” Three clusters of gray data points are shown in a two-dimensional feature space labeled Feature 1 and Feature 2. Colored centroids are plotted with arrows indicating their movement across multiple iterations of the k-means algorithm. Each centroid moves from its initial position toward the center of its assigned cluster, illustrating how k-means iteratively updates centroid locations until convergence."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1322,7 +1322,7 @@ Converged after 11 iterations.
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_43_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot titled “k-Means: Centroid Movement and Convergence,” showing a later stage of the algorithm. Centroids are now clustered tightly near the centers of their respective groups, with very short movement arrows. This indicates that the centroids have largely stabilized and the k-means algorithm has nearly converged."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1390,7 +1390,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_45_0.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot titled “k-Means Decision Boundaries (Voronoi Regions).” The two-dimensional feature space is divided into three colored regions, each corresponding to the area closest to one centroid. Data points are colored by their assigned cluster, and red X symbols mark the centroid locations. The straight-line boundaries between regions illustrate how k-means assigns points based on nearest centroid distance."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;"> 
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1457,7 +1457,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_47_0.png' | relative_url }}"
-  alt=""
+  alt="Series of plots illustrating k-means clustering behavior, including centroid movement during training, Voronoi decision regions, and the effect of increasing the number of clusters k on how data are partitioned."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1527,7 +1527,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_49_0.png' | relative_url }}"
-  alt=""
+  alt="Four vertically stacked scatter plots titled “Effect of Random Initialization in k-Means,” each labeled with a different random seed (1, 2, 12, and 42). Each plot shows the same data points in a two-dimensional feature space with Feature 1 on the horizontal axis and Feature 2 on the vertical axis. Colored regions indicate k-means cluster assignments, and red X symbols mark the final centroid locations. The plots demonstrate that different random initializations can lead to different cluster boundaries and centroid positions, even when the number of clusters is the same."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1610,7 +1610,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_51_0.png' | relative_url }}"
-  alt=""
+  alt="Two stacked scatter plots titled “Why Feature Scaling Matters for Distance-Based Algorithms.” The top plot, labeled “Without Scaling,” shows three clusters in a feature space where Feature 2 has a much larger numerical range than Feature 1, causing distance calculations to be dominated by Feature 2. The bottom plot, labeled “With Scaling (Standardized Features),” shows the same data after standardization, with both features on comparable scales. Cluster shapes and centroid placement are more balanced after scaling, illustrating why scaling is important for distance-based methods like k-means."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1702,7 +1702,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_54_0.png' | relative_url }}"
-  alt=""
+  alt="Four vertically stacked scatter plots titled “How Changing k Affects k-Means Clustering and Inertia,” corresponding to k values of 2, 3, 4, and 5. Each plot shows clustered data points in a two-dimensional feature space, with centroids marked by X symbols and lines connecting points to their assigned centroid. As k increases, clusters become smaller and more numerous, and the reported inertia value decreases, illustrating the tradeoff between model complexity and compactness of clusters."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1745,7 +1745,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_56_0.png' | relative_url }}"
-  alt=""
+  alt="Line plot titled “Elbow Method for Optimal k.” The horizontal axis shows the number of clusters k, and the vertical axis shows inertia. Inertia decreases rapidly as k increases from 1 to about 3, then declines more slowly for larger values of k. The curve forms an “elbow” shape, suggesting that k around 3 or 4 provides a reasonable balance between cluster compactness and model complexity."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -1858,7 +1858,7 @@ display(results_df)
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_59_0.png' | relative_url }}"
-  alt=""
+  alt="The figure shows four scatter plots illustrating k-means clustering results for different numbers of clusters: k = 2, 3, 4, and 5. In each panel, data points are colored by their assigned cluster, and cluster centroids are marked with black “X” symbols. Dashed lines connect data points to their respective centroids, visually representing within-cluster distances (inertia). As k increases, clusters become smaller and more localized, inertia decreases, and cluster assignments become more granular. Each panel also reports the corresponding inertia and silhouette score, showing that silhouette score peaks at an intermediate k and declines as clusters become overly fragmented."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
 
@@ -1973,7 +1973,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_61_0.png' | relative_url }}"
-  alt=""
+  alt="The figure displays a dual-axis line plot comparing inertia and silhouette score as functions of the number of clusters k. The x-axis represents k (number of clusters). The left y-axis shows inertia, which decreases monotonically as k increases. The right y-axis shows silhouette score, which initially increases, reaches a maximum near k = 4, and then decreases. A vertical dashed line highlights k = 4 as a balanced choice that minimizes inertia while maintaining a high silhouette score."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -2172,7 +2172,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_68_0.png' | relative_url }}"
-  alt=""
+  alt="The top plot shows the final k-means clustering result using the selected optimal number of clusters (k = 4). Data points are colored by cluster membership, and centroids are marked with black “X” symbols. Clusters appear compact and well separated in the two-dimensional feature space, indicating good clustering structure. The title reports the selected k value and the corresponding silhouette score, reinforcing the justification for this choice. The bottom scatter plot shows k-means clustering applied to the Iris dataset using the first two standardized features. Each point represents a flower sample and is colored by its assigned cluster. The clusters partially overlap, especially between two of the species,illustrating that k-means does not perfectly recover true class labels when clusters are not well separated. The axes are labeled as standardized feature values."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -2245,7 +2245,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_0.png' | relative_url }}"
-  alt=""
+  alt="The figure displays a grid of grayscale images from the handwritten digits dataset. Each image shows a small, pixelated handwritten numeral between 0 and 9. Above each image, a label indicates the true digit class. The examples highlight variability in handwriting style, thickness, and orientation, demonstrating the challenge of clustering or classifying image-based data."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -2276,7 +2276,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_2.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot showing where the letter are located in a 2 dimensional projection of the 64 dimensional space."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -2488,7 +2488,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_73_0.png' | relative_url }}"
-  alt=""
+  alt="Three stacked scatter plots on the same two-moon dataset comparing methods. Top: k-NN classification (k=5) shows a curved decision boundary that follows the crescent-shaped structure of the data. Middle: k-means clustering (k=2) shows a straight partition with two centroids marked, splitting the moons incorrectly because it assumes roughly spherical clusters. Bottom: DBSCAN clustering groups points into two curved clusters that match the moon shapes more closely, illustrating a case where k-means is a poor fit but density-based clustering works well."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
@@ -2683,7 +2683,7 @@ print(f"Approx. Matched Accuracy: {cluster_acc:.3f}")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_75_0.png' | relative_url }}"
-  alt=""
+  alt="Six-panel figure comparing k-NN and k-means after a PCA projection. Top-left: k-NN decision regions with curved boundaries that separate the visible groups. Top-right: k-means Voronoi-style cluster regions with centroids marked, producing more rigid partitions. Middle-left: bar chart comparing scores, where k-NN accuracy is highest, k-means accuracy is lower, and k-means agreement with true labels (ARI) is lowest. Middle-right: line plot of inertia and silhouette versus k; inertia decreases as k increases while silhouette peaks at a smaller k, indicating a tradeoff in choosing k. Bottom-left: scatter plot of the “best” k-means clustering in PCA space with centroids marked. Bottom-right: scatter plot of true class labels in the same PCA space, showing that k-means clusters only partially match the true labeled structure."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
     
