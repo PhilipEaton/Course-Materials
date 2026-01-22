@@ -126,7 +126,13 @@ data_original = sns.load_dataset("titanic").dropna(subset=['survived'])
    - I want to know that you know what the block of code is doing!
 		- I am not concerned with what each line of code does!
    - Example:
-      
+      {% capture ex %}
+      ```python
+      # Split the data into training and test sets
+      X_train, X_test, y_train, y_test = train_test_split(...)
+      ```
+      {% endcapture %}
+      {% include codeinput.html content=ex %}
 
 5. **Summarize your results**  
    - Write a short report (shouldn't need more than 600 words for this) on the following:
