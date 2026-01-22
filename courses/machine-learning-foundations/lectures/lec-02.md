@@ -1066,14 +1066,6 @@ The *weighted* version uses the inverse of distance:
 > closer neighbors get more “voting power.”
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Compare k-NN performance using different distance metrics ---
 
@@ -1093,10 +1085,10 @@ df_results = pd.DataFrame(results, columns=["Distance Metric", "Accuracy"])
 df_results
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
-
-
+{% capture ex %}
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1143,6 +1135,14 @@ df_results
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+
+
 
 
 
@@ -1203,14 +1203,6 @@ That’s it!
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Create a simple 2D dataset ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1274,8 +1266,11 @@ ax.set_ylabel("Feature 2")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Converged after 8 iterations.
+{% capture ex %}
+Converged after 8 iterations.
 
 
 
@@ -1283,6 +1278,11 @@ plt.show()
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_40_1.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+    
 
     
 
@@ -1304,14 +1304,6 @@ plt.show()
 ## Problems can and do arise in unsupervised learning! 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Create a simple 2D dataset ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1375,8 +1367,11 @@ ax.set_ylabel("Feature 2")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Converged after 11 iterations.
+{% capture ex %}
+Converged after 11 iterations.
 
 
 
@@ -1384,6 +1379,11 @@ plt.show()
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_43_1.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+    
 
     
 
@@ -1404,14 +1404,6 @@ Notice how each centroid’s region is separated by straight-line boundaries —
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=300, centers=3, cluster_std=1.0, random_state=42)
@@ -1447,11 +1439,19 @@ plt.legend()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_45_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;"> 
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+   
     
 
 
@@ -1469,14 +1469,6 @@ We’ll later use the **Elbow Method** to help identify a reasonable k value qua
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Generate sample data ---
 X, _ = make_blobs(n_samples=300, centers=3, cluster_std=1.0, random_state=42)
@@ -1514,12 +1506,20 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_47_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -1541,14 +1541,6 @@ Modern implementations (like scikit-learn’s) handle this by running the algori
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Different random seeds to illustrate initialization differences ---
 seeds = [1, 2, 12, 42]
@@ -1584,12 +1576,20 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_49_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">    
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -1613,14 +1613,6 @@ In the following example:
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Create sample data ---
 # Feature 1: small numeric range
@@ -1667,12 +1659,20 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_51_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -1712,14 +1712,6 @@ A **lower inertia** means the clusters are more compact — the points fit their
 - Longer lines → looser clusters → higher inertia.
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=150, centers=3, cluster_std=0.9, random_state=42)
@@ -1759,12 +1751,20 @@ fig.suptitle("How Changing k Affects k-Means Clustering and Inertia", fontsize=1
 plt.tight_layout()
 plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_54_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -1778,14 +1778,6 @@ Let's plot the Inertia as a function of k:
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 inertias = []
 k_values = range(1, 10)
@@ -1802,12 +1794,20 @@ plt.ylabel("Inertia")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_56_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -1850,14 +1850,6 @@ The score ranges from **–1 to 1**:
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
@@ -1915,15 +1907,14 @@ import pandas as pd
 results_df = pd.DataFrame(results, columns=["k", "Inertia", "Silhouette"])
 display(results_df)
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_59_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
-    
-
-
 
 <div>
 <style scoped>
@@ -1976,6 +1967,17 @@ display(results_df)
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
+    
+
+
+
+
 
 
 
@@ -1991,14 +1993,6 @@ Let's plot the Silhouette as a function of k:
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Generate example data ---
 X, _ = make_blobs(n_samples=400, centers=5, cluster_std=1.0, random_state=42)
@@ -2072,12 +2066,20 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_61_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -2171,14 +2173,6 @@ In short:
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # Compare k-Means clusters to actual labels (if available)
 clusters = kmeans.fit_predict(X_train)
@@ -2186,8 +2180,16 @@ ari = adjusted_rand_score(y_train, clusters)
 print(f"Adjusted Rand Index (vs. true labels): {ari:.3f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-    Adjusted Rand Index (vs. true labels): 0.409
+{% capture ex %}
+Adjusted Rand Index (vs. true labels): 0.409
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+    
 
 
 <!-- Reflection -->
@@ -2235,14 +2237,6 @@ We will not discuss PCA in any greater detail since the mathematics behind it ge
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # --- Load dataset ---
 iris = load_iris(as_frame=True)
@@ -2271,24 +2265,24 @@ plt.ylabel("Standardized Feature 2")
 plt.show()
 
 ```
-
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec02/output_68_0.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
-    
-
-
-{% capture ex %}
-
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
 {% capture ex %}
-
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec02/output_68_0.png' | relative_url }}"
+  alt=""
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
+
+
+
+
+    
+
+
+{% capture ex %}
 ```python
 # === Exploring the Handwritten Digits Dataset ===
 from sklearn.datasets import load_digits
@@ -2344,8 +2338,10 @@ plt.show()
 
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_0.png' | relative_url }}"
   alt=""
@@ -2381,6 +2377,12 @@ plt.show()
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_69_2.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
@@ -2495,14 +2497,6 @@ The basic algorithms you’ve learned this week are only the *starting points* �
 
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # =====================================================
 # Demo: When k-Means Fails (Non-Spherical Clusters)
@@ -2587,26 +2581,26 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_73_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:80%;">
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
     
 
 
 ## One-Cell Code for the day
 
 {% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ```python
 # =====================================================
 # One-Cell: k-NN & k-Means on the Iris Dataset
@@ -2782,8 +2776,10 @@ print(f"Adjusted Rand Index (vs. true labels): {ari:.3f}")
 print(f"Approx. Matched Accuracy: {cluster_acc:.3f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
-
+{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_75_0.png' | relative_url }}"
   alt=""
@@ -2810,6 +2806,12 @@ print(f"Approx. Matched Accuracy: {cluster_acc:.3f}")
     Silhouette Score: 0.486
     Adjusted Rand Index (vs. true labels): 0.635
     Approx. Matched Accuracy: 0.842
+{% endcapture %}
+{% include codeoutput.html content=ex %}
+
+
+
+
 
 
 
