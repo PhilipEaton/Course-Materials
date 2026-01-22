@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: jupyternotebook
 title: Machine Learning Foundations – Homework 01
 course_home: /courses/machine-learning-foundations/
 nav_section: homework
