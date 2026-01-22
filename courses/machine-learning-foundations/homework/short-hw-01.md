@@ -6,21 +6,6 @@ nav_section: homework
 nav_order: 1
 ---
 
-
-{% capture ex %}
-```python
-
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
-
-
-
 # Project 1: Re-engineering a Machine Learning Workflow
 
 
@@ -294,21 +279,13 @@ df = data_original.frame  # includes both features and the 'target' column
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
-
-
-
-
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}
 ---
+
+
+
+
+
+
 
 ### Step 1b: Clean and Prepare the Data
 
@@ -325,29 +302,44 @@ Now that your dataset is loaded into the variable `df`, we need to **inspect** i
 Run these quick inspections and answer the questions below.
 
 
-
+{% capture ex %}
 ```python
 # Peek at the first rows (what columns exist? what do values look like?)
 df.head()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
 
+{% capture ex %}
 ```python
 # Data types and missing values
 df.info()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
 
+{% capture ex %}
 ```python
 # How many unique values in each column? (helps spot categorical columns)
 df.nunique().sort_values()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
 
 
+{% capture ex %}
 ```python
 # Optional: look at the unique values of any column you suspect is categorical
 # Example: df['sex'].unique()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+
+
+
 
 #### Questions to consider
 
@@ -383,12 +375,17 @@ You will apply this plan in the next step when you define X and y, perform any e
 
 For now, let's just drop any rows with incomplete data (this answers one question above :D):
 
-
+{% capture ex %}
 ```python
 # Add a comment explaining what the next section of code does
 df = df.dropna()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
+
+
 
 ---
 
@@ -421,20 +418,26 @@ Below is what you’ve see  from the in class demo (Lecture 01). Read it careful
 
 **Remember**: The data is stored in a variable called `df`.
 
-
+{% capture ex %}
 ```python
 # This is a slick function that will encode all of the non-numerical columns for you
 df_encoded = pd.get_dummies(df, drop_first=True)
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 And we can inspect the dataframe to make sure everything was updated correctly.
 
-
+{% capture ex %}
 ```python
 # Display the first few rows again to confirm our cleaned and encoded data.
 df_encoded.head()
 # Notice the additional encoded columns at the end.
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 
 ---
@@ -462,7 +465,7 @@ Use your dataset inspection from Steps 1b and 1c to decide:
 
 #### The code:
 
-
+{% capture ex %}
 ```python
 # Add a comment explaining what the next section of code does
 
@@ -472,6 +475,9 @@ X = df_encoded.drop(columns = ['species_enc']) # <- drops the "target" column.
 # Add a comment explaining what the next section of code does
 y = df_encoded['species_enc']
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 
 ---
@@ -489,7 +495,7 @@ This separation helps prevent and detect **overfitting**; when a model memorizes
 #### The Code:
 
 
-
+{% capture ex %}
 ```python
 # Add a comment explaining what the next section of code does
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -501,6 +507,9 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 ---
 
@@ -523,7 +532,7 @@ Before modeling, make a few simple plots to **see** structure in your data.
 #### The Code:
 
 
-
+{% capture ex %}
 ```python
 # Add a comment explaining what the next section of code does
 sns.pairplot(df_encoded,
@@ -533,6 +542,9 @@ plt.suptitle("Penguin Feature Relationships", y=1.02) # <- Update this!
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 ---
 
@@ -557,7 +569,7 @@ Each model will:
 #### The Code:
 
 
-
+{% capture ex %}
 ```python
 # Add a comment explaining what the next section of code does
 models = {
@@ -569,10 +581,13 @@ models = {
 }
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 #### and we can run and test the accuracy of our models using this:
 
-
+{% capture ex %}
 ```python
 # Create an empty list where we’ll store each model’s name and accuracy score.
 results = []
@@ -606,10 +621,13 @@ for name, model in models.items():
     print("\n")
     print("\n")
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 #### Please run the next section of code to define the helper function for plotting.
 
-
+{% capture ex %}
 ```python
 # ===============================================================
 # Helper Function: Visualize 2D Decision Boundaries
@@ -660,10 +678,16 @@ def plot_model_boundaries(model, model_name, X_scaled, y, cmap="viridis"):
     plt.ylabel("Principal Component 2")
     plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 #### Run this set of code to see the decision boundaries. 
 
+{% capture ex %}
 
+{% endcapture %}
+{% include codeinput.html content=ex %}
 ```python
 plot_model_boundaries(KNeighborsClassifier(n_neighbors=5), "k-Nearest Neighbors", X_train_scaled, y_train)
 plot_model_boundaries(LogisticRegression(max_iter=1000), "Logistic Regression", X_train_scaled, y_train)
@@ -680,6 +704,7 @@ plot_model_boundaries(RandomForestClassifier(random_state=42), "Random Forest", 
 
 Let’s visualize the accuracy of each model side by side.
 
+{% capture ex %}
 ```python
 # Turn our list of results into a small DataFrame for easy plotting
 results_df = pd.DataFrame(results, columns=["Model", "Accuracy"])
@@ -704,6 +729,9 @@ plt.xticks(rotation=30, ha='right')
 plt.tight_layout()  # Adjusts spacing so labels and titles fit nicely
 plt.show()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 ---
 
@@ -715,6 +743,7 @@ Decision trees can be visualized to show how the model splits data step by step.
 
 Here’s a simplified version of our trained tree.
 
+{% capture ex %}
 ```python
 # Create a new, larger figure so the tree fits clearly on the screen
 plt.figure(figsize=(15, 8))
@@ -737,6 +766,9 @@ plt.title("Decision Tree Visualization")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 
 ---
@@ -749,6 +781,7 @@ We’ll use:
 - **k-Means Clustering** to form 3 clusters  
 - **PCA** (Principal Component Analysis) to reduce 6 dimensions into 2 for visualization
 
+{% capture ex %}
 ```python
 # Create a KMeans clustering model.
 # - n_clusters=3 tells the algorithm to group data into 3 clusters (we expect 3 penguin species)
@@ -779,6 +812,9 @@ plt.show()
 
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
 
 
 ---
@@ -828,7 +864,7 @@ Per the syllabus: only the **requested deliverables** should appear when this ce
 This means the following cell should **not have** code like `df.head()`. 
 
 
-
+{% capture ex %}
 ```python
 # --- Imports & config ---
 
@@ -865,3 +901,6 @@ This means the following cell should **not have** code like `df.head()`.
 # Your code
 #   here
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}
+
