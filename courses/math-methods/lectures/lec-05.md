@@ -15,9 +15,6 @@ This lecture is going to be one part review, one part fitting in new theory that
 Let's begin with the review. Specifically, reminding ourselves about using matrices as operators, like rotations, reflections, and scaling.
 
 
-
-
-
 ## Review of Matrices as Coordinate Transformations/Operators
 
 First, let’s review what we know about matrices when they are used to represent coordinate transformations. Matrices used in this context are often referred to as *operators*. However, it’s important to note that the term *operator* is much broader than this. 
