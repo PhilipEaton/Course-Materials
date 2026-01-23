@@ -852,22 +852,41 @@ A **confusion matrix** gives us a detailed breakdown:
 
 Each row represents the **true class**, and each column represents the **predicted class**.
 
-- ✅ A perfect classifier would have all counts along the diagonal.  
-- ❌ Off-diagonal entries indicate *misclassifications*.
+- Good: A perfect classifier would have all counts along the diagonal.  
+- Bad: Off-diagonal entries indicate *misclassifications*.
 
 There are 2 types of misclassifications:
  
 - **False Positives (aka Type I Error)**: The model predicts the positive class when the true label is actually negative.
-  > Example: Predicting a patient has a disease when they actually don’t.  
-  > Example: Sample is predicted as begin Class A when it is actually Class B. 
+  > Example: Predicting a patient **has** a disease when they actually don’t.  
+  > Example: Sample is predicted as **being** a Pig when it is actually a Cow. 
 - **False Negatives (aka Type II Error)**: The model predicts the negative class when the true label is actually positive.
-  > Example: Predicting a patient doesn’t have a disease when they actually do.  
-  > Example: Sample is predicted as begin Class B when it is actually Class A. 
+  > Example: Predicting a patient **doesn’t** have a disease when they actually do.  
+  > Example: Sample was a Cow, but has been clasified as a Pig.
 
 |               | Predicted Yes Disease | Predicted No Disease |
 |---------------|------------------|------------------|
 | **Actual Yes Disease**  | True Positive    | False Negative   |
 | **Actual No Disease**  | False Positive   | True Negative    |
+
+|               | Predicted Yes Pig | Predicted No Pig (a Cow) |
+|---------------|------------------|------------------|
+| **Actual Yes Pig**  | True Positive    | False Negative   |
+| **Actual No Pig (a Cow)**  | False Positive   | True Negative    |
+
+
+This comes down to how you frame the question. 
+- If we are intested in if something is a Pig, then:
+    - False Positive: Sample is not a Pig (it is a Cow), but has been predicted as being a Pig.
+    - False Negative: Sample is a Pig, but has been predicted as being not a Pig (a Cow).
+- If we are intested in if something is a Cow, then:
+    - False Positive: Sample is not a Cow (it is a Pig), but has been predicted as being a Cow.
+    - False Negative: Sample is a Cow, but has been predicted as being not a Cow (a Pig).
+
+### Let's do it. 
+
+Let’s visualize the confusion matrix for our k-NN model of the iris flowers.
+
 
 
 #### Let's do it. 
@@ -2375,28 +2394,6 @@ No model is perfect — both **k-NN** and **k-Means** are powerful in the right 
 - Works only with **numeric features**; categorical variables must be encoded first.
 
 
-
-## Variants and Extensions to Explore on your Own
-
-The basic algorithms you’ve learned this week are only the *starting points* — real-world ML expands them in creative ways.
-
-### Variants of k-NN
-- **Weighted k-NN:** closer neighbors count more heavily in the vote.
-- **Distance metrics:** beyond Euclidean — Manhattan, Minkowski, cosine, etc.
-- **Dimensionality reduction + k-NN:** PCA or t-SNE before classification to reduce noise and computation.
-
-### Variants of k-Means
-- **k-Medoids (PAM):** uses actual data points as cluster centers; more robust to outliers.
-- **Mini-Batch k-Means:** faster approximation for very large datasets.
-- **Fuzzy c-Means:** allows points to belong partially to multiple clusters (soft clustering).
-- **Gaussian Mixture Models (GMMs):** assume clusters follow Gaussian distributions instead of hard boundaries.
-
-### Alternatives to Explore Later
-- **DBSCAN:** finds clusters of arbitrary shape; automatically detects outliers.
-- **Hierarchical Clustering:** builds a tree (dendrogram) of clusters without pre-selecting k.
-- **Spectral Clustering:** uses graph theory to handle complex, non-spherical structures.
-
-
 {% capture ex %}
 ```python
 # =====================================================
@@ -2492,6 +2489,29 @@ plt.show()
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}
+
+
+
+
+## Variants and Extensions to Explore on your Own
+
+The basic algorithms you’ve learned this week are only the *starting points* — real-world ML expands them in creative ways.
+
+### Variants of k-NN
+- **Weighted k-NN:** closer neighbors count more heavily in the vote.
+- **Distance metrics:** beyond Euclidean — Manhattan, Minkowski, cosine, etc.
+- **Dimensionality reduction + k-NN:** PCA or t-SNE before classification to reduce noise and computation.
+
+### Variants of k-Means
+- **k-Medoids (PAM):** uses actual data points as cluster centers; more robust to outliers.
+- **Mini-Batch k-Means:** faster approximation for very large datasets.
+- **Fuzzy c-Means:** allows points to belong partially to multiple clusters (soft clustering).
+- **Gaussian Mixture Models (GMMs):** assume clusters follow Gaussian distributions instead of hard boundaries.
+
+### Alternatives to Explore Later
+- **DBSCAN:** finds clusters of arbitrary shape; automatically detects outliers.
+- **Hierarchical Clustering:** builds a tree (dendrogram) of clusters without pre-selecting k.
+- **Spectral Clustering:** uses graph theory to handle complex, non-spherical structures.
 
 
 
