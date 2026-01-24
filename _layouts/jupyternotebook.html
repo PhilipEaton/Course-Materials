@@ -409,6 +409,19 @@
         font-size: 7pt;
       }
 
+      /* Allow code blocks to break across pages */
+      pre, code, pre code {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+
+      /* Ensure long lines wrap instead of running off the page */
+      pre {
+        white-space: pre-wrap !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+      }
+
       pre {
         margin: 8pt 0;
         padding: 6pt 8pt;
