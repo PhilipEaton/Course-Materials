@@ -82,93 +82,128 @@ By the end of this session, you will be able to:
 
 ---
 
-
 ## Supervised vs. Unsupervised Learning
 
+Machine learning models come in two broad categories: **supervised** and **unsupervised**.
 
-There are two main types of machine learning models: **supervised** and **unsupervised**.  
-
-The distinction lies in whether or not the algorithm is trained using *labeled* data — that is, whether it already knows the “right answers” during training.
+The key distinction is whether the algorithm is trained using **labeled data** or not. In other words, does the model learn by being shown the “right answers,” or does it infer structure on its own by examining how the features relate to one another?
 
 | Type | Goal | Examples | Data Has Labels? |
-|------|------|-----------|:------------------:|
-| **Supervised** | Learn to predict known outcomes from examples | Classification (e.g., k-NN, Logistic Regression, Decision Trees), Regression (e.g., Linear Regression) | Yes |
-| **Unsupervised** | Find structure or patterns hidden in the data | Clustering (e.g., k-Means), Dimensionality Reduction (e.g., PCA) | No |
+|------|------|----------|:----------------:|
+| **Supervised** | Predict outcomes based on known examples | Classification (e.g., k-NN, Logistic Regression, Decision Trees), Regression (e.g., Linear Regression) | Yes |
+| **Unsupervised** | Discover structure or patterns in the data | Clustering (e.g., k-Means), Dimensionality Reduction (e.g., PCA) | No |
+
+
+
 
 
 
 ### Supervised Learning
 
-In supervised learning, the model is given input data **and** the corresponding correct answers (labels). 
+In supervised learning, the model is given input data **along with the correct answers** (called *targets* or *labels*).
 
-It learns to map inputs → outputs by finding patterns that link the features to the labels.  
+The model learns a mapping from features to labels/targets by identifying patterns that connect them. Different models look for different kinds of patterns, which is why multiple supervised approaches exist.
 
-Think of it as **teaching by example**:  
-> You show the model hundreds of penguins with known species labels, and it learns to predict the species for new, unseen penguins.
+Think of it as **teaching by example**:
 
-Once trained, we evaluate how well it generalizes to new data using metrics like accuracy, precision, or recall.
+> You show the model hundreds of penguins with known species labels, and it learns how to predict the species of a new, unseen penguin.
+
+After training, we evaluate how well the model **generalizes to new data** using metrics such as **accuracy**, **precision**, and **recall**.
+
+
 
 
 
 
 ### Unsupervised Learning
 
-In unsupervised learning, there are **no labels**.  
+In unsupervised learning, there are **no labels**. The model explores the data **on its own**, searching for patterns, relationships, or groupings.
 
-The model explores the data **on its own**, searching for patterns, relationships, or groupings.  
+As you may have guessed, different unsupervised models are sensitive to different types of groupings. For exaple, fome look for clusters based on distance, others on density, and still others on correlations between the features.
 
-Think of it as **exploration without guidance**:  
-> You give the model penguin measurements with no species information, and it tries to group similar penguins together based on their features alone.
+Think of it as **exploration without guidance**:
 
-The goal isn’t to predict a known outcome but to *discover structure* that might not be obvious — such as clusters, correlations, or underlying trends.
+> You give the model penguin measurements with no species information, and it groups similar penguins together based only on their features.
+
+The goal is **not prediction**, but **discovery**. Unsupervised learning helps reveal structure that may not be obvious, such as clusters, correlations, or trends in high-dimensional data. 
+
+Since each feature represents a new dimension, real datasets often live in spaces with dozens or even hundreds of dimensions. Humans cannot visualize this directly, but machine learning models (with computers and a bit of math) can.
+
+
+
 
 
 
 
 ### In Practice
 
-Most real-world problems start with **unsupervised exploration** (to understand and clean the data) and move toward **supervised learning** (to build predictive models once labels are available).
+Most real-world workflows begin with **exploration** to understand and clean the data. From there, you would move toward:
+
+- **Supervised learning**, if labels are available and prediction is the goal, or
+- **Unsupervised learning**, if you want to uncover hidden structure or patterns.
+
+Often, both approaches are used together.
 
 
-### Conceptual Link
-- **k-NN** is supervised, meaning we need ***labeled*** data to train our model. These models then apply new labels to data by comparing them to our known ones.
-- **k-Means** is unsupervised, meaning we can use ***unlabeled*** data t otrain out model. The model ***discovers*** groups and "invents" labels for them.
-    - You, as the human operator, have to check that the groups are meaningful and then given them a name.
+
+
+
+
+### Today
+
+- **k-NN** is a **supervised** model. It assigns labels to new data points by comparing them to other "near by" labeled examples.
+- **k-Means** is an **unsupervised** model. It discovers groups by minimizing distances between both data points and clusters.
+  - You, as the human analyst, must decide whether the resulting groups are meaningful and how to interpret or name them.
+
+
+
+
+
+
 
 
 
 
 ## What Is k-Nearest Neighbor Modeling?
 
-k-Nearest Neighbors (k-NN) is one of the simplest and most intuitive machine learning algorithms.
-
-It works on a simple idea:
+k-Nearest Neighbors (k-NN) is one of the simplest and most intuitive machine learning algorithms. It works on a simple idea:
 
 > **“To predict something about a new data point, look at its closest examples.”**
 
+That is, 
+
 > **“Birds of a feather flock together (in their features).”**
 
-That’s it! There’s no complicated training. The model *stores* the data and makes predictions by comparing distances.
+That’s it! There’s no complicated training. No crazy math. Nothing. Just distances and cmparing with neighbors. 
+
+
+
+
+
+
 
 
 ### The Basic Process
 
-1. **Pick a number of neighbors** \(k\) (for example, 3 or 5).  
-2. **Find the k closest points** in the training data to your new point.  
+1. **Pick a number of neighbors** $k$ (for example, 3 or 5).  
+2. **Find the $k$ closest points** in the training data to your new point.  
 3. **Vote!**
-   - For classification → the new point takes the *most common* class among its neighbors.
-   - For regression → the new point takes the *average* value of its neighbors.  
-4. That’s it — nothing coplicated, just proximity.
+   - For classification with labels → the new point takes the *most common* class among its neighbors.
+   - For regression with numbers → the new point takes the *average* value of its neighbors.  
+4. ... Profit!
+
+
+
 
 
 ### What “Learning” Means Here
 k-NN doesn’t have *learned parameters* like slope in linear regression or transformers in neural networks.
 
-It simply **remembers** the data and uses it for comparison later.
+It **stores** the trianing data and uses it for comparison later. 
 
 This is why we call it an **instance-based** or **lazy** learner:
-- *Instance-based* → it predicts based on nearby examples (instances)).  
-- *Lazy* → it doesn’t build a model until you ask it to make a prediction.
+- **Instance-based**: it predicts based on nearby examples (instances).  
+- **Lazy**: it doesn’t build a model until you ask it to make a prediction.
 
 
 
@@ -176,7 +211,7 @@ This is why we call it an **instance-based** or **lazy** learner:
 {% capture ex %}
 ```python
 # HOW MANY NEIBHBORS?
-num_neighbors = 2
+num_neighbors = 3
 
 # WHERE IS THE NEW POINT
 x_new = -2
@@ -186,8 +221,8 @@ y_new = -2.5
 X, y = make_blobs(n_samples=100, centers=3, random_state=2, cluster_std=1.2)
 
 # Create a k-NN classifier and fit
-knn = KNeighborsClassifier(n_neighbors = num_neighbors)
-knn.fit(X, y)
+knn = KNeighborsClassifier(n_neighbors = num_neighbors) # Open the model
+knn.fit(X, y)                                           # "Train" the model
 
 # New sample to classify
 new_point = np.array([[x_new, y_new]])
@@ -235,9 +270,9 @@ plt.show()
 ">
 <strong>Discussion:</strong> 
     <ul>
-      <li>What would happen if we changed k from 5 to 1?</li>
-      <li>Does the red star’s predicted class depend only on its closest points?</li>
-      <li>What if we added a noisy point nearby — how might that change the vote?</li>
+      <li>What would happen if we changed `k` from 5 to 1?</li>
+      <li>Does the new point's (the red star) predicted class depend only on its closest points?</li>
+      <li>What if we added a noisy point(s) nearby, how might that change the vote?</li>
     </ul>
 </div>
 
@@ -245,11 +280,14 @@ plt.show()
 
 ### Decision Boundaries
 
-When we train a **classification model** like **k-NN**, we’re teaching the computer how to *divide* the feature space into regions that correspond to different categories (or "classes").  
+When we train a **classification model** like **k-NN**, we’re teaching the computer how to *divide* the feature space into regions that correspond to different categories (or “labels” or “classes” — yes, there are a lot of words that all mean basically the same thing. Which one people use is often context-dependent, and no one is especially strict about it).
 
-A **decision boundary** is a colored plot that separates these decision regions. One regions could correspond to Option 1 and another to Option 2.
+A **decision boundary** is a curve (a line or surface) in feature space that separates these regions. On one side of the boundary, points are predicted to belong to one category; on the other side, they’re predicted to belong to a different category.
 
-For example, if we have the three groups from the previous example, then the k_NN decision boundaries would look something like:
+In two dimensions, we can draw these boundaries explicitly. In higher dimensions, they still exist, even if we can’t easily visualize them.
+
+For example, if we take the three groups from the previous example, then the `k-NN` decision boundaries might look something like the plots shown below.
+
 
 
 {% capture ex %}
@@ -298,36 +336,56 @@ plt.show()
  
 
 
-#### What Is a Decision Boundary?
-A **decision boundary** is the “border” where a model changes its prediction from one class to another.  
-
-Every point on one side of the boundary will be predicted as one class; points on the other side belong to a different class.
-
-The decision boundary naturally forms wherever the votes change from one class to another.
 
 
 #### Why Visualize Decision Boundaries?
-Visualizing decision boundaries helps us **see how a model thinks**:
+
+Visualizing decision boundaries helps us **see how a model "thinks"**:
 
 - It shows *how complex* or *simple* a model’s decision rules are.
+    - Simple straight lines versus complex curves that wind around in odd ways.
 - It reveals where *confusion or overlap* happens between classes.
-- It helps us spot *overfitting* (boundaries that are too wiggly and specific to the training data).
+    - Where our model is not going to work well.
+- It helps us spot *overfitting*! 
+    - Boundaries that are too complicated, wiggly and jittery, may be hypertuned to the training data. Not good!
+
+
+
+
 
 
 #### What to Look For
 When you plot the decision boundaries:
-1. **Smoothness:** Do the boundaries look too jagged? That may mean overfitting, which is not good.
-2. **Separation:** Are the classes clearly separated? That suggests good model performance.
+1. **Smoothness:** Do the boundaries look too jagged? 
+    - That may mean overfitting, which is not good.
+2. **Separation:** Are the classes clearly separated? 
+    - That suggests good model performance.
 3. **Misclassified points:** Are there training points on the “wrong” side of the line?
 4. **Scalability:** Would the same boundary make sense if new data were added?
+    - This takes a bit of domain knowledge.
 
 
-#### Example: k-NN Decision Boundaries for increasing k
-In **k-NN**, each region in the plot represents the predicted class for that area of feature space.  
 
-The boundaries are determined by *distances* to the training points:
-- A small value of **k** → very detailed, wiggly boundaries (possibly overfitting).
-- A large value of **k** → smoother, simpler boundaries (possibly underfitting).
+
+
+
+
+#### Example: k-NN Decision Boundaries for Increasing k
+
+In **k-NN**, each region in the plot represents the class the model would predict for that area of feature space.
+
+As we’ve discussed, these boundaries are determined entirely by **distances** to the training points. Changing the value of `k` changes how much influence individual neighbors have:
+
+- A **small value** of `k`: very detailed and very sensitive to individual data points.  
+  - Produces highly irregular, “wiggly” decision boundaries and is prone to **overfitting**.
+
+- A **large value** of `k`: much smoother and far less sensitive to individual neighbors.  
+  - Produces simple decision boundaries and can **underfit** the data.
+
+- A **medium value** of `k`: often the **sweet spot**.  
+  - Common choices are somewhere between about 5 and 12 (sometimes a bit higher), depending on the size and structure of the training data.
+
+We’ll discuss how to choose a good `k` in a bit. First need to talk about *accuracy*.
 
 {% capture ex %}
 ```python
@@ -368,65 +426,84 @@ plt.show()
 
 
 
-In a bit, we’ll discuss how to choose a good `k`, but to do that we first need to talk about *accuracy*.
-
-
-
 ## Evaluating Model Performance
-
-
 
 ###  Model Accuracy
 
-When we train a machine learning model, we need a way to measure **how well it performs** — that’s where **accuracy** comes in.
+When we train a machine learning model, we need a way to measure **how well it performs**. That’s where **accuracy** comes in.
 
 
 #### What Accuracy Means
-Accuracy measures the **proportion of correct predictions** the model makes out of all predictions.
 
-> You train the model on your training set, and get the accuracy of the model's predictions by applying it to the test set.
+Accuracy measures the **proportion of correct predictions** the trained model makes on the test set. You can think of this as the score, as a percentage, the model got on the test. It did its trianing montage on the trianing data. How well did it do on the test? That is the accuracy.
 
-For instance, suppose your model correctly predicts 90 out of the 100 data points in your test set. The accuracy of the model in that test set would be:
+> You train the model on your training set, and 
+> you get the accuracy of the model's predictions by applying it to the test set.
+
+Suppose your model correctly predicts 90 out of the 100 data points in your test set. The accuracy of the model in that test set would be:
 
 $$
-\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Predictions}} = \frac{90}{100} = 0.90
+\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Size of Test Set}} = \frac{90}{100} = 0.90
 $$
 
 or **90%**.
 
 
+
+
+
+
+
 #### How It’s Calculated
 1. The model is given data it hasn’t seen before (the **test set**).  
-2. For each test example, it predicts a label (e.g., species = “Setosa”).  
-3. The predictions are compared to the **true labels**.  
-4. The number of matches determines the accuracy.
+2. For each data point in the test example, it predicts a label (e.g., Penguin A versus Penguin B).  
+3. The predictions are compared to the **true labels** and are marked as right or wrong.  
+4. Take the number of correct and divide by the number data points in the test set.
 
 
-#### What is condisered "good"?
 
-There’s no single number that defines a “good” accuracy, and entirely depending on the context, data quality, and the problem you are attemping to solve. That said, here’s a solid, practical breakdown of good rules of thumb:
 
-| Accuracy Range | General Interpretation                                           | Typical Contexts                                                             |
-| -------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| **< 60%**      | Usually poor — model not learning much beyond random guessing    | Complex data, unbalanced classes, or wrong model choice                      |
-| **60–70%**     | Barely acceptable, only “okay” for noisy or highly variable data | Social science / behavior prediction / subjective ratings                    |
-| **70–60%**     | Reasonably good for real-world data; often a solid baseline      | Customer churn, sentiment analysis, handwriting recognition                  |
-| **80–90%**     | Strong performance — model generalizes well                      | Many classical ML problems (e.g., species classification, medical diagnosis) |
-| **90–95%**     | Very strong — often “production-ready” if not overfitting        | Well-defined tasks with clean data (e.g., digit recognition, spam filters)   |
-| **>95%**       | Excellent — *or suspiciously perfect*                            | Only realistic when the problem is simple or the model is overfitting        |
+
+
+#### What Is Considered “Good”?
+
+This is a tricky question, and honestly, it doesn’t really have a clean answer. How “good” a model is depends entirely on **what question you’re trying to answer** and **what the consequences of being wrong are**.
+
+Sometimes, a model can be very useful even if its accuracy isn’t especially high. For example, imagine a medical screening test designed to flag *potential* cases of a rare disease. The model might only be 70% accurate overall, but if it reliably catches most true cases (this is called recall, as we wll see soon), it could still be extremely valuable as a first-pass filter, even if a more precise test is needed afterward.
+
+Because of this, there’s no single number that defines a “good” accuracy, and certainly no single number that defines a “good” model. Everything depends on the **context**, the **quality of the data**, and the **problem you’re trying to solve**.
+
+That said, it *is* helpful to have some practical **rules of thumb**. The table below gives a rough sense of how accuracy is often interpreted in practice:
+
+| Accuracy Range | General Interpretation | Typical Contexts |
+|----------------|------------------------|------------------|
+| **More than 95%** | **Excellent** — or possibly *suspiciously perfect* (worth checking for overfitting) | Simple problems, very clean data, or cases where overfitting may be occurring |
+| **90–95%** | **Very strong** — often “production-ready” (if it isn't overfitting) | Well-defined tasks with clean data (e.g., digit recognition, spam filtering) |
+| **80–90%** | **Strong performance** — model generalizes well | Many classical ML problems (e.g., species classification, medical diagnosis) |
+| **70–80%** | **Reasonably good** for real-world data; often a solid baseline | Customer churn, sentiment analysis, handwriting recognition |
+| **60–70%** | **Barely acceptable** — may still be useful for noisy or subjective data | Social science, behavior prediction, human ratings |
+| **Less than 60%** | **Usually poor** — model may not be learning much beyond chance | Very complex data, severe class imbalance, or poor model choice |
+
+The key takeaway is that **accuracy alone is never the full story**. You should always think about *what kinds of mistakes the model is making*, *how costly those mistakes are to the task at hand*, and whether other metrics (precision, recall, F1, ROC-AUC) tell a more meaningful story for your specific problem.
+
+
+
+
 
 
 #### Important Caveats
 
 - **Always compare to a baseline model (a random guessing model).**
+    - We'll talk about these next. 
 - **Accuracy isn’t always the best metric.**
     - For imbalanced datasets (e.g., disease detection, fraud detection), accuracy can mislead.
-    - Use precision, recall, or F1 score instead — these capture how well your model identifies rare but important cases.
+    - Use precision, recall, or F1 score instead. 
+        - As we will see, these capture how well your model identifies rare but important cases.
 - **Dataset difficulty matters.**
     - Predicting whether a penguin is Adélie or Chinstrap? You might get 95%.
     - Predicting if someone will click an ad? You might be thrilled with 70%.
 - **Compare multiple ML models.**
-    - Often, what matters is whether one model outperforms another on the same data — not the absolute value.
+    - Often, what matters is whether one model outperforms another on the same data, not the absolute value.
 
 
 
@@ -439,15 +516,17 @@ There’s no single number that defines a “good” accuracy, and entirely depe
 <strong style="color:#1b4965;">Professional Practice:</strong>  
 <br><br>
 Accuracy can make your model look better than it really is.  
-As a data scientist, it’s your responsibility to ensure that the metrics you report
-actually reflect the model’s performance and limitations.  
+
+As a data scientist, it’s your responsibility to ensure that the metrics you report actually reflect the model’s performance and limitations.  
+
 <br><br>
 If <strong>random guessing gives you 50%</strong>, then <strong>70% is a big win</strong>.  <br>
 But <strong>if guessing gives you 90%</strong> (like in imbalanced data), then <strong>92% is not impressive</strong>.
 <br><br>
-Or, take for example, if <strong>99 % of patients don’t have a disease you are sceening for</strong>, 
-a model that always predicts “no disease” achieves <strong>99 % accuracy</strong>—but fails completely at detecting the people who are sick (loads of false negatives).
+For example, if <strong>99% of patients don’t have a disease you are sceening for</strong>, a model that always predicts “no disease” achieves a <strong>99 % accuracy</strong>. However, this model will always fail at detecting the people who are sick.
+
 When the event you’re predicting is rare, <strong>accuracy alone can be misleading</strong>.  
+
 That’s when metrics like <strong>precision</strong>, <strong>recall</strong>, and <strong>F1-score</strong> become essential.
 </div>
 
@@ -455,7 +534,7 @@ That’s when metrics like <strong>precision</strong>, <strong>recall</strong>, 
 
 #### Let's do it. 
 
-The following code will run a k=5 k-NN for the iris data and report the accuracy of our method. 
+The following code will run a `k=5` `k-NN` for the iris data and report the accuracy. 
 
 We will need to do the following:
 
@@ -473,7 +552,7 @@ We will need to do the following:
     padding: 10px;
     border-radius: 5px;
 ">
-<strong>Warning:</strong> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means. We will discuss this today.
+<strong>Warning:</strong> If the data were not numeric, then we would need to encode it. Though, as we will see, we would have to think very carefully about which features make sense to use in k-NN and k-Means.
 </div>
 
 
@@ -514,21 +593,27 @@ Accuracy: 0.933
 
 
 
+
+
+
+
+
 ### Baseline Models
 
 Now, let's compare this to a **baseline model**. 
 
-
-A **baseline model** gives us a simple reference point to evaluate how well our model learned from the data.
-
 - The baseline can be set up in a number of different ways:
     -  always predict the **most frequent label** from the training data.
     -  **randomly assign labels** from the training data.  
-- If your model performs **similarly to the baseline**, it’s not finding real patterns.
-- If it performs **much better than the baseline**, it’s learning potentially meaningful structures from within the data.
+- If your model performs **similarly to the baseline**, 
+    - it’s not finding any meaningful patterns.
+- If it performs **much better than the baseline**, 
+    - it’s learning potentially meaningful structures within the data.
 
->Think of the baseline as the **“null hypothesis”** of machine learning:  
-> if your model can’t beat it, it’s time to rethink the features, preprocessing, or algorithm choice.
+A **baseline model** gives us a simple reference point to evaluate how well our model learned from the data.
+
+> Think of the baseline as the **“null hypothesis”** of machine learning:  
+> if your model can’t beat it, it’s time to rethink the features being used, preprocessing that was done, and/or models being used.
 
 
 
@@ -561,7 +646,7 @@ Improvement over baseline: 56.7%
 
 Notice our model's accuracy was much better than the baseline. This suggests our model is potentially learning something meaningful from the data. 
 
-#### **Note on the various strategies for building a baseline model**:
+#### Note on the various strategies for building a baseline model:
 
 | Strategy            | What It Does                                                                                                     | Example Behavior                                                                                                                                    |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -585,9 +670,9 @@ Notice our model's accuracy was much better than the baseline. This suggests our
     padding: 10px;
     border-radius: 5px;
 ">
-<strong>Key Takeaway:</strong> 
+<b>Key Takeaway:</b> 
 
-The goal isn’t for the DummyClassifier to be “good” — it’s to remind you what “bad but honest” looks like.  If your trained model doesn’t perform better than one of these, your model hasn’t learned anything meaningful yet.
+The goal isn’t for the baseline to be “good”. The baseline is there to remind you what “bad but honest” looks like.  If your trained model doesn’t perform better than your baseline, your model hasn’t learned anything meaningful yet.
 </div>
 
 
@@ -603,8 +688,7 @@ The goal isn’t for the DummyClassifier to be “good” — it’s to remind y
 <br><br>
 Always compare your machine learning model’s performance to a <strong>baseline model</strong>.
 <br><br>
-Baselines help you confirm that your model is actually learning something meaningful.
-If your model doesn’t outperform a simple baseline, it’s a signal to:
+Baselines help you confirm that your model is actually learning something meaningful. If your model doesn’t outperform a simple baseline, it’s a signal to:
 <ul>
 <li>check your features and data preprocessing,</li>
 <li>review whether your model is appropriate for the task, or</li>
@@ -615,16 +699,24 @@ Comparing to a baseline keeps your results honest, interpretable, and profession
 
 
 
-### Finding the Best k — The “Elbow Method”
 
 
-When using **k-NN**, the number of neighbors (`k`) is a *hyperparameter* of the model we must choose. That is, it is not somthing the model selects, or can be taught to select, but it something we have to manually imput ourselves.
 
-- Too small a `k` (like 1): the model memorizes noise → **overfitting**.  
-- Too large a `k`: the model over-smooths patterns → **underfitting**.  
 
-To find a good balance, we can test several values of `k` and plot **accuracy vs. k**.  
-The point where the accuracy stops improving noticeably — the *elbow* — is often a good choice.
+
+### Finding the Best `k` — The “Elbow Method”
+
+When using **k-NN**, the number of neighbors `k` is a *hyperparameter* of the model. That means it is **not something the model learns on its own**. It’s a value we have to choose.
+
+- If `k` is **too small** (for example, `k = 1`), the model becomes extremely sensitive to individual data points and noise, leading to **overfitting**.  
+- If `k` is **too large**, the model smooths over real structure in the data, which can lead to **underfitting**.
+
+To find a reasonable balance, we can evaluate the model across a range of `k` values and plot **accuracy versus k**.
+
+Often, the plot shows a point where accuracy improves quickly at first and then begins to level off. This bend in the curve is called the *elbow*, and it’s frequently a good choice for `k`.
+
+> Note: You *can* automate this process by selecting the value of `k` that maximizes a chosen performance metric (like accuracy or F1-score) using cross-validation. However, this is still a decision **you** are making. You’re telling the model, “Choose the value of `k` that best optimizes this particular criterion.” That choice reflects your priorities and the problem you’re trying to solve. It is not something the model independently figures out.
+
 
 
 {% capture ex %}
@@ -681,27 +773,34 @@ plt.show()
     </ul>
 </div>
 
+A **good rule of thumb** is to choose a medium-small `k` value. It should be large enough to smooth out noise, but small enough to preserve meaningful patterns.
 
-A **good rule of thumb** is to choose a moderately small k — large enough to smooth out noise but small enough to preserve meaningful patterns.
-
-In practice, values between 3 and 15 often work well, but the best k depends on your data’s size and complexity.
+In practice, values between 3 and 15 often work well, but the best `k` depends on your data’s size and complexity.
 
 #### **General Rules of Thumb for Choosing k**
 
-- **Avoid k that’s too small** (like 1–2):
-    - Small k means the model reacts too strongly to noise — it memorizes the training data instead of learning general patterns.
+- **Avoid `k` that’s too small** (like 1–2):
+    - Small `k` means the model memorizes the training data instead of learning general patterns.
     - This leads to overfitting (perfect accuracy on training, poor performance on new data).
-- **Avoid k that’s too large**:
-    - As k grows, each prediction includes more neighbors, blurring class boundaries.
+- **Avoid `k` that’s too large**:
+    - As `k` grows, each prediction includes more neighbors, blurring class boundaries.
     - The model becomes too “smooth,” leading to underfitting (missing important local patterns).
-    - This is a bit like Goldilocks and the Three Bears...
+
+This is a bit like Goldilocks and the Three Bears...
+
 - **Typical starting range**:
     - Many practitioners start with **odd values** between 3 and 15 (for binary classification) **to avoid ties**.
-    - For multiclass problems, you can safely explore up to about √N, where N is the number of samples.
-        - e.g., if you have 100 samples → try k ≈ 10.
+    - For multiclass problems, you can safely explore up to about $\sqrt{N}$, where $N$ is the total number of samples.
+        - e.g., if you have 100 samples → try `k` = 10. (or better 9 or 11)
 - **Best practice**:
-    - Don’t rely on a single rule — instead, plot model accuracy versus k (like your elbow plot!)
-    - Choose the smallest k that gives high accuracy without sharp fluctuations.
+    - Don’t rely on a single rule! Plot model accuracy versus `k` (like your elbow plot!)
+    - Choose the smallest `k` that gives high accuracy without sharp fluctuations.
+
+
+
+
+
+
 
 
 ### Implementation Note: Matching `X_train` and `X_test`
@@ -709,11 +808,14 @@ In practice, values between 3 and 15 often work well, but the best k depends on 
 
 When we split our dataset into **training** and **testing** sets, we’re simulating how a model will perform on *new, unseen data*.
 
-This means all preprocessing steps —  like scaling, encoding, or feature selection —  must be applied **consistently** across both sets.
+This means all preprocessing steps like scaling, encoding, or feature selection must be applied **consistently** across both sets.
+
+
+
 
 #### Common Mistake
 
-A frequent beginner error is to “fit” the scaler separately on the test set, like this:
+A frequent beginner error is to “fit” the scalerizer separately on the test set, like this:
 
 {% capture ex %}
 ```python
@@ -725,8 +827,10 @@ X_test_scaled = scaler.fit_transform(X_test)     # Fit the transformation to the
 {% endcapture %}
 {% include codeinput.html content=ex %}
 
+This leaks information (called a data leak) from the test set into the model. This can result in a model that looks really good... because it got to peek at the answers.
 
-This leaks information from the test set into the model.
+
+
 
 #### Correct Approach 
 
@@ -736,7 +840,7 @@ Always ***fit a transformation*** only **on the training data**, then ***transfo
 ```python
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)   # Fit the transformation to the training data
-X_test_scaled = scaler.transform(X_test)         # Transformation the test data
+X_test_scaled = scaler.transform(X_test)         # *Transform* the test data
                                                  # ✅ correct!
 ```
 {% endcapture %}
@@ -745,18 +849,12 @@ X_test_scaled = scaler.transform(X_test)         # Transformation the test data
 
 
 The same rule applies for:
-- LabelEncoder or OneHotEncoder
-- PCA or dimensionality reduction methods
-- Feature selection steps
+- **Encoding**: LabelEncoder or OneHotEncoder
+- **Reduing Dimensions**: PCA or dimensionality reduction methods
+- **Feature Selection**
 
 Always fit on the trianing data and transform the test data.
 
-#### Why It Matters
-
-When we deploy a model, it will only see new data. If our scaling or encoding is inconsistent, the model will make nonsense predictions — even if it looked perfect in training.
-
-Treat your preprocessing like part of your model: 
->once fitted on training data, it should be reused exactly as-is for testing and deployment.
 
 
 {% capture ex %}
@@ -828,19 +926,9 @@ print(f"✅ Correct Scaling — Test Accuracy: {acc_right:.3f}")
 
 
 
-#### Why the Accuracy Changes
-
-In the incorrect version, the test set is scaled *independently* — so its mean and variance differ from the training set.  That means the model sees data that’s numerically inconsistent with what it learned from.
-
-Even though the model and parameters are the same, the test data “lived” in a different coordinate space due to the refitting of the transformation.
-
-When trasnformed correctly, both training and test data are transformed using the **same mean and standard deviation**. Now the model is comparing like with like.
-
-
-
 ### Confusion Matrix
 
-As we saw, accuracy tells us the *overall* percentage of correct predictions, but it doesn’t tell us *what kinds* of mistakes our model is making.
+As we have learned, accuracy tells us about the *overall* percentage of correct predictions, but it doesn’t tell us *what kinds* of mistakes our model is making.
 
 A **confusion matrix** gives us a detailed breakdown:
 
@@ -869,23 +957,25 @@ There are 2 types of misclassifications:
 | **Actual Yes Disease**  | True Positive    | False Negative   |
 | **Actual No Disease**  | False Positive   | True Negative    |
 
-|               | Predicted Yes Pig | Predicted No Pig (a Cow) |
-|---------------|------------------|------------------|
-| **Actual Yes Pig**  | True Positive    | False Negative   |
-| **Actual No Pig (a Cow)**  | False Positive   | True Negative    |
-
 
 This comes down to how you frame the question. 
 - If we are intested in if something is a Pig, then:
     - False Positive: Sample is not a Pig (it is a Cow), but has been predicted as being a Pig.
     - False Negative: Sample is a Pig, but has been predicted as being not a Pig (a Cow).
+
+|               | Predicted Yes Pig | Predicted No Pig (a Cow) |
+|---------------|------------------|------------------|
+| **Actual Yes Pig**  | True Positive    | False Negative   |
+| **Actual No Pig (a Cow)**  | False Positive   | True Negative    |
+
 - If we are intested in if something is a Cow, then:
     - False Positive: Sample is not a Cow (it is a Pig), but has been predicted as being a Cow.
     - False Negative: Sample is a Cow, but has been predicted as being not a Cow (a Pig).
 
-### Let's do it. 
-
-Let’s visualize the confusion matrix for our k-NN model of the iris flowers.
+|               | Predicted Yes Cow | Predicted No Cow (a Pig) |
+|---------------|------------------|------------------|
+| **Actual Yes Cow**  | True Positive    | False Negative   |
+| **Actual No Cow (a Pig)**  | False Positive   | True Negative    |
 
 
 
@@ -933,11 +1023,14 @@ Accuracy: 0.956
 
 ### Cross-Validation: Measuring Generalization
 
-A single train/test split might give us a lucky (or unlucky) result. To get a more stable measure of performance, we can use **cross-validation**.
+A single train/test split *might* give us a lucky (or unlucky) result. To get a more stable measure of performance, we can use **cross-validation**.
 
-Cross-validation splits the data into *k folds* (e.g., 5). The model trains on 4 folds and tests on the remaining one — repeated for all folds.
+Cross-validation splits the data into *k folds*. For example, let's suppose we did 5-fold cross-validation. 
 
-The average score tells us how well the model generalizes.
+- The model is trained on 4 folds and tested on the remaining one. 
+- Repeat until all folds have had a change to be the test set.
+
+The average score from this folding gives us a more stable measure of how well the model generalizes to new data.
 
 
 {% capture ex %}
@@ -959,8 +1052,6 @@ Mean CV Accuracy: 0.952
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
-We will discuss this in more detail in Lecture 06.
-
 
 
 
@@ -969,7 +1060,7 @@ We will discuss this in more detail in Lecture 06.
 
 ## Comparing Distance Metrics in k-NN
 
-The k-NN algorithm depends on how we measure “closeness” between points. Different **distance metrics** can produce different neighborhood shapes and, therefore, different predictions.
+The k-NN algorithm depends on how we measure “closeness” between points. Different was of measuring distance (**distance metrics**) can produce different neighborhood shapes and, therefore, different predictions.
 
 Let’s compare a few common ones:
 
@@ -979,10 +1070,6 @@ Let’s compare a few common ones:
 | **Manhattan** | $$ \sum_i \lvert p_i - q_i \rvert $$ | City-block distance — useful for grid-like or discrete data |
 | **Minkowski** | $$ \left(\sum_i \lvert p_i - q_i \rvert^p \right)^{1/p} $$ | General form (p=1 → Manhattan, p=2 → Euclidean) |
 | **Cosine** | $$ 1 - \frac{p \cdot q}{\lvert\lvert p \rvert \rvert\,\,\lvert\lvert q \rvert \rvert} $$ | Measures *angle* similarity; useful for text or high-dimensional data |
-
-We’ll test each metric on the Iris dataset and see how it affects accuracy.
-
-
 
 ### Quick Visualizations
 
@@ -1020,7 +1107,7 @@ dist_min = pairwise_distances([a], [b], metric="minkowski", p=1.5)[0][0]
 cos_sim = np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 cos_dist = 1 - cos_sim
 
-angle_deg = np.degrees(math.acos(cos_sim))
+angle_deg = math.degrees(math.acos(cos_sim))
 
 ax.set_xlim(0, 5)
 ax.set_ylim(0, 5)
@@ -1046,9 +1133,6 @@ print(f"Cosine Distance = {cos_dist:.2f}")
   alt="Illustration comparing Euclidean (straight-line) and Manhattan (grid-based) distances between two points in a two-dimensional feature space."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
-    
-
-
 Euclidean = 4.24  
 Manhattan = 6.00  
 Minkowski (p=1.5) ≈ 4.76  
@@ -1061,12 +1145,17 @@ Cosine Distance = 0.53
 
 
 
-## Weighted k-NN — Giving Closer Points More Influence
+## Weighted k-NN: Giving Closer Points More Influence
 
-In standard k-NN, all neighbors contribute equally to the prediction. But it can be smarter to **weigh closer points more heavily**.
+You may be wondering why we would ever want to change the way we are measureing distance. 
 
-The *weighted* version uses the inverse of distance:  
+Well, in standard k-NN, all neighbors contribute equally to the prediction. 
+
+But it sometimes makes more sense to **weigh closer points more heavily**. That is,
+
 > closer neighbors get more “voting power.”
+
+That is where the different metrics come into play.
 
 {% capture ex %}
 ```python
@@ -1126,42 +1215,50 @@ df_results
 </div>
 
 
----
+
+
+
+
+------
+
+
+
+
 
 ## What Is k-Means Clustering?
 
 k-Means is an **unsupervised learning** algorithm used to find **groups (clusters)** in unlabeled data.
 
-It looks for natural groupings, points that are *closer to each other* than to others, and assigns each point to one of **k clusters**.
+It looks for natural groupings of points that are **closer to each other** than to others, and assigns each point to one of **`k` clusters**.
 
 
 ### The k-Means Process
 
 1. **Choose the number of clusters (k).**  
-   You decide how many groups the algorithm should find.
+    - You decide how many groups the algorithm should find.
 
-2. **Randomly place k centroids.**  
-   Each centroid begins at some initial location (often random).
+2. **Randomly place `k` centroids.**  
+    - Each centroid begins at some initial location (often random).
 
 3. **Assign each data point to the nearest centroid (E-step).**  
-   Every data point is assigned to its closest centroid — and only one centroid — no partial or multiple memberships allowed.  
+    - Every data point is assigned to its closest centroid.  
 
 4. **Update the centroids (M-step).**  
-   Each centroid moves to the *average* position (the "center") of the points connected to the centroid.
+    - Each centroid moves to the *average* position (the "center") of the points currently connected to the centroid.
+    - When centroids move, some points that were previously closer to Centroid A might now be closer to Centroid B.
 
-   When centroids move, some points that were previously closer to Centroid A might now be closer to Centroid B — so they switch groups.
+5. **Repeat steps 3–4** until the centroids stop moving and point groupings have settled (the solution has *converged*).
 
-5. **Repeat steps 3–4** until the centroids stop moving (the solution has *converged*).
-
-The algorithm naturally spreads the centroids out until each has a stable, non-overlapping set of points.
+The algorithm naturally spreads the centroids out until each has a stable, non-overlapping set of points, but problems can occationally pop up.
 
 
 ### Intuition
 k-Means alternates between:
+
 - **E-Step (Expectation):** Assign points to the nearest cluster.  
 - **M-Step (Maximization):** Move centroids to the average of their assigned points.  
 
-It keeps doing this until the cluster boundaries no longer change significantly.
+It keeps doing this until everything stops moving.
 
 That’s it!
 
@@ -1173,7 +1270,7 @@ X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
 
 # --- Choose the number of clusters ---
 k = 3
-np.random.seed(1)  # try different seeds to see different starting positions
+np.random.seed(1)
 
 # --- Initialize centroids randomly from the data points ---
 centroids = X[np.random.choice(range(len(X)), k, replace=False)]
@@ -1251,18 +1348,7 @@ Converged after 8 iterations.
     
 
 
-<div style="
-    background-color: #f0f7f4;
-    border-left: 6px solid #4bbe7e;
-    padding: 10px;
-    border-radius: 5px;
-">
-<strong>Key Takeaways:</strong> 
 
-- Each iteration moves centroids toward the center of their assigned points.  
-- The algorithm stops when these movements become minimal.  
-- k-Means is simple, efficient, and often surprisingly effective, but it assumes clusters are roughly **spherical** and of similar size.
-</div>
 
 
 ## Problems can and do arise in unsupervised learning! 
@@ -1274,7 +1360,7 @@ X, _ = make_blobs(n_samples=200, centers=3, cluster_std=1.0, random_state=42)
 
 # --- Choose the number of clusters ---
 k = 3
-np.random.seed(42)  # try different seeds to see different starting positions
+np.random.seed(42) # THE ONLY CHANGE IN THE PREVIOUS CODE!
 
 # --- Initialize centroids randomly from the data points ---
 centroids = X[np.random.choice(range(len(X)), k, replace=False)]
@@ -1347,6 +1433,18 @@ Converged after 11 iterations.
 {% include codeoutput.html content=ex %}
 
 
+<div style="
+    background-color: #f0f7f4;
+    border-left: 6px solid #4bbe7e;
+    padding: 10px;
+    border-radius: 5px;
+">
+<strong>Key Takeaways:</strong> 
+
+- Each iteration moves centroids toward the center of their assigned points.  
+- The algorithm stops when these movements become minimal.  
+- k-Means is simple, efficient, and often surprisingly effective, but it assumes clusters are roughly **spherical** and of similar size.
+</div>
     
 
     
@@ -1358,13 +1456,9 @@ Converged after 11 iterations.
 
 Just like in k-NN, we can visualize how k-Means divides the feature space.
 
-Each region in this plot corresponds to the points *closest to one centroid* —  these are called **Voronoi regions**.
+As we previously learned, each region in this plot corresponds to the points *closest to one centroid* (these have the fun name: **Voronoi regions**).
 
-- The **colored background** shows the areas where each cluster dominates.
-- The **dots** are the actual data points.
-- The **red Xs** are the final centroid positions after convergence.
-
-Notice how each centroid’s region is separated by straight-line boundaries — this happens because k-Means uses **Euclidean distance** (straight-line distance).
+> Notice in the following example how each centroid’s region is separated by straight-line boundaries. This happens because k-Means is using a **Euclidean distance** (straight-line distance). The boundaries will change their shape depending on the distance metric being used.
 
 
 {% capture ex %}
@@ -1423,13 +1517,14 @@ plt.show()
 
 ### The Effect of Choosing k
 
-As you change the value of k in k-means, you change the number of groups/clusters the model will search for. It has no way of knowing how many groups it should expect to see, so does exactly as told and breaks the data points into k groups. 
+As you change the value of `k` in k-means, you change the number of groups/clusters the model will search for. 
 
-- With **too few clusters**, distinct groups can get merged together.  
+The model has no way of knowing how many groups it should expect to see. So it **exactly as told** and always breaks the data points into `k` groups. 
+- With **too few clusters**, distinct groups may get merged together.  
 - With **too many clusters**, k-Means starts “overfitting” and slicing up natural groups into smaller pieces.  
-- The “right” k balances simplicity (fewer clusters) with accuracy (capturing true patterns).
+- The “right” `k` balances simplicity (fewer clusters) with accuracy (capturing true patterns).
 
-We’ll later use the **Elbow Method** to help identify a reasonable k value quantitatively.
+The **Elbow method** can be helpful in selecting a reasonable `k` value.
 
 
 {% capture ex %}
@@ -1437,7 +1532,7 @@ We’ll later use the **Elbow Method** to help identify a reasonable k value qua
 # --- Generate sample data ---
 X, _ = make_blobs(n_samples=300, centers=3, cluster_std=1.0, random_state=42)
 
-# --- Try several k values ---
+# --- Try several `k` values ---
 k_values = [2, 3, 4, 5]
 
 fig, axes = plt.subplots(len(k_values), 1, figsize=(6, 16))
@@ -1493,15 +1588,14 @@ plt.show()
 
 ### Random Initialization Matters!
 
-k-Means starts with random centroid positions, so different initial seeds can produce different outcomes — especially if clusters overlap or data has outliers.
+k-Means starts with **random** centroid positions, so different random seeds can produce different outcomes; especially if clusters overlap or data has outliers.
 
 In the following example:
-
 - Each run will use the same data.
 - But, each run will start with a different random seed.  
 - Notice how the centroids and cluster shapes vary slightly between runs.  
 
-Modern implementations (like scikit-learn’s) handle this by running the algorithm multiple times (`n_init=10` by default) and keeping the best solution — the one with the lowest total *inertia* (within-cluster variance) which we will discuss soon.
+Modern implementations (like scikit-learn’s) handle this by running the algorithm multiple times (`n_init=10`, 10 iterations, by default) and keeping the best solution — the one with the lowest total *inertia*, which we discuss below.
 
 
 {% capture ex %}
@@ -1559,7 +1653,7 @@ plt.show()
 
 ### Feature Scaling Matters!
 
-Both **k-Means** and **k-NN** rely on distance calculations; usually Euclidean distance:
+Both **k-Means** and **k-NN** rely on distance calculations (usually Euclidean):
 
 $$
 \text{Distance between points} = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \dots}
@@ -1651,6 +1745,7 @@ plt.show()
 Always <strong>standardize or normalize your features</strong> before using models that rely on distance, like k-NN or k-Means.  
 <br><br>
 In real-world datasets, different features often have very different numeric ranges (e.g., “age” in years vs. “income” in dollars).  
+
 If you skip scaling, one feature can silently dominate the distance metric and distort your model’s understanding of similarity.  
 <br><br>
 <em>Tip:</em> In practice, use <code>StandardScaler</code> (for zero mean and unit variance) or <code>MinMaxScaler</code> (for values between 0 and 1) from <code>scikit-learn</code> before training.
@@ -1658,20 +1753,27 @@ If you skip scaling, one feature can silently dominate the distance metric and d
 
 
 
+
+
+
+
 ## How Compact Are Our Clusters? Introducing Inertia
 
-When k-Means runs, it tries to make each cluster as **tight** as possible.   The algorithm minimizes a measure called **inertia**, which is the total *within-cluster variance*.
+When k-Means runs, it tries to make each cluster as **tight** as possible. This is done by minimizing a measure called **inertia**, which is the total *within-cluster variance*.
 
 Think of it like this:
 > “How far, on average, are points from their cluster’s center?”
+**Goal**: Minimize that.
 
-Mathematically (you don’t need to memorize this):
+Mathematically (you don’t need to memorize this, it is just for those who are interested):
+
 $$
-\text{Inertia} = \sum_{\text{clusters}} \hspace{0.3cm} \sum_{\text{points in cluster}} ||x - x_\text{center}||^2
+\text{Inertia} = \sum_{\text{clusters}} \hspace{0.3cm} \sum_{\text{points in cluster}} \lvert\lvert x - x_\text{center} \rvert\rvert^2
 $$
 
-A **lower inertia** means the clusters are more compact — the points fit their groups better.
+A **lower inertia** means the clusters are more compact.
 
+In the following example: 
 - Shorter lines → tighter clusters → lower inertia.  
 - Longer lines → looser clusters → higher inertia.
 
@@ -1735,11 +1837,11 @@ plt.show()
 
 ### Changing k and Inertia
 
-Notice, as `k` increases inertia always decreases. This makes sense, the more clusters you prescribe, the closer each point will be to its centroid.
+Notice, as the number of clusters are a looking for `k` increases, the inertia *always* decreases. 
 
-Let's plot the Inertia as a function of k:
+This makes sense! The more clusters you demand, the closer each point will be to its newest centroid.
 
-
+To see this, let's plot the inertia as a function of k:
 
 {% capture ex %}
 ```python
@@ -1775,7 +1877,7 @@ plt.show()
     
 
 
-The "elbow" point represents a good tradeoff: adding more clusters beyond this point doesn’t improve tightness much, but increases model complexity.
+The "elbow" point represents a good tradeoff: adding more clusters beyond this point doesn’t improve tightness.
 
 <!-- Reflection -->
 <div style="
@@ -1794,20 +1896,26 @@ The "elbow" point represents a good tradeoff: adding more clusters beyond this p
 
 
 
+
+
+
+
+
 ## How Well-Separated Are the Clusters? Introducing Silhouette Score
 
-While **inertia** measures how tight the clusters are, **silhouette score** measures how **distinct** they are from one another.
+While **inertia** measures how tight the clusters are, the **silhouette** measures how **distinct** the clusters are from one another.
 
-It considers both:
-- **a:** average distance to points *within* the same cluster  
-- **b:** average distance to points in the *nearest neighboring cluster*
+It considers the average distance between centroids to points:
+- **a:** *within* the same cluster  
+- **b:** in the *nearest neighboring cluster*
 
-and computes:
+The **silhouette score** is then calculated via:
+
 $$
 \text{Silhouette} = \frac{b - a}{\max(a, b)}
 $$
 
-The score ranges from **–1 to 1**:
+The silhouette ranges from **–1 to 1**:
 - **+1:** well-separated clusters  
 - **0:** overlapping clusters  
 - **–1:** points likely in the wrong cluster
@@ -1881,7 +1989,7 @@ display(results_df)
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
 
-| # | k | Inertia      | Silhouette |
+| # | `k` | Inertia      | Silhouette |
 |---|---|--------------|------------|
 | 0 | 2 | 3720.112349  | 0.706617   |
 | 1 | 3 | 364.473321   | 0.846700   |
@@ -1901,16 +2009,15 @@ display(results_df)
 
 
 
-### Changing k and Silhouette
+### Changing `k` and Silhouette
 
-Notice, as `k` increases the silhouette also changes! 
+Notice, as `k` increases the silhouette changes! 
 
-One way to find an optimal k value would be to plot the silhouette for multiple k values and see if one performs better than the others. 
+One way we could find an optimal `k` value would be to plot the silhouette for multiple `k` values and see if one performs better than the others. 
 
-In fact, this is one of the most common and reliable tools used to find a good k value to use.
+In fact, **this is one of the most common and reliable tools used to find a good `k` value to use**.
 
 Let's plot the Silhouette as a function of k:
-
 
 {% capture ex %}
 ```python
@@ -2020,13 +2127,17 @@ plt.show()
 
 
 
+
+
+
+
 ## Evaluating Clustering Without Labels
 
-In supervised learning (like k-NN), we can directly compare predictions to known answers, and we can calculate **accuracy**, **precision**, or **recall** because we know the truth.
+In supervised learning (like k-NN), we can calculate **accuracy**, **precision**, or **recall** because we know the right answers.
 
 But in unsupervised learning (like k-Means), there are **no true labels**, the algorithm is discovering structure on its own.
 
-So how do we know if it did a *good* job?
+How do we know if it did a *good* job?
 
 ### Common Evaluation Metrics
 
@@ -2034,19 +2145,22 @@ So how do we know if it did a *good* job?
     - Lower is better
 
 **Silhouette Score:**  
-    - +1 → well-clustered (distinct and compact)  
-    - 0 → overlapping clusters  
-    - -1 → likely misclassified  
+    - Closer to 1 is better.
 
 **Visual Inspection:**  
-  For 2D data, plotting the clusters and centroids can be incredibly informative.  
-  Human intuition is often the best first check.
+  - Project the data into 2 dimensions and plot the proposed clusters and centroids. This can be incredibly informative!
+
+
+
+
+
+
 
 
 
 ### Comparing Clusters to Known Labels (If Possible)
 
-When evaluating clustering algorithms like **k-Means**, we often want to know **how similar** our predicted clusters are to the **true labels** (if we have them).  
+Suppose you have the true labels for the test set? Can we calculate something like the accuracy for k-means model?
 
 That’s where something called the **Adjusted Rand Index (ARI)** comes in.
 
@@ -2056,23 +2170,27 @@ ARI compares **all possible pairs in the data** and asks:
 > "For each pair of points, did the model place them in the same or a different cluster?"
 
 It counts in the following manner:
-
 - If the model and true labels place the points in the same cluster → **agreement**
 - If the model and true labels place the points in a different cluster → **agreement**
 - If the model and true labels disagree (one puts them in the same cluster and the other does not) → **disagreement**
 
 The more agreements, the higher the score.
 
+
+
+
+
 ### How It’s Calculated
 
 ARI starts from the **Rand Index (RI)**:
+
 $$
 RI = \frac{ \text{\# of agreements} }{ \text{\# of total pairs} }
 $$
 
-But the Rand Index can be **inflated by chance** by allowing even randomly selected labels to get a moderately high score.
+This is essentially the accuracy of the model. The problem is that the Rand Index can be **inflated by chance** by allowing even randomly selected labels to get a moderately high score.
 
-The **Adjusted Rand Index (ARI)** corrects for by first calculating  the RI for the model, $ RI_\text{model} $, and the RI for a baseline (random labels), $ RI_\text{baseline} $.
+The **Adjusted Rand Index (ARI)** corrects for by first calculating the RI for the model, $ RI_\text{model} $, and the RI for a baseline (random labels), $ RI_\text{baseline} $.
 
 It them performs the following calculation using those values:
 
@@ -2094,11 +2212,27 @@ In short:
 
 {% capture ex %}
 ```python
-# Compare k-Means clusters to actual labels (if available)
-clusters = kmeans.fit_predict(X_train)
+# --- Load dataset ---
+iris = load_iris(as_frame=True)
+X = iris.data
+y = iris.target
+
+# --- Split into train/test sets ---
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2)
+
+# --- Scale features ---
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# --- Apply k-Means ---
+kmeans = KMeans(n_clusters=3, random_state=42)
+clusters = kmeans.fit_predict(X_train_scaled)
+
+# --- Calculate the ARI ---
 ari = adjusted_rand_score(y_train, clusters)
 print(f"Adjusted Rand Index (vs. true labels): {ari:.3f}")
-
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}
@@ -2129,23 +2263,36 @@ Adjusted Rand Index (vs. true labels): 0.409
 
 
 
+
+
+
+
+
 ## Visualizing Multi-Feature Data in 2D
 
-Many real-world datasets have more than two features — sometimes dozens or even hundreds. But most of our visualizations (like scatter plots and decision boundaries) can only show **two axes**.
+Many real-world datasets have more than two features. Sometimes there are dozens or even hundreds of features we have to incorpotate into our models. 
 
-So how can we plot data with 4, 8, or 100 features on a flat 2D screen?
+But most of our visualizations (like scatter plots and decision boundaries) can only show **two axes**, three at best.
+
+How can we plot data with 4, 8, or 100 features on a flat 2D screen?
 
 
-### The Idea: Feature Compression
 
-We can use mathematical tools to **compress** high-dimensional data into two new features that capture the most important patterns.
+
+
+### The Idea: Feature Compression or Dimensionality Reduction
+
+We can use mathematical tools to **compress** high-dimensional data into two "new features" that capture the most important patterns.
 
 One of the most common tools for this is called **Principal Component Analysis (PCA)**.
 
-- PCA combines the features to create compressed features that explain the **greatest variation** in the data.  
-- These compressed, new features (called *principal components*) summarize how each data point varies along those directions.  
+- PCA combines the features to create compressed features that explain the greatest variation in the data.  
+- These compressed, new features (called **principal components**) summarize how each data point varies along those directions.  
 - The first two principal components often capture the majority of the structure in the dataset.
     - Generally enough to make a meaningful 2D plot.
+
+
+
 
 
 ### What That Means for Us
@@ -2176,12 +2323,29 @@ X_test_scaled = scaler.transform(X_test)
 kmeans = KMeans(n_clusters=3, random_state=42)
 clusters = kmeans.fit_predict(X_train_scaled)
 
-# --- Plot clusters ---
+# --- Print numner of features ---
+print(f"Number of features in data: {X_train.shape[1]:.0f}")
+
+# --- Plot clusters using first two ---
 plt.figure(figsize=(7,5))
 plt.scatter(X_train_scaled[:, 0], X_train_scaled[:, 1], c=clusters, cmap="viridis", s=40)
 plt.title("k-Means Clustering on Iris (first 2 features)")
 plt.xlabel("Standardized Feature 1")
 plt.ylabel("Standardized Feature 2")
+plt.show()
+
+
+# --- PCA: first two principal components (fit on training data) ---
+pca = PCA(n_components=2, random_state=42)
+X_train_pca = pca.fit_transform(X_train_scaled)
+
+# --- Plot clusters in PCA space ---
+plt.figure(figsize=(7,5))
+plt.scatter(X_train_pca[:, 0], X_train_pca[:, 1], c=clusters, cmap="viridis", s=40)
+plt.title("k-Means Clustering on Iris (First 2 Principal Components)")
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.tight_layout()
 plt.show()
 
 ```
@@ -2191,8 +2355,14 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec02/output_68_0.png' | relative_url }}"
-  alt="The top plot shows the final k-means clustering result using the selected optimal number of clusters (k = 4). Data points are colored by cluster membership, and centroids are marked with black “X” symbols. Clusters appear compact and well separated in the two-dimensional feature space, indicating good clustering structure. The title reports the selected k value and the corresponding silhouette score, reinforcing the justification for this choice. The bottom scatter plot shows k-means clustering applied to the Iris dataset using the first two standardized features. Each point represents a flower sample and is colored by its assigned cluster. The clusters partially overlap, especially between two of the species,illustrating that k-means does not perfectly recover true class labels when clusters are not well separated. The axes are labeled as standardized feature values."
+  alt="Scatter plot using the first two features in the training set to plot the clusters in 2 dimensions. There appears to be a well separated group and two that have some overlap."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec02/PCA_cluster_plot.png' | relative_url }}"
+  alt="Scatter plot using the first two principal components of the training set to plot the clusters in 2 dimensions. All three groups appear to be well separated now, though two grops are still pretty close together."
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
 {% endcapture %}
 {% include codeoutput.html content=ex %}
 
@@ -2200,7 +2370,7 @@ plt.show()
 
 
     
-
+## Here is a fun example using PCA on some samples of hand written numerical digits.
 
 {% capture ex %}
 ```python
@@ -2310,7 +2480,7 @@ plt.show()
 ## What Kind of Data Can (and Should) Be Used in k-Means?
 
 
-k-Means is a powerful and simple clustering algorithm — but it **does not work equally well for all types of data**.  
+k-Means is a powerful and simple clustering algorithm, but it **does not work equally well for all types of data**.  
 
 Because it relies on *distance*, certain data types and structures fit much better than others.
 
@@ -2332,6 +2502,9 @@ Because it relies on *distance*, certain data types and structures fit much bett
   A few outliers are fine, but extreme ones can pull centroids off-center.  
   It’s often good practice to clean or trim data first.
 
+
+
+
 ### Use With Caution
 
 - **Categorical or nominal data.**  
@@ -2346,6 +2519,8 @@ Because it relies on *distance*, certain data types and structures fit much bett
   Highly correlated variables can distort the distance metric.  
   Using **PCA** before clustering can help reduce redundancy.
 
+
+
 ### Not Recommended For
 
 - **Ordinal or rank-only data.**  
@@ -2353,6 +2528,9 @@ Because it relies on *distance*, certain data types and structures fit much bett
 
 - **Data with many outliers or varying densities.**  
   One dense region and one sparse region will confuse k-Means: the dense cluster gets split, and the sparse cluster gets merged.
+
+
+
 
 ### Takeaway
 
@@ -2363,9 +2541,14 @@ When in doubt, visualize first: if you can “see” clusters by eye in a scatte
 
 
 
+
+
+
+
+
 ## Limitations of Each Algorithm
 
-No model is perfect — both **k-NN** and **k-Means** are powerful in the right context, but each has clear limitations you should recognize before using them.
+No model is perfect! Both **k-NN** and **k-Means** are powerful in the right context, but each has clear limitations you should recognize before using them.
 
 ### k-Nearest Neighbors (k-NN)
 
@@ -2388,7 +2571,7 @@ No model is perfect — both **k-NN** and **k-Means** are powerful in the right 
 
 **Limitations**
 - **Assumes spherical, evenly sized clusters.** Irregular or elongated shapes cause poor results.
-- **Requires k in advance.** You must guess the number of clusters (often by trial or elbow method).
+- **Requires `k` in advance.** You must guess the number of clusters (often by trial or elbow method).
 - **Sensitive to initialization.** Different random seeds can yield different clusterings.
 - **Vulnerable to outliers.** A single distant point can pull a centroid far from its true center.
 - Works only with **numeric features**; categorical variables must be encoded first.
@@ -2530,6 +2713,7 @@ The basic algorithms you’ve learned this week are only the *starting points* �
 # --- Imports ---
 import numpy as np
 import pandas as pd
+from scipy.stats import mode
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.datasets import load_iris
@@ -2542,7 +2726,7 @@ from sklearn.metrics import (
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-from scipy.stats import mode
+
 
 sns.set(style="whitegrid", palette="muted", font_scale=1.1)
 
@@ -2591,7 +2775,8 @@ ari = adjusted_rand_score(y_train, clusters)
 cluster_labels = np.zeros_like(clusters)
 for i in range(3):
     mask = (clusters == i)
-    cluster_labels[mask] = mode(y_train[mask], keepdims=False).mode
+    cluster_labels[mask] = mode(y_train[mask], axis=None).mode
+
 cluster_acc = accuracy_score(y_train, cluster_labels)
 
 # =====================================================
@@ -2646,7 +2831,7 @@ axes[0,1].legend()
 bars = axes[1,0].bar(["k-NN Accuracy", "k-Means (Matched)", "k-Means ARI"],
                      [acc_knn, cluster_acc, ari],
                      color=["tab:blue", "tab:orange", "tab:green"], alpha=0.8)
-axes[1,0].bar_label(bars, fmt="%.3f", padding=3)
+axes[1,0].set_xticklabels(["k-NN Accuracy", "k-Means (Matched)", "k-Means ARI"],rotation=15)
 axes[1,0].set_ylim(0, 1.05)
 axes[1,0].set_title("Model Performance Comparison")
 axes[1,0].set_ylabel("Score")
