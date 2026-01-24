@@ -423,21 +423,26 @@
         page-break-inside: auto !important;
       }
 
-      /* Ensure long lines wrap instead of running off the page */
-      pre {
+      /* Input/Output boxes: allow splitting and keep code readable */
+      .codeinput, .codeoutput {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        padding: 8pt 10pt !important;
+        margin: 10pt 0 !important;
+
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+
+      .codeinput pre, .codeoutput pre {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+
         white-space: pre-wrap !important;
         overflow-wrap: anywhere !important;
         word-break: break-word !important;
       }
 
-      pre {
-        margin: 8pt 0;
-        padding: 6pt 8pt;
-        border: 1px solid #000;
-        background: #fff;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-      }
 
       /* “Theorem-style” boxes (your example/result/warning) */
       .example, .result, .warning {
