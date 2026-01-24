@@ -268,6 +268,8 @@
     }
 
 
+
+    /* @@@@@@@@@@@@@ */
     /* Print Style */
     @media print {
 
@@ -279,6 +281,10 @@
 
       /* Hide navigation / site chrome */
       header, nav, footer, .course-nav, .site-nav {
+        display: none !important;
+      }
+      .site-footer,
+      #footer {
         display: none !important;
       }
 
@@ -355,7 +361,7 @@
 
       /* Figure size */
       img {
-        max-width: 35% !important;
+        max-width: 50% !important;
         display: block !important;
         margin: 0.75rem auto !important;
       }
@@ -395,12 +401,12 @@
       /* Code blocks: compact like listings */
       pre, code {
         font-family: "Latin Modern Mono", "CMU Typewriter Text", ui-monospace, Menlo, Consolas, monospace;
-        font-size: 8pt;
+        font-size: 7pt;
       }
 
       code {
         font-family: "Latin Modern Mono", "CMU Typewriter Text", ui-monospace, Menlo, Consolas, monospace;
-        font-size: 8pt;
+        font-size: 7pt;
       }
 
       pre {
