@@ -413,8 +413,13 @@
 
         margin: 8pt 0 !important;
         padding: 6pt 8pt !important;
-        border: 1px solid #000 !important;
-        background: #fff !important;
+      }
+
+      pre {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        orphans: 3;
+        widows: 3;
       }
 
       /* Allow code blocks to break across pages */
