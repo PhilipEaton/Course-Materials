@@ -40,7 +40,11 @@ c) Find the inverse of the coefficient matrix (you can do this on the computer i
 
 ### 2) Determinants and Their Meaning
 
-Given the matrix $ \mathbf{A} = \begin{bmatrix} 2 & 1 & 3 \\ -1 & 4 & 2 \\ 0 & -2 & 5 \end{bmatrix} $:
+Given the matrix 
+
+$$ 
+\mathbf{A} = \begin{bmatrix} 2 & 1 & 3 \\ -1 & 4 & 2 \\ 0 & -2 & 5 \end{bmatrix} 
+$$
 
 a) Calculate $ \det(\mathbf{A}) $.  
 
@@ -52,13 +56,17 @@ b) Interpret what the determinant tells you about the matrix $ \mathbf{A} $ in t
 
 
 ### 3) Transpose and Trace
-Consider the matrix $ \mathbf{B} = \begin{bmatrix} 4 & 7 \\ -2 & 3 \end{bmatrix} $.
+Consider the matrix 
+
+$$ 
+\mathbf{B} = \begin{bmatrix} 4 & 7 \\ -2 & 3 \end{bmatrix} 
+$$
 
 a) Compute $ \mathbf{B}^\text{T} $.  
 
 b) Find the trace of $ \mathbf{B} $.
 
-
+<div class="page-break"></div>
 
 
 ### 4) Coordinate Transformations
