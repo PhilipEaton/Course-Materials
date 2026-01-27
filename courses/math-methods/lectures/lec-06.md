@@ -220,9 +220,9 @@ $$
 $$
 where $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, and $\mathbf{D}$ are all square matrices with inverses. One might ask the following: 
 
-\begin{quotation}
-	How can we manipulate this equation to solve for $\vec{v}$? 
-\end{quotation}
+
+> How can we manipulate this equation to solve for $\vec{v}$? 
+
 
 In other words, how do we perform the linear algebra necessary to isolate $\vec{v}$? This process provides an early example of the ``algebra" in linear algebra coming into play.
 
@@ -385,6 +385,7 @@ but finding that the only possible solution is when all of the constant are zero
 In the context of matrices, linear dependence and independence are closely tied to the properties of the matrix formed by using the vectors as its columns. For example, if the columns/rows of a matrix are linearly independent, then its determinant will be non-zero. Conversely, if the columns/rows are linearly dependent, and its determinant will be zero. Understanding these properties is crucial for solving systems of linear equations, determining if a matrix will even have an inverse, and analyzing transformations.
 
 Let's quickly conceptualize the determinant statements just made using the idea of row reduction. Recall that we can take one row of a matrix, multiply it by a constant, add it to another row, and store the result in that row. For a concrete example, consider a $3\times 3$ matrix:  
+
 $$
 \mathbf{A} = \begin{bmatrix}
 	a_{11} & a_{12} & a_{13} \\
@@ -394,6 +395,7 @@ $$
 $$
 
 Now suppose one of the rows, say the third row, is linearly dependent on the other two rows. This means it can be written as a linear combination of the first and second rows. Using row reduction, we could subtract a suitable combination of the first and second rows -- recreating the third row -- from the third row, resulting in all elements being zero. We could then store this result in the third row, leaving us with:  
+
 $$
 \mathbf{A}' = \begin{bmatrix}
 	a_{11} & a_{12} & a_{13} \\
@@ -675,8 +677,8 @@ Let’s consider a rigid body in 3D space. Suppose the body is initially at rest
 Let the velocity of the rigid body be given by three velocity vectors representing the motion of different points in the body along the $ x $-, $ y $-, and $ z $-axes, respectively:
 
 $$
-\vec{v_1} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \qquad \qquad \qquad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \quad \qquad \qquad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
@@ -708,8 +710,8 @@ $$
 When we apply this matrix to the velocity vectors, we get the new velocity components:
 
 $$
-\mathbf{R} \vec{v_1} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad 
-\mathbf{R} \vec{v_2} = \begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix}, \quad 
+\mathbf{R} \vec{v_1} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \quad \qquad \qquad 
+\mathbf{R} \vec{v_2} = \begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix} \quad \qquad \qquad 
 \mathbf{R} \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
@@ -718,8 +720,8 @@ $$
 After applying the rotation, the new vectors are:
 
 $$
-\vec{v_1'} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2'} = \begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1'} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \quad \qquad \qquad 
+\vec{v_2'} = \begin{bmatrix} -1 \\ 0 \\ 0 \end{bmatrix} \quad \qquad \qquad 
 \vec{v_3'} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
 $$
 
@@ -736,8 +738,8 @@ Since the determinant is non-zero, the vectors are still linearly independent af
 Now, let’s consider a scenario where we add a constraint to the system, such as a **conservation law** like conservation of energy or angular momentum. If the body is constrained to only move around the $xy$-plane. Let’s modify the velocity vectors to reflect this constraint:
 
 $$
-\vec{v_1} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \quad \qquad \qquad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \quad \qquad \qquad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}
 $$
 
