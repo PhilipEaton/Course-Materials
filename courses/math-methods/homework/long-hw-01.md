@@ -62,9 +62,7 @@ $$
 \mathbf{B} = \begin{bmatrix} 4 & 7 \\ -2 & 3 \end{bmatrix} 
 $$
 
-a) Compute $ \mathbf{B}^\text{T} $.  
-
-b) Find the trace of $ \mathbf{B} $.
+Compute $ \mathbf{B}^\text{T} $ and tind the trace of $ \mathbf{B} $.
 
 <div class="page-break"></div>
 
