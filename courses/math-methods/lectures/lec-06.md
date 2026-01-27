@@ -44,7 +44,7 @@ $$
 When the rotation matrix $\mathbf{R}_z(\theta)$ is applied to $\vec{v}$, we obtain a transformed vector $\vec{v}'$:
 
 $$
-\vec{v}' = \mathbf{R} \, \vec{v} = \begin{bmatrix}
+\vec{v}' = \mathbf{R}  \vec{v} = \begin{bmatrix}
 	\cos(\theta) & -\sin(\theta) & 0 \\
 	\sin(\theta) & \cos(\theta) & 0 \\
 	0 & 0 & 1
@@ -94,17 +94,17 @@ $$
 \vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z = \vec{u}^\text{T} \vec{v}
 $$
 
-After applying the rotation matrix $\mathbf{R}_z(\theta)$, the transformed vectors are $\vec{u}' = \mathbf{R}_z(\theta) \, \vec{u}$ and $\vec{v}' = \mathbf{R}_z(\theta) \, \vec{v}$. Their dot product is:
+After applying the rotation matrix $\mathbf{R}_z(\theta)$, the transformed vectors are $\vec{u}' = \mathbf{R}_z(\theta)  \vec{u}$ and $\vec{v}' = \mathbf{R}_z(\theta)  \vec{v}$. Their dot product is:
 
 $$
-\vec{u}' \cdot \vec{v}' = (\mathbf{R}_z(\theta) \, \vec{u}) \cdot (\mathbf{R}_z(\theta) \, \vec{v}) = (\mathbf{R}_z(\theta) \, \vec{u})^\text{T} (\mathbf{R}_z(\theta) \, \vec{v})
+\vec{u}' \cdot \vec{v}' = (\mathbf{R}_z(\theta)  \vec{u}) \cdot (\mathbf{R}_z(\theta)  \vec{v}) = (\mathbf{R}_z(\theta)  \vec{u})^\text{T} (\mathbf{R}_z(\theta)  \vec{v})
 $$
 
 Now, we can make use of a transpose property, that we will discuss next, 
-$$ (\mathbf{A} \, \mathbf{B})^\text{T} = \mathbf{B}^\text{T} \mathbf{A}^\text{T} $$ 
+$$ (\mathbf{A}  \mathbf{B})^\text{T} = \mathbf{B}^\text{T} \mathbf{A}^\text{T} $$ 
 to get:
 $$
-\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta) \, \vec{v}
+\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta)  \vec{v}
 $$
 
 Since $\mathbf{R}_z(\theta)$ is orthogonal, we know $\mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta) = \mathbf{I}$, the identity matrix. Therefore:
@@ -146,7 +146,7 @@ $$\mathbf{A} = \begin{bmatrix}
 	\vec{a}_1 & \vec{a}_2 & \cdots\\
 	\vert & \vert & \cdots
 \end{bmatrix} \qquad \text{or}  \qquad \mathbf{A} = \begin{bmatrix}
-	- \, \vec{a}_1^\text{T} - \\ - \, \vec{a}_2^\text{T} -  \\ \cdots
+	-  \vec{a}_1^\text{T} - \\ -  \vec{a}_2^\text{T} -  \\ \cdots
 \end{bmatrix} \qquad \qquad
 \vec{a}_i \cdot \vec{a}_j = \begin{cases}
 	1 & \text{if }  i = j \\
@@ -216,7 +216,7 @@ Before moving on to Linear Dependence and Independence, which is a major part of
 
 Consider the following matrix operation:  
 $$
-\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} = \vec{v}\,'
+\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} = \vec{v}'
 $$
 where $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, and $\mathbf{D}$ are all square matrices with inverses. One might ask the following: 
 
@@ -232,9 +232,9 @@ Therefore, we must remove $\mathbf{A}$ first by applying its inverse on the left
 
 $$
 \begin{aligned}
-	\mathbf{A}^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{A}^{-1} \vec{v}\,' \\
-	\mathbf{I} \mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{A}^{-1} \vec{v}\,' \\
-	\mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{A}^{-1} \vec{v}\,'
+	\mathbf{A}^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{A}^{-1} \vec{v}' \\
+	\mathbf{I} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{A}^{-1} \vec{v}' \\
+	\mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{A}^{-1} \vec{v}'
 \end{aligned}
 $$
 
@@ -242,15 +242,15 @@ where $\mathbf{I}$ is the identity matrix. We can move the other matrices in a s
 
 $$
 \begin{aligned}
-	\mathbf{B}^{-1}\mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{I} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{C}^{-1}\mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{C}^{-1}\mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{I} \mathbf{D} \, \vec{v} &= \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{D} \, \vec{v} &= \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{D}^{-1}\mathbf{D} \, \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}\,'\\
-	\mathbf{I} \, \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}\,'\\
-	\vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}\,'
+	\mathbf{B}^{-1}\mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{I} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{C}^{-1}\mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{C}^{-1}\mathbf{B}^{-1}\mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{I} \mathbf{D}  \vec{v} &= \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{D}  \vec{v} &= \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{D}^{-1}\mathbf{D}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}'\\
+	\mathbf{I}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}'\\
+	\vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}\vec{v}'
 \end{aligned}
 $$
 
@@ -258,10 +258,10 @@ like peeling the layers off al onion. If we did this all in one step it would lo
 
 $$
 \begin{aligned}
-	\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \vec{v}\,' \\
-	\mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \, \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}\,' \\
-	\mathbf{I} \, \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}\,' \\
-	\vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}\,' 
+	\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \vec{v}' \\
+	\mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' \\
+	\mathbf{I}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' \\
+	\vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' 
 \end{aligned}
 $$
 
@@ -271,7 +271,7 @@ Notice, this means $\mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{
 
 Taking the inverse of multiple matrices is identical to taking the reverse order of the inverse of each individual matrix:
 
-$$ (\, \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \,)^{-1} = \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} $$
+$$ ( \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} )^{-1} = \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} $$
 
 {% endcapture %}
 {% include result.html content=ex %}
@@ -282,7 +282,7 @@ Recall that for orthogonal matrices, their inverse is also their transpose. Ther
 
 Taking the transpose of multiple matrices is identical to taking the reverse order of the transpose of each individual matrix:
 
-$$ (\, \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} \,)^\text{T} = \mathbf{D}^\text{T} \mathbf{C}^\text{T} \mathbf{B}^\text{T} \mathbf{A}^\text{T} $$
+$$ ( \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} )^\text{T} = \mathbf{D}^\text{T} \mathbf{C}^\text{T} \mathbf{B}^\text{T} \mathbf{A}^\text{T} $$
 
 {% endcapture %}
 {% include result.html content=ex %}
@@ -617,7 +617,7 @@ In this example, the matrix $\mathbf{A}$ enforces the conservation law. A rank a
 
 Imagine a rigid body rotating in three dimensions. The state of the system can be described by its angular velocity vector $\vec{\omega}$ and moment of inertia tensor $\mathbf{I}$. The relationship between the angular momentum $\vec{L}$ and the angular velocity is given by:
 $$
-\vec{L} = \mathbf{I} \, \vec{\omega}
+\vec{L} = \mathbf{I}  \vec{\omega}
 $$
 This equation is similar in concept for linear momentum  $\vec{p} = m \vec{v}$, but with the angular velocity $\vec{omega}$ in place of the linear velocity $\vec{v}$ and  the momentum of inertia tensor (a matrix)$\mathbf{I}$ in place of the mass $m$.
 
@@ -625,7 +625,7 @@ This equation is similar in concept for linear momentum  $\vec{p} = m \vec{v}$, 
 **Orthogonal Matrices in Rotational Transformations**\\
 Suppose we want to transform the system into a new coordinate frame that is rotated by some angle. This transformation is represented by an orthogonal matrix $\mathbf{R}$:
 $$
-\vec{\omega}' = \mathbf{R} \, \vec{\omega} \quad \text{and} \quad \vec{L}' = \mathbf{R} \, \vec{L}
+\vec{\omega}' = \mathbf{R}  \vec{\omega} \quad \text{and} \quad \vec{L}' = \mathbf{R}  \vec{L}
 $$
 The orthogonality of $\mathbf{R}$ ensures that the magnitudes of $\vec{\omega}$ and $\vec{L}$ are preserved, as well as the angles between them. This is crucial for preserving physical laws like conservation of angular momentum.
 
