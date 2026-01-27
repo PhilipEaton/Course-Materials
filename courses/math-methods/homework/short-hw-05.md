@@ -3,7 +3,7 @@ layout: default
 title: Mathematical Methods - Short Homework 05
 course_home: /courses/math-methods/
 nav_section: homework
-nav_order: 5
+nav_order: 6
 ---
 
 ## PHYS 3345 - Short Homework 05
