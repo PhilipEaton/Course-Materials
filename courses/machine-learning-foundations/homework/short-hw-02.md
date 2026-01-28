@@ -108,7 +108,7 @@ By the end of this project, you will be able to:
         import seaborn as sns  
         data_original = sns.load_dataset("titanic").dropna(subset=['survived'])
         ```
-        
+
     - Try different distance metrics (Euclidean, Manhattan, Minkowski) for k-NN.
     - Compare inertia vs. silhouette score across different k values.
 
@@ -119,7 +119,7 @@ By the end of this project, you will be able to:
 ### What to Submit
 
 1. **A clean, runnable Jupyter notebook** that:
-    - [ ] loads your chosen dataset and briefly describes what it contains,  
+    - [ ] loads your chosen dataset
     - [ ] prepares features and target variables (encoding if needed),  
     - [ ] performs a train/test split (`stratify=y` if classification),  
     - [ ] scales features appropriately,  
@@ -128,19 +128,24 @@ By the end of this project, you will be able to:
     - [ ] evaluates k-Means with inertia, silhouette score, and visualizations (e.g., PCA or scatter plots),  
     - [ ] includes at least one model-comparison bar plot (e.g., k-NN vs. different k-values, or cluster count comparison),  
     - [ ] contains clear **section headers** for each major step (e.g., “Data Preparation,” “Modeling,” “Evaluation”),  
-    - [ ] includes **concise, meaningful code comments** describing what each block of code does (similar to Project 01 — e.g., “# Load and inspect the dataset,” “# Fit k-NN model and predict test labels,” etc.), and  
-    - [ ] runs from start to finish without errors.
+    - [ ] includes **concise, meaningful code comments** describing what each *block of code* does, and  
+    - [ ] runs from start to finish **without errors**.
 
 2. **A short written report (2–4 pages, PDF format)** that explains your project:
-    - [ ] What research question or goal did you explore using your dataset?  
+See What you should include in Setp 3 above. 
+
+For further consideration, you should think about, and possibly add to your report or your reflection section (wink wink), comments about:
+    - [ ] What research question or goal did you explore using your dataset?
+        - I.e. What could a customer been asking for when they hired you and gave you the data?  
     - [ ] How did you prepare and analyze the data?  
+        - I.e. whole row deletion if an missing data, etc.
     - [ ] What did your results show? Which model(s) performed best?  
     - [ ] Were there any unexpected findings or challenges?  
+        - Is there anything you need to make you customer aware of?
     - [ ] Discuss at least one potential **source of bias** or limitation in your dataset or model.  
     - [ ] Reflect on how your workflow could be improved with more time or data.  
-    - [ ] Include relevant figures or tables that support your discussion (you can copy these from your notebook).  
 
-> **Reminder:** Your notebook should demonstrate a clear, step-by-step workflow — not just working code.  
+> **Reminder:** Your notebook should demonstrate a clear, step-by-step workflow, not just working code.  
 > Use comments, titles, and plots to tell the *story* of your analysis.
 
 
