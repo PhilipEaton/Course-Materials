@@ -37,51 +37,51 @@ By the end of this project, you will be able to:
 1. **Choose a dataset**: Pick one dataset from the list below — all are built into `scikit-learn` or `seaborn`, so you don’t need to download anything.
 Use one of following data sets:
 
-   **Pengiuns**
+<div style="margin-left: 60px">
 
+   **Penguins (multiclass, 3 classes)**
 
+   **Target**: species  
+   ```python
+   from sklearn.datasets import load_penguins 
+   data_original = load_penguins(as_frame=True)
+   ```
+</div>
+
+<div style="margin-left: 60px">
 
    **Wine (multiclass, 3 classes) — slightly harder**
 
-   <div style="margin-left: 30px">
-
-   **Target**: wine cultivar
-   {% capture ex %}
+   **Target**: wine cultivar  
    ```python
    from sklearn.datasets import load_wine  
    data_original = load_wine(as_frame=True)
    ```
-   {% endcapture %}
-   {% include codeinput.html content=ex %}
-   </div>
+</div>
+
+<div style="margin-left: 60px">
 
    **Breast Cancer Wisconsin (binary) — interpretable, imbalanced-ish**
 
-   <div style="margin-left: 30px">
-      
-   **Target**: diagnosis (0 = malignant, 1 = benign)
-   {% capture ex %}
+   **Target**: diagnosis (0 = malignant, 1 = benign)  
    ```python
    from sklearn.datasets import load_breast_cancer  
    data_original = load_breast_cancer(as_frame=True)
    ```
-   {% endcapture %}
-   {% include codeinput.html content=ex %}
-   </div> 
+</div>
+
+<div style="margin-left: 60px">
 
    **Digits (multiclass, 10 classes)**
 
-   <div style="margin-left: 30px">
-      
-   **Target**: digit label (0–9)
+   **Target**: digit label (0–9)  
    {% capture ex %}
    ```python
    from sklearn.datasets import load_digits  
    data_original = load_digits(as_frame=True)
    ```
-   {% endcapture %}
-   {% include codeinput.html content=ex %}
-   </div>
+</div>
+
 
 
 2. **Update and run the code**: Use the one-cell Iris example below as your template.
