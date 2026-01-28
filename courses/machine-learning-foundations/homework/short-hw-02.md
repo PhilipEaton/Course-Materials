@@ -39,19 +39,8 @@ Use one of following data sets:
 
    **Pengiuns**
 
-   <div style="margin-left: 30px">
 
-   **Target:** species  
-   {% capture ex %}
-   ```python
-   from sklearn.datasets import load_penguins
-   data_original = load_penguins(as_frame=True)
-   ```
-   {% endcapture %}
-   {% include codeinput.html content=ex %}
-   </div> 
-
-
+    
    **Wine (multiclass, 3 classes) — slightly harder**
 
    <div style="margin-left: 30px">
