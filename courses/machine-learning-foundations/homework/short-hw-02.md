@@ -37,6 +37,7 @@ By the end of this project, you will be able to:
 1. **Choose a dataset**: Pick one dataset from the list below — all are built into `scikit-learn` or `seaborn`, so you don’t need to download anything.
 Use one of following data sets:
 
+
 <div style="margin-left: 60px">
 
    **Penguins (multiclass, 3 classes)**
@@ -74,8 +75,7 @@ Use one of following data sets:
 
    **Digits (multiclass, 10 classes)**
 
-   **Target**: digit label (0–9)  
-   {% capture ex %}
+   **Target**: digit label (0–9) 
    ```python
    from sklearn.datasets import load_digits  
    data_original = load_digits(as_frame=True)
