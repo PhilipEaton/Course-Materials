@@ -1,6 +1,6 @@
 ---
 layout: jupyternotebook
-title: Machine Learning Foundations – Homework 02
+title: Machine Learning Foundations – Project 02
 course_home: /courses/machine-learning-foundations/
 nav_section: homework
 nav_order: 2
@@ -40,7 +40,7 @@ Use one of following data sets:
    **Pengiuns**
 
 
-    
+
    **Wine (multiclass, 3 classes) — slightly harder**
 
    <div style="margin-left: 30px">
@@ -107,9 +107,9 @@ Use one of following data sets:
 
 4. **(Optional Challenge)**: Get this to work for the Titanic data
 
-| Dataset | Type | Target Variable | Description |
-|----------|------|------------------|--------------|
-| **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
+    | Dataset | Type | Target Variable | Description |
+    |----------|------|------------------|--------------|
+    | **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
 
    **Titanic (binary) - Takes a bit of effort to get working**
 
