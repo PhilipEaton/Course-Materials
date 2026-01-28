@@ -82,36 +82,35 @@ By the end of this project, you will be able to:
    - Adjust n_clusters (for k-Means) and n_neighbors (for k-NN) as appropriate.
    - Re-run the code and confirm that all plots and metrics execute cleanly.
 
-3. **Analyze and Report**: Write a short report, with plots, interpreting the results of your analysis and what it means about the data you chose to analyze. 
+3. **Analyze and Report**: Write a short report (including key plots where appropriate!) interpreting the results of your analysis and what they reveal about the dataset you chose to study
+    Your report should read in a **semi-professional** tone, similar to a technical summary you might provide to a customer who asked you to build this model. The goal is to clearly explain:
+    - what question you were trying to answer,
+    - what the model is doing (i.e. how does k-NN work, but explained to a non-professional),
+    - what you found in the results/was anything odd about your results, and
+    - how confident someone should be in the model’s conclusions.
 
-   In the same document, answer the following questions:
-   - How similar were the k-NN and k-Means results?
-   - What effect did scaling or changing k have?
-   - Did PCA make clusters more or less distinct?
-   - If this were real-world data, what kind of insights could clustering reveal?
+    Focus on clarity and interpretation rather than technical jargon, and use plots to support your explanations when they add insight.
+    
+    Within the same document, but after your short report, answer the following questions:
+    - How similar were the k-NN and k-Means results?
+    - What effect did scaling or changing k have?
+    - Did PCA make clusters more or less distinct?
+    - If this were real-world data, what kind of insights could clustering reveal?
+    This can be informal. I just want you to answer the questions and relfect on what you learned and what you stuggled with.
 
-4. **(Optional Challenge)**: Get this to work for the Titanic data
-
-    | Dataset | Type | Target Variable | Description |
-    |----------|------|------------------|--------------|
-    | **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
-
-   **Titanic (binary) - Takes a bit of effort to get working**
-
-   <div style="margin-left: 30px">
-
-   **Target**: survived (0 = No, 1 = Yes)
-   {% capture ex %}
-   ```python
-   import seaborn as sns  
-   data_original = sns.load_dataset("titanic").dropna(subset=['survived'])
-   ```
-   {% endcapture %}
-   {% include codeinput.html content=ex %}
-   </div> 
-
-- Try different distance metrics (Euclidean, Manhattan, Minkowski) for k-NN.
-- Compare inertia vs. silhouette score across different k values.
+4. **(Optional Challenge)**: 
+    - Get this to work for the Titanic data
+        | Dataset | Type | Target Variable | Description |
+        |----------|------|------------------|--------------|
+        | **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
+        
+        ```python
+        import seaborn as sns  
+        data_original = sns.load_dataset("titanic").dropna(subset=['survived'])
+        ```
+        
+    - Try different distance metrics (Euclidean, Manhattan, Minkowski) for k-NN.
+    - Compare inertia vs. silhouette score across different k values.
 
 
 
