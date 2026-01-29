@@ -348,12 +348,12 @@ The **Special Orthogonal Group**, denoted $ SO(n) $, consists of:
 - with determinant $ +1 $, and
 - the identity matrix.
 
-The ``special'' nature this group is that it only contains orthogonal matrices with determinate $+1$, and all matrices with determinate $-1$ are removed. 
+The "special" nature this group is that it only contains orthogonal matrices with determinate $+1$, all matrices with determinate $-1$ are removed. 
 
-Recall that orthogonal matrices represent transformations that do not change the length of vectors and also preserve the angles between vectors. The mandate that the determinate be $+1$ means we have removed the reflections. With a little thought, we can convince ourselves that this group of matrices represents **rotations** in $ n $-dimensional space, preserving both length and orientation.
+Recall, orthogonal matrices represent transformations that do not change the length of vectors and preserves the angles between vectors. The mandate that the determinate be $+1$ for the special orthogonal group means we have removed all reflections and transformations that flip parity. With a little thought, we can convince ourselves that this group of matrices represents **rotations** in $ n $-dimensional space.
 
 
-### $SO(2)$
+#### $SO(2)$
 
 The group $ SO(2) $ represents the set of all **2D rotations**. An element of $ SO(2) $ can be written as the familiar $2\times 2$ rotation matrix we worked with previously:
 
@@ -372,7 +372,7 @@ The $ SO(2) $ group is said to be **continuous**, as $ \theta $ can take any rea
 
 
 
-### $SO(3)$
+#### $SO(3)$
 
 The group $ SO(3) $ represents the set of all **3D rotations**. An element of $ SO(3) $ can be described by a rotation matrix that performs a rotation about an axis in 3D space by an angle $ \theta $. For example, the three rotation matrices given in the review at the beginning of this lecture are part of $ SO(3) $.
 
