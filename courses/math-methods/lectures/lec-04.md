@@ -106,7 +106,7 @@ The geometric interpretation of the dot product gives rise to several useful pro
    \vec{A} \cdot \vec{A} = A^2
    $$
 
-   Thsi is an important notation note worth being more direct about. When we write the magnitude squared of a vector like $A^2$ what we really mean is the vector dotted with itself. This means the magnitude of a vector $ \vec{A} $ is more formally and technically written as:
+   This is an important notation note worth being more direct about. When we write the magnitude squared of a vector like $A^2$ what we really mean is the vector dotted with itself. This means the magnitude of a vector $ \vec{A} $ is more formally and technically written as:
 
    $$
    |\vec{A}| = A = \sqrt{\vec{A} \cdot \vec{A}}
@@ -134,19 +134,19 @@ The geometric interpretation of the dot product gives rise to several useful pro
 
    - For **positive** $c$, the angle $\theta_{AB}$ is unchanged:
 
-   $$
-   c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
-   $$
+      $$
+      c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
+      $$
 
    - For **negative** $c$, the angle shifts to $180^\circ - \theta_{AB}$ (multiplying a vector by a negative flips its direction; draw a sketch to see how this changes the angle between the vectors), and we can write:
 
-   $$
-   |c|\,|\vec{A}|\,|\vec{B}|\,\cos(180^\circ - \theta_{AB}) = -|c|\,|\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
-   $$
+      $$
+      |c|\,|\vec{A}|\,|\vec{B}|\,\cos(180^\circ - \theta_{AB}) = -|c|\,|\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB}) = c |\vec{A}|\,|\vec{B}|\,\cos(\theta_{AB})
+      $$
 
-   where $c = -\lvert c\rvert$ so that $c$ is negative.
+      where $c = -\lvert c\rvert$ so that $c$ is negative.
 
-   So the property holds regardless of the sign of $c$.
+   This property holds regardless of the sign of $c$.
 
 5. **Distributivity**: The dot product distributes over vector addition:
 

@@ -322,82 +322,88 @@ $$ ( \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} )^\text{T} = \mathbf{D}^\text{T
 
 
 
-
-
-
-
-
 ## Special Orthogonal and Unitary Groups
 
-Having explored orthogonal matrices and their properties, we can now introduce two particularly important groups used in physics: the **Special Orthogonal Group** (SO) and the **Special Unitary Group** (SU). These groups encompass transformations that preserve key physical quantities, such as lengths, angles, or probabilities (in quantum mechanics), while introducing additional structure, such as orientation or phase (again a quantum thing) invariance.
+Having explored orthogonal matrices and their properties, we can now introduce two particularly important groups used in physics: the **Special Orthogonal Group** ($SO$) and the **Special Unitary Group** ($SU$). These groups are orthogonal, as the name suggests, which means they preserve key physical quantities, such as lengths, angles, or probabilities (in quantum mechanics), while adding structure like orientation or phase invariance (another quantum thing).
 
-All orthogonal matrices grouped together form the *orthogonal group* ($O(n)$), where the $n$ tells us how many dimensions we are using. For example, $O(2)$ would be the group of all $2\times 2$ orthogonal matrices. Recall, to be orthogonal as matrix must obey the following property:
+All orthogonal matrices together form the *orthogonal group*, denoted $O(n)$, where $n$ indicates the number of dimensions. For example, $O(2)$ includes all $2 \times 2$ orthogonal matrices. Remember, to be orthogonal a matrix must satisfy:
 
 $$ 
 \mathbf{A}^{-1} = \mathbf{A}^\text{T} 
 $$
 
-A consequence of this was that all orthogonal matrices have a determinate of $\pm1$. 
+A consequence of this is that every orthogonal matrix has a determinant of either $+1$ or $-1$, as we have seen.
+
 
 
 
 ### Special Orthogonal Group
 
-The **Special Orthogonal Group**, denoted $ SO(n) $, consists of:
-- all $ n \times n $ orthogonal matrices,
-- with determinant $ +1 $, and
+The **Special Orthogonal Group**, written $SO(n)$, consists of:
+- all $n \times n$ orthogonal matrices,
+- with determinant $+1$, and
 - the identity matrix.
 
-The "special" nature this group is that it only contains orthogonal matrices with determinate $+1$, all matrices with determinate $-1$ are removed. 
+The word "special" refers to this restriction to matrices with determinant $+1$. Matrices with determinant $-1$ (which include reflections and parity flips) are excluded.
 
-Recall, orthogonal matrices represent transformations that do not change the length of vectors and preserves the angles between vectors. The mandate that the determinate be $+1$ for the special orthogonal group means we have removed all reflections and transformations that flip parity. With a little thought, we can convince ourselves that this group of matrices represents **rotations** in $ n $-dimensional space.
+Since orthogonal matrices preserve both vector lengths and angles, and requiring a determinant of $+1$ eliminates reflections, the matrices in $SO(n)$ represent **rotations** in $n$-dimensional space.
+
 
 
 #### $SO(2)$
 
-The group $ SO(2) $ represents the set of all **2D rotations**. One element of $ SO(2) $ is the familiar $2\times 2$ rotation matrix we worked with previously:
+The group $SO(2)$ contains all **2D rotations**. A typical element of $SO(2)$ is the familiar $2 \times 2$ rotation matrix:
 
 $$
 \mathbf{R}(\theta) = 
 \begin{bmatrix}
-	\cos \theta & -\sin \theta \\
-	\sin \theta & \cos \theta
+	\cos(\theta) & -\sin(\theta) \\
+	\sin(\theta) & \cos(\theta)
 \end{bmatrix}
 $$
 
-where $ \theta $ is the counterclockwise angle of rotation in the 2D plane. 
+Here, $\theta$ is the counterclockwise rotation angle in the 2D plane.
 
-The $ SO(2) $ group is said to be **continuous**, as $ \theta $ can take any real value from 0 to $ 2\pi $ in a continuous manner. The $ SO(2) $ group is used to describe systems with rotational symmetry in two dimensions, such as the rotation of rigid bodies, angular momentum in quantum mechanics, or the symmetries of certain fields in 2D space.
+The $SO(2)$ group is said to be **continuous**, since $\theta$ can vary continuously from $0$ to $2\pi$. This group describes systems with rotational symmetry in two dimensions, including rigid body motion, angular momentum in quantum mechanics, and some symmetric fields.
 
 
 
 
 #### $SO(3)$
 
-Similarly, the $ SO(3) $ represents the set of all **3D rotations**. One element of $ SO(3) $ would be the 3D rotation about any of the the $x$-, $y$-, or $z$-axes. The $ SO(3) $ group is also continuous, since the angles involved all can be continuously changed, just like $SO(2)$. This group is used to describe rotational symmetries of physical systems in three-dimensional space. 
+The group $SO(3)$ describes all **3D rotations**. Its elements include rotation matrices about the $x$-, $y$-, or $z$-axes, or any combination thereof. Like $SO(2)$, this group is continuous, with continuously varying angles.
 
-
-
-
-
+$SO(3)$ is widely used in physics to describe rotational symmetries of three-dimensional systems, such as planetary motion, spin, or rotations of molecules and fields in space.
 
 
 
 
 ### Special Unitary Group
 
-The Special Unitary Group, denoted as $ SU(n) $, represents the set of all **special unitary matrices** of order $ n $. These are $ n \times n $ complex matrices that are both **unitary** and have a determinant of $ +1 $. 
+The **Special Unitary Group**, written $SU(n)$, is the set of all $n \times n$ complex matrices that are:
+- **unitary**, and
+- have determinant $+1$ (this is what "special" means in this naming convention).
 
-A matrix is unitary if its inverse is equal to its conjugate transpose. The conjugate transpose is also called the **Hermitian adjoint**, or simply the **Hermitian**, in physics. This is mathematically expressed as:
+A matrix is unitary if its inverse equals its **conjugate transpose**. This is also called the **Hermitian adjoint** (or simply the **adjoint** in physics). In symbols:
+
 $$
 \mathbf{A}^{\dagger} = (\mathbf{A}^*)^\text{T}
 $$
-where $ \mathbf{A}^* $ denotes the complex conjugate of the elements of $ \mathbf{A} $, and the superscript $ \dagger $ represents the Hermitian adjoint--the symbol is called ``dagger''. So, a unitary matrix obeys the following property:
-$$ \mathbf{A}^{-1} = \mathbf{A}^{\dagger} = (\mathbf{A}^*)^\text{T} $$
 
-Matrices in $ SU(n) $ are of fundamental importance in quantum mechanics, where they describe symmetries of quantum systems, particularly in the context of quantum states and quantum operations. In quantum mechanics, a unitary matrix represents a physical observable, like position, momentum, and energy. 
+Here, $\mathbf{A}^*$ means the complex conjugate of each element of $\mathbf{A}$, and the dagger $^{\dagger}$ means: take the complex conjugate, then transpose. So, a unitary matrix satisfies:
 
-As an example of where the matrices are used, consider quantum computing where the operations on qubits are typically represented by matrices in $ \mathbf{SU}(2) $, which governs the transformation of a two-dimensional quantum state (a qubit). The group $ \mathbf{SU}(n) $ plays an essential role in describing symmetries of quantum fields, particularly in high-energy physics, where the group $ \mathbf{SU}(3) $ is crucial in the Standard Model of particle physics, describing the strong interaction (Quantum Chromodynamics).
+$$
+\mathbf{A}^{-1} = \mathbf{A}^{\dagger} = (\mathbf{A}^*)^\text{T}
+$$
+
+Matrices in $SU(n)$ are of vital importance to quantum mechanics. They describe symmetries of quantum systems and represent quantum operations that preserve probability. The preservation os probability is key since the total probability must always be 1. 
+
+In quantum mechanics, unitary matrices often appear as operators acting on quantum states. These include observable operators like position, momentum, and energy (via the Hamiltonian). For example, in **quantum computing**, the operations applied to qubits are typically elements of $SU(2)$, which governs the transformations of two-level quantum systems. Similarly, $SU(3)$ plays a vital role in high-energy physics: it is the symmetry group underlying Quantum Chromodynamics (QCD), which describes the strong force in the Standard Model of particle physics.
+
+
+
+
+
 
 
 
@@ -405,89 +411,200 @@ As an example of where the matrices are used, consider quantum computing where t
 
 ## Linear Dependence and Independence
 
+In linear algebra, the ideas of **linear dependence** and **linear independence** are essential for understanding the structure of vector spaces. This includes simple coordinate systems (like $x$, $y$, $z$) and more advanced concepts like Hilbert Space, which shows up in quantum mechanics.
 
-In linear algebra, the concepts of **linear dependence** and **linear independence** are fundamental to understanding the structure of vector spaces -- i.e., coordinate systems and more complicated concepts like Hilbert Space (seen in Quantum). These ideas help us determine whether a set of vectors ``spans" a space, or in simpler terms whether some vectors in the set can be written as linear combinations of others. For example: if we were able to write the following equation:
-$$ a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = a_4 \vec{v}_4 $$
-and you can find values for the constants $a_1$, $a_2$, and $a_3$ that are nonzero when $a_4$ is also nonzero, then we would say $\vec{v}_4$ is linearly dependent on the vectors $\vec{v}_1$, $\vec{v}_2$, and $\vec{v}_3$. This means we can create $\vec{v}_4$ using a combination of the other three vectors, making $\vec{v}_4$ dependent on the other three vectors.  
+These concepts help us figure out whether a set of vectors can **span** a space. To span a space, the vectors you choose must 
+1) be able to reproduce any other vector in that space using a linear combination 
+	- Any vector possible in the space should be linearly dependent on the spanning set of vectors.
+2) be linearly independent on each other
+	- Any vector in the spanning set shoiuld not be linearly dependent on the other vectors in the spanning set.
 
-When we say a set of vectors is **linearly dependent**, that means at least one of the vectors in the set can be written as a linear combination of the others just like $\vec{v}_4$ could be written in terms of the other vectors above. If this is true for a set of vectors in a space, then some vectors in the set are redundant in terms of spanning the space and are not needed. On the other hand, when we say a set of vectors is **linearly independent**, we mean that no vector in the set can be expressed as a linear combination of the others. In other words, each vector in the set adds new, unique direction to the space. This can be mathematically verified by trying expcess one vector in terms of the others in the following manner:
-$$ a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = a_4 \vec{v}_4 $$
-but finding that the only possible solution is when all of the constant are zero. This means we cannot create $\vec{v}_4$ using a combination of the other three vectors, making $\vec{v}_4$ independent of the other three vectors. 
-
-In the context of matrices, linear dependence and independence are closely tied to the properties of the matrix formed by using the vectors as its columns. For example, if the columns/rows of a matrix are linearly independent, then its determinant will be non-zero. Conversely, if the columns/rows are linearly dependent, and its determinant will be zero. Understanding these properties is crucial for solving systems of linear equations, determining if a matrix will even have an inverse, and analyzing transformations.
-
-Let's quickly conceptualize the determinant statements just made using the idea of row reduction. Recall that we can take one row of a matrix, multiply it by a constant, add it to another row, and store the result in that row. For a concrete example, consider a $3\times 3$ matrix:  
+For example, if you can write something like:
 
 $$
-\mathbf{A} = \begin{bmatrix}
-	a_{11} & a_{12} & a_{13} \\
-	a_{21} & a_{22} & a_{23} \\
-	a_{31} & a_{32} & a_{33} 
+a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = a_4 \vec{v}_4
+$$
+
+and find nonzero values for $a_1$, $a_2$, and $a_3$ when $a_4$ is also nonzero, then $\vec{v}_4$ can be written using the other three vectors. That makes $\vec{v}_4$ **linearly dependent** on $\vec{v}_1$, $\vec{v}_2$, and $\vec{v}_3$.
+
+If even one vector in a set can be written as a combination of the others, we say the set is **linearly dependent**. This means there is some redundancy. In the example above, if we can build $\vec{v}_4$ from the other three, then we do not really need it to span the space (that is, to fully cover it). It is not giving us a new direction or new information that we cannot already describe using the other vectors already present.
+
+By contrast, a set is **linearly independent** when no vector in the set can be written as a combination of the others. Each one contributes a new and unique direction.
+
+To test this mathematically, we can try to build the zero vector like this:
+
+$$
+a_1 \vec{v}_1 + a_2 \vec{v}_2 + a_3 \vec{v}_3 = \vec{0}
+$$
+
+If the only solution is $a_1 = a_2 = a_3 = 0$, then the vectors are independent. There is no way to write one using the others.
+
+In matrix terms, this concept shows up when we use vectors as rows/columns. If the rows/columns of a matrix are linearly independent, then the matrix has a **non-zero determinant**. If they are dependent, the determinant is **zero**. This distinction is critical when solving systems of equations, determining whether a matrix has an inverse, and understanding transformations in physics.
+
+
+
+
+## Determinants as a Tool to Test Linear Dependence
+
+Let us connect this idea to something we have done before: **row reduction**.
+
+Suppose we start with a $3 \times 3$ matrix:
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
 \end{bmatrix}
 $$
 
-Now suppose one of the rows, say the third row, is linearly dependent on the other two rows. This means it can be written as a linear combination of the first and second rows. Using row reduction, we could subtract a suitable combination of the first and second rows -- recreating the third row -- from the third row, resulting in all elements being zero. We could then store this result in the third row, leaving us with:  
+If Row 3 is linearly dependent on Rows 1 and 2, then we can write it as a combination of those rows. That means we could subtract that combination from Row 3 during row reduction and get all zeros:
 
 $$
-\mathbf{A}' = \begin{bmatrix}
-	a_{11} & a_{12} & a_{13} \\
-	a_{21} & a_{22} & a_{23} \\
-	0 & 0 & 0
+\mathbf{A}' =
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+0 & 0 & 0
 \end{bmatrix}
 $$
 
-## Linear Dependence/Independence and the Determinant
+With a of zeros, we can readily see that the determinant is zero. This tells us the matrix is **singular**, which is just a fancy way of saying it does not have an inverse.
 
-It is not hard to convince ourselves that a matrix with a row (or column) of zeros, like the one above, has a determinant of 0. This we possible only because the rows of the matrix were assumes to be linearly dependent.
-
-It turns out, though we will not prove it here (you are welcome to look it up), that the inverse of a matrix is related to the reciprocal of its determinant. Therefore, if a matrix has a determinant of 0, the reciprocal of the determinant does not exist, meaning the matrix does not have an inverse.
+We only got a row of zeros because we assumed the rows/columns were dependent. So if a matrix has **linearly dependent rows/columns**, its **determinant is zero** and it **cannot be inverted**.
 
 {% capture ex %}
 
-If the determinant of a matrix is 0, then one or more of the columns or rows in the matrix is linearly dependent on the other columns or rows in the matrix.
+If the determinant of a matrix is 0, then one or more of the rows/columns is linearly dependent on the others.
 
-> **Consequence:** This matrix does **not have an inverse**!
+> **Consequence:** This matrix does **not have an inverse** because its determinant is zero!
 
 {% endcapture %}
 {% include result.html content=ex %}
 
+So what is the takeaway?
 
+> Build a matrix using the vectors as rows or columns.  
+> - If the determinant is zero, the vectors are linearly dependent.  
+> - If the determinant is not zero, the vectors are linearly independent.
+
+Let us try this out with an example.
 
 {% capture ex %}
-
 Does the following matrix have an inverse?
 
-$$ \begin{bmatrix}
-	1&2&3\\
-	4&5&6\\
-	7&8&9
-\end{bmatrix} $$
+$$
+\begin{bmatrix}
+	1 & 2 & 3 \\
+	4 & 5 & 6 \\
+	7 & 8 & 9 
+\end{bmatrix}
+$$
 
-We can check by calculating the determinant to see if it is zero or not. The determinant of this matrix in the following manner:
+Let us check by calculating the determinant. If the determinant is zero, the matrix is **singular** and has **no inverse**.
 
-$$ 
+We calculate the determinant using cofactor expansion along the first row:
+
+$$
 \begin{aligned}
-\begin{vmatrix}
-	1&2&3\\
-	4&5&6\\
-	7&8&9
-\end{vmatrix} &= 1 \begin{vmatrix}
-5&6\\
-8&9
-\end{vmatrix} - 2 \begin{vmatrix}
-4&6\\
-7&9
-\end{vmatrix} + 3 \begin{vmatrix}
-4&5\\
-7&8
-\end{vmatrix} \\
-&= 1(45-48) - 2 (36 - 42) + 3(32 - 35) \\
-& = -3 + 12 - 9 \\
-= 0
-\end{aligned}$$
+	\begin{vmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9 
+	\end{vmatrix}
+	&= 1 \begin{vmatrix}
+	5 & 6 \\
+	8 & 9
+	\end{vmatrix}
+	- 2 \begin{vmatrix}
+	4 & 6 \\
+	7 & 9
+	\end{vmatrix}
+	+ 3 \begin{vmatrix}
+	4 & 5 \\
+	7 & 8
+	\end{vmatrix} \\
+	&= 1(5 \cdot 9 - 6 \cdot 8)
+	- 2(4 \cdot 9 - 6 \cdot 7)
+	+ 3(4 \cdot 8 - 5 \cdot 7) \\
+	&= 1(45 - 48)
+	- 2(36 - 42)
+	+ 3(32 - 35) \\
+	&= -3 + 12 - 9 \\
+	&= 0
+\end{aligned}
+$$
 
-This means the columns/rows are linearly dependent on one another and **there is no inverse for this matrix**! 
+Since the determinant is zero, the matrix **does not have an inverse**. That means the rows (or columns) must be **linearly dependent**.
 
+Let us test this by seeing whether one row can be built using the others. For instance, let's see if we can find constants $a$ and $b$ such that:
+
+$$
+a \cdot \text{Row 1} + b \cdot \text{Row 2} = \text{Row 3}
+$$
+
+That is:
+
+$$
+a \cdot \begin{bmatrix} 1 & 2 & 3 \end{bmatrix} + b \cdot \begin{bmatrix} 4 & 5 & 6 \end{bmatrix} = \begin{bmatrix} 7 & 8 & 9 \end{bmatrix}
+$$
+
+This gives us a system of equations:
+
+$$
+\begin{aligned}
+a + 4b &= 7\\
+2a + 5b &= 8 \\
+3a + 6b &= 9
+\end{aligned}
+$$
+
+Let us solve the first equation for $a$:
+
+$$
+a = 7 - 4b
+$$
+
+Substitute into the second equation:
+
+$$
+\begin{aligned}
+2(7 - 4b) + 5b &= 8 \\
+14 - 8b + 5b &= 8 \\
+14 - 3b &= 8 \\
+-3b &= -6 \\
+b &= 2
+\end{aligned}
+$$
+
+Now plug back to find $a$:
+
+$$
+a = 7 - 4(2) = 7 - 8 = -1
+$$
+
+Let us check the third equation:
+
+$$
+3a + 6b = 3(-1) + 6(2) = -3 + 12 = 9
+$$
+
+which checks out. So we can write:
+
+$$
+-1 \cdot \text{Row 1} + 2 \cdot \text{Row 2} = \text{Row 3}
+$$
+
+This confirms that **Row 3 is linearly dependent** on the first two rows. 
+
+Since one row can be written as a linear combination of the others:
+
+- The rows/columns of the matrix are **linearly dependent** in some manner.
+- The determinant is **zero**.
+- The matrix has **no inverse**.
+
+This isn't a formal proof, but is helps demonstrate the connections we are trying to make.
 {% endcapture %}
 {% include example.html content=ex %}
 

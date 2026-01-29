@@ -648,13 +648,14 @@ Notice our model's accuracy was much better than the baseline. This suggests our
 
 #### Note on the various strategies for building a baseline model:
 
-| Strategy            | What It Does                                                                                                     | Example Behavior                                                                                                                                    |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`most_frequent`** | Always predicts the **most common class** in the training data.                                                  | If 70% of your data are "Setosa" penguins, it will predict *Setosa* every time.                                                                     |
-| **`prior`**         | Same as `most_frequent`, but is used to investigate the distribution of labels from the training data.                                                                                     |
-| **`stratified`**    | Makes **random predictions**, but in proportion to the training set’s class distribution.                        | If 70% of your training data are “Setosa” and 30% are “Versicolor,” then 70% of its predictions will be *Setosa* and 30% *Versicolor* (on average). |
-| **`uniform`**       | Predicts **completely at random**, with equal chance for every class.                                            | Each class has the same probability (e.g., 33% each in a 3-class problem).                                                                          |
-| **`constant`**      | Always predicts a **specific class** you define (via the `constant` parameter).                                  | You can tell it to always predict *“Adelie”* no matter what.                                                                                        |
+| Strategy            | What It Does                                                                                                     | Example Behavior                                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`most_frequent`** | Always predicts the **most common class** in the training data.                                                  | If 70% of your training labels are *Setosa*, it will predict *Setosa* for every sample.                                                           |
+| **`prior`**         | Makes **random predictions** according to the **overall class distribution** in the training data (ignores `X`). | If 70% of the training labels are *Setosa* and 30% are *Versicolor*, about 70% of predictions will be *Setosa* and 30% *Versicolor* (on average). |
+| **`stratified`**    | Makes **random predictions** using the class distribution of **similar feature rows** in the training data.      | If among training samples with the same features as a test point, 90% are *Setosa* and 10% *Versicolor*, it will sample from that distribution.   |
+| **`uniform`**       | Predicts **completely at random**, with equal probability for each class.                                        | Each class has the same chance (e.g., 33% each in a 3-class problem).                                                                             |
+| **`constant`**      | Always predicts a **user-specified class** (via the `constant` parameter).                                       | You can force it to always predict *Adelie* regardless of the input.                                                                              |
+
 
 
 #### **When to Use Each**
