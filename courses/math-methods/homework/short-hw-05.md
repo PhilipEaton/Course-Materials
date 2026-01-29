@@ -81,7 +81,11 @@ $$ \vec{\omega} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} $$
 
 b) Compute $ \vec{L} $ when the moment of inertia is $ \mathbf{I}_\text{diag} $ and the angular velocity is the same as the one given in part (a).
 
-c) Show that $ \mathbf{I}_\text{sym} $ is symmetric by explicitly verifying $ \mathbf{I}_\text{sym} = \mathbf{I}_\text{sym}^\text{T} $. Then compute $ \vec{L} $ using the same $\vec{\omega}$ as part (a).
+c) Show that $ \mathbf{I}_\text{sym} $ is symmetric by explicitly verifying 
+
+$$ \mathbf{I}_\text{sym} = \mathbf{I}_\text{sym}^\text{T} $$ 
+
+Then compute $ \vec{L} $ using the same $\vec{\omega}$ as part (a).
 
 d) Write the cross product matrix for $\vec{\omega}$ to calculate torque vector $ \vec{\tau} = \vec{\omega} \times  \vec{L} $, where
 
