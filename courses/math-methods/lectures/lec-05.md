@@ -124,8 +124,6 @@ This form can be simplified a bit when the transformation $ \mathbf{T} $ represe
 
 ### Identity Matrix
 
-### Identity Matrix
-
 We’ve already seen this matrix, but now is a good time to take a closer look at its properties. The **identity matrix**, usually denoted by $ \mathbf{I} $ or sometimes $ \mathbf{1} $, is a square ($n \times n$) matrix that acts as the multiplicative identity in matrix operations. That means for any compatible matrix $ \mathbf{A} $, multiplying by the identity on either side leaves $ \mathbf{A} $ unchanged:
 
 $$

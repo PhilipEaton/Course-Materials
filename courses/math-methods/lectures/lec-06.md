@@ -355,7 +355,7 @@ Recall, orthogonal matrices represent transformations that do not change the len
 
 #### $SO(2)$
 
-The group $ SO(2) $ represents the set of all **2D rotations**. An element of $ SO(2) $ can be written as the familiar $2\times 2$ rotation matrix we worked with previously:
+The group $ SO(2) $ represents the set of all **2D rotations**. One element of $ SO(2) $ is the familiar $2\times 2$ rotation matrix we worked with previously:
 
 $$
 \mathbf{R}(\theta) = 
@@ -365,18 +365,16 @@ $$
 \end{bmatrix}
 $$
 
-where $ \theta $ is the angle of rotation. These matrices perform a counterclockwise rotation of a vector by an angle $ \theta $ in the plane. Since these matrices preserve both the length of vectors and the orientation of the coordinate system, they represent pure rotations without reflections.
+where $ \theta $ is the counterclockwise angle of rotation in the 2D plane. 
 
-The $ SO(2) $ group is said to be **continuous**, as $ \theta $ can take any real value from 0 to $ 2\pi $. This group is used to describe systems with rotational symmetry in two dimensions, such as the rotation of rigid bodies, angular momentum in quantum mechanics, or the symmetries of certain fields in 2D space.
+The $ SO(2) $ group is said to be **continuous**, as $ \theta $ can take any real value from 0 to $ 2\pi $ in a continuous manner. The $ SO(2) $ group is used to describe systems with rotational symmetry in two dimensions, such as the rotation of rigid bodies, angular momentum in quantum mechanics, or the symmetries of certain fields in 2D space.
 
 
 
 
 #### $SO(3)$
 
-The group $ SO(3) $ represents the set of all **3D rotations**. An element of $ SO(3) $ can be described by a rotation matrix that performs a rotation about an axis in 3D space by an angle $ \theta $. For example, the three rotation matrices given in the review at the beginning of this lecture are part of $ SO(3) $.
-
-The $ SO(3) $ group is also continuous, just like $SO(2)$. This group is used to describe rotational symmetries of physical systems in three-dimensional space. 
+Similarly, the $ SO(3) $ represents the set of all **3D rotations**. One element of $ SO(3) $ would be the 3D rotation about any of the the $x$-, $y$-, or $z$-axes. The $ SO(3) $ group is also continuous, since the angles involved all can be continuously changed, just like $SO(2)$. This group is used to describe rotational symmetries of physical systems in three-dimensional space. 
 
 
 
