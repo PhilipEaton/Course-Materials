@@ -8,20 +8,22 @@ nav_order: 6
 
 # Lecture 06 – Orthogonal Matrices Part 2 and Linear Dependence/Independence
 
-
-
+Let’s continue our discussion of orthogonal matrices by exploring some of their key properties and why they matter so much in physics.
 
 ## Why do we care about orthogonal matrices?
 
-It turns out that orthogonal matrices have a special property: they preserve both the magnitude of a vector and the angle between two vectors. This property is crucial in physics, particularly because matrices often represent coordinate transformations. In real-world scenarios, changing the perspective (i.e., changing your coordinates) does not alter the length of a position vector or the relative angles between two position vectors, for example. This makes orthogonal matrices extremely important in describing rotations and other transformations that we expect to preserve physical properties such as distance and angles.
+Orthogonal matrices have a special feature:
 
+> Orthogonal matrix operations preserve both the **magnitude** of a vector and the **angle** between two vectors.
+
+If you're looking for a new math buzz word, this property is called an *isometry*.
+
+This preservation is important in physics. Why? Because matrices often represent coordinate transformations. And in the real world, when we change our perspective, like turning our head or rotating in our swivel chairs, we don’t expect the actual distance between objects or the angles between position vectors to change. That wouldn't agree with our observations of the world in non-relativistic situations. When things get up to relativistic speeds, things change and oddities crop up.
 
 {% capture ex %}
+Let's do a sanity check of these claimed properties of an orthogonal matrix. We saw previously that rotation matrices are orthogonal. So, let's apply a rotation matrix to a pair of vectors and verify the magnitudes of the vectors and that the angle between them remain unchanged .
 
-Suppose we wish to test the properties of an orthogonal matrix by applying a rotation matrix to a pair of vectors. Specifically, we will verify that the magnitudes of the vectors remain unchanged and that the angle between them is preserved. 
-
-Consider the orthogonal matrix $\mathbf{R}_z(\theta)$, which represents a rotation in three dimensions about the $z$-axis by an angle $\theta$:
-
+Let’s use the orthogonal matrix $ \mathbf{R}_z(\theta) $, which represents a rotation in three dimensions about the $ z $-axis by an angle $ \theta $:
 
 $$
 \mathbf{R}_z(\theta) = \begin{bmatrix}
@@ -31,7 +33,7 @@ $$
 \end{bmatrix}
 $$
 
-Let the vector $\vec{v}$ be given as:
+Now consider a vector $ \vec{v} $:
 
 $$
 \vec{v} = \begin{bmatrix}
@@ -41,44 +43,40 @@ $$
 \end{bmatrix}
 $$
 
-When the rotation matrix $\mathbf{R}_z(\theta)$ is applied to $\vec{v}$, we obtain a transformed vector $\vec{v}'$:
+When we apply the rotation matrix $ \mathbf{R}_z(\theta) $ to $ \vec{v} $, we get a new vector $ \vec{v}' $:
 
 $$
-\vec{v}' = \mathbf{R}  \vec{v} = \begin{bmatrix}
-	\cos(\theta) & -\sin(\theta) & 0 \\
-	\sin(\theta) & \cos(\theta) & 0 \\
-	0 & 0 & 1
-\end{bmatrix} \begin{bmatrix}
-	v_x \\
-	v_y \\
-	v_z
-\end{bmatrix} = \begin{bmatrix}
-	v_x \cos(\theta) - v_y \sin(\theta)  \\
+\vec{v}' = \mathbf{R}_z(\theta) \vec{v} = \begin{bmatrix}
+	v_x \cos(\theta) - v_y \sin(\theta) \\
 	v_x \sin(\theta) + v_y \cos(\theta) \\
 	v_z
 \end{bmatrix}
 $$
 
-Now, we recall that the magnitude of a vector $\vec{v}$, represented in terms of the unit vectors $\hat{i}$, $\hat{j}$, and $\hat{k}$, is given by:
+Let’s now look at the magnitudes of these vectors and see if they are the same. The magnitude of $ \vec{v} $ is:
 
 $$
 \lvert \vec{v} \rvert = \sqrt{v_x^2 + v_y^2 + v_z^2}
 $$
 
-And similarly, the magnitude of $\vec{v}'$ can be given as and then simplified to be:
+and the magnitude of $ \vec{v}' $ simplifies as follows:
 
 $$
 \begin{aligned}
 	\lvert \vec{v}'\rvert &= \sqrt{(v_x \cos(\theta) - v_y \sin(\theta))^2 + (v_x \sin(\theta) + v_y \cos(\theta))^2 + v_z^2} \\[1.0ex]
-	&= \sqrt{v_x^2 \cos^2(\theta) - 2 v_x v_y \cos(\theta)\sin(\theta) + v_y^2 \sin^2(\theta) + v_x^2 \sin^2(\theta) + 2 v_x v_y \sin(\theta)\cos(\theta) + v_y^2 \cos^2(\theta) + v_z^2} \\[1.0ex]
-	&= \sqrt{v_x^2 (\cos^2(\theta) + \sin^2(\theta)) - 2 v_x v_y (\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta))  + v_y^2 ( \sin^2(\theta) + \cos^2(\theta)) + v_z^2} \\[1.0ex]
-	\lvert \vec{v}'\\rvert &= \sqrt{v_x^2  + v_y^2 + v_z^2}
+	&= \sqrt{\begin{aligned} &v_x^2 \cos^2(\theta) - 2 v_x v_y \cos(\theta)\sin(\theta) + v_y^2 \sin^2(\theta) + v_x^2 \sin^2(\theta)\\ 
+							 &+ 2 v_x v_y \sin(\theta)\cos(\theta) + v_y^2 \cos^2(\theta) + v_z^2
+			\end{aligned}} \\[1.15ex]
+	&= \sqrt{\begin{aligned} &v_x^2 (\cos^2(\theta) + \sin^2(\theta)) - 2 v_x v_y (\cos(\theta)\sin(\theta) + \sin(\theta)\cos(\theta))  \\
+							 &+ v_y^2 ( \sin^2(\theta) + \cos^2(\theta)) + v_z^2
+			 \end{aligned}} \\[1.0ex]
+	\lvert \vec{v}' \rvert &= \sqrt{v_x^2  + v_y^2 + v_z^2}
 \end{aligned}
 $$
 
-Thus, the magnitude of the vector remains unchanged.
+So, the magnitude of the vector is unchanged after being rotated!
 
-Consider another vector $\vec{u}$:
+Next, let’s examine how the angle between two vectors is affected. Consider another vector $ \vec{u} $:
 
 $$
 \vec{u} = \begin{bmatrix}
@@ -88,91 +86,115 @@ $$
 \end{bmatrix}
 $$
 
-The dot product of $\vec{u}$ and $\vec{v}$ is:
+Remember, the dot product depends on both magnitudes and the angle between two vectors, and we just showed that the rotation leaves magnitudes unchanged. If we can show that the dot product also remains unchaged, then that is confirmation that the angle between two vectors is the same after rotating of both vectors. 
+
+The dot product of $ \vec{u} $ and $ \vec{v} $ is:
 
 $$
 \vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z = \vec{u}^\text{T} \vec{v}
 $$
 
-After applying the rotation matrix $\mathbf{R}_z(\theta)$, the transformed vectors are $\vec{u}' = \mathbf{R}_z(\theta)  \vec{u}$ and $\vec{v}' = \mathbf{R}_z(\theta)  \vec{v}$. Their dot product is:
+Applying the rotation matrix to both vectors gives:
 
 $$
-\vec{u}' \cdot \vec{v}' = (\mathbf{R}_z(\theta)  \vec{u}) \cdot (\mathbf{R}_z(\theta)  \vec{v}) = (\mathbf{R}_z(\theta)  \vec{u})^\text{T} (\mathbf{R}_z(\theta)  \vec{v})
+\vec{u}' = \mathbf{R}_z(\theta) \vec{u} \quad \text{and} \quad \vec{v}' = \mathbf{R}_z(\theta) \vec{v}
 $$
 
-Now, we can make use of a transpose property, that we will discuss next, 
-$$ (\mathbf{A}  \mathbf{B})^\text{T} = \mathbf{B}^\text{T} \mathbf{A}^\text{T} $$ 
-to get:
+Then their dot product becomes:
+
 $$
-\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta)  \vec{v}
+\vec{u}' \cdot \vec{v}' = (\mathbf{R}_z(\theta) \vec{u})^\text{T} (\mathbf{R}_z(\theta) \vec{v})
 $$
 
-Since $\mathbf{R}_z(\theta)$ is orthogonal, we know $\mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta) = \mathbf{I}$, the identity matrix. Therefore:
+Now we can use the transpose identity (which we will explain in detail soon):
+
 $$
-\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \vec{v} = \vec{u} \cdot \vec{v}
+(\mathbf{A} \mathbf{B})^\text{T} = \mathbf{B}^\text{T} \mathbf{A}^\text{T} \quad \Rightarrow \quad (\mathbf{R}_z(\theta) \vec{u})^\text{T} = \vec{u}^\text{T} \mathbf{R}_z(\theta)^\text{T}
 $$
 
-Since the dot product has to do with the relative orientation of the vectors, we can determine that the rotation matrix did not change the angle between the two vectors.
+Substituting this in:
+
+$$
+\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta) \vec{v}
+$$
+
+Because $ \mathbf{R}_z(\theta) $ is orthogonal, we know:
+
+$$
+\mathbf{R}_z(\theta)^\text{T} \mathbf{R}_z(\theta) = \mathbf{I}
+$$
+
+So:
+
+$$
+\vec{u}' \cdot \vec{v}' = \vec{u}^\text{T} \mathbf{I} \vec{v} = \vec{u}^\text{T} \vec{v} = \vec{u} \cdot \vec{v}
+$$
+
+This result confirms that the angle between the vectors is also preserved. We have given general proofs of these properties below, for those who are curious.
 
 {% endcapture %}
 {% include example.html content=ex %}
 
+### Properties of Orthoginal Matrices
 
-How can we ensure a transformation preserves the angle between two vectors? The simplest way is to avoid any rescaling. For example, if the $x$-axis is rescaled, the angles between vectors will no longer remain the same; as shown in the figure below:
-
-<img
-  src="{{ '/courses/math-methods/images/lec06/MMLec06Fig1.png' | relative_url }}"
-  alt="A diagram showing two vectors getting streched as a rsult of a rescaling of the x-axis."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
-
-This is not the only way to ensure the angle between two vectors remains the same. For instance, we could require all directions be rescaled by the same amount, thus preserving angles. However, simply ensuring no rescaling occurs at all is the simplest way to guarantee that angles between vectors remain unchanged. 
-
-As we have seen, orthogonal matrices have several important mathematical and physical properties, which make them particularly useful in various applications. Below are some of their key properties, new and old:
+To conclude, orthogonal matrices have several important mathematical and physical properties, which make them particularly useful in various applications. Below are some of their key properties, new and old:
 
 
-- **Transpose Equals Inverse:**   An orthogonal matrix $\mathbf{A}$ satisfies:  
+- **Transpose Equals Inverse:**   An orthogonal matrix $\mathbf{A}$, by definition, satisfies:  
 
-$$
-\mathbf{A}^\text{T} \mathbf{A} = \mathbf{A} \mathbf{A}^\text{T} = \mathbf{I}
-$$
+	$$
+	\mathbf{A}^\text{T} \mathbf{A} = \mathbf{A} \mathbf{A}^\text{T} = \mathbf{I}
+	$$
 
-where $\mathbf{I}$ is the identity matrix. This means the transpose of $\mathbf{A}$ is its inverse: $\mathbf{A}^{-1} = \mathbf{A}^\text{T}$.
+	where $\mathbf{I}$ is the identity matrix. This means the transpose of $\mathbf{A}$ is its inverse: $\mathbf{A}^{-1} = \mathbf{A}^\text{T}$.
 
 
 - **Column and Row Orthogonality:** The columns (and rows) of an orthogonal matrix are orthonormal (orthogonal and of unit magnitude). Specifically:  
 
-$$\mathbf{A} = \begin{bmatrix}
-	\vert & \vert & \cdots \\
-	\vec{a}_1 & \vec{a}_2 & \cdots\\
-	\vert & \vert & \cdots
-\end{bmatrix} \qquad \text{or}  \qquad \mathbf{A} = \begin{bmatrix}
-	-  \vec{a}_1^\text{T} - \\ -  \vec{a}_2^\text{T} -  \\ \cdots
-\end{bmatrix} \qquad \qquad
-\vec{a}_i \cdot \vec{a}_j = \begin{cases}
-	1 & \text{if }  i = j \\
-	0 & \text{if }  i \ne j 
-\end{cases}
-$$
+	$$\mathbf{A} = \begin{bmatrix}
+		\vert & \vert & \cdots \\
+		\vec{a}_1 & \vec{a}_2 & \cdots\\
+		\vert & \vert & \cdots
+	\end{bmatrix} \qquad \text{or}  \qquad \mathbf{A} = \begin{bmatrix}
+		-  \vec{a}_1^\text{T} - \\ -  \vec{a}_2^\text{T} -  \\ \cdots
+	\end{bmatrix} \qquad \qquad
+	\vec{a}_i \cdot \vec{a}_j = \begin{cases}
+		1 & \text{if }  i = j \\
+		0 & \text{if }  i \ne j 
+	\end{cases}
+	$$
 
 - **Norm Preservation:** Orthogonal matrices preserve the magnitude of vectors. For any vector $\vec{v}$:  
 
-$$
-\lvert \vec{v} \rvert = \lvert \mathbf{A} \vec{v}\rvert
-$$
+	$$
+	\lvert \vec{v} \rvert = \lvert \mathbf{A} \vec{v}\rvert
+	$$
+
+	We can prove this in general in the fllowing manner:
+	
+	$$
+	\lvert \mathbf{A} \vec{v}\rvert^2 =  (\mathbf{A} \vec{v}) \cdot (\mathbf{A} \vec{v}) = (\mathbf{A} \vec{v})^\text{T} (\mathbf{A} \vec{v}) =  \vec{u}^\text{T} \mathbf{A}^\text{T} \mathbf{A} \vec{v} = \vec{v}^\text{T} \mathbf{I}\vec{v} = \vec{v}^\text{T} \vec{v} = \vec{v} \cdot \vec{v} = \lvert \vec{v} \rvert^2
+	$$
 
 - **Angle Preservation:** Orthogonal matrices preserve the angles between vectors. If $\vec{u}$ and $\vec{v}$ are two vectors, then:  
 
-$$
-(\mathbf{A} \vec{u}) \cdot (\mathbf{A} \vec{v}) = \vec{u} \cdot \vec{v}
-$$
+	$$
+	(\mathbf{A} \vec{u}) \cdot (\mathbf{A} \vec{v}) = \vec{u} \cdot \vec{v}
+	$$
+
+	This one is easy to prove:
+
+	$$
+	(\mathbf{A} \vec{u}) \cdot (\mathbf{A} \vec{v}) = (\mathbf{A} \vec{u})^\text{T} (\mathbf{A} \vec{v}) =  \vec{u}^\text{T} \mathbf{A}^\text{T} \mathbf{A} \vec{v} = \vec{u}^\text{T} \mathbf{I}\vec{v} = \vec{u}^\text{T} \vec{v} = \vec{u} \cdot \vec{v}
+	$$
 
 - **Determinant:** It turns out, for the previous two properties to be true, it must be that the determinant of an orthogonal matrix is either $+1$ (for proper rotations) or $-1$ (for improper rotations, which include reflections):  
 
-$$
-\det(\mathbf{A}) = \pm 1
-$$
+	$$
+	\det(\mathbf{A}) = \pm 1
+	$$
 
-We will state this without proof, and reference the first few lectures where we discussed the determinant and its relation to rescaling (which will change angles between vectors) and reflections. 
+	We will state this without proof, and reference the first few lectures where we discussed the determinant and its relation to rescaling (which will change angles between vectors) and reflections. 
 
 
 
@@ -191,13 +213,13 @@ We will state this without proof, and reference the first few lectures where we 
 
 ### Uses of Orthogonal Matrices
 
-Orthogonal matrices are used in physics in various different manners. Here are some common -- new and old -- examples of where we would use these kinds of matrices:
+Orthogonal matrices are used in physics in various different manners. Here are some common, some new and some old, examples of where we would use these kinds of matrices:
 
 - **Coordinate Transformations:** Orthogonal matrices are used to describe rotations and reflections in space.
 - **Conservation of Volume:** Proper orthogonal matrices (those with $\det(\mathbf{A}) = +1$) describe transformations that preserve volume in $n$-dimensional space.
 - **Symmetry Operations:** Orthogonal matrices can represent symmetry operations, such as those used in crystallography and molecular physics.
-- **Eigenvalue Properties:** The eigenvalues of an orthogonal matrix lie on the unit circle in the complex plane, with magnitudes equal to 1. We will talk about these in a few lectures. 
-- **Time Reversal or Parity in Physics:**  Improper orthogonal matrices (with $\det(\mathbf{A}) = -1$) can describe transformations like parity (spatial inversion), time reversal, or reflections.
+- **Eigenvalue Properties:** The eigenvalues of an orthogonal matrix lie on the unit circle in the complex plane, with magnitudes equal to 1. We will see this in few lectures. 
+- **Time Reversal or Parity in Physics:**  Improper orthogonal matrices (with $\det(\mathbf{A}) = -1$) can describe transformations like parity (spatial inversion) and time reversal.
 
 
 
@@ -208,11 +230,11 @@ Orthogonal matrices are used in physics in various different manners. Here are s
 
 
 
-### Special Properties of Matrix Operations
+## Special Properties of Matrix Operations
 
-Before moving on to Linear Dependence and Independence, which is a major part of linear algebra and will occupy the remainder of this lecture and all of the next, let's address a gap in matrix operations we left unfinished earlier.
+Before moving on to Linear Dependence and Independence, which is a major part of linear algebra and will occupy the remainder of this lecture and all of the next, let's address a gap in matrix operations we saw, but did not prove earlier.
 
-**Inverse Flipping**
+### Inverse Flipping
 
 Consider the following matrix operation:  
 $$
@@ -224,9 +246,9 @@ where $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, and $\mathbf{D}$ are all square 
 > How can we manipulate this equation to solve for $\vec{v}$? 
 
 
-In other words, how do we perform the linear algebra necessary to isolate $\vec{v}$? This process provides an early example of the ``algebra" in linear algebra coming into play.
+In other words, how do we perform the linear algebra necessary to isolate $\vec{v}$? This process provides a fun example of the "algebra" part of "linear algebra" coming into play.
 
-To solve for $\vec{v}$, we need to isolate the vector by removing the matrices acting on it. However, we cannot simply apply the inverse of $\mathbf{D}$, i.e., $\mathbf{D}^{-1}$, to move it to the other side. This is because if we try to apply $\mathbf{D}^{-1}$ on the left, the other matrices interfere, and matrices do not necessarily commute -- we cannot swap the order of the matrices willy nilly. Similarly, if we apply $\mathbf{D}^{-1}$ on the right, $\vec{v}$ gets in the way.
+To solve for $\vec{v}$, we need to isolate the vector by removing the matrices acting on it. However, we cannot simply apply the inverse of $\mathbf{D}$, i.e., $\mathbf{D}^{-1}$, to move it to the other side. This is because if we try to apply $\mathbf{D}^{-1}$ on the left, the other matrices interfere, and matrices do not necessarily commute. That is, we cannot swap the order of the matrices willy nilly. Similarly, if we apply $\mathbf{D}^{-1}$ on the right, $\vec{v}$ gets in the way.
 
 Therefore, we must remove $\mathbf{A}$ first by applying its inverse on the left:
 
@@ -254,18 +276,20 @@ $$
 \end{aligned}
 $$
 
-like peeling the layers off al onion. If we did this all in one step it would look something like this:
+Like peeling the layers of an onion, the outer most operation must be removed first and we work our way inwards. If we did this all in one step it would look something like this:
 
 $$
 \begin{aligned}
 	\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \vec{v}' \\
-	\mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' \\
-	\mathbf{I}  \vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' \\
-	\vec{v} &= \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1} \vec{v}' 
+	(\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} &= (\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} \vec{v}' \\
+	\mathbf{I}  \vec{v} &= (\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1}\vec{v}' \\
+	\vec{v} &= (\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} \vec{v}' 
 \end{aligned}
 $$
 
-Notice, this means $\mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}$ is the inverse of $\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}$. This gives us an interesting little result:
+Comparing the two answer we can see that this means: 
+
+$(\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} = \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}$. Notice how the order of the matrices flip as a result of taking the inverse, an important observation that is often not stressed enough.
 
 {% capture ex %}
 
@@ -276,7 +300,7 @@ $$ ( \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} )^{-1} = \mathbf{D}^{-1} \mathb
 {% endcapture %}
 {% include result.html content=ex %}
 
-Recall that for orthogonal matrices, their inverse is also their transpose. Therefore, if applying the inverse flips the order of the matrices in this manner, the transpose must do the same, or else orthogonal matrices would not behave as expected!
+Recall for orthogonal matrices, their inverse is also their transpose. Therefore, if applying the inverse flips the order of the matrices in this manner, the transpose must do the same, or else orthogonal matrices would not behave as expected!
 
 {% capture ex %}
 

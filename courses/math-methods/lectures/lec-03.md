@@ -102,7 +102,7 @@ The most straightforward way to find the matrix representation of a rotation abo
 <img
   src="{{ '/courses/math-methods/images/lec03/rotatedcorrdinates.png' | relative_url }}"
   alt="The image shows two sets of coordinate axes that share the same origin. The original axes are drawn in black, with the horizontal axis pointing to the right and labeled i-hat, and the vertical axis pointing upward and labeled j-hat. A rotated coordinate system is drawn in red. The red i-prime unit vector extends from the origin at an angle above the black horizontal axis. The red j-prime unit vector extends from the origin at an angle above the negative side of the black horizontal axis. Both red vectors form equal angles, labeled theta, with their adjacent black axes."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:40%;">
 
 Using trigonometry, and remembering that unit vectors have length 1, we can determine that the $x$-component of $\widehat{i}'$ is $\cos(\theta)$ and the $y$-component is $\sin(\theta)$. We can do the same thing for $\widehat{j}'$, and the results can be written as:
 
@@ -659,7 +659,7 @@ which is exactly what we expect—a reflection of $ \widehat{i} $ across the lin
 <img
   src="{{ '/courses/math-methods/images/lec03/reflection2.png' | relative_url }}"
   alt="The image shows a horizontal red arrow labeled “Incoming Ray” pointing right toward a gray mirror line that is tilted upward to the right. At the point where the incoming ray meets the mirror, a second red arrow labeled “Outgoing Ray” reflects upwards, forming an angle with the mirror’s surface."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:40%;">
 
 {% capture ex %}
 To transform a **matrix**, you must rotate both its row and column space:
