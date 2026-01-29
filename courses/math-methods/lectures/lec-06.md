@@ -323,13 +323,23 @@ $$ ( \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D} )^\text{T} = \mathbf{D}^\text{T
 
 
 
+
+
+
+
 ## Special Orthogonal and Unitary Groups
 
-Having explored orthogonal matrices and their properties, we can now introduce into two particularly important groups in mathematics and physics: the **Special Orthogonal Group** (SO) and the **Special Unitary Group** (SU). These groups encapsulate transformations that preserve key physical quantities, such as lengths, angles, or probabilities (in quantum mechanics), while introducing additional structure, such as orientation or phase (again a quantum thing) invariance.
+Having explored orthogonal matrices and their properties, we can now introduce two particularly important groups used in physics: the **Special Orthogonal Group** (SO) and the **Special Unitary Group** (SU). These groups encompass transformations that preserve key physical quantities, such as lengths, angles, or probabilities (in quantum mechanics), while introducing additional structure, such as orientation or phase (again a quantum thing) invariance.
 
-In general, all orthogonal matrices grouped together form the *orthogonal group* ($O(n)$), where the $n$ tells us how many dimensions we are using. For example, $O(2)$ would be the group of all $2\times 2$ orthogonal matrices. Recall from above, to be orthogonal as matrix must obey the following property:
-$$ \mathbf{A}^{-1} = \mathbf{A}^\text{T} $$
-the inverse of a matrix must be equal to its own inverse. As we saw above, a consequence of this is that all orthogonal matrices will have a determinate of $\pm1$. 
+All orthogonal matrices grouped together form the *orthogonal group* ($O(n)$), where the $n$ tells us how many dimensions we are using. For example, $O(2)$ would be the group of all $2\times 2$ orthogonal matrices. Recall, to be orthogonal as matrix must obey the following property:
+
+$$ 
+\mathbf{A}^{-1} = \mathbf{A}^\text{T} 
+$$
+
+A consequence of this was that all orthogonal matrices have a determinate of $\pm1$. 
+
+
 
 ### Special Orthogonal Group
 

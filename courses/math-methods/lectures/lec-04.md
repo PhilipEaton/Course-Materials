@@ -52,7 +52,7 @@ This definition shows that the dot product gets larger as the two vectors point 
 <img
   src="{{ '/courses/math-methods/images/lec04/Components.png' | relative_url }}"
   alt="A diagram showing vector A drawn in blue along a slanted horizontal direction. Vector B, drawn in red, extends upward and to the left forming an angle theta A B with vector A. A dashed black line shows the projection of B onto A, labeled B parallel to A. A gray dashed vertical segment from the tip of B down to the projection line represents the perpendicular component, labeled A perpendicular to B. The angle theta A B between vectors A and B is marked near their tails."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
 
 In the figure above, the component of $\vec{B}$ **perpendicular** to $\vec{A}$ is denoted by $B_{\perp A}$. Using basic trigonometry, we can write:
 
@@ -430,7 +430,7 @@ The first relation, $\hat{i} \times \hat{j} = \hat{k}$, is often used to **defin
 <img
   src="{{ '/courses/math-methods/images/lec04/UnitVectors.png' | relative_url }}"
   alt="The image shows a three-dimensional coordinate system with black arrows marking the positive x, y, and z directions. The x-axis extends horizontally to the right, the y-axis extends vertically upward, and the z-axis extends diagonally downward and to the left. Three unit vectors are drawn in red: one pointing along the positive x direction, one pointing along the positive y direction, and one pointing along the negative z direction. Each axis is labeled with its corresponding letter, and each red arrow is labeled with the name of its unit vector."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
 
 
 This convention ensures consistency with the right-hand rule. Using the **anti-commutativity** property of the cross product, we get the remaining three permutations:
