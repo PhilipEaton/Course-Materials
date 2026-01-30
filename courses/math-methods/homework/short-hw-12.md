@@ -18,11 +18,13 @@ nav_order: 15
 A fish population in a lake grows exponentially with a per capita growth rate $ r $ but is subject to a constant harvest of $ H $ fish per unit time. The dynamics of the population $ P(t) $ are modeled by the differential equation
 
 $$
-\frac{dP}{dt} = rP - H,
+\frac{dP}{dt} = rP - H
 $$
+
 with the initial condition
+
 $$
-P(0) = P_0.
+P(0) = P_0
 $$
 
 
@@ -34,9 +36,11 @@ d) Discuss the long-term behavior of $ P(t) $ in terms of $ r $ and $ H $. In pa
 
 
 > Hint: Recall that for a first-order linear ODE in standard form
+
 	$$
 	\frac{dP}{dt} + \left(-r\right)P(t) = -H
 	$$
+    
 	Find the integrating factor and use it to transform the equation into one that can be integrated directly.  
 	Do not forget to apply your initial conditions!
 

@@ -15,29 +15,43 @@ nav_order: 17
 
 
 
-A fish population in a lake grows exponentially with a per capita growth rate $ r $ but is subject to a constant harvest of $ H $ fish per unit time. The dynamics of the population $ P(t) $ are modeled by the differential equation
+Consider the differential equation
 
 $$
-\frac{dP}{dt} = rP - H,
-$$
-with the initial condition
-$$
-P(0) = P_0.
+\frac{dy}{dx} + \frac{3}{x}\,y = x^2\, y^2
 $$
 
+which might arise in a simplified chemical reaction model.
 
-a) Write the differential equation in the standard linear form.  
-b) Determine the integrating factor and use it to solve for the general solution $ P(t) $.  
-c) Find the equilibrium population $ P_{\text{eq}} $ by setting $\frac{dP}{dt} = 0$.  
-d) Discuss the long-term behavior of $ P(t) $ in terms of $ r $ and $ H $. In particular, explain what happens as $ t \to \infty $ and how changes in the harvest rate $ H $ affect the equilibrium population.
+a) **Bernoulli's Equation**
+Show that this ODE is of Bernoulli type with $ n = 2 $. Use the substitution
 
+$$
+v = y^{\,1-n} = y^{-1}
+$$
 
+and express the ODE in terms of $ v(x) $. Solve the resulting linear ODE to find the general solution for $ y(x) $.
+	
+b) **Particular Solution**
+Given the initial condition
 
-> Hint: Recall that for a first-order linear ODE in standard form
+$$
+y(1) = 1
+$$
+
+find the particular solution.
+	
+c) **Qualitative Analysis**
+Perform a qualitative analysis by:
+- Identifying the equilibrium lines and sketching them in a plot.
+- Discussing the stability of the equilibrium lines you found.
+
+>Hint: Recall that a Bernoulli equation of the form 
+
 	$$
-	\frac{dP}{dt} + \left(-r\right)P(t) = -H
+	\frac{dy}{dx} + p(x)y = q(x)y^n
 	$$
-	Find the integrating factor and use it to transform the equation into one that can be integrated directly.  
-	Do not forget to apply your initial conditions!
+
+	can be linearized by the substitution $ v = y^{1-n} $, after which standard techniques (such as the integrating factor method) can be used to solve for $ v(x) $ and then recover $ y(x) $.
 
 
