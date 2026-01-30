@@ -483,12 +483,6 @@ If the determinant of a matrix is 0, then one or more of the rows/columns is lin
 {% endcapture %}
 {% include result.html content=ex %}
 
-So what is the takeaway?
-
-> Build a matrix using the vectors as rows or columns.  
-> - If the determinant is zero, the vectors are linearly dependent.  
-> - If the determinant is not zero, the vectors are linearly independent.
-
 Let us try this out with an example.
 
 {% capture ex %}
@@ -616,23 +610,38 @@ This isn't a formal proof, but is helps demonstrate the connections we are tryin
 
 ## Testing for Linear Dependence/Independence
 
-In many cases, we need to determine whether a set of vectors is linearly dependent or independent. For instance, in 3-dimensional space, any vector can be expressed as a combination of three linearly independent vectors. We see this in practice with the commonly used vectors $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $. These vectors form a set of **basis vectors** for 3-dimensional space, which are used to represent all other vectors in the space. While in general a space does not have a uniquely fixed set of basis vectors, certain conventions---like the use of $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $ in Cartesian coordinates---are often followed to simplify calculations.
+In many cases, we need to determine whether a set of vectors is linearly dependent or independent. For instance, in 3-dimensional space, any vector can be expressed as a combination of three linearly independent vectors. We see this in practice with the commonly used vectors $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $. These vectors form a set of **basis vectors** for 3-dimensional space, which are used to represent all other vectors in the space. While in general a space does not have a uniquely fixed set of basis vectors, certain conventions, like the use of $ \hat{i} $, $ \hat{j} $, and $ \hat{k} $ in Cartesian coordinates, are often followed to simplify calculations.
 
-So, how do we determine if a set of vectors are linearly independent or not? One standard method is to arrange the vectors as columns of a matrix and compute the determinant. As we just determined in the section before this one, if the determinant of a matrix is 0 then the columns/rows of the matrix are not linearly independent.  
+So, how do we determine if a set of vectors are linearly independent or not? Well, we ust saw that if the determinant of a matrix is non-zero, then the rows/columns are linearly independents. Wouldn't it be nice if we could take advantage of that result? Well, we can! 
 
-In more formal math language, we a saying a set of $ n $ vectors in $ n $-dimensional space are linearly independent if and only if the determinant of matrix $ \mathbf{A} $ is non-zero, where matrix $ \mathbf{A} $ is an $ n \times n $ matrix whose columns are made up of the vectors being tested: $ \vec{v}_1, \vec{v}_2, \dots, \vec{v}_n $. To be explicit, matrix $ \mathbf{A} $ can be written in the following manner
+Let's arrange the vectors we wish to test as columns of a matrix and compute the determinant. If the determinant of a matrix **is** 0 then the columns (our vectors) of the matrix are linearly dependent and if the determinant **is not** 0 then the columns (our vectors) are linearly independent from each other.  
+
+In more formal math language, we are saying: 
+
+{% capture ex %}
+A set of $ n $ vectors in $ n $-dimensional space are linearly independent if and only if the determinant of matrix $ \mathbf{A} $ is non-zero, where matrix $ \mathbf{A} $ is an $ n \times n $ matrix whose columns are made up of the vectors being tested, $ \vec{v}_1, \vec{v}_2, \dots, \vec{v}_n $. 
+{% endcapture %}
+{% include result.html content=ex %}
+
+
+
+To be explicit, matrix $ \mathbf{A} $ can be written in the following manner
 
 $$
 \mathbf{A} = 
 \begin{bmatrix}
-	\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n
+	\vert &\vert &\cdots &\vert \\
+	\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n\\
+	\vert &\vert &\cdots &\vert \\
 \end{bmatrix}
 $$
 
 The determinant of $ \mathbf{A} $, satisfies the condition:
+
 $$
 \det(\mathbf{A}) \neq 0 \quad \text{(linearly independent)}.
 $$
+
 If $ \det(\mathbf{A}) = 0 $, then the vectors are linearly dependent, meaning that at least one vector can be expressed as a linear combination of the others as per the discussion in previous sections.
 
 {% capture ex %}
@@ -643,11 +652,11 @@ $$
 \vec{v}_1 = 
 \begin{bmatrix}
 	1 \\ 0 \\ 0
-\end{bmatrix} \quad
+\end{bmatrix} \quad\quad
 \vec{v}_2 = 
 \begin{bmatrix}
 	0 \\ 1 \\ 0
-\end{bmatrix}, \quad
+\end{bmatrix} \quad\quad
 \vec{v}_3 = 
 \begin{bmatrix}
 	1 \\ 1 \\ 0
@@ -683,12 +692,12 @@ $$
 \end{vmatrix} = 0
 $$
 
-Since $ \det(\mathbf{A}) = 0 $, the vectors are linearly dependent. We can easily see that $ \vec{v}_3 = \vec{v}_1 + \vec{v}_2 $.
+Since $ \det(\mathbf{A}) = 0 $, the vectors are linearly dependent, and we can easily see that $ \vec{v}_3 = \vec{v}_1 + \vec{v}_2 $.
 
 {% endcapture %}
 {% include example.html content=ex %}
 
-This process generalizes to higher dimensions and any number of vectors, making it a powerful tool for verifying linear independence.
+This process is a powerful tool for verifying linear independence.
 
 
 
@@ -708,11 +717,11 @@ This process generalizes to higher dimensions and any number of vectors, making 
 
 ## Rank of a Matrix
 
-The **rank of a matrix** is the maximum number of linearly independent rows or columns in the matrix. In physics, the rank often represents the number of independent equations in a system. For example, conservation laws—such as the conservation of momentum or mechanical energy—introduce linear dependencies among variables. This results in a reduction in the rank, indicating fewer available degrees of freedom. 
+The **rank of a matrix** is the *maximum number of linearly independent rows or columns in the matrix*. In physics, the rank often represents the number of independent equations in a system. For example, conservation laws such as the conservation of momentum or mechanical energy introduce linear dependencies among our variables. This results in a reduction in the rank, indicating fewer available degrees of freedom. 
 
 As we can see, the rank of a matrix is closely tied to the concept of **linear dependence**:
-- If the rank of the matrix is **less than the total number of rows (or columns)**, then the rows (or columns) are linearly dependent.
-- If the rank equals the number of rows (or columns), they are linearly independent.
+- If the rank of the matrix is **less than the total number of rows/columns**, then one or more of the rows/columns are linearly dependent.
+- If the rank equals the number of rows/columns, they are all linearly independent.
 
 
 For nonsquare matrices, such as an $m \times n$ matrix, the rank is always less than or equal to the $m$ or $n$, whichever is smaller. In other words, a matrix cannot have a rank greater than the smaller of its two dimensions (number of rows or columns).
@@ -720,7 +729,7 @@ For nonsquare matrices, such as an $m \times n$ matrix, the rank is always less 
 
 {% capture ex %}
 
-Suppose a system of three particles, each moving in one spatial dimension, satisfies a conservation law for total momentum -- the total momentum of the three particle system is zero. If the momentum of each particle in one dimension is represented as $p_1$, $p_2$, and $p_3$, then the conservation law can be expressed as:
+Suppose a system of three particles, each moving in one spatial dimension, satisfies a conservation law for total momentum. In this case, the total momentum of a three particle system will be set to zero. If the momentum of each particle in one dimension is represented as $p_1$, $p_2$, and $p_3$, then the conservation law can be expressed as:
 
 $$
 p_1 + p_2 + p_3 = 0
@@ -729,7 +738,7 @@ $$
 We can turn this equation into a matrix equation in the following manner: 
 
 $$
-\mathbf{A} \vec{p} = \vec{0}
+\mathbf{A} \vec{p} = 0
 $$
 
 where:
@@ -740,17 +749,14 @@ $$
 \end{bmatrix} \qquad\qquad
 \vec{p} = \begin{bmatrix}
 	p_1 \\ p_2 \\ p_3
-\end{bmatrix} \qquad\qquad
-\vec{0} = \begin{bmatrix}
-	0
 \end{bmatrix}
 $$
 
-Notice matrix $\mathbf{A}$ has a single row, this suggests that the conservation law is a constraint on the system -- the sum of the momenta will be zero
+Notice matrix $\mathbf{A}$ is represented as a non square matrix, this suggests that the conservation law is a constraint on the system.
 
-Conservation laws in physics often correspond to constraints represented by linearly dependent rows or columns in a matrix -- though we do not generally write them in this manner. For example, in classical mechanics, the conservation of mechanical energy, momentum, or angular momentum can be expressed using similar matrix equations to the one we wrote above.
+Conservation laws in physics often correspond to constraints represented by linearly dependent rows or columns in a matrix, though we do not generally write them in this manner. For example, in classical mechanics, the conservation of mechanical energy, momentum, or angular momentum can be expressed using similar matrix equations to the one we wrote above.
 
-In this example, the matrix $\mathbf{A}$ enforces the conservation law. A rank analysis of $\mathbf{A}$ shows that the system has two degrees of freedom (since the rank of $\mathbf{A}$ is 1, leaving $3 - 1 = 2$ free variables). This aligns with our physical intuition: two momenta can be independently specified, but the third is constrained by the conservation law.
+In this example, the matrix $\mathbf{A}$ enforces the conservation law. A rank analysis of $\mathbf{A}$ shows that the system has two degrees of freedom. Since $\mathbf{A}$ only has 1 row, it will have a rank of 1 (0 rank is not possible), and we startedw ith 3 degrees of freedom in the form of the three momenta. This leaves us with $3 - 1 = 2$ free variables. This aligns with our physical intuition: two momenta can be independently specified, but the third is constrained by the conservation law.
 
 {% endcapture %}
 {% include example.html content=ex %}
@@ -770,29 +776,29 @@ Imagine a rigid body rotating in three dimensions. The state of the system can b
 $$
 \vec{L} = \mathbf{I}  \vec{\omega}
 $$
-This equation is similar in concept for linear momentum  $\vec{p} = m \vec{v}$, but with the angular velocity $\vec{omega}$ in place of the linear velocity $\vec{v}$ and  the momentum of inertia tensor (a matrix)$\mathbf{I}$ in place of the mass $m$.
+This equation is similar in concept for linear momentum  $\vec{p} = m \vec{v}$, but with the angular velocity $\vec{omega}$ in place of the linear velocity $\vec{v}$ and  the momentum of inertia tensor (a fancy matrix) $\mathbf{I}$ in place of the mass $m$.
 
 
-**Orthogonal Matrices in Rotational Transformations**\\
+**Orthogonal Matrices in Rotational Transformations**
 Suppose we want to transform the system into a new coordinate frame that is rotated by some angle. This transformation is represented by an orthogonal matrix $\mathbf{R}$:
 $$
 \vec{\omega}' = \mathbf{R}  \vec{\omega} \quad \text{and} \quad \vec{L}' = \mathbf{R}  \vec{L}
 $$
 The orthogonality of $\mathbf{R}$ ensures that the magnitudes of $\vec{\omega}$ and $\vec{L}$ are preserved, as well as the angles between them. This is crucial for preserving physical laws like conservation of angular momentum.
 
-**Linear Independence and the Moment of Inertia Tensor**\\
+**Linear Independence and the Moment of Inertia Tensor**
 The moment of inertia tensor $\mathbf{I}$ is a $3 \times 3$ matrix when working in 3 spacial dimensions. If $\mathbf{I}$ has full rank (rank = 3), then the angular velocity components along the three spacial axes are linearly independent. This means that motion along one axis does not depend on the others. 
 
 However, if $\mathbf{I}$ loses rank (say, due to symmetry in the geometry of the rotating object or maybe due to a constraint added to the system. For instance, such as a thin rod rotating about its longitudinal axis would be an example of the rotating object having a geometric symmetry that will cause a reduction in the rank of the matrix. As a result, certain components of $\vec{\omega}$ will become linearly dependent, reducing the system's degrees of freedom.
 
-**Rank and Conservation Laws**\\
+**Rank and Conservation Laws**
 Now consider a scenario where the angular momentum vector $\vec{L}$ is conserved. This will act as a constrain on the system, which can be written in a general manner as:
 $$
 \vec{L} \cdot \hat{n} = \text{constant} \quad \text{(e.g., for rotation about a fixed axis $\hat{n}$)}
 $$
 This constraint introduces a linear dependency among the components of $\vec{L}$, which effectively reduces the rank of the system's equations. 
 
-**Determinants and Volume Preservation**\\
+**Determinants and Volume Preservation**
 The determinant of $\mathbf{R}$ (which must be $\pm 1$ since it is an orthogonal matrix) ensures that the transformation preserves the ``volume" of the angular velocity space. If the determinant were zero, it would mean a collapse of dimensionality, indicating a loss of degrees of freedom, which is physically inadmissible for a rotational transformation.
 
 
@@ -926,8 +932,8 @@ Since the determinant is zero, the velocity vectors are now **linearly dependent
 Consider a rigid body in 3D space with velocity components along the $x$-, $y$-, and $z$-axes represented by the following velocity vectors:
 
 $$
-\vec{v_1} = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix} \quad \quad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} \quad \quad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 4 \end{bmatrix}
 $$
 
@@ -956,8 +962,8 @@ c) After applying the rotation, check whether the velocity vectors are still lin
 d) Now, assume a constraint on the motion forcing the system to only move about in the $yz$-plane. This results in the velocity vectors being updated as follows:
 
 $$
-\vec{v_1} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} \quad \quad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} \quad \quad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 4 \end{bmatrix}
 $$
 
