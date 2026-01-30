@@ -20,15 +20,15 @@ nav_order: 8
 
 ### 1) Some Quick Definitions and Concepts
 
-a) **Symmetric and Antisymmetric Matrices:**  
+a) *Symmetric and Antisymmetric Matrices:*
    - Define a symmetric matrix and provide an example.
    - Define an antisymmetric (aka skew-symmetric) matrix and provide an example.
 
-b) **Orthogonal Matrices:**  
+b) *Orthogonal Matrices:*  
    - Define an orthogonal matrix.
    - List its defining properties.
 
-c) **Determinants and Linear Independence:**  
+c) *Determinants and Linear Independence:*
    - Explain how the determinant of a matrix formed by a set of vectors can be used to determine if those vectors are linearly independent.
    - Provide a brief example to illustrate this idea. (Hint, make up two 2D vectors that are dependent and show you test agrees they are indeed dependent.)
 
@@ -51,7 +51,7 @@ b) Verify your result by calculating $ \mathbf{A} \mathbf{A}^{-1} $ and $ \mathb
 
 
 
-### 3) Symmetric-Antisymmetric Decomposition} 
+### 3) Symmetric-Antisymmetric Decomposition 
 Decompose the matrix
 
 $$
@@ -63,7 +63,7 @@ into its symmetric and antisymmetric components.
 
 
 
-### 4) Testing Linear Independence} 
+### 4) Testing Linear Independence 
 Consider the vectors:
 
 $$
