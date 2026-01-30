@@ -33,15 +33,13 @@ b) Determine the integrating factor and use it to solve for the general solution
 c) Find the equilibrium population $ P_{\text{eq}} $ by setting $\frac{dP}{dt} = 0$.  
 d) Discuss the long-term behavior of $ P(t) $ in terms of $ r $ and $ H $. In particular, explain what happens as $ t \to \infty $ and how changes in the harvest rate $ H $ affect the equilibrium population.
 
+Hint: Recall that for a first-order linear ODE in standard form
 
+$$
+\frac{dP}{dt} + \left(-r\right)P(t) = -H
+$$
 
-> Hint: Recall that for a first-order linear ODE in standard form
->
->	$$
->	\frac{dP}{dt} + \left(-r\right)P(t) = -H
->	$$
->
->	Find the integrating factor and use it to transform the equation into one that can be integrated directly.  
->	Do not forget to apply your initial conditions!
+Find the integrating factor and use it to transform the equation into one that can be integrated directly.  
+Do not forget to apply your initial conditions!
 
 
