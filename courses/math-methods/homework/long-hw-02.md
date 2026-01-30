@@ -3,6 +3,7 @@ layout: default
 title: Mathematical Methods - Long Homework 02
 course_home: /courses/math-methods/
 nav_section: homework
+hw_type: long
 nav_order: 8
 ---
 

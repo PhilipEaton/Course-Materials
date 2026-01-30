@@ -3,6 +3,7 @@ layout: default
 title: Mathematical Methods - Short Homework 11
 course_home: /courses/math-methods/
 nav_section: homework
+hw_type: short
 nav_order: 14
 ---
 

@@ -6,7 +6,6 @@ course_home: /courses/math-methods/
 
 # Homework Sets
 
-<ul>
 {% assign course_prefix = page.course_home | append: "homework/" %}
 
 {% assign items = site.pages
@@ -14,7 +13,16 @@ course_home: /courses/math-methods/
   | where_exp: "p", "p.nav_section == 'homework'"
   | sort: "nav_order" %}
 
-{% for p in items %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+{% assign groups = items | group_by: "hw_type" %}
+
+{% for g in groups %}
+  <h2>
+    {% if g.name == "short" %}Short Homework{% elsif g.name == "long" %}Long Homework{% else %}{{ g.name | capitalize }}{% endif %}
+  </h2>
+
+  <ul>
+    {% for p in g.items %}
+      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+  </ul>
 {% endfor %}
-</ul>

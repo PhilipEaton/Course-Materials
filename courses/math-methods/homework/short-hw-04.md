@@ -4,6 +4,7 @@ title: Mathematical Methods - Short Homework 04
 course_home: /courses/math-methods/
 nav_section: homework
 nav_order: 4
+hw_type: short
 ---
 
 ## PHYS 3345 - Short Homework 04

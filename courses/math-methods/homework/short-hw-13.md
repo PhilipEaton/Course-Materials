@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Mathematical Methods - Short Homework 12
+title: Mathematical Methods - Short Homework 13
 course_home: /courses/math-methods/
 nav_section: homework
 hw_type: short
-nav_order: 15
+nav_order: 17
 ---
 
-## PHYS 3345 - Short Homework 12
+## PHYS 3345 - Short Homework 13
 
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
