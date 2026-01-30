@@ -26,9 +26,9 @@ $$
 
 a) Write out $(\mathbf{A} - \lambda \mathbf{I})$ as a single matrix.
 	
-b) Solve the characteristic equation \( \det(\mathbf{A} - \lambda \mathbf{I}) = 0 \) and find the eigenvalues \( \lambda \).
+b) Solve the characteristic equation $ \det(\mathbf{A} - \lambda \mathbf{I}) = 0 $ and find the eigenvalues $ \lambda $.
 	
-c) For each eigenvalue, find the corresponding eigenvector \( \vec{v} \).
+c) For each eigenvalue, find the corresponding eigenvector $ \vec{v} $.
 
 
 

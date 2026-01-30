@@ -21,11 +21,11 @@ A = \begin{bmatrix} 1 & 2 \\ 2 & 1 \end{bmatrix} \qquad B = \begin{bmatrix} 0 & 
 $$
 
 For each matrix, classify the matrix according to the following properties:
-- **Unitary**: A matrix \( M \) is unitary if \( M^\dagger M = I \), where \( M^\dagger \) is the conjugate transpose of \( M \) and \( I \) is the identity matrix.  
-- **Hermitian**: A matrix \( M \) is Hermitian if \( M^\dagger = M \).  
+- **Unitary**: A matrix $ M $ is unitary if $ M^\dagger M = I $, where $ M^\dagger $ is the conjugate transpose of $ M $ and $ I $ is the identity matrix.  
+- **Hermitian**: A matrix $ M $ is Hermitian if $ M^\dagger = M $.  
 - **Real**: A matrix is real if all of its entries are real numbers.  
 - **Diagonal**: A matrix is diagonal if all off-diagonal elements are zero.  
-- **Orthogonal**: A matrix is orthogonal if \( M^T M = I \), where \( M^T \) is the transpose of \( M \).  
+- **Orthogonal**: A matrix is orthogonal if $ M^T M = I $, where $ M^T $ is the transpose of $ M $.  
 
 b) Now, consider the following Pauli spin matrices:
 

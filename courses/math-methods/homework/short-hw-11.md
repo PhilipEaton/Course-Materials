@@ -14,7 +14,7 @@ nav_order: 14
 
 
 
-A water tank initially contains $ V_0 $ liters of water. Water is pumped into the tank at a \textbf{constant rate} $ R_{\text{in}} = \text{a constant} $. Simultaneously, water leaks out of the tank at a rate proportional to the square root of the current water volume, given by:
+A water tank initially contains $ V_0 $ liters of water. Water is pumped into the tank at a **constant rate** $ R_{\text{in}} = \text{a constant} $. Simultaneously, water leaks out of the tank at a rate proportional to the square root of the current water volume, given by:
 
 $$
 R_{\text{out}} = k \sqrt{V(t)}

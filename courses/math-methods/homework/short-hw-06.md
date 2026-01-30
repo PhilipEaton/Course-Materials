@@ -17,8 +17,8 @@ nav_order: 7
 Consider a rigid body in 3D space with velocity components along the $x$-, $y$-, and $z$-axes represented by the following velocity vectors:
 
 $$
-\vec{v_1} = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix} \quad \quad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} \quad \quad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 4 \end{bmatrix}
 $$
 
@@ -47,8 +47,8 @@ c) After applying the rotation, check whether the velocity vectors are still lin
 d) Now, assume a constraint on the motion forcing the system to only move about in the $yz$-plane. This results in the velocity vectors being updated as follows:
 
 $$
-\vec{v_1} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}, \quad 
-\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix}, \quad 
+\vec{v_1} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} \quad \quad 
+\vec{v_2} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} \quad \quad 
 \vec{v_3} = \begin{bmatrix} 0 \\ 0 \\ 4 \end{bmatrix}
 $$
 
