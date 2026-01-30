@@ -134,6 +134,7 @@ b) For each eigenvalue, find a corresponding eigenvector.
 c) Verify that your eigenvectors are linearly independent.  
 
 
+<div class="page-break"></div>
 
 
 ### 7) Eigenvalue and Eigenvector Practice... again!

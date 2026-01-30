@@ -75,8 +75,7 @@ $$
 a) Form the matrix with these vectors as columns and compute its determinant and use the result to discuss the linear independence of these vectors.  
 b) Now, assume a constraint forces the system to move only in the $yz$-plane. Update the vectors accordingly, and determine the rank of the new matrix. (Hint: If the system is constrained to move only in the $yz$-plane, then can it move in the $x$-direction?)
 
-
-
+<div class="page-break"></div>
 
 ### 5) Verifying Orthogonality
 Given the matrix

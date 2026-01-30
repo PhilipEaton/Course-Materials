@@ -43,7 +43,7 @@ classify them by:
 Solve the following ODEs using separation of variables.
 
 $$ 
-\text{a)} \qquad  \frac{dy}{dx} = x e^{-y} \qquad\qquad\qquad\qquad \text{b)} \qquad  \frac{dx}{dt} = \frac{t}{x} \qquad\qquad\qquad\qquad \text{c)} \qquad  \frac{dN}{dt} = kN(1 - N) 
+\text{a)} \qquad  \frac{dy}{dx} = x e^{-y} \qquad\qquad \text{b)} \qquad  \frac{dx}{dt} = \frac{t}{x} \qquad\qquad \text{c)} \qquad  \frac{dN}{dt} = kN(1 - N) 
 $$
 
 > Hint for part c) Consider using partial fractions to make the integral easier to complete. 
@@ -53,7 +53,7 @@ $$
 Solve the following first-order linear ODEs using the integrating factor method.
 
 $$ 
-\text{a)} \qquad  \frac{dy}{dx} + y = e^{-x} \qquad\qquad\qquad\qquad \text{b)} \qquad  x \frac{dy}{dx} + 2y = x^2 \quad\text{for}\quad x > 0 \qquad\qquad\qquad\qquad \text{c)} \qquad  \frac{dy}{dx} + \frac{y}{x} = \ln(x) 
+\text{a)} \qquad  \frac{dy}{dx} + y = e^{-x} \qquad\qquad \text{b)} \qquad  x \frac{dy}{dx} + 2y = x^2 \quad\text{for}\quad x > 0 \qquad\qquad \text{c)} \qquad  \frac{dy}{dx} + \frac{y}{x} = \ln(x) 
 $$
 
 

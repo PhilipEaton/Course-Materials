@@ -65,6 +65,8 @@ $$
 \text{c)} \quad y'' - 4y = e^{2x}
 $$
 
+<div class="page-break"></div>
+
 ### 5) Undetermined Coefficients – Trig Forcing
 
 Use undetermined coefficients to solve:
