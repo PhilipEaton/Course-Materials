@@ -18,110 +18,119 @@ nav_order: 8
 ---
 
 
-### 1) Row Reduction Makes Me Cry
-Consider the system of equations:  
+### 1) Some Quick Definitions and Concepts
+
+a) **Symmetric and Antisymmetric Matrices:**  
+   - Define a symmetric matrix and provide an example.
+   - Define an antisymmetric (aka skew-symmetric) matrix and provide an example.
+
+b) **Orthogonal Matrices:**  
+   - Define an orthogonal matrix.
+   - List its defining properties.
+
+c) **Determinants and Linear Independence:**  
+   - Explain how the determinant of a matrix formed by a set of vectors can be used to determine if those vectors are linearly independent.
+   - Provide a brief example to illustrate this idea. (Hint, make up two 2D vectors that are dependent and show you test agrees they are indeed dependent.)
+
+
+
+
+
+
+### 2) Matrix Inversion
+Given the matrix
 
 $$
-\begin{aligned}
-	2x + 3y - z &= 5 \\
-	x - 4y + 2z &= -3 \\
-	-3x + 2y + 4z &= 7
-\end{aligned}
+\mathbf{A} = \begin{bmatrix} 4 & 7 \\ 2 & 6 \end{bmatrix}
 $$
 
-a) Write this system in matrix form $ \mathbf{A} \vec{x} = \vec{b} $, where $ \mathbf{A} $ is the coefficient matrix, $ \vec{x} $ is the variable vector, and $ \vec{b} $ is the result vector.  
-
-b) Solve for $x$, $y$, and $z$, by setting up the augmented matrix and using row reduction to find the solution.  
-
-c) Find the inverse of the coefficient matrix (you can do this on the computer if you want) and use that to find $x$, $y$, and $z$.
-
-<br>
-
-
-
-### 2) Determinants and Their Meaning
-
-Given the matrix 
-
-$$ 
-\mathbf{A} = \begin{bmatrix} 2 & 1 & 3 \\ -1 & 4 & 2 \\ 0 & -2 & 5 \end{bmatrix} 
-$$
-
-a) Calculate $ \det(\mathbf{A}) $.  
-
-b) Interpret what the determinant tells you about the matrix $ \mathbf{A} $ in terms of:
-   - Whether $ \mathbf{A} $ is has an inverse or not.
-   - Whether $ \mathbf{A} $ changes the volume of a unit cube. If so, by what factor?
+a) Compute the inverse $ \mathbf{A}^{-1} $ using either row reduction methods or the formula given in the notes for a $2 \times 2$ matrix.  
+b) Verify your result by calculating $ \mathbf{A} \mathbf{A}^{-1} $ and $ \mathbf{A}^{-1} \mathbf{A} $. What should you get from there operations?
 
 
 
 
-### 3) Transpose and Trace
-Consider the matrix 
 
-$$ 
-\mathbf{B} = \begin{bmatrix} 4 & 7 \\ -2 & 3 \end{bmatrix} 
-$$
-
-Compute $ \mathbf{B}^\text{T} $ and tind the trace of $ \mathbf{B} $.
-
-<div class="page-break"></div>
-
-
-### 4) Coordinate Transformations
-a)}] A particle is traveling with a velocity of 
+### 3) Symmetric-Antisymmetric Decomposition} 
+Decompose the matrix
 
 $$
-\vec{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix} 
-$$ 
-
-Somehow, via magnets or magic, it undergoes a rotation of $ 90^\circ $ counterclockwise about the origin. Write the rotation matrix and compute the new components for the velocity. Call the resulting velocity $ \vec{v}\,' $.  
-
-b) Reflect $ \vec{v}\,' $ off the line $ y = x $, and provide the resulting coordinates.  
-
-c) Discuss whether the transformations preserve the magnitude of the vector. Does that make sense considering the determinants of each of the transformation matrices?
-
-
-
-
-### 5) Dot Product and Work
-A constant force $ \vec{F} = 3\hat{i} - 4\hat{j} \, \text{N} $ is applied to an object that moves with displacement $ \Delta \vec{x} = 5\hat{i} + 2\hat{j} \, \text{m} $.
-
-a) Compute the work done by the force using the dot product.  
-b) If the displacement were not the one given but was actually perpendicular to the force, how this would affect the resulting value for the work done?
-
-
-
-
-
-
-
-### 6) Cross Product
-Two vectors are given as $ \vec{A} = 2\hat{i} + 3\hat{j} + \hat{k} $ and $ \vec{B} = \hat{i} - 4\hat{j} + 2\hat{k} $.
-
-a) Compute $ \vec{A} \times \vec{B} $.  
-b) Verify that $ \vec{A} \cdot (\vec{A} \times \vec{B}) = 0 $.  
-c) Show that the cross product $ \vec{A} \times \vec{B} $ can be expressed as $ \mathbf{A}_\times \vec{B} $, where:
-
-$$
-\mathbf{A}_\times = \begin{bmatrix}
-   0 & -A_z & A_y \\
-   A_z & 0 & -A_x \\
-   -A_y & A_x & 0
-\end{bmatrix}
+\mathbf{B} = \begin{bmatrix} 3 & 4 \\ 4 & 1 \end{bmatrix}
 $$
 
-using the two given vectors.
+into its symmetric and antisymmetric components.
+
+
+
+
+### 4) Testing Linear Independence} 
+Consider the vectors:
+
+$$
+\vec{v}_1 = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix} \quad\quad
+\vec{v}_2 = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} \quad\quad
+\vec{v}_3 = \begin{bmatrix} 0 \\ 0 \\ 4 \end{bmatrix}
+$$
+
+a) Form the matrix with these vectors as columns and compute its determinant and use the result to discuss the linear independence of these vectors.  
+b) Now, assume a constraint forces the system to move only in the $yz$-plane. Update the vectors accordingly, and determine the rank of the new matrix. (Hint: If the system is constrained to move only in the $yz$-plane, then can it move in the $x$-direction?)
+
+
+
+
+### 5) Verifying Orthogonality
+Given the matrix
+
+$$
+\mathbf{R} = \begin{bmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix}
+$$
+
+a) Verify that $ \mathbf{R} $ is orthogonal by showing that $ \mathbf{R}^\text{T} \mathbf{R} = \mathbf{I} $.  
+b) Compute the determinant of $ \mathbf{R} $ and explain its significance.  
 
 
 
 
 
-### 7) Pure Scaling Transformation
-A matrix $ \mathbf{S} = \begin{bmatrix} 3 & 0 \\ 0 & 2 \end{bmatrix} $ represents a scaling transformation.  
 
-a) Apply $ \mathbf{S} $ to the vector $ \vec{u} = \begin{bmatrix} 4 \\ 5 \end{bmatrix} $, and find the resulting vector.  
-b) Discuss how the scaling affects the area of a unit square in the plane. (Hint: The determinant may be helpful here.)
+
+### 6) Combining Multiple Transformations
+An object in the $xy$-plane is first rotated by $45^\circ$ using the rotation matrix $\mathbf{R}(45^\circ)$ **and then** reflected about the $y$-axis using $\mathbf{R}_y$. Both matrices can be given as:
+
+$$
+\mathbf{R}(45^\circ) = \begin{bmatrix} \cos(45^\circ) & -\sin(45^\circ) \\ \sin(45^\circ) & \cos(45^\circ) \end{bmatrix} \qquad \qquad \mathbf{R}_y = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}
+$$
+
+
+a) Compute the combined transformation matrix. (Hint: Make sure the order is correct!)  
+b) Apply the combined transformation to the vector 
+
+$$ \vec{v} = \begin{bmatrix} 2 \\ 3 \end{bmatrix} $$
+ 
+and confirm the transformation was completed correctly.  
+
+c) Reverse the order of the transformations, create combined transformation matrix, and apply it to vector 
+
+$$ \vec{v} = \begin{bmatrix} 2 \\ 3 \end{bmatrix} $$ 
+
+Is this the same or different as what you got in part (b). Does that make sense? 
+
+
+
+
+
+### 7) Basis and Rank
+A set of data points is represented by the vectors:
+
+$$
+\vec{v}_1 = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \quad\quad
+\vec{v}_2 = \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix} \quad\quad
+\vec{v}_3 = \begin{bmatrix} 7 \\ 8 \\ 9 \end{bmatrix}
+$$
+
+
+a) Form the matrix with these vectors as columns and determine the rank of the matrix.  
+b) Explain what the rank indicates about the dimensionality of the space spanned by the data.  
 
 
 
