@@ -47,11 +47,11 @@ Perform a qualitative analysis by:
 - Discussing the stability of the equilibrium lines you found.
 
 >Hint: Recall that a Bernoulli equation of the form 
-
-	$$
-	\frac{dy}{dx} + p(x)y = q(x)y^n
-	$$
-
-	can be linearized by the substitution $ v = y^{1-n} $, after which standard techniques (such as the integrating factor method) can be used to solve for $ v(x) $ and then recover $ y(x) $.
+>
+>	$$
+>	\frac{dy}{dx} + p(x)y = q(x)y^n
+>	$$
+>
+>	can be linearized by the substitution $ v = y^{1-n} $, after which standard techniques (such as the integrating factor method) can be used to solve for $ v(x) $ and then recover $ y(x) $.
 
 
