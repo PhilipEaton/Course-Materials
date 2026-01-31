@@ -282,10 +282,10 @@ plt.tight_layout()
 plt.show()
 
 # --- Print evaluation metrics ---
-print(f"Mean Squared Error (MSE)        →  Okay: {mse_ok:.1f}   |  Best: {mse_best:.1f}")
-print(f"Root Mean Squared Error (RMSE)  →  Okay: {rmse_ok:.2f}   |  Best: {rmse_best:.2f}")
-print(f"Mean Absolute Error (MAE)       →  Okay: {mae_ok:.2f}   |  Best: {mae_best:.2f}")
-print(f"R² Score                        →  Okay: {r2_ok:.2f}   |  Best: {r2_best:.2f}")
+print(f"Mean Squared Error (MSE)        |  Okay: {mse_ok:.1f}   |  Best: {mse_best:.1f}")
+print(f"Root Mean Squared Error (RMSE)  |  Okay: {rmse_ok:.2f}   |  Best: {rmse_best:.2f}")
+print(f"Mean Absolute Error (MAE)       |  Okay: {mae_ok:.2f}   |  Best: {mae_best:.2f}")
+print(f"R² Score                        |  Okay: {r2_ok:.2f}   |  Best: {r2_best:.2f}")
 
 ```
 {% endcapture %}
@@ -300,10 +300,10 @@ print(f"R² Score                        →  Okay: {r2_ok:.2f}   |  Best: {r2_b
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
-Mean Squared Error (MSE)        →  Okay: 42.4   |  Best: 9.7
-Root Mean Squared Error (RMSE)  →  Okay: 6.51   |  Best: 3.12
-Mean Absolute Error (MAE)       →  Okay: 6.02   |  Best: 2.34
-R$^2$ Score                        →  Okay: 0.33   |  Best: 0.85
+Mean Squared Error (MSE)        |  Okay: 42.4   |  Best: 9.7
+Root Mean Squared Error (RMSE)  |  Okay: 6.51   |  Best: 3.12
+Mean Absolute Error (MAE)       |  Okay: 6.02   |  Best: 2.34
+R$^2$ Score                     |  Okay: 0.33   |  Best: 0.85
 
 
 {% endcapture %}
