@@ -1368,8 +1368,8 @@ print(model.summary())
 Dep. Variable:            MedHouseVal   R-squared:                       0.596  
 Model:                            OLS   Adj. R-squared:                  0.595  
 Method:                 Least Squares   F-statistic:                     759.7  
-Date:                Sat, 31 Jan 2026   Prob (F-statistic):               0.00  
-Time:                        11:24:45   Log-Likelihood:                -4544.4  
+Date:                                   Prob (F-statistic):               0.00  
+Time:                                   Log-Likelihood:                -4544.4  
 No. Observations:                4128   AIC:                             9107.  
 Df Residuals:                    4119   BIC:                             9164.  
 Df Model:                           8                                         
@@ -1614,6 +1614,7 @@ Adding features to a model tends to improve *fit* — at least on the training d
 We want a model that balances **accuracy** and **simplicity**.
 
 #### Common Tools for Model Selection
+
 | Tool | What It Measures | Goal |
 |:-----|:------------------|:-----|
 | **Adjusted R²** | Adjusts for number of predictors | Higher = better |
@@ -1701,8 +1702,8 @@ print(model.summary())
     Dep. Variable:                 Target   R-squared:                       0.376
     Model:                            OLS   Adj. R-squared:                  0.356
     Method:                 Least Squares   F-statistic:                     19.24
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):           7.52e-10
-    Time:                        15:44:49   Log-Likelihood:                -335.41
+    Date:                                   Prob (F-statistic):           7.52e-10
+    Time:                                   Log-Likelihood:                -335.41
     No. Observations:                 100   AIC:                             678.8
     Df Residuals:                      96   BIC:                             689.2
     Df Model:                           3                                         
@@ -1941,8 +1942,8 @@ print(model_full.summary())
     Dep. Variable:                 Target   R-squared:                       0.474
     Model:                            OLS   Adj. R-squared:                  0.452
     Method:                 Least Squares   F-statistic:                     21.44
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):           1.26e-12
-    Time:                        15:10:19   Log-Likelihood:                -350.43
+    Date:                                   Prob (F-statistic):           1.26e-12
+    Time:                                   Log-Likelihood:                -350.43
     No. Observations:                 100   AIC:                             710.9
     Df Residuals:                      95   BIC:                             723.9
     Df Model:                           4                                         
@@ -2004,8 +2005,8 @@ print(model_full.summary())
     Dep. Variable:                 Target   R-squared:                       0.470
     Model:                            OLS   Adj. R-squared:                  0.454
     Method:                 Least Squares   F-statistic:                     28.39
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):           3.15e-13
-    Time:                        15:18:11   Log-Likelihood:                -350.84
+    Date:                                   Prob (F-statistic):           3.15e-13
+    Time:                                   Log-Likelihood:                -350.84
     No. Observations:                 100   AIC:                             709.7
     Df Residuals:                      96   BIC:                             720.1
     Df Model:                           3                                         
@@ -2060,8 +2061,8 @@ print(model_full.summary())
     Dep. Variable:                 Target   R-squared:                       0.447
     Model:                            OLS   Adj. R-squared:                  0.435
     Method:                 Least Squares   F-statistic:                     39.13
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):           3.47e-13
-    Time:                        15:18:34   Log-Likelihood:                -353.01
+    Date:                                   Prob (F-statistic):           3.47e-13
+    Time:                                   Log-Likelihood:                -353.01
     No. Observations:                 100   AIC:                             712.0
     Df Residuals:                      97   BIC:                             719.8
     Df Model:                           2                                         
@@ -2114,8 +2115,8 @@ print(model_full.summary())
     Dep. Variable:                 Target   R-squared (uncentered):                   0.940
     Model:                            OLS   Adj. R-squared (uncentered):              0.939
     Method:                 Least Squares   F-statistic:                              770.2
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):                    1.16e-60
-    Time:                        15:19:29   Log-Likelihood:                         -353.33
+    Date:                                   Prob (F-statistic):                    1.16e-60
+    Time:                                   Log-Likelihood:                         -353.33
     No. Observations:                 100   AIC:                                      710.7
     Df Residuals:                      98   BIC:                                      715.9
     Df Model:                           2                                                  
@@ -2237,8 +2238,8 @@ model_forward.summary()
 Dep. Variable:                 Target   R-squared:                       0.470
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     28.39
-Date:                Sat, 31 Jan 2026   Prob (F-statistic):           3.15e-13
-Time:                        11:42:17   Log-Likelihood:                -350.84
+Date:                                   Prob (F-statistic):           3.15e-13
+Time:                                   Log-Likelihood:                -350.84
 No. Observations:                 100   AIC:                             709.7
 Df Residuals:                      96   BIC:                             720.1
 Df Model:                           3                                         
@@ -2656,8 +2657,8 @@ print(model_sm.summary())
     Dep. Variable:                      y   R-squared:                       0.963
     Model:                            OLS   Adj. R-squared:                  0.962
     Method:                 Least Squares   F-statistic:                     842.7
-    Date:                Thu, 09 Oct 2025   Prob (F-statistic):           8.46e-69
-    Time:                        16:22:35   Log-Likelihood:                -189.84
+    Date:                                   Prob (F-statistic):           8.46e-69
+    Time:                                   Log-Likelihood:                -189.84
     No. Observations:                 100   AIC:                             387.7
     Df Residuals:                      96   BIC:                             398.1
     Df Model:                           3                                         
