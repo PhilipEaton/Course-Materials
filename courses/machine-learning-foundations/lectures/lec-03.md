@@ -14,6 +14,7 @@ nav_order: 3
 
 First, let's import the needed libraries and functions:
 
+{% capture ex %}
 
 ```python
 # ===============================================================
@@ -65,6 +66,14 @@ import warnings
 warnings.filterwarnings("ignore")  # keep output clean for class demos
 
 ```
+
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
+
+
+
+
 
 
 
@@ -123,7 +132,7 @@ Here is a fact of nature:
 It can come from many sources: measurement errors, natural randomness in human or environmental behavior, or simply missing features that affect the outcome. Good models aim to capture the signal (the true underlying relationship) while ignoring the noise (the random stuff that doesn’t repeat predictably).
 
 
-
+{% capture ex %}
 ```python
 # --- Create synthetic linear data ---
 np.random.seed(42)
@@ -143,6 +152,9 @@ plt.legend()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 {% capture ex %}
@@ -160,7 +172,7 @@ What we want is a model that **captures the signal without *overreacting* to the
 
 We’ll train a regression model to see if it can *discover* or *extract* the signal from noisy data.
 
-
+{% capture ex %}
 ```python
 # --- Fit Linear Regression model ---
 model = LinearRegression()
@@ -185,6 +197,9 @@ print(f"Model learned slope (β₁): {model.coef_[0][0]:.3f}")
 print(f"Model learned intercept (β₀): {model.intercept_[0]:.3f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
     
@@ -217,6 +232,7 @@ We can measure that using:
     - **Adjusted R²** - adds a punishment to R² for model complexity
 
 
+{% capture ex %}
 ```python
 # --- Generate example data ---
 X = np.linspace(0, 10, 20)
@@ -272,6 +288,9 @@ print(f"Mean Absolute Error (MAE)       →  Okay: {mae_ok:.2f}   |  Best: {mae_
 print(f"R² Score                        →  Okay: {r2_ok:.2f}   |  Best: {r2_best:.2f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
     
@@ -446,7 +465,7 @@ RMSE or MAE talk about *“how far off we are”*.
 $R^2$ talks about *“how much of the pattern we’ve captured.”*
 
 
-
+{% capture ex %}
 ```python
 # === Example: Evaluating Model Fit ===
 # This code demonstrates how to calculate common regression fit statistics.
@@ -492,6 +511,9 @@ plt.grid(True, linestyle="--", alpha=0.5)
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 
@@ -515,8 +537,7 @@ plt.show()
 
 
 
-
-
+{% capture ex %}
 ```python
 # === Comparing Fit Statistics Under Different Noise Levels ===
 
@@ -577,6 +598,10 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
+
 
 
 {% capture ex %}
@@ -665,7 +690,7 @@ Plotting them helps us see:
 In a well-fit linear model, residuals should scatter randomly around zero. Like so:
 
 
-
+{% capture ex %}
 ```python
 # --- Plot residuals ---
 residuals = y - y_pred
@@ -679,6 +704,9 @@ plt.title("Residual Plot: Are Errors Random?")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 {% capture ex %}
@@ -694,7 +722,7 @@ plt.show()
 
 
 
-
+{% capture ex %}
 ```python
 # --- Set up the data vector and treu target ---
 np.random.seed(42)
@@ -741,6 +769,9 @@ plt.tight_layout()
 plt.show()
 
 ```
+
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
 
     
@@ -801,6 +832,7 @@ In short: **randomness** is *good*. **Structure** is *bad*.
 ### Consider the following examples of "bad" residual plots:
 
 
+{% capture ex %}
 ```python
 # --- Generate synthetic data for residual plot examples ---
 np.random.seed(42)
@@ -846,6 +878,9 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 {% capture ex %}
@@ -924,7 +959,7 @@ Below are two possible lines: one “okay” and one “best.”
 The **best-fit line** minimizes the total area of those squared vertical distances.
 
 
-
+{% capture ex %}
 ```python
 # --- Generate example data ---
 X = np.linspace(0, 10, 20)
@@ -983,6 +1018,9 @@ plt.tight_layout(rect=[0, 0, 1, 0.97])
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 {% capture ex %}
@@ -1010,7 +1048,7 @@ Let's use a simple linear model to predict the price of a house given only its s
 We will make up our own data, but we could have taken this from Zillow or some nations relator database.
 
 
-
+{% capture ex %}
 ```python
 # ============================================================
 # Example: Predicting House Prices from Square Footage
@@ -1066,6 +1104,9 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 
@@ -1134,7 +1175,7 @@ Let’s create an example dataset with two features ($x_1$ and $x_2$) that both 
 We’ll fit a regression plane and see how it captures the trend in 3D space.
 
 
-
+{% capture ex %}
 ```python
 # === Example: Visualizing Multiple Linear Regression (2 Predictors) ===
 # --- Generate synthetic data ---
@@ -1180,6 +1221,9 @@ print(f"β₁ (x₁): {model.coef_[0]:.2f}")
 print(f"β₂ (x₂): {model.coef_[1]:.2f}")
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 
@@ -1211,7 +1255,7 @@ We have covered these fit statistics in details already. They mean the same thin
 Let's look at an example 
 
 
-
+{% capture ex %}
 ```python
 # === Example: Evaluating Model Fit with MLR + Equation Display ===
 # --- Load dataset ---
@@ -1276,6 +1320,9 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
     
  
@@ -1331,7 +1378,7 @@ When we train a regression model, we’re trying to find the right balance betwe
 We can visualize this by fitting different degrees of polynomial regression to the same dataset and comparing how they behave on unseen data.
 
 
-
+{% capture ex %}
 ```python
 # === Visualizing Underfitting vs. Overfitting ===
 # --- Generate synthetic data (nonlinear) ---
@@ -1380,6 +1427,9 @@ plt.tight_layout()
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 {% capture ex %}
 <img
@@ -1426,7 +1476,7 @@ We are looking for low error in both out training set *and* test set results.
 
 Below we have plotted the MSE for the training and test set error with a polynominal model of increasing degree (more terms):
 
-
+{% capture ex %}
 ```python
 # === Bias–Variance Tradeoff Curve ===
 degrees = range(1, 16)
@@ -1451,6 +1501,9 @@ plt.grid(True, linestyle="--", alpha=0.6)
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 {% capture ex %}
 <img
@@ -1557,7 +1610,7 @@ In model selection, we want to:
 - Remember: significance doesn’t always mean importance—look at context, effect size, and correlation too.
 
 
-
+{% capture ex %}
 ```python
 # === Example: Evaluating Coefficient Significance (with Standardization) ===
 # --- Generate synthetic data ---
@@ -1592,7 +1645,10 @@ model = sm.OLS(y, X).fit()
 print(model.summary())
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
+{% capture ex %}
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.376
@@ -1620,6 +1676,18 @@ print(model.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
+
+
+
+
+
+
+
 
 
 #### How to Read the Summary Output
@@ -1687,7 +1755,7 @@ Let's suppose we have multiple features and we want to figure out how to build a
 
 First, let's construct some face data we can play around with:
 
-
+{% capture ex %}
 ```python
 # --- Create a synthetic dataset ---
 np.random.seed(42)
@@ -1713,10 +1781,12 @@ df = pd.DataFrame({
 
 df.head()
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
 
 
-
+{% capture ex %}
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1786,27 +1856,37 @@ df.head()
   </tbody>
 </table>
 </div>
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
 
 
 
 Now we can select the features and target and store those in their own variables:
 
-
+{% capture ex %}
 ```python
 # --- Separate features and target ---
 X_full = df[["Feature_1", "Feature_2", "Feature_3", "Feature_4"]]
 X_full = sm.add_constant(X_full) # <- Adds the unknown constant (4 features + constant)
 y = df["Target"]
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 Let's fit a MLR model using all of the features and see what the model looks like:
 
-
+{% capture ex %}
 ```python
 model_full = sm.OLS(y, X_full).fit()
 print(model_full.summary())
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
+{% capture ex %}
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.474
@@ -1835,6 +1915,11 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
 
 
 From this report we can see that Feature 3 is unimportant to the present model:
@@ -1848,7 +1933,7 @@ For example, we will only remove Feature 3 for now, even though we will likely b
 
 Let's remove Feature 3 and rebuild the model:
 
-
+{% capture ex %}
 ```python
 # --- Separate features and target ---
 X_full = df[["Feature_1", "Feature_2", "Feature_4"]]
@@ -1858,7 +1943,11 @@ y = df["Target"]
 model_full = sm.OLS(y, X_full).fit()
 print(model_full.summary())
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
+
+{% capture ex %}
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.470
@@ -1886,6 +1975,11 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
 
 
 Notice the fit statistics are basically unchanged. We removed an entire feature and did not chang ethe fit of the model. This means Feature 3 was not adding anything to the origonal model. 
@@ -1894,7 +1988,7 @@ Notice the fit statistics are basically unchanged. We removed an entire feature 
 
 Let's remove the Feature 4 and see what happends:
 
-
+{% capture ex %}
 ```python
 # --- Separate features and target ---
 X_full = df[["Feature_1", "Feature_2"]]
@@ -1904,7 +1998,10 @@ y = df["Target"]
 model_full = sm.OLS(y, X_full).fit()
 print(model_full.summary())
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %} 
 
+{% capture ex %}
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.447
@@ -1931,6 +2028,11 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
 
 
 This time we had a larger impact on the overall fit. 
@@ -1939,7 +2041,7 @@ Deciding what to keep and remove is a bit of an art and depends on the kinds of 
 
 Lastly, we could remove the constant, since that now appears to be insignificant accoring to its p-value:
 
-
+{% capture ex %}
 ```python
 # --- Separate features and target ---
 X_full = df[["Feature_1", "Feature_2"]]
@@ -1948,7 +2050,10 @@ y = df["Target"]
 model_full = sm.OLS(y, X_full).fit()
 print(model_full.summary())
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
+{% capture ex %}
                                      OLS Regression Results                                
     =======================================================================================
     Dep. Variable:                 Target   R-squared (uncentered):                   0.940
@@ -1975,6 +2080,11 @@ print(model_full.summary())
     Notes:
     [1] R² is computed without centering (uncentered) since the model does not contain a constant.
     [2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
 
 
 Notice we are left with a fantastic model now! 
@@ -2010,7 +2120,7 @@ Feature selection isn’t just about accuracy, it’s about building a model tha
 </div>
 
 
-
+{% capture ex %}
 ```python
 import itertools
 
@@ -2054,17 +2164,16 @@ model_forward, selected_features_f = forward_selection(X_full, y)
 model_forward.summary()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
 
+{% capture ex %}
     Added 'Feature_2' (Adj R² = 0.253, p = 0.000)
     Added 'Feature_1' (Adj R² = 0.435, p = 0.000)
     Added 'Feature_4' (Adj R² = 0.454, p = 0.041)
     
     ✅ Final selected features:
     ['Feature_2', 'Feature_1', 'Feature_4']
-
-
-
-
 
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
@@ -2129,6 +2238,19 @@ model_forward.summary()
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
 
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
+
+
+
+
+
+
+
+
 
 
 #### Colinearity Between Features
@@ -2160,7 +2282,7 @@ Collinearity doesn’t mean your model is “wrong,” but it masks the true rel
 
 
 
-
+{% capture ex %}
 ```python
 # === Visual Add-ons for Part 4: Model Selection ===
 
@@ -2201,6 +2323,9 @@ plt.title("Correlation Between Predictors")
 plt.show()
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
 
 {% capture ex %}
@@ -2358,7 +2483,7 @@ from a single feature to multiple predictors working together.
 
 # One-Cell Code for the Lecture
 
-
+{% capture ex %}
 ```python
 # =====================================================
 # One-Cell: Linear and Multiple Linear Regression
@@ -2473,6 +2598,9 @@ print(model_sm.summary())
 
 
 ```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
 
     
 
