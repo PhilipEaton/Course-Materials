@@ -2623,7 +2623,6 @@ print(model_sm.summary())
     MSE: 2.609 | RMSE: 1.615 | MAE: 1.311 | R²: 0.963 | Adjusted R²: 0.962
     AIC: 387.67 | BIC: 398.10
 
-{% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_60_3.png' | relative_url }}"
   alt=""
