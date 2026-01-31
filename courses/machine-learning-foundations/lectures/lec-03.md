@@ -1338,22 +1338,22 @@ print(model.summary())
  
 
 {% capture ex %}
-   === Regression Equation ===
-    ŷ = 
-          0.854 × MedInc
-          0.123 × HouseAge
-         -0.294 × AveRooms
-          0.339 × AveBedrms
-         -0.002 × Population
-         -0.041 × AveOccup
-         -0.897 × Latitude
-         -0.870 × Longitude
-     +    2.072  (Intercept)
+   === Regression Equation ===  
+    ŷ =   
+          0.854 × MedInc  
+          0.123 × HouseAge  
+         -0.294 × AveRooms  
+          0.339 × AveBedrms  
+         -0.002 × Population  
+         -0.041 × AveOccup  
+         -0.897 × Latitude  
+         -0.870 × Longitude  
+     +    2.072  (Intercept)  
     
-    === Model Fit Statistics ===
-    Mean Squared Error (MSE):      0.556
-    R² (Coefficient of Determination): 0.576
-    Adjusted R²:                   0.575
+    === Model Fit Statistics ===  
+    Mean Squared Error (MSE):      0.556  
+    R² (Coefficient of Determination): 0.576  
+    Adjusted R²:                   0.575  
 
 
 <img
