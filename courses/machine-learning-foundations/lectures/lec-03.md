@@ -1695,6 +1695,7 @@ print(model.summary())
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
+```python
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.376
@@ -1722,6 +1723,7 @@ print(model.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -1933,6 +1935,7 @@ print(model_full.summary())
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
+```python
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.474
@@ -1961,6 +1964,7 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -1994,6 +1998,7 @@ print(model_full.summary())
 
 
 {% capture ex %}
+```python
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.470
@@ -2021,6 +2026,7 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2048,6 +2054,7 @@ print(model_full.summary())
 {% include codeinput.html content=ex %} 
 
 {% capture ex %}
+```python
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                 Target   R-squared:                       0.447
@@ -2074,6 +2081,7 @@ print(model_full.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2100,6 +2108,7 @@ print(model_full.summary())
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
+```python
                                      OLS Regression Results                                
     =======================================================================================
     Dep. Variable:                 Target   R-squared (uncentered):                   0.940
@@ -2126,6 +2135,7 @@ print(model_full.summary())
     Notes:
     [1] R² is computed without centering (uncentered) since the model does not contain a constant.
     [2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2221,69 +2231,35 @@ model_forward.summary()
     ✅ Final selected features:
     ['Feature_2', 'Feature_1', 'Feature_4']
 
-<table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>         <td>Target</td>      <th>  R-squared:         </th> <td>   0.470</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.454</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   28.39</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 09 Oct 2025</td> <th>  Prob (F-statistic):</th> <td>3.15e-13</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>15:40:03</td>     <th>  Log-Likelihood:    </th> <td> -350.84</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   709.7</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    96</td>      <th>  BIC:               </th> <td>   720.1</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>const</th>     <td>  -14.2968</td> <td>    6.701</td> <td>   -2.134</td> <td> 0.035</td> <td>  -27.598</td> <td>   -0.995</td>
-</tr>
-<tr>
-  <th>Feature_2</th> <td>    2.2472</td> <td>    0.293</td> <td>    7.678</td> <td> 0.000</td> <td>    1.666</td> <td>    2.828</td>
-</tr>
-<tr>
-  <th>Feature_1</th> <td>    2.8426</td> <td>    0.468</td> <td>    6.077</td> <td> 0.000</td> <td>    1.914</td> <td>    3.771</td>
-</tr>
-<tr>
-  <th>Feature_4</th> <td>    0.1968</td> <td>    0.095</td> <td>    2.067</td> <td> 0.041</td> <td>    0.008</td> <td>    0.386</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 0.785</td> <th>  Durbin-Watson:     </th> <td>   1.773</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.675</td> <th>  Jarque-Bera (JB):  </th> <td>   0.908</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.167</td> <th>  Prob(JB):          </th> <td>   0.635</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.673</td> <th>  Cond. No.          </th> <td>    431.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```python
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Target   R-squared:                       0.470
+Model:                            OLS   Adj. R-squared:                  0.454
+Method:                 Least Squares   F-statistic:                     28.39
+Date:                Sat, 31 Jan 2026   Prob (F-statistic):           3.15e-13
+Time:                        11:42:17   Log-Likelihood:                -350.84
+No. Observations:                 100   AIC:                             709.7
+Df Residuals:                      96   BIC:                             720.1
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const        -14.2968      6.701     -2.134      0.035     -27.598      -0.995
+Feature_2      2.2472      0.293      7.678      0.000       1.666       2.828
+Feature_1      2.8426      0.468      6.077      0.000       1.914       3.771
+Feature_4      0.1968      0.095      2.067      0.041       0.008       0.386
+==============================================================================
+Omnibus:                        0.785   Durbin-Watson:                   1.773
+Prob(Omnibus):                  0.675   Jarque-Bera (JB):                0.908
+Skew:                           0.167   Prob(JB):                        0.635
+Kurtosis:                       2.673   Cond. No.                         431.
+==============================================================================
 
-
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2674,6 +2650,7 @@ print(model_sm.summary())
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
+```python
                                 OLS Regression Results                            
     ==============================================================================
     Dep. Variable:                      y   R-squared:                       0.963
@@ -2701,7 +2678,7 @@ print(model_sm.summary())
     
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
