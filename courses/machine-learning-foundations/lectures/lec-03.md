@@ -380,7 +380,7 @@ This makes it easier to interpret when you want to say things like,
 ### **3. Mean Absolute Error (MAE)**
 The mean absolute error (MAE) is calculated similarly to the MSE, but an absolute value is used instead of a square:
 $$
-\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_{\text{data}, i} - y_{\text{predicted}, i}|
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \vert y_{\text{data}, i} - y_{\text{predicted}, i}\vert
 $$
 
 **The absolute value does two things**: 
@@ -824,7 +824,7 @@ In short: **randomness** is *good*. **Structure** is *bad*.
 | Pattern | What It Suggests | Possible Fix |
 |:-----------|:--------------|:--------------|
 | **Curved pattern** | The relationship isn’t linear | Try a polynomial or nonlinear model |
-| **Funnel shape (increasing or decreasing spread)** | Variance changes with x | Transform y (e.g., log(y)) or use weighted regression |
+| **Funnel shape (increasing or decreasing spread)** | Variance changes with x | Transform y (e.g., $ \log(y) $) or use weighted regression |
 | **Clusters or bands** | Missing variable or categorical effect | Add that feature to the model |
 | **All residuals above or below 0** | Model is biased or intercept is off | Re-check fitting, scaling, or intercept |
 
@@ -1743,13 +1743,13 @@ print(model.summary())
 Look for:
 - **coef** – estimated effect of each variable
 - **std err** – uncertainty of that estimate
-- **P>|t|** – This is the p-value for that coefficient
+- $\mathbf{P > \vert t \vert}$ – This is the p-value for that coefficient
 
 ##### Example Interpretation
 Here Feature 3 shows:
 
 $$
-P>|t| = 0.748 
+P>\vert t \vert = 0.748 
 $$
 
 then there’s a 74.8% chance we’d see this effect even if there were *no true relationship*.
@@ -1759,7 +1759,7 @@ That’s far from significant—so we might consider dropping Feature 3.
 On the other hand, if Feature 1 has:
 
 $$
-P>|t| = 0.000
+P>\vert t \vert = 0.000
 $$
 
 it’s highly significant, suggesting a genuine relationship with the target.
