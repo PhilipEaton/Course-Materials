@@ -79,22 +79,18 @@ warnings.filterwarnings("ignore")  # keep output clean for class demos
 
 ## Linear Regression
 
-
 ### *Teaching Models How to Draw a Line*
 
-Last time, we explored distance-based models like **k-NN** and **k-Means**, which made predictions by comparing asking: “Who are your closest neighbors?”  
+Last time, we explored distance-based models like **k-NN** and **k-Means**, which made predictions by comparing asking: “Who are your closest neighbors?” and then letting those neighbors inform our test point what its label should be (majority rules) or what value it should take (average of the neightbors).
 
 Today, we’ll shift from *comparing* to *modeling*.  
 
-Instead of storing data points and measuring distances, regression models **learn relationships**. That is, they find the mathematical patterns that describe how one variable changes when another does.
+Instead of storing data and measuring distances, regression models truely **learn relationships**. That is, they find the mathematical patterns that describe how one variable changes in relation to another.
 
 In simple terms:
-> k-NN memorizes.
+> k-NN memorize. Regression models generalize.
 
-while  
-> Regression generalizes.
-
-We’ll start with a **Linear Regression**, the simplest and most widely used model in data science, and see how that works with one and then multiple features. Next lecture we will extend those ideas to **Logistic Regression**, which helps us predict *categories* like “yes/no,” “survived/didn’t,” or “spam/not spam.”
+We’ll start with **Linear Regression**, the simplest and most widely used model in data science, and see how that works with a single and multiple features. Next lecture we will extend the ideas introduced today to **Logistic Regression**, which helps us predict *categories* like “yes/no,” “survived/didn’t,” or “spam/not spam.”
 
 As we will see, the Linear and Logistic Regressions have many similarities, but are used to acheive very different outcomes.
 
@@ -110,12 +106,15 @@ By the end of this lecture, you will be able to:
 
 ---
 
-Let’s begin by exploring how a simple line — yes, the same one from algebra class — becomes one of the most powerful tools in machine learning.
+Let’s begin by exploring how a simple line (yes, the same one from algebra class) becomes one of the most powerful tools in machine learning.
+
+
+
+
 
 
 
 ## Simple Linear Regression
-
 
 ### What Does Regression Do/Mean?
 
