@@ -667,6 +667,13 @@ A good scientist always looks at both the **numbers** *and* the **patterns** in 
 
 
 
+
+
+
+
+
+
+
 ### Visualizing the Error: Plotting Residuals
 
 Residuals are the **errors** (the difference) between the predicted and actual target values:
@@ -771,7 +778,7 @@ plt.show()
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_15_0.png' | relative_url }}"
   alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:75%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
