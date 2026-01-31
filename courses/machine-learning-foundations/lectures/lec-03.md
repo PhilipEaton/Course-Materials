@@ -820,8 +820,9 @@ In short: **randomness** is *good*. **Structure** is *bad*.
 
 
 ### Common Warning Signs
+
 | Pattern | What It Suggests | Possible Fix |
-|:--|:--|:--|
+|:-----------|:--------------|:--------------|
 | **Curved pattern** | The relationship isn’t linear | Try a polynomial or nonlinear model |
 | **Funnel shape (increasing or decreasing spread)** | Variance changes with x | Transform y (e.g., log(y)) or use weighted regression |
 | **Clusters or bands** | Missing variable or categorical effect | Add that feature to the model |
