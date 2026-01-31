@@ -361,6 +361,7 @@ Finally, dividing by the total number of data points $n$ gives us the mean, or a
 
 ### **2. Root Mean Squared Error (RMSE)**
 This is calculated by taking the square-root of the MSE:
+
 $$
 \text{RMSE} = \sqrt{\text{MSE}}
 $$
@@ -379,6 +380,7 @@ This makes it easier to interpret when you want to say things like,
 
 ### **3. Mean Absolute Error (MAE)**
 The mean absolute error (MAE) is calculated similarly to the MSE, but an absolute value is used instead of a square:
+
 $$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \vert y_{\text{data}, i} - y_{\text{predicted}, i}\vert
 $$
@@ -394,15 +396,21 @@ $$
 
 
 ### **4. Coefficient of Determination ($R^2$)**
+
 The coefficient of determination (aka the $R^2$) is calculated via:
+
 $$
 R^2 = 1 - \frac{\text{SSR}}{\text{SST}}
 $$
+
 where SSR is the sum if squared residuals and SST is the sum of squaresd totals. Specifically, the SSR is calculated via:
+
 $$ 
 \text{SSR} = \sum_{i=1}^{n}(y_{\text{data}, i} - y_{\text{predicted}, i})^2
 $$
+
 as we mentioned previously. The SST is caculated as:
+
 $$ 
 \text{SST} = \sum_{i=1}^{n}(y_{\text{data}, i} - (\text{mean of data}))^2
 $$
@@ -2478,6 +2486,7 @@ from a single feature to multiple predictors working together.
   - **Insignificant coefficients:** predictors that add noise, not signal.
 
 ### Model Evaluation & Selection
+
 | Concept | What It Tells You | Best Value | Purpose |
 |:--------|:------------------|:-----------|:---------|
 | **MSE / RMSE / MAE** | How closely predictions match real values | Lower | Fit accuracy |
