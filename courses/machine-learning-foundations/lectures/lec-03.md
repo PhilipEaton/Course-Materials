@@ -619,26 +619,17 @@ plt.show()
 
 
 
+{% capture ex %}
+#### Interpreting Fit Statistics in the Real World
 
-<div style="
-    background-color: #E6F2FA;
-    border-left: 6px solid #8EC9DC;
-    padding: 14px;
-    border-radius: 6px;
-">
-<b style="color:#1b4965;">Professional Practice</b>  
-<br><br>
-
-## Interpreting Fit Statistics in the Real World
-
-### 1. What “Good” Means Depends on Context
+##### 1. What “Good” Means Depends on Context
 There’s no universal cutoff for “good” or “bad” MSE, RMSE, MAE, or $ R^2 $.  
 It depends on:
 - The *scale* of your target variable — RMSE of 5 is huge if $ y \approx 10 $, but small if $ y \approx 1000 $.  
 - The *goal* of your model — predicting medical outcomes requires higher accuracy than predicting movie ratings.  
 - The *cost of being wrong* — sometimes underpredicting is worse than overpredicting.
 
-### 2. Comparing Models
+##### 2. Comparing Models
 Fit statistics are most meaningful **when you compare models trained on the same data**.  
 For example:
 - Compare Linear vs. Polynomial regression using RMSE and $ R^2 $.  
@@ -646,32 +637,33 @@ For example:
 
 The *absolute* numbers matter less than *which model performs better and why*.
 
-### 3. Overfitting and Underfitting
+##### 3. Overfitting and Underfitting
 A model that’s *too simple* (underfitting) will have high errors and low $ R^2 $.  
 
 A model that’s *too complex* (overfitting) may have extremely low training error but will perform poorly on new data (low accuracy).  
 
 That’s why we always evaluate models on **training sets *and* test sets separately**.
 
-### 4. When \( R^2 \) Misleads
+##### 4. When $ R^2 $ Misleads
 $ R^2 $ can look great even when the model is conceptually wrong — for example, when your target variable grows over time, a simple trend line might have $ R^2 > 0.9 $ just because everything increases together.  
 
 Always use adjusted$R^2$ and make a **residual plots** to check that errors look random. (We will look at these next)
 
-### 5. Why RMSE > MAE
+##### 5. Why RMSE is generally bettwe than MAE
 RMSE penalizes large errors more harshly than MAE, which is generally preferred.  
 
 If your problem can tolerate small errors but not big ones (like predicting medical dosages), RMSE gives a better result.  
 
 If you just want a sense of *average error*, MAE is more intuitive.
 
-<br>
-<b>Summary Thought:</b>  
+##### Summary Thought:
 
 Fit metrics are like *report cards* for your model. 
 
-A good scientist always looks at both the <b>numbers</b> <i>and</i> the <b>patterns</b> in the residuals to understand <i>why</i> those grades look the way they do.
-</div>
+A good scientist always looks at both the **numbers** *and* the **patterns** in the residuals to understand *why* those grades look the way they do.
+{% endcapture %}
+{% include propractice.html content=ex %}  
+
 
 
 
