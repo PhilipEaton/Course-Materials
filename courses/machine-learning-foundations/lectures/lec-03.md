@@ -1319,6 +1319,16 @@ plt.grid(True, linestyle="--", alpha=0.6)
 plt.tight_layout()
 plt.show()
 
+
+
+# --- Fit Multiple Linear Regression using standardized features ---
+X = sm.add_constant(X_test_scaled)  # add intercept
+y = y_test
+
+model = sm.OLS(y, X).fit()
+# --- Display results ---
+print(model.summary())
+
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}  
@@ -1350,6 +1360,41 @@ plt.show()
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_26_1.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            MedHouseVal   R-squared:                       0.596
+Model:                            OLS   Adj. R-squared:                  0.595
+Method:                 Least Squares   F-statistic:                     759.7
+Date:                Sat, 31 Jan 2026   Prob (F-statistic):               0.00
+Time:                        11:24:45   Log-Likelihood:                -4544.4
+No. Observations:                4128   AIC:                             9107.
+Df Residuals:                    4119   BIC:                             9164.
+Df Model:                           8                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          2.0670      0.011    181.595      0.000       2.045       2.089
+x1             0.7673      0.018     41.655      0.000       0.731       0.803
+x2             0.1107      0.013      8.631      0.000       0.086       0.136
+x3            -0.1678      0.032     -5.168      0.000      -0.231      -0.104
+x4             0.1596      0.025      6.390      0.000       0.111       0.209
+x5             0.0061      0.013      0.488      0.625      -0.018       0.031
+x6            -0.7189      0.076     -9.422      0.000      -0.868      -0.569
+x7            -0.9259      0.035    -26.149      0.000      -0.995      -0.857
+x8            -0.8866      0.035    -25.431      0.000      -0.955      -0.818
+==============================================================================
+Omnibus:                     1103.414   Durbin-Watson:                   2.026
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3554.386
+Skew:                           1.344   Prob(JB):                         0.00
+Kurtosis:                       6.665   Cond. No.                         12.1
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
