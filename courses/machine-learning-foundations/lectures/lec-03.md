@@ -741,9 +741,9 @@ That’s why we always evaluate models on **training sets *and* test sets separa
 ##### 4. When $ R^2 $ Misleads
 $ R^2 $ can look great even when the model is conceptually wrong — for example, when your target variable grows over time, a simple trend line might have $ R^2 > 0.9 $ just because everything increases together.  
 
-Always use adjusted$R^2$ and make a **residual plots** to check that errors look random. (We will look at these next)
+Always use adjusted$R^2$ and make a **residual plot** to check that errors look random. (We will look at these next)
 
-##### 5. Why RMSE is generally bettwe than MAE
+##### 5. Why RMSE is generally better than MAE
 RMSE penalizes large errors more harshly than MAE, which is generally preferred.  
 
 If your problem can tolerate small errors but not big ones (like predicting medical dosages), RMSE gives a better result.  
@@ -777,7 +777,7 @@ $$
 $$
 
 Plotting them helps us see:
-- Whether errors are random (<span style="color: green;">good!</span>) or patterned (<span style="color: red;">bad!</span>).
+- Whether errors are random (good!) or patterned (bad!).
 - Whether the model systematically over- or under-predicts certain regions.
 
 In a well-fit linear model, residuals should scatter randomly around zero. Like so:
@@ -805,7 +805,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_14_0.png' | relative_url }}"
-  alt=""
+  alt="A scatter plot of points randomly scattered above and below the 0 line."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -871,7 +871,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_15_0.png' | relative_url }}"
-  alt=""
+  alt="6 plots, 2 to a row. The first plot in each row is the same line of best with but with increasingly more noisy data. The second plot in each row is the residuals. They grow bigger and less tightly bound to the 0 line as the noise gets bigger. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:75%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -892,7 +892,7 @@ plt.show()
 ">
 <b>Discussion:</b> 
     <ul>
-      <li>How does the *spread* change as noise increases?</li>
+      <li>How does the spread change as noise increases?</li>
       <li>Are the residuals still roughly centered around zero?</li>
       <li>Would adding a new variable help — or is the noise purely random?</li>
     </ul>
@@ -900,20 +900,24 @@ plt.show()
 
 
 
-### What do Residual Plots Tell Us?
 
-Residual plots help us *see* how well our model fits the data — and, more importantly, whether our modeling assumptions are valid.  
 
-### What a “Good” Residual Plot Looks Like
+
+
+#### What do Residual Plots Tell Us?
+
+Residual plots help us *see* how well our model fits the data, and, more importantly, whether our modeling assumptions are valid.  
+
+##### What a “Good” Residual Plot Looks Like:
 A well-fit **linear** regression model should show:
 - **Residuals randomly scattered** around zero (no clear shape or trend).
-- **Roughly equal spread** — constant variance across — all x-values.
+- **Roughly equal spread** — constant variance across all x-values.
 - **No systematic curvature or funneling** — those suggest our model is missing something.
 
 In short: **randomness** is *good*. **Structure** is *bad*.
 
 
-### Common Warning Signs
+##### Common Warning Signs
 
 | Pattern | What It Suggests | Possible Fix |
 |:-----------|:--------------|:--------------|
@@ -923,7 +927,7 @@ In short: **randomness** is *good*. **Structure** is *bad*.
 | **All residuals above or below 0** | Model is biased or intercept is off | Re-check fitting, scaling, or intercept |
 
 
-### Consider the following examples of "bad" residual plots:
+##### Consider the following examples of "bad" residual plots:
 
 
 {% capture ex %}
@@ -980,7 +984,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_18_0.png' | relative_url }}"
-  alt=""
+  alt="Plot of residue plots showing what bad plots looks like as described in the previous table."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -995,13 +999,13 @@ plt.show()
 
 ### How Do we find the “Best Fit” Line?
 
-When we fit a regression model, we’re not just *drawing a line that looks good* — we’re finding the **exact line that minimizes the total error across all data points**.
+When we fit a regression model, we’re not just *drawing a line that looks good*,  we’re finding the **exact line that minimizes the total error across all data points**.
 
-### **1. What Are We Minimizing?**
+#### 1. What Are We Minimizing?
 
 Each data point $(x_i, y_{\text{data},i})$ has a predicted value $y_{\text{prediction},i}$ that comes from the model line.  
 
-As we have seen, the **residual** (or error) for that point is the vertical distance between the actual and predicted value:
+As we have seen, the **residual** or **error** for that point is the vertical distance between the actual and predicted value:
 
 $$
 \text{Residual}_i = y_{\text{data},i} - y_{\text{predicted},i}
@@ -1016,11 +1020,9 @@ $$
 This is the **Sum of Squared Residuals (SSR)**, also called **Residual Sum of Squares (RSS)**.
 
 
-### **2. The Goal: Minimize SSR**
+#### 2. The Goal: Minimize SSR
 
-The best-fit line is the one that makes this SSR as small as possible. 
-
-That is, we find the slope ($m$) and intercept ($b$) from the straight line equation we all know and love:
+The best-fit line is the one that makes this SSR as small as possible. That is, we find the slope ($m$) and intercept ($b$) from the straight line equation we all know and love:
 
 $$ 
 y = m x + b
@@ -1032,19 +1034,19 @@ $$
 \min_{m,b} \left( \sum_{i=1}^{n}(y_{\text{data},i} - (m x_i + b))^2 \right) 
 $$
 
-This process is called **Ordinary Least Squares (OLS)** — “least squares” simply means *“make the squares of the errors as small as possible.”*
+This process is called **Ordinary Least Squares (OLS)**, “least squares” simply means *“make the squares of the errors as small as possible.”*
 
 
-### **3. Why Squared Errors?**
+#### 3. Why Squared Errors?
 
 Squaring errors does two helpful things:
 - It **penalizes large mistakes more heavily**, encouraging a line that fits all data points reasonably well.
 - It ensures all errors are positive, so they don’t cancel each other out.
 
-However, squaring also makes the method **sensitive to outliers**,  since one very large residual can dominate the SSR.
+However, squaring also makes the method **sensitive to outliers**,  since one very large residual can dominate the SSR. If this happens you can switc hto minimizing the Mean Absolute Errors (MAE).
 
 
-### **4. Visual Intuition**
+#### 4. Visual Intuition
 
 Let’s look at a simple example. Each vertical dashed line is a residual — the distance between what our model predicts and what the actual value is.
 
@@ -1120,10 +1122,12 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_20_0.png' | relative_url }}"
-  alt=""
+  alt="6 plots, 2 to a row. The left plots show the same scattered data points and three different lines of fit, each with different MSR. The right plots show the residuals and how they change as the line of best fit is zeroed in on. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:90%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
+
+
 
 
 
@@ -1139,7 +1143,7 @@ plt.show()
 
 Let's use a simple linear model to predict the price of a house given only its square footage. 
 
-We will make up our own data, but we could have taken this from Zillow or some nations relator database.
+We will make up our own data fo this example, but will look at some real housing data soon.
 
 
 {% capture ex %}
@@ -1215,10 +1219,14 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_22_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot of house cost versus square footage. The line of best fit is drawn as is a point representing an estimation of a house price using the model."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
+
+
+
+
 
 
 
