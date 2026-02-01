@@ -1233,36 +1233,40 @@ plt.show()
 
 
 
-
+---
 
 ## Multiple Linear Regression (MLR): When One Predictor Isn't Enough
 
 Up to now, we’ve modeled relationships between a single feature $x$ and a target $y$, and have gotten a simple line that best fits the data.
 
 But in the real world, most outcomes depend on *several* factors at once:
-- House prices depend on **size**, **location**, and **age**
-- Student grades depend on **hours studied**, **sleep**, and **stress**
-- Sales depend on **price**, **advertising**, and **season**
+- House prices depend on **size**, **location**, **age**, ...
+- Student grades depend on **hours studied**, **sleep**, **stress**, ...
+- Sales depend on **price**, **advertising**, **season**, ...
 
 That’s where **Multiple Linear Regression (MLR)** comes in.
 
 
+
+
 ### **The Equation**
-The equation is the sum of all the features multiplied by an adjustable coefficient and a constant (the "intercept"):
+The MLR equation is just sum of each feature multiplied by an adjustable coefficient plus a constant (the "intercept"):
 
 $$
 y_\text{prediction} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p
 $$
 
 Each predictor $x_j$ adds a new “dimension” of explanation for the target $y$:
-- $\beta_0$ is the "intercept" — the predicted value of $y$ when all $x_i = 0$.
-- Each $\beta_i$ shows how much $y$ changes when $x_i$ increases by one unit, **holding all other predictors constant**.
+- $\beta_0$ is the "intercept", just like the $y$-intercept
+    - The predicted value of $y$ when all features are set to 0 ($x_i = 0$).
+- Each $\beta_i$ represents how much $y$ changes when $x_i$ increases by one unit, **holding all other predictors constant**.
+    - This assumes you have standardized your data, which you should always do! 
 
 
 ### **Geometric Picture**
 
-With one feature → we fit a **line** through 2D space.  
-With two features → we fit a **plane** through 3D space.  
+With one feature → we fit a **line** in 2D space.  
+With two features → we fit a **plane** in 3D space.  
 With three or more → we fit a **hyperplane** (something we can’t see directly, but can still model mathematically).
 
 The goal is still the same:  
@@ -1332,14 +1336,14 @@ print(f"β₂ (x₂): {model.coef_[1]:.2f}")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_24_0.png' | relative_url }}"
-  alt=""
+  alt="A plane of best fit in 3D space."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
-    Model Coefficients:
-    Intercept ($\beta_0$): 4.73
-    $\beta_1$ ($x_1$): 2.90
-    $\beta_2$ ($x_2$): 2.22
 
+Model Coefficients:  
+Intercept ($\beta_0$): 4.73  
+$\beta_1$ ($x_1$): 2.90  
+$\beta_2$ ($x_2$): 2.22
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -1350,11 +1354,11 @@ print(f"β₂ (x₂): {model.coef_[1]:.2f}")
 
 
 
-## Model Evaluation: MSE, R², and Adjusted R²
+### Model Evaluation: MSE, R², and Adjusted R²
 
-We have covered these fit statistics in details already. They mean the same things they did previously, which makes interpreting everything across models very easy. 
+We have covered these fit statistics in details already, and they mean the same things they did previously. 
 
-Let's look at an example 
+Let's look at an example: 
 
 
 {% capture ex %}
@@ -1422,15 +1426,6 @@ plt.tight_layout()
 plt.show()
 
 
-
-# --- Fit Multiple Linear Regression using standardized features ---
-X = sm.add_constant(X_test_scaled)  # add intercept
-y = y_test
-
-model = sm.OLS(y, X).fit()
-# --- Display results ---
-print(model.summary())
-
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}  
@@ -1460,44 +1455,8 @@ print(model.summary())
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_26_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot of the predicted versus actual median housing prices with the perfect fit line plotted on top. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
-
-
-```python
-                            OLS Regression Results                            
-==============================================================================  
-Dep. Variable:            MedHouseVal   R-squared:                       0.596  
-Model:                            OLS   Adj. R-squared:                  0.595  
-Method:                 Least Squares   F-statistic:                     759.7  
-Date:                                   Prob (F-statistic):               0.00  
-Time:                                   Log-Likelihood:                -4544.4  
-No. Observations:                4128   AIC:                             9107.  
-Df Residuals:                    4119   BIC:                             9164.  
-Df Model:                           8                                         
-Covariance Type:            nonrobust                                           
-==============================================================================  
-                 coef    std err          t      P>|t|      [0.025      0.975]  
-------------------------------------------------------------------------------  
-const          2.0670      0.011    181.595      0.000       2.045       2.089  
-x1             0.7673      0.018     41.655      0.000       0.731       0.803  
-x2             0.1107      0.013      8.631      0.000       0.086       0.136  
-x3            -0.1678      0.032     -5.168      0.000      -0.231      -0.104  
-x4             0.1596      0.025      6.390      0.000       0.111       0.209  
-x5             0.0061      0.013      0.488      0.625      -0.018       0.031  
-x6            -0.7189      0.076     -9.422      0.000      -0.868      -0.569  
-x7            -0.9259      0.035    -26.149      0.000      -0.995      -0.857  
-x8            -0.8866      0.035    -25.431      0.000      -0.955      -0.818  
-==============================================================================  
-Omnibus:                     1103.414   Durbin-Watson:                   2.026  
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3554.386  
-Skew:                           1.344   Prob(JB):                         0.00  
-Kurtosis:                       6.665   Cond. No.                         12.1  
-==============================================================================  
-
-Notes:  
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.  
-```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -1509,19 +1468,21 @@ Notes:
 
 ###  Overfitting vs. Underfitting
 
-When we train a regression model, we’re trying to find the right balance between **bias** and **variance** — that is, how well the model captures real patterns without memorizing noise.
+When we train a regression model with multiple features, we’re trying to find the right balance between **bias** and **variance**. That is, how well the model captures real patterns without memorizing noise.
 
 - **Underfitting** happens when the model is *too simple* to capture the underlying structure of the data.  
   - ***Example***: fitting a straight line to data that clearly curves.  
   - ***Symptoms***: high error on *both* training and test data.  
-  - ***Analogy***: using a ruler to trace a mountain range — you miss the peaks and valleys.
-<br><br>
+  - ***Analogy***: using a ruler to trace a mountain range; you miss the peaks and valleys.
+
 - **Overfitting** happens when the model is *too complex*, capturing random fluctuations and noise.  
   - ***Example***: fitting a 10th-degree polynomial to 20 data points.  
   - ***Symptoms***: very low training error ***but*** high test error.  
   - ***Analogy***: connecting every dot in the training set, even when it doesn’t reflect reality.
 
-**Goal:** Find the “Goldilocks zone” — not too simple, not too complex — where the model generalizes well to *new* data.
+**Goal:** Find the “Goldilocks zone.” 
+- Not too simple, not too complex. 
+- Where the model generalizes well to *new* data.
 
 We can visualize this by fitting different degrees of polynomial regression to the same dataset and comparing how they behave on unseen data.
 
@@ -1582,7 +1543,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_28_0.png' | relative_url }}"
-  alt=""
+  alt="Three plots of the same data follwoing a sine wave. The plots change in that the model being used increases in complexity until it perfectly fits the points."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -1597,12 +1558,12 @@ plt.show()
 
 ### Bias–Variance Tradeoff
 
-### Why It Matters
+#### Why It Matters
 
 When your model doesn’t perform well, there are two main kinds of mistakes it might be making:
 
-- **Bias**: Systematic error — your model is too simple and misses important relationships.
-- **Variance**: Random error — your model is too complex and reacts too much to noise in the data.
+- **Bias**: Systematic error. Your model is too simple and misses important relationships.
+- **Variance**: Random error. Your model is too complex and reacts too much to noise in the data.
 
 The Bias–Variance Tradeoff describes the tension between these two forces: improving one often worsens the other.
 
@@ -1656,7 +1617,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_30_0.png' | relative_url }}"
-  alt=""
+  alt="A plot of the training error and the test error as a function of the model complexity. The more comples the model, the better both get untill the test error begins to degrade and get worse. The best model fall in the region where both test and training error are small."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -1665,11 +1626,11 @@ plt.show()
 
 
 
-### Interpreting Model Complexity
+#### Interpreting Model Complexity
 
 As you look at the bias–variance curve, notice how the two error lines behave:
 
-- The **training error** steadily decreases as model complexity increases — more flexibility always helps the model fit the training data.
+- The **training error** steadily decreases as model complexity increases; more flexibility always helps the model fit the training data.
 - The **test error** initially decreases but eventually *rises again* as the model starts fitting noise rather than signal.
 
 
@@ -1704,9 +1665,14 @@ A model with the *lowest test error* (near the bottom of the red curve above) ac
 
 
 
+
+
+
 ### Model Selection for Multiple Linear Regression
 
-Adding features to a model tends to improve *fit* — at least on the training data. But a “better fit” isn’t always a *better model*.
+Adding features to a model tends to improve *fit*; at least on the training data, as we just saw. 
+
+But a “better fit” isn’t always a *better model*.
 
 #### Why Model Selection Matters
 - Every new predictor adds complexity.
@@ -1724,25 +1690,22 @@ We want a model that balances **accuracy** and **simplicity**.
 | **AIC / BIC** | Penalize unnecessary complexity | Lower = better |
 | **VIF** | Checks for multicollinearity (redundant predictors) | < 5 is usually acceptable |
 
-We’ll now use these tools to explore how to choose the *best* regression model.
 
 
+##### Statistical Significance of Coefficients (p-values)
 
-
-### Statistical Significance of Coefficients (p-values)
-
-When we fit a multiple regression model, we get one equation—but many questions:
+When we fit a multiple regression model, we get one equation, but many questions:
 - Which features *really matter*?  
 - Which ones are just noise?
 
 That’s where **p-values** come in.
 
-#### What the p-value tells us
 Each coefficient in a regression has its own hypothesis test:
 
 $$
 H_0: \beta_i = 0 \quad\text{(no relationship between feature $x_i$ and $y$)}  
 $$
+
 $$
 H_a: \beta_i \neq 0 \quad\text{(feature $x_i$ contributes to predicting $y$)}
 $$
@@ -1752,11 +1715,68 @@ $$
 - A **large p-value** means we can’t confidently say that feature matters.
     - Remove!
 
-#### Why it matters
+###### Why it matters
 In model selection, we want to:
 - Keep features with *low p-values* (significant predictors).  
 - Consider dropping those with *high p-values* (weak or redundant predictors).  
 - Remember: significance doesn’t always mean importance—look at context, effect size, and correlation too.
+
+
+
+
+##### A Few New Diagnostics
+
+In addition to error-based fit statistics, there are a few other quantities that show up in multiple factor regression analysis. These do **not** tell us whether a model is “right” or “wrong,” but instead help us reason about *model structure* and *model choice*.
+
+###### Variance Inflation Factor (VIF)
+
+**Variance Inflation Factor (VIF)** is a way to check whether input features are **too closely related to each other**.
+
+If two (or more) input variables carry very similar information, the model has trouble deciding how much credit to give to each one. This does not necessarily hurt prediction accuracy, but it **makes the model harder to interpret**.
+
+- Low VIF: predictors are mostly independent of each other  
+- High VIF: predictors overlap a lot (possible multicollinearity)
+
+VIF is mainly an **interpretability diagnostic**, not a measure of model quality.
+
+
+
+
+###### Akaike Information Criterion (AIC)
+
+**AIC** is a tool for comparing multiple models that are fit to the *same dataset*.
+
+It balances two competing goals:
+- fitting the data well
+- keeping the model simple
+
+AIC rewards models that fit well, but **penalizes models for using too many parameters**.
+
+- Lower AIC is better  
+- AIC values are only meaningful **relative to each other**, not on their own
+
+You should not interpret AIC as an “accuracy score.” It is a comparison tool.
+
+
+
+###### Bayesian Information Criterion (BIC)
+
+**BIC** works very similarly to AIC, but it **penalizes complexity more strongly**.
+
+This means BIC is more conservative:
+- it is quicker to favor simpler models
+- it is more skeptical of small improvements in fit
+
+- Lower BIC is better  
+- Like AIC, BIC is only used to compare models fit to the same data
+
+###### Big Picture
+
+- **VIF** asks: *Are my input features too redundant?*  
+- **AIC** asks: *Is this model a good balance of fit and simplicity?*  
+- **BIC** asks: *Is a simpler model likely the better explanation?*
+
+None of these tell you “the correct model.” They help you **think more clearly about tradeoffs** when building and comparing models.
 
 
 {% capture ex %}
