@@ -116,19 +116,35 @@ Let’s begin by exploring how a simple line (yes, the same one from algebra cla
 
 ## Simple Linear Regression
 
-### What Does Regression Do/Mean?
+### What Does Regression Do / Mean?
 
-Before working with real data, let’s see what **linear regression** actually means.
+Before working with real data, let’s take a second to clarify what **linear regression** is actually doing.
 
-We’ll create a simple synthetic dataset where we already know the relationship:
-> y = 3x + 5 + some noise
+We’ll start with a simple synthetic example where we already know the underlying relationship:
 
-**Noise** refers to the **random variation in data** that comes from factors we either can’t measure or don’t understand well enough to include in our model. It’s the part of the data that isn’t explained by our features (i.e., the “messiness” that every real dataset has).
+$$
+y = 3x + 5 + \text{Noise}
+$$
 
-Here is a fact of nature: 
-> “Every measurement — from sensor readings to survey data — has noise.”
+When we talk about linear regression, it’s helpful to think in terms of two components: **signal** and **noise**.
 
-It can come from many sources: measurement errors, natural randomness in human or environmental behavior, or simply missing features that affect the outcome. Good models aim to capture the signal (the true underlying relationship) while ignoring the noise (the random stuff that doesn’t repeat predictably).
+**Signal** refers to the meaningful relationship we are trying to uncover. Depending on context, this can mean:
+- the true relationship that generated the data, or
+- the relationship the model *has learned* from the data.
+
+Either way, the signal is the part we actually care about.
+
+**Noise**, on the other hand, refers to variation in the data that is *not* explained by the model. This usually comes from a few sources:
+1. factors we cannot measure or do not understand well enough to include, and  
+2. genuinely random fluctuations that have no underlying structure and therefore cannot be modeled in a meaningful way.
+
+Noise is the part of the data left over after we account for everything our features can explain.
+
+Here’s a basic fact of nature:
+
+> Every measurement, from sensor readings to survey responses, contains noise.
+
+Noise can arise from measurement error, natural randomness in human or environmental systems, or simply missing variables that influence the outcome. A good regression model aims to capture as much of the **signal** as possible while not overreacting to the **noise**, which does not repeat in a predictable way.
 
 
 {% capture ex %}
@@ -159,7 +175,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_4_0.png' | relative_url }}"
-  alt=""
+  alt="A straight line in a plot with dots scattered around the line to represent noisey data the line could be a representation of."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
