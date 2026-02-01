@@ -1782,6 +1782,14 @@ None of these tell you “the correct model.” They help you **think more clear
 {% capture ex %}
 ```python
 # === Example: Evaluating Coefficient Significance (with Standardization) ===
+
+import numpy as np
+import pandas as pd
+
+import statsmodels.api as sm
+from sklearn.preprocessing import StandardScaler
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
 # --- Generate synthetic data ---
 np.random.seed(42)
 n = 100
@@ -1802,7 +1810,10 @@ df = pd.DataFrame({
 # --- Standardize the feature columns ---
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(df[["Feature_1", "Feature_2", "Feature_3"]])
-X_scaled = pd.DataFrame(X_scaled, columns=["Feature_1", "Feature_2", "Feature_3"])
+X_scaled = pd.DataFrame(
+    X_scaled,
+    columns=["Feature_1", "Feature_2", "Feature_3"]
+)
 
 # --- Fit Multiple Linear Regression using standardized features ---
 X = sm.add_constant(X_scaled)  # add intercept
@@ -1810,8 +1821,19 @@ y = df["Target"]
 
 model = sm.OLS(y, X).fit()
 
-# --- Display results ---
+# --- Display regression results ---
 print(model.summary())
+
+# --- Compute Variance Inflation Factor (VIF) ---
+# VIF is computed using the design matrix *without* the target
+vif_data = pd.DataFrame()
+vif_data["Feature"] = X.columns
+vif_data["VIF"] = [
+    variance_inflation_factor(X.values, i)
+    for i in range(X.shape[1])
+]
+
+vif_data
 
 ```
 {% endcapture %}
@@ -1847,6 +1869,14 @@ print(model.summary())
     Notes:
     [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ```
+
+```python
+    Feature	    VIF
+0	const	    1.000000
+1	Feature_1	1.056184
+2	Feature_2	1.019085
+3	Feature_3	1.037920
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -1868,16 +1898,16 @@ Look for:
 - **std err** – uncertainty of that estimate
 - $\mathbf{P > \vert t \vert}$ – This is the p-value for that coefficient
 
-##### Example Interpretation
+###### Example Interpretation
 Here Feature 3 shows:
 
 $$
 P>\vert t \vert = 0.748 
 $$
 
-then there’s a 74.8% chance we’d see this effect even if there were *no true relationship*.
+then there’s a 74.8% chance we’d see this effect even if there were **no** *true relationship*.
 
-That’s far from significant—so we might consider dropping Feature 3.
+That’s far from significant! Consider dropping Feature 3.
 
 On the other hand, if Feature 1 has:
 
@@ -1885,15 +1915,21 @@ $$
 P>\vert t \vert = 0.000
 $$
 
-it’s highly significant, suggesting a genuine relationship with the target.
+It’s highly significant, suggesting a genuine relationship with the target.
 
-#### Remember:
+##### Remember
 - p-values only suggests that there is likely a relationship between the feature and the target.
-    - Small p-values ≠ large impact — a weak predictor can still be significant if the sample is large.
-    - High p-values ≠ useless — sometimes they become significant when correlated variables are removed.
+    - Small p-values $\ne$ large impact — a weak predictor can still be significant if the sample is large.
+    - High p-values $\ne$ useless — sometimes they become significant when correlated variables are removed.
 - The impact or "importance" of a feature is given by the coefficient
     - This is assuming to scaled the data so that ever feature has a mean of 0 and a standard deviation of 1.
     - This is done using the `StandardScaler()` function.
+
+
+Statistical significance is a *clue*, not a command.  
+
+Use it alongside model metrics and practical reasoning.
+
 
 
 <!-- Reflection -->
@@ -1914,9 +1950,8 @@ it’s highly significant, suggesting a genuine relationship with the target.
 
 <br>
 
-Statistical significance is a *clue*, not a command.  
 
-Use it alongside model metrics and practical reasoning.
+
 
 
 
@@ -1924,7 +1959,7 @@ Use it alongside model metrics and practical reasoning.
 
 Let's suppose we have multiple features and we want to figure out how to build a MLR model out of them.
 
-First, let's construct some face data we can play around with:
+First, let's construct some fake data we can play around with:
 
 {% capture ex %}
 ```python
