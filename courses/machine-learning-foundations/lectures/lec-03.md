@@ -1993,75 +1993,14 @@ df.head()
 
 
 {% capture ex %}
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+| Index | Feature_1 | Feature_2 | Feature_3 | Feature_4 | Target |
+|------:|----------:|----------:|----------:|----------:|-------:|
+| 0 | 5.993428 | 5.753888 | 53.577874 | 41.710050 | 16.205159 |
+| 1 | 4.723471 | 8.738064 | 55.607845 | 44.398190 | 25.174817 |
+| 2 | 6.295377 | 8.971856 | 60.830512 | 57.472936 | 35.439312 |
+| 3 | 8.046060 | 7.593168 | 60.538021 | 56.103703 | 39.031622 |
+| 4 | 4.531693 | 9.516143 | 36.223306 | 49.790984 | 27.078338 |
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Feature_1</th>
-      <th>Feature_2</th>
-      <th>Feature_3</th>
-      <th>Feature_4</th>
-      <th>Target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5.993428</td>
-      <td>5.753888</td>
-      <td>53.577874</td>
-      <td>41.710050</td>
-      <td>16.205159</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.723471</td>
-      <td>8.738064</td>
-      <td>55.607845</td>
-      <td>44.398190</td>
-      <td>25.174817</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>6.295377</td>
-      <td>8.971856</td>
-      <td>60.830512</td>
-      <td>57.472936</td>
-      <td>35.439312</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8.046060</td>
-      <td>7.593168</td>
-      <td>60.538021</td>
-      <td>56.103703</td>
-      <td>39.031622</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4.531693</td>
-      <td>9.516143</td>
-      <td>36.223306</td>
-      <td>49.790984</td>
-      <td>27.078338</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2069,7 +2008,10 @@ df.head()
 
 
 
-Now we can select the features and target and store those in their own variables:
+Now we can 
+- store the features as x_full,
+- store the target as y, and 
+- fit a MLR model using all of the features and see what the model looks like.
 
 {% capture ex %}
 ```python
@@ -2132,14 +2074,12 @@ print(model_full.summary())
 
 From this report we can see that Feature 3 is unimportant to the present model:
 
+- consider the p-values
 - compare the size of the coeffcient estimations
-- consider the p-values.
 
-**Note**: When building a model, only change one thing at a time and then rerun the model. 
+**Note**: When building a model, only **change one thing at a time** and then rerun the model. 
 
-For example, we will only remove Feature 3 for now, even though we will likely be able to also remove Feature 4. 
-
-Let's remove Feature 3 and rebuild the model:
+We will only remove Feature 3 right now, and assess if there is anything else we would like to remove from there. 
 
 {% capture ex %}
 ```python
@@ -2192,8 +2132,9 @@ print(model_full.summary())
 
 
 
-Notice the fit statistics are basically unchanged. We removed an entire feature and did not chang ethe fit of the model. This means Feature 3 was not adding anything to the origonal model. 
+Notice the fit statistics are basically unchanged! 
 
+We removed an entire feature and did not change the fit of the model. This means Feature 3 wasn't adding anything meaningful to the original model. 
 
 
 Let's remove the Feature 4 and see what happends:
@@ -2247,11 +2188,11 @@ print(model_full.summary())
 
 
 
-This time we had a larger impact on the overall fit. 
+This time we had a larger impact on the overall fit! 
 
-Deciding what to keep and remove is a bit of an art and depends on the kinds of things you are trying to model. Personally, I would say leave Feature 4 out since the overall model impact was minor.
+Deciding what to keep and remove is a bit of an art and depends on the kinds of things you are trying to model. Personally, I would leave Feature 4 out since it was cose to being insignificant and notice removing it make the constant very insignificant. 
 
-Lastly, we could remove the constant, since that now appears to be insignificant accoring to its p-value:
+Let's remove the constant as see what we get:
 
 {% capture ex %}
 ```python
@@ -2297,13 +2238,17 @@ print(model_full.summary())
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
-
-
-
-
 Notice we are left with a fantastic model now! 
 
-### **Forward and Backward Selection**
+This really is an art! You should explor your models and keeps notes on how each one did and select the model that makes the most sense for your situation.
+
+
+
+
+
+
+
+#### Forward and Backward Selection
 
 The process of starting with **all available features** and then **removing them one by one** until you reach an acceptable model with the smallest number of features possible is called **backward selection** (or **backward elimination**).
 
@@ -2332,95 +2277,6 @@ In practice, these methods are sometimes combined into a **stepwise selection** 
 
 Feature selection isn’t just about accuracy, it’s about building a model that’s **interpretable, efficient, and generalizes well** to new data.
 </div>
-
-
-{% capture ex %}
-```python
-import itertools
-
-# --- Forward Selection ---
-def forward_selection(X, y, significance_level=0.05):
-    """Performs forward selection based on p-values."""
-    remaining_features = list(X.columns)
-    selected_features = []
-    best_adj_r2 = -float("inf")
-
-    while len(remaining_features) > 0:
-        results = []
-        for feature in remaining_features:
-            X_test = sm.add_constant(X[selected_features + [feature]])
-            model = sm.OLS(y, X_test).fit()
-            results.append((feature, model.rsquared_adj, model.pvalues[feature]))
-
-        # Select best feature (highest adj. R² and significant p-value)
-        feature, adj_r2, pval = max(results, key=lambda x: x[1])
-
-        if pval < significance_level and adj_r2 > best_adj_r2:
-            selected_features.append(feature)
-            remaining_features.remove(feature)
-            best_adj_r2 = adj_r2
-            print(f"Added '{feature}' (Adj R² = {adj_r2:.3f}, p = {pval:.3f})")
-        else:
-            break
-
-    print("\n✅ Final selected features:")
-    print(selected_features)
-    X_opt = sm.add_constant(X[selected_features])
-    final_model = sm.OLS(y, X_opt).fit()
-    return final_model, selected_features
-
-
-# --- Example usage ---
-X_full = df[["Feature_1", "Feature_2", "Feature_3", "Feature_4"]]
-y = df["Target"]
-
-model_forward, selected_features_f = forward_selection(X_full, y)
-model_forward.summary()
-
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-    Added 'Feature_2' (Adj R² = 0.253, p = 0.000)
-    Added 'Feature_1' (Adj R² = 0.435, p = 0.000)
-    Added 'Feature_4' (Adj R² = 0.454, p = 0.041)
-    
-    ✅ Final selected features:
-    ['Feature_2', 'Feature_1', 'Feature_4']
-
-```python
-                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                 Target   R-squared:                       0.470
-Model:                            OLS   Adj. R-squared:                  0.454
-Method:                 Least Squares   F-statistic:                     28.39
-Date:                                   Prob (F-statistic):           3.15e-13
-Time:                                   Log-Likelihood:                -350.84
-No. Observations:                 100   AIC:                             709.7
-Df Residuals:                      96   BIC:                             720.1
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const        -14.2968      6.701     -2.134      0.035     -27.598      -0.995
-Feature_2      2.2472      0.293      7.678      0.000       1.666       2.828
-Feature_1      2.8426      0.468      6.077      0.000       1.914       3.771
-Feature_4      0.1968      0.095      2.067      0.041       0.008       0.386
-==============================================================================
-Omnibus:                        0.785   Durbin-Watson:                   1.773
-Prob(Omnibus):                  0.675   Jarque-Bera (JB):                0.908
-Skew:                           0.167   Prob(JB):                        0.635
-Kurtosis:                       2.673   Cond. No.                         431.
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-```
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
 
 
 
@@ -2464,7 +2320,7 @@ Collinearity doesn’t mean your model is “wrong,” but it masks the true rel
 
 {% capture ex %}
 ```python
-# === Visual Add-ons for Part 4: Model Selection ===
+# === Visual Model Selection ===
 
 import itertools
 import pandas as pd
@@ -2473,11 +2329,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
 
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
 # --- Adjusted R² vs. Number of Features ---
 features = ["Feature_1", "Feature_2", "Feature_3"]
 adj_r2_scores = []
 
-for i in range(1, len(features)+1):
+for i in range(1, len(features) + 1):
     for combo in itertools.combinations(features, i):
         X_subset = sm.add_constant(df[list(combo)])
         model = sm.OLS(df["Target"], X_subset).fit()
@@ -2486,21 +2344,40 @@ for i in range(1, len(features)+1):
 adj_r2_df = pd.DataFrame(adj_r2_scores, columns=["Num_Features", "Adj_R2"])
 avg_scores = adj_r2_df.groupby("Num_Features")["Adj_R2"].mean()
 
-plt.figure(figsize=(7,5))
-plt.plot(avg_scores.index, avg_scores.values, marker='o', linewidth=2)
+plt.figure(figsize=(7, 5))
+plt.plot(avg_scores.index, avg_scores.values, marker="o", linewidth=2)
 plt.title("Model Complexity vs. Adjusted R²")
 plt.xlabel("Number of Features")
 plt.ylabel("Average Adjusted R²")
-plt.grid(True, linestyle='--', alpha=0.6)
+plt.grid(True, linestyle="--", alpha=0.6)
 plt.show()
 
 
 # --- Correlation Heatmap for Multicollinearity ---
-plt.figure(figsize=(6,5))
-sns.heatmap(df[["Feature_1", "Feature_2", "Feature_3"]].corr(), 
-            annot=True, cmap="coolwarm", fmt=".2f")
+plt.figure(figsize=(6, 5))
+sns.heatmap(
+    df[features].corr(),
+    annot=True,
+    cmap="coolwarm",
+    fmt=".2f"
+)
 plt.title("Correlation Between Predictors")
 plt.show()
+
+
+# --- VIF Table for Multicollinearity ---
+# VIF answers a different question than correlation:
+# "How redundant is each feature when predicted from the others?"
+X_vif = sm.add_constant(df[features])
+
+vif_table = pd.DataFrame({
+    "Feature": X_vif.columns,
+    "VIF": [variance_inflation_factor(X_vif.values, i) for i in range(X_vif.shape[1])]
+})
+
+vif_table["VIF"] = vif_table["VIF"].round(2)
+vif_table
+
 
 ```
 {% endcapture %}
@@ -2518,6 +2395,15 @@ plt.show()
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_55_1.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
+```python
+
+    Feature	    VIF
+0	const	    42.09
+1	Feature_1	 1.06
+2	Feature_2	 1.02
+3	Feature_3	 1.04
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
@@ -2531,28 +2417,30 @@ plt.show()
     
 
 
-## How to Choose a Good MLR Model
+#### How to Choose a Good MLR Model
 
 Building a good multiple linear regression (MLR) model is a balance between simplicity, explanatory power, and predictive performance.
-The goal isn’t to fit every detail in the data — it’s to find the simplest model that explains the underlying pattern well.
+The goal isn’t to fit every detail in the data, it’s to find the simplest model that explains the underlying pattern well.
 
 1. **Start with Domain Knowledge**
 - Use theory, intuition, or prior research to decide which features should matter.
-- Avoid blindly throwing in every possible variable — this often leads to collinearity and overfitting.
+- Avoid blindly throwing in every possible variable as this often leads to collinearity and overfitting.
 - Think: Does this variable make sense to include? Could it logically influence the outcome?
 
+
 2. **Check Feature Relationships**
-- Use a correlation matrix or scatterplot matrix to see how features relate to the target and to each other.
+- Use a correlation matrix and VIF values to see how features relate to each other and to the target.
 - Remove redundant features (those that are highly correlated with each other).
 - Standardize features when they’re on very different scales.
 
 3. **Fit and Evaluate the Full Model**
 - Start with all reasonable predictors and fit the model.
 - Check:
-    - $R^2$ and Adjusted $R^2$
+    - Adjusted $R^2$
     - The p-values of coefficients (for significance)
     - Signs and magnitudes of coefficients (for reasonableness)
-- Be cautious of high $R^2$ with many insignificant predictors (often signals overfitting or collinearity).
+- Be cautious of high Adjusted $R^2$ with many insignificant predictors (often signals overfitting or collinearity).
+
 
 4. **Simplify Using Model Selection Methods**
 
@@ -2565,22 +2453,23 @@ Use stepwise methods to balance performance and simplicity:
 5. **Assess Model Assumptions**
 
 Good regression models follow these assumptions:
-- Linearity — The relationship between predictors and target is roughly linear.
-- Independence — Observations are independent.
+- Linearity: The relationship between predictors and target is roughly linear.
+- Independence: Observations are independent.
+- Normality: Residuals are approximately normally distributed.
 - The spread of residuals is roughly constant.
-- Normality — Residuals are approximately normally distributed.
+
 
 6. **Validate the Model**
-- Split your data into training and test sets.
-- Evaluate model performance using metrics like:
-    - RMSE or MAE for error magnitude
-    - $R^2$ or Adjusted $R^2$ for variance explained
+- You should have split your data into training and test sets and been working with the training set starting with step 2.
+  - Remember, you never work with the test set, EVER! 
+  - The only time you see it is when you are testing your model, not when you are exploring!
 - If performance drops significantly on the test set, your model is likely overfitting.
+
 
 7. **Keep It Interpretable**
 - Simpler models are easier to explain and generalize better.
 - Prefer a model with slightly lower accuracy but clear interpretability over one that’s complex and opaque.
-- Remember: The best model isn’t the one with the most features — it’s the one that teaches you the most about the data.
+- Remember: The best model isn’t the one with the most features, it’s the one that teaches you the most about the data.
 
 **Summary**
 
@@ -2598,12 +2487,11 @@ This process is very much an art as well as a science. The best way to learn it 
 
 After this exercise, think about:
 - Why might a model with fewer variables sometimes perform better?
-- What do AIC, BIC, and Adjusted R² tell you — and how do they differ?
+- What do AIC, BIC, and Adjusted R² tell you, and how do they differ?
 - What does a high VIF indicate about your predictors?
 - How would you decide which variables to keep in a real dataset?
 
-A *good* model isn’t the most complex one — it’s the one that explains the data well,
-uses interpretable predictors, and generalizes to new data.
+A *good* model isn’t the most complex one — it’s the one that explains the data well, uses interpretable predictors, and generalizes to new data.
 
 
 
