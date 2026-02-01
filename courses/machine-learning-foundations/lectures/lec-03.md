@@ -175,7 +175,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_4_0.png' | relative_url }}"
-  alt="A straight line in a plot with dots scattered around the line to represent noisey data the line could be a representation of."
+  alt="A straight line representing the true signal in the data. Dots are scattered around the line to represent the noisey data we would be working with in real life."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -221,11 +221,11 @@ print(f"Model learned intercept (β₀): {model.intercept_[0]:.3f}")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_6_0.png' | relative_url }}"
-  alt=""
+  alt="A scatter plot of the previous data with the true signal line plotted and our extracted line from fitting to the noisy data. The fit and the true lines are almost, but not quite, perfect matches."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
   
-    Model learned slope (β₁): 2.884
-    Model learned intercept (β₀): 5.129
+Model learned slope ($\beta_1$): 2.884
+Model learned intercept ($\beta_0$): 5.129
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
     
@@ -237,14 +237,22 @@ print(f"Model learned intercept (β₀): {model.intercept_[0]:.3f}")
 
 ### How Good Is Our Fit?
 
-Linear regression doesn’t just *draw a line* at random and call it good. It finds the line that **minimizes the total squared error** between predictions and actual data. (We will come back to this in a second.)
+Linear regression doesn’t just *draw a line* and hope for the best. Instead, it finds the line that **minimizes the total squared error** between the model’s predictions and the actual data points.  
 
-We can measure that using:
-- **Mean Squared Error (MSE)** — average of squared differences between prediction and the actual data.  
-- **Root Mean Squared Error (RMSE)** — Square-root of the MSE to get it in the same units as y.
-- **Mean Absolute Error (MAE)** — average of absolute value of the differences between prediction and the actual data.  
-- **R² (Coefficient of Determination)** — tells us how much of the variance in y our model explains (1.0 = perfect fit).
-    - **Adjusted R²** - adds a punishment to R² for model complexity
+> This particular choice of error (squared error) is not the *only* way to fit a line, but it is the most common and mathematically convenient. We’ll revisit alternative approaches later.
+
+To quantify how well our model fits the data, we use several standard metrics:
+
+- **Mean Squared Error (MSE)**: The average of the squared differences between the predicted values and the actual values. (Squaring penalizes large errors more heavily.)
+
+- **Root Mean Squared Error (RMSE)**: The square root of the MSE, which puts the error back into the same units as $ y $. Makes RMSE easier to interpret directly.
+  
+- **Mean Absolute Error (MAE)**: The average of the absolute differences between predictions and actual values. (This treats all errors linearly and is less sensitive to outliers than MSE.)
+
+- **$R^2$ (Coefficient of Determination)**: Measures how much of the variance in $ y $ is explained by the model. A value of $ R^2 = 1.0 $ corresponds to a perfect fit.
+
+- **Adjusted $R^2$**: A modified version of $ R^2 $ that **penalizes unnecessary model complexity**. This helps prevent us from adding extra features that don’t meaningfully improve the model. You use this over the normal $R^2$ almost always.
+
 
 
 {% capture ex %}
@@ -312,7 +320,7 @@ print(f"R² Score                        |  Okay: {r2_ok:.2f}   |  Best: {r2_bes
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_8_0.png' | relative_url }}"
-  alt=""
+  alt="The top plot is a line of okay fit: it has the right slope by is shifted down from where it really should be placed. The second plot bumbs the old like up and fits the data much better."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
 Mean Squared Error (MSE)        |  Okay: 42.4   |  Best: 9.7
@@ -330,87 +338,108 @@ R$^2$ Score                     |  Okay: 0.33   |  Best: 0.85
 
 ### Understanding Fit Statistics
 
-When we build a regression model, we want to know **how well our line (or curve) explains the data**.  Fit statistics are statistical measures that summarize *how much* we’re off overall.
+When we build a regression model, we want to know **how well our line explains the data**. Fit statistics are numerical measures that summarize *how far off* our model is overall.
 
-### **Errors vs. Residuals**
+#### Errors vs. Residuals
 
 In regression analysis, you’ll often hear the terms **error** and **residual** used to describe the difference between what the model predicts and what the data actually shows.
 
-Although people often use these terms interchangeably, there’s a subtle distinction that is often ignored:
+People frequently use these terms interchangeably, but there is a subtle distinction that is worth knowing, even if we do not always emphasize it:
 
-- **Error:** The difference between the *true* value and the model’s *predicted* value — something we can’t actually know in real life, since the true underlying relationship is unknown.  
-- **Residual:** The difference between the *observed* (measured) value and the model’s *predicted* value — this is what we actually compute from our data.
+- **Error:** The difference between the *true* value and the model’s *predicted* value. 
+    - This is something we cannot actually know in real life, because the true underlying relationship is unknown.  
+- **Residual:** The difference between the *observed* (measured) value and the model’s *predicted* value. 
+    - This is what we can actually compute from our data.
 
-In practice, since we never know the “true” model, we treat **residuals as our observable version of errors**.  
+In practice, since we never know the true model, we treat **residuals as our observable stand-in for errors**.
 
-That’s why you’ll often hear people casually say “errors” when they really mean “residuals.”
+For most of this course, we will ignore this distinction to avoid unnecessary technicalities.
 
-We will generally ignore this distinction to avoid needless technicallities.
+In fact, most non-experts will not be aware that this distinction exists at all. If you ever have to choose between the words *error* and *residual* when explaining your results to a general audience, it is usually clearer and more natural to use the word *error*.
 
 
 
-### **1. Mean Squared Error (MSE)**
-The mean squared error (MSE) can be calculated via:
+
+
+
+#### 1. Mean Squared Error (MSE)
+The mean squared error (MSE) can be calculated for $N$ data points via:
 
 $$
-\text{MSE} = \frac{1}{n} \sum_{i=1}^{n}(y_{\text{data}, i} - y_{\text{predicted}, i})^2
+\text{MSE} = \frac{1}{N} \sum_{i=1}^{N}(y_{\text{data}, i} - y_{\text{predicted}, i})^2
 $$
 
 Notice $\, y_{\text{data}, i} - y_{\text{predicted}, i}\, $ is the difference between the *prediction from the model* and the *data we have been given*.
 
 Squaring that diffence and summing over all of the points $\sum_{i=1}^{n}(y_{\text{predicted}, i} - y_{\text{data}, i})^2$ gives a measure called the sum of squares residuals (SSR), which we will be ignoring to avoid extra jargon.
 
-Finally, dividing by the total number of data points $n$ gives us the mean, or average, of the squared errors. 
+Finally, dividing by the total number of data points $N$ gives us the average, or mean, of the squared errors (thus mean squared errors). 
 
 
-**Squaring the error does two things**: 
-1. **Emphasizes big errors** — so large mistakes get punished heavily.
-2. **Prevents positive and negative errors from cancelling out.** Error is error, who cares if it is over or under.
+##### Squaring the error does two things: 
+1. **Emphasizes big errors** 
+    - large mistakes get punished heavily.
+2. **Prevents positive and negative errors from cancelling out.** 
+    - Error is error, who cares if it is over or under.
 
 
-**Interpretation:**  
+##### Interpretation:
 - Lower = better.  
-- Zero means perfect prediction. (If you get 0, be very very suspisious! You are likely overfitting to the training data.)  
-- Units are *squared* (e.g., if the target had units of dollars, then the MSE would be in dollars-squared).
+- Zero means perfect prediction. 
+    - If you get 0, be very very suspisious! You are likely overfitting to the training data.  
+- Resulting units are *squared* 
+    - e.g., if the target had units of dollars, then the MSE would be in dollars-squared.
 
 
-### **2. Root Mean Squared Error (RMSE)**
+
+
+
+#### 2. Root Mean Squared Error (RMSE)
 This is calculated by taking the square-root of the MSE:
 
 $$
 \text{RMSE} = \sqrt{\text{MSE}}
 $$
 
-which brings the error back into the same units as the original data.  
+This brings the measure back into the same units as the original data. Very convenient! 
 
 This makes it easier to interpret when you want to say things like, 
 - “Our model is off by about ±5 mpg on average.”
 - “Our model is off by about ±20 dollars on average.”
 
-**Interpretation:**  
+##### Interpretation:
 - Lower = better.  
-- Zero means perfect prediction. (If you get 0, be very very suspisious! You are likely overfitting to the training data.)  
-- Units are the same as the target (e.g., if the target had units of dollars, then the RMSE would also be in dollars).
+- Zero means perfect prediction. 
+    - If you get 0, be very very suspisious! You are likely overfitting to the training data.  
+- Units are the same as the target 
+    - e.g., if the target had units of dollars, then the RMSE would also be in dollars.
 
 
-### **3. Mean Absolute Error (MAE)**
-The mean absolute error (MAE) is calculated similarly to the MSE, but an absolute value is used instead of a square:
+
+
+
+#### 3. Mean Absolute Error (MAE)
+The mean absolute error (MAE) is calculated in a similar manner as the MSE, but an absolute value is used instead of a square:
 
 $$
-\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \vert y_{\text{data}, i} - y_{\text{predicted}, i}\vert
+\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} \vert y_{\text{data}, i} - y_{\text{predicted}, i}\vert
 $$
 
-**The absolute value does two things**: 
+##### The absolute value does two things: 
 1. **More forgiving of big errors** compared to squaring.
-2. **Prevents positive and negative errors from cancelling out.** Error is error, who cares if it is over or under.
+2. **Prevents positive and negative errors from cancelling out.** 
+    - Error is error, who cares if it is over or under.
 
-**Interpretation:**  
+##### Interpretation: 
 - Lower = better.  
 - Gives a sense of the *average "distance"* between predictions and reality.
-- Units are the same as the target's.
+- Units are the same as the target.
 
 
-### **4. Coefficient of Determination ($R^2$)**
+
+
+
+#### 4. Coefficient of Determination ($R^2$)
 
 The coefficient of determination (aka the $R^2$) is calculated via:
 
@@ -418,29 +447,31 @@ $$
 R^2 = 1 - \frac{\text{SSR}}{\text{SST}}
 $$
 
-where SSR is the sum if squared residuals and SST is the sum of squaresd totals. Specifically, the SSR is calculated via:
+where SSR is the sum of squared residuals: 
 
 $$ 
 \text{SSR} = \sum_{i=1}^{n}(y_{\text{data}, i} - y_{\text{predicted}, i})^2
 $$
 
-as we mentioned previously. The SST is caculated as:
+and SST is the sum of squared totals:
 
 $$ 
 \text{SST} = \sum_{i=1}^{n}(y_{\text{data}, i} - (\text{mean of data}))^2
 $$
 
 This tells us **how much of the variation in the data our model explains**.  
-- $R^2 = 1$ means a perfect fit.  
+- $R^2 = 1$ means a perfect fit. 
+    - Because the SSR = 0
 - $R^2 = 0$ means no better than predicting the mean every time.  
+    - Because the SSR = SST
 - Negative values can occur if the model is *worse than guessing the average!*
 
-<br>
 
-#### **Adjusted $R^2$**
+##### Adjusted $R^2$
 
-Adding more features almost always increases $R^2$, even if the new features are irrelevant. As the saying goes:
+Something to consider, adding more features *almost always* increases $R^2$. As the saying goes:
 > More data is always better.
+
 
 This is a problematic statement for multiple reasons...
 
@@ -448,31 +479,41 @@ This is a problematic statement for multiple reasons...
 2. What is the extra data is messy and poorly collected?
 3. etc.
 
-Adjusted $R^2$ corrects for adding extra features into the model by penalizing unnecessary complexity:
+I prefer the saying:
+> More data is *generally* better.
+
+
+the adjusted $R^2$ corrects for adding extra features into the model by penalizing potentially unnecessary complexity:
 
 $$
-R^2_{\text{adj}} = 1 - \left(1 - R^2\right) \frac{n - 1}{n - p - 1}
+R^2_{\text{adj}} = 1 - \left(1 - R^2\right) \frac{N - 1}{N - F - 1}
 $$
 
 where  
-- $n$ = number of observations  
-- $p$ = number of predictors (features)
+- $N$ = number of observations  
+- $F$ = number of features
 
-**Interpretation:**  
+###### Interpretation:  
 - If a new feature genuinely improves the model, Adjusted $R^2$ goes up.  
 - If it only adds noise, Adjusted $R^2$ drops.  
 - It’s a fairer metric when comparing models with different numbers of predictors.
 
 
-In a simple linear regression where we only have one freature ($p=1$) the $R^2$ and adjusted-$R^2$ will be identical. However, when we start adding more features, we will want to use the adjusted-$R^2$. 
+In a simple linear regression where we only have one freature ($F=1$) the $R^2$ and adjusted-$R^2$ will be identical. 
 
-*Tip*: Just use the adjusted-$R^2$.
+However, when we start adding more features, we will want to use the adjusted $R^2$. 
+
+*Moral of the story*: Just use the adjusted $R^2$.
 
 
-### **Summary**
+
+
+
+
+##### Summary
 
 | Metric | Description | Best Value | Notes |
-|:--------|:-------------|:-------------|:------|
+|:--------|:-------------|:-------------:|:------|
 | **MSE** | Average squared error | 0 | Sensitive to outliers |
 | **RMSE** | Typical prediction error | 0 | Easier to interpret than the MSE |
 | **MAE** | Average absolute error | 0 | Robust to outliers |
@@ -481,11 +522,9 @@ In a simple linear regression where we only have one freature ($p=1$) the $R^2$ 
 
 
 
-#### **Rule of thumb:**  
-RMSE or MAE talk about *“how far off we are”*.
-
-
-$R^2$ talks about *“how much of the pattern we’ve captured.”*
+**Rule of thumb:**  
+- RMSE or MAE talk about *“how far off we are”*.
+- Adjusted $R^2$ talks about *“how much of the pattern we’ve captured.”*
 
 
 {% capture ex %}
@@ -541,18 +580,18 @@ plt.show()
 
 
 {% capture ex %}
-
-    === Model Fit Statistics ===
-    Mean Squared Error (MSE):        3.301
-    Root Mean Squared Error (RMSE):  1.817
-    Mean Absolute Error (MAE):       1.482
-    R² (Coefficient of Determination): 0.956
-    Adjusted R²:                     0.955
-
+```python
+=== Model Fit Statistics ===
+Mean Squared Error (MSE):          3.301
+Root Mean Squared Error (RMSE):    1.817
+Mean Absolute Error (MAE):         1.482
+R² (Coefficient of Determination): 0.956
+Adjusted R²:                       0.955
+```
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_10_1.png' | relative_url }}"
-  alt=""
+  alt="A scatter plot of the previous data with the line of best fit plotted over top."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
@@ -1158,7 +1197,7 @@ plt.show()
 
 ## Multiple Linear Regression (MLR): When One Predictor Isn't Enough
 
-Up to now, we’ve modeled relationships between a single feature \(x\) and a target \(y\), and have gotten a simple line that best fits the data.
+Up to now, we’ve modeled relationships between a single feature $x$ and a target $y$, and have gotten a simple line that best fits the data.
 
 But in the real world, most outcomes depend on *several* factors at once:
 - House prices depend on **size**, **location**, and **age**
@@ -1662,10 +1701,10 @@ That’s where **p-values** come in.
 Each coefficient in a regression has its own hypothesis test:
 
 $$
-H_0: \beta_i = 0 \quad\text{(no relationship between feature \(x_i\) and \(y\))}  
+H_0: \beta_i = 0 \quad\text{(no relationship between feature $x_i$ and $y$)}  
 $$
 $$
-H_a: \beta_i \neq 0 \quad\text{(feature \(x_i\) contributes to predicting \(y\))}
+H_a: \beta_i \neq 0 \quad\text{(feature $x_i$ contributes to predicting $y$)}
 $$
 
 - A **small p-value** (< 0.05 by convention) means the feature’s effect is statistically significant—unlikely due to chance.
