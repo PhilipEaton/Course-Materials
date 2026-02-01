@@ -529,13 +529,13 @@ However, when we start adding more features, we will want to use the adjusted $R
 
 {% capture ex %}
 ```python
-# === Example: Evaluating Model Fit ===
 # This code demonstrates how to calculate common regression fit statistics.
 
 # --- Generate synthetic data with some noise ---
 np.random.seed(42)
 X = np.linspace(0, 10, 50).reshape(-1, 1)
-y_true = 3 * X.squeeze() + 5 + np.random.normal(0, 2, 50)   # "true" line with noise
+true_slope, true_intercept = 3, 5
+y_true = true_slope * X.squeeze() + true_intercept + np.random.normal(0, 2, 50)   # "true" line with noise
 
 # --- Fit a Linear Regression model ---
 model = LinearRegression()
@@ -603,6 +603,14 @@ Adjusted R²:                       0.955
 ```python
 # === Comparing Fit Statistics Under Different Noise Levels ===
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+
+# --- Set up reproducible data ---
 np.random.seed(42)
 X = np.linspace(0, 10, 50).reshape(-1, 1)
 true_slope, true_intercept = 3, 5
@@ -614,6 +622,9 @@ datasets = []
 for noise in noise_levels:
     y = true_slope * X.squeeze() + true_intercept + np.random.normal(0, noise, X.shape[0])
     datasets.append((noise, y))
+
+# --- Container to store fit statistics ---
+results = []
 
 # --- Create plots ---
 fig, axes = plt.subplots(3, 1, figsize=(6, 14), sharey=True)
@@ -635,6 +646,16 @@ for ax, (noise, y) in zip(axes, datasets):
     p = X.shape[1]      # number of predictors
     adj_r2 = 1 - (1 - r2) * (n - 1) / (n - p - 1)
     
+    # Store results for table
+    results.append({
+        "Noise Level": noise,
+        "MSE": mse,
+        "RMSE": rmse,
+        "MAE": mae,
+        "R²": r2,
+        "Adjusted R²": adj_r2
+    })
+    
     # Plot data and regression line
     ax.scatter(X, y, color="gray", alpha=0.6, label="Actual Data")
     ax.plot(X, y_pred, color="red", label="Regression Line")
@@ -643,21 +664,24 @@ for ax, (noise, y) in zip(axes, datasets):
     ax.set_ylabel("y (Target)")
     ax.legend(loc="upper left")
     ax.grid(True, linestyle="--", alpha=0.5)
-    
-    # Annotate metrics (moved lower for clarity)
-    text = (f"MSE: {mse:.2f}\n"
-            f"RMSE: {rmse:.2f}\n"
-            f"MAE: {mae:.2f}\n"
-            f"R²: {r2:.3f}\n"
-            f"Adj. R²: {adj_r2:.3f}")
-    
-    ax.text(0.73, 0.25, text, transform=ax.transAxes,
-            fontsize=10, verticalalignment='top',
-            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.9))
 
-plt.suptitle("Effect of Noise on Regression Fit and Metrics", fontsize=14)
+plt.suptitle("Effect of Noise on Regression Fit", fontsize=14)
 plt.tight_layout()
 plt.show()
+
+# --- Display fit statistics as a table ---
+results_df = pd.DataFrame(results)
+
+# Round for readability
+results_df = results_df.round({
+    "MSE": 2,
+    "RMSE": 2,
+    "MAE": 2,
+    "R²": 3,
+    "Adjusted R²": 3
+})
+
+results_df
 
 ```
 {% endcapture %}
@@ -666,11 +690,19 @@ plt.show()
 
 
 
+
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_11_0.png' | relative_url }}"
-  alt=""
+  alt="Three plots of the same line of best fit but with 3 different increasing levels of noise in the data. At the noise increases the data bets more irregualar and scattered around the line and out fit statistics change as a result. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
+```python
+   Noise Level    MSE  RMSE   MAE     R²  Adjusted R²
+0            0   0.00  0.00  0.00  1.000        1.000
+1            2   2.96  1.72  1.35  0.962        0.961
+2            5  25.23  5.02  4.02  0.748        0.743
+```
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
