@@ -82,10 +82,10 @@ $$
 To find the angle between these vectors, we calculate:
 
 $$
-\vec{v} \cdot \widehat{\text{real}} = |\vec{v}| |\widehat{\text{real}}| \cos(\theta)
+\vec{v} \cdot \widehat{\text{real}} = \vert \vec{v} \vert   \vert \widehat{\text{real}} \vert  \cos(\theta)
 $$
 
-Substituting $ \vec{v} \cdot \widehat{\text{real}} = a $,  $ |\widehat{\text{real}}| = 1 $, and $ |\vec{v}| = r $, we find:
+Substituting $ \vec{v} \cdot \widehat{\text{real}} = a $,  $  \vert \widehat{\text{real}} \vert  = 1 $, and $  \vert \vec{v} \vert  = r $, we find:
 
 $$
 a = r \cos(\theta) \implies \cos(\theta) = \frac{a}{r}
@@ -137,7 +137,7 @@ $$
 	&= a^2 + b^2
 \end{aligned}
 $$
-Thus, $ |\vec{v}'| = r $, where $ r = \sqrt{a^2 + b^2} $ is the magnitude of the original complex number $ z $.
+Thus, $  \vert \vec{v}' \vert  = r $, where $ r = \sqrt{a^2 + b^2} $ is the magnitude of the original complex number $ z $.
 
 Using this result, we can express the new angle $ \theta' $ as:
 
