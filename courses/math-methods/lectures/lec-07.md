@@ -31,7 +31,7 @@ To be begin this discussion, tt is particularly convenient to think of complex n
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig1.png' | relative_url }}"
   alt="The image shows a standard coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the complex number is plotted in the first quadrant. From this point, a dashed vertical line drops straight down to meet the real axis at a positive value labeled “a,” and a dashed horizontal line extends leftward to meet the imaginary axis at a positive value labeled “b.” The point itself is labeled “a plus b i.” The axes are drawn with arrows indicating positive direction."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
 
 
 </div>
@@ -41,7 +41,7 @@ To be begin this discussion, tt is particularly convenient to think of complex n
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig2.png' | relative_url }}"
   alt="The image shows the same coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the same complex number lies in the first quadrant. A dashed line connects the origin to the point, representing the radius in polar form. An angle at the origin, measured from the positive real axis up to the dashed line, indicates the direction of the point. This angle is labeled “theta,” and the dashed radius line is labeled “r.” The point itself is labeled “a plus b i."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
 
 </div>
 
