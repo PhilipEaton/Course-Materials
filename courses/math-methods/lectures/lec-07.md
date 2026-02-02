@@ -31,7 +31,7 @@ To be begin this discussion, tt is particularly convenient to think of complex n
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig1.png' | relative_url }}"
   alt="The image shows a standard coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the complex number is plotted in the first quadrant. From this point, a dashed vertical line drops straight down to meet the real axis at a positive value labeled “a,” and a dashed horizontal line extends leftward to meet the imaginary axis at a positive value labeled “b.” The point itself is labeled “a plus b i.” The axes are drawn with arrows indicating positive direction."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
 
 </div>
@@ -41,7 +41,7 @@ To be begin this discussion, tt is particularly convenient to think of complex n
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig2.png' | relative_url }}"
   alt="The image shows the same coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the same complex number lies in the first quadrant. A dashed line connects the origin to the point, representing the radius in polar form. An angle at the origin, measured from the positive real axis up to the dashed line, indicates the direction of the point. This angle is labeled “theta,” and the dashed radius line is labeled “r.” The point itself is labeled “a plus b i."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
 </div>
 
@@ -482,7 +482,7 @@ $$
 Since $ \mathbf{C}^\dagger = \mathbf{C} $, $\mathbf{C}$ is **Hermitian**.
 
 
-**Checking Unitary Property ($ \mathbf{B**^\dagger \mathbf{B} = \mathbf{I} $)}
+**Checking Unitary Property ($ \mathbf{B}^\dagger \mathbf{B} = \mathbf{I} $)**
 
 - **Matrix $\mathbf{A}$**:  
 Checking this property directly:
@@ -614,7 +614,9 @@ i \rightarrow \begin{bmatrix}
 	-1 & 0 & 0 & 0 \\
 	0 & 0 & 0 & 1 \\
 	0 & 0 & -1 & 0
-\end{bmatrix} \qquad
+\end{bmatrix}$$
+
+$$
 j \rightarrow \begin{bmatrix}
 	0 & 0 & 1 & 0 \\
 	0 & 0 & 0 & -1 \\
@@ -696,7 +698,7 @@ Notice that this is just the old current rotated by $\pi/2$. Comparing the phase
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig3.png' | relative_url }}"
   alt="The image shows a phasor diagram with horizontal and vertical axes labeled “Real” and “Imag,” respectively. At the origin, two arrows extend outward representing time-dependent quantities. One arrow points into the upper-right quadrant and is labeled “I of t,” indicating the current phasor. A second arrow points into the upper-left quadrant and is labeled “V L of t,” indicating the inductor voltage phasor. An arc at the origin indicates the angle between the current phasor and the horizontal real axis, labeled “omega t.” A second arc shows a ninety-degree positive phase shift between the voltage and current phasors, labeled “plus pi over two."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:50%;">
 
 Notice, as these complex vectors (called phasors in in AC circuits) move around the complex plane in a counterclockwise manner $V_L(t)$ will be ahead of $I(t)$. That is, we say $V_L$ leads $I$. 
 
@@ -742,13 +744,13 @@ $$
 Applying this rotation matrix to the initial state:
 
 $$
-\vec{\psi}\,' = R\left( \frac{\pi}{2} \right) \vec{\psi} = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & -i \\ i & 1 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+\vec{\psi}' = R\left( \frac{\pi}{2} \right) \vec{\psi} = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & -i \\ i & 1 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix}
 $$
 
 Performing the matrix multiplication:
 
 $$
-\vec{\psi}\,' = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ i \end{bmatrix}
+\vec{\psi}' = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ i \end{bmatrix}
 $$
 
 Now our spin-$\tfrac{1}{2}$ particle has a nonzero spin in the up and down states! 
