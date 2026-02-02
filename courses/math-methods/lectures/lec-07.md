@@ -183,7 +183,7 @@ results in a rotation of $ z $ by an angle $ \phi $ in the counterclockwise dire
 We can perform a change of representation, writing the complex number $ z $ as a vector and the complex number $ w $ as a rotation matrix, as follows:  
 
 $$
-z' = w z \implies \vec{v}\,' = \mathbf{R}(\phi) \, \vec{v}  
+z' = w z \implies \vec{v}' = \mathbf{R}(\phi) \, \vec{v}  
 $$  
 
 We have already seen how we can rewrite a complex number as a vector:  
@@ -425,7 +425,7 @@ $$
 
 and we are tasked with check to see if they are Hermitian, Unitary, and/or Normal matrices. Let's check by check if each matrix has the property that defined each classification.
 
-**Checking Hermitian Property ($ \mathbf{A** = \mathbf{A}^\dagger $)}
+**Checking Hermitian Property ($ \mathbf{A} = \mathbf{A}^\dagger $)**
 
 - **Matrix $\mathbf{A}$**:  
 The conjugate transpose is:
