@@ -273,6 +273,29 @@
         margin: 0.8in;
       }
 
+      pre, code, pre code {
+        white-space: pre-wrap !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+        max-width: 100% !important;
+      }
+
+      table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed;
+      }
+
+      th, td {
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      img, svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
       /* Hide navigation / site chrome */
       header, nav, footer, .course-nav, .site-nav {
         display: none !important;

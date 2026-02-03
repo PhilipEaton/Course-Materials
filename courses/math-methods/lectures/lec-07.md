@@ -21,7 +21,7 @@ $$
 
 where $ a $ and $ b $ are real numbers. As a result of this simple definition, we have unlocked the whole realm of mathematics called complex algebra. 
 
-To be begin this discussion, tt is particularly convenient to think of complex numbers as points in a Cartesian-like coordinate system, where the horizontal axis represents the real part of $ z $, $ a $, and the vertical axis represents the imaginary part, $ b $. This geometric interpretation provides an intuitive way to visualize and work with complex numbers.
+To be begin this discussion, it is particularly convenient to think of complex numbers as points in a Cartesian-like coordinate system, where the horizontal axis represents the real part of $ z $, $ a $, and the vertical axis represents the imaginary part, $ b $. This geometric interpretation provides an intuitive way to visualize and work with complex numbers.
 
 
 <div class="two-column">
@@ -51,7 +51,13 @@ To be begin this discussion, tt is particularly convenient to think of complex n
 
 
 
-Notice that we can express the complex number $z$ in polar coordinates by taking $ r = \sqrt{a^2 + b^2} $ and $ \theta = \tan^{-1}\left(\frac{b}{a}\right) $, where $ r $ is called the **magnitude** or **modulus** of $ z $, and $ \theta $ is called the **phase** or **argument** of $ z $. Additionally, we can write: 
+Notice from the figure above, we can express the complex number $z$ in polar coordinates by taking 
+
+$$ r = \sqrt{a^2 + b^2} \qquad\text{and}\qquad \theta = \tan^{-1}\left(\frac{b}{a}\right) $$ 
+
+where $ r $ is called the **magnitude** or **modulus** of $ z $, and $ \theta $ is called the **phase** or **argument** of $ z $. 
+
+Additionally,link the Cartesian-like representation with the polar representation using a little trigonomentry: 
 
 $$
 a = r \cos(\theta) \qquad \text{and} \qquad b = r \sin(\theta)
@@ -60,9 +66,10 @@ $$
 which allows us to express $ z $ as:
 
 $$
-z = a + i b = r \cos(\theta) + i r \sin(\theta) = r \left( \cos(\theta) + i \sin(\theta) \right).
+z = a + i b = r \cos(\theta) + i r \sin(\theta) = r \left( \cos(\theta) + i \sin(\theta) \right)
 $$
 
+This forulation will become very important in a bit.
 
 
 
