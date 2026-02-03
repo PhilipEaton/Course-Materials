@@ -34,7 +34,12 @@ By the end of this project, you will be able to:
 
 1. **Choose a dataset**: Pick one dataset from the list below — all are built into `scikit-learn` or `seaborn`, so you don’t need to download anything.
 
-   Use one of the following datasets:
+These datasets have:
+- At least one continuous target variable
+- Several numeric predictors (categorical OK if encoded)
+- A clear research question (“What factors predict ___?”)
+
+Use one of following data sets:
 
 
 
