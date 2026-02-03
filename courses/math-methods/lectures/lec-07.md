@@ -8,21 +8,19 @@ nav_order: 7
 
 # Lecture 07 – Complex Numbers, Matrices, and a New Representation
 	
-  
+
 
 ## Complex Numbers as 2-Dimensional Coordinates
 
-
-Complex numbers naturally arise when solving for the roots of polynomial functions (like $x^2 + 1 = 0$ or something like that). By defining the imaginary unit $ i $ as $ i = \sqrt{-1} $, we can represent any complex number $ z $ in the following form: 
+Complex numbers naturally show up when solving equations like $x^2 + 1 = 0$. By defining the imaginary unit $i$ as $i = \sqrt{-1}$, we can write any complex number $z$ in the form:
 
 $$
 z = a + bi
 $$
 
-where $ a $ and $ b $ are real numbers. As a result of this simple definition, we have unlocked the whole realm of mathematics called complex algebra. 
+where $a$ and $b$ are real numbers. With this simple definition, we unlock an entire world of mathematics called **complex algebra**.
 
-To be begin this discussion, it is particularly convenient to think of complex numbers as points in a Cartesian-like coordinate system, where the horizontal axis represents the real part of $ z $, $ a $, and the vertical axis represents the imaginary part, $ b $. This geometric interpretation provides an intuitive way to visualize and work with complex numbers.
-
+To be begin this discussion, it is particularly convenient to think of complex numbers as points in a Cartesian-like coordinate system, where the horizontal axis represents the real part of $ z $ (tha is, $ a $) and the vertical axis represents the imaginary part ($ b $). This geometric interpretation provides an intuitive way to visualize and work with complex numbers.
 
 <div class="two-column">
 
@@ -33,14 +31,13 @@ To be begin this discussion, it is particularly convenient to think of complex n
   alt="The image shows a standard coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the complex number is plotted in the first quadrant. From this point, a dashed vertical line drops straight down to meet the real axis at a positive value labeled “a,” and a dashed horizontal line extends leftward to meet the imaginary axis at a positive value labeled “b.” The point itself is labeled “a plus b i.” The axes are drawn with arrows indicating positive direction."
   style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
 
-
 </div>
 
 <div class="column">
 
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig2.png' | relative_url }}"
-  alt="The image shows the same coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the same complex number lies in the first quadrant. A dashed line connects the origin to the point, representing the radius in polar form. An angle at the origin, measured from the positive real axis up to the dashed line, indicates the direction of the point. This angle is labeled “theta,” and the dashed radius line is labeled “r.” The point itself is labeled “a plus b i."
+  alt="The image shows the same coordinate plane with a horizontal axis labeled “Real” and a vertical axis labeled “Imag.” A point representing the same complex number lies in the first quadrant. A dashed line connects the origin to the point, representing the radius in polar form. An angle at the origin, measured from the positive real axis up to the dashed line, indicates the direction of the point. This angle is labeled “theta,” and the dashed radius line is labeled “r.” The point itself is labeled “a plus b i.”"
   style="display:block; margin:1.5rem auto; max-width:400px; width:80%;">
 
 </div>
@@ -48,31 +45,27 @@ To be begin this discussion, it is particularly convenient to think of complex n
 </div>
 
 
+Looking at the diagrams, we can describe the complex number $z$ using **polar coordinates**, where:
 
+$$
+r = \sqrt{a^2 + b^2} \qquad\text{and}\qquad \theta = \tan^{-1}\left(\frac{b}{a}\right)
+$$
 
+Here, $r$ is called the **magnitude** or **modulus** of $z$, and $\theta$ is called the **phase** or **argument**.
 
-Notice from the figure above, we can express the complex number $z$ in polar coordinates by taking 
-
-$$ r = \sqrt{a^2 + b^2} \qquad\text{and}\qquad \theta = \tan^{-1}\left(\frac{b}{a}\right) $$ 
-
-where $ r $ is called the **magnitude** or **modulus** of $ z $, and $ \theta $ is called the **phase** or **argument** of $ z $. 
-
-Additionally,link the Cartesian-like representation with the polar representation using a little trigonomentry: 
+We can relate the Cartesian form to the polar form using a bit of trigonometry:
 
 $$
 a = r \cos(\theta) \qquad \text{and} \qquad b = r \sin(\theta)
 $$
 
-which allows us to express $ z $ as:
+Plugging this into the original expression for $z$ gives:
 
 $$
 z = a + i b = r \cos(\theta) + i r \sin(\theta) = r \left( \cos(\theta) + i \sin(\theta) \right)
 $$
 
-This forulation will become very important in a bit.
-
-
-
+This formulation will become very important in a bit.
 
 
 
@@ -80,91 +73,110 @@ This forulation will become very important in a bit.
 
 ## Complex Numbers as Rotations
 
-Now, where have we seen something like this before? Before jumping directly to an answer, let's motivate it a little. In Lecture 04, we discussed how dot products can be used to find the angle between two vectors. For example, consider one vector as the rectangular representation of the complex number above and another as a unit vector directed along the real axis:
+Earlier, we saw how the **dot product** of two vectors, say $\vec{v}$ and $\vec{u}$, can be expressed in terms of the angle between them:
 
-$$
-\vec{v} = a \,\widehat{\text{real}} + b \,\widehat{\text{imag}} \qquad \text{and} \qquad \widehat{\text{real}} = \widehat{\text{real}}
-$$
-
-To find the angle between these vectors, we calculate:
-
-$$
-\vec{v} \cdot \widehat{\text{real}} = \vert \vec{v} \vert   \vert \widehat{\text{real}} \vert  \cos(\theta)
-$$
-
-Substituting $ \vec{v} \cdot \widehat{\text{real}} = a $,  $  \vert \widehat{\text{real}} \vert  = 1 $, and $  \vert \vec{v} \vert  = r $, we find:
-
-$$
-a = r \cos(\theta) \implies \cos(\theta) = \frac{a}{r}
-$$
-
-Notice that $ \cos(\theta) = \frac{a}{r} $ is precisely what we obtain from solving for $ \cos(\theta) $ using the $ a $ and $ b $ components in the polar coordinate system above.
-
-Now, let's multiply the complex number $ z = a + b i $ by another complex number: 
-
-$$
-w = \cos(\phi) + i \sin(\phi).
 $$ 
-
-(You will see why we write $ w $ in this form shortly.) The result of this multiplication, $ z' $, will be a new complex number:
-
-$$
-z' = w z
+\vec{v} \cdot \vec{u} = v u \cos(\theta_{vu})
 $$
 
-Performing the algebraic multiplication:
+where $\theta_{vu}$ is the smallest angle between the vectors. Rearranging this allows us to solve for the angle between the two vectors:
+
+$$ 
+\cos(\theta_{vu}) = \frac{\vec{v} \cdot \vec{u}}{v u}
+$$
+
+So, if we know how to write vectors in terms of basis directions (like $\hat{i}$, $\hat{j}$, or $\hat{k}$), we can find the angle between them using just the dot product.
+
+Let’s dream a little: **What if we treat complex numbers like vectors?**
+
+We could take $\widehat{\text{real}}$ to be the units vector pointing along the real-axis, and similalry $\widehat{\text{imag}}$ to point along the imaginary-axis. So, a complex number could be written as a vector in the following manner:
+
+$$
+\vec{z} = a\ \ \widehat{\text{real}} \ \ + \ \  b\ \ \widehat{\text{imag}}
+$$
+
+This is just a new way to represent $z = a + ib$. And once we’ve written it as a vector, we can use vector tools to analyze it.
+
+For example, to find the angle between $\vec{z}$ and the real axis, we can compute:
+
+$$
+\vec{z} \cdot \widehat{\text{real}} = |\vec{z}| \cdot |\widehat{\text{real}}| \cdot \cos(\theta)
+$$
+
+Since $\vec{z} \cdot \widehat{\text{real}}$ is just the real component $a$, $|\widehat{\text{real}}| = 1$, and $|\vec{z}| = r$, this simplifies to:
+
+$$
+a = r \cos(\theta) \quad \implies \quad \cos(\theta) = \frac{a}{r}
+$$
+
+Which matches exactly what we’d expect from polar coordinates. This suggests our vector idea isn't totally insain!
+
+
+Let’s push this further. In regular algebra, we can multiply two complex numbers together. So let’s try multiplying:
+
+- $z = a + bi$
+- $w = \cos(\phi) + i \sin(\phi)$
+	- A complex number of a magnitude of 1 set at and angle of $\phi$ from the real axis.
+	- Compare with how we wrote $z$ above to see for yourself.
+
+We’ll call the result $z' = wz$. Let’s compute it using basic albegra:
 
 $$
 \begin{aligned}
-	z' &= (\cos(\phi) + i \sin(\phi)) (a + b i) \\
-	&= a \cos(\phi) + a \sin(\phi) i + b \cos(\phi) i - b \sin(\phi) \\
-	&= (a \cos(\phi) - b \sin(\phi)) + (a \sin(\phi) + b \cos(\phi)) i
+	z' &= \big(\cos(\phi) + i \sin(\phi)\big) \cdot \big(a + bi\big) \\
+	   &= a \cos(\phi) + a i \sin(\phi) + b i \cos(\phi) - b \sin(\phi) \\
+	   &= \big(a \cos(\phi) - b \sin(\phi)\big) + i\big(a \sin(\phi) + b \cos(\phi)\big)
 \end{aligned}
 $$
 
-The angle between this complex number and the positive real axis is determined by:
+This currently looks like a mess, but we promise it reveals something important. Let's find the angle that $z'$ makes with the real axis. First, we’ll write $z'$ as a vector:
 
 $$
-\vec{v}' \cdot \widehat{\text{real}} = \vert \vec{v}' \vert \vert \widehat{\text{real}} \vert  \cos(\theta') \implies a \cos(\phi) - b \sin(\phi) = \vert \vec{v}' \vert \cos(\theta') \implies \cos(\theta') = \frac{a \cos(\phi) - b \sin(\phi)}{\vert \vec{v}' \vert}.
+\vec{z}' = (a \cos(\phi) - b \sin(\phi))\ \widehat{\text{real}} \ \ +\ \  (a \sin(\phi) + b \cos(\phi))\ \widehat{\text{imag}}
 $$
 
-Here, the vector representation of $ z' $ is:
+To find the new angle $\theta'$, we again use:
 
 $$
-\vec{v}' = (a \cos(\phi) - b \sin(\phi)) \, \widehat{\text{real}} + (a \sin(\phi) + b \cos(\phi)) \, \widehat{\text{imag}}.
+\cos(\theta') = \frac{\text{real part of } z'}{\vert\vec{z}'\vert} = \frac{a \cos(\phi) - b \sin(\phi)}{\vert\vec{z}'\vert}
 $$
 
-The magnitude of this vector, $ \vert \vec{v}' \vert $, can be found in the following manner:
+Looks like we need the magnitude of $\vec{z}'$:
 
 $$
 \begin{aligned}
-	\vert \vec{v}' \vert^2 &= (a \cos(\phi) - b \sin(\phi))^2 + (a \sin(\phi) + b \cos(\phi))^2 \\
-	&= a^2 \cos^2(\phi) - 2ab \cos(\phi)\sin(\phi) + b^2 \sin^2(\phi) + a^2 \sin^2(\phi) + 2ab \sin(\phi)\cos(\phi) + b^2 \cos^2(\phi) \\
-	&= a^2 (\cos^2(\phi) + \sin^2(\phi)) + b^2 (\cos^2(\phi) + \sin^2(\phi)) \\
-	&= a^2 + b^2
+	\vert \vec{z}' \vert^2 &= (a \cos(\phi) - b \sin(\phi))^2 + (a \sin(\phi) + b \cos(\phi))^2 \\[1.15ex]
+	&= a^2 \cos^2(\phi) - 2ab \cos(\phi)\sin(\phi) + b^2 \sin^2(\phi) \ \ + \\
+	&\ \ \ \ \ \ + a^2 \sin^2(\phi) + 2ab \sin(\phi)\cos(\phi) + b^2 \cos^2(\phi) \\[1.15ex]
+	&= a^2 (\cos^2(\phi) + \sin^2(\phi)) + b^2 (\cos^2(\phi) + \sin^2(\phi)) \\[1.15ex]
+	&= a^2 + b^2 \\[1.15ex]
+	\vert \vec{z}' \vert^2  &= r^2
 \end{aligned}
 $$
-Thus, $  \vert \vec{v}' \vert  = r $, where $ r = \sqrt{a^2 + b^2} $ is the magnitude of the original complex number $ z $.
 
-Using this result, we can express the new angle $ \theta' $ as:
+So, $\vert\vec{z}'\vert = r$, just like the original complex number.
+
+Now we can go back to the angle off of the real axis we were calculating for $\vec{z}'$:
 
 $$
 \begin{aligned}
 \cos(\theta') &= \frac{a \cos(\phi) - b \sin(\phi)}{r} \\
-&= \frac{a}{r} \cos(\phi) - \frac{b}{r} \sin(\phi) \\
-&= \cos(\theta) \cos(\phi) - \sin(\theta) \sin(\phi) \\
+              &= \frac{a}{r} \cos(\phi) - \frac{b}{r} \sin(\phi) \\
+              &= \cos(\theta) \cos(\phi) - \sin(\theta) \sin(\phi) \\
 \cos(\theta') &= \cos(\theta + \phi)
 \end{aligned}
 $$
 
-This new complex number has:  
-- the same magnitude as the original complex number, and  
-- an angle relative to the real axis equal to the original complex number's angle plus $ \phi $.  
+where we have used an angle addition identity at the end to simplify into the final expression.
 
+Let's take stock of these results. We multiplied the complex number $z$ by another complex number $w$ to get $z' = w z$, and found:
 
-**Isn't this just a rotation of the original vector by an angle $ \boldsymbol{\phi} $?**  
+- The magnitude didn’t change: $|z'| = |z|$
+- The angle increased by $\phi$: $\theta' = \theta + \phi$
 
+In other words, **multiplying by $w$ appears to have rotated $z$ by an angle $\phi$**. That’s pretty wild!
 
+Complex multiplication doesn’t just scale numbers, it can rotate them!
 
 {% capture ex %}
 Multiplying a complex number $ z $ by the complex number:  
@@ -187,85 +199,107 @@ results in a rotation of $ z $ by an angle $ \phi $ in the counterclockwise dire
 
 ## Complex Numbers as Matrices 
 
-We can perform a change of representation, writing the complex number $ z $ as a vector and the complex number $ w $ as a rotation matrix, as follows:  
+### Discovery
+
+Recall, we know how to write rotation of a 2-dimensional plane  in terms of a $2\times 2$ rotation matrix. So, let's perform a little change of representation and instread of writing the complex number $ w $ as a vector, let's write it as a rotation matrix.   
+
+From before, we found that multiplying a complex number by: 
+
+$$w = \cos(\phi) + i \sin(\phi)$$
+
+rotates it by an angle $\phi$. In vector form, this process can written as:
 
 $$
-z' = w z \implies \vec{v}' = \mathbf{R}(\phi) \, \vec{v}  
-$$  
+z' = w z \quad \Longrightarrow \quad \vec{z}' = \mathbf{R}(\phi)\ \vec{z}
+$$
 
-We have already seen how we can rewrite a complex number as a vector:  
+The corresponding rotation matrix is:
 
 $$
-z = a + b \, i \implies \vec{v} = a\,\,\widehat{\text{real}} + b\,\,\widehat{\text{imag}} = \begin{bmatrix}  
-	a \\ b  
-\end{bmatrix}  
-$$  
+\mathbf{R}(\phi) = 
+\begin{bmatrix}
+\cos(\phi) & -\sin(\phi) \\
+\sin(\phi) & \cos(\phi)
+\end{bmatrix}
+$$
 
-But how can we represent the complex number $ w $ as a matrix? Let’s consider what the corresponding rotation matrix would look like, since we already know what a 2-dimensional rotation matrix looks like:  
+We would like this matrix to resemble the complex number $w = \cos(\phi) + i \sin(\phi)$ more closely. To do this, we can separate the rotation matrix into its cosine and sine parts:
 
 $$
-\mathbf{R}(\phi) = \begin{bmatrix}  
-	\cos(\phi) & -\sin(\phi) \\  
-	\sin(\phi) & \cos(\phi)  
-\end{bmatrix}  
-$$  
-
-Separating this into its sine and cosine parts gives:  
-
-$$
-\mathbf{R}(\phi) = \begin{bmatrix}  
+\begin{aligned}
+\mathbf{R}(\phi) &= \begin{bmatrix}  
 	\cos(\phi) & 0 \\  
 	0 & \cos(\phi)  
 \end{bmatrix} + \begin{bmatrix}  
 	0 & -\sin(\phi) \\  
 	\sin(\phi) & 0  
-\end{bmatrix} = \cos(\phi) \begin{bmatrix}  
+\end{bmatrix} \\[4ex]
+\mathbf{R}(\phi) &= \cos(\phi) \begin{bmatrix}  
 	1 & 0 \\  
 	0 & 1  
 \end{bmatrix} + \sin(\phi)\begin{bmatrix}  
 	0 & -1 \\  
 	1 & 0  
 \end{bmatrix}  
+\end{aligned}
 $$  
 
-Comparing this to $ w $:  
+Compare this with the complex number
 
 $$
-w = \cos(\phi) + \sin(\phi) \, i = \cos(\phi)\cdot 1 + \sin(\phi)\cdot i  
-$$  
+w = \cos(\phi) + \sin(\phi)\, i
+= \cos(\phi)\cdot 1 + \sin(\phi)\cdot i.
+$$
 
-suggests the following equivalences:  
+This comparison suggests the following identifications:
+
+- The number $1$ corresponds to the identity matrix:
+  
+  $$
+  1 \;\longrightarrow\;
+  \begin{bmatrix}
+  1 & 0 \\
+  0 & 1
+  \end{bmatrix}
+  $$
+
+- The imaginary unit $i$ corresponds to the matrix
+
+  $$
+  i \;\longrightarrow\;
+  \begin{bmatrix}
+  0 & -1 \\
+  1 & 0
+  \end{bmatrix}
+  $$
+
+With these rerepresentations, the complex number $w$ can be written directly as a matrix:
 
 $$
-1 \rightarrow \begin{bmatrix}  
-	1 & 0 \\  
-	0 & 1  
-\end{bmatrix}  
-$$  
-
-where the number $ 1 $ goes over as the identity matrix, which makes sense. Similarly,  
-
+\mathbf{w} = \begin{bmatrix}
+\cos(\phi) & -\sin(\phi) \\
+\sin(\phi) & \cos(\phi)
+\end{bmatrix}
 $$
-i \rightarrow \begin{bmatrix}  
-	0 & -1 \\  
-	1 & 0  
-\end{bmatrix}  
-$$  
-the complex number $ i $ goes over to this antisymmetric matrix. This allows us to write $ w $ in matrix form as a rotation matrix:  
 
-$$
-\mathbf{w} = \begin{bmatrix}  
-	\cos(\phi) & -\sin(\phi) \\  
-	\sin(\phi) & \cos(\phi)  
-\end{bmatrix}  
-$$  
+This agrees exactly with what we found earlier when we multiplied $z$ by $w$. In matrix form, $w$ acts as a rotation operator on the vector representation of the complex number $z$. Great!
 
-which makes sense, since as we saw earlier $ w $ acts like a rotation on the complex number $ z $.  
 
-This mapping of $1$ and $i$ allows us to write any complex number as a matrix, for example:
+
+
+
+
+
+
+
+
+
+### Testing
+
+This re-representation of $1$ and $i$ in matrix form, assuming it is correct, allows us to write *any* complex number as a matrix instead of as a scalar or vector. For example, we can rewrite $z = a + b i$ as:
 
 $$ 
-z = a + i b \implies \mathbf{z} = a \begin{bmatrix}
+\mathbf{z} = a \begin{bmatrix}
 1 & 0 \\
 0 & 1
 \end{bmatrix} + b \begin{bmatrix}
@@ -277,16 +311,18 @@ b & a
 \end{bmatrix} 
 $$
 
-Let's take the representation and see what the matrix operations we are already familiar with mean in terms of complex numbers and their 2-dimensional geometric:
+This is the complex number $z$ written in matrix form, or so we claim.
 
-- **Determinant**: The determinant of $\mathbf{z}$:
+It is worth connecting this representation with the matrix operations we already know and seeing what they mean in terms of complex numbers. If the results make sense, then this representation is doing something reasonable. If the results are strange or contradictory, then we would need to rethink our assumptions.
+
+- **Determinant**: The determinant of $\mathbf{z}$ is calculated to be:
 
 	$$ \text{det}(\mathbf{z}) = \begin{vmatrix}
 	a & -b \\
 	b & a
-	\end{vmatrix} = a^2 - (-b^2) = a^2 + b^2 $$
+	\end{vmatrix} = a^2 - (-b^2) = a^2 + b^2 = r^2 $$
 
-	represents the magnitude of the complex number $z$. 
+	The determinant of $\mathbf{z}$ appears to represent the magnitude-squared of the complex number. 
 
 
 - **Transpose**: The transpose of $\mathbf{z}$:
@@ -294,31 +330,37 @@ Let's take the representation and see what the matrix operations we are already 
 	$$ \mathbf{z}^\text{T} = \begin{bmatrix}
 	a & b \\
 	-b & a
-	\end{bmatrix} = a \begin{bmatrix}
+	\end{bmatrix}$$
+	
+	To discover what this represents, let's rewrite this in terms of the identity matrix $\mathbf{I}$ and the matrix representation of the inaginary unit $\mathbf{i}$. This gives:  
+	
+	$$\mathbf{z}^\text{T} = a \begin{bmatrix}
 	1 & 0 \\
 	0 & 1
 	\end{bmatrix} - b \begin{bmatrix}
 	0 & -1 \\
 	1 & 0
-	\end{bmatrix} = a\mathbf{I} - b\mathbf{i} = \mathbf{z}^* $$
+	\end{bmatrix} = a\mathbf{I} - b\mathbf{i} $$
 
-	appears to be the complex conjugation of the complex number $z$.
+	So, the transpose appears to represent the complex conjugation (take $i \rightarrow -i$) of the complex number.
 
 
-- **Inverse**: The inverse of $\mathbf{z}$:
+- **Inverse**: The inverse of $\mathbf{z}$, found using the equation for the inverse of s $2\times 2$ matrix:
 
 	$$ \mathbf{z}^{-1} = \frac{1}{\det(\mathbf{z})} \begin{bmatrix}
 	a & b \\
 	-b & a
-	\end{bmatrix} = \frac{1}{a^2+b^2} \mathbf{z}^\text{T} = \frac{\mathbf{z}^*}{a^2+b^2}   $$
+	\end{bmatrix} = \frac{1}{r^2}\  \mathbf{z}^\text{T} = \frac{\mathbf{z}^*}{r^2}   $$
 
-	looks to be the simplification of $1/z$, removing and trace of $i$ from the denominator:
+	This one is hard to see, but consider the simplification of $1/z$ by removing all instances of $i$ from the denominator:
 
-	$$ z^{-1} =  \frac{1}{z} = \frac{1}{a + i b} = \frac{1}{a + i b}\frac{a - i b}{a - i b} = \frac{z^*}{a^2 + b^2}  $$ 
+	$$ z^{-1} =  \frac{1}{z} = \frac{1}{a + i b} = \frac{1}{a + i b} \left(\frac{a - i b}{a - i b}\right) = \frac{z^*}{a^2 + b^2} = \frac{z^*}{r^2}  $$ 
+
+	The inverse of the matrix representation is essentially identical the taking the inverse of (1 over...) the complex number.
 
 
 - **Symmetric and Antisymmetric Decomposition**:
-	- The symmetric component of $\mathbf{z}$:
+	- The symmetric component of $\mathbf{z}$ can be found as:
 
 	$$ \mathbf{z}_S = \frac{1}{2} \left( \mathbf{z} + \mathbf{z}^\text{T}  \right) = \frac{1}{2} \left( \begin{bmatrix}
 		a & -b \\
@@ -333,7 +375,7 @@ Let's take the representation and see what the matrix operations we are already 
 
 	is the real part of the complex number $z$. 
 
-	- The antisymmetric component of $\mathbf{z}$:
+	- The antisymmetric component of $\mathbf{z}$ an be found as:
 
 	$$ \mathbf{z}_A = \frac{1}{2} \left( \mathbf{z} - \mathbf{z}^\text{T}  \right) = \frac{1}{2} \left( \begin{bmatrix}
 		a & -b \\
@@ -348,7 +390,13 @@ Let's take the representation and see what the matrix operations we are already 
 
 	is the imaginary part of the complex number $z$.
 
-Writing $\mathbf{z}$ in terms of its symmetric and antisymmetric components is identical to writing a complex number in terms of its real and imaginary parts. 
+	Writing $\mathbf{z}$ in terms of its symmetric and antisymmetric components is identical to writing the complex number in terms of its real and imaginary parts. 
+
+
+It is striking that the matrix operations we have studied so far all have natural interpretations when complex numbers are written as matrices. This is strong evidence that we are still doing ordinary algebra, just expressed in a different mathematical language.
+
+
+
 
 
 
