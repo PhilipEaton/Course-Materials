@@ -100,10 +100,10 @@ This is just a new way to represent $z = a + ib$. And once we’ve written it as
 For example, to find the angle between $\vec{z}$ and the real axis, we can compute:
 
 $$
-\vec{z} \cdot \widehat{\text{real}} = |\vec{z}| \cdot |\widehat{\text{real}}| \cdot \cos(\theta)
+\vec{z} \cdot \widehat{\text{real}} = \vert\vec{z}\vert \cdot \vert\widehat{\text{real}}\vert \cdot \cos(\theta)
 $$
 
-Since $\vec{z} \cdot \widehat{\text{real}}$ is just the real component $a$, $|\widehat{\text{real}}| = 1$, and $|\vec{z}| = r$, this simplifies to:
+Since $\vec{z} \cdot \widehat{\text{real}}$ is just the real component $a$, $\vert\widehat{\text{real}}\vert = 1$, and $\vert\vec{z}\vert = r$, this simplifies to:
 
 $$
 a = r \cos(\theta) \quad \implies \quad \cos(\theta) = \frac{a}{r}
