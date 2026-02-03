@@ -280,6 +280,16 @@
         max-width: 100% !important;
       }
 
+      .example, .result, .warning {
+        box-sizing: border-box;
+        max-width: 100% !important;
+        overflow: hidden; /* prevents border from being clipped by overflow */
+      }
+
+      .example *, .result *, .warning * {
+        max-width: 100% !important;
+      }
+
       table {
         width: 100% !important;
         max-width: 100% !important;
