@@ -1,12 +1,12 @@
 ---
 layout: jupyternotebook
-title: Machine Learning Foundations – Project 02
+title: Machine Learning Foundations – Project 03
 course_home: /courses/machine-learning-foundations/
 nav_section: homework
 nav_order: 2
 ---
 
-# Project 2: Comparing Instance-Based and Cluster-Based Learning
+# Project 3: BEING WORKED ON. DO NOT READ BELOW THIS PLEASE.
 
 
 ## *When do "neighbors" and "clusters" agree—and when do they disagree?*
