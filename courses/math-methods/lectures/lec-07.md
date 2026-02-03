@@ -8,7 +8,7 @@ nav_order: 7
 
 # Lecture 07 – Complex Numbers, Matrices, and a New Representation
 	
-
+  
 
 ## Complex Numbers as 2-Dimensional Coordinates
 
