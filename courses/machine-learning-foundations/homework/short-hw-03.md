@@ -6,29 +6,27 @@ nav_section: homework
 nav_order: 2
 ---
 
-# Project 3: BEING WORKED ON. DO NOT READ BELOW THIS PLEASE.
+# Project 3: Linear and Multiple Linear Regression
 
 
-## *When do "neighbors" and "clusters" agree—and when do they disagree?*
+## *Teaching computers how to draw a line.*
 
-Real-world data rarely tells you what the “right” categories are — sometimes we have **labels** (so we can train models), and sometimes we don’t.  
-This project explores two distance-based algorithms that use very different logic to understand structure in data:
+In this project you’ll apply Linear Regression and Multiple Linear Regression to model relationships between numerical variables.
 
-- **k-Nearest Neighbors (k-NN):** A **supervised** method that classifies new points based on how close they are to labeled examples.  
-- **k-Means Clustering:** An **unsupervised** method that finds natural groups in unlabeled data by minimizing within-cluster variance.
-
-Even though both rely on **distance**, their behavior and results can differ dramatically — especially when data overlap, scale, or class balance changes.  
-Here, you’ll investigate both approaches side-by-side, visualize how they divide data, and analyze when they agree or disagree.
+You’ll learn how to evaluate regression models, interpret coefficients, and examine residuals to test how well a linear model fits your data.
 
 ---
 
 ## Learning Objectives
 
 By the end of this project, you will be able to:
-- Apply **k-NN** and **k-Means** to a dataset of your choice.  
-- Interpret **accuracy**, **inertia**, and **silhouette score** to assess model performance.  
-- Visualize **decision boundaries** and **cluster regions** in 2D using PCA.  
-- Reflect on how scaling, number of clusters/neighbors, and feature choice affect outcomes.  
+- **Identify and frame a regression problem** — recognize when a question involves predicting a *continuous* outcome rather than a category.
+- **Apply simple and multiple linear regression models** to explore relationships between variables and make numerical predictions.
+- **Interpret model coefficients** to understand the direction and strength of associations between predictors and outcomes.
+- **Evaluate regression model performance** using appropriate metrics such as  $R^2$, Mean Squared Error (MSE), and Mean Absolute Error (MAE).
+- **Visualize model behavior** through *Residual* plots to assess fit and detect potential issues (e.g., bias, heteroscedasticity, outliers).
+- **Compare models** — understand how adding predictors can affect accuracy and generalization.
+- **Reflect on model assumptions and bias**, explaining where linear regression may or may not be an appropriate tool for real-world data.
 
 ---
 
@@ -38,79 +36,75 @@ By the end of this project, you will be able to:
 
    Use one of the following datasets:
 
-   - **Penguins (multiclass, 3 classes)**  
-     **Target:** species  
+
+
+
+
+   - **Diabetes Progression (medical, smaller dataset)**  
+     **Target:** disease progression (quantitative)  
+     **Predictors**: age, BMI, blood pressure, and lab measurements.     
      ```python
-     from sklearn.datasets import load_penguins
-     data_original = load_penguins(as_frame=True)
+     from sklearn.datasets import load_diabetes
+     data_original = load_diabetes(as_frame=True)
+     df = data_original.frame
      ```
 
-   - **Wine (multiclass, 3 classes) — slightly harder**  
-     **Target:** wine cultivar  
+   - **Auto MPG (fuel efficiency)**  
+     **Target:** mpg (miles per gallon)  
+     **Predictors**: cylinders, displacement, horsepower, weight, acceleration, model year, origin.   
      ```python
-     from sklearn.datasets import load_wine
-     data_original = load_wine(as_frame=True)
+     import seaborn as sns  
+     df = sns.load_dataset("mpg").dropna(subset=["mpg"])
      ```
 
-   - **Breast Cancer Wisconsin (binary) — interpretable, imbalanced-ish**  
-     **Target:** diagnosis (0 = malignant, 1 = benign)  
+   - **Tips (restaurant bills and tipping behavior)**  
+     **Target:** tip (amount left)  
+     **Predictors:** total_bill, size, sex, smoker, day, time.  
      ```python
-     from sklearn.datasets import load_breast_cancer
-     data_original = load_breast_cancer(as_frame=True)
+     import seaborn as sns  
+     df = sns.load_dataset("tips").dropna(subset=["tip"])
      ```
 
-   - **Digits (multiclass, 10 classes)**  
-     **Target:** digit label (0–9)  
+   - **Diamonds (price prediction — large dataset)**  
+     **Target:** price  
+     **Predictors:** carat, cut, color, clarity, depth, table, x, y, z.  
      ```python
-     from sklearn.datasets import load_digits
-     data_original = load_digits(as_frame=True)
+     import seaborn as sns  
+     df = sns.load_dataset("diamonds").dropna(subset=["price"])
      ```
 
 
-
-
-2. **Update and run the code**: Use the one-cell Iris example below as your template.
+2. **Update and run the code**: Use the Linear & Multiple Linear Regression example below as your template.
 
    **Your goal**: 
-   Modify it so that it correctly loads, processes, and analyzes your chosen dataset.
+   Modify it so that it correctly loads, processes, and analyzes your chosen dataset with a **continuous target**.
 
    Add comments to each block (indicated in the code below) to explain what is happening.
 
    **You’ll need to**:
-   - Update the dataset loading section (X and y variables).
-   - Check for categorical features and encode them if necessary.
-   - Adjust n_clusters (for k-Means) and n_neighbors (for k-NN) as appropriate.
-   - Re-run the code and confirm that all plots and metrics execute cleanly.
+   - **Load your dataset** and clearly set **X (features)** and **y (continuous target)**.
+   - **Update** the multiple linear regression model to drop insignificant features (one at a time!).
 
 3. **Analyze and Report**: Write a short report (including key plots where appropriate!) interpreting the results of your analysis and what they reveal about the dataset you chose to study
     Your report should read in a **semi-professional** tone, similar to a technical summary you might provide to a customer who asked you to build this model. The goal is to clearly explain:
-    - what question you were trying to answer,
-    - what the model is doing (i.e. how does k-NN work, but explained to a non-professional),
-    - what you found in the results/was anything odd about your results, and
-    - how confident someone should be in the model’s conclusions.
+    - Which features appear most predictive?
+    - How well does the model fit (look at residuals and R²)?
+    - Were any assumptions of linear regression violated (linearity, constant variance, outliers)?
+    - What would you try next (interaction terms, polynomial features, etc.)?  
 
-    Focus on clarity and interpretation rather than technical jargon, and use plots to support your explanations when they add insight.
-    
-    Within the same document, but after your short report, answer the following questions:
-    - How similar were the k-NN and k-Means results?
-    - What effect did scaling or changing k have?
-    - Did PCA make clusters more or less distinct?
-    - If this were real-world data, what kind of insights could clustering reveal?
-    This can be informal. I just want you to answer the questions and relfect on what you learned and what you stuggled with.
+    Your notebook should produce the following:
+    - **Model details & comparisons:**
+    - [ ] Simple Linear Regression (1 predictor): metrics + a brief note on the single coefficient
+    - [ ] Multiple Linear Regression (all predictors): metrics + a table of coefficients
 
-4. **(Optional Challenge)**: 
-    - Get this to work for the Titanic data
-        | Dataset | Type | Target Variable | Description |
-        |----------|------|------------------|--------------|
-        | **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
-        
-        ```python
-        import seaborn as sns  
-        data_original = sns.load_dataset("titanic").dropna(subset=['survived'])
-        ```
+    - **Diagnostics & interpretability:**
+    - [ ] Residual plot with y=0 reference line
+    - [ ] Statsmodels OLS summary for coefficient significance (p-values) and adjusted $R^2$
 
-    - Try different distance metrics (Euclidean, Manhattan, Minkowski) for k-NN.
-    - Compare inertia vs. silhouette score across different k values.
+    - **Core metrics (test set):**
+    - [ ] R² (coefficient of determination)
+    - [ ] MSE (mean squared error)
+    - [ ] MAE (mean absolute error)
 
 
 
@@ -118,32 +112,30 @@ By the end of this project, you will be able to:
 
 ### What to Submit
 
+- A semi-professional report deailing your findings, written for a layperson.
+    - Some details of what you could include are given above and must include are given below. 
+- An indepth reflection about the project.
+    - Suggestions on what you can reflect on are below.
+
+
 1. **A clean, runnable Jupyter notebook** that:
-    - [ ] loads your chosen dataset
-    - [ ] prepares features and target variables (encoding if needed),  
-    - [ ] performs a train/test split (`stratify=y` if classification),  
-    - [ ] scales features appropriately,  
-    - [ ] implements both **k-Nearest Neighbors (k-NN)** and **k-Means** models,  
-    - [ ] evaluates k-NN with accuracy, classification report, and confusion matrix,  
-    - [ ] evaluates k-Means with inertia, silhouette score, and visualizations (e.g., PCA or scatter plots),  
-    - [ ] includes at least one model-comparison bar plot (e.g., k-NN vs. different k-values, or cluster count comparison),  
-    - [ ] contains clear **section headers** for each major step (e.g., “Data Preparation,” “Modeling,” “Evaluation”),  
-    - [ ] includes **concise, meaningful code comments** describing what each *block of code* does, and  
-    - [ ] runs from start to finish **without errors**.
+    - [ ] loads and briefly describes your dataset (continuous target variable),
+    - [ ] prepares and splits the data (train/test),
+    - [ ] fits at least one *Simple* and one *Multiple* Linear Regression model,
+    - [ ] includes R², MSE, and MAE for each model,
+    - [ ] shows your *Residuals* plot,
+    - [ ] uses clear block comments explaining each code step,
+    - [ ] runs top-to-bottom without errors.
 
-2. **A short written report (2–4 pages, PDF format)** that explains your project:
-See What you should include in Setp 3 above. 
+2. **A short written report (2–4 pages, PDF format)** that explains your project.
+    See What you should include in Setp 3 above. 
 
-For further consideration, you should think about, and possibly add to your report or your reflection section (wink wink), comments about:
-- [ ] What research question or goal did you explore using your dataset?
-    - I.e. What could a customer been asking for when they hired you and gave you the data?  
-- [ ] How did you prepare and analyze the data?  
-    - I.e. whole row deletion if an missing data, etc.
-- [ ] What did your results show? Which model(s) performed best?  
-- [ ] Were there any unexpected findings or challenges?  
-    - Is there anything you need to make you customer aware of?
-- [ ] Discuss at least one potential **source of bias** or limitation in your dataset or model.  
-- [ ] Reflect on how your workflow could be improved with more time or data.  
+    For further consideration, you should think about, and possibly add to your report or your reflection section (wink wink), comments about:
+    - [ ] What question or relationship you investigated,  
+    - [ ] How you prepared and analyzed the data,  
+    - [ ] Which model performed best and why (Remember to run a simple linear regression for all of the features!),  
+    - [ ] Note and patterns or outliers in residuals,  
+    - [ ] Any violations of model assumptions (look at residuals),  
 
 > **Reminder:** Your notebook should demonstrate a clear, step-by-step workflow, not just working code.  
 > Use comments, titles, and plots to tell the *story* of your analysis.
@@ -151,46 +143,59 @@ For further consideration, you should think about, and possibly add to your repo
 
 ## The Code
 
-The cell below contains a complete Iris example demonstrating both k-NN and k-Means — including scaling, PCA visualization, accuracy metrics, inertia, silhouette score, and clean plots.
+The cell below contains a complete example demonstrating both linear and multiple linear regression in action.
 
 Use it as a template to guide your own work.
 
 
 {% capture ex %}
 ```python
-# ================================================
-# One-Cell: k-NN & k-Means on the Iris Dataset
-# ================================================
-
 # --- Imports ---
 
-# --- Core Data Science Libraries ---
-import pandas as pd                     # Data manipulation & table handling (like Excel in Python)
-import numpy as np                      # Numerical operations & efficient table/array computations
-from scipy.stats import mode
+# --- Core Python / Math Tools ---
+import numpy as np                    # numerical operations, arrays, distance computations
+import pandas as pd                   # data handling and manipulation
 
 # --- Visualization Libraries ---
-import matplotlib.pyplot as plt          # Basic plotting (line plots, histograms, scatter plots)
-import seaborn as sns                    # Statistical data visualization, built on top of matplotlib
+import matplotlib.pyplot as plt        # general plotting
+from matplotlib.colors import ListedColormap
+from mpl_toolkits.mplot3d import Axes3D
+import seaborn as sns                 # polished statistical plots
+sns.set(style="whitegrid", palette="muted", font_scale=1.1)
 
-# --- Scikit-learn: Core Machine Learning Toolkit ---
-from sklearn.model_selection import train_test_split                # Splits data into training and testing sets
-from sklearn.preprocessing import StandardScaler, LabelEncoder      # Normalize numeric data & encode categories
-from sklearn.metrics import (
-    classification_report, confusion_matrix, accuracy_score,  # Model evaluation metrics
-    silhouette_score
+# --- scikit-learn: Datasets ---
+from sklearn.datasets import (
+    load_iris, load_wine, load_breast_cancer, load_digits, make_blobs, fetch_california_housing
 )
 
-# --- Supervised Learning Models ---
-from sklearn.neighbors import KNeighborsClassifier          # k-Nearest Neighbors (instance-based learning)
-from sklearn.linear_model import LogisticRegression         # Logistic Regression (probabilistic classifier)
-from sklearn.naive_bayes import GaussianNB                  # Naïve Bayes (probabilistic classifier)
-from sklearn.tree import DecisionTreeClassifier, plot_tree  # Decision Trees (rule-based learning)
-from sklearn.ensemble import RandomForestClassifier         # Random Forests (ensemble of decision trees)
+# --- scikit-learn: Model Preparation ---
+from sklearn.model_selection import train_test_split   # split data into train/test sets
+from sklearn.preprocessing import StandardScaler, LabelEncoder, PolynomialFeatures  # feature scaling & label encoding
 
-# --- Unsupervised Learning Models ---
-from sklearn.cluster import KMeans                          # k-Means Clustering (unsupervised pattern finding)
-from sklearn.decomposition import PCA                       # Principal Component Analysis (dimensionality reduction)
+
+# --- scikit-learn: Metrics ---
+from sklearn.metrics import (mean_squared_error, r2_score,
+                            mean_absolute_error, mean_absolute_error)
+
+from sklearn.dummy import DummyClassifier
+
+# --- scikit-learn: Algorithms ---
+from sklearn.linear_model import LinearRegression # Linear Regression Model
+
+# --- scikit-learn: Dimensionality Reduction ---
+from sklearn.decomposition import PCA                    # reduce features for 2D visualization
+
+# --- statsmodels: model refinement ---
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+# --- Visualization Utilities for Trees / Boundaries ---
+from matplotlib.colors import ListedColormap             # color maps for decision boundaries
+
+# --- Other Useful Tools ---
+import warnings
+warnings.filterwarnings("ignore")  # keep output clean for class demos
+
 
 # --- Visualization Styling ---
 sns.set(style="whitegrid", palette="muted", font_scale=1.1)  # Nice default theme for plots
@@ -200,9 +205,9 @@ sns.set(style="whitegrid", palette="muted", font_scale=1.1)  # Nice default them
 # --- Add a comment explaining what this section of code is doing. ---
 # --------------------------------------------------------------------
 # Add a comment explaining what the next section of code does
-from sklearn.datasets import load_iris
-data_original = load_iris(as_frame=True).frame
-df = data_original  # includes both features and the 'target' column
+data_original = fetch_california_housing(as_frame=True)
+df = data_original.frame.dropna()
+target_name = 'MedHouseVal'
 
 # Add a comment explaining what the next section of code does
 df = df.dropna()
@@ -211,18 +216,44 @@ df = df.dropna()
 df_encoded = pd.get_dummies(df, drop_first=True)
 
 # Add a comment explaining what the next section of code does
-X = df_encoded.drop(columns = ['target'])
-y = df_encoded['target']
-
+X = df_encoded.drop(columns = [target_name])
+y = df_encoded[target_name]
 # --------------------------------------------------------------------
 
+
+
+
+# --------------------------------------------------------------------
+# --- This is just a fun plot for this data.
+#        You can see the outline of Cali. :D
+# --------------------------------------------------------------------
+plt.scatter(df["Longitude"], df["Latitude"])
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.title("Location")
+plt.show()
+
+# Here is a cool, different way to make a plot :D
+df.plot(kind="scatter", x="Longitude", y="Latitude", grid=True, alpha=0.2)
+plt.show()
+# --------------------------------------------------------------------
+
+
+# --------------------------------------------------------------------
+# --- Add a comment explaining what this section of code is doing. ---
+# --------------------------------------------------------------------
+sns.pairplot(df_encoded,
+             hue=y.name,
+             vars=X.columns.tolist())
+plt.suptitle("Feature Relationships", y=1.02) # <- Update this!
+plt.show()
 
 
 # --------------------------------------------------------------------
 # --- Add a comment explaining what this section of code is doing. ---
 # --------------------------------------------------------------------
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
+    X, y, test_size=0.2, random_state=42
 )
 
 # --- Add a comment explaining what this section of code is doing. ---
@@ -231,112 +262,144 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 # --------------------------------------------------------------------
 
-
-
-# --------------------------------------------------------------------
-# --- Apply PCA for 2D visualization ---
-# --------------------------------------------------------------------
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_train_scaled)
-# --------------------------------------------------------------------
-
-
-
 # --------------------------------------------------------------------
 # --- Add a comment explaining what this section of code is doing. ---
 # --------------------------------------------------------------------
-k = 5
-knn = KNeighborsClassifier(n_neighbors=k)
-knn.fit(X_train_scaled, y_train)
-y_pred_knn = knn.predict(X_test_scaled)
-acc_knn = accuracy_score(y_test, y_pred_knn)
-# --------------------------------------------------------------------
 
+### Add your comments here ###
+feature = X.columns[0]
+X_train_simple = X_train_scaled[:, [0]]
+X_test_simple = X_test_scaled[:, [0]]
 
+### Add your comments here ###
+simple_model = LinearRegression()
+simple_model.fit(X_train_simple, y_train)
+y_pred_simple = simple_model.predict(X_test_simple)
 
-# --------------------------------------------------------------------
-# --- Add a comment explaining what this section of code is doing. ---
-# --------------------------------------------------------------------
-kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
-clusters = kmeans.fit_predict(X_train_scaled)
-centers_pca = pca.transform(kmeans.cluster_centers_)
+### Add your comments here ###
+print("\n=== Simple Linear Regression ===")
+print(f"Feature: {feature}")
+print(f"R²: {r2_score(y_test, y_pred_simple):.3f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred_simple):.3f}")
+print(f"MAE: {mean_absolute_error(y_test, y_pred_simple):.3f}")
+print(f"Coefficient: {simple_model.coef_[0]:.3f}")
+print(f"Intercept: {simple_model.intercept_:.3f}")
 
-
-
-# --------------------------------------------------------------------
-# --- Add a comment explaining what this section of code is doing. ---
-# --------------------------------------------------------------------
-inertia = kmeans.inertia_
-silhouette = silhouette_score(X_train_scaled, clusters)
-
-# --- Match cluster labels to true labels for "accuracy-like" comparison ---
-cluster_labels = np.zeros_like(clusters)
-for i in range(3):
-    mask = (clusters == i)
-    cluster_labels[mask] = mode(y_train[mask], keepdims=False).mode
-cluster_acc = accuracy_score(y_train, cluster_labels)
-
-# --- Create a mesh grid for decision boundaries ---
-h = 0.02
-x_min, x_max = X_pca[:, 0].min() - 1, X_pca[:, 0].max() + 1
-y_min, y_max = X_pca[:, 1].min() - 1, X_pca[:, 1].max() + 1
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                     np.arange(y_min, y_max, h))
-grid_points = np.c_[xx.ravel(), yy.ravel()]
-# --------------------------------------------------------------------
-
-
-
-# --------------------------------------------------------------------
-# --- Train models on PCA space for visualization ---
-# --------------------------------------------------------------------
-knn_pca = KNeighborsClassifier(n_neighbors=k).fit(X_pca, y_train)
-kmeans_pca = KMeans(n_clusters=3, random_state=42, n_init=10).fit(X_pca)
-
-# --- Predict grid points for both models ---
-Z_knn = knn_pca.predict(grid_points).reshape(xx.shape)
-Z_kmeans = kmeans_pca.predict(grid_points).reshape(xx.shape)
-
-# --- Plot k-NN and k-Means Decision Regions ---
-fig, axes = plt.subplots(1, 3, figsize=(18, 6))
-
-# k-NN Decision Regions
-axes[0].contourf(xx, yy, Z_knn, cmap="viridis", alpha=0.3)
-axes[0].scatter(X_pca[:, 0], X_pca[:, 1], c=y_train, cmap="viridis", edgecolor="k", s=50)
-axes[0].set_title(f"k-NN Decision Boundaries (k={k})")
-axes[0].set_xlabel("PCA Component 1")
-axes[0].set_ylabel("PCA Component 2")
-
-# k-Means Cluster Regions
-axes[1].contourf(xx, yy, Z_kmeans, cmap="viridis", alpha=0.3)
-axes[1].scatter(X_pca[:, 0], X_pca[:, 1], c=clusters, cmap="viridis", edgecolor="k", s=50)
-axes[1].scatter(centers_pca[:, 0], centers_pca[:, 1],
-                c="red", s=200, edgecolors="black", marker="X", label="Centroids")
-axes[1].set_title("k-Means Cluster Boundaries (k=3)")
-axes[1].set_xlabel("PCA Component 1")
-axes[1].set_ylabel("PCA Component 2")
-axes[1].legend()
-
-# Comparison Bar Chart
-bars = axes[2].bar(["k-NN Accuracy", "k-Means (matched)"], [acc_knn, cluster_acc],
-                   color=["tab:blue", "tab:orange"], alpha=0.8)
-axes[2].bar_label(bars, fmt="%.3f", padding=3)
-axes[2].set_ylim(0, 1.05)
-axes[2].set_title("Model Performance Comparison")
-axes[2].set_ylabel("Accuracy")
-
-plt.tight_layout()
+# Plot: Actual vs Predicted
+plt.scatter(X_test[feature], y_test, label="Actual")
+plt.plot(X_test[feature], y_pred_simple, color="red", label="Predicted")
+plt.xlabel(feature)
+plt.ylabel("Median House Value")
+plt.title("Simple Linear Regression")
+plt.legend()
 plt.show()
 
-# --- Print Summary Metrics ---
-print("=== k-NN Classification ===")
-print(f"Accuracy (k={k}): {acc_knn:.3f}")
-print(classification_report(y_test, y_pred_knn))
+# Plot: residuals
+residuals = y_test - y_pred_simple
 
-print("\n=== k-Means Clustering ===")
-print(f"Inertia (within-cluster variance): {inertia:.2f}")
-print(f"Silhouette Score: {silhouette:.3f}")
-print(f"Approx. Accuracy (after label matching): {cluster_acc:.3f}")
+plt.figure(figsize=(6, 4))
+plt.scatter([range(len(residuals))], residuals, alpha=0.7)
+plt.axhline(0, color="red", linestyle="--")
+plt.xlabel("Index")
+plt.ylabel("Residuals")
+plt.title("Residual Plot – Simple Linear Regression")
+plt.show()
+# --------------------------------------------------------------------
+
+# --------------------------------------------------------------------
+# --- Add a comment explaining what this AND THE NEXT cell  ---
+#        combined have you doing.                           ---
+# --------------------------------------------------------------------
+
+# --------------------------------------------------------------
+# Convert scaled data into a DataFrame with proper column names
+# --------------------------------------------------------------
+X_train_df = pd.DataFrame(X_train_scaled, columns=X_train.columns, index=X_train.index)
+
+# Ensure y_train has matching index
+y_train_aligned = y_train.copy()
+y_train_aligned.index = X_train_df.index
+
+# Add constant term for intercept
+X_train_sm = sm.add_constant(X_train_df)
+
+# --------------------------------------------------------------
+# Fit the initial Multiple Linear Regression model
+# --------------------------------------------------------------
+initial_mlr_model = sm.OLS(y_train_aligned, X_train_sm).fit()
+print(initial_mlr_model.summary())
+
+# --------------------------------------------------------------
+# Identify insignificant predictors (p > 0.05)
+# --------------------------------------------------------------
+p_values = initial_mlr_model.pvalues
+insignificant = p_values[p_values > 0.05].index.tolist()
+insignificant = [var for var in insignificant if var != "const"]  # keep constant
+
+print("\n Insignificant features (p > 0.05):")
+print(insignificant)
+
+
+
+# --------------------------------------------------------------
+# Remove MOST insignificant predictor and refit model
+## Repeat until all predictors are significant.
+# --------------------------------------------------------------
+X_train_reduced = X_train_df.drop(columns="Population")
+X_train_reduced = sm.add_constant(X_train_reduced)
+
+reduced_model = sm.OLS(y_train_aligned, X_train_reduced).fit()
+
+print("\n=== Reduced Model Summary ===")
+print(reduced_model.summary())
+
+# --------------------------------------------------------------------
+# --- Add a comment explaining what this section of code is doing. ---
+# --------------------------------------------------------------------
+
+# For the initial model
+y_pred = initial_mlr_model.predict(X_train_sm)
+
+r2 = r2_score(y_train_aligned, y_pred)
+mse = mean_squared_error(y_train_aligned, y_pred)
+mae = mean_absolute_error(y_train_aligned, y_pred)
+rmse = np.sqrt(mse)
+
+print("\n=== Initial Model Performance ===")
+print(f"R²:   {r2:.3f}")
+print(f"MSE:  {mse:.3f}")
+print(f"RMSE: {rmse:.3f}")
+print(f"MAE:  {mae:.3f}")
+
+
+# For the reduced model
+y_pred_reduced = reduced_model.predict(X_train_reduced)
+
+r2_red = r2_score(y_train_aligned, y_pred_reduced)
+mse_red = mean_squared_error(y_train_aligned, y_pred_reduced)
+mae_red = mean_absolute_error(y_train_aligned, y_pred_reduced)
+rmse_red = np.sqrt(mse_red)
+
+print("\n=== Reduced Model Performance ===")
+print(f"R²:   {r2_red:.3f}")
+print(f"MSE:  {mse_red:.3f}")
+print(f"RMSE: {rmse_red:.3f}")
+print(f"MAE:  {mae_red:.3f}")
+
+
+
+# --------------------------------------------------------------------
+# --- Add a comment explaining what this section of code is doing. ---
+# --------------------------------------------------------------------
+residuals = y_train_aligned - y_pred_reduced
+
+plt.figure(figsize=(6, 4))
+plt.scatter([range(len(residuals))], residuals, alpha=0.7)
+plt.axhline(0, color="red", linestyle="--")
+plt.xlabel("Index")
+plt.ylabel("Residuals")
+plt.title("Residual Plot – Multiple Linear Regression")
+plt.show()
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}
