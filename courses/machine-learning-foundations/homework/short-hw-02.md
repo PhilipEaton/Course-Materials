@@ -100,6 +100,7 @@ By the end of this project, you will be able to:
 
 4. **(Optional Challenge)**: 
     - Get this to work for the Titanic data
+    
         | Dataset | Type | Target Variable | Description |
         |----------|------|------------------|--------------|
         | **Titanic** | Binary | `survived` | Real-world dataset from Seaborn (requires encoding). |
