@@ -329,6 +329,7 @@ $$
 You may recognize this matrix from our discussion of quaternions. Though, there is some minor reassignments that have been done, along with an extra complex units $i$, to make the $z$-direction the spin-up/down direction, as is convention.
 
 Anyways, using this matrix the Hamiltonian matrix becomes:
+
 $$
 \mathbf{H} = -\gamma B_x \frac{\hbar}{2} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 0 & -\gamma B_x \frac{\hbar}{2} \\ -\gamma B_x \frac{\hbar}{2} & 0 \end{bmatrix}
 $$
@@ -364,7 +365,7 @@ These represent the energy of the system in the two possible spin states:
 - $E_1$ corresponds to the energy when the spin is aligned with the magnetic field (spin up)
 - $E_2$ corresponds to the energy when the spin is aligned opposite to the magnetic field (spin down)
 
-Since the Hamiltonian is off-diagonal, the eigenstates are superposition of the spin up and down states, $\left|\uparrow\right\rangle$ and $\left|\downarrow\right\rangle$, along the $z$-axis. We will see how to find these eigenstates in the next lecture. 
+Since the Hamiltonian is off-diagonal, the eigenstates are superposition of the spin up and down states, $\\lvert\uparrow\right\rangle$ and $\lvert\downarrow\right\rangle$, along the $z$-axis. We will see how to find these eigenstates in the next lecture. 
 
 {% endcapture %}
 {% include example.html content=ex %}
