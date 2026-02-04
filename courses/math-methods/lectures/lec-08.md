@@ -58,7 +58,7 @@ One important feature of the eigenvalue problem is that the direction defined by
 <img
   src="{{ '/courses/math-methods/images/lec08/Scaling1.png' | relative_url }}"
   alt="The image shows an x–y coordinate plane with the horizontal axis labeled x and the vertical axis labeled y. A blue arrow representing an original vector extends from the origin into the first quadrant. A red arrow, labeled as scaled, points in the same direction as the blue vector but is longer, showing the effect of multiplying the vector by a positive number. Red text near this arrow explains that applying a matrix to the vector with a positive scaling value makes the vector longer in the same direction. A dashed red arrow extends from the origin into the third quadrant, pointing in the opposite direction from the original vector. This arrow is labeled reflected and scaled, with red text explaining that scaling by a negative number reverses the direction and changes the length."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:45%;">
 
 #### Eigenvalues $= 0$
 
@@ -425,7 +425,7 @@ Consider a system of two masses, $m_1$ and $m_2$, connected by three springs wit
 <img
 src="{{ '/courses/math-methods/images/lec08/SpringsandMasses.png' | relative_url }}"
 alt="The image shows a horizontal system made of two blocks connected by three springs. On the far left is a fixed wall attached to the first spring, which pulls on the first block labeled m one. A second spring connects the first block to the second block labeled m two, and a third spring connects the second block to another fixed wall on the far right. Each spring is drawn with a coiled shape, and the spring constants are labeled k one, k two, and k three above them. Beneath each block is a short vertical marker showing the equilibrium position for that block, with a horizontal arrow pointing to the right and labeled x one under the first block and x two under the second block. This indicates that each block can move horizontally from its own equilibrium position."
-style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
+style="display:block; margin:1.5rem auto; max-width:400px; width:45%;">
 
 The forces on the masses arise from the restoring forces of the springs, leading to the equations of motion:
 

@@ -759,7 +759,7 @@ Notice that this is just the old current rotated by $\pi/2$. Comparing the phase
 <img
   src="{{ '/courses/math-methods/images/lec07/MMLec07Fig3.png' | relative_url }}"
   alt="The image shows a phasor diagram with horizontal and vertical axes labeled “Real” and “Imag,” respectively. At the origin, two arrows extend outward representing time-dependent quantities. One arrow points into the upper-right quadrant and is labeled “I of t,” indicating the current phasor. A second arrow points into the upper-left quadrant and is labeled “V L of t,” indicating the inductor voltage phasor. An arc at the origin indicates the angle between the current phasor and the horizontal real axis, labeled “omega t.” A second arc shows a ninety-degree positive phase shift between the voltage and current phasors, labeled “plus pi over two."
-  style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
+  style="display:block; margin:1.5rem auto; max-width:400px; width:45%;">
 
 Notice, as these complex vectors (called phasors in in AC circuits) move around the complex plane in a counterclockwise manner $V_L(t)$ will be ahead of $I(t)$. That is, we say $V_L$ leads $I$. 
 
