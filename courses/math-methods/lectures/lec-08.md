@@ -6,196 +6,212 @@ nav_section: lectures
 nav_order: 8
 ---
 
+
+
 # Lecture 08 – The Eigenvalue Problem and Eigenvalues
-
-
 
 ## Eigenvalue Problem
 
-In this lecture, we explore one of the most important problems in linear algebra: the **eigenvalue problem**. The equation 
+In this lecture, we explore one of the most important problems in linear algebra when it comes to applications in physics: the **eigenvalue problem**. This arises when a square matrix $\mathbf{A}$ acts on a vector $\vec{v}$ and returns the same vector, scaled by a factor $\lambda$:
 
-$$ \mathbf{A} \vec{v} = \lambda \vec{v} $$
+$$ \mathbf{A} \vec{v} = \lambda\ \vec{v} $$
 
-captures a fundamental idea: a matrix $\mathbf{A}$ acting on a vector $\vec{v}$ scales it by a factor of $\lambda$ *without changing its direction*. But why should we, as physicists, care? The answer lies in the fact that eigenvalues and eigenvectors appear in some of the most important equations and physical systems, from quantum mechanics to classical mechanics, and even in stability analysis of dynamic systems.
+It bears repeating what this equation tells us: applying matrix $\mathbf{A}$ to vector $\vec{v}$ results in the same vector, just scaled by a factor $\lambda$. The direction remains unchanged—except in the case where $\lambda$ is negative, in which case the vector flips direction.
 
-
-
-
+Why should we, as physicists, care? Simply put, the eigenvalue problem appears in many foundational equations and physical systems, from quantum mechanics and classical mechanics to the stability analysis of dynamic systems.
 
 
 
 
 
-### Mathematical Framework
 
-Let's begin by understanding the mathematical framework of eigenvalues and eigenvectors. From there we will move on to their physical interpretations since those are generally unique depending on what calculations are being done.
+## Mathematical Framework
+
+Let’s begin by exploring the mathematical definitions of eigenvalues and eigenvectors. We’ll later connect them to physical interpretations, since those depend on the context of the specific problem being solved.
+
+### Definition of Eigenvalues and Eigenvectors
+
+Given a square ($n \times n$) matrix $\mathbf{A}$, a nonzero vector $\vec{v}_i$ is called an **eigenvector** (specifically the $i$-th eigenvector) of the matrix if it satisfies:
+
+$$ \mathbf{A} \vec{v} = \lambda_i\ \vec{v}_i $$
+
+where $\lambda_i$ is a scalar called the **eigenvalue** associated with $\vec{v}_i$. Every eigenvector has one, and only one, corresponding eigenvalue. That is,
+- eigenvector $\vec{v}_1$ has an associated eigenvalue of $\lambda_1$,
+- eigenvector $\vec{v}_2$ has an associated eigenvalue of $\lambda_2$,
+- $\qquad\vdots$
+- eigenvector $\vec{v}_n$ has an associated eigenvalue of $\lambda_n$.  
+
+For the sake of clarity, we will drop the $i$ subscript until it becomes important to explicity show which eigenvalue belongs to which eigenvector.
 
 
+If $\mathbf{A}$ is an $n \times n$ matrix, you typically obtain $n$ *unique* eigenvalues, though not always. Sometimes eigenvalues are repeated, we call these eigenvalues **degenerate**. In degenerate eigenvalue cases, the corresponding eigenvectors form a set of unique, linearly independent vectors. For example, if an eigenvalue appears three times, it will have three linearly independent eigenvectors associated with it.
 
-#### Definition of Eigenvalues and Eigenvectors
+#### Eigenvalues $\ne 0$
 
-Given a square ($n \times n$) matrix $\mathbf{A}$, a nonzero vector $\vec{v}$ is called an **eigenvector** if it satisfies the equation:  
+One important feature of the eigenvalue problem is that the direction defined by the eigenvector $\vec{v}$ is not rotated by the matrix $\mathbf{A}$, though they can be flipped if their associated eigenvalue is negative. Assuming $\lambda \ne 0$, the eigenvector represents an axis of "rotation" along which the matrix scales objects. Specifically:
 
-$$ \mathbf{A} \vec{v} = \lambda \vec{v} $$  
-
-where $\lambda$ is a scalar known as the **eigenvalue** associated with $\vec{v}$. In other words, every eigenvalue has a corresponding eigenvector. 
-
-Typically, if $\mathbf{A}$ is an $n \times n$ matrix, you will obtain $n$ unique eigenvalues. However, this is not always the case. There are instances where eigenvalues are repeated, and for each repeated eigenvalue, there will be a corresponding set of unique (linearly independent) eigenvectors. For example, if an eigenvalue appears three times, it will have three distinct eigenvectors associated with it.
-
-An important observation for the eigenvalue problem is that the axis described by the eigenvector $\vec{v}$ is not rotated as a result of the matrix $\mathbf{A}$ acting on it. Assuming the eigenvalue $\lambda$ is nonzero, it represents a scaling along that axis without any rotation. Specifically:  
-
-- If $\lambda > 0$, the vector $\vec{v}$ is stretched (or compressed) along its axis. For example, see the red vector below, where the solid blue vector is the original vector before being acted on by $\mathbf{A}$.  
-	
-- If $\lambda < 0$, the vector $\vec{v}$ is both scaled and reflected, reversing its direction.   For example, see the dashed purple vector below, where the blue vector is the original vector before being acted on by $\mathbf{A}$.  
-
+- If $\lambda > 0$, $\vec{v}$ is scaled and its direction remains the same.
+	- For example, see the red vector below, where the solid blue vector is the original vector before being acted on by $\mathbf{A}$.  
+- If $\lambda < 0$, $\vec{v}$ is scaled and  is direction is flipped.
+	- For example, see the dashed purple vector below, where the blue vector is the original vector before being acted on by $\mathbf{A}$.  
 
 <img
   src="{{ '/courses/math-methods/images/lec08/Scaling1.png' | relative_url }}"
   alt="The image shows an x–y coordinate plane with the horizontal axis labeled x and the vertical axis labeled y. A blue arrow representing an original vector extends from the origin into the first quadrant. A red arrow, labeled as scaled, points in the same direction as the blue vector but is longer, showing the effect of multiplying the vector by a positive number. Red text near this arrow explains that applying a matrix to the vector with a positive scaling value makes the vector longer in the same direction. A dashed red arrow extends from the origin into the third quadrant, pointing in the opposite direction from the original vector. This arrow is labeled reflected and scaled, with red text explaining that scaling by a negative number reverses the direction and changes the length."
   style="display:block; margin:1.5rem auto; max-width:400px; width:30%;">
 
+#### Eigenvalues $= 0$
+
+If one or more eigenvalue happens to be zero, that means the transformation represented by $\mathbf{A}$ will take the associated eigenvector $\vec{v}$ to the zero vector:
+
+$$ \mathbf{A} \vec{v} = \lambda \vec{v} = 0 \cdot \vec{v} = \vec{0} $$
+
+To be clear, this does not mean that $\vec{v}$ is the zero vector, just that the matrix operation brings it to the zero vector.
+
+In this case, $\vec{v}$ lies in the **null space** (also called the **kernel**) of $\mathbf{A}$. This means $\mathbf{A}$ collapses any vector—or any component of a vector—pointing in this direction to the origin. That is, $\mathbf{A}$ annihilates it. This kind of dimensional collapse can reduce a 3D system to a 2D one, for example. Zero eigenvalues typically arise when $\mathbf{A}$ is a singular matrix. And as we’ve seen before, singular matrices do not have inverses.
+
+<br>
+
+Whether an eigenvalue is positive, negative, or zero gives you powerful geometric insight into what the transformation $\mathbf{A}$ is doing. In physics, these properties help us understand stretching, compression, reflection, or elimination of possible states in systems like quantum mechanics, vibrational modes, and dynamical stability analysis.
+
+Now that we have a conceptual feel for eigenvalues and eigenvectors, let's learn how to find them. In this lecture we will focus on finding eigenvalues. In the next lecture we will extend to finding eigenvectors. 
 
 
 
 
-If the eigenvalue is zero, then the transformation maps the eigenvector $\vec{v}$ to the zero vector:  
-$$ \mathbf{A} \vec{v} = \lambda \vec{v} = 0 \cdot \vec{v} = \vec{0}. $$  
-In this case, $\vec{v}$ lies in the **null space** (also called the **kernel** of the eigenvalue problem) of $\mathbf{A}$. This means that $\mathbf{A}$ collapses any vector in this direction to the origin, effectively annihilating it under the transformation. Eigenvalues of zero are often result when $\mathbf{A}$ is a with singular matrices, which do not have an inverse.
-
-Understanding whether an eigenvalue is positive, negative, or zero provides important geometric insight into the transformation $\mathbf{A}$. In physics, for example, these properties can describe stretching, compression, reflection, or even the elimination of possible states/modes in systems like quantum mechanics, vibrations, or stability analysis.
 
 
 
 
 
+### Finding Eigenvalues
 
+To determine the eigenvalues $\lambda$ of a square matrix $\mathbf{A}$, we begin by rewriting the eigenvalue equation:
 
+$$ \mathbf{A} \vec{v} = \lambda \vec{v} $$
 
+in the following form:
 
+$$ (\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0} $$
 
+where $\mathbf{I}$ is the identity matrix of the same dimension as $\mathbf{A}$, $\vec{v}$ is the eigenvector associated with the eigenvalue $\lambda$, and $\vec{0}$ is the zero vector.
 
-#### Finding Eigenvalues
+We are looking for a nontrivial solution (that is, $\vec{v} \neq \vec{0}$), because the trivial solution $\vec{v} = \vec{0}$ implies all the eigenvectors are zero, which is boring. 
 
-To determine the eigenvalues $\lambda$ of a square matrix $\mathbf{A}$, we begin by rewriting the eigenvalue equation:  
-
-$$ \mathbf{A} \vec{v} = \lambda \vec{v} $$  
-
-in the following manner:  
-
-$$ (\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0} $$  
-
-where $\mathbf{I}$ is the identity matrix of the same dimension as $\mathbf{A}$, and $\vec{v}$ is the eigenvector associated with the eigenvalue $\lambda$.
-
-**We are looking for a nontrivial solution -- i.e., $\vec{v** \neq \vec{0}$.} Let's, for a moment, assume the matrix $(\mathbf{A} - \lambda \mathbf{I})$ has an inverse. If this is the case, then we can write the following:
+To find such solutions, suppose for a moment the matrix $(\mathbf{A} - \lambda \mathbf{I})$ *does* have an inverse. Then we could write:
 
 $$
 \begin{aligned}
-	(\mathbf{A} - \lambda \mathbf{I}) \vec{v} &= \vec{0} \\[0.75ex]
-	(\mathbf{A} - \lambda \mathbf{I})^{-1}(\mathbf{A} - \lambda \mathbf{I}) \vec{v} &= (\mathbf{A} - \lambda \mathbf{I})^{-1} \, \vec{0}  \\[0.75ex]
-	\mathbf{I} \vec{v} &=  \vec{0}  \\[0.75ex]
-	\vec{v} &=  \vec{0} 
+(\mathbf{A} - \lambda \mathbf{I}) \vec{v} &= \vec{0} \\[0.75ex]
+(\mathbf{A} - \lambda \mathbf{I})^{-1}(\mathbf{A} - \lambda \mathbf{I}) \vec{v} &= (\mathbf{A} - \lambda \mathbf{I})^{-1}\vec{0} \\[0.75ex]
+\mathbf{I}\vec{v} &= \vec{0} \\[0.75ex]
+\vec{v} &= \vec{0}
 \end{aligned}
 $$
 
-But, this is a contradiction to the assumption that we are looking for a nontrivial solution -- i.e., $\vec{v} \neq \vec{0}$. This means the matrix $(\mathbf{A} - \lambda \mathbf{I})$ does not have an inverse -- which means the matrix $(\mathbf{A} - \lambda \mathbf{I})$ is a **singular matrix**. A singular matrix is defined as one that does not have an inverse, which occurs precisely when its determinant is zero. So, enforcing the condition that this matrix has a determinant of zero gives us a way to find the eigenvalues.
+But this result contradicts our requirement that $\vec{v} \neq \vec{0}$. In mathematics, when we reach a contradiction, it means one of our assumptions must be incorrect. So far we assumed:
 
+1. A nontrivial solution $\vec{v} \neq \vec{0}$ exists.
+2. The matrix $(\mathbf{A} - \lambda \mathbf{I})$ has an inverse.
+
+One of these must be wrong! We know we want to find nontrivial solutions. This means the assumption that the matrix $(\mathbf{A} - \lambda \mathbf{I})$ has an inverse is wrong. So, $(\mathbf{A} - \lambda \mathbf{I})$ **does not have an inverse**. 
+
+Recall, a matrix that does not have an inverse is called a **singular matrix**, which means its determinant ia zero. This gives us a condition to find our eigenvalues:
 
 {% capture ex %}
 
-To find the non-trivial solution ($\vec{v} \neq \vec{0}$) to the eigenvalue problem, 
+To obtain nontrivial solutions ($\vec{v} \neq \vec{0}$) to the eigenvalue problem:
 
-$$ \mathbf{A} \vec{v} = \lambda \vec{v} \implies (\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0} $$  
+$$ \mathbf{A} \vec{v} = \lambda \vec{v} \implies (\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0} $$
 
-we require:  
+we require:
 
-$$ \det(\mathbf{A} - \lambda \mathbf{I}) = 0 $$  
+$$ \det(\mathbf{A} - \lambda \mathbf{I}) = 0 $$
 
-This is known as the **characteristic equation**, and solving it yields the eigenvalues $\lambda$. Each solution to this equation will be an eigenvalue, $\lambda$, for the given eigenvalue problem.
+This equation is called the **characteristic equation**, and its solutions give the eigenvalues $\lambda$ of the matrix $\mathbf{A}$.
 
 {% endcapture %}
 {% include result.html content=ex %}
- 
 
-The characteristic equation is typically a polynomial of degree $n$ for an $n \times n$ matrix $\mathbf{A}$, meaning that up to $n$ unique eigenvalues (real or complex) may be found, depending on the specific properties of $\mathbf{A}$. These eigenvalues can be distinct or repeated, with multiplicities (repeated eigenvalues) determined by the polynomial’s roots.
+For an $n \times n$ matrix $\mathbf{A}$, the characteristic equation is a polynomial of degree $n$. This means there can be up to $n$ eigenvalues, which may be real or complex. These eigenvalues can be distinct or repeated (degenerate), with their multiplicities determined by the roots of the polynomial.
+
+Let’s work through an example.
 
 {% capture ex %}
 
-Consider the matrix 
+Consider the matrix:
 
 $$
 \mathbf{A} = \begin{bmatrix}
-	2 & 1 \\
-	1 & 3
+2 & 1 \\
+1 & 3
 \end{bmatrix}
 $$
 
-We want to find the eigenvalues $\lambda$ such that the equation 
+We want to find the eigenvalues $\lambda$ such that:
 
 $$
-\mathbf{A} \vec{v} = \lambda \vec{v}
+\mathbf{A} \vec{v} = \lambda\ \vec{v}
 $$
 
-holds true. First, let's set up the problem so that we can get the characteristic equation:
+has nontrivial solutions. We begin by forming:
 
 $$
-(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \mathbf{0}
+(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0}
 $$
 
-where $\mathbf{I}$ is the $2 \times 2$ identity matrix. This becomes
+where $\mathbf{I}$ is the $2 \times 2$ identity matrix. This gives the matrix:
 
 $$
 \mathbf{A} - \lambda \mathbf{I} = \begin{bmatrix}
-	2 & 1 \\
-	1 & 3
+2 & 1 \\
+1 & 3
 \end{bmatrix} - \lambda \begin{bmatrix}
-	1 & 0 \\
-	0 & 1
+1 & 0 \\
+0 & 1
 \end{bmatrix} = \begin{bmatrix}
-	2 - \lambda & 1 \\
-	1 & 3 - \lambda
+2 - \lambda & 1 \\
+1 & 3 - \lambda
 \end{bmatrix}
 $$
 
-From here we can take the determinant to get the characteristic equation:
-
-$$
-\det(\mathbf{A} - \lambda \mathbf{I}) = 0
-$$
-
-We compute the determinant and set it equal to zero:
+Next, we compute the determinant and set it equal to zero to get the characteristis equation:
 
 $$
 \begin{aligned}
-	0 &= \begin{vmatrix}
-		2 - \lambda & 1 \\
-		1 & 3 - \lambda
-	\end{vmatrix} \\[0.75ex]
-	0 &=  (2 - \lambda)(3 - \lambda) - (1)(1)  \\[0.75ex]
-	0 &=  (6 - 5\lambda + \lambda^2) - 1  \\[0.75ex]
-	0 &=  \lambda^2 - 5\lambda + 5
+\det(\mathbf{A} - \lambda \mathbf{I}) &= 0\\
+\begin{vmatrix}
+2 - \lambda & 1 \\
+1 & 3 - \lambda
+\end{vmatrix} &= 0 \\[0.75ex]
+(2 - \lambda)(3 - \lambda) - (1)(1) &= 0 \\[0.75ex]
+(6 - 5\lambda + \lambda^2) - 1 &= 0 \\[0.75ex]
+\lambda^2 - 5\lambda + 5 &= 0
 \end{aligned}
 $$
 
-We solve the quadratic equation using the quadratic formula to get:
+This is a quadratic polynomial, as expected for a $2 \times 2$ matrix.
+
+We now solve using the quadratic formula:
 
 $$
-\lambda = \frac{5 \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 5}}{2 \cdot 1} = \frac{5 \pm \sqrt{25 - 20}}{2} = \frac{5 \pm \sqrt{5}}{2}
+\lambda = \frac{5 \pm \sqrt{(-5)^2 - 4(1)(5)}}{2(1)}
+= \frac{5 \pm \sqrt{25 - 20}}{2}
+= \frac{5 \pm \sqrt{5}}{2}
 $$
 
-Take the plus and minus result, we find the eigenvalues of the matrix $\mathbf{A}$ to be:
+Thus, the eigenvalues of $\mathbf{A}$ are
 
 $$
-\lambda_1 = \frac{5 + \sqrt{5}}{2} \qquad \lambda_2 = \frac{5 - \sqrt{5}}{2}
+\lambda_1 = \frac{5 + \sqrt{5}}{2}
+\qquad\qquad
+\lambda_2 = \frac{5 - \sqrt{5}}{2}
 $$
 
 {% endcapture %}
 {% include example.html content=ex %}
 
-In summary, solving the characteristic equation provides the critical eigenvalues, which in turn reveal fundamental properties of the transformation encoded in $\mathbf{A}$. These properties have profound implications in various physical contexts, including quantum mechanics, stability analysis, and vibrational modes in mechanical systems.
-
-
-
-
+In summary, solving the characteristic equation yields the eigenvalues of $\mathbf{A}$, which reveal key geometric and physical properties of the transformation. These ideas play a central role in physics, including quantum mechanics, stability analysis, and vibrational motion. Let’s now examine some of those physical interpretations.
 
 
 
