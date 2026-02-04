@@ -220,44 +220,39 @@ In summary, solving the characteristic equation yields the eigenvalues of $\math
 
 
 
-## Physical Interpretations of Eigenvalues
+## Applications
 
 ### Quantum Mechanics: Observables and Operators
 
-In quantum mechanics, physical observables (e.g., energy, angular momentum, etc.) can be calculated using mathematical objects called operators. These operators can be represented as matrices. The eigenvalues of these operators correspond to measurable quantities. For example:
+In quantum mechanics, physical observables (e.g., energy, angular momentum, etc.) can be calculated using mathematical objects called operators. Operators, as we have often discussed, can be represented as matrices. The eigenvalues of these operators correspond to measurable quantities. 
 
-- The Hamiltonian $H$ (total energy operator) satisfies $H \psi = E \psi$, where $E$ is the energy eigenvalue, and $\psi$ is the eigenstate.
-- The eigenvalues represent possible outcomes of measuring the observable.
-
-
-Since these eigenvalues represent the measurable physical quantity, they must be purely real. It turns out that this demand, purely real eigenvalues, means these operators/matrices must be **Hermitian**. Let's prove this:
-
-
-In quantum mechanics, physical observables (e.g., energy, angular momentum, etc.) are calculated using mathematical objects called **operators**. Assuming a finite-dimensional vector space, these operators can be represented as matrices. The eigenvalues of these operators/matrices correspond to the measurable quantities in a quantum system. 
-
-For example, The **Hamiltonian** $\hat{\mathbf{H}}$ (``total" energy operator) satisfies the eigenvalue equation:
+For example, the **Hamiltonian** $\mathbf{H}$ ("total" energy operator) satisfies the eigenvalue equation:
 
 $$
-\hat{\mathbf{H}} \psi = E \psi,
+\mathbf{H} \psi = E\ \psi
 $$
 
-where $E$ is the energy eigenvalue, and $\psi$ is the corresponding eigenstate (or eigenvector). The eigenvalues $E$ represent the possible energy levels of the system. More generally, the eigenvalues of an operator correspond to the possible outcomes of measuring the observable associated with that operator.
+where $E$ is the energy eigenvalue, and $\psi$ is the corresponding eigenstate (or eigenvector). The eigenvalues $E$ represent the possible energy levels of the system. 
 
-Since the eigenvalues represent measurable physical quantities, they must be **real** numbers. This requirement implies a fundamental property of the operators: they must be **Hermitian**. Let's prove this.
+More generally, the eigenvalues of an operator correspond to the possible outcomes of measuring the observable associated with that operator. Since these eigenvalues represent measurable physical quantities, they must be purely real. The demand of purely real eigenvalues for an operator/matrix means the operator/matrix must be **Hermitian**. Let's prove this.
 
-Recall an matrix $\mathbf{H}$ is called **Hermitian** if it satisfies:
+Recall a matrix $\mathbf{H}$ is **Hermitian** if it is equal to its own adjoint:
 
 $$
 \mathbf{H} = \mathbf{H}^\dagger
 $$
 
-where $\mathbf{H}^\dagger$ is the conjugate transpose (also called the adjoint) of $\mathbf{H}$. Let $\mathbf{H}$ be a Hermitian operator, and let $\vec{\psi}$ be an eigenvector of $\mathbf{H}$ with eigenvalue $\lambda$, such that:
+where $\mathbf{H}^\dagger$ is the adjoint of $\mathbf{H}$. 
+
+Let $\mathbf{H}$ be a Hermitian operator/matrix, and let $\vec{\psi}$ be an eigenvector of $\mathbf{H}$ with an eigenvalue $\lambda$, such that:
 
 $$
-\mathbf{H} \vec{\psi} = \lambda \vec{\psi}
+\mathbf{H} \vec{\psi} = \lambda\ \vec{\psi}
 $$
 
-Acting on the left with the Hermitian transpose of $\vec{\psi}$, we have:
+Since the matrix in question could be complex, otherwise taking the adjoint over the transpose makes no sense, we must assume the eignevector can also be complex. This means instead of taking the transpose of $\vec{\psi}$, we need to take its adjoint to account for its potentially complex nature. 
+
+Now, acting on the eigenvalue problem on the left with $\vec{\psi}^\dagger$, we have:
 
 $$
 \vec{\psi}^\dagger \mathbf{H} \vec{\psi} = \vec{\psi}^\dagger \lambda \vec{\psi}
@@ -267,37 +262,43 @@ $$
 \vec{\psi}^\dagger \mathbf{H} \vec{\psi} = \lambda \vec{\psi}^\dagger \vec{\psi}
 $$
 
-In quantum mechanics the magnitude of $\vec{\psi}$ is always adjusts to be exactly $1$. This means $\vec{\psi} \cdot \vec{\psi} = \vec{\psi}^\dagger \vec{\psi} = 1^2 = 1$. So, we are left with:
+In quantum mechanics the magnitude of $\vec{\psi}$ is always adjusted to be exactly $1$. This means $\vec{\psi} \cdot \vec{\psi} = \vec{\psi}^\dagger \vec{\psi} = 1^2 = 1$. So, we are left with:
 
 $$
 \vec{\psi}^\dagger \mathbf{H} \vec{\psi} = \lambda 
 $$
 
-Now, let's take the Hermitian transpose of both sides:
+Now, let's take the adjoint of both sides:
 
 $$
 \left( \vec{\psi}^\dagger \mathbf{H} \vec{\psi}\right)^\dagger = \lambda^\dagger 
 $$
 
-Recall the taking the transpose of a collection of objects means we have the flip the order of the objects and the the transpose of each object. The same exact thing happens when taking the Hermitian transpose, so we have:
+Recall the taking the transpose of a collection of objects means we have the flip the order of the objects and take transpose of each object. The same exact thing happens when taking the adjoint. We have:
 
 $$
 \vec{\psi}^\dagger  \mathbf{H}^\dagger \left( \vec{\psi}^\dagger\right)^\dagger  = \lambda^* 
 $$
 
-where we have used the fast that the complex transpose of a scalar is just the complex conjugate. Since $\mathbf{H}$ is Hermitian, that $\mathbf{H}^\dagger = \mathbf{H}$, and taking the Hermitian transpose twice simply returns the original object $ \left( \vec{\psi}^\dagger\right)^\dagger = \vec{\psi}$. This leaves us with:
+where we have used the fact that the adjoint of a scalar is just the complex conjugate. 
+
+We can make a couple of simplifications at this point, 
+1) $\mathbf{H}$ is Hermitian, meaning that $\mathbf{H}^\dagger = \mathbf{H}$, and 
+2) taking the adjoint of an adjoint the original object $ \left( \vec{\psi}^\dagger\right)^\dagger = \vec{\psi}$. 
+
+This leaves us with:
 
 $$
 \vec{\psi}^\dagger  \mathbf{H} \vec{\psi} = \lambda^* 
 $$
 
-But, we know that $\mathbf{H} \vec{\psi} = \lambda \vec{\phi} $,
+But, we know from the original eigenvalue problem that $\mathbf{H} \vec{\psi} = \lambda \vec{\psi} $. Putting this in gives us:
 
 $$
-\vec{\psi}^\dagger  \lambda \vec{\phi} = \lambda^* \implies \lambda  \vec{\psi}^\dagger  \vec{\phi} = \lambda^* \implies \lambda = \lambda^*
+\vec{\psi}^\dagger  \lambda \vec{\psi} = \lambda^* \quad\implies\quad \lambda  \vec{\psi}^\dagger  \vec{\psi} = \lambda^* \quad\implies\quad \lambda = \lambda^*
 $$
 
-This implied $\lambda$ is equal to its own complex conjugate. This is only possible if $\lambda$ is real.
+For $\lambda$ to be the eigenvalue to the eigenvalue problem for a Hermitian operator/matrix, it must be that $\lambda$ is equal to its own complex conjugate. This is only possible if $\lambda$ is **real**.
 
 So, the eigenvalues of a Hermitian Matrix are real values! 
 
@@ -317,14 +318,17 @@ $$
 \mathbf{H} = -\gamma B_x \mathbf{S_x}
 $$
 
-where $\gamma$ is the gyromagnetic ratio of the particle in the external magnetic field and relates the magnetic moment of a particle to its angular momentum (or spin). For an electron the gyromagnetic ratio is $\gamma_e = -1.76\times10^{11}$ rad/s/T.  
+where $\gamma$, called the gyromagnetic ratio, relates the magnetic moment of a particle to its angular momentum (or spin). For an electron the gyromagnetic ratio is $\gamma_e = -1.76\times10^{11}$ rad/s/T.  
 
 The $x$-component of the spin of a spin-1/2 particle, $S_x$, has the following matrix representation:
 
 $$
 \mathbf{S_x} = \frac{\hbar}{2} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
 $$
-Thus, the Hamiltonian matrix becomes:
+
+You may recognize this matrix from our discussion of quaternions. Though, there is some minor reassignments that have been done, along with an extra complex units $i$, to make the $z$-direction the spin-up/down direction, as is convention.
+
+Anyways, using this matrix the Hamiltonian matrix becomes:
 $$
 \mathbf{H} = -\gamma B_x \frac{\hbar}{2} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} 0 & -\gamma B_x \frac{\hbar}{2} \\ -\gamma B_x \frac{\hbar}{2} & 0 \end{bmatrix}
 $$
@@ -335,7 +339,9 @@ $$
 \mathbf{H} \vec{\psi} = E \vec{\psi}
 $$
 
-where $E$ represents the energy eigenvalue, and $\vec{\psi}$ is the corresponding eigenvector. This comes from the fact that when the Hamiltonian operators acts on a state, like $\vec{\psi}$, the it extracts the energy of that state. This gives the following characteristic equation:
+where $E$ represents the energy eigenvalue, and $\vec{\psi}$ is the corresponding eigenvector. This comes from the definition of the Hamiltonian operator: when the Hamiltonian operator acts on a state, like $\vec{\psi}$, it extracts the energy of that state. 
+
+We can find these eigen-energies by finding and solving the characteristic equation:
 
 $$
 \det(\mathbf{H} - E \mathbf{I}) =  \begin{vmatrix} -E & -\gamma B_x \frac{\hbar}{2} \\ -\gamma B_x \frac{\hbar}{2} & -E \end{vmatrix} =  (-E)(-E) - \left( -\gamma B_x \frac{\hbar}{2} \right)^2 = 0
@@ -350,13 +356,13 @@ $$
 These two eigenvalues correspond to the possible energy levels of the spin-1/2 particle in the magnetic field along the $x$-axis:
 
 $$
-E_1 = -\gamma B_x \frac{\hbar}{2} \qquad\qquad  E_2 = \gamma B_x \frac{\hbar}{2}
+E_1 = -\gamma B_x \frac{\hbar}{2} \qquad\qquad  E_2 = +\gamma B_x \frac{\hbar}{2}
 $$
 
 These represent the energy of the system in the two possible spin states:
 
-- $E_1$ corresponds to the energy when the spin is aligned opposite to the magnetic field (spin down)
-- $E_2$ corresponds to the energy when the spin is aligned with the magnetic field (spin up)
+- $E_1$ corresponds to the energy when the spin is aligned with the magnetic field (spin up)
+- $E_2$ corresponds to the energy when the spin is aligned opposite to the magnetic field (spin down)
 
 Since the Hamiltonian is off-diagonal, the eigenstates are superposition of the spin up and down states, $\left|\uparrow\right\rangle$ and $\left|\downarrow\right\rangle$, along the $z$-axis. We will see how to find these eigenstates in the next lecture. 
 
@@ -373,11 +379,43 @@ Since the Hamiltonian is off-diagonal, the eigenstates are superposition of the 
 
 ### Vibrational Modes in Classical Mechanics
 
-In mechanical systems like coupled oscillators or vibrating strings, the eigenvalues correspond to **frequencies** of normal modes, and the eigenvectors describe the mode shapes. The equation:
+In mechanical systems like coupled oscillators or vibrating strings, the eigenvalues correspond to **frequencies** of normal modes, and the eigenvectors describe the mode shapes. 
 
-$$ M \mathbf{\ddot{x}} = K \mathbf{x} \quad \Rightarrow \quad (K - \omega^2 M)\mathbf{x} = 0 $$
+The general equation for a system of connected simple harmonic oecillators can be written as:
 
-gives eigenvalues $\omega^2$ (squared angular frequencies) and eigenvectors $\mathbf{x}$ (mode shapes).
+$$ \mathbf{M} \ddot{\vec{x}} = -\mathbf{K} \vec{x} $$
+
+where $\mathbf{M}$ is the inertia matrix, $\mathbf{K}$ is the spring constant matrix, and $\vec{x}$ is the position vector of the center of mass of each object in the system. To get this into eigenvalue problem form, we assume the positions of the masses will all oscillate with the same frequency $\omega$. This implies:
+
+$$ 
+x_i(t) \propto \sin(\omega t) \quad\Rightarrow\quad \dot{x}_i(t) \propto \omega \cos(\omega t) \quad\Rightarrow\quad \ddot{x}_i(t) \propto -\omega^2 \sin(\omega t) \quad\Rightarrow\quad \ddot{x}_i(t) \propto -\omega^2 x_i(t)
+$$
+
+This assumption leaves us with:
+
+$$ \omega^2 \mathbf{M} \vec{x} = \mathbf{K} \vec{x} $$
+
+which could be rearranged to get:
+
+$$ \mathbf{M}^{-1} \mathbf{K} \vec{x} = \omega^2  \vec{x} $$
+
+an eigenvalue problem with eigenvalues representing the square of the oscllation frequencies all of the masses could have $\omega^2$. These shared frequencies are called the normal mode frequencies, and the associated eigenvectors are called the normal modes for the system. These are vital to the student of many body systems and oscillations in crystaline structures. 
+
+To solve for the frequiencies we can rearrange this into equal zero form:
+
+$$  \left(\mathbf{M}^{-1} \mathbf{K} - \omega^2 \mathbf{I} \right) \vec{x} = \vec{0}  $$
+
+where we can multiple on the left by $\mathbf{M}$ to get:
+
+$$  \left(\mathbf{K} - \omega^2 \mathbf{M} \right) \vec{x} = \vec{0} $$
+
+This helps us avoid having to take the inverse of the inertia matrix $\mathbf{M}$, which is nice since inverses are often annoying to calculate.
+
+The characteristic equation, in this case, will be given by:
+
+$$  \det\left(\mathbf{K} - \omega^2 \mathbf{M} \right) = 0 $$
+
+whcih can be used to find the eigenvalues $\omega^2$ (squared angular frequencies).
 
 
 {% capture ex %}
@@ -417,59 +455,72 @@ $$
 Assuming solutions of the form:
 
 $$
-\vec{x}(t) = \vec{v} e^{i \omega t}
+x_i(t) \propto \sin(\omega t) \quad\Rightarrow\quad x_i(t) \propto -\omega^2 x_i(t)
 $$
 
-where $\omega$ is the angular frequency, the equations of motion reduce to the eigenvalue problem:
+allows us to rewrite in the following manner:
 
 $$
-\mathbf{M} (-\omega^2)\vec{v} \,\,\, \cancel{e^{i \omega t}}  = -\mathbf{K} \vec{v} \,\,\, \cancel{e^{i \omega t}} \implies \left( \mathbf{K} - \omega^2 \mathbf{M} \right) \vec{v} = 0.
+\ddot{\vec{x}} = \begin{bmatrix} \ddot{x}_1 \\ \ddot{x}_2 \end{bmatrix} = -\omega^2 \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}  = -\omega^2\vec{x}
+$$
+
+where $\omega$ is the angular frequency. Putting this into the above matrix equation gives us the eigenvalue problem:
+
+$$
+\omega^2\mathbf{M} \vec{x} = \mathbf{K} \vec{x} \quad\Rightarrow\quad \left( \mathbf{K} - \omega^2 \mathbf{M} \right) \vec{x} = 0
 $$
 
 For simplicity let's assume $m_1 = m_2 = m$ and $k_1 = k_2 = k_3 = k$. The matrices simplify to:
 
 $$
-\mathbf{M} = m \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \qquad
-\mathbf{K} = k \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}
+\mathbf{M} = m \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \qquad\qquad \mathbf{K} = k \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}
 $$
 
 Putting these into the eigenvalue problem equation and dividing through by $m$, the eigenvalue problem gives us:
 
 $$
-\left( \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix} - \omega^2 \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \right) \mathbf{v} = 0,
+\left( \omega_0^2 \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix} - \omega^2 \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \right) \vec{x} = 0
 $$
 
-or equivalently:
+where $\omega_0^2 = \frac{k}{m}$. we can combine these matrices to get:
 
 $$
-\begin{bmatrix} 2 - \omega^2 & -1 \\ -1 & 2 - \omega^2 \end{bmatrix} \mathbf{v} = 0.
+\begin{bmatrix} 2\omega_0^2 - \omega^2 & -\omega_0^2 \\ -\omega_0^2 & 2\omega_0^2 - \omega^2 \end{bmatrix} \vec{x} = 0
 $$
 
-To find the eigenvalues we can find the characteristic equation and solve for the eigenvalues:
+To find the eigenvalues we can set up the characteristic equation and solve:
 
 $$
-\begin{vmatrix} 2 - \omega^2 & -1 \\ -1 & 2 - \omega^2 \end{vmatrix}  = (2 - \omega^2)^2 - (-1)^2 = 0 \quad\implies\quad (2 - \omega^2)^2 = 1 \quad\implies\quad 2 - \omega^2 = \pm 1
+\begin{aligned}
+\begin{vmatrix} 2\omega_0^2 - \omega^2 & -\omega_0^2 \\ -\omega_0^2 & 2\omega_0^2 - \omega^2 \end{vmatrix} \vec{x} &= 0 \\[3ex]
+(2\omega_0^2 - \omega^2)^2 - (-\omega_0^2)^2 &= 0 \\[1.15ex]
+(2\omega_0^2 - \omega^2)^2 &= (\omega_0^2)^2 \\[1.15ex]
+2\omega_0^2 - \omega^2 &= \pm\omega_0^2 \\[1.15ex]
+-\omega^2 &= (\pm 1 - 2) \omega_0^2 \\[1.15ex]
+ \omega^2 &= -(\pm 1 - 2) \omega_0^2 \\[1.15ex]
+ \omega^2 &= ( 2 \pm 1) \omega_0^2 \\[1.15ex]
+\end{aligned}
 $$
 
 This gives us:
 
 $$
-\omega^2 = 1 \qquad \omega^2 = 3
+\omega^2 = \omega_0^2 \qquad \omega^2 = 3\omega_0^2
 $$
 
 From this process we can determine that the angular frequencies for this problem are:
 
 $$
-\omega_1 = 1 \quad \text{and} \quad \omega_2 = \sqrt{3}
+\omega_1 = \omega_0 \quad \text{and} \quad \omega_2 = \sqrt{3}\ \omega_0^2
 $$
 
-The eigenvalues $\omega_1^2 = 1$ and $\omega_2^2 = 3$ correspond to the squares of the vibrational frequencies of the system. 
+If you were to find the associated eigenvectors to this problem, you would find that:
+- The **lower-frequency mode** ($\omega_1$)is associated with both masses oscillating in phase.
+	- The masses move in the same direction at the same time.
+- The **higher-frequency mode** ($\omega_2$) is associated with both masses oscillate out of phase.
+	- One mass moves left while the other moves right, and vice versa.
 
-In the **lower-frequency mode** ($\omega_1$): This frequency is associated with both masses oscillating in phase, meaning they move in the same direction at the same time.
-
-In the **higher-frequency mode** ($\omega_2$): This frequency is associated with both masses oscillate out of phase, meaning one mass moves left while the other moves right.
-
-We will see how to get the eigenvectors, which determines if the masses are oscillating in or out of phase.
+Again, we will see how to find eigenvectors in the next lecture.
 
 {% endcapture %}
 {% include example.html content=ex %}
@@ -481,51 +532,6 @@ We will see how to get the eigenvectors, which determines if the masses are osci
 
 
 
-
-
-
-## Application:
-
-Consider a 2D incompressible fluid with a linear shear velocity profile:
-
-$$
-u(y) = Uy
-$$
-
-where $ U $ is a constant. The velocity gradient tensor (a matrix) for this flow can be approximately represented by the matrix:
-
-$$
-\mathbf{A} = \begin{bmatrix}
-	0 & U \\
-	0 & 0
-\end{bmatrix}
-$$
-
-The eigenvalues $\lambda$ of $\mathbf{A}$ are found by solving the characteristic equation:
-
-$$
-\det(\mathbf{A} - \lambda \mathbf{I}) = 0
-$$
-
-where $\mathbf{I}$ is the identity matrix. This gives:
-
-$$
-\det(\mathbf{A} - \lambda \mathbf{I}) =
-\begin{vmatrix}
-	- \lambda & U \\
-	0 & - \lambda
-\end{vmatrix} = (-\lambda)(-\lambda) - (0)(U) = \lambda^2
-$$
-
-Thus, the eigenvalues are:
-
-$$
-\lambda = 0
-$$
-
-a repeated eigenvalue. We will discuss the meaning of this next lecture where eigenvectors help shed light on the mathematical interpretation of these situations. In this case, we can simply say that there is a degeneracy in the eigenvalue (that is, the eigenvalue is repeated).
-
-Physically, the eigenvalues of the velocity gradient tensor describe the local stability of the flow. In this case, the eigenvalue $\lambda = 0$ indicates that flow perturbations neither grow nor decay exponentially in time. Instead, this reflects a **neutral stability** for this idealized linear shear flow. 
 
 
 
@@ -561,7 +567,7 @@ $$
 
 
 
-a)   For $I_1 = 2$, $I_2 = 3$, $I_3 = 5$, and $\omega_1 = 1$, $\omega_2 = 2$, $\omega_3 = 3$, find $\mathbf{A}$ for these numbers.  
+a) For $I_1 = 2$, $I_2 = 3$, $I_3 = 5$, and $\omega_1 = 1$, $\omega_2 = 2$, $\omega_3 = 3$, find $\mathbf{A}$ for these numbers.  
 b) Set up the characteristic equation for matrix $\mathbf{A}$.   
 c) Find the eigenvalues for matrix $\mathbf{A}$. 
 
