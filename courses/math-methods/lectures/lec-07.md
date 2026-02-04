@@ -171,7 +171,7 @@ where we have used an angle addition identity at the end to simplify into the fi
 
 Let's take stock of these results. We multiplied the complex number $z$ by another complex number $w$ to get $z' = w z$, and found:
 
-- The magnitude didn’t change: $|z'| = |z|$
+- The magnitude didn’t change: $\vert z'\vert  = \vert z\vert $
 - The angle increased by $\phi$: $\theta' = \theta + \phi$
 
 In other words, **multiplying by $w$ appears to have rotated $z$ by an angle $\phi$**. That’s pretty wild!
