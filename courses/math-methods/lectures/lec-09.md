@@ -502,12 +502,7 @@ which are the eigenvalues for $\mathbf{A}$.
 #### Step 2: Form $(\mathbf{A} - \lambda \mathbf{I})$ for each $\lambda$
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
 
-
-<div class="two-column">
-
-<div class="column">
-
-Substituting $\lambda_1 = 4$, we compute:<br>
+Substituting $\lambda_1 = 4$, we compute:
 
 $$
 \mathbf{A} - \lambda_1 \mathbf{I} = \begin{bmatrix}
@@ -521,11 +516,8 @@ $$
 \end{bmatrix}
 $$
 
-</div>
 
-<div class="column">
-
-Substituting $\lambda_2 = \lambda_3 = 2$, we compute:<br>
+Substituting $\lambda_2 = \lambda_3 = 2$, we compute:
 
 $$
 \mathbf{A} - \lambda_{2/3} \mathbf{I} = \begin{bmatrix}
@@ -540,9 +532,6 @@ $$
 $$
 
 
-</div>
-
-</div>
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
 This step requires us to actually do some algebra and solve for the components of the eigenvectors.
@@ -635,7 +624,7 @@ $$
 \end{bmatrix}
 $$
 
-where $d$ *and* $e$ will be determined in the next step.
+where $d$ and $e$ will be determined in the next step.
 
 </div>
 
