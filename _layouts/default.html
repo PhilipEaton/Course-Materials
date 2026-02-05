@@ -381,19 +381,31 @@
         font-size: 12pt !important;
       }
 
-      .katex .sqrt {
-        overflow: visible !important;
-      }
-
       .katex .sqrt > .vinculum::before {
         content: '';
         display: block !important;
         height: 1px !important;
-        background: black !important;
+        background-color: black !important;
         position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        top: 0;
+        left: 0;
         width: 100% !important;
+      }
+
+      .katex .sqrt {
+        overflow: visible !important;
+      }
+
+      .katex .sqrt .root {
+        position: relative !important;
+      }
+
+      .katex .sqrt .root::before {
+        content: '√';
+        font-size: 1em !important;
+        position: absolute !important;
+        left: -0.7em;
+        top: 0;
       }
 
       /* Allow page breaks through long display math */
