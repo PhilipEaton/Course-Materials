@@ -381,26 +381,27 @@
         font-size: 12pt !important;
       }
 
-      .katex .sqrt > .vinculum {
-        border-top: 1px solid black !important;
-        background: none !important;
-        height: 1px !important;
-      }
-
-      .katex .sqrt > .root {
-        font-family: 'Times New Roman', serif !important;
-        font-size: 1em !important;
-        font-style: normal !important;
-        content: '√' !important;
-        display: inline !important;
+      .katex .sqrt > .root::before {
+        content: "√";
+        font-family: "Times New Roman", serif;
+        font-size: 1em;
+        vertical-align: middle;
         margin-right: 0.1em;
       }
 
-      .katex .sqrt {
-        overflow: visible !important;
+      .katex .sqrt > .root {
+        display: inline-block !important;
+        width: auto !important;
       }
 
-      /* Hide the SVG radical if it's being used */
+      .katex .sqrt > .vinculum {
+        display: inline-block !important;
+        border-top: 1px solid black !important;
+        height: 1px !important;
+        vertical-align: middle;
+        width: 100% !important;
+      }
+
       .katex .sqrt svg {
         display: none !important;
       }
