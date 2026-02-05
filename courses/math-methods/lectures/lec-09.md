@@ -245,7 +245,7 @@ which are the eigenvalues for $\mathbf{A}$.
 
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
 
-<div class="two-column.divided">
+<div class="two-column">
 
 <div class="column">
 
@@ -378,9 +378,11 @@ You may have noticed that the Row 1 and Row 2 equations give the same results, w
 
 #### Step 4: Select the scale parameter for the eigenvector.}
 
+<div class="two-column">
 
-\begin{minipage}{0.49\textwidth}
-To simplify, we can take $a = 1$, giving:
+<div class="column">
+
+To simplify, we can take $a = 1$, giving:<br>
 
 $$
 \vec{v}_1 = \begin{bmatrix}
@@ -389,12 +391,15 @@ $$
 \end{bmatrix}
 $$
 
-This is the eigenvector associated with $\lambda_1 = 2$.\\
+This is the eigenvector associated with $\lambda_1 = 2$.<br>
 
 The selection of $a$ is generally arbitrary and you pick values to give you the simplest form for the result. 
-\end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
-\begin{minipage}{0.49\textwidth}
-To simplify, we can take $c = 1$, giving:
+
+</div>
+
+<div class="column">
+
+To simplify, we can take $c = 1$, giving:<br>
 
 $$
 \vec{v}_2 = \begin{bmatrix}
@@ -403,10 +408,14 @@ $$
 \end{bmatrix}
 $$
 
-This is the eigenvector associated with $\lambda_2 = 5$.\\
+This is the eigenvector associated with $\lambda_2 = 5$.<br>
 
 The selection of $c$ is generally arbitrary and you pick values to give you the simplest form for the result. 
-\end{minipage}
+
+</div>
+
+</div>
+
 
 
 
@@ -493,8 +502,12 @@ which are the eigenvalues for $\mathbf{A}$.
 #### Step 2: Form $(\mathbf{A} - \lambda \mathbf{I})$ for each $\lambda$
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
 
-\begin{minipage}{0.49\textwidth}
-Substituting $\lambda_1 = 4$, we compute:
+
+<div class="two-column">
+
+<div class="column">
+
+Substituting $\lambda_1 = 4$, we compute:<br>
 
 $$
 \mathbf{A} - \lambda_1 \mathbf{I} = \begin{bmatrix}
@@ -508,9 +521,11 @@ $$
 \end{bmatrix}
 $$
 
-\end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
-\begin{minipage}{0.49\textwidth}
-Substituting $\lambda_2 = \lambda_3 = 2$, we compute:
+</div>
+
+<div class="column">
+
+Substituting $\lambda_2 = \lambda_3 = 2$, we compute:<br>
 
 $$
 \mathbf{A} - \lambda_{2/3} \mathbf{I} = \begin{bmatrix}
@@ -524,13 +539,19 @@ $$
 \end{bmatrix}
 $$
 
-\end{minipage}
+
+</div>
+
+</div>
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
 This step requires us to actually do some algebra and solve for the components of the eigenvectors.
 
-\begin{minipage}{0.49\textwidth}
-The equation to solve is:
+<div class="two-column">
+
+<div class="column">
+
+The equation to solve is:<br>
 
 $$
 \begin{bmatrix}
@@ -549,17 +570,17 @@ $$
 \end{bmatrix}
 $$
 
-Expanding, we get:
+Expanding, we get:<br>
 
 $$
 \text{Row 1: } -2 a = 0 , \qquad \text{Row 2: } -b + c = 0
 $$
 
-and Row 3 will be redundant. 
+and Row 3 will be redundant. <br>
 
-From Row 1, we can see that $a = 0$, and Row 2 gives us $b = c$
+From Row 1, we can see that $a = 0$, and Row 2 gives us $b = c$.<br>
 
-Thus, the general solution is:
+Thus, the general solution is:<br>
 
 $$
 \vec{v}_1 = \begin{bmatrix}
@@ -570,9 +591,12 @@ $$
 $$
 
 where $b$ will be determined in the next step.
-\end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
-\begin{minipage}{0.49\textwidth}
-The equation to solve is:
+
+</div>
+
+<div class="column">
+
+The equation to solve is:<br>
 
 $$
 \begin{bmatrix}
@@ -591,17 +615,17 @@ $$
 \end{bmatrix}
 $$
 
-Expanding, we get:
+Expanding, we get:<br>
 
 $$
 \text{Row 1: } 0 = 0 , \qquad \text{Row 2: } e + f = 0
 $$
 
-and Row 3 will be redundant. 
+and Row 3 will be redundant. <br>
 
-From Row 1, we can see that $d$ can be anything it wants, and Row 2 gives us $f = -e$
+From Row 1, we can see that $d$ can be anything it wants, and Row 2 gives us $f = -e$.<br>
 
-Thus, the general solution is:
+Thus, the general solution is:<br>
 
 $$
 \vec{v}_{2/3} = \begin{bmatrix}
@@ -612,14 +636,18 @@ $$
 $$
 
 where $d$ *and* $e$ will be determined in the next step.
-\end{minipage}
+
+</div>
+
+</div>
 
 
 
 
 
 
-#### Step 4: Select the scale parameter for the eigenvector.}
+
+#### Step 4: Select the scale parameter for the eigenvector.
 
 
 
