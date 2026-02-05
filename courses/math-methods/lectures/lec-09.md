@@ -667,11 +667,18 @@ $$
 
 Great, we have one of the eigenvectors. But, how do we find the other one? By forcing the eigenvectors to be perpendicular! This means we force:
 
-$$ \vec{v}_3 \cdot \vec{v}_2 = \vec{v}_3^\text{T} \vec{v}_2 = 0 \quad \implies \quad \begin{bmatrix}
+$$
+\begin{aligned}
+\vec{v}_3 \cdot \vec{v}_2 &= 0 \\[1.25ex]
+\vec{v}_3^\text{T} \vec{v}_2 &= 0 \\[1.25ex]
+\begin{bmatrix}
 	d & e & -e
 \end{bmatrix} \begin{bmatrix}
 1 \\ 1 \\ -1
-\end{bmatrix} = 0 \quad \implies \quad d + e + e = 0 \quad \implies \quad d = -2e 
+\end{bmatrix} &= 0 \\[4ex]
+d + e + e &= 0 \\[1.25ex]
+d &= -2e 
+\end{aligned}
 $$
 
 Now we can let $e=1$, selected in a totally arbitrary manner, to get:
