@@ -188,6 +188,8 @@ To conclude, orthogonal matrices have several important mathematical and physica
 	(\mathbf{A} \vec{u}) \cdot (\mathbf{A} \vec{v}) = (\mathbf{A} \vec{u})^\text{T} (\mathbf{A} \vec{v}) =  \vec{u}^\text{T} \mathbf{A}^\text{T} \mathbf{A} \vec{v} = \vec{u}^\text{T} \mathbf{I}\vec{v} = \vec{u}^\text{T} \vec{v} = \vec{u} \cdot \vec{v}
 	$$
 
+	<br>
+
 - **Determinant:** It turns out, for the previous two properties to be true, it must be that the determinant of an orthogonal matrix is either $+1$ (for proper rotations) or $-1$ (for improper rotations, which include reflections):  
 
 	$$
@@ -237,9 +239,11 @@ Before moving on to Linear Dependence and Independence, which is a major part of
 ### Inverse Flipping
 
 Consider the following matrix operation:  
+
 $$
 \mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D}  \vec{v} = \vec{v}'
 $$
+
 where $\mathbf{A}$, $\mathbf{B}$, $\mathbf{C}$, and $\mathbf{D}$ are all square matrices with inverses. One might ask the following: 
 
 
@@ -780,6 +784,7 @@ This equation is similar in concept for linear momentum  $\vec{p} = m \vec{v}$, 
 
 
 **Orthogonal Matrices in Rotational Transformations**
+
 Suppose we want to transform the system into a new coordinate frame that is rotated by some angle. This transformation is represented by an orthogonal matrix $\mathbf{R}$:
 $$
 \vec{\omega}' = \mathbf{R}  \vec{\omega} \quad \text{and} \quad \vec{L}' = \mathbf{R}  \vec{L}
@@ -787,11 +792,13 @@ $$
 The orthogonality of $\mathbf{R}$ ensures that the magnitudes of $\vec{\omega}$ and $\vec{L}$ are preserved, as well as the angles between them. This is crucial for preserving physical laws like conservation of angular momentum.
 
 **Linear Independence and the Moment of Inertia Tensor**
+
 The moment of inertia tensor $\mathbf{I}$ is a $3 \times 3$ matrix when working in 3 spacial dimensions. If $\mathbf{I}$ has full rank (rank = 3), then the angular velocity components along the three spacial axes are linearly independent. This means that motion along one axis does not depend on the others. 
 
 However, if $\mathbf{I}$ loses rank (say, due to symmetry in the geometry of the rotating object or maybe due to a constraint added to the system. For instance, such as a thin rod rotating about its longitudinal axis would be an example of the rotating object having a geometric symmetry that will cause a reduction in the rank of the matrix. As a result, certain components of $\vec{\omega}$ will become linearly dependent, reducing the system's degrees of freedom.
 
 **Rank and Conservation Laws**
+
 Now consider a scenario where the angular momentum vector $\vec{L}$ is conserved. This will act as a constrain on the system, which can be written in a general manner as:
 $$
 \vec{L} \cdot \hat{n} = \text{constant} \quad \text{(e.g., for rotation about a fixed axis $\hat{n}$)}
@@ -799,6 +806,7 @@ $$
 This constraint introduces a linear dependency among the components of $\vec{L}$, which effectively reduces the rank of the system's equations. 
 
 **Determinants and Volume Preservation**
+
 The determinant of $\mathbf{R}$ (which must be $\pm 1$ since it is an orthogonal matrix) ensures that the transformation preserves the ``volume" of the angular velocity space. If the determinant were zero, it would mean a collapse of dimensionality, indicating a loss of degrees of freedom, which is physically inadmissible for a rotational transformation.
 
 
