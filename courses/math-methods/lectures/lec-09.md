@@ -173,8 +173,8 @@ Now that we have a better feeling for how eigenvalues and eigenvectors are conne
 
 $$
 (\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0
-
 $$
+
 where $\lambda$ is set to a known eigenvalue of the matrix $\mathbf{A}$ that has already be found. Recall, this is a system of homogeneous linear equations, meaning we are looking for nontrivial solutions where eigenvectors are not trivial (i.e., we want $\vec{v} \neq \vec{0}$).
 
 ### Step-by-Step Process
@@ -184,7 +184,7 @@ Let’s outline the steps to find the eigenvectors for a given eigenvalue $\lamb
 1) Find the eigenvalues by solving the characteristic equation.  
 2) Form the matrix $\mathbf{A} - \lambda \mathbf{I}$ for each of the eigenvalues.  
 3) Solve the system of equations for the components of each eigenvector.  
-	- Resolve eigenvectors with degenerate eigenvalues.
+	- Resolve eigenvectors with degenerate eigenvalues.  
 4) Select the scale parameter for the eigenvector.  
 
 
@@ -281,33 +281,17 @@ $$
 
 </div>
 
-Substituting $\lambda_1 = 2$, we compute:
-$$
-\mathbf{A} - \lambda_1 \mathbf{I} = \begin{bmatrix}
-	4 - 2 & 1 \\
-	2 & 3 - 2
-\end{bmatrix} = \begin{bmatrix}
-	2 & 1 \\
-	2 & 1
-\end{bmatrix}
-$$
-
-Substituting $\lambda_2 = 5$, we compute:
-$$
-\mathbf{A} - \lambda_2 \mathbf{I} = \begin{bmatrix}
-	4 - 5 & 1 \\
-	2 & 3 - 5
-\end{bmatrix} = \begin{bmatrix}
-	-1 & 1 \\
-	2 & -2
-\end{bmatrix}
-$$
 
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
 This step requires us to actually do some algebra and solve for the components of the eigenvectors.
 
-The equation to solve is:
+<div class="two-column">
+
+<div class="column">
+
+The equation to solve is:<br>
+
 $$
 \begin{bmatrix}
 	2 & 1 \\
@@ -321,23 +305,32 @@ $$
 	0
 \end{bmatrix}
 $$
-Expanding, we get:
+
+Expanding, we get:<br>
+
 $$
 \text{Row 1: } 2a + b = 0, \qquad \text{Row 2: } 2a + b = 0 
 $$
-From Row 1, we can see that $b = -2a$. (Notice Row 2 gives the exact same result!)
 
-Thus, the general solution is:
+From Row 1, we can see that $b = -2a$. (Notice Row 2 gives the exact same result!)<br>
+
+Thus, the general solution is:<br>
+
 $$
 \vec{v}_1 = \begin{bmatrix}
 	a \\
 	-2a
 \end{bmatrix}
 $$
+
 where $a$ will be determined in the next step.
-\end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
-\begin{minipage}{0.49\textwidth}
-The equation to solve is:
+
+</div>
+
+<div class="column">
+
+The equation to solve is:<br>
+
 $$
 \begin{bmatrix}
 	-1 & 1 \\
@@ -351,21 +344,31 @@ $$
 	0
 \end{bmatrix}
 $$
-Expanding, we get:
+
+Expanding, we get:<br>
+
 $$
 \text{Row 1: } -c + d = 0, \qquad \text{Row 2: } 2c - 2d = 0 
 $$
-From Row 1, we can see that $d = c$. (Notice Row 2 gives the exact same result!)
 
-Thus, the general solution is:
+From Row 1, we can see that $d = c$. (Notice Row 2 gives the exact same result!)<br>
+
+Thus, the general solution is:<br>
+
 $$
 \vec{v}_2 = \begin{bmatrix}
 	c \\
 	c
 \end{bmatrix}
 $$
+
 where $c$ will be determined in the next step.
-\end{minipage}
+
+</div>
+
+</div>
+
+
 
 
 You may have noticed that the Row 1 and Row 2 equations give the same results, within the work for each eigenvalue respectively. This not a mistake and will happen every time! When the determinant of a matrix is equal to 0, at least one of the rows is *redundant*. That means at least one of the rows will contribute no new information to the problem. For example, if you have two rows (a $2\times 2$ matrix), then one of the rows will be useless in solving for the components of the eigenvectors. If you have 3 rows (a $3\times 3$ matrix), then one or two of the rows will be useless. 
@@ -378,24 +381,28 @@ You may have noticed that the Row 1 and Row 2 equations give the same results, w
 
 \begin{minipage}{0.49\textwidth}
 To simplify, we can take $a = 1$, giving:
+
 $$
 \vec{v}_1 = \begin{bmatrix}
 	1 \\
 	-2
 \end{bmatrix}
 $$
+
 This is the eigenvector associated with $\lambda_1 = 2$.\\
 
 The selection of $a$ is generally arbitrary and you pick values to give you the simplest form for the result. 
 \end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
 \begin{minipage}{0.49\textwidth}
 To simplify, we can take $c = 1$, giving:
+
 $$
 \vec{v}_2 = \begin{bmatrix}
 	1 \\
 	1
 \end{bmatrix}
 $$
+
 This is the eigenvector associated with $\lambda_2 = 5$.\\
 
 The selection of $c$ is generally arbitrary and you pick values to give you the simplest form for the result. 
@@ -423,6 +430,7 @@ For higher-dimensional matrices, the process is the same, it is just a bit more 
 {% capture ex %}
 
 Let’s look at a slightly more complicated example.  Consider the matrix:
+
 $$
 \mathbf{A} = \begin{bmatrix}
 	2 & 0 & 0 \\
@@ -434,8 +442,13 @@ $$
 #### Step 1: Find the eigenvalues
 
 To find the eigenvalues we need to set up and solve the characteristic equation:
-$$ \text{det}( \mathbf{A} - \lambda \mathbf{I} ) = 0 $$
+
+$$ 
+\text{det}( \mathbf{A} - \lambda \mathbf{I} ) = 0 
+$$
+
 First, let's set up the matrix $( \mathbf{A} - \lambda \mathbf{I} )$:
+
 $$ ( \mathbf{A} - \lambda \mathbf{I} ) = \begin{bmatrix}
 	2 & 0 & 0 \\
 	0 & 3 & 1 \\
@@ -451,10 +464,13 @@ $$ ( \mathbf{A} - \lambda \mathbf{I} ) = \begin{bmatrix}
 \end{bmatrix} $$
 
 From this, the characteristic equation would be:
+
 $$ \text{det}( \mathbf{A} - \lambda \mathbf{I} ) = (2 - \lambda) \begin{vmatrix}
 	3 - \lambda & 1 \\
 	1 & 3 - \lambda
-\end{vmatrix} =  (2 - \lambda) \left( \frac{}{}   (3 - \lambda)^2 - 1   \frac{}{} \right) = 0 $$
+\end{vmatrix} =  (2 - \lambda) \left( \frac{}{}   (3 - \lambda)^2 - 1   \frac{}{} \right) = 0 
+$$
+
 where we have used the cofactor method to calculate the determinant. Now, solving for $\lambda$:
 
 $$
@@ -468,7 +484,9 @@ $$
 
 meaning $\lambda =2$, $\lambda = 4$, or $\lambda - 2$. Notice there is a degeneracy here! $\lambda = 2$ happened twice! That means there are two eigenvectors with eigenvalues of $2$. Now that we are going to find their eigenvectors, we need to give these names. Let's call them:
 
-$$ \lambda_1 = 4 \qquad \text{and} \qquad \lambda_2 = \lambda_3 = 2 $$
+$$ 
+\lambda_1 = 4 \qquad \text{and} \qquad \lambda_2 = \lambda_3 = 2 
+$$
 
 which are the eigenvalues for $\mathbf{A}$. 
 
@@ -476,108 +494,124 @@ which are the eigenvalues for $\mathbf{A}$.
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
 
 \begin{minipage}{0.49\textwidth}
-	Substituting $\lambda_1 = 4$, we compute:
-	$$
-	\mathbf{A} - \lambda_1 \mathbf{I} = \begin{bmatrix}
-		2 - 4 & 0 & 0 \\
-		0 & 3 - 4 & 1 \\
-		0 & 1 & 3 - 4
-	\end{bmatrix} = \begin{bmatrix}
-	-2 & 0 & 0 \\
-	0 & -1 & 1 \\
-	0 & 1 & -1
-	\end{bmatrix}
-	$$
+Substituting $\lambda_1 = 4$, we compute:
+
+$$
+\mathbf{A} - \lambda_1 \mathbf{I} = \begin{bmatrix}
+	2 - 4 & 0 & 0 \\
+	0 & 3 - 4 & 1 \\
+	0 & 1 & 3 - 4
+\end{bmatrix} = \begin{bmatrix}
+-2 & 0 & 0 \\
+0 & -1 & 1 \\
+0 & 1 & -1
+\end{bmatrix}
+$$
+
 \end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
 \begin{minipage}{0.49\textwidth}
-	Substituting $\lambda_2 = \lambda_3 = 2$, we compute:
-	$$
-	\mathbf{A} - \lambda_{2/3} \mathbf{I} = \begin{bmatrix}
-		2 - 2 & 0 & 0 \\
-		0 & 3 - 2 & 1 \\
-		0 & 1 & 3 - 2
-	\end{bmatrix} = \begin{bmatrix}
-	0 & 0 & 0 \\
-	0 & 1 & 1 \\
-	0 & 1 & 1
-	\end{bmatrix}
-	$$
+Substituting $\lambda_2 = \lambda_3 = 2$, we compute:
+
+$$
+\mathbf{A} - \lambda_{2/3} \mathbf{I} = \begin{bmatrix}
+	2 - 2 & 0 & 0 \\
+	0 & 3 - 2 & 1 \\
+	0 & 1 & 3 - 2
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 1 & 1
+\end{bmatrix}
+$$
+
 \end{minipage}
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
 This step requires us to actually do some algebra and solve for the components of the eigenvectors.
 
 \begin{minipage}{0.49\textwidth}
-	The equation to solve is:
-	$$
-	\begin{bmatrix}
-		-2 & 0 & 0 \\
-		0 & -1 & 1 \\
-		0 & 1 & -1
-	\end{bmatrix}
-	\begin{bmatrix}
-		a \\
-		b \\
-		c
-	\end{bmatrix} = \begin{bmatrix}
-		0 \\
-		0 \\
-		0
-	\end{bmatrix}
-	$$
-	Expanding, we get:
-	$$
-	\text{Row 1: } -2 a = 0 , \qquad \text{Row 2: } -b + c = 0
-	$$
-	and Row 3 will be redundant. 
-	
-	From Row 1, we can see that $a = 0$, and Row 2 gives us $b = c$
-	
-	Thus, the general solution is:
-	$$
-	\vec{v}_1 = \begin{bmatrix}
-		0 \\
-		b \\
-		b
-	\end{bmatrix}
-	$$
-	where $b$ will be determined in the next step.
+The equation to solve is:
+
+$$
+\begin{bmatrix}
+	-2 & 0 & 0 \\
+	0 & -1 & 1 \\
+	0 & 1 & -1
+\end{bmatrix}
+\begin{bmatrix}
+	a \\
+	b \\
+	c
+\end{bmatrix} = \begin{bmatrix}
+	0 \\
+	0 \\
+	0
+\end{bmatrix}
+$$
+
+Expanding, we get:
+
+$$
+\text{Row 1: } -2 a = 0 , \qquad \text{Row 2: } -b + c = 0
+$$
+
+and Row 3 will be redundant. 
+
+From Row 1, we can see that $a = 0$, and Row 2 gives us $b = c$
+
+Thus, the general solution is:
+
+$$
+\vec{v}_1 = \begin{bmatrix}
+	0 \\
+	b \\
+	b
+\end{bmatrix}
+$$
+
+where $b$ will be determined in the next step.
 \end{minipage}\hspace{0.01\textwidth}\vline\hspace{0.01\textwidth}
 \begin{minipage}{0.49\textwidth}
-	The equation to solve is:
-	$$
-	\begin{bmatrix}
-		0 & 0 & 0 \\
-		0 & 1 & 1 \\
-		0 & 1 & 1
-	\end{bmatrix}
-	\begin{bmatrix}
-		d \\
-		e \\
-		f
-	\end{bmatrix} = \begin{bmatrix}
-		0 \\
-		0 \\
-		0
-	\end{bmatrix}
-	$$
-	Expanding, we get:
-	$$
-	\text{Row 1: } 0 = 0 , \qquad \text{Row 2: } e + f = 0
-	$$
-	and Row 3 will be redundant. 
-	
-	From Row 1, we can see that $d$ can be anything it wants, and Row 2 gives us $f = -e$
-	
-	Thus, the general solution is:
-	$$
-	\vec{v}_{2/3} = \begin{bmatrix}
-		d \\
-		e \\
-		-e
-	\end{bmatrix}
-	$$
-	where $d$ *and* $e$ will be determined in the next step.
+The equation to solve is:
+
+$$
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 1 & 1 \\
+	0 & 1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+	d \\
+	e \\
+	f
+\end{bmatrix} = \begin{bmatrix}
+	0 \\
+	0 \\
+	0
+\end{bmatrix}
+$$
+
+Expanding, we get:
+
+$$
+\text{Row 1: } 0 = 0 , \qquad \text{Row 2: } e + f = 0
+$$
+
+and Row 3 will be redundant. 
+
+From Row 1, we can see that $d$ can be anything it wants, and Row 2 gives us $f = -e$
+
+Thus, the general solution is:
+
+$$
+\vec{v}_{2/3} = \begin{bmatrix}
+	d \\
+	e \\
+	-e
+\end{bmatrix}
+$$
+
+where $d$ *and* $e$ will be determined in the next step.
 \end{minipage}
 
 
@@ -590,6 +624,7 @@ This step requires us to actually do some algebra and solve for the components o
 
 
 To simplify, we can take $b = 1$, giving:
+
 $$
 \vec{v}_1 = \begin{bmatrix}
 	0 \\
@@ -597,12 +632,14 @@ $$
 	1
 \end{bmatrix}.
 $$
+
 This is the eigenvector associated with $\lambda_1 = 4$.
 
 
 When you have degenerate (i.e., repeated) eigenvalues, you have to be slightly more careful about what the undetermined constants you pick to fully determine the eigenvectors. If we have any choice about it, we would like it if the **eigenvectors to be mutually orthogonal** (fancy word meaning perpendicular). So, what do we do?
 
 First, you just pick coefficients to get an eigenvector. For example, we could let $d = 1$ and $e = 1$ to get:
+
 $$
 \vec{v}_{2} = \begin{bmatrix}
 	1 \\
@@ -612,12 +649,16 @@ $$
 $$
 
 Great, we have one of the eigenvectors. But, how do we find the other one? By forcing the eigenvectors to be perpendicular! This means we force:
+
 $$ \vec{v}_3 \cdot \vec{v}_2 = \vec{v}_3^\text{T} \vec{v}_2 = 0 \quad \implies \quad \begin{bmatrix}
 	d & e & -e
 \end{bmatrix} \begin{bmatrix}
 1 \\ 1 \\ -1
-\end{bmatrix} = 0 \quad \implies \quad d + e + e = 0 \quad \implies \quad d = -2e $$
+\end{bmatrix} = 0 \quad \implies \quad d + e + e = 0 \quad \implies \quad d = -2e 
+$$
+
 Now we can let $e=1$, selected in a totally arbitrary manner, to get:
+
 $$
 \vec{v}_{3} = \begin{bmatrix}
 	-2 \\
@@ -627,6 +668,7 @@ $$
 $$
 
 So, we have the following eigenvalue/eigenvector pairs:
+
 $$ \lambda_1 = 4 \,\,\,\, \vec{v}_1 = \begin{bmatrix}
 	0 \\
 	1 \\
@@ -639,7 +681,8 @@ $$ \lambda_1 = 4 \,\,\,\, \vec{v}_1 = \begin{bmatrix}
 -2 \\
 1 \\
 -1
-\end{bmatrix}  $$
+\end{bmatrix}  
+$$
 
 {% endcapture %}
 {% include example.html content=ex %}
@@ -728,9 +771,11 @@ Note: Some of these examples will resonate with you depending on where you are a
 ### Stability of Dynamical Systems
 
 In physics and engineering, eigenvalues are often used to study the stability of dynamical systems. Consider a system of linear ordinary differential equations:
+
 $$
 \frac{d\vec{x}}{dt} = \mathbf{A} \vec{x},
 $$
+
 where $\vec{x}$ represents the state of the system, and $\mathbf{A}$ is the system's coefficient matrix. The eigenvalues of $\mathbf{A}$ determine the system’s stability:
 
 - If all eigenvalues have negative real parts, the system is stable, as all solutions decay to equilibrium over time.  
@@ -743,6 +788,7 @@ For example, in coupled harmonic oscillators or predator-prey models, eigenvalue
 ### Principal Axes and Diagonalization
 
 Eigenvalues and eigenvectors are central to understanding the principal axes of physical systems. Consider the moment of inertia tensor in classical mechanics:
+
 $$
 \mathbf{I} = \begin{bmatrix}
 	I_{xx} & I_{xy} & I_{xz} \\
@@ -750,6 +796,7 @@ $$
 	I_{zx} & I_{zy} & I_{zz}
 \end{bmatrix}.
 $$
+
 The eigenvectors of $\mathbf{I}$ represent the principal axes of rotation, and the eigenvalues correspond to the moments of inertia along these axes. By diagonalizing $\mathbf{I}$, we simplify rotational problems, reducing them to independent rotational motions about the principal axes.
 
 ### Quantum Mechanics: Observables and States}
@@ -764,9 +811,11 @@ This connection is fundamental to understanding quantum phenomena like atomic sp
 ### Vibration Analysis: Normal Modes
 
 In systems with coupled oscillators, such as molecules or mechanical structures, eigenvalues and eigenvectors are used to determine the system's normal modes. For a system governed by:
+
 $$
 \mathbf{M} \frac{d^2\vec{x}}{dt^2} + \mathbf{K} \vec{x} = 0,
 $$
+
 where $\mathbf{M}$ is the mass matrix and $\mathbf{K}$ is the stiffness matrix, the eigenvalues of $\mathbf{K}$ provide the squared frequencies of vibration, and the eigenvectors describe the shape of each mode.
 
 ### Data Science: Principal Component Analysis (PCA)
