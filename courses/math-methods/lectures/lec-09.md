@@ -245,7 +245,7 @@ which are the eigenvalues for $\mathbf{A}$.
 
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
 
-<div class="two-column">
+<div class="two-column.divided">
 
 <div class="column">
 
