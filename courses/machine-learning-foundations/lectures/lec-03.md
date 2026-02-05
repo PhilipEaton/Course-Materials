@@ -1178,15 +1178,18 @@ print(f"Regression Equation: Price = {intercept:.2f} + {slope:.2f} × Square_Fee
 X_pred = np.array([[1800]])  # Example: predict price for 1800 sq ft
 predicted_price = model.predict(X_pred)[0]
 
-print(f"Predicted Price for 1800 sq ft: ${predicted_price:,.0f}")
-
 # --- Evaluate model fit ---
 y_pred = model.predict(X)
 rmse = np.sqrt(mean_squared_error(y, y_pred))
 r2 = r2_score(y, y_pred)
 
-print(f"RMSE: +/- {rmse:.2f} dollars")
+print(f"RMSE: +/- ${rmse:,.0f}")
 print(f"R²: {r2:.3f}")
+print()
+print(f"Predicted Price for 1800 sq ft: ${predicted_price:,.0f} +/- ${rmse:,.0f}")
+print()
+
+
 
 # --- Plot ---
 plt.figure(figsize=(7,5))
@@ -1212,11 +1215,11 @@ plt.show()
 {% capture ex %}
 
     Regression Equation: Price = 31375.70 + 121.28 × Square_Feet
-    Predicted Price for 1800 sq ft: $249,671
-    RMSE: +/- 2859.40 dollars
+    RMSE: +/- $2859.40 
     R$^2$: 0.998
 
-
+    Predicted Price for 1800 sq ft: $249,671 +/- $2859.40 
+    
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec03/output_22_1.png' | relative_url }}"
   alt="Scatter plot of house cost versus square footage. The line of best fit is drawn as is a point representing an estimation of a house price using the model."
