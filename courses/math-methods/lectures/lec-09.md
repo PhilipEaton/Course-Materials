@@ -12,17 +12,17 @@ nav_order: 9
 	
 
 
-## Eigenvalue Problem: Finding Eigenvalues -- Quick Review
+## Eigenvalue Problem: Finding Eigenvalues - Quick Review
 
-In this lecture, we will continue our exploration of one of the most important problems in linear algebra: the **eigenvalue problem**. The equation 
+In this lecture, we will continue our exploration of one of the most important problems in linear algebra: the **eigenvalue problem**:
 
 $$
 \mathbf{A} \vec{v} = \lambda \vec{v}
 $$
 
-captures a fundamental idea: a matrix $\mathbf{A}$ acting on a vector $\vec{v}$ scales it by a factor of $\lambda$ *without rotating the vector*. The scalar $\lambda$ is called the **eigenvalue**, and the vector $\vec{v}$ is called the **eigenvector**. Together, they describe the fundamental action of $\mathbf{A}$ on specific directions in its space. 
+Recall, this problem captures a fundamental idea: a matrix $\mathbf{A}$ acting on a vector $\vec{v}$ scales it by a factor of $\lambda$ *without rotating the vector*, though it can flip the direction. The scalar $\lambda$ is called the **eigenvalue**, and the vector $\vec{v}$ is called the **eigenvector**. Together, they describe the fundamental action of $\mathbf{A}$ on specific directions in its space. 
 
-If the matrix $\mathbf{A}$ is an $n \times n$ matrix, there will generally be $n$ eigenvalues (some of which may have the same values). This repetition, called **degeneracy**, indicates that the same eigenvalue is associated with multiple eigenvectors. It is important to note that the total number of eigenvalues always matches the dimensionality of the space $\mathbf{A}$ acts upon, though some eigenvalues may be complex or degenerate, which is fine in general.
+If the matrix $\mathbf{A}$ is an $n \times n$ matrix, there will generally be $n$ eigenvalues (some of which may have the same values). This repetition, called **degeneracy**, indicates that the same eigenvalue is associated with multiple eigenvectors. It is important to note that the total number of eigenvalues always matches the dimensionality of the space $\mathbf{A}$ acts upon, though some eigenvalues may be complex or degenerate, which is generally fine.
 
 Recall, to find the eigenvalues, we manipulated the eigenvalue equation, rewriting the problem as:
 
@@ -30,7 +30,7 @@ $$
 \left( \mathbf{A} - \lambda \mathbf{I}  \right) \vec{v} = 0
 $$
 
-where $\vec{v} \neq \vec{0}$. For non-trivial solutions to exist, the matrix $\mathbf{A} - \lambda \mathbf{I}$ must be **singular**, meaning its determinant vanishes:
+where we demand as non-trivial solution $\vec{v} \neq \vec{0}$. For non-trivial solutions to exist, the matrix $(\mathbf{A} - \lambda \mathbf{I})$ must be **singular**, meaning its determinant is zero:
 
 $$
 \text{det}\left( \mathbf{A} - \lambda \mathbf{I}  \right) = 0
@@ -38,7 +38,7 @@ $$
 
 We called this equation the **characteristic equation**. Solving it yields the eigenvalues $\lambda$ for the specific eigenvalue problem. For an $n \times n$ matrix, the characteristic equation will be a polynomial of degree $n$, providing to $n$ values for $\lambda$.
 
-Let’s first deepen our understanding of their significance and then work through specific methods for solving the characteristic equation.
+Let’s first deepen our understanding of the significance of eigenvalues and then move on to finding eigenvectors.
 
 
 
@@ -57,7 +57,7 @@ $$
 \text{det}(\mathbf{A}) = \lambda_1 \lambda_2 \cdots \lambda_n
 $$
 
-where $ \lambda_1, \lambda_2, \ldots, \lambda_n $ are the eigenvalues of $ \mathbf{A} $.
+where $ \lambda_1, \lambda_2, \ldots, \lambda_n $ are the eigenvalues of $ \mathbf{A} $. We will prove this in the next lecture.
 
 This property offers a practical tool for quickly estimating the eigenvalues of small matrices and understanding the geometric transformations encoded by $ \mathbf{A} $. For example, a determinant of zero means that one or more eigenvalues are zero, indicating a loss of dimensionality or rank (e.g., a projection onto a lower-dimensional subspace).
 
@@ -69,6 +69,8 @@ $$
 \text{Tr}(\mathbf{A}) = \lambda_1 + \lambda_2 + \cdots + \lambda_n
 $$
 
+which we will also prove in the next lecture.
+
 The trace, defined as the sum of the diagonal elements of $ \mathbf{A} $, offers insight into the system’s global properties. For instance, in quantum mechanics, the trace is used to compute expectation values, while in control systems, it can provide a measure of system stability.
 
 
@@ -76,15 +78,32 @@ The trace, defined as the sum of the diagonal elements of $ \mathbf{A} $, offers
 
 ### Symmetric Matrices: Real Eigenvalues
 
-One particularly elegant property arises when $ \mathbf{A} $ is a real, symmetric matrix. Recall that a matrix is symmetric if it is equal to its own transpose: $ \mathbf{A} = \mathbf{A}^\text{T} $. In this case, something interesting happens: the eigenvalues of $ \mathbf{A} $ are **always real numbers**. This property isn’t just a mathematical curiosity—it has significant implications in physics and engineering.
+One particularly elegant property arises when $ \mathbf{A} $ is a real, symmetric matrix. Recall that a matrix is symmetric if it is equal to its own transpose: $ \mathbf{A} = \mathbf{A}^\text{T} $. In this case, something interesting happens: the eigenvalues of $ \mathbf{A} $ are **always real numbers**. This property isn’t just a mathematical curiosity, it has significant implications in physics and engineering.
 
-How can we prove this? A simple method is to make the following observations: $ \mathbf{A} $ is a real, symmetric matrix and $\vec{v}$ is a real vector. This means, according to 
+How can we prove this? Suppose $ \mathbf{A} $ is a real, symmetric matrix, but the eigenvector $\vec{v}$ and the eigenvalue $\lambda$ could be complex. Start with the eigenvalue problem and multiply on the left by the adjoint of $\vec{v}$:
 
 $$
-\mathbf{A} \vec{v} = \lambda \vec{v}
+\begin{aligned}
+\mathbf{A} \vec{v} &= \lambda \vec{v} \\
+\vec{v}^\dagger \mathbf{A} \vec{v} &= \vec{v}^\dagger  \lambda \vec{v} \\
+\big( \mathbf{A}^\dagger \vec{v}\big)^\dagger \vec{v} &=  \lambda \vec{v}^\dagger  \vec{v}\\
+\big( (\mathbf{A}^*)^\text{T} \vec{v}\big)^\dagger \vec{v} &=  \lambda \vec{v}^\dagger  \vec{v} \\
+\end{aligned}
 $$
 
-that $ \lambda $ must also be real, otherwise you would have a real thing on the left side equal to an imaginary thing on the right, which doesn't make sense. Now, this is not a formal and complete proof, but it does get the point across.
+but $ \mathbf{A} $ is real and symmetric, so we have:
+
+$$
+\begin{aligned}
+\big( \mathbf{A} \vec{v}\big)^\dagger \vec{v} &=  \lambda \vec{v}^\dagger  \vec{v} \\
+\big( \lambda \vec{v}\big)^\dagger \vec{v} &=  \lambda \vec{v}^\dagger  \vec{v} \\
+\lambda^* \vec{v}^\dagger \vec{v} &=  \lambda \vec{v}^\dagger  \vec{v} \\
+\lambda^* &=  \lambda 
+\end{aligned}
+$$
+
+which is only possible is $\lambda$ is a real value.
+
 
 The result is important for understanding matrix properties in physics and engineering problems. For example, in classical mechanics, symmetric matrices often represent systems with real and measurable quantities, such as stiffness matrices in structural analysis or inertia tensors in rotational dynamics. The real eigenvalues in these cases correspond to physical quantities like natural frequencies or principal moments of inertia, which must be real for the system to make sense physically.
 
@@ -697,11 +716,11 @@ $$ \lambda_1 = 4 \,\,\,\, \vec{v}_1 = \begin{bmatrix}
 	0 \\
 	1 \\
 	1
-\end{bmatrix} \qquad  \qquad \lambda_2 = 2 \,\,\,\, \vec{v}_2 = \begin{bmatrix}
+\end{bmatrix} \qquad \lambda_2 = 2 \,\,\,\, \vec{v}_2 = \begin{bmatrix}
 1 \\
 1 \\
 -1
-\end{bmatrix}  \qquad  \qquad \lambda_3 = 2 \,\,\,\, \vec{v}_2 = \begin{bmatrix}
+\end{bmatrix}  \qquad \lambda_3 = 2 \,\,\,\, \vec{v}_2 = \begin{bmatrix}
 -2 \\
 1 \\
 -1
@@ -797,7 +816,7 @@ Note: Some of these examples will resonate with you depending on where you are a
 In physics and engineering, eigenvalues are often used to study the stability of dynamical systems. Consider a system of linear ordinary differential equations:
 
 $$
-\frac{d\vec{x}}{dt} = \mathbf{A} \vec{x},
+\frac{d\vec{x}}{dt} = \mathbf{A} \vec{x}
 $$
 
 where $\vec{x}$ represents the state of the system, and $\mathbf{A}$ is the system's coefficient matrix. The eigenvalues of $\mathbf{A}$ determine the system’s stability:
@@ -818,12 +837,12 @@ $$
 	I_{xx} & I_{xy} & I_{xz} \\
 	I_{yx} & I_{yy} & I_{yz} \\
 	I_{zx} & I_{zy} & I_{zz}
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 The eigenvectors of $\mathbf{I}$ represent the principal axes of rotation, and the eigenvalues correspond to the moments of inertia along these axes. By diagonalizing $\mathbf{I}$, we simplify rotational problems, reducing them to independent rotational motions about the principal axes.
 
-### Quantum Mechanics: Observables and States}
+### Quantum Mechanics: Observables and States
 
 In quantum mechanics, eigenvalues and eigenvectors form the backbone of the theory. Observables, such as energy, position, and angular momentum, are represented by Hermitian operators (matrices), and the eigenvalues of these operators correspond to measurable quantities. For example:
 
@@ -837,7 +856,7 @@ This connection is fundamental to understanding quantum phenomena like atomic sp
 In systems with coupled oscillators, such as molecules or mechanical structures, eigenvalues and eigenvectors are used to determine the system's normal modes. For a system governed by:
 
 $$
-\mathbf{M} \frac{d^2\vec{x}}{dt^2} + \mathbf{K} \vec{x} = 0,
+\mathbf{M} \frac{d^2\vec{x}}{dt^2} + \mathbf{K} \vec{x} = 0
 $$
 
 where $\mathbf{M}$ is the mass matrix and $\mathbf{K}$ is the stiffness matrix, the eigenvalues of $\mathbf{K}$ provide the squared frequencies of vibration, and the eigenvectors describe the shape of each mode.
@@ -876,7 +895,7 @@ $$
 \begin{bmatrix}
 	2 & -1 \\
 	-1 & 2
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 
