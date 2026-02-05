@@ -81,7 +81,7 @@ b) Now, assume a constraint forces the system to move only in the $yz$-plane. Up
 Given the matrix
 
 $$
-\mathbf{R} = \begin{bmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix}
+\mathbf{R} = \begin{bmatrix} \frac{\text{√}\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix}
 $$
 
 a) Verify that $ \mathbf{R} $ is orthogonal by showing that $ \mathbf{R}^\text{T} \mathbf{R} = \mathbf{I} $.  
