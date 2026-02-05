@@ -84,6 +84,10 @@ $$
 \mathbf{R} = \begin{bmatrix} \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix}
 $$
 
+$$
+\sqrt{a^2 + b^2}
+$$
+
 a) Verify that $ \mathbf{R} $ is orthogonal by showing that $ \mathbf{R}^\text{T} \mathbf{R} = \mathbf{I} $.  
 b) Compute the determinant of $ \mathbf{R} $ and explain its significance.  
 
