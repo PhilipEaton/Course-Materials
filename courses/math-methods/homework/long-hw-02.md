@@ -117,8 +117,6 @@ Is this the same or different as what you got in part (b). Does that make sense?
 
 
 
-<div class="page-break"></div>
-
 ### 7) Basis and Rank
 A set of data points is represented by the vectors:
 
