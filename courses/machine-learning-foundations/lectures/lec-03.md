@@ -2139,8 +2139,9 @@ Notice the fit statistics are basically unchanged!
 
 We removed an entire feature and did not change the fit of the model. This means Feature 3 wasn't adding anything meaningful to the original model. 
 
+You normally would stop here since everything is significant and you don't have any good reasons to remove further.
 
-Let's remove the Feature 4 and see what happends:
+But... let's remove the Feature 4 and see what happends:
 
 {% capture ex %}
 ```python
