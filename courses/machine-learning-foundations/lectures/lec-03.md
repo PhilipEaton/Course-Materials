@@ -2194,7 +2194,7 @@ print(model_full.summary())
 
 This time we had a larger impact on the overall fit! 
 
-Deciding what to keep and remove is a bit of an art and depends on the kinds of things you are trying to model. Personally, I would leave Feature 4 out since it was cose to being insignificant and notice removing it make the constant very insignificant. 
+Deciding what to keep and remove is a bit of an art and depends on the kinds of things you are trying to model. 
 
 Let's remove the constant as see what we get:
 
