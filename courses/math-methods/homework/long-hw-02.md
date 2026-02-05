@@ -49,7 +49,7 @@ b) Verify your result by calculating $ \mathbf{A} \mathbf{A}^{-1} $ and $ \mathb
 
 
 
-
+<div class="page-break"></div>
 
 ### 3) Symmetric-Antisymmetric Decomposition 
 Decompose the matrix
@@ -75,7 +75,7 @@ $$
 a) Form the matrix with these vectors as columns and compute its determinant and use the result to discuss the linear independence of these vectors.  
 b) Now, assume a constraint forces the system to move only in the $yz$-plane. Update the vectors accordingly, and determine the rank of the new matrix. (Hint: If the system is constrained to move only in the $yz$-plane, then can it move in the $x$-direction?)
 
-<div class="page-break"></div>
+
 
 ### 5) Verifying Orthogonality
 Given the matrix
@@ -117,6 +117,7 @@ Is this the same or different as what you got in part (b). Does that make sense?
 
 
 
+<div class="page-break"></div>
 
 ### 7) Basis and Rank
 A set of data points is represented by the vectors:
