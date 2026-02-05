@@ -9,36 +9,36 @@ nav_order: 9
 
 
 # Lecture 08 – The Eigenvalue Problem and Eigenvectors
-	
 
 
-## Eigenvalue Problem: Finding Eigenvalues - Quick Review
+## Eigenvalue Problem: Finding Eigenvalues — Quick Review
 
-In this lecture, we will continue our exploration of one of the most important problems in linear algebra: the **eigenvalue problem**:
+In this lecture, we continue our exploration of one of the most important problems in linear algebra: the **eigenvalue problem**:
 
 $$
 \mathbf{A} \vec{v} = \lambda \vec{v}
 $$
 
-Recall, this problem captures a fundamental idea: a matrix $\mathbf{A}$ acting on a vector $\vec{v}$ scales it by a factor of $\lambda$ *without rotating the vector*, though it can flip the direction. The scalar $\lambda$ is called the **eigenvalue**, and the vector $\vec{v}$ is called the **eigenvector**. Together, they describe the fundamental action of $\mathbf{A}$ on specific directions in its space. 
+This equation captures a fundamental idea: When a matrix $\mathbf{A}$ acts on a vector $\vec{v}$, the result is the *same vector direction*, scaled by a factor $\lambda$. The vector may flip direction if $\lambda$ is negative, but this is a reflection and not a rotation. The scalar $\lambda$ is called the **eigenvalue**, and the vector $\vec{v}$ is called the **eigenvector**. Together, they describe how $\mathbf{A}$ acts on special directions in space.
 
-If the matrix $\mathbf{A}$ is an $n \times n$ matrix, there will generally be $n$ eigenvalues (some of which may have the same values). This repetition, called **degeneracy**, indicates that the same eigenvalue is associated with multiple eigenvectors. It is important to note that the total number of eigenvalues always matches the dimensionality of the space $\mathbf{A}$ acts upon, though some eigenvalues may be complex or degenerate, which is generally fine.
+If $\mathbf{A}$ is an $n \times n$ matrix, there will generally be $n$ eigenvalues. Some of these eigenvalues may be repeated. This repetition is called **degeneracy** and indicates that multiple independent eigenvectors share the same eigenvalue. The total number of eigenvalues always matches the dimension of the space, although some eigenvalues may be complex or degenerate, which is perfectly acceptable.
 
-Recall, to find the eigenvalues, we manipulated the eigenvalue equation, rewriting the problem as:
-
-$$
-\left( \mathbf{A} - \lambda \mathbf{I}  \right) \vec{v} = 0
-$$
-
-where we demand as non-trivial solution $\vec{v} \neq \vec{0}$. For non-trivial solutions to exist, the matrix $(\mathbf{A} - \lambda \mathbf{I})$ must be **singular**, meaning its determinant is zero:
+Recall that we find eigenvalues by rewriting the eigenvalue equation as:
 
 $$
-\text{det}\left( \mathbf{A} - \lambda \mathbf{I}  \right) = 0
+\left( \mathbf{A} - \lambda \mathbf{I} \right)\vec{v} = \vec{0}
 $$
 
-We called this equation the **characteristic equation**. Solving it yields the eigenvalues $\lambda$ for the specific eigenvalue problem. For an $n \times n$ matrix, the characteristic equation will be a polynomial of degree $n$, providing to $n$ values for $\lambda$.
+and demanding a **non‑trivial solution** $\vec{v} \neq \vec{0}$. For such a solution to exist, the matrix $(\mathbf{A} - \lambda \mathbf{I})$ must be **singular**, meaning its determinant is zero:
 
-Let’s first deepen our understanding of the significance of eigenvalues and then move on to finding eigenvectors.
+$$
+\det\!\left( \mathbf{A} - \lambda \mathbf{I} \right) = 0
+$$
+
+This equation is called the **characteristic equation**. Solving it yields the eigenvalues $\lambda$ of the matrix. For an $n \times n$ matrix, the characteristic equation is a polynomial of degree $n$.
+
+Let us now deepen our understanding of what eigenvalues tell us about matrices and the systems they represent. After that we will move on to how to find eigenvectors once you have the eigenvalues.
+
 
 
 
@@ -46,41 +46,50 @@ Let’s first deepen our understanding of the significance of eigenvalues and th
 
 ## Eigenvalues and Matrix Properties
 
-When solving the eigenvalue problem, it’s helpful to understand how the properties of the matrix $ \mathbf{A} $ influence the behavior and characteristics of its eigenvalues. While eigenvalues are specific to each matrix, they often reflect fundamental properties of the system the matrix represents. Let’s explore some of these connections.
+When solving the eigenvalue problem, it is useful to understand how basic matrix properties influence the behavior of eigenvalues. While eigenvalues depend on the specific matrix, they often encode important global information about the transformation the matrix represents.
 
+### Determinant and the Product of Eigenvalues
 
-### Determinants and the Product of Eigenvalues
-
-A critical relationship involves the determinant of $ \mathbf{A} $. It turns out the determinant of a matrix is the product of its eigenvalues:
+A key relationship involves the determinant of $\mathbf{A}$. The determinant is equal to the product of the eigenvalues:
 
 $$
-\text{det}(\mathbf{A}) = \lambda_1 \lambda_2 \cdots \lambda_n
+\det(\mathbf{A}) = \lambda_1 \lambda_2 \cdots \lambda_n
 $$
 
-where $ \lambda_1, \lambda_2, \ldots, \lambda_n $ are the eigenvalues of $ \mathbf{A} $. We will prove this in the next lecture.
+where $\lambda_1, \lambda_2, \ldots, \lambda_n$ are the eigenvalues of $\mathbf{A}$. We will prove this result in the next lecture.
 
-This property offers a practical tool for quickly estimating the eigenvalues of small matrices and understanding the geometric transformations encoded by $ \mathbf{A} $. For example, a determinant of zero means that one or more eigenvalues are zero, indicating a loss of dimensionality or rank (e.g., a projection onto a lower-dimensional subspace).
+This relationship provides immediate insight. If the determinant is zero, then at least one eigenvalue must be zero. Geometrically, this signals a loss of dimensionality, such as a projection onto a lower‑dimensional subspace.
 
 ### Trace and the Sum of Eigenvalues
 
-Similarly, the trace of $ \mathbf{A} $ turns out to be the sum of its eigenvalues:
+Similarly, the trace of a matrix equals the sum of its eigenvalues:
 
 $$
-\text{Tr}(\mathbf{A}) = \lambda_1 + \lambda_2 + \cdots + \lambda_n
+\mathrm{Tr}(\mathbf{A}) = \lambda_1 + \lambda_2 + \cdots + \lambda_n
 $$
 
-which we will also prove in the next lecture.
-
-The trace, defined as the sum of the diagonal elements of $ \mathbf{A} $, offers insight into the system’s global properties. For instance, in quantum mechanics, the trace is used to compute expectation values, while in control systems, it can provide a measure of system stability.
-
-
+The trace is defined as the sum of the diagonal elements of $\mathbf{A}$ and will also be proven in the next lecture. In physics, the trace appears in many contexts, including expectation values in quantum mechanics and stability criteria in dynamical systems.
 
 
 ### Symmetric Matrices: Real Eigenvalues
 
-One particularly elegant property arises when $ \mathbf{A} $ is a real, symmetric matrix. Recall that a matrix is symmetric if it is equal to its own transpose: $ \mathbf{A} = \mathbf{A}^\text{T} $. In this case, something interesting happens: the eigenvalues of $ \mathbf{A} $ are **always real numbers**. This property isn’t just a mathematical curiosity, it has significant implications in physics and engineering.
+A particularly important case occurs when $\mathbf{A}$ is a **real symmetric matrix**, meaning
 
-How can we prove this? Suppose $ \mathbf{A} $ is a real, symmetric matrix, but the eigenvector $\vec{v}$ and the eigenvalue $\lambda$ could be complex. Start with the eigenvalue problem and multiply on the left by the adjoint of $\vec{v}$:
+$$
+\mathbf{A} = \mathbf{A}^\text{T}
+$$
+
+and contains onlt real elements.
+
+In this case, all eigenvalues of $\mathbf{A}$ will be real. This result has deep physical significance.
+
+To see why, suppose $\vec{v}$ is an eigenvector of $\mathbf{A}$ with eigenvalue $\lambda$, where $\vec{v}$ and $\lambda$ are allowed to be complex. We begin with the eigenvalue problem:
+
+$$
+\mathbf{A}\vec{v} = \lambda \vec{v}
+$$
+
+Multiply on the left by $\vec{v}^\dagger$:
 
 $$
 \begin{aligned}
@@ -91,7 +100,7 @@ $$
 \end{aligned}
 $$
 
-but $ \mathbf{A} $ is real and symmetric, so we have:
+but $ \mathbf{A} $ is real and symmetric, meaning $\mathbf{A}^* = \mathbf{A}$ and $\mathbf{A}^\text{T} = \mathbf{A}$ so we have:
 
 $$
 \begin{aligned}
@@ -102,38 +111,97 @@ $$
 \end{aligned}
 $$
 
-which is only possible is $\lambda$ is a real value.
+which is only possible if $\lambda$ is a real number.
+
+This result explains why symmetric matrices arise so frequently in physics. Quantities such as inertia tensors, stiffness matrices, and Hamiltonians must have real eigenvalues because they correspond to measurable physical quantities.
 
 
-The result is important for understanding matrix properties in physics and engineering problems. For example, in classical mechanics, symmetric matrices often represent systems with real and measurable quantities, such as stiffness matrices in structural analysis or inertia tensors in rotational dynamics. The real eigenvalues in these cases correspond to physical quantities like natural frequencies or principal moments of inertia, which must be real for the system to make sense physically.
+### Orthogonal Matrices: Eigenvalues of Magnitude One
 
-
-### Orthogonal Matrices: Eigenvalues of *Magnitude* 1
-
-Orthogonal matrices introduce another fascinating relationship. Recall that $ \mathbf{A} $ is orthogonal if $ \mathbf{A}^\text{T} \mathbf{A} = \mathbf{I} $, meaning $\mathbf{A}^\text{T} = \mathbf{A}^{-1}$. For orthogonal matrices, the **eigenvalues always have a magnitude of 1**. These eigenvalues can be either real ($+1$ or $-1$) or some complex root of $+1$.
-
-This property makes orthogonal matrices particularly important in transformations that preserve lengths and angles, such as rotations and reflections. In physics, this connects directly to systems like quantum mechanics, where unitary matrices (a complex extension of orthogonal matrices) describe probability-preserving transformations, such as rotations in state space.
-
-
-
-
-
-\iffalse
-
-ADD THIS LATER
-
-For a a concrete example, consider a 2D rotation matrix:
+Orthogonal matrices introduce another important constraint. A matrix $\mathbf{A}$ is orthogonal if
 
 $$
-\mathbf{R}(\theta) = 
+\mathbf{A}^{-1} = \mathbf{A}^\text{T}
+$$
+
+For orthogonal matrices, **all eigenvalues have magnitude one**. These eigenvalues may be real ($+1$ or $-1$) or complex, but they always satisfy
+
+$$
+\vert\lambda\vert = 1
+$$
+
+This property reflects the fact that orthogonal transformations preserve lengths and angles. In physics, this connects directly to rotations and reflections. In quantum mechanics, the complex analog of orthogonal matrices are **unitary matrices**, which preserve probabilities.
+
+{% capture ex %}
+
+As a concrete example, consider the two‑dimensional rotation matrix
+
+$$
+\mathbf{R}(\theta) =
 \begin{bmatrix}
-	\cos(\theta) & -\sin(\theta) \\
-	\sin(\theta) & \cos(\theta)
-\end{bmatrix}.
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{bmatrix}
 $$
 
-The eigenvalues of this matrix are $ e^{i\theta} $ and $ e^{-i\theta} $, showing that rotation preserves the vector magnitudes while altering their directions.
-\fi
+We compute the eigenvalues by solving
+
+
+$$
+\begin{aligned}
+\det(\mathbf{R} - \lambda \mathbf{I}) &= 0 \\[1.15ex]
+\begin{vmatrix}
+	\cos(\theta) - \lambda & -\sin(\theta) \\
+	\sin(\theta) & \cos(\theta)- \lambda
+\end{vmatrix} &= 0 \\[2.25ex]
+\big(\cos(\theta) - \lambda\big)^2 - \big(-\sin^2(\theta)\big)  &= 0 \\[1.15ex]
+\big(\cos(\theta) - \lambda\big)^2  &= - \sin^2(\theta) \\[1.15ex]
+\cos(\theta) - \lambda  &= \pm i \sin(\theta) \\[1.15ex]
+\lambda  &= \cos(\theta)  \pm i \sin(\theta) \\[1.15ex]
+\end{aligned}
+$$
+
+Taking the magnitude gives
+
+$$
+|\lambda|^2 = \cos^2(\theta) + \sin^2(\theta) = 1
+$$
+
+
+The eigenvalues have unit magnitude, as prominsed for an orthogonal matrix.
+
+**Side note:** You may recognise this result as the agular part of a complex number written in polar form:
+
+$$
+z = r \big( \cos(\theta)  + i \sin(\theta)\big)
+$$
+
+where $\theta$ is measured counterclockwise. If the angle were in the clockwsie direction we could take $\theta \rightarrow -\theta$ to get:
+
+$$
+z = r \big( \cos(-\theta)  + i \sin(-\theta)\big) \quad\Rightarrow\quad z = r \big( \cos(\theta)  - i \sin(\theta)\big)
+$$
+
+where we have used the fact that $\cos$ is an even function and $\sin$ is an odd function to simplify. 
+
+You may also recall that these combination of angles and the complex unit $i$ was also found to be identical to the 2-dimentional rotation matrix. So, the eigenvalues of this matrix are represent rotations in the counterclockwise and clockwise directions, and no change in the magnitude of the vectors. 
+
+Further, tt turns out if you expand for small angles $\theta \ll 1$ you can show that (this is something we explicity work out in Mathematical Physics, in case you are interested):
+
+$$ 
+e^{\pm i\theta} = \cos(\theta)  \pm i \sin(\theta)
+$$
+
+wich is called the Euler identity. More on this in Mathematical Physics. So, the eigenvalues for this matrix can be written as $e^{\pm i \theta}$. 
+
+{% endcapture %}
+{% include example.html content=ex %}
+
+
+
+
+	
+
 
 
 
@@ -205,7 +273,6 @@ Let’s outline the steps to find the eigenvectors for a given eigenvalue $\lamb
 3) Solve the system of equations for the components of each eigenvector.  
 	- Resolve eigenvectors with degenerate eigenvalues.  
 4) Select the scale parameter for the eigenvector.  
-
 
 
 {% capture ex %}
