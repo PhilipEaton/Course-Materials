@@ -2244,6 +2244,8 @@ print(model_full.summary())
 
 Notice we are left with a fantastic model now! 
 
+However, we are probably overfitting!
+
 This really is an art! You should explor your models and keeps notes on how each one did and select the model that makes the most sense for your situation.
 
 
