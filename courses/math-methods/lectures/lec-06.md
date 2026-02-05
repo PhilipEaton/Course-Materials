@@ -293,7 +293,9 @@ $$
 
 Comparing the two answer we can see that this means: 
 
-$(\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} = \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}$. Notice how the order of the matrices flip as a result of taking the inverse, an important observation that is often not stressed enough.
+$$(\mathbf{A} \mathbf{B} \mathbf{C} \mathbf{D})^{-1} = \mathbf{D}^{-1} \mathbf{C}^{-1} \mathbf{B}^{-1} \mathbf{A}^{-1}$$
+
+Notice how the order of the matrices flip as a result of taking the inverse, an important observation that is often not stressed enough.
 
 {% capture ex %}
 
