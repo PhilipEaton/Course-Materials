@@ -381,31 +381,28 @@
         font-size: 12pt !important;
       }
 
-      .katex .sqrt > .vinculum::before {
-        content: '';
-        display: block !important;
+      .katex .sqrt > .vinculum {
+        border-top: 1px solid black !important;
+        background: none !important;
         height: 1px !important;
-        background-color: black !important;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        width: 100% !important;
+      }
+
+      .katex .sqrt > .root {
+        font-family: 'Times New Roman', serif !important;
+        font-size: 1em !important;
+        font-style: normal !important;
+        content: '√' !important;
+        display: inline !important;
+        margin-right: 0.1em;
       }
 
       .katex .sqrt {
         overflow: visible !important;
       }
 
-      .katex .sqrt .root {
-        position: relative !important;
-      }
-
-      .katex .sqrt .root::before {
-        content: '√';
-        font-size: 1em !important;
-        position: absolute !important;
-        left: -0.7em;
-        top: 0;
+      /* Hide the SVG radical if it's being used */
+      .katex .sqrt svg {
+        display: none !important;
       }
 
       /* Allow page breaks through long display math */
