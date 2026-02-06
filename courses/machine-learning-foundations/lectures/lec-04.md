@@ -150,7 +150,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_4_0.png' | relative_url }}"
-  alt=""
+  alt="A scatter plot with all points t the left of x equals 5 sit along y equals 0 and all points to the right of x equals 5 sit along the y equals 1 line. y euqlas 0 is one choice and y equals 1 is the other."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -161,12 +161,13 @@ plt.show()
 
 
 
-Instead, we need a model that:
-1. Still uses a linear combination of features (so we can interpret coefficients), but  
-2. “Squashes” the predictions into the range \([0, 1]\).
+We need a model that:
 
-That’s where **Logistic Regression** comes in.
-It takes the linear output and wraps it in a *sigmoid* (or logistic) function:
+1. Still uses a linear combination of features (so we can easily interpret coefficients), but  
+2. “Squashes” the predictions into the range $[0, 1]$, colser to 0 is one option and closer to 1 is the other.
+
+That’s where **Logistic Regression** comes in. It takes the linear output and wraps it in a *sigmoid* (or logistic) function:
+
 $$
 P(y = 1 | x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots)}}
 $$
@@ -180,11 +181,11 @@ This function predicts the **probability** that $y = 1$, where $1$ could mean:
 
 {% capture ex %}
 ```python
-# === The Sigmoid (Logistic) Function ===
-
+# === Define Sigmoid (Logistic) Function ===
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
+# === Plot Sigmoid (Logistic) Function ===
 # Create a range of z values (the linear model output)
 z = np.linspace(-10, 10, 200)
 p = sigmoid(z)
@@ -212,7 +213,7 @@ plt.show()
  
  <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_6_0.png' | relative_url }}"
-  alt=""
+  alt="A plot of a logistic curve."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -437,7 +438,7 @@ plt.show()
 - Logistic regression is linear in the features but nonlinear in the output.  
 - The model outputs probabilities, not raw scores.  
 - Coefficients describe how features change the **log-odds** of the target class.  
-- The decision boundary occurs where \(P(y=1)=0.5\), i.e. where \(\beta_0 + \beta_1x_1 + \beta_2x_2 = 0\).  
+- The decision boundary occurs where $P(y=1)=0.5$, i.e. where $\beta_0 + \beta_1x_1 + \beta_2x_2 = 0$.  
 - Visualizing both the probabilities and the boundary helps you see how the model separates the classes.
 </div>
 
@@ -976,7 +977,7 @@ The AUC of the ROC is useful because:
 <b>Key Takeaways:</b> 
 
 - Logistic regression outputs **probabilities**, not hard classifications.  
-- By default, sklearn classifies as class 1 if \( P(y=1) > 0.5 \), but you can, and generally should, adjust and justify the threshold.  
+- By default, sklearn classifies as class 1 if $ P(y=1) > 0.5 $, but you can, and generally should, adjust and justify the threshold.  
 - Evaluate models using **multiple metrics** — especially when classes are imbalanced.  
 - **ROC curves** and **AUC** summarize the model’s overall ranking ability, independent of any threshold.
 </div>
@@ -1449,7 +1450,7 @@ For each coin flip:
    P(\text{weighted} \vert \text{data}) = \frac{P(\text{weighted}) \times \text{Bayes Factor}}{1 + P(\text{weighted}) \times \text{Bayes Factor}}
    $$
 
-4. Update the Beta posterior for \(p\) given the data at hand.
+4. Update the Beta posterior for $p$ given the data at hand.
 
 
 {% capture ex %}
@@ -1599,7 +1600,7 @@ plt.show()
 Tracks the *posterior probability* that the coin is **weighted** after each flip. If the coin truly is biased, this value will climb toward 1 as evidence accumulates. If it’s actually fair, the probability will fall toward 0.
 
 **Right Plot:**  
-Shows how our estimate of the coin’s **bias parameter \(p\)** evolves over time. The green curve is the **posterior mean**, and the shaded region is the **95% credible interval**.
+Shows how our estimate of the coin’s **bias parameter $p$** evolves over time. The green curve is the **posterior mean**, and the shaded region is the **95% credible interval**.
 
 As we observe more flips:
 - The credible interval narrows (our uncertainty decreases).
