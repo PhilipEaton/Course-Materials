@@ -332,7 +332,7 @@ $$
 \text{logit}(p) = \ln\!\left(\frac{p}{1-p}\right)
 $$
 
-The function $\ln\!\left(\frac{p}{1-p}\right)$ is called the **log-odds**, since it is:
+The function $\ln\left(\frac{p}{1-p}\right)$ is called the **log-odds**, since it is:
 - the probability of it being 1 (which we called $p$), divided by 
 - the prabability it is not 1 (which would be $1-p$). 
 
