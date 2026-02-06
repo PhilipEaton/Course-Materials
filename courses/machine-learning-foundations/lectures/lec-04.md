@@ -233,14 +233,14 @@ plt.show()
 
 ### Fitting a Logistic Model
 
-Now that we know *why* linear regression fails for classification, let’s see how logistic regression actually *works in practice*.
+Let’s see how logistic regression actually *works in practice*.
 
-We’ll use a simple example where the outcome is binary — 0 or 1.
+We’ll use a simple example where the outcome is binary: 0 or 1.
 
 Our goals:
 1. Fit a logistic regression model to data.
-    - This is done by minmizing the squared error or, more commonly, maximizing the likelihood of the resulting model.
-    - We are not going to talk about this in detail since it is a bit technical and not really needed to be able to use the tool effectively.
+    - This is done by minmizing the sum of the squared error (SSE) or, more commonly, maximizing the likelihood of the resulting model.
+    - We are not going to talk about this in detail since it is a bit technical and not needed to be able to use the tool effectively.
 3. Interpret what the coefficients mean.  
 4. Visualize the decision boundary.  
 5. Evaluate the model’s performance.
@@ -251,8 +251,7 @@ Our goals:
 # Synthetic binary classification data
 X, y = make_classification(
     n_samples=200, n_features=2, n_redundant=0, n_informative=2,
-    n_clusters_per_class=1, flip_y=0.05, class_sep=1.5, random_state=42
-)
+    n_clusters_per_class=1, flip_y=0.05, class_sep=1.5, random_state=42)
 
 df = pd.DataFrame(X, columns=["Feature_1", "Feature_2"])
 df["Target"] = y
@@ -315,7 +314,7 @@ Coefficients ($\beta_i$): [[-0.48899191  2.033306  ]]
 
 ###  Interpreting Coefficients
 
-If we take the logistic equation, call the probability $p$:
+If we take the logistic equation, simplify a little by calling the probability of getting a 1 the letter $p$:
 
 $$ 
 P(y = 1 | x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots)}} \quad\longrightarrow\quad p = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots)}}
@@ -324,12 +323,22 @@ $$
 and solve for the feature section of the equation, $\beta_0 + \beta_1 x$, we get:
 
 $$
-\ln\!\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots \quad\text{which gives the definition}\quad \text{logit}(p) = \ln\!\left(\frac{p}{1-p}\right)
+\ln\!\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots 
 $$
 
-The term $\ln\!\left(\frac{p}{1-p}\right)$ is called the **log-odds**, since it is the probability of it being 1 (called $p$) divided by the prabability it is not 1 (which would be $1-p$). The "log" in the name comes from takeing the natrual logarithm of the odds.
+which gives the definition
 
-Logistic regression coefficients represent how each feature affects the **log-odds** of belonging to class 1 (whatever we determine that classification to be).
+$$
+\text{logit}(p) = \ln\!\left(\frac{p}{1-p}\right)
+$$
+
+The function $\ln\!\left(\frac{p}{1-p}\right)$ is called the **log-odds**, since it is:
+- the probability of it being 1 (which we called $p$), divided by 
+- the prabability it is not 1 (which would be $1-p$). 
+
+The "log" in the name comes from taking the natrual logarithm of the odds.
+
+From this we can see that the logistic regression coefficients represent how each feature affects the **log-odds** of belonging to class 1 (whatever we determine that classification to be).
 
 $$
 \ln\!\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots
@@ -338,7 +347,7 @@ $$
 - A **positive** coefficient means increasing that feature increases the probability of class 1.  
 - A **negative** coefficient means increasing that feature decreases that probability.  
 
-We can exponentiate each coefficient to get:
+We can exponentiate each coefficient, eliminating the natural log as a result, to get:
 
 $$
 \left(\frac{p}{1-p}\right) = e^{\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots} = e^{\beta_0} \, e^{\beta_1 x_1}\, e^{\beta_2 x_2} \cdots
@@ -353,6 +362,7 @@ $$
 - An odds ratio **greater than 1** means increasing that feature increases the probability of class 1.  
 - An odds ratio **less than 1** means increasing that feature decreases that probability.  
 
+Either way you decide to go, the interpretation will be the same. Pick you poison in this case.
 
 {% capture ex %}
 ```python
@@ -370,6 +380,9 @@ Feature_1: coefficient = -0.489, odds ratio = 0.613
 Feature_2: coefficient = 2.033, odds ratio = 7.639
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
+
+
+
 
 
 
