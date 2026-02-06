@@ -362,7 +362,7 @@ $$
 - An odds ratio **greater than 1** means increasing that feature increases the probability of class 1.  
 - An odds ratio **less than 1** means increasing that feature decreases that probability.  
 
-Either way you decide to go, the interpretation will be the same. Pick you poison in this case.
+Either way you decide to go, the interpretation will be the same. Pick your poison in this case.
 
 {% capture ex %}
 ```python
@@ -376,7 +376,7 @@ for feature, coef, odds in zip(X_features.columns, log_reg.coef_[0], odds_ratios
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
-Feature_1: coefficient = -0.489, odds ratio = 0.613
+Feature_1: coefficient = -0.489, odds ratio = 0.613  
 Feature_2: coefficient = 2.033, odds ratio = 7.639
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
