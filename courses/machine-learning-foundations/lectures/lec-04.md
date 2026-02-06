@@ -6,24 +6,7 @@ nav_section: lectures
 nav_order: 4
 ---
 
-
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
-
-
-
 # Lecture 04: Logistic Regression and Naive Bayes Calssification
-
-
 
 ## Setup: Import Libraries
 
@@ -103,53 +86,62 @@ warnings.filterwarnings("ignore")  # keep output clean for class demos
 
 
 
+
 ## Logistic Regression
 
+We’ve learned how to use **linear regression** to predict *continuous* outcomes, like housing prices:
 
-So far, we’ve used **linear regression** to predict *continuous* outcomes:
 $$
 y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots
 $$
-where $y$ would be something like housing prices or number of dogs.
 
-But, suppose we wanted to know what *kind* of house or dog we were being given in the data? In simpler terms, what if we want to predict a **category** instead — like:
-- Will a student pass or fail? (0 or 1)
-- Will a customer buy the product? (yes/no)
-- Will a penguin be male or female?
+Here, $ y $ might represent something like the price of a house or the number of cats a person owns (yes, crazy cat people are absolutely valid data points).
 
-If we try to use linear regression for this kind of problem, we run into trouble:
-- It can predict values **less than 0 or greater than 1** — impossible for probabilities.
-- The relationship between \(x\) and \(y\) is often *nonlinear*.
+But now suppose we want to answer a *different* kind of question.
 
+What if we’re not interested in predicting a number, but instead want to know *what kind* of thing we’re looking at?
+
+In simpler terms, what if we want to predict a **category**, such as:
+- Will a student **pass or fail**? (0 or 1)
+- Will a customer **buy the product or not**? (yes / no)
+- Is a penguin **male or female**?
+
+If we try to use **linear regression** for this type of problem, we quickly run into trouble:
+
+- can predict values less than 0 or greater than 1, which don’t make sense for categories.
+- doesn’t naturally give us probabilities or a clear sense of how confident it is in a classification.
+- relationships between the features $ x $ and a categorical outcome $ y $ are often nonlinear for categorization problems.
+
+This is where **classification models**, models designed specifically to predict *categories* rather than continuous values, come into play.
+
+Suppose we have a single feature and data points that belong to one of two categories. In that case, there should exist some point along that feature where we can make a **decision cut** and say:
+
+- everything **below** this cut is **Category A**, and  
+- everything **above** this cut is **Category B**.
+
+This cut defines a **decision boundary** in feature space.  
+
+Let’s look at a plot of this idea for reference:
 
 {% capture ex %}
 ```python
-# === Linear Regression Misfit Example ===
-
 # Generate fake binary data
 np.random.seed(42)
 X = np.linspace(0, 10, 50)
 y = (X > 5).astype(int)  # 0 for X <= 5, 1 for X > 5
 
-# Fit linear regression for illustration (not for accuracy)
-from sklearn.linear_model import LinearRegression
-lin_model = LinearRegression().fit(X.reshape(-1, 1), y)
-y_pred_linear = lin_model.predict(X.reshape(-1, 1))
-
 # Plot
 plt.figure(figsize=(8,5))
 plt.scatter(X, y, color='gray', alpha=0.6, label='True Classes (0 or 1)')
-plt.plot(X, y_pred_linear, color='red', linewidth=2, label='Linear Regression Fit')
 plt.axhline(0, color='black', linestyle='--', alpha=0.6)
 plt.axhline(1, color='black', linestyle='--', alpha=0.6)
 plt.ylim(-0.5, 1.5)
-plt.title("Linear Regression Fails for Classification")
+plt.title("Decision Cut Plot")
 plt.xlabel("Feature X")
 plt.ylabel("Predicted y")
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.show()
-
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}  
