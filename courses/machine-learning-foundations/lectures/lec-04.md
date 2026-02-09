@@ -776,20 +776,6 @@ The AUC of the ROC is useful because:
 
 
 
-<div style="
-    background-color: #E6F2FA;
-    border-left: 6px solid #8EC9DC;
-    padding: 14px;
-    border-radius: 6px;
-">
-<b style="color:#1b4965;">Professional Practice</b>  
-<br><br>
-
-
-
-</div>
-
-
 
 
 
@@ -1029,15 +1015,8 @@ Side note: You can also plot the Precision versus Recall and calculate the area 
 
 
 
+{% capture ex %}
 
-<div style="
-    background-color: #E6F2FA;
-    border-left: 6px solid #8EC9DC;
-    padding: 14px;
-    border-radius: 6px;
-">
-<b style="color:#1b4965;">Professional Practice</b>  
-<br>
 
 - Never accept the default threshold blindly — **choose it based on your use-case**.  
 - When presenting results, **report the chosen threshold** and justify why.  
@@ -1045,9 +1024,9 @@ Side note: You can also plot the Precision versus Recall and calculate the area 
 - For critical applications, perform a **threshold sweep** and present how precision, recall, and F1 change with threshold.
 
 > A good data scientist doesn’t just train a model, they decide **how it will be used** in the real world.
-</div>
 
-
+{% endcapture %}
+{% include propractice.html content=ex %}
 
 
 
@@ -1127,7 +1106,7 @@ weighted avg       0.92      0.91      0.91        45
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_32_1.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix. The only mis classifications are 3 instances of virginica being misclassified as 1 instance of versicolor being mistaten as a virginica."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -1140,11 +1119,11 @@ weighted avg       0.92      0.91      0.91        45
 
 
     
-
+<!-- 
 ### Regularization: Avoiding Overfitting
 
 
-When a model becomes too flexible or learns too precisely from the training data, it can start to **overfit** — meaning it memorizes random noise and quirks of the dataset instead of learning the true underlying pattern.  As a result, it will perform well on the training data but poorly on new, unseen data.
+As we have previously discussed when a model becomes too flexible or learns too precisely from the training data, it can starts **overfit**. That is, it memorizes random noise and quirks of the dataset instead of learning general underlying patterns.  As a result, it will perform well on the training data but poorly on new, unseen data.
 
 **Regularization** is a technique to prevent overfitting.  
 
@@ -1245,7 +1224,7 @@ plt.show()
 - **C** controls the strength of regularization — find the sweet spot where the model generalizes best.
 - Regularization is one of the most powerful tools for improving **model robustness** and **interpretability**.
 </div>
-
+--->
 
 
 
@@ -1260,27 +1239,30 @@ plt.show()
 
 ## Naïve Bayes - Classification via Probabilities
 
-We have now explored three classification methods: **k-Nearest Neighbors**, **k-Means Clustering**, and **Regression models**. Each of those algorithms gave us different *ways of thinking* about how to make predictions:
+We have now explored three classification methods: **k-Nearest Neighbors**, **k-Means Clustering**, and **Logistic Regression models**. Each of those algorithms gave us different *ways of thinking* about how to make predictions:
 
 - **k-NN** looked at the *geometry* of the data (how close a point is to its neighbors).  
 - **k-Means** looked for *groups* hidden in unlabeled data (what groupings are potentially hidded in the data).  
 - **Logistic Regression** learned a *boundary* that separates classes.  
 
-Let's take yet another perspective: **probability**.  
+Let's take a page out of Logistic Regression's book and see how else we can use **probability**.  
 
 Specifically, let's ask questions like:
-> “Given this new data point, what’s the probability it belongs to each class?”
+
+> “Given this new data point, what’s the probability it belongs to one class or the other?”
 
 > “If we assume each feature gives us a small clue, how do we combine them into a full prediction?”
 
-That’s where **Naïve Bayes Classification** comes in. This has less to do with modeling lines and what not and are more interested in **how confident** we are about a prediction.
+These questions are at the heart of **Naïve Bayes Classification**. This has less to do with modeling lines and are more to do with **how confident** we are about a prediction.
 
 For example, imagine we’re building an email spam detector:
+
 - Some words (like *“lottery”*) are strong spam signals.
 - Others (like *“meeting”*) are more typical of normal mail.
-- Each word gives us a hint — a *probability*.
+- Each word gives us a hint, a *probability*.
 
 Naïve Bayes takes these small clues from each feature and combines them into a big, simple prediction:
+
 > “What’s the probability this email is spam given all the words inside it?”
 
 This kind of reasoning is built on **Bayes’ Theorem**, which connects *what we already know* with *what we just observed.*
