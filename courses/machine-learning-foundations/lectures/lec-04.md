@@ -390,11 +390,17 @@ Feature_2: coefficient = 2.033, odds ratio = 7.639
 
 ### Decision Boundary
 
-Recall, a **decision boundary** is the line (in 2D) or surface (in higher dimensions) which divides the sapce between the options points will take if placed in each region. In the case of a logistic classifier, this line is drawn where the classifier is **indifferent** between classes.
+Recall, a **decision boundary** is the line (in 2D) or surface (in higher dimensions) which divides the space between the availiable options. 
 
-For **logistic regression**, this is where the predicted probability is exactly **0.5** (for binary classification) — on one side, $P(y=1 \mid \mathbf{x})>0.5$; on the other, $P(y=1 \mid \mathbf{x})<0.5$.
+In the case of a logistic classifier, this line is drawn where the classifier is **indifferent** between classes. This is where the predicted probability is exactly **0.5** (for binary classification)
+- on one side, $p > 0.5$; 
+- on the other, $p < 0.5$.
 
-To build intuition, we can overlay a **probability heatmap** on top of our scatter plot: darker regions indicate lower $P(y=1)$, lighter regions indicate higher $P(y=1)$. The **decision boundary** appears as the contour where $P(y=1)=0.5$.
+To build intuition, let's lay a **probability heatmap** on top of our previous scatter plot: 
+- darker regions indicate lower $p$, 
+- lighter regions indicate higher $p$. 
+
+The **decision boundary** appears as the contour where $p = 0.5$.
 
 
 {% capture ex %}
@@ -448,14 +454,13 @@ plt.show()
 ">
 <b>Key Takeaways:</b> 
 
-- Logistic regression is linear in the features but nonlinear in the output.  
-- The model outputs probabilities, not raw scores.  
+- Logistic regression is **linear in the features** but **nonlinear in the output**.  
+- The model **outputs probabilities**, not raw scores.  
 - Coefficients describe how features change the **log-odds** of the target class.  
-- The decision boundary occurs where $P(y=1)=0.5$, i.e. where $\beta_0 + \beta_1x_1 + \beta_2x_2 = 0$.  
+- The decision boundary occurs where $p = 0.5$.
+    - This happens when where $\beta_0 + \beta_1\ x_1 + \beta_2\ x_2 = 0$.  
 - Visualizing both the probabilities and the boundary helps you see how the model separates the classes.
 </div>
-
-Next: we’ll evaluate how *well* our logistic model performs — accuracy, precision, recall, and ROC curves.
 
 
 
@@ -468,22 +473,25 @@ Next: we’ll evaluate how *well* our logistic model performs — accuracy, prec
 
 ### Evaluating Logistic Regression Models
 
-With linear regression, we evaluated how well our model fit the data using metrics like **MSE** and **$R^2$**.
+With linear regression, we evaluated how well our model fit the data using metrics like **RMSE** and **adjusted $R^2$**.
 
 For **logistic regression**, our goal is not to predict a *continuous* number, but to correctly *classify* observations into categories (e.g., 0 vs. 1).
 
-We’ll use our old classification metrics from k-NN and k-Means:
-- How many predictions are **correct** (Accuracy)
-- How well we identify **positives** (Precision, Recall)
-- How balanced our performance is (F1 Score)  
+So, we’ll go bakc to our oldie but goodie from k-NN and k-Means:
+- **Accuracy**: Percentage of predictions we got correct **correct** (Accuracy)
 
-and a new metric:
-- How well our model ranks cases (ROC curve & AUC)
+And we will shake things up by (finally) defining the following:
+- **Precision** and **Recall**:How well we identify **positives**, no caring about negatives 
+    - e.g., how well a model can detect cancer. We may care more about making sure we get the positive cases right more than the negative cases.
+- **F1 Score**: How balanced our performance is 
 
+and we'll introduce a new metric (oh no!):
+- **ROC curve & AUC**: How well our model ranks cases
+
+We can also still use the confusion matrix, since this is a classification model.
 
 {% capture ex %}
 ```python
-
 # --- Predict classes and probabilities ---
 y_pred = log_reg.predict(X_features)
 y_proba = log_reg.predict_proba(X_features)[:, 1]
@@ -493,38 +501,17 @@ acc = accuracy_score(y_target, y_pred)
 prec = precision_score(y_target, y_pred)
 rec = recall_score(y_target, y_pred)
 f1 = f1_score(y_target, y_pred)
-auc = roc_auc_score(y_target, y_proba)
+aucScore = roc_auc_score(y_target, y_proba)
 
 print("=== Logistic Regression Model Performance ===")
 print(f"Accuracy:  {acc:.3f}")
 print(f"Precision: {prec:.3f}")
 print(f"Recall:    {rec:.3f}")
 print(f"F1 Score:  {f1:.3f}")
-print(f"AUC:       {auc:.3f}")
-
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-```python
-    === Logistic Regression Model Performance ===
-    Accuracy:  0.915
-    Precision: 0.930
-    Recall:    0.903
-    F1 Score:  0.916
-    AUC:       0.964
-```
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
+print(f"AUC:       {aucScore:.3f}")
 
 
 
-We can also still use the confusion matrix, since this is a classification model:
-
-
-{% capture ex %}
-```python
 # --- Confusion Matrix Visualization ---
 cm = confusion_matrix(y_target, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=log_reg.classes_)
@@ -545,18 +532,273 @@ plt.show()
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
+```python
+    === Logistic Regression Model Performance ===
+    Accuracy:  0.915
+    Precision: 0.930
+    Recall:    0.903
+    F1 Score:  0.916
+    AUC:       0.964
+```
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_18_0.png' | relative_url }}"
   alt=""
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
-
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
 
 
+
+
+
+
+
+#### Receiver Operating Characteristic (ROC) Curve and Area Under the Curve (AUC)
+
+When evaluating **classification models**, especially those that output **probabilities** (like logistic regression and Naive Bayes), it’s not enough to just look at accuracy.  
+
+Accuracy depends on the **classification threshold**, the cut off probability for a test point being considered part of class 1; typically set at $p = 0.5$. 
+
+What if we want to see how our model performs **across all possible thresholds**?
+
+That’s where the **ROC curve** and **AUC** come in.
+
+
+##### **1. What is the ROC Curve?**
+
+ROC stands for **Receiver Operating Characteristic**.  It’s a graphical representation of a model’s performance as the decision threshold varies.
+
+The ROC curve plots:
+
+- **True Positive Rate (TPR)** — also known as **Recall** or **Sensitivity**  
+  
+  $$
+  \text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+  $$
+  
+  where TP = True Positive and FN = False Negative. This just tells us of all the actual positives given, how many did we correctly identify.
+
+- **False Positive Rate (FPR)** — the proportion of negatives incorrectly labeled as positives  
+  
+  $$
+  \text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}}
+  $$
+  
+  where FP = False Positive and TN = True Negative. This just tells us of all the actual negatives given, how many did we mistakenly call positive.
+
+
+
+
+Recall, all of this information is contained in the confusion matrix:
+
+
+|              | Predicted True  | Predicted False |
+|:-------------|:----------------|:----------------|
+| **Actual True** | True Positive (TP) | False Positive (FP) |
+| **Actual False** | False Positive (FP) | True Negative (TN) |
+
+
+    
+Take for example the confusion matrix we just calculated: 
+
+|              | Predicted True  | Predicted False |
+|:-------------|:---------------:|:---------------:|
+| **Actual True** | 90 | 7 |
+| **Actual False** | 10 | 93 |
+
+
+We can collect the following data:  
+- TP = 90
+- TN = 93
+- FP = 7
+- FN = 10
+
+In this case the TPR and FPR would be:
+
+$$
+\text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}} =  \frac{90}{90 + 10} = 0.90 
+$$
+
+$$
+\text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}} = \frac{7}{7 + 93} = 0.07 
+$$
+
+
+
+This would be plotted in a graph with the TRP on ther vertical and the FPR on the horizontal. 
+
+Each point on the ROC curve corresponds to a different **classification threshold**.
+
+- A **lower threshold**: more positive predictions
+  - higher TPR *and* higher FPR  
+- A **higher threshold**: fewer positive predictions
+  - lower TPR *and* lower FPR
+
+
+
+{% capture ex %}
+```python
+# Make synthetic classified data
+X, y = make_classification(
+    n_samples=2000, n_features=2, n_redundant=0, n_informative=2,
+    n_clusters_per_class=1, flip_y=0.05, class_sep=1.5, random_state=42
+)
+
+# --- Train/test split ---
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)
+
+# --- Scale features ---
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# --- Train logistic regression model ---
+log_reg = LogisticRegression()
+log_reg.fit(X_train_scaled, y_train)
+
+# --- Predict probabilities for the positive class ---
+y_probs = log_reg.predict_proba(X_test_scaled)[:, 1]
+
+# --- Compute ROC curve and AUC ---
+fpr, tpr, thresholds = roc_curve(y_test, y_probs)
+roc_auc = auc(fpr, tpr)
+
+# --- Plot ROC Curve ---
+plt.figure(figsize=(6, 5))
+plt.plot(fpr, tpr, color="darkorange", lw=2, label=f"ROC curve (AUC = {roc_auc:.2f})")
+plt.plot([0, 1], [0, 1], color="gray", linestyle="--", lw=1, label="Random Guess")
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate (Recall)")
+plt.title("ROC Curve for Logistic Regression")
+plt.legend(loc="lower right")
+plt.grid(True, linestyle="--", alpha=0.6)
+plt.show()
+```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
+{% capture ex %}
+
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec04/output_27_0.png' | relative_url }}"
+  alt=""
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+    
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+
+
+    
+
+
+
+##### **2. Interpreting the ROC Curve**
+
+- The **closer the curve is to the top-left corner**, the better the model is at distinguishing between classes.  
+- A **diagonal line (y = x)** represents random guessing, our baseline — a model with **no discriminative power**.  
+
+**Visually**:
+- Random Guess → diagonal line
+- Better Model → bowing toward the upper left
+- Perfect Model → reaches top-left corner
+
+##### **3. Area Under the Curve (AUC)**
+
+The **Area Under the Curve (AUC)** quantifies the ROC curve into a single number:
+
+$$
+0 \leq \text{AUC} \leq 1
+$$
+
+by claculating the area under the ROC curve. A perfect model would make a right angle in the top left courner giveit it an area of 1 (horizontal length = 1, vertical length = 1; area = 1$\times$1 = 1). Non-perfect models will deviate below this and give a smaller area under the curve. 
+
+The following is a good breakdown of how the AUC can be interpreted:
+- **AUC = 1.0** → Perfect separation (likely overfitting!)
+- **AUC > 0.9** → Excellent
+- **AUC = 0.8–0.9** → Good
+- **AUC = 0.7–0.8** → Fair    
+- **AUC = 0.5** → Model performs no better than random chance  
+
+Intuitively, the AUC represents the probability a randomly chosen example of class 1 is given a higher prababilty than a randomly chosen class 0 data point.
+
+The AUC of the ROC is useful because:
+
+- It’s **independent of the classification threshold**.  
+- It works well for **imbalanced datasets**, where accuracy can be misleading.  
+- It focuses on the model’s ability to **rank predictions correctly**, not just label them.
+
+
+<div style="
+    background-color: #E6F2FA;
+    border-left: 6px solid #8EC9DC;
+    padding: 14px;
+    border-radius: 6px;
+">
+<b style="color:#1b4965;">Professional Practice</b>  
+<br><br>
+
+| Metric | Description | Ideal Value | When to Focus |
+|:--|:--|:--:|:--|
+| **Accuracy** | % of total predictions that are correct | 1.0 | Classes are balanced and misclassification costs are similar |
+| **Precision** | % of predicted positives that are truly positive | 1.0 | False positives are costly (e.g., flagging legit emails as spam) |
+| **Recall** | % of true positives correctly identified | 1.0 | False negatives are costly (e.g., missing a disease case) |
+| **F1 Score** | Harmonic mean of precision and recall | 1.0 | Need a single number that balances precision & recall |
+| **ROC Curve** | TPR vs. FPR across thresholds | N/A | Comparing rank-ordering quality across models |
+| **AUC** | Probability the model ranks a random positive above a random negative | 1.0 | Comparing overall discriminative ability, threshold-free |
+
+**Key idea:** No single metric tells the whole story. Always interpret metrics **together** and in the **business context**.
+
+---
+
+###### Practical habits that scale
+
+- **Always set a baseline.** Compare against `DummyClassifier` (e.g., most-frequent) to ensure you’re beating a trivial strategy.
+- **Pick a threshold on purpose.** Default 0.5 is rarely optimal. Choose it using:
+  - **Precision–Recall trade-off** (maximize F1, or meet a minimum precision/recall)
+  - **Cost-based thresholding** (pick the threshold that minimizes expected cost given FP/FN costs)
+- **Report both threshold-dependent _and_ threshold-free metrics.**  
+  Example: Accuracy/F1 **and** ROC–AUC (or PR–AUC for imbalanced data).
+- **Mind class imbalance.** Accuracy can look great while recall is terrible. Prefer **Precision-Recall–AUC**, **recall**, or **F1** in rare-event problems.
+- **Calibrate probabilities** when actions depend on scores (e.g., risk). Use **Platt scaling** or **isotonic regression** (`CalibratedClassifierCV`) and check **calibration curves**. (Look into this on your own.)
+- **Use cross-validation** for reliable estimates; report mean ± std over folds.
+- **Add uncertainty.** Where stakes are high, include **bootstrap CIs** for AUC, precision, recall, etc.
+- **Show the confusion matrix** at your chosen threshold; it makes trade-offs concrete.
+- **Document your operating point.** Record the chosen threshold, rationale, and the expected FP/FN trade-offs for stakeholders.
+
+---
+
+###### Quick “how-to” checklist (scikit-learn)
+- Predicted probabilities: `y_proba = model.predict_proba(X)[:,1]`
+- ROC–AUC: `roc_auc_score(y_true, y_proba)`
+- PR–AUC: `average_precision_score(y_true, y_proba)`
+- Choose threshold `t`: `y_pred = (y_proba >= t).astype(int)`
+- Confusion matrix & report: `confusion_matrix(...)`, `classification_report(...)`
+- Probability calibration: `CalibratedClassifierCV(model, method="isotonic" or "sigmoid")`
+
+</div>
+
+
+<div style="
+    background-color: #f0f7f4;
+    border-left: 6px solid #4bbe7e;
+    padding: 10px;
+    border-radius: 5px;
+">
+<b>Key Takeaways:</b> 
+
+- Logistic regression outputs **probabilities**, not hard classifications.  
+- By default, sklearn classifies as class 1 if $ P(y=1) > 0.5 $, but you can, and generally should, adjust and justify the threshold.  
+- Evaluate models using **multiple metrics** — especially when classes are imbalanced.  
+- **ROC curves** and **AUC** summarize the model’s overall ranking ability, independent of any threshold.
+</div>
+
+Next, we’ll move into *multi-class logistic regression* and *regularization (L1/L2)* — powerful tools for larger, more complex datasets.
 
 
 
@@ -739,263 +981,6 @@ Threshold = 0.90 | Precision = 1.00 | Recall = 0.74 | F1 = 0.85
 
 > A good data scientist doesn’t just train a model — they decide **how it will be used** in the real world.
 </div>
-
-
-
-
-
-
-
-#### Receiver Operating Characteristic (ROC) Curve and Area Under the Curve (AUC)
-
-When evaluating **classification models**, especially those that output **probabilities** (like logistic regression and Naive Bayes), it’s not enough to just look at accuracy.  
-Accuracy depends on the **classification threshold** (often 0.5 by default), but what if we want to see how our model performs **across all possible thresholds**?
-
-That’s where the **ROC curve** and **AUC** come in.
-
-
-##### **1. What is the ROC Curve?**
-
-ROC stands for **Receiver Operating Characteristic**.  It’s a graphical representation of a model’s performance as the decision threshold varies.
-
-The ROC curve plots:
-
-- **True Positive Rate (TPR)** — also known as **Recall** or **Sensitivity**  
-  
-  $$
-  \text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}
-  $$
-  
-  where TP = True Positive and FN = False Negative. This just tells us of all the actual positives given, how many did we correctly identify.
-
-- **False Positive Rate (FPR)** — the proportion of negatives incorrectly labeled as positives  
-  
-  $$
-  \text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}}
-  $$
-  
-  where FP = False Positive and TN = True Negative. This just tells us of all the actual negatives given, how many did we mistakenly call positive.
-
-
-###### For example, consider the following confusion matrix:
-
-{% capture ex %}
-```python
-# --- Confusion Matrix Visualization ---
-cm = confusion_matrix(y_target, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=log_reg.classes_)
-
-# Plot the confusion matrix
-disp.plot(cmap="Blues", values_format='d')
-
-# Remove gridlines
-plt.grid(False)
-
-# Optional: clean up tick marks and frame
-plt.title("Confusion Matrix")
-plt.tight_layout()
-plt.show()
-
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec04/output_25_0.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
-    
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
-
-
-    
-
-
-We can collect the following data:  
-- TP = 90
-- TN = 93
-- FP = 7
-- FN = 10
-
-In this case the TPR and FPR would be:
-
-$$
-\text{TPR} = \frac{90}{90 + 10} = 0.90 \qquad\qquad \text{FPR} = \frac{7}{7 + 93} = 0.07 
-$$
-
-This would be plotted in a graph with the TRP on ther vertical and the FPR on the horizontal. 
-
-Each point on the ROC curve corresponds to a different **classification threshold**.
-
-- A **lower threshold** → more positive predictions → higher TPR *and* higher FPR  
-- A **higher threshold** → fewer positive predictions → lower TPR *and* lower FPR
-
-
-{% capture ex %}
-```python
-# Make synthetic classified data
-X, y = make_classification(
-    n_samples=2000, n_features=2, n_redundant=0, n_informative=2,
-    n_clusters_per_class=1, flip_y=0.05, class_sep=1.5, random_state=42
-)
-
-# --- Train/test split ---
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=42, stratify=y
-)
-
-# --- Scale features ---
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-# --- Train logistic regression model ---
-log_reg = LogisticRegression()
-log_reg.fit(X_train_scaled, y_train)
-
-# --- Predict probabilities for the positive class ---
-y_probs = log_reg.predict_proba(X_test_scaled)[:, 1]
-
-# --- Compute ROC curve and AUC ---
-fpr, tpr, thresholds = roc_curve(y_test, y_probs)
-roc_auc = auc(fpr, tpr)
-
-# --- Plot ROC Curve ---
-plt.figure(figsize=(6, 5))
-plt.plot(fpr, tpr, color="darkorange", lw=2, label=f"ROC curve (AUC = {roc_auc:.2f})")
-plt.plot([0, 1], [0, 1], color="gray", linestyle="--", lw=1, label="Random Guess")
-plt.xlabel("False Positive Rate")
-plt.ylabel("True Positive Rate (Recall)")
-plt.title("ROC Curve for Logistic Regression")
-plt.legend(loc="lower right")
-plt.grid(True, linestyle="--", alpha=0.6)
-plt.show()
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec04/output_27_0.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
-    
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
-
-
-    
-
-
-
-##### **2. Interpreting the ROC Curve**
-
-- The **closer the curve is to the top-left corner**, the better the model is at distinguishing between classes.  
-- A **diagonal line (y = x)** represents random guessing, our baseline — a model with **no discriminative power**.  
-
-**Visually**:
-- Random Guess → diagonal line
-- Better Model → bowing toward the upper left
-- Perfect Model → reaches top-left corner
-
-##### **3. Area Under the Curve (AUC)**
-
-The **Area Under the Curve (AUC)** quantifies the ROC curve into a single number:
-
-$$
-0 \leq \text{AUC} \leq 1
-$$
-
-by claculating the area under the ROC curve. A perfect model would make a right angle in the top left courner giveit it an area of 1 (horizontal length = 1, vertical length = 1; area = 1$\times$1 = 1). Non-perfect models will deviate below this and give a smaller area under the curve. 
-
-The following is a good breakdown of how the AUC can be interpreted:
-- **AUC = 1.0** → Perfect separation (likely overfitting!)
-- **AUC > 0.9** → Excellent
-- **AUC = 0.8–0.9** → Good
-- **AUC = 0.7–0.8** → Fair    
-- **AUC = 0.5** → Model performs no better than random chance  
-
-Intuitively, the AUC represents the probability a randomly chosen example of class 1 is given a higher prababilty than a randomly chosen class 0 data point.
-
-The AUC of the ROC is useful because:
-
-- It’s **independent of the classification threshold**.  
-- It works well for **imbalanced datasets**, where accuracy can be misleading.  
-- It focuses on the model’s ability to **rank predictions correctly**, not just label them.
-
-
-<div style="
-    background-color: #E6F2FA;
-    border-left: 6px solid #8EC9DC;
-    padding: 14px;
-    border-radius: 6px;
-">
-<b style="color:#1b4965;">Professional Practice</b>  
-<br><br>
-
-| Metric | Description | Ideal Value | When to Focus |
-|:--|:--|:--:|:--|
-| **Accuracy** | % of total predictions that are correct | 1.0 | Classes are balanced and misclassification costs are similar |
-| **Precision** | % of predicted positives that are truly positive | 1.0 | False positives are costly (e.g., flagging legit emails as spam) |
-| **Recall** | % of true positives correctly identified | 1.0 | False negatives are costly (e.g., missing a disease case) |
-| **F1 Score** | Harmonic mean of precision and recall | 1.0 | Need a single number that balances precision & recall |
-| **ROC Curve** | TPR vs. FPR across thresholds | N/A | Comparing rank-ordering quality across models |
-| **AUC** | Probability the model ranks a random positive above a random negative | 1.0 | Comparing overall discriminative ability, threshold-free |
-
-**Key idea:** No single metric tells the whole story. Always interpret metrics **together** and in the **business context**.
-
----
-
-###### Practical habits that scale
-
-- **Always set a baseline.** Compare against `DummyClassifier` (e.g., most-frequent) to ensure you’re beating a trivial strategy.
-- **Pick a threshold on purpose.** Default 0.5 is rarely optimal. Choose it using:
-  - **Precision–Recall trade-off** (maximize F1, or meet a minimum precision/recall)
-  - **Cost-based thresholding** (pick the threshold that minimizes expected cost given FP/FN costs)
-- **Report both threshold-dependent _and_ threshold-free metrics.**  
-  Example: Accuracy/F1 **and** ROC–AUC (or PR–AUC for imbalanced data).
-- **Mind class imbalance.** Accuracy can look great while recall is terrible. Prefer **Precision-Recall–AUC**, **recall**, or **F1** in rare-event problems.
-- **Calibrate probabilities** when actions depend on scores (e.g., risk). Use **Platt scaling** or **isotonic regression** (`CalibratedClassifierCV`) and check **calibration curves**. (Look into this on your own.)
-- **Use cross-validation** for reliable estimates; report mean ± std over folds.
-- **Add uncertainty.** Where stakes are high, include **bootstrap CIs** for AUC, precision, recall, etc.
-- **Show the confusion matrix** at your chosen threshold; it makes trade-offs concrete.
-- **Document your operating point.** Record the chosen threshold, rationale, and the expected FP/FN trade-offs for stakeholders.
-
----
-
-###### Quick “how-to” checklist (scikit-learn)
-- Predicted probabilities: `y_proba = model.predict_proba(X)[:,1]`
-- ROC–AUC: `roc_auc_score(y_true, y_proba)`
-- PR–AUC: `average_precision_score(y_true, y_proba)`
-- Choose threshold `t`: `y_pred = (y_proba >= t).astype(int)`
-- Confusion matrix & report: `confusion_matrix(...)`, `classification_report(...)`
-- Probability calibration: `CalibratedClassifierCV(model, method="isotonic" or "sigmoid")`
-
-</div>
-
-
-<div style="
-    background-color: #f0f7f4;
-    border-left: 6px solid #4bbe7e;
-    padding: 10px;
-    border-radius: 5px;
-">
-<b>Key Takeaways:</b> 
-
-- Logistic regression outputs **probabilities**, not hard classifications.  
-- By default, sklearn classifies as class 1 if $ P(y=1) > 0.5 $, but you can, and generally should, adjust and justify the threshold.  
-- Evaluate models using **multiple metrics** — especially when classes are imbalanced.  
-- **ROC curves** and **AUC** summarize the model’s overall ranking ability, independent of any threshold.
-</div>
-
-Next, we’ll move into *multi-class logistic regression* and *regularization (L1/L2)* — powerful tools for larger, more complex datasets.
 
 
 
