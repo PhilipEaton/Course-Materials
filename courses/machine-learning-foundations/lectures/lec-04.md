@@ -1268,7 +1268,7 @@ Naïve Bayes takes these small clues from each feature and combines them into a 
 This kind of reasoning is built on **Bayes’ Theorem**, which connects *what we already know* with *what we just observed.*
 
 
-Let's begin by learning about prabability and Bayes' Theorem.
+Let's begin by learning about prabability and **Bayes' Theorem**.
 
 
 
@@ -1282,32 +1282,77 @@ Let's begin by learning about prabability and Bayes' Theorem.
 
 ### Bayes’ Theorem — The Foundation of Probabilistic Reasoning
 
-
-Before we jump right into using a Naive Bayes classifier, we need to understand **Bayes’ Theorem**,  which is the mathematical foundation of probabilistic classification.
+Before we jump right into using a Naïve Bayes classifier, we need to understand **Bayes’ Theorem**.
 
 At its heart, Bayes’ Theorem answers this question:
 
-> “Given that we observed some evidence, what is the probability that a certain hypothesis is true?”
+> “Given that we observed some evidence, how should we *update* what we believe about what’s going on?”
 
-Written mathematically, this can be sxpressed as
+This is an updating process, and it’s surprisingly close to how humans reason and learn about the world.
+
+
+#### A Conceptual Example
+
+Suppose you’re shown the silhouette of an animal. The outline is completely black, so you can only see its shape.
+
+Based on that **initial information**, you think:
+- “This is probably a **dog**.”
+
+You might even say:
+- *Given what I know right now, there’s about an 80% chance it’s a dog.*
+
+This initial belief is called your **prior probability**.
+
+Now, more information is revealed. You notice features that are **very common for dogs** but **less common for other animals** (like cats or wolves).
+
+You think:
+- “If this animal really *were* a dog, seeing these features would make a lot of sense.”
+
+That idea, *how compatible the evidence is with a particular explanation*, is called the **likelihood**.
+
+Taking both pieces together:
+- what you believed before (**the prior**), and
+- how well the new evidence fits that belief **compared to alternatives**,
+
+you update your belief and conclude:
+- “Given everything I’ve seen so far, I’m now even more confident this is a dog.”
+
+This updated belief is called the **posterior probability**.
+
+
+#### The Big Idea
+
+This process repeats every time new evidence appears:
+
+1. Start with a **prior belief**.
+2. Ask how likely the new evidence would be *if that belief were true* (and compared to other possibilities).
+3. **Update** your belief to form a posterior.
+4. Use that posterior as your new prior going forward.
+
+This cycle — *prior → evidence → updated belief* — is Bayesian reasoning.
+
+Naïve Bayes classifiers automate this process using math and data, allowing the model to update probabilities systematically instead of intuitively.
+
+
+#### The Math
+
+Written mathematically, this can be expressed as
 
 $$
 P(H\vert E) = \frac{P(E|H) \cdot P(H)}{P(E)}
 $$
 
 where:
-- $ P(H\vert E) $ = *Posterior Probability*
-    - How likely the hypothesis is given the evidence.  
-- $ P(E\vert H) $ = *Likelihood*
-    - How likely we are to see this evidence if the hypothesis were true.  
 - $ P(H) $ = *Prior Probability*
     - How likely the hypothesis was before seeing the evidence.  
 - $ P(E) $ = *Evidence*
     - How likely this evidence is under all possible hypotheses.
+- $ P(E\vert H) $ = *Likelihood*
+    - How likely we are to see this evidence if the hypothesis were true.  
+- $ P(H\vert E) $ = *Posterior Probability*
+    - How likely the hypothesis is given the evidence.  
 
-#### Notational Comment
-
-The vertical bar "$\vert$" means "given". 
+Note: The vertical bar "$\vert$" means "given". 
 
 So, $H\vert E$ reads as "$H$ given $E$" and it taken to mean "$H$ occures given $E$ happened."
 
@@ -1319,14 +1364,18 @@ Suppose:
 - 1% of emails are spam.
     >  This directly tells us: $ P(\text{Spam}) = 0.01 $
 - 90% of spam emails contain the word “lottery”
-    > This is the chance of seeing the word "lottery" in the email given that is is spam:  → $ P(\text{Lottery}\vert \text{Spam}) = 0.9 $
+    > This is the chance of seeing the word "lottery" in the email given that is is spam: $ P(\text{Lottery}\vert \text{Spam}) = 0.9 $
 - 5% of non-spam emails contain “lottery”
-  > This is the chance of seeing the word "lottery" in the email given that is is NOT spam: → $ P(\text{Lottery}\vert \text{Not Spam}) = 0.05 $
+  > This is the chance of seeing the word "lottery" in the email given that is is NOT spam: $ P(\text{Lottery}\vert \text{Not Spam}) = 0.05 $
 
-This means the probability to seeing the word "lottery" in an email will be:
+The probability to seeing the word "lottery" in an email will be:
 
 $$
-P(\text{Lottery}) = P(\text{Lottery}\vert \text{Spam}) P(\text{Spam}) + P(\text{Lottery}\vert \text{Not Spam}) P(\text{Not Spam}) = (0.9) (0.01) + (0.05) (0.99) = 0.0585
+\begin{aligned}
+P(\text{Lottery}) &= P(\text{Lottery}\vert \text{Spam}) P(\text{Spam}) + P(\text{Lottery}\vert \text{Not Spam}) P(\text{Not Spam}) \\
+&= (0.9) (0.01) + (0.05) (0.99) \\
+&= 0.0585
+\end{aligned}
 $$
 
 Now we can ask what is the chance an email is spam given the word "lottery" is included ($P(\text{Spam}\vert\text{Lottery})$). According to Bayes' Theorem:
@@ -1336,7 +1385,7 @@ P(\text{Spam}\vert \text{Lottery}) =
 \frac{P(\text{Lottery}\vert \text{Spam}) P(\text{Spam})}{P(\text{Lottery})} = \frac{(0.9)(0.01)}{0.0585} = 0.154
 $$
 
-This gives us a *probability* that the email is spam as 15.4%, not a simple yes/no answer. Even though “lottery” appears very often in spam, the word alone gives only a 15.4% chance that the email is spam — far from a sure thing.
+This gives us a *probability* that the email is spam as 15.4%, not a simple yes/no answer. Even though “lottery” appears very often in spam, the word alone gives only a 15.4% chance that the email is spam... far from a sure thing.
 
 
 {% capture ex %}
@@ -1392,7 +1441,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_38_0.png' | relative_url }}"
-  alt=""
+  alt="Description of these plots given in the explanations below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
    
 {% endcapture %}
@@ -1406,7 +1455,7 @@ plt.show()
 
 In the **top plot**, we see two overlapping curves:
 - The **blue dashed** curve shows how likely the evidence is if the data came from *Class A*.
-- The **red dashed** curve shows the same for *Class B*.
+- The **red dash-dotted** curve shows the same for *Class B*.
 
 This is our *likelihood* — how each class “expects” the evidence to look.
 
@@ -1414,11 +1463,13 @@ This is our *likelihood* — how each class “expects” the evidence to look.
 In the **bottom plot**, we see how Bayes’ theorem combines those likelihoods 
 with our *priors* to produce *posterior probabilities*:
 
-- On the left side (where evidence looks like Class A), $ P(A|E) $ is high.  
-- On the right side (where evidence looks like Class B), $ P(B|E) $ is high.  
-- Around the center, both probabilities are similar — this is our **decision boundary**.
+- On the left side (where evidence looks like Class A, dashed line), $ P(A|E) $ is high.  
+- On the right side (where evidence looks like Class B, dash-dotted line), $ P(B|E) $ is high.  
+- Around the center, both probabilities are similar. 
+    - This is our **decision boundary**.
 
 This is what all probabilistic classifiers (including Naïve Bayes and Logistic Regression) do behind the scenes:
+
 > They compute the likelihood of the data under each class and then choose the class with the highest posterior probability.
 
 
@@ -1433,7 +1484,7 @@ This is what all probabilistic classifiers (including Naïve Bayes and Logistic 
 
 1. **Priors:**  
    - Priors represent what we believe *before* seeing any evidence.  
-   - Changing them shifts our conclusions — even if the data doesn’t change.
+   - Changing them shifts our conclusions even if the data doesn’t change.
 
 
 2. **Likelihood:**  
@@ -1448,12 +1499,11 @@ This is what all probabilistic classifiers (including Naïve Bayes and Logistic 
 
 
 #### Key Idea
-All of machine learning is, in some sense, a form of **informed updating**:
+
+All of probabilistic machine learning is, in some sense, a form of **informed updating**:
 > Start with what you believe (priors),  
 > see new data (evidence),  
 > and update your belief (posterior).  
-
-This is literally the wy humans build confidence in ideas and beliefs!
 
 Naïve Bayes simply applies this process **for every feature**, assuming each feature contributes independently.
 
@@ -1467,7 +1517,7 @@ Naïve Bayes simply applies this process **for every feature**, assuming each fe
 #### Example: Bayesian Updating with a Weighted Coin
 
 
-This example demonstrates **Bayesian inference** in action using a simple coin-flip experiment. Our goal is to decide whether a coin is **fair** (50/50) or **weighted** (biased toward heads), based on observed flips.
+Let's see how **Bayesian inference** work in action using a simple coin-flip experiment. Our goal is to decide whether a coin is **fair** (50/50) or **weighted** (biased toward heads), based on observed flips.
 
 
 ##### The Scenario
@@ -1487,16 +1537,9 @@ For each coin flip:
    - Fair coin: $ P(x\vert\text{fair}) = 0.5 $
    - Weighted coin: $ P(x\vert\text{weighted}) = p_{\text{predictive}} $
        - $ p_{\text{predictive}} $ comes from some underlying probability distribution.
-       - In this case it will follow a **Beta distribution**, but we shouldn't get caught up in the details here.   
+       - In this case it will follow a Beta distribution, but we shouldn't get caught up in the details here.   
 
-2. Update the **Bayes factor (evidence ratio)** comparing how much more likely the data are under the weighted model than the fair model.
-
-3. Use this to update the **posterior model probability**:
-   $$
-   P(\text{weighted} \vert \text{data}) = \frac{P(\text{weighted}) \times \text{Bayes Factor}}{1 + P(\text{weighted}) \times \text{Bayes Factor}}
-   $$
-
-4. Update the Beta posterior for $p$ given the data at hand.
+2. Use this to update the **posterior model probability** using Bayes Theorem.
 
 
 {% capture ex %}
@@ -1629,7 +1672,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_42_1.png' | relative_url }}"
-  alt=""
+  alt="The left is a plot of the posterior probability as a function of the number of flips and the right is a plot of an estimation of how unfair the count is as a function of the number of heads. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
@@ -1646,12 +1689,11 @@ plt.show()
 Tracks the *posterior probability* that the coin is **weighted** after each flip. If the coin truly is biased, this value will climb toward 1 as evidence accumulates. If it’s actually fair, the probability will fall toward 0.
 
 **Right Plot:**  
-Shows how our estimate of the coin’s **bias parameter $p$** evolves over time. The green curve is the **posterior mean**, and the shaded region is the **95% credible interval**.
+Shows how our estimate of the coin’s **bias parameter $p$** evolves over time. The green curve is the **posterior mean**, and the shaded region is the **95% confidence interval**.
 
 As we observe more flips:
-- The credible interval narrows (our uncertainty decreases).
+- The confidence interval narrows (we become more certain of our answer).
 - The mean approaches the true value of $p_{\text{true}}$.
-- The model’s confidence (posterior probability of “weighted”) becomes decisive.
 
 
 
@@ -1661,17 +1703,14 @@ As we observe more flips:
 #### Example: Bayesian Updating with Two Features
 
 In this demonstration, we extend the logic of our coin-flip example into two dimensions.
-We now have two measurable features — for instance, these could represent observable traits like temperature and humidity, or height and weight — and we’re trying to decide which of two possible models (H₀ or H₁) best explains our data.
+
+We now have two measurable features. For instance, these could represent observable traits like temperature and humidity, or height and weight. We’re trying to decide which of two possible models (H₀ or H₁) best explains our data.
 
 Each model assumes that the data come from a 2D Gaussian distribution (a bell curve in two dimensions). As we collect more samples, we update our belief about which hypothesis is more likely using Bayes’ theorem.
 
-The left plot shows how our posterior probability for H₁ evolves as we gather more evidence.
-The right plot shows the feature space, with a decision boundary separating regions that are more likely under H₀ versus H₁. Points are drawn one by one, and as more are observed, the model becomes increasingly confident about which hypothesis generated the data.
+The **left plot** shows how our posterior probability for H₁ evolves as we gather more evidence.
 
-**Key Ideas**
-- Features can work together: A single variable may not be enough to classify accurately, but two (or more) features combined can reveal strong patterns.
-- Overlap causes uncertainty: When distributions overlap (high noise or small separation), the model updates its confidence more slowly.
-- Bayesian inference accumulates evidence: Early observations may fluctuate, but with enough data, the posterior tends to stabilize near the true generating process.
+The **right plot** shows the feature space, with a decision boundary separating regions that are more likely under H₀ versus H₁. Points are drawn one by one, and as more are observed, the model becomes increasingly confident about which hypothesis generated the data.
 
 **Try Adjusting**:
 - separation — smaller values make classes harder to distinguish.
@@ -1822,7 +1861,10 @@ plt.show()
 {% include codeoutput.html content=ex %}  
 
 
- 
+ **Key Ideas**
+- Features can work together: A single variable may not be enough to classify accurately, but two (or more) features combined can reveal strong patterns.
+- Overlap causes uncertainty: When distributions overlap (high noise or small separation), the model updates its confidence more slowly.
+- Bayesian inference accumulates evidence: Early observations may fluctuate, but with enough data, the posterior tends to stabilize near the true generating process.
 
 
 
@@ -1838,7 +1880,7 @@ Now that we understand how Bayes’ Theorem works for a single piece of evidence
 
 In classification, we often want to know:
 
-> “Given a set of features — say, bill length, flipper length, and body mass — what is the probability that this penguin belongs to a certain species?”
+> “Given a set of features (say, bill length, flipper length, and body mass) what is the probability that this penguin belongs to a certain species?”
 
 We can write that as:
 
@@ -1853,7 +1895,7 @@ That’s great in theory, but there’s a problem:
 - Estimating $ P(\text{Features}\vert\text{Species}) $ directly would require *tons* of data.
 
 So how do we make this tractable?  
-We make one bold — and very helpful — **assumption**.
+> We make one bold, and very helpful, **assumption**.
 
 
 
