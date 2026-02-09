@@ -273,7 +273,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_8_0.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot of data across two features. The data is colored to indicate class 0, towards the bottom, and class 1, towards the top, though there is some overlap, meaning the classes are not totally separated across these features."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -435,7 +435,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_13_0.png' | relative_url }}"
-  alt=""
+  alt="Decision boundary for a logistis curve using the previous data. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -543,7 +543,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_18_0.png' | relative_url }}"
-  alt=""
+  alt="A confusion matrix with some misclassifications. There are 10 instances of 1 beping labeled a 0 and 7 instances of a 0 being labled a 1. Otherwise, 0 was labeled correctly 0 times and 1 correctly 93 times. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 {% endcapture %}
@@ -1852,7 +1852,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_45_1.png' | relative_url }}"
-  alt=""
+  alt="Top plot shows the probbility of it being hypothesis 1 as a function of the number of observations. The bottom plot is a decicion boundary for the data."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -2725,7 +2725,7 @@ for s, p, pr in zip(samples, pred, proba):
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_64_1.png' | relative_url }}"
-  alt=""
+  alt="Confision matrix with 1 misclassificaiton of span being labeled as ham. Otherwise, ham was correctly identifies 3 times and spam 2 times."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -2998,7 +2998,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_68_0.png' | relative_url }}"
-  alt="Teo classes of cdata form half circle arches in the feature plot with part of their regions overlapped. K-Means, Logistic Regression, and Naive Bayes all perform poorly while K-NN performed well."
+  alt="Two classes of cdata form half circle arches in the feature plot with part of their regions overlapped. K-Means, Logistic Regression, and Naive Bayes all perform poorly while K-NN performed well."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
