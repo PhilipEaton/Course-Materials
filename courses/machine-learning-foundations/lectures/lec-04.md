@@ -1905,34 +1905,34 @@ So how do we make this tractable?
 
 #### The “Naïve” Assumption
 
-Naïve Bayes assumes that all features are **conditionally independent** given the class.
+Naïve Bayes assumes that all features are **conditionally independent** given the class. That means each feature contributes its own independent piece of evidence for or against a class. 
 
-In math terms:
-
-$$
-P(x_1, x_2, ..., x_n \very \text{Class}) = P(x_1 \vert \text{Class}) P(x_2 \vert \text{Class}) \cdots =  \prod_i P(x_i \vert \text{Class})
-$$
-
-That means each feature contributes its own independent piece of evidence for or against a class. This assumption allows us to write the probability of a class given the features in the following manner:
+This assumption allows us to write the probability of a class given the features in the following manner:
 
 $$
 P(\text{Class} \vert x_1, x_2, ..., x_n) \;\propto\; P(\text{Class}) \prod_i P(x_i \vert C)
 $$
 
-This assumption is almost never *literally* true. For example, in the Iris dataset, petal length and petal width are clearly correlated. But, it still works remarkably well in practice because it captures *most* of the structure in the data.
+This assumption is almost never *literally* true. 
+
+For example, in the Iris dataset, petal length and petal width are clearly correlated. But, it still works remarkably well in practice because it captures *most* of the structure in the data.
 
 ##### Intuition
+
 Each feature acts like a separate “vote.” If multiple features all point toward the same class, the combined probability for that class increases rapidly.
 
-We’re not saying the features don’t interact — they likely do — we’re just saying the model *assumes they don’t* in order to make calculations fast and stable.
+We’re not saying the features aren't related (they likely are) we’re just saying the model *assumes they aren't* in order to make calculations fast and stable.
 
 ##### Example of the Intuition
+
 Imagine trying to classify animals using just two features: “has fur” and “lays eggs.”
 
 - If “has fur” → likely a mammal.  
 - If “lays eggs” → likely not a mammal.
-- These features are not conditionally independent - platypus. 
-- However, we can assume both features are conditionally independent, since the cross over is tiny compared to the number of cases where they do not cross over.
+
+These features are not conditionally independent (i.e., a platypus). 
+
+However, we can assume both features are conditionally independent, since the cross over is tiny compared to the number of cases where they do not cross over.
 
 
 {% capture ex %}
@@ -2027,7 +2027,7 @@ print(f"P(Not Mammal | evidence) = {posterior_NotMammal:.3f}")
 
 
 
-Even though “has fur” strongly favors mammal, the evidence “lays eggs” overwhelms it — the combined probability now favors not mammal.
+Even though “has fur” strongly favors mammal, the evidence “lays eggs” overwhelms it and the combined probability now favors Not Mammal.
 
 <div style="
     background-color: #f0f7f4;
@@ -2043,7 +2043,7 @@ Even though “has fur” strongly favors mammal, the evidence “lays eggs” o
 - Despite its simplicity, Naïve Bayes performs surprisingly well in practice, especially when features provide complementary information.
 </div>
 
-#### Technical Note:
+#### Technical Note
 
 Most systems will actually calculate the log-probability since it is easier to process and is less prone to overflow errors in computer archatecture. By this we mean numbers get too large or small for the computer to keep track of. Taking the log of the prabability turns the product above into a summation:
 
@@ -2061,8 +2061,7 @@ You do not need to worry about this technical detial. It is being mentioned here
 
 ### Two-Feature Naïve Bayes Example: Flower Classification
 
-Here we simulate two types of flowers — **Setosa** and **Not Setosa** — based on their 
-petal **length** and **width**.
+Here we simulate two types of flowers — **Setosa** and **Not Setosa** — based on their petal **length** and **width**.
 
 Each feature *on its own* only partially separates the species:
 - A flower with long petals is *probably* not Setosa.
@@ -2070,18 +2069,15 @@ Each feature *on its own* only partially separates the species:
   
 But neither feature is perfect in isolation.
 
-When we **combine both features**, however, their joint probability distributions 
-make the classes easily separable.
+When we **combine both features**, however, their combined information (called the **joint probability**) makes the classes easily separable.
 
-Naïve Bayes models this joint probability as the product of the individual ones:
+Naïve Bayes models this **joint probability** as the product of the individual ones:
 
 $$
 P(\text{Class}\vert x_1, x_2) \propto P(\text{Class}) \times P(x_1\vert \text{Class}) \times P(x_2\vert \text{Class})
 $$
 
 Assuming independence between petal length and width within each class, the model uses simple Gaussian likelihoods (bell curves) for each feature.
-
-The **decision boundary** (shown by the shaded regions) is where the model assigns equal probability to each class. Notice that the combination of both features yields excellent separation — far better than using either feature alone.
 
 
 {% capture ex %}
@@ -2142,7 +2138,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_52_0.png' | relative_url }}"
-  alt=""
+  alt="Decision boundaties for the  above described problem."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
     
@@ -2166,10 +2162,14 @@ plt.show()
 Now that we understand how Naïve Bayes *thinks*, let’s put it into action.
 
 We’ll use the **Iris dataset**, which has:
-- 4 continuous features: sepal length, sepal width, petal length, petal width
+- 4 continuous features: `sepal length`, `sepal width`, `petal length`, `petal width`
 - 3 species (classes)
 
-Because the features are continuous, we’ll use <strong>Gaussian Naïve Bayes</strong> (GNB). This assumes that for each class, each feature is normally distributed (bell-shaped) and that features are conditionally independent given the class (Naive Bayes).
+Because the features are continuous, we’ll use <strong>Gaussian Naïve Bayes</strong> (GNB). This assumes that *for each class*, each feature is normally distributed (bell-shaped) and that features are conditionally independent given the class (Naive Bayes).
+
+$$
+P(\text{Feature}|\text{Class}) \propto \text{A Bell Curve}
+$$
 
 **What the model learns**  
 - For *each class* and *each feature*, it estimates the mean and variance from the training data (simple sample averages within the class).
@@ -2192,14 +2192,11 @@ All measured in centimeters.
 
 
 **How prediction works**  
-1. For a new flower, compute the Gaussian likelihood of each feature under each class using that class’s mean and variance.
-2. Multiply these likelihoods across features (the Naïve independence step) and combine with the class prior to get a score proportional to the posterior.
+1. Find the probability this new flower is isa member of each class for each measurement (feature).
+2. Multiply these prababilities across features (the Naïve independence step) and combine with the class prior to get a posterior score.
 3. Pick the class with the highest posterior score.
 
-
-> In short: GNB fits a mean and variance per feature per class, assumes independence across features within a class, and chooses the class with the largest resulting posterior.
-
-
+> In short: GNB fits a mean and variance per feature per class, assumes independence across features within a class, and chooses the class with the largest resulting posterior score.
 
 
 {% capture ex %}
@@ -2291,7 +2288,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_56_0.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix. the only misclassifications are 3 virginicas being mistaken as versicolor and 1 versicolor being mistaken as a virginica."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -2371,26 +2368,13 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_59_0.png' | relative_url }}"
-  alt=""
+  alt="Decision regions for the three classes. Versicolor and virginica are shown to have some overlap, meaning they are very similar in therms of the features. This helps explain the misclassifications."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
-
-
-
-  
-#### Interpreting the Boundaries
-
-Each color region represents the area where the Naïve Bayes model 
-believes one class is *most probable*.
-
-Notice that:
-- Boundaries are **soft** and somewhat **curved**, unlike the sharp linear lines of logistic regression.  
-- Naïve Bayes naturally handles **uncertainty** — points near the edges have more ambiguous probabilities.  
-- It performs especially well when the classes have **distinct statistical distributions** (like different means and variances).
 
 
 
@@ -2403,9 +2387,9 @@ Notice that:
 
 ### Types of Naïve Bayes Classifiers
 
-"Naïve Bayes" isn't a single algorithm — it's a family of models that all use **Bayes’ Theorem** under the assumption that features are **conditionally independent** given the class.
+"Naïve Bayes" isn't a single algorithm, it's a family of models that all use **Bayes’ Theorem** under the assumption that features are **conditionally independent** within each class.
 
-Each version of Naïve Bayes makes a different assumption about the **distribution** of the features.
+Each version of Naïve Bayes makes a different assumption about the underlying **distribution** of the features.
 
 | Type | Data Type | Distributional Assumption | Example Applications |
 |:------|:-----------|:--------------------------|:----------------------|
@@ -2413,7 +2397,7 @@ Each version of Naïve Bayes makes a different assumption about the **distributi
 | **MultinomialNB** | Discrete counts | Features represent frequency or counts | Text classification, spam filters |
 | **BernoulliNB** | Binary | Features are True/False (0/1) | Document term presence, yes/no surveys |
 
-These variants all compute class probabilities using Bayes’ theorem — they just calculate likelihoods differently.
+These variants all use Bayes’ theorem, they just calculate likelihoods of the evidence differently.
 
 
 {% capture ex %}
@@ -2532,7 +2516,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_62_1.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix for a Gaussian Naive Bayes of the iris data. The only misclassifications are 3 virginicas being mistaken as versicolor and 1 versicolor being mistaken as a virginica."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
 
     
@@ -2564,7 +2548,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_62_3.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix for a Multinomial Naive Bayes of the iris data. The only misclassifications is 1 virginicas being mistaken as versicolor."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -2833,12 +2817,17 @@ But, like all models, it comes with some caveats.
    *Solution:* Use “Laplace Smoothing” to prevent zeros.
 
 4. **Not Good for Boundary Precision:**  
-   Naïve Bayes makes “soft” decisions — it’s great for ranking but may be less sharp 
-   when you need precise decision boundaries.
+   Naïve Bayes makes “soft” decisions making itgreat for ranking but may be less sharp when you need precise decision boundaries.
 
----
 
-Let’s visualize a couple of quirks — 1. the *independence assumption failure*, and 2. data with non-normal shapes.
+Let’s visualize two common problems:
+
+> The *independence assumption failure*
+
+and 
+
+> Irregularly shaped patterns in feature plots
+
 
 
 
@@ -2907,7 +2896,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_66_0.png' | relative_url }}"
-  alt=""
+  alt="The data is scatter plotted across two features, however the classes are not separated at all. This is a violation of the independence assumption for the features since the two features are, in this example, highly correlated and thus do not independently add information to help separate the classes.. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -3009,7 +2998,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_68_0.png' | relative_url }}"
-  alt=""
+  alt="Teo classes of cdata form half circle arches in the feature plot with part of their regions overlapped. K-Means, Logistic Regression, and Naive Bayes all perform poorly while K-NN performed well."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
@@ -3292,13 +3281,13 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_72_1.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrices for logistic and Gaussian Naive Bayes."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_72_1.png' | relative_url }}"
-  alt=""
+  alt="Decision boundaries for logistic and Gaussian Naive Bayes."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
     
@@ -3465,14 +3454,14 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_73_1.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrices for logistic and Gaussian Naive Bayes one vserus rest models."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_73_2.png' | relative_url }}"
-  alt=""
+  alt="Precision, Recall, and F1-Score plots for logistic and Gaussian Naive Bayes one vserus rest models."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
