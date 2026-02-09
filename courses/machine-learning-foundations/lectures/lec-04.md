@@ -686,7 +686,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_27_0.png' | relative_url }}"
-  alt=""
+  alt="ROC curve. A dashed line along y equals x is the random guessing line. The ROC curve should be above and to the left of that line, as clode to making a right angle as possible."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 {% endcapture %}
@@ -701,12 +701,8 @@ plt.show()
 ##### **2. Interpreting the ROC Curve**
 
 - The **closer the curve is to the top-left corner**, the better the model is at distinguishing between classes.  
-- A **diagonal line (y = x)** represents random guessing, our baseline — a model with **no discriminative power**.  
+- A **diagonal line (y = x)** represents random guessing, our baseline.  
 
-**Visually**:
-- Random Guess → diagonal line
-- Better Model → bowing toward the upper left
-- Perfect Model → reaches top-left corner
 
 ##### **3. Area Under the Curve (AUC)**
 
@@ -716,22 +712,26 @@ $$
 0 \leq \text{AUC} \leq 1
 $$
 
-by claculating the area under the ROC curve. A perfect model would make a right angle in the top left courner giveit it an area of 1 (horizontal length = 1, vertical length = 1; area = 1$\times$1 = 1). Non-perfect models will deviate below this and give a smaller area under the curve. 
+by claculating the area under the ROC curve. A perfect model would make a right angle in the top left courner giving it an area of 1 (horizontal length = 1, vertical length = 1; area = 1$\times$1 = 1). Non-perfect models will deviate below this and give a smaller area under the curve. 
 
 The following is a good breakdown of how the AUC can be interpreted:
 - **AUC = 1.0** → Perfect separation (likely overfitting!)
-- **AUC > 0.9** → Excellent
+- **AUC = 0.9–1.0** → Excellent
 - **AUC = 0.8–0.9** → Good
 - **AUC = 0.7–0.8** → Fair    
 - **AUC = 0.5** → Model performs no better than random chance  
 
-Intuitively, the AUC represents the probability a randomly chosen example of class 1 is given a higher prababilty than a randomly chosen class 0 data point.
+Intuitively, the AUC represents the probability a randomly chosen example of class 1 is given a higher prababilty than a randomly chosen class 0 data point. Remember, the probability in question is if it is a member of class 1 or note.
 
 The AUC of the ROC is useful because:
 
 - It’s **independent of the classification threshold**.  
-- It works well for **imbalanced datasets**, where accuracy can be misleading.  
+- It works well for **imbalanced datasets**, where *accuracy can be misleading*.  
 - It focuses on the model’s ability to **rank predictions correctly**, not just label them.
+
+
+
+
 
 
 <div style="
@@ -754,7 +754,6 @@ The AUC of the ROC is useful because:
 
 **Key idea:** No single metric tells the whole story. Always interpret metrics **together** and in the **business context**.
 
----
 
 ###### Practical habits that scale
 
@@ -763,15 +762,17 @@ The AUC of the ROC is useful because:
   - **Precision–Recall trade-off** (maximize F1, or meet a minimum precision/recall)
   - **Cost-based thresholding** (pick the threshold that minimizes expected cost given FP/FN costs)
 - **Report both threshold-dependent _and_ threshold-free metrics.**  
-  Example: Accuracy/F1 **and** ROC–AUC (or PR–AUC for imbalanced data).
-- **Mind class imbalance.** Accuracy can look great while recall is terrible. Prefer **Precision-Recall–AUC**, **recall**, or **F1** in rare-event problems.
+  Example: Accuracy/F1 **and** ROC–AUC.
+- **Mind class imbalance.** Accuracy can look great while recall is terrible. 
+    - Prefer **Precision-Recall curves**, **recall**, or **F1** in rare-event problems.
 - **Calibrate probabilities** when actions depend on scores (e.g., risk). Use **Platt scaling** or **isotonic regression** (`CalibratedClassifierCV`) and check **calibration curves**. (Look into this on your own.)
-- **Use cross-validation** for reliable estimates; report mean ± std over folds.
+- **Use cross-validation** for reliable estimates. 
+    - Report mean ± std over folds.
 - **Add uncertainty.** Where stakes are high, include **bootstrap CIs** for AUC, precision, recall, etc.
+    - We'll talk about bootstrapping in Lecture 6.
 - **Show the confusion matrix** at your chosen threshold; it makes trade-offs concrete.
 - **Document your operating point.** Record the chosen threshold, rationale, and the expected FP/FN trade-offs for stakeholders.
 
----
 
 ###### Quick “how-to” checklist (scikit-learn)
 - Predicted probabilities: `y_proba = model.predict_proba(X)[:,1]`
@@ -784,6 +785,11 @@ The AUC of the ROC is useful because:
 </div>
 
 
+
+
+
+
+
 <div style="
     background-color: #f0f7f4;
     border-left: 6px solid #4bbe7e;
@@ -793,7 +799,7 @@ The AUC of the ROC is useful because:
 <b>Key Takeaways:</b> 
 
 - Logistic regression outputs **probabilities**, not hard classifications.  
-- By default, sklearn classifies as class 1 if $ P(y=1) > 0.5 $, but you can, and generally should, adjust and justify the threshold.  
+- By default, sklearn classifies as class 1 if $ P(y=1) > 0.5 $, but you should adjust and justify the threshold to improve results based on the questions being asked of the data.  
 - Evaluate models using **multiple metrics** — especially when classes are imbalanced.  
 - **ROC curves** and **AUC** summarize the model’s overall ranking ability, independent of any threshold.
 </div>
@@ -808,11 +814,15 @@ Next, we’ll move into *multi-class logistic regression* and *regularization (L
 #### Exploring the Threshold
 
 
-When a logistic regression model makes predictions, it doesn’t actually say “Class 0” or “Class 1” directly. Instead, it outputs a **probability** — for example, “there’s a 0.72 (72%) chance this sample belongs to Class 1.”  
+We mentioned adjusting the threshhold (e.g., if $p > 0.5$ then put it into class 1; otherwise class 0) in the Professional Practice above. Let's talk about how and why you may, and should, want to change that. 
 
-By default, we classify a data point as **Class 1** if its probability ≥ 0.5.  
+When a logistic regression model makes predictions, it doesn’t actually say “Class 0” or “Class 1” directly. Remember, it outputs a **probability** of the data point being in class 1, the class of interest. 
 
-But that 0.5 cutoff is completely arbitrary — and changing it changes how the model behaves.
+> For example, “there’s a 0.72 (72%) chance this sample belongs to Class 1.”  
+
+By default, we classify a data point as **Class 1** if its probability greater than or equal to 0.5.  This is called the **threshold**.
+
+But that 0.5 threshold is completely arbitrary, and changing it changes how the model performs.
 
 
 ##### **Why Explore the Threshold?**
@@ -824,70 +834,9 @@ Adjusting the classification threshold helps balance **precision** and **recall*
 
 Depending on the problem, one may matter more than the other:
 - In **medical screening**, we lower the threshold to catch every possible case (maximize recall).
+    - We would rather be safe than sorry!
 - In **fraud detection**, we raise the threshold to avoid flagging legitimate transactions (maximize precision).
-
-##### **How to Explore the Threshold**
-
-You can visualize how model performance changes as you move the threshold using either:
-- The **ROC curve**, which shows the trade-off between True Positive Rate and False Positive Rate.
-- The **Precision–Recall curve**, which shows the trade-off between precision and recall directly.
-
-Both help you choose the best operating point for your model — not just rely on the default 0.5 cutoff.
-
-
-{% capture ex %}
-```python
-# --- Exploring the Threshold ---
-thresholds = np.linspace(0, 1, 101)
-precisions, recalls, f1s = [], [], []
-
-for t in thresholds:
-    preds = (y_proba >= t).astype(int)
-    precisions.append(precision_score(y_target, preds))
-    recalls.append(recall_score(y_target, preds))
-    f1s.append(f1_score(y_target, preds))
-
-# --- Plot Precision, Recall, and F1 vs. Threshold ---
-plt.figure(figsize=(8,6))
-plt.plot(thresholds, precisions, label="Precision", linewidth=2)
-plt.plot(thresholds, recalls, label="Recall", linewidth=2)
-plt.plot(thresholds, f1s, label="F1 Score", linewidth=2, linestyle="--", color="purple")
-plt.title("Effect of Decision Threshold on Precision, Recall, and F1 Score")
-plt.xlabel("Classification Threshold")
-plt.ylabel("Score")
-plt.legend()
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.show()
-```
-{% endcapture %}
-{% include codeinput.html content=ex %}  
-
-{% capture ex %}
-  
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec04/output_20_0.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
-    
-
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
-
-
-  
-
-A good choice would be the threshold that maximizes the F1-score. However, this really depends on what your objectives are! 
-
-Though, some good rules of thumb would be:
-
-| Goal                                        | Best Threshold Choice                                 |
-| ------------------------------------------- | ----------------------------------------------------- |
-| Maximize balance between precision & recall | Threshold where **F1** is highest                     |
-| Minimize false negatives                    | Lower threshold (shift toward higher recall)          |
-| Minimize false positives                    | Higher threshold (shift toward higher precision)      |
-| You’re not sure                             | Start where precision ≈ recall, then adjust as needed |
-
+    - We do not want to accidentally flag an email from your boss as spam.
 
 {% capture ex %}
 ```python
@@ -952,12 +901,123 @@ Threshold = 0.90 | Precision = 1.00 | Recall = 0.74 | F1 = 0.85
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec04/output_22_1.png' | relative_url }}"
-  alt=""
+  alt="Three scatter plots of increaseing threshold. Shown is how the points change class depending on what threshold is used. This is a pictoral representation of what the fit statistics change as a result of changeing memberships."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
     
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
+
+
+##### **How to Explore the Threshold**
+
+You can visualize how model performance changes as you move the threshold using either:
+- The **ROC curve**, which shows the trade-off between True Positive Rate and False Positive Rate.
+- The **Precision–Recall curve**, which shows the trade-off between precision and recall directly.
+
+Both help you choose the best operating point for your model. 
+
+You should *never* just rely on the default 0.5 cutoff. 
+
+There is almost always a better and more meaningful threshold.
+
+
+{% capture ex %}
+```python
+# Make synthetic classified data
+X, y = make_classification(
+    n_samples=2000, n_features=2, n_redundant=0, n_informative=2,
+    n_clusters_per_class=1, flip_y=0.05, class_sep=1.5, random_state=42
+)
+
+# --- Train/test split ---
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)
+
+# --- Scale features ---
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# --- Train logistic regression model ---
+log_reg = LogisticRegression()
+log_reg.fit(X_train_scaled, y_train)
+
+# --- Predict probabilities for the positive class ---
+y_probs = log_reg.predict_proba(X_test_scaled)[:, 1]
+
+
+# --- Exploring the Threshold ---
+thresholds = np.linspace(0, 1, 101)
+precisions, recalls, f1s = [], [], []
+
+for t in thresholds:
+    preds = (y_probs >= t).astype(int) # <- Here is where the 
+                                       #    threshold gets applied.
+    precisions.append(precision_score(y_test, preds))
+    recalls.append(recall_score(y_test, preds))
+    f1s.append(f1_score(y_test, preds))
+
+# --- Plot Precision, Recall, and F1 vs. Threshold ---
+plt.figure(figsize=(8,6))
+plt.plot(thresholds, precisions, label="Precision", linewidth=2)
+plt.plot(thresholds, recalls, label="Recall", linewidth=2)
+plt.plot(thresholds, f1s, label="F1 Score", linewidth=2, linestyle="--", color="purple")
+plt.title("Effect of Decision Threshold on Precision, Recall, and F1 Score")
+plt.xlabel("Classification Threshold")
+plt.ylabel("Score")
+plt.legend()
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
+
+# --- Plot Precision, Recall, and F1 vs. Threshold ---
+plt.figure(figsize=(8,6))
+plt.plot(recalls, precisions, label="P-R Curve", linewidth=2)
+plt.title("Precision versus Recall")
+plt.xlabel("Recall")
+plt.ylabel("Precision")
+plt.legend()
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
+```
+{% endcapture %}
+{% include codeinput.html content=ex %}  
+
+{% capture ex %}
+  
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec04/PRF_curve.png' | relative_url }}"
+  alt="A plot showing how the Precision, Recall, and F1 score change as a function of the threshold."
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+
+
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec04/PR_curve.png' | relative_url }}"
+  alt="Precision plotted as a function of the recall. The area under this line is called the PR_AUC."
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">
+    
+
+{% endcapture %}
+{% include codeoutput.html content=ex %}  
+
+In the previous exmaple, a threshold around 0.78 appears to give the best F1-score. So maybe that would be prefferable to a threshold of 0.5. 
+
+A good choice would be the threshold that maximizes the F1-score. However, this really depends on what your objectives are! 
+
+Though, some good rules of thumb would be:
+
+| Goal                                        | Best Threshold Choice                                 |
+| ------------------------------------------- | ----------------------------------------------------- |
+| Maximize balance between precision & recall | Threshold where **F1** is highest                     |
+| Minimize false negatives                    | Lower threshold (shift toward higher recall)          |
+| Minimize false positives                    | Higher threshold (shift toward higher precision)      |
+| You’re not sure                             | Start where precision ≈ recall, then adjust as needed |
+
+
+Side note: You can also plot the Precision versus Recall and calculate the area under this curve to get the PR-AUC, which is similar to the ROC-AUC. 
+
+
 
 
 
@@ -976,10 +1036,10 @@ Threshold = 0.90 | Precision = 1.00 | Recall = 0.74 | F1 = 0.85
 
 - Never accept the default threshold blindly — **choose it based on your use-case**.  
 - When presenting results, **report the chosen threshold** and justify why.  
-- Use domain-specific metrics (like F1 score or cost-weighted accuracy) to select the optimal cutoff.  
+- Use domain-specific metrics (like F1 score) to select the optimal cutoff.  
 - For critical applications, perform a **threshold sweep** and present how precision, recall, and F1 change with threshold.
 
-> A good data scientist doesn’t just train a model — they decide **how it will be used** in the real world.
+> A good data scientist doesn’t just train a model, they decide **how it will be used** in the real world.
 </div>
 
 
