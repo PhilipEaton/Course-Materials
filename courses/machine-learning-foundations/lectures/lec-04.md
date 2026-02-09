@@ -730,18 +730,7 @@ The AUC of the ROC is useful because:
 - It focuses on the model’s ability to **rank predictions correctly**, not just label them.
 
 
-
-
-
-
-<div style="
-    background-color: #E6F2FA;
-    border-left: 6px solid #8EC9DC;
-    padding: 14px;
-    border-radius: 6px;
-">
-<b style="color:#1b4965;">Professional Practice</b>  
-<br><br>
+{% capture ex %}
 
 | Metric | Description | Ideal Value | When to Focus |
 |:--|:--|:--:|:--|
@@ -781,6 +770,22 @@ The AUC of the ROC is useful because:
 - Choose threshold `t`: `y_pred = (y_proba >= t).astype(int)`
 - Confusion matrix & report: `confusion_matrix(...)`, `classification_report(...)`
 - Probability calibration: `CalibratedClassifierCV(model, method="isotonic" or "sigmoid")`
+
+{% endcapture %}
+{% include propractice.html content=ex %}
+
+
+
+<div style="
+    background-color: #E6F2FA;
+    border-left: 6px solid #8EC9DC;
+    padding: 14px;
+    border-radius: 6px;
+">
+<b style="color:#1b4965;">Professional Practice</b>  
+<br><br>
+
+
 
 </div>
 
@@ -1064,10 +1069,11 @@ For example:
 
 Logistic regression can easily handle these cases using one of two strategies:
 
-1. **One-vs-Rest (OvR)**: Train one model per class. Each model predicts whether an observation belongs to *that* class or not.  
+1. **One-vs-Rest (OvR)**: Train one model per class. 
+    - Each model predicts whether an observation belongs to *that* class or not.  
 2. **Multinomial (Softmax)**: A single model learns probabilities for *all* classes simultaneously.
 
-Scikit-learn automatically uses **multinomial** when appropriate, which is what we’ll explore next.
+Scikit-learn automatically uses **multinomial** when appropriate, however one-vs-rest is generally more conceptually easier to understand.
 
 
 {% capture ex %}
