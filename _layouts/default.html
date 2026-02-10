@@ -23,6 +23,10 @@
 <link rel="preload" as="font"
       href="{{ '/assets/katex/fonts/KaTeX_Size1-Regular.woff2' | relative_url }}"
       type="font/woff2" crossorigin>
+  
+<div aria-hidden="true" style="visibility:hidden; position:absolute; top:-9999px;">
+    $$ \sqrt{x} \quad \vec{v} \quad \left( \frac{1}{x} \right) $$
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -479,10 +483,6 @@
       }
       .two-column .katex {
         font-size: 11pt;
-      }
-
-      .katex .vlist > span {
-        display: inline-block !important;
       }
 
     }
