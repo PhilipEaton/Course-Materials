@@ -9,10 +9,14 @@ nav_order: 17
 
 ## PHYS 3345 - Short Homework 13
 
+---
+
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
 
+
+---
 
 
 Consider the differential equation

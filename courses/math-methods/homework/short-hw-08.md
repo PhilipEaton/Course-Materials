@@ -9,9 +9,13 @@ nav_order: 11
 
 ## PHYS 3345 - Short Homework 08
 
+---
+
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
+
+---
 
 
 Consider a symmetric rigid body rotating freely about its center of mass. Its rotational dynamics are governed by the moment of inertia tensor, $\mathbf{I}$, and the angular velocity vector, $\vec{\omega}$. Assume the body has principal moments of inertia $I_1$, $I_2$, and $I_3$, such that the matrix representation of $\mathbf{I}$ in the principal axis system is diagonal:

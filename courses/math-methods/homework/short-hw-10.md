@@ -9,9 +9,13 @@ nav_order: 13
 
 ## PHYS 3345 - Short Homework 10
 
+---
+
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
+
+---
 
 
 In quantum mechanics, the Hamiltonian operator $ \hat{H} $ determines the total energy of a system. Suppose we are working with a two-level quantum system, such as a spin-$\frac{1}{2}$ particle in an external magnetic field. The Hamiltonian is represented by the following $ 2 \times 2 $ matrix:

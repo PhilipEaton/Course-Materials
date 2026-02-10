@@ -9,9 +9,13 @@ nav_order: 3
 
 ## PHYS 3345 - Short Homework 03
 
+---
+
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
+
+---
 
 
 A charged particle is moving in the $xy$-plane with an initial velocity directed at a 30$^\circ$ angle from the $x$-axis. We can represent this velocity as a column matrix in the following manner:

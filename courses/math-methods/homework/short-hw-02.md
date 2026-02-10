@@ -10,10 +10,14 @@ nav_order: 2
 
 ## PHYS 3345 - Short Homework 02
 
+---
+
 
 - Please keep your work organized and neat.
 - Solutions should follow a logical progression and should not skip major conceptual/mathematical steps.
 - Provide brief explanations for non-trivial mathematical steps beyond simple algebra.
+
+---
 
 
 Consider a three-dimensional stress tensor $\boldsymbol{\sigma}$, which describes the state of stress at a point in a material under loading conditions. The stress tensor is defined as follows:
