@@ -5,11 +5,15 @@
   <title>{{ page.title }}</title>
 
   <!-- KaTeX -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/katex/katex.min.css' | relative_url }}">
 
+  <script defer src="{{ '/assets/katex/katex.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/katex/auto-render.min.js' | relative_url }}"></script>
+
+  <link rel="preload" as="font" href="{{ '/assets/katex/fonts/KaTeX_Main-Regular.woff2' | relative_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ '/assets/katex/fonts/KaTeX_Size1-Regular.woff2' | relative_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ '/assets/katex/fonts/KaTeX_Math-Italic.woff2' | relative_url }}" type="font/woff2" crossorigin>
+  
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       renderMathInElement(document.body, {
