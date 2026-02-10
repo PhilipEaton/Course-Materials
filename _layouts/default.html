@@ -283,7 +283,7 @@
       .example, .result, .warning {
         box-sizing: border-box;
         max-width: 100% !important;
-        overflow: hidden; /* prevents border from being clipped by overflow */
+        overflow: visible; /* prevents border from being clipped by overflow */
       }
 
       .example *, .result *, .warning * {
@@ -388,7 +388,6 @@
       /* Allow page breaks through long display math */
       .katex-display, .katex-display * {
         break-inside: auto !important;
-        page-break-inside: auto !important;
         overflow: visible !important;
       }
 

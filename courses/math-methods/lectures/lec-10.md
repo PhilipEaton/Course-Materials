@@ -293,9 +293,9 @@ $$
 Once $ \mathbf{P} $ is constructed, the next step is to use it to diagonalize $ \mathbf{A} $ using the diagonalization formula:
 
 $$
-\mathbf{D} = \mathbf{P}^{-1} \mathbf{A} \mathbf{P}.
-
+\mathbf{D} = \mathbf{P}^{-1} \mathbf{A} \mathbf{P}
 $$
+
 which is just a couple of matrix multiplications. You know you have it correct if you end up with:
 
 $$
