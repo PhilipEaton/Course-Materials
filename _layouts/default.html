@@ -267,43 +267,10 @@
     /* Print Style */
     @media print {
 
-      /* Page geometry (LaTeX-ish) */
+      /* Page geometry (LaTeX article default) */
       @page {
         size: letter;
         margin: 1.0in;
-      }
-
-      pre, code, pre code {
-        white-space: pre-wrap !important;
-        overflow-wrap: anywhere !important;
-        word-break: break-word !important;
-        max-width: 100% !important;
-      }
-
-      .example, .result, .warning {
-        box-sizing: border-box;
-        max-width: 100% !important;
-        overflow: visible; /* prevents border from being clipped by overflow */
-      }
-
-      .example *, .result *, .warning * {
-        max-width: 100% !important;
-      }
-
-      table {
-        width: 100% !important;
-        max-width: 100% !important;
-        table-layout: fixed;
-      }
-
-      th, td {
-        word-wrap: break-word;
-        overflow-wrap: anywhere;
-      }
-
-      img, svg {
-        max-width: 100% !important;
-        height: auto !important;
       }
 
       /* Hide navigation / site chrome */
@@ -313,13 +280,10 @@
 
       /* Base typography */
       body {
-        padding: 0 !important;
-        padding-top: 0;
         margin: 0 !important;
+        padding: 0 !important;
         background: #fff !important;
         color: #000 !important;
-
-        /* LaTeX-ish serif stack; will fall back gracefully */
         font-family: "Latin Modern Roman", "CMU Serif", "Times New Roman", serif;
         font-size: 11pt;
         line-height: 1.35;
@@ -330,7 +294,7 @@
         margin: 0 !important;
       }
 
-      /* Headings (LaTeX-like hierarchy) */
+      /* Headings (LaTeX hierarchy) */
       h1 {
         font-size: 16pt;
         font-weight: normal;
@@ -338,9 +302,7 @@
         margin: 0 0 18pt 0;
       }
 
-      h1:first-child {
-        margin-top: 0;
-      }
+      h1:first-child { margin-top: 0; }
 
       h2 {
         font-size: 13pt;
@@ -354,58 +316,54 @@
         margin: 12pt 0 4pt 0;
       }
 
-      /* Paragraphs: justified text like LaTeX */
+      /* Paragraphs */
       p {
         margin: 0 0 8pt 0;
         text-align: justify;
         text-justify: inter-word;
       }
 
-      /* Prevent ugly page breaks */
+      /* Avoid ugly breaks */
       h1, h2, h3 {
         break-after: avoid;
         page-break-after: avoid;
       }
 
-      figure, table, pre, blockquote, .codeinput, .codeoutput {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      /* --- KaTeX (CRITICAL FIXES) --- */
+
+      /* Base math font */
+      .katex {
+        font-family: KaTeX_Main, "Times New Roman", serif !important;
+        font-size: 1em;
       }
 
+      /* Display math slightly smaller */
       .katex-display .katex {
         font-size: 0.95em;
       }
 
-      .katex {
-        font-family: KaTeX_Main, Times New Roman, serif !important;
-        font-size: 1em !important;
-      }
-
-      .katex {
-        font-display: block;
-      }
-
-      /* Allow page breaks through long display math */
-      .katex-display, .katex-display * {
+      /* Allow math to break and overflow correctly */
+      .katex-display,
+      .katex-display * {
         break-inside: auto !important;
         overflow: visible !important;
       }
 
-      /* Figure size */
-      img {
+      /* --- Figures --- */
+      img, svg {
         max-width: 50% !important;
+        height: auto !important;
         display: block !important;
-        margin: 0.75rem auto;
+        margin: 0.75rem auto !important;
       }
 
-      /* Figure caption style */
       figcaption {
         font-size: 10pt;
         text-align: center;
         margin-top: 6pt;
       }
 
-      /* Tables: LaTeX-ish rules */
+      /* --- Tables --- */
       table {
         width: 100%;
         max-width: 600pt;
@@ -415,24 +373,21 @@
       }
 
       th, td {
-        border: 1px solid #000; /* classic “boxed” look */
+        border: 1px solid #000;
         padding: 4pt 6pt;
         vertical-align: top;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
       thead th {
         font-weight: bold;
       }
 
-      /* Optional: Booktabs-like (no vertical rules) */
-      .booktabs th, .booktabs td { border-left: none; border-right: none; }
-      .booktabs thead th { border-top: 1px solid #000; border-bottom: 1px solid #000; }
-      .booktabs tbody td { border-bottom: 0.5px solid #000; }
-      .booktabs tbody tr:last-child td { border-bottom: 1px solid #000; }
-
-      /* Code blocks: compact like listings */
+      /* --- Code blocks --- */
       pre, code {
-        font-family: "Latin Modern Mono", "CMU Typewriter Text", ui-monospace, Menlo, Consolas, monospace;
+        font-family: "Latin Modern Mono", "CMU Typewriter Text",
+                    ui-monospace, Menlo, Consolas, monospace;
         font-size: 9.5pt;
       }
 
@@ -441,36 +396,56 @@
         padding: 6pt 8pt;
         border: 1px solid #000;
         background: #fff;
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
+        white-space: pre-wrap !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
 
-      /* “Theorem-style” boxes (your example/result/warning) */
+      /* --- Theorem-style boxes --- */
       .example, .result, .warning {
+        box-sizing: border-box;
         border: 1px solid #000;
         background: #fff !important;
         padding: 8pt 10pt;
         margin: 10pt 0;
+        overflow: visible;   /* REQUIRED for KaTeX */
       }
 
-      /* Page-break helper */
+      /* Constrain content without breaking math */
+      .example > *,
+      .result > *,
+      .warning > * {
+        max-width: 100% !important;
+      }
+
+      /* Avoid page breaks inside important blocks */
+      figure, table, blockquote {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Page break helper */
       .page-break {
-        page-break-before: always;
         break-before: page;
+        page-break-before: always;
       }
-      
-      .work-space-tiny { height: 1.2rem; }
-      .work-space-sm { height: 7rem; }
-      .work-space-md { height: 10rem; }
-      .work-space-lg { height: 13rem; }
 
+      /* Spacing helpers */
+      .work-space-tiny { height: 1.2rem; }
+      .work-space-sm   { height: 7rem; }
+      .work-space-md   { height: 10rem; }
+      .work-space-lg   { height: 13rem; }
+
+      /* Two-column math */
       .two-column {
         flex-direction: row;
       }
+
       .two-column .katex {
         font-size: 11pt;
       }
-
     }
 
   </style>
