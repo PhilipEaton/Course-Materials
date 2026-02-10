@@ -381,7 +381,7 @@ $$
 
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
-This step requires us to actually do some algebra and solve for the components of the eigenvectors. WE will do both side-by-side since the steps are identical.
+This step requires us to actually do some algebra and solve for the components of the eigenvectors. We will do both side-by-side since the steps are identical.
 
 <div class="two-column">
 
@@ -604,13 +604,15 @@ $$
 \end{aligned}
 $$
 
-meaning $\lambda =2$, $\lambda = 4$, or $\lambda - 2$. Notice there is a degeneracy here! $\lambda = 2$ happened twice! That means there are two eigenvectors with eigenvalues of $2$. Now that we are going to find their eigenvectors, we need to give these names. Let's call them:
+meaning $\lambda =2$, $\lambda = 4$, or $\lambda = 2$ are our eigenvalues. Notice there is a degeneracy here, $\lambda = 2$ happened twice! That means there are two eigenvectors with eigenvalues of $2$. 
+
+Now that we are going to find their eigenvectors, we need to give these names. Let's call them:
 
 $$ 
 \lambda_1 = 4 \qquad \text{and} \qquad \lambda_2 = \lambda_3 = 2 
 $$
 
-which are the eigenvalues for $\mathbf{A}$. 
+the eigenvalues of $\mathbf{A}$. 
 
 #### Step 2: Form $(\mathbf{A} - \lambda \mathbf{I})$ for each $\lambda$
 This step only requires the substitution of the eigenvalues into $(\mathbf{A} - \lambda \mathbf{I})$. 
@@ -678,9 +680,9 @@ $$
 \text{Row 1: } -2 a = 0 , \qquad \text{Row 2: } -b + c = 0
 $$
 
-and Row 3 will be redundant. <br>
+and we can see that Row 3 will be redundant. <br>
 
-From Row 1, we can see that $a = 0$, and Row 2 gives us $b = c$.<br>
+Row 1 gives us $a = 0$, and Row 2 gives $b = c$.<br>
 
 Thus, the general solution is:<br>
 
@@ -760,15 +762,17 @@ $$
 	0 \\
 	1 \\
 	1
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
 This is the eigenvector associated with $\lambda_1 = 4$.
 
 
-When you have degenerate (i.e., repeated) eigenvalues, you have to be slightly more careful about what the undetermined constants you pick to fully determine the eigenvectors. If we have any choice about it, we would like it if the **eigenvectors to be mutually orthogonal** (fancy word meaning perpendicular). So, what do we do?
+##### Now for the degenerate eigenvalue. 
 
-First, you just pick coefficients to get an eigenvector. For example, we could let $d = 1$ and $e = 1$ to get:
+When you have degenerate (i.e., repeated) eigenvalues, you have to be slightly more careful about what the undetermined constants you pick to fully determine the eigenvectors. If we have any choice about it, we would like it if the **eigenvectors to be mutually orthogonal** (perpendicular). So, what do we do?
+
+First, pick coefficients to get one of our eigenvectors. For example, we could let $d = 1$ and $e = 1$ to get:
 
 $$
 \vec{v}_{2} = \begin{bmatrix}
@@ -778,7 +782,9 @@ $$
 \end{bmatrix}
 $$
 
-Great, we have one of the eigenvectors. But, how do we find the other one? By forcing the eigenvectors to be perpendicular! This means we force:
+Great, we have one of the eigenvectors! But, how do we find the other one? 
+
+By forcing the eigenvectors to be perpendicular! This means we force:
 
 $$
 \begin{aligned}
@@ -833,19 +839,20 @@ $$
 
 ## Overcoming the Challenges of Lengthy Problems
 
-As we can see, this process is quite involved, but none of the steps themselves are particularly difficult. It is human nature to equate the length of a math equation or problem to its perceived difficulty, but this equating is often wrong. While the process we followed had many steps, each individual step involved relatively straightforward mathematics. Go back and look if you do not believe us. you will find nothing more than matrix multiplication and algebra. Where people find the "confusion" and "difficulty" of problems like this are in the number of steps it requires, which can feel overwhelming.
+As we can see, this process is quite involved, but none of the steps themselves are particularly difficult. It is human nature to equate the length of a project/activity, such as a math equation/problem or a term paper, to its perceived difficulty. However, this equating is often wrong. 
+
+For instance, while the process we followed to find the eigenvectors had many steps, each individual step involved relatively straightforward mathematics. Go back and check for yourself. You will find nothing more than matrix multiplication and algebra. Often times people find "confusion" and "difficulty" of problems like this are in the number of steps it requires, which can feel overwhelming, but that does not make the problem itself difficult.
 
 To help combat the feeling of being overwhelmed when working through lengthy math problems, here are a few tips:
 
-
 - **Keep the goal in mind.**  
-	Remember what you are trying to find. In this case, our goal was to determine the eigenvalues and eigenvectors of a matrix. Constantly reminding yourself of the end goal can make each step feel more purposeful and less daunting.
+	Remember what you are trying to find/do. In this case, our goal was to determine the eigenvalues and eigenvectors of a matrix. Constantly reminding yourself of the end goal can make each step feel more purposeful and less daunting.
 	
 - **Break the problem into manageable pieces.**  
-	Tackle each part of the problem one step at a time. For example, first write the characteristic equation, then solve for eigenvalues, and finally find the eigenvectors. Focusing on one small part can make the problem feel more achievable.
+	Tackle each part of the problem one step at a time. For example, first write the characteristic equation, then solve for eigenvalues, then... Before you know it you will ave found all of the eigenvectors. Focusing on one small part at a time can make the problem feel more achievable.
 	
 - **Length doesn’t mean difficulty.**  
-	A lengthy problem may involve multiple straightforward steps rather than inherently complex mathematics. Remind yourself that writing more doesn’t mean the math is more difficult—it generally just means you’re being thorough.
+	A lengthy problem may involve multiple straightforward steps rather than inherently complex mathematics. Remind yourself that writing more doesn’t mean the math is more difficult, it generally just means you’re being thorough and are showing your work.
 	
 - **Stay organized.**  
 	Clearly label each step of your solution and use consistent notation throughout. Keeping your work neat helps you avoid mistakes and makes it easier to review or spot errors.
@@ -901,7 +908,7 @@ By keeping these strategies in mind, you can approach even the most involved pro
 
 ## Application:
 
-Now that we’ve learned how to find eigenvalues and eigenvectors, it’s time to explore their importance in the physical world and beyond. Eigenvalues and eigenvectors appear in a wide range of applications, from solving differential equations to describing the behavior of physical systems. Here, we’ll explore a few key applications to highlight their relevance.
+Now that we’ve learned how to solce the eigenvalue problem by finding the eigenvalues and eigenvectors, it’s time to explore their importance in the physical world and beyond. Eigenvalues and eigenvectors appear in a wide range of applications, from solving differential equations to describing the behavior of physical systems. Here, we’ll explore a few key applications to highlight their relevance.
 
 Note: Some of these examples will resonate with you depending on where you are at in you physics journey. If you read an example and have no idea what it is talking about, don't panic! It just means there is a course in your future that will teach you something new and interesting. 
 
@@ -922,7 +929,9 @@ where $\vec{x}$ represents the state of the system, and $\mathbf{A}$ is the syst
 
 For example, in coupled harmonic oscillators or predator-prey models, eigenvalues provide critical insight into whether the system will settle into a steady state, oscillate, or diverge.
 
-### Principal Axes and Diagonalization
+We will work with this example specifically in Lecture 19. Stay tuned!
+
+### Rotational Mechanics: Principal Axes of Rotation
 
 Eigenvalues and eigenvectors are central to understanding the principal axes of physical systems. Consider the moment of inertia tensor in classical mechanics:
 
@@ -938,10 +947,10 @@ The eigenvectors of $\mathbf{I}$ represent the principal axes of rotation, and t
 
 ### Quantum Mechanics: Observables and States
 
-In quantum mechanics, eigenvalues and eigenvectors form the backbone of the theory. Observables, such as energy, position, and angular momentum, are represented by Hermitian operators (matrices), and the eigenvalues of these operators correspond to measurable quantities. For example:
+In quantum mechanics, eigenvalues and eigenvectors form the backbone of the whole theory. Observables, such as energy, position, and angular momentum, are represented by Hermitian operators (which can be represented as matrices), and the eigenvalues of these operators correspond to measurable quantities. For example:
 
 - The Hamiltonian operator $ \hat{H} $ has eigenvalues representing the energy levels of a quantum system.  
-- Eigenvectors of $ \hat{H} $, called eigenstates, describe the system's possible states when measured.  
+- Eigenvectors of $ \hat{H} $, called eigenstates, describe the system's possible states, with their associated eigenenergy, when measured.  
 
 This connection is fundamental to understanding quantum phenomena like atomic spectra and the behavior of spin systems.
 
@@ -953,7 +962,7 @@ $$
 \mathbf{M} \frac{d^2\vec{x}}{dt^2} + \mathbf{K} \vec{x} = 0
 $$
 
-where $\mathbf{M}$ is the mass matrix and $\mathbf{K}$ is the stiffness matrix, the eigenvalues of $\mathbf{K}$ provide the squared frequencies of vibration, and the eigenvectors describe the shape of each mode.
+where $\mathbf{M}$ is the mass matrix and $\mathbf{K}$ is the stiffness matrix. The eigenvalues to this problem, as we have seen in Lecture 08, provide the squared frequencies of vibration, and the eigenvectors describe how the particles move for each mode.
 
 ### Data Science: Principal Component Analysis (PCA)
 
