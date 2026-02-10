@@ -107,8 +107,10 @@ $$
 \mathbf{A} \mathbf{P} = \begin{bmatrix} \vert & \vert &  & \vert \\ \mathbf{A} \vec{v}_1 & \mathbf{A} \vec{v}_2 & \cdots & \mathbf{A} \vec{v}_n \\ \vert & \vert &  & \vert \end{bmatrix}
 $$
 
+---
 
-\noindent To ``prove'' this we will look at a quick $2\times 2$ example. Consider the following matrix multiplication:
+To ``prove'' this we will look at a quick $2\times 2$ example. Consider the following matrix multiplication:
+
 $$
 \begin{bmatrix}
 	1 & 2 \\ 3 & 4 
@@ -118,7 +120,9 @@ $$
 10 & 13 \\ 22 & 29 
 \end{bmatrix}
 $$
+
 Compare this what we get if we write the right hand matrix as two column vectors:
+
 $$ \begin{bmatrix}
 	1 & 2 \\ 3 & 4 
 \end{bmatrix} \begin{bmatrix}
@@ -150,8 +154,10 @@ $$ \begin{bmatrix}
 \end{bmatrix} = \begin{bmatrix}
 10 & 13 \\ 22 & 29 
 \end{bmatrix} $$
+
 We get the same thing! This is an interesting and useful way to think about matrix multiplication! Now, back to the problem at hand...
 
+---
 
 
 
@@ -206,7 +212,7 @@ $$
 We can test this by checking if the determinant of the matrix $\mathbf{P}$ we defined previously is zero or not. This leads to an excellent check:
 
 {% capture ex %}
-**When is a matrix diagonalizable?** Suppose you have an $n\times n$ matrix $\mathbf{A}$ with eigenvalues $\lambda_1$, ..., $\lambda_n$, and eigenvectors $\vec{v}_1$, ..., $\vec{v}_n$. You can create the matrix $\mathbf{P}$ using the eigenvectors as its columns:
+**When is a matrix diagonalizable?** Suppose you have an $n\times n$ matrix $\mathbf{A}$ with eigenvalues $\lambda_1$, ..., $\lambda_n$, and eigenvectors $\vec{v}_1$, ..., $\vec{v}_n$. You can create the matrix $\mathbf{P}$ using the **eigenvectors** as its columns:
 
 $$ \mathbf{P} = \begin{bmatrix}
 	\vert & \vert & \cdots & \vert \\
@@ -215,7 +221,7 @@ $$ \mathbf{P} = \begin{bmatrix}
 \end{bmatrix} 
 $$
 
-A matrix $\mathbf{A}$ will be diagonalizable if $\det(\mathbf{P}) \ne =0$, meaning all of the eigenvectors of matrix $\mathbf{A}$ are linearly independent. 
+A matrix $\mathbf{A}$ will be diagonalizable if $\det(\mathbf{P}) \ne 0$, meaning all of the eigenvectors of matrix $\mathbf{A}$ are linearly independent. 
 {% endcapture %}
 {% include result.html content=ex %}
 	
