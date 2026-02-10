@@ -285,98 +285,207 @@
     /* Print Style */
     @media print {
 
-  @page {
-    size: letter;
-    margin: 1in;
-  }
+      /* Page geometry (LaTeX-ish) */
+      @page {
+        size: letter;
+        margin: 1.0in;
+      }
 
-  /* Hide site chrome */
-  header, nav, footer, .course-nav, .site-nav {
-    display: none !important;
-  }
+      pre, code, pre code {
+        white-space: pre-wrap !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+        max-width: 100% !important;
+      }
 
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #fff !important;
-    color: #000 !important;
-    font-family: "Times New Roman", serif;
-    font-size: 11pt;
-    line-height: 1.35;
-  }
+      .example, .result, .warning {
+        box-sizing: border-box;
+        max-width: 100% !important;
+        overflow: visible; /* prevents border from being clipped by overflow */
+      }
 
-  main {
-    max-width: none !important;
-    margin: 0 !important;
-  }
+      .example *, .result *, .warning * {
+        max-width: 100% !important;
+      }
 
-  h1 {
-    font-size: 16pt;
-    font-weight: normal;
-    text-align: center;
-    margin: 0 0 18pt 0;
-  }
+      table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed;
+      }
 
-  h2 {
-    font-size: 13pt;
-    margin: 18pt 0 6pt 0;
-  }
+      th, td {
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+      }
 
-  h3 {
-    font-size: 11pt;
-    margin: 12pt 0 4pt 0;
-  }
+      img, svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
 
-  p {
-    margin: 0 0 8pt 0;
-    text-align: justify;
-  }
+      /* Hide navigation / site chrome */
+      header, nav, footer, .course-nav, .site-nav {
+        display: none !important;
+      }
 
-  /* --- KaTeX: DO NOT TOUCH INTERNALS --- */
-  .katex {
-    font-size: 1em;
-  }
+      /* Base typography */
+      body {
+        padding: 0 !important;
+        padding-top: 0;
+        margin: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
 
-  .katex-display {
-    margin: 12pt 0;
-  }
+        /* LaTeX-ish serif stack; will fall back gracefully */
+        font-family: "Latin Modern Roman", "CMU Serif", "Times New Roman", serif;
+        font-size: 11pt;
+        line-height: 1.35;
+      }
 
-  /* Figures */
-  img {
-    max-width: 60%;
-    display: block;
-    margin: 10pt auto;
-  }
+      main {
+        max-width: none !important;
+        margin: 0 !important;
+      }
 
-  figcaption {
-    font-size: 10pt;
-    text-align: center;
-  }
+      /* Headings (LaTeX-like hierarchy) */
+      h1 {
+        font-size: 16pt;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 18pt 0;
+      }
 
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10pt 0;
-    font-size: 10pt;
-  }
+      h1:first-child {
+        margin-top: 0;
+      }
 
-  th, td {
-    border: 1px solid #000;
-    padding: 4pt 6pt;
-  }
+      h2 {
+        font-size: 13pt;
+        font-weight: bold;
+        margin: 18pt 0 6pt 0;
+      }
 
-  /* Code blocks */
-  pre {
-    font-family: monospace;
-    font-size: 9pt;
-    border: 1px solid #000;
-    padding: 6pt;
-    white-space: pre-wrap;
-  }
+      h3 {
+        font-size: 11pt;
+        font-weight: bold;
+        margin: 12pt 0 4pt 0;
+      }
 
-}
+      /* Paragraphs: justified text like LaTeX */
+      p {
+        margin: 0 0 8pt 0;
+        text-align: justify;
+        text-justify: inter-word;
+      }
 
+      /* Prevent ugly page breaks */
+      h1, h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      figure, table, pre, blockquote, .codeinput, .codeoutput {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .katex-display .katex {
+        font-size: 0.95em;
+      }
+
+      .katex {
+        font-family: KaTeX_Main, Times New Roman, serif !important;
+        font-size: 1em !important;
+      }
+
+      /* Allow page breaks through long display math */
+      .katex-display, .katex-display * {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+
+      /* Figure size */
+      img {
+        max-width: 50% !important;
+        display: block !important;
+        margin: 0.75rem auto;
+      }
+
+      /* Figure caption style */
+      figcaption {
+        font-size: 10pt;
+        text-align: center;
+        margin-top: 6pt;
+      }
+
+      /* Tables: LaTeX-ish rules */
+      table {
+        width: 100%;
+        max-width: 600pt;
+        border-collapse: collapse;
+        margin: 10pt 0;
+        font-size: 10pt;
+      }
+
+      th, td {
+        border: 1px solid #000; /* classic “boxed” look */
+        padding: 4pt 6pt;
+        vertical-align: top;
+      }
+
+      thead th {
+        font-weight: bold;
+      }
+
+      /* Optional: Booktabs-like (no vertical rules) */
+      .booktabs th, .booktabs td { border-left: none; border-right: none; }
+      .booktabs thead th { border-top: 1px solid #000; border-bottom: 1px solid #000; }
+      .booktabs tbody td { border-bottom: 0.5px solid #000; }
+      .booktabs tbody tr:last-child td { border-bottom: 1px solid #000; }
+
+      /* Code blocks: compact like listings */
+      pre, code {
+        font-family: "Latin Modern Mono", "CMU Typewriter Text", ui-monospace, Menlo, Consolas, monospace;
+        font-size: 9.5pt;
+      }
+
+      pre {
+        margin: 8pt 0;
+        padding: 6pt 8pt;
+        border: 1px solid #000;
+        background: #fff;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      /* “Theorem-style” boxes (your example/result/warning) */
+      .example, .result, .warning {
+        border: 1px solid #000;
+        background: #fff !important;
+        padding: 8pt 10pt;
+        margin: 10pt 0;
+      }
+
+      /* Page-break helper */
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+      
+      .work-space-tiny { height: 1.2rem; }
+      .work-space-sm { height: 7rem; }
+      .work-space-md { height: 10rem; }
+      .work-space-lg { height: 13rem; }
+
+      .two-column {
+        flex-direction: row;
+      }
+      .two-column .katex {
+        font-size: 11pt;
+      }
+
+    }
 
   </style>
 </head>
