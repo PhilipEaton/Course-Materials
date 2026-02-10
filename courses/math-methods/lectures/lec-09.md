@@ -8,7 +8,7 @@ nav_order: 9
 
 
 
-# Lecture 08 – The Eigenvalue Problem and Eigenvectors
+# Lecture 09 – The Eigenvalue Problem and Eigenvectors
 
 
 ## Eigenvalue Problem: Finding Eigenvalues — Quick Review
