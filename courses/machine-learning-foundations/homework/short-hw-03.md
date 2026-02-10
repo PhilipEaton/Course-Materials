@@ -3,7 +3,7 @@ layout: jupyternotebook
 title: Machine Learning Foundations – Project 03
 course_home: /courses/machine-learning-foundations/
 nav_section: homework
-nav_order: 2
+nav_order: 3
 ---
 
 # Project 3: Linear and Multiple Linear Regression
