@@ -223,83 +223,83 @@ But how do we determine the eigenvector $\vec{v}$? And why is $\vec{v}$ importan
 
 ### The Role of Eigenvectors
 
-Eigenvectors define the **axes** along which the matrix $\mathbf{A}$ scales vectors along. These special axes are often called the **natural modes** or **principal axes** of the transformation/object represented by $\mathbf{A}$. Each principal axis (i.e., eigenvector) has an associated eigenvalue, which is the scaling factor for objects along that axis.
+We may find ourselves asking the following question: Why do we care about eigenvectors? 
 
-Imagine applying a matrix $\mathbf{A}$ to an arbitrary vector. In most cases, $\mathbf{A}$ will stretch, compress, rotate, and skew the vector. Eigenvectors are special because the axes they represent remain unchanged under this transformation. 
-- If $\lambda > 0$, the vector is stretched or compressed along its axis. 
-- If $\lambda < 0$, the vector is reflected and scaled along its axis. 
+The short (and admittedly boring) answer is that they simplify how we understand and compute with matrices. This is something we will work with in the next lecture.
 
-Ultimately, the axis these vectors represent are not fundamentally changed. 
+The longer (and far more interesting) answer is that eigenvectors reveal something fundamental about the system or operator the matrix represents. In physics, eigenvectors often correspond to:
 
-### Connecting Eigenvalues to Eigenvectors
+- **Natural Modes:** Directions along which a system naturally oscillates, such as the normal modes of a vibrating molecule or bridge.  
+- **Principal Axes:** Symmetry axes in systems like the moment of inertia tensor in rotational dynamics.  
+- **Quantum States:** Physically meaningful states like energy eigenstates, where measurement yields definite outcomes.
 
-TESTING!!!
+In essence, **eigenvectors help us untangle complex systems by identifying their simplest, most natural directions of behavior**.
+
+For a matrix operator $\mathbf{A}$, the eigenvectors define the **axes** along which $\mathbf{A}$ acts by simple scaling. Each eigenvector points along a direction that is preserved (not rotated or skewed), and its associated eigenvalue tells us how much vectors in that direction are stretched or compressed.
+
+- If $\lambda > 0$, the vector is scaled (stretched or squished) along this axis.
+- If $\lambda < 0$, the vector is scaled and reflected along this axis.
+- If $\lambda = 0$, the transformation collapses that direction entirely.
+
+When you apply $\mathbf{A}$ to a general vector, it typically scrambles it by rotating, skewing, and scaling the components in some unintuitive way. But eigenvectors cut through the chaos: they remain aligned with themselves. That kind of geometric clarity is powerful when trying to build a conceptual picture of what's happening inside a system, especially when the system is large, messy, or otherwise opaque.
 
 
 
-To find the eigenvectors corresponding to a given eigenvalue, we return to the eigenvalue equation:
+ 
+
+
+
+ ### Solving for Eigenvectors
+
+To find the eigenvectors corresponding to a given eigenvalue, we need to return to the eigenvalue equation:
 
 $$
 \mathbf{A} \vec{v} = \lambda \vec{v}
 $$
 
-Rewriting, we get:
+and rewrite it in a more familiar form:
 
 $$
-(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0
+(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0}
 $$
 
-where $\mathbf{I}$ is the identity matrix. This equation shows that $\vec{v}$ lies in the **null space** of the matrix $(\mathbf{A} - \lambda \mathbf{I})$. This is interesting for multiple reasons that a mathematical in nature, but are not pertinent to the current discussion. For our purposes, the equation $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ represents a system of homogeneous linear equations, that can be solved to get the eigenvector for a given eigenvalue $\lambda$. 
+where $\mathbf{I}$ is the identity matrix. This tells us that $\vec{v}$ lies in the **null space** of the matrix $(\mathbf{A} - \lambda \mathbf{I})$. In other words, this matrix transforms $\vec{v}$ into the zero vector, so we’re looking for the vectors that get annihilated under this transformation. However, we’re only interested in **nontrivial** solutions here, which menas we want eigenvectors such that $\vec{v} \ne \vec{0}$.
 
-We will look at exactly how this is done in just a bit. First, I would like to ask the question: Why do we care about eigenvectors? They simplify how we understand and compute with matrices. In physics, eigenvectors often represent:
+This setup is important for deeper mathematical reasons, but practically speaking, this gives us a system of linear equations. Solving this system will give us the eigenvectors associated with the chosen eigenvalue $\lambda$.
 
-- **Natural Modes:** Directions along which a system naturally oscillates, as in the normal modes of a vibrating system.  
-- **Principal Axes:** Directions of symmetry in systems such as moment of inertia tensors in rotational dynamics.  
-- **Quantum States:** States of a system that correspond to measurable quantities, like energy eigenstates in quantum mechanics.  
+It’s important to note that this equation will look different for each eigenvalue. That is, every distinct eigenvalue $\lambda$ you find from the characteristic equation will yield its own unique system of equations to solve.
+
+Here’s a step-by-step roadmap for finding eigenvectors:
+
+1. **Find the eigenvalues** by solving the characteristic equation $\det(\mathbf{A} - \lambda \mathbf{I}) = 0$.
+2. For each eigenvalue $\lambda$, **construct the matrix** $\mathbf{A} - \lambda \mathbf{I}$.
+3. **Solve the homogeneous system** $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0}$ to find the eigenvectors.
+    - If an eigenvalue is repeated (degenerate), make sure to find all **linearly independent** eigenvectors associated with it.
+4. **Choose a scale** (or normalization) for each eigenvector.
+    - We'll explain what this means and why it matters shortly.
+
+This process is algorithmic and mechanical, but it opens the door to powerful geometric and physical interpretations once we have the eigenvectors in hand.
 
 
-In essence, **eigenvectors give us a way to untangle complicated systems by identifying their simplest components**. This is why we are interested in eigenvectors and why they are so important to physicists and engineers.
 
-
-
-
-
-
-## Finding Eigenvectors for a Given Eigenvalue
-
-Now that we have a better feeling for how eigenvalues and eigenvectors are connected, let’s shift our focus to the practical problem of finding the eigenvectors associated with a given eigenvalue. This process involves solving the system of equations resulting from the eigenvalue problem:
-
-$$
-(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0
-$$
-
-where $\lambda$ is set to a known eigenvalue of the matrix $\mathbf{A}$ that has already be found. Recall, this is a system of homogeneous linear equations, meaning we are looking for nontrivial solutions where eigenvectors are not trivial (i.e., we want $\vec{v} \neq \vec{0}$).
-
-### Step-by-Step Process
-
-Let’s outline the steps to find the eigenvectors for a given eigenvalue $\lambda$:
-
-1) Find the eigenvalues by solving the characteristic equation.  
-2) Form the matrix $\mathbf{A} - \lambda \mathbf{I}$ for each of the eigenvalues.  
-3) Solve the system of equations for the components of each eigenvector.  
-	- Resolve eigenvectors with degenerate eigenvalues.  
-4) Select the scale parameter for the eigenvector.  
 
 
 {% capture ex %}
 
-Let’s solidify these steps with an example. Consider the matrix:
+Let’s solidify these steps with an example; it is honestly the best way to learn how to do this. 
+
+Consider the matrix:
 
 $$
 \mathbf{A} = \begin{bmatrix}
 4 & 1 \\
 2 & 3
-\end{bmatrix}.
+\end{bmatrix}
 $$
 
-#### Step 1: Find the eigenvalues}
+#### Step 1: Find the eigenvalues
 
-To find the eigenvalues we need to set up and solve the characteristic equation:
+To find the eigenvalues we need to first find the eigenvalues. To do so we will set up and solve the characteristic equation:
 
 $$ \text{det}( \mathbf{A} - \lambda \mathbf{I} ) = 0 $$
 
@@ -330,13 +330,13 @@ $$
 \end{aligned}
 $$
 
-meaning $\lambda =2$ or $\lambda = 5$. Now that we are going to find their eigenvectors, we need to give these names. Let's call them:
+We have $\lambda =2$ or $\lambda = 5$ as our eigenvalues for this matrix. It would be helpful to give them names as we go to find their associated eigenvectors. Let's call them:
 
 $$ 
 \lambda_1 =2 \qquad \text{and} \qquad \lambda_2 = 5 
 $$
 
-which are the eigenvalues for $\mathbf{A}$. 
+the eigenvalues of $\mathbf{A}$. 
 
 #### Step 2: Form $(\mathbf{A} - \lambda \mathbf{I})$ for each $\lambda$
 
@@ -381,13 +381,13 @@ $$
 
 
 #### Step 3: Solve $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = 0$ for each eigenvector
-This step requires us to actually do some algebra and solve for the components of the eigenvectors.
+This step requires us to actually do some algebra and solve for the components of the eigenvectors. WE will do both side-by-side since the steps are identical.
 
 <div class="two-column">
 
 <div class="column">
 
-The equation to solve is:<br>
+For $\vec{v}_1$ the equation to solve is:<br>
 
 $$
 \begin{bmatrix}
@@ -426,7 +426,7 @@ where $a$ will be determined in the next step.
 
 <div class="column">
 
-The equation to solve is:<br>
+For $\vec{v}_2$ the equation to solve is:<br>
 
 $$
 \begin{bmatrix}
@@ -467,13 +467,25 @@ where $c$ will be determined in the next step.
 
 
 
+Hopefully you noticed that the equations from Row 1 and Row 2 gave the same result for the unknown components of the eigenvector. That’s not a mistake, it’s expected and will always happen when solving for eigenvectors!
 
-You may have noticed that the Row 1 and Row 2 equations give the same results, within the work for each eigenvalue respectively. This not a mistake and will happen every time! When the determinant of a matrix is equal to 0, at least one of the rows is *redundant*. That means at least one of the rows will contribute no new information to the problem. For example, if you have two rows (a $2\times 2$ matrix), then one of the rows will be useless in solving for the components of the eigenvectors. If you have 3 rows (a $3\times 3$ matrix), then one or two of the rows will be useless. 
+Why? Because when the determinant of a matrix is zero, at least one row is *linearly dependent* on the others. In simpler terms, one or more rows are *redundant* and doesn't provide any new information. For example:
+
+- In a $2 \times 2$ matrix, if the determinant is zero, one row must be redundant.
+- In a $3 \times 3$ matrix, if the determinant is zero, one or even two rows will be redundant.
+
+This is why when we solve the system $(\mathbf{A} - \lambda \mathbf{I}) \vec{v} = \vec{0}$, we always end up with fewer independent equations than unknowns. We will always end us with at least one unknown we cannot explicitly solve for.
 
 
 
 
-#### Step 4: Select the scale parameter for the eigenvector.}
+#### Step 4: Select the Scale Parameter for the Eigenvector
+
+The undetermined quantities, $a$ or $c$, are called **scale factors** for the eigenvector. Since eigenvectors represent the principal axes (i.e., directions) of a matrix, their exact length doesn’t really matter. We're primarily interested in their direction.
+
+There is one notable exception: in quantum mechanics, eigenvectors are usually normalized, meaning their length is scaled to 1. This is important because the components of a quantum state vector are tied to probabilities, and probabilities must add up to 1.
+
+In most other contexts, though, we simply pick the simplest value for the scale factor. Typically, this means choosing something that avoids fractions and keeps the math clean.
 
 <div class="two-column">
 
@@ -490,8 +502,6 @@ $$
 
 This is the eigenvector associated with $\lambda_1 = 2$.<br>
 
-The selection of $a$ is generally arbitrary and you pick values to give you the simplest form for the result. 
-
 </div>
 
 <div class="column">
@@ -507,8 +517,6 @@ $$
 
 This is the eigenvector associated with $\lambda_2 = 5$.<br>
 
-The selection of $c$ is generally arbitrary and you pick values to give you the simplest form for the result. 
-
 </div>
 
 </div>
@@ -516,11 +524,19 @@ The selection of $c$ is generally arbitrary and you pick values to give you the 
 
 
 
-### Interpreting the Result
+#### Interpreting the Result
 
-The eigenvector $\vec{v}_1 = \begin{bmatrix} 1 \\ -2 \end{bmatrix}$ represents a direction in the plane along which the transformation by $\mathbf{A}$ acts as simple scaling by $\lambda_1 = 2$. 
+The eigenvector 
 
-Similarly, the eigenvector $\vec{v}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ represents a direction in the plane along which the transformation by $\mathbf{A}$ acts as simple scaling by $\lambda_2 = 5$
+$$\vec{v}_1 = \begin{bmatrix} 1 \\ -2 \end{bmatrix}$$ 
+
+represents a direction in the plane along which the transformation by $\mathbf{A}$ acts as simple scaling by $\lambda_1 = 2$. 
+
+Similarly, the eigenvector 
+
+$$\vec{v}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$$ 
+
+represents a direction in the plane along which the transformation by $\mathbf{A}$ acts as simple scaling by $\lambda_2 = 5$
 
 {% endcapture %}
 {% include example.html content=ex %}
@@ -531,11 +547,11 @@ Similarly, the eigenvector $\vec{v}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ re
 
 ### More Dimensions, More Complexity
 
-For higher-dimensional matrices, the process is the same, it is just a bit more work. Let's look at an example of a $3\times 3$ matrix with a degenerate eigenvalue.
+For higher-dimensional matrices, the process is the same, it is just a bit more work. Let's look at an example of a $3\times 3$ matrix with a degenerate (i.e., repeated) eigenvalue.
 
 {% capture ex %}
 
-Let’s look at a slightly more complicated example.  Consider the matrix:
+Consider the matrix:
 
 $$
 \mathbf{A} = \begin{bmatrix}
