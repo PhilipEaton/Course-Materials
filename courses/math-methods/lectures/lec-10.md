@@ -25,9 +25,6 @@ $$
 \end{bmatrix}
 $$
 
-
-$$ \sqrt{a^2 + b^2} $$
-
 We adopted these unit vectors as our standard basis because they offered a simple and intuitive way to represent vectors. However, this choice isn’t the only possible representation. Just as you can draw a coordinate system in different orientations on paper, you can choose different sets of basis vectors to describe the same vector space.
 
 Eigenvectors represent the **optimal coordinate system** for the matrix they are associated with. Transforming into this eigenvector basis simplifies the matrix by restructuring it in a more transparent manner. Specifically, it allows us to **diagonalize the matrix**, where the diagonal entries are the eigenvalues. This diagonalized form is much easier to work with in calculations and provides direct insights into the matrix’s action.

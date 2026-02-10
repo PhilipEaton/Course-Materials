@@ -375,6 +375,45 @@
         white-space: pre-wrap;
       }
 
+      /* ============================
+      Theorem-style blocks (print)
+      ============================ */
+
+      .example,
+      .result,
+      .warning {
+        border: 1px solid #000;        /* clean black box */
+        background: #fff !important;   /* no shading in print */
+        padding: 8pt 10pt;
+        margin: 10pt 0;
+        box-sizing: border-box;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Labels */
+      .example::before,
+      .result::before,
+      .warning::before {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4pt;
+      }
+
+      /* Label text */
+      .example::before {
+        content: "Example.";
+      }
+
+      .result::before {
+        content: "Result.";
+      }
+
+      .warning::before {
+        content: "Common Mistake.";
+      }
+
+
     }
 
 
