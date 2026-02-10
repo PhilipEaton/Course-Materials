@@ -210,19 +210,26 @@ wich is called the Euler identity. More on this in Mathematical Physics. So, the
 
 ## Connection Between Eigenvalues and Eigenvectors
 
-Now that we have discussed how to find the eigenvalues of a matrix and some of the properties of matrices they relate to, it’s time to connect these to eigenvectors, the other half of the eigen problem. Recall, eigenvalues $\lambda$ tell us how much a matrix $\mathbf{A}$ scales a vector $\vec{v}$, without rotating it, through the equation:
+Now that we have discussed how to find the eigenvalues of a matrix and some of the properties of matrices they relate to, it’s time to connect these to eigenvectors, the other half of the eigenvalue problem. Recall, eigenvalues $\lambda$ tell us how much a matrix $\mathbf{A}$ scales a vector $\vec{v}$, without rotating it, through the equation:
 
 $$
 \mathbf{A} \vec{v} = \lambda \vec{v}
 $$
 
-But how do we determine $\vec{v}$, the eigenvector? And why is $\vec{v}$ important?
+But how do we determine the eigenvector $\vec{v}$? And why is $\vec{v}$ important?
+
+
+
 
 ### The Role of Eigenvectors
 
-Eigenvectors define the **axes** along which the matrix $\mathbf{A}$ scales vectors along. These special axes are often called the **natural modes** or **principal axes** of the transformation represented by $\mathbf{A}$. Each principal axis (i.e., eigenvector) has an associated eigenvalue, which is the scaling factor for objects along that axis. The most fact about eigenvectors/principal axes is that they are **not rotated** as a result of the transformation matrix $\mathbf{A}$.
+Eigenvectors define the **axes** along which the matrix $\mathbf{A}$ scales vectors along. These special axes are often called the **natural modes** or **principal axes** of the transformation/object represented by $\mathbf{A}$. Each principal axis (i.e., eigenvector) has an associated eigenvalue, which is the scaling factor for objects along that axis.
 
-Imagine applying a matrix $\mathbf{A}$ to an arbitrary vector. In most cases, $\mathbf{A}$ will stretch, compress, rotate, and skew the vector. Eigenvectors are special because the axes they represent remain unchanged under this transformation. If $\lambda > 0$, the vector is stretched or compressed along its axis. If $\lambda < 0$, the vector is reflected and scaled along its axis. Ultimately, the axis it not changed. 
+Imagine applying a matrix $\mathbf{A}$ to an arbitrary vector. In most cases, $\mathbf{A}$ will stretch, compress, rotate, and skew the vector. Eigenvectors are special because the axes they represent remain unchanged under this transformation. 
+- If $\lambda > 0$, the vector is stretched or compressed along its axis. 
+- If $\lambda < 0$, the vector is reflected and scaled along its axis. 
+
+Ultimately, the axis these vectors represent are not fundamentally changed. 
 
 ### Connecting Eigenvalues to Eigenvectors
 
