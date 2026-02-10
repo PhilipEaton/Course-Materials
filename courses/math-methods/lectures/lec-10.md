@@ -6,11 +6,6 @@ nav_section: lectures
 nav_order: 10
 ---
 
-{% capture ex %}
-
-{% endcapture %}
-{% include example.html content=ex %}
-
 
 # Lecture 10 – Introduction to Transforming into the Eigenbasis
 
@@ -29,6 +24,9 @@ $$
 	0 \\ 0 \\ 1
 \end{bmatrix}
 $$
+
+
+$$ \sqrt{a^2 + b^2} $$
 
 We adopted these unit vectors as our standard basis because they offered a simple and intuitive way to represent vectors. However, this choice isn’t the only possible representation. Just as you can draw a coordinate system in different orientations on paper, you can choose different sets of basis vectors to describe the same vector space.
 
