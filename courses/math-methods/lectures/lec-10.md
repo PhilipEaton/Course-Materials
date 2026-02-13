@@ -7,19 +7,19 @@ nav_order: 10
 ---
 
 
-# Lecture 10 – Introduction to Transforming into the Eigenbasis
+# Lecture 10 – Introduction to Transforming into the Eigenbasis (Diagonalization)
 
-In our previous discussions, we explored the eigenvalue problem, focusing on finding the eigenvalues and eigenvectors of matrices. These unique scalars and vectors provide critical insights into how a matrix acts on a vector space, revealing scaling factors and invariant directions. In this lecture, we take the concept further by investigating how eigenvectors can simplify matrix operations, particularly through transforming a matrix into its **eigenbasis**.
+In our previous discussions, we explored the eigenvalue problem, focusing on finding the eigenvalues and eigenvectors of matrices. These unique scalars and vectors provide critical insights into how a matrix acts on a vector space, revealing scaling factors and invariant directions. In this lecture, we take the concept further by investigating how eigenvectors can simplify matrix operations, particularly through transforming a matrix into its **eigenbasis** through a process called **digonalization**.
 
-An interpretation of eigenvectors that we haven’t emphasized yet is that they represent the **optimal basis** for their associated matrix. To understand this, let’s recall an assumption we made way back in Lecture 01:  
+An interpretation of eigenvectors that we haven’t emphasized yet is that they represent the **optimal basis** for their associated matrix. To understand what we mean, let’s recall an assumption we made way back in Lecture 01. We assumed we could write $\hat{i}$, $\hat{j}$, and $\hat{k}$ in matrix form as:  
 
 $$
 \hat{i} = \begin{bmatrix}
 	1 \\ 0 \\ 0
-\end{bmatrix}, \quad 
+\end{bmatrix} \quad \quad 
 \hat{j} = \begin{bmatrix}
 	0 \\ 1 \\ 0
-\end{bmatrix}, \quad 
+\end{bmatrix} \quad \quad 
 \hat{k} = \begin{bmatrix}
 	0 \\ 0 \\ 1
 \end{bmatrix}
@@ -27,7 +27,7 @@ $$
 
 We adopted these unit vectors as our standard basis because they offered a simple and intuitive way to represent vectors. However, this choice isn’t the only possible representation. Just as you can draw a coordinate system in different orientations on paper, you can choose different sets of basis vectors to describe the same vector space.
 
-Eigenvectors represent the **optimal coordinate system** for the matrix they are associated with. Transforming into this eigenvector basis simplifies the matrix by restructuring it in a more transparent manner. Specifically, it allows us to **diagonalize the matrix**, where the diagonal entries are the eigenvalues. This diagonalized form is much easier to work with in calculations and provides direct insights into the matrix’s action.
+Eigenvectors represent the **optimal coordinate system representation** for the matrix they are associated with. Transforming into this eigenvector basis simplifies the matrix by restructuring it in a more transparent manner. Specifically, it allows us to **diagonalize the matrix**, where the diagonal entries become the eigenvalues. This diagonalized form is much easier to work with in calculations and provides direct insights into the matrix’s action.
 
 We already know that transformations between coordinate systems can be expressed as matrices. In the case of eigenvectors, the transformation into the eigenvector basis is called an **eigenbasis transformation**. This transformation is an incredibly powerful tool in linear algebra and physics, enabling us to simplify systems, solve differential equations, and analyze complex interactions.
 
@@ -55,17 +55,23 @@ $$
 
 where the diagonal entries $ \lambda_1, \lambda_2, \ldots, \lambda_n $ are the eigenvalues of the original matrix. Working with diagonal matrices is far easier than dealing with their original, often more complex, forms. For example:
 
-- **Simplified matrix powers:** Powers of a diagonal matrix can be computed directly by raising each diagonal entry to the corresponding power. We will see an example of this later in this lecture.
+- **Simplified matrix powers:** Powers of a diagonal matrix can be computed directly by raising each diagonal entry to the corresponding power. We have seen this in a previous lecture and will see an interesting application of this later in this lecture.
 - **Simpler physical analysis:** Many physical systems become much easier to analyze when their governing matrices are diagonal. In this case, each eigenvalue often corresponds to a distinct mode or behavior of the system.
 - **Quantum mechanics applications:** In quantum mechanics, diagonal matrices often correspond to measurements, where the eigenvalues represent the possible outcomes of the measurement.
 
-
 This leads to a general rule of thumb for physicists and engineers: **If your working matrices are not diagonal, transform into the eigenbasis so that they are.** This simplification often reveals deeper insights into the underlying system.
 
-**A Note on Non-Commuting Matrices:** There are cases in physics and engineering where you will be working with multiple matrices and it will not be possible to diagonalize them using the same basis. While this can be inconvenient, it is not insurmountable and often provides valuable information about the system. For instance, in quantum mechanics, the position and momentum operators cannot be simultaneously diagonalized because they do not commute—a direct consequence of the Heisenberg uncertainty principle. This incompatibility reflects fundamental properties of quantum systems and highlights why certain pairs of observables cannot be measured precisely at the same time.
 
+{% capture ex %}
 
+**A Note on Non-Commuting Matrices:** There are cases in physics and engineering where you will be working with multiple matrices at the same time. As a result, it may not be possible to diagonalize them using the same basis vectors. While this can be inconvenient, it is not insurmountable and often provides valuable information about the system. 
 
+For instance, in quantum mechanics, the position and momentum operators cannot be simultaneously diagonalized because they do not commute. This is a direct consequence of the Heisenberg uncertainty principle. This incompatibility reflects fundamental properties of quantum systems and highlights why certain pairs of observables cannot be measured precisely at the same time.
+
+In fact, this is a rule: Non-commuting matrices cannot be diagonalized at the same time using the same basis representation.
+
+{% endcapture %}
+{% include warning.html content=ex %}
 
 
 
@@ -74,32 +80,104 @@ This leads to a general rule of thumb for physicists and engineers: **If your wo
 
 ### The Big Idea: Changing Basis
 
-The key to diagonalizing a matrix lies in changing the basis in which it is expressed. Suppose $ \mathbf{A} $ is a square $ n \times n $ matrix with $ n $ linearly independent eigenvectors $ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n $ with the associated eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$. By definition, these eigenvectors and eigenvalues are linked through the eigenvalue equation:
+The key to diagonalizing a matrix is changing the basis in which it’s expressed. That is, we perform a coordinate transformation that moves the matrix from its current coordinate system into one defined by its eigenvectors.
+
+Let’s pause briefly to explain what we mean by a “coordinate system representation” of a matrix. If we think of a matrix as an operator—like a rotation—that transforms coordinates, then the form that matrix takes depends on the coordinate system we're using. The operation itself doesn’t change, but its *appearance* does.
+
+As a concrete example, consider the familiar 2D rotation matrix:
+
+$$
+\mathbf{R}(\theta) = \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{bmatrix}
+$$
+
+Recall in Lecture 01 we agreed that the first element in the vector represented the $x$-component and similarly the second was the $y$-component:
+
+$$
+\vec{v} = \begin{bmatrix}
+x \\ y
+\end{bmatrix}
+$$
+
+
+When the rotation matrix is applied to this vector we get:
+
+$$
+\mathbf{R}(\theta) \vec{v} = \begin{bmatrix}
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{bmatrix}\begin{bmatrix}
+x \\ y
+\end{bmatrix} = \begin{bmatrix}
+x \cos(\theta) - y \sin(\theta) \\ x\sin(\theta) + y \cos(\theta)
+\end{bmatrix}
+$$
+
+Now, let's suppose we change our mind. Suppose we want a new representation where the first element of a vector is the $y$-component and the second is the $x$-component:
+
+$$
+\vec{v}' = \begin{bmatrix}
+y \\ x
+\end{bmatrix}
+$$
+
+To preserve the meaning of the rotation, the matrix must change form. In this new representation, the rotation matrix becomes:
+
+$$
+\mathbf{R}'(\theta) = \begin{bmatrix}
+\cos(\theta) & \sin(\theta) \\
+-\sin(\theta) & \cos(\theta)
+\end{bmatrix}
+$$
+
+such that:
+
+$$
+\mathbf{R}'(\theta) \vec{v}' = \begin{bmatrix}
+\cos(\theta) & \sin(\theta) \\
+-\sin(\theta) & \cos(\theta)
+\end{bmatrix}\begin{bmatrix}
+y \\ x
+\end{bmatrix} = \begin{bmatrix}
+y \cos(\theta) + x \sin(\theta) \\ - y \sin(\theta) + x \cos(\theta)
+\end{bmatrix}
+$$
+
+Notice how the $x$ and $y$ components rotate just as they did in the original coordinate system. Only the *representation* of the operator has changed, not its effect.
+
+The moral of the story is this: **the same matrix operation can look different depending on the coordinate system we use**. So, by choosing a new coordinate system we can transform a matrix into a much simpler form. If we transform into a coordinate system defined by the eigenvectors, that new form turns out to be diagonal. Let's see how this plays out in a general manner
+
+Suppose $\mathbf{A}$ is a square $n \times n$ matrix with $n$ linearly independent eigenvectors $\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n$, and associated eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$. By definition, each eigenvector-eigenvalue pair satisfies the equation:
 
 $$
 \mathbf{A} \vec{v}_i = \lambda_i \vec{v}_i
 $$
 
-where $ \lambda_i $ is the eigenvalue associated with eigenvector $ \vec{v}_i $.
-
-Let's construct the matrix $ \mathbf{P} $, called the **eigenvector matrix**, whose columns are the eigenvectors of $ \mathbf{A} $:
+Let’s now construct a matrix $\mathbf{P}$ whose columns are these eigenvectors:
 
 $$
-\mathbf{P} = \begin{bmatrix} \vert & \vert &  & \vert \\ \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\ \vert & \vert &  & \vert \end{bmatrix}
+\mathbf{P} = \begin{bmatrix}
+\vert & \vert &  & \vert \\
+\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\
+\vert & \vert &  & \vert
+\end{bmatrix}
 $$
 
-Each column of $ \mathbf{P} $ corresponds to one of the eigenvectors of $ \mathbf{A} $. 
-
-Now, let's examine what happens when $\mathbf{A}$ act on $\mathbf{P}$:
+So, each column of $\mathbf{P}$ is one eigenvector of $\mathbf{A}$. Let’s look at what happens when we multiply $\mathbf{A}$ by $\mathbf{P}$:
 
 $$
-\mathbf{A} \mathbf{P} = \mathbf{A} \begin{bmatrix} \vert & \vert &  & \vert \\ \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\ \vert & \vert &  & \vert\end{bmatrix}
-$$
-
-which can be written in the following manner:
-
-$$
-\mathbf{A} \mathbf{P} = \begin{bmatrix} \vert & \vert &  & \vert \\ \mathbf{A} \vec{v}_1 & \mathbf{A} \vec{v}_2 & \cdots & \mathbf{A} \vec{v}_n \\ \vert & \vert &  & \vert \end{bmatrix}
+\mathbf{A} \mathbf{P} = \mathbf{A} \begin{bmatrix}
+\vert & \vert &  & \vert \\
+\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\
+\vert & \vert &  & \vert
+\end{bmatrix}
+= \begin{bmatrix}
+\vert & \vert &  & \vert \\
+\mathbf{A} \vec{v}_1 & \mathbf{A} \vec{v}_2 & \cdots & \mathbf{A} \vec{v}_n \\
+\vert & \vert &  & \vert
+\end{bmatrix}
 $$
 
 ---
@@ -146,65 +224,105 @@ $$ \begin{bmatrix}
 \end{bmatrix} & \begin{bmatrix}
 	13 \\ 29 
 \end{bmatrix}
+\end{bmatrix} $$
+
+
+$$\implies  \begin{bmatrix}
+	1 & 2 \\ 3 & 4 
+\end{bmatrix} \begin{bmatrix}
+	2 & 3 \\ 4 & 5 
 \end{bmatrix} = \begin{bmatrix}
 10 & 13 \\ 22 & 29 
 \end{bmatrix} $$
 
-We get the same thing! This is an interesting and useful way to think about matrix multiplication! Now, back to the problem at hand...
+We end up with the same result either way, which reinforces that multiplying a matrix by another matrix is like applying it to each column vector one at a time.
 
 ---
 
-
-
-From here we can use the eigenvalue equation to write this as:
+Now back to our main idea. Since $\mathbf{A} \vec{v}_i = \lambda_i \vec{v}_i$, we can rewrite the previous multiplication as:
 
 $$
-\mathbf{A} \mathbf{P} = \begin{bmatrix} | & | &  & | \\ \lambda_1 \vec{v}_1 & \lambda_2 \vec{v}_2 & \cdots & \lambda_n \vec{v}_n \\ | & | &  & | \end{bmatrix}
-$$
-
-which we can represent via the following matrix multiplication (You are welcome to check!):
-
-$$
-\mathbf{A} \mathbf{P} = \begin{bmatrix} | & | &  & | \\ \lambda_1 \vec{v}_1 & \lambda_2 \vec{v}_2 & \cdots & \lambda_n \vec{v}_n \\ | & | &  & | \end{bmatrix} = \begin{bmatrix} | & | &  & | \\ \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\ | & | &  & | \end{bmatrix} \begin{bmatrix}
-	\lambda_1 & 0 & \cdots & 0 \\
-	0 & \lambda_2 & \cdots & 0 \\
-	\vdots & \vdots & \ddots & \vdots \\
-	0 & 0 & \cdots & \lambda_n
-\end{bmatrix} = \mathbf{P} \mathbf{D}
-$$
-
-where $ \mathbf{D} $ is a diagonal matrix containing the eigenvalues $ \lambda_1, \lambda_2, \ldots, \lambda_n $ along its main diagonal:
-
-$$
-\mathbf{D} = \begin{bmatrix}
-	\lambda_1 & 0 & \cdots & 0 \\
-	0 & \lambda_2 & \cdots & 0 \\
-	\vdots & \vdots & \ddots & \vdots \\
-	0 & 0 & \cdots & \lambda_n
+\mathbf{A} \mathbf{P} = \begin{bmatrix}
+\vert & \vert &  & \vert \\
+\lambda_1 \vec{v}_1 & \lambda_2 \vec{v}_2 & \cdots & \lambda_n \vec{v}_n \\
+\vert & \vert &  & \vert
 \end{bmatrix}
 $$
 
-Using only matrix notation, we have:
+And this can be factored as  (You are welcome to check by doing the matrix multiplication!):
 
-$$ \mathbf{A} \mathbf{P} =  \mathbf{P} \mathbf{D} $$
+$$
+\begin{aligned}
+\mathbf{A} \mathbf{P} &= \begin{bmatrix}
+\vert & \vert &  & \vert \\
+\vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\
+\vert & \vert &  & \vert
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{bmatrix}
+= \mathbf{P} \mathbf{D}
+\end{aligned}
+$$
 
-We can move the $\mathbf{P}$ on the right-hand side over to the left by multiplying on the left by $\mathbf{P}^{-1}$ to get:
+Here, $\mathbf{D}$ is a diagonal matrix containing the eigenvalues:
+
+$$
+\mathbf{D} = \begin{bmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_n
+\end{bmatrix}
+$$
+
+You might be wondering why we’d want to write things this way. Two good reasons:
+
+1. It makes the next step of the derivation easier.
+2. It highlights where the diagonal matrix $\mathbf{D}$ actually comes from.
+
+Would you have thought to introduce $\mathbf{D}$ the first time you ever saw this problem? Probably not! It’s one of those tricks you pick up after working through the full process and realizing there’s a cleaner way to approach the problem. This is often the case when you see derivations or solutions that look "too clean" or "too clever". You might wonder how you were ever suppose to see these tricks on your own. The answer often is you weren't and the tricks were the result of someone spending months or years working on the problem until they stumbled on a "random" simplification that makes the process seem trivial. 
+
+Anyways, let’s finish the transformation.
+
+We’ve reached the following point:
+
+$$
+\mathbf{A} \mathbf{P} = \mathbf{P} \mathbf{D}
+$$
+
+We can solve for the diagonal matrix $\mathbf{D}$ by multiplying both sides on the left by $\mathbf{P}^{-1}$:
 
 $$
 \mathbf{P}^{-1} \mathbf{A} \mathbf{P} = \mathbf{D}
 $$
 
-This tells us how we can use $ \mathbf{P} $ to transform the original matrix $ \mathbf{A} $ into a diagonal matrix $ \mathbf{D} $ when we move into the eigenvector basis.
+This equation shows us how we can use $\mathbf{P}$ to transform $\mathbf{A}$ into its diagonal representation $\mathbf{D}$ by switching to the eigenvector basis.
+
+
+
+
+
+
+
 
 ### Conditions for Diagonalizability
 
-Something to keep in mind is that **not all matrices can be diagonalized**. Even if a matrix has a non-zero determinant and can be inverted, that does not mean it can be diagonalized! A matrix $\mathbf{A}$ is diagonalizable **if and only if** it has enough linearly independent eigenvectors to form a basis of the vector space. For an $n \times n$ matrix, this means:
+Something to keep in mind is that **not all matrices can be diagonalized**. Even if a matrix has a non-zero determinant and can be inverted, that does not mean it can be diagonalized! 
 
-$$
-\text{The $n\times n$ matrix $\mathbf{A}$ has $n$ linearly independent eigenvectors.}
-$$
+Notice, in the above derivation we have to assume $\mathbf{P}$ had an inverse so that we could solve for the diagonal matrix $\mathbf{D}$. This leads up to the conditions required for a matrix to be diagonalized, 
 
-We can test this by checking if the determinant of the matrix $\mathbf{P}$ we defined previously is zero or not. This leads to an excellent check:
+A matrix $\mathbf{A}$ is diagonalizable **if and only if** it 
+
+- has enough linearly independent eigenvectors to form a basis of the vector space. 
+	- That is, the determinant of $\mathbf{A}$ is nonzero.
+- the matrix $\mathbf{P}$ build from the eigenvectors is invertible.
+	- That is, the determinant of $\mathbf{P}$ is nonzero.
+
+It turns out for $\mathbf{P} to even be construicted, $mathbf{A}$ must have a non zero determinate. So, assuming the matrix is invertible, we can test if it is diagonalizable by checking to see if the determinant of the matrix $\mathbf{P}$ is zero or not.
 
 {% capture ex %}
 **When is a matrix diagonalizable?** Suppose you have an $n\times n$ matrix $\mathbf{A}$ with eigenvalues $\lambda_1$, ..., $\lambda_n$, and eigenvectors $\vec{v}_1$, ..., $\vec{v}_n$. You can create the matrix $\mathbf{P}$ using the **eigenvectors** as its columns:
