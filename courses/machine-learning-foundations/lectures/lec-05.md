@@ -94,23 +94,23 @@ warnings.filterwarnings("ignore")  # keep output clean for class demos
 
 ## Learning Objectives
 - Understand how decision trees learn to make choices by splitting data based on feature values.  
-- Explain the concepts of **Gini impurity** and **entropy**, and how they guide tree construction.  
+- Explain the concepts measures like **Gini impurity** and **entropy**, and how they guide tree construction.  
 - Recognize when a tree is **overfitting** or **underfitting**, and know how to control model complexity.  
 - Understand the motivation behind **Random Forests** and **Ensemble Learning**, and how combining many “weak” models can create a strong one.  
 - Interpret **feature importance** and explain how trees tell us which features matter most.
 
 ---
 
-Decision Trees — and their ensemble extensions like Random Forests, Gradient Boosting, XGBoost, and LightGBM — are workhorses of modern data science. They combine simplicity of concept with interpretability, flexibility, and power to make them some of the most widely used and effective machine-learning algorithms today.
+## Decision Trees
+
+Decision Trees — and their ensemble extensions like Random Forests, Gradient Boosting, XGBoost, and LightGBM — are workhorses of modern data science. They *combine* **simplicity** of concept with **interpretability**, **flexibility**, and **power** to make them some of the most widely used and effective machine-learning algorithms today.
 
 Decision Trees are:
-- **Easy to interpret**: Their structure is literally a tree of “if–then” decisions that you can read and visualize.
-- **Flexible**: They handle numeric (linear and non-linear) and categorical data with minimal preprocessing.
-- **Powerful**: Ensembles of trees can outperform linear models, even on messy, real-world datasets.
+- **Easy to interpret**: Their structure is literally a tree of “if–then” decisions you can easily read and visualize.
+- **Flexible**: They handle numeric (linear and non-linear) and non-numeric (e.g., categorical data) with minimal preprocessing.
+- **Powerful**: Ensembles of trees can even outperform linear models, even on messy, real-world datasets.
 
-When you understand Decision Trees, you gain a lens for seeing how **machine-learning models make structured choices** — step by step, branch by branch — and how combining many simple models can create something remarkably strong.
-
-
+When you understand Decision Trees, you gain a lens for seeing how **machine-learning models make structured choices** step by step and branch by branch. Additionally, this is a great place to see how combining many simple models can create something remarkably strong.
 
 
 
@@ -118,33 +118,43 @@ When you understand Decision Trees, you gain a lens for seeing how **machine-lea
 
 
 
-## From Decisions to Trees - Conceptual Foundation
 
-Let’s start with a question:
+
+### From Decisions to Trees - Conceptual Foundation
+
+Let’s start with a question or, more to the point, a game:
 
 > Have you ever played *20 Questions*?
 
-You, for example, begin with a broad question (“Is it an animal?”) and, based on the answer, ask a narrower one (“Does it live in water?”). Each question **splits the possibilities** until you’ve isolated the right answer.
+If you haven't the rules are simple. Your friend thinks of something, anything. If could be an object, say a shark.  
 
-That’s ***exactly*** what a **Decision Tree** does.
+Your objective it to guess what your friend is thinking of. However, you only have 20 questions to do it *and* your questions can only be answered via "yes" or "no".
 
-At its core, a Decision Tree is a series of *yes/no questions* about the data. Each question divides the data into smaller, purer groups — that is, groups that are more uniform in their outcomes.
+You, for example, begin with a broad question (“Is it an animal?”) and, based on the answer ("yes"), ask a narrower one (“Is it a predator?”). Each question **splits the possibilities** until you’ve isolated the right answer.
+
+This is ***exactly*** what a **Decision Tree** does.
+
+At its core, a Decision Tree is a series of *yes/no questions* about the data. Each question divides the data into smaller, purer groups. That is, groups that are more uniform in their outcomes/classifications.
 
 
-### The Intuition
+
+
+
+
+#### The Intuition
 
 Think of the tree as a **flowchart of decisions**:
-- Each **node** asks a question about a feature.  
+- Each **node** asks a question about a feature.
 - Each **branch** represents the answer (“yes” or “no”).  
-- Each **leaf node** (the end of a branch tree) holds the final prediction (a class label or numeric value).  
+- Each **leaf node** (the very end of a branch tree) holds the final prediction (a class label or numeric value).  
 
-The model’s job is to find **which questions** to ask and **in what order** so that it can make a simple model and accurate predictions.
+The model’s job is to find **which questions** to ask and **in what order** so that it can make as simple a model as possible while still giving accurate predictions.
 
 
-### In Machine Learning Terms
+#### In Machine Learning Terms
 
-Decision Trees are built automatically using algorithms (like **CART (Classification and Regression Trees)** or **ID3**):
-1. The algorithm looks for the feature and threshold that best separate the data (most reduces impurity).  
+Decision Trees are built automatically using algorithms (like **CART (Classification and Regression Trees)**):
+1. The algorithm looks for the feature and threshold that best separate the data.  
 2. It recursively repeats this process on each subset until stopping conditions are met (e.g., max depth, min samples per leaf).  
 
 
@@ -157,7 +167,7 @@ Decision Trees are built automatically using algorithms (like **CART (Classifica
 
 Let's take a peek at an example that builds and visualizes a tiny Decision Tree on the Iris dataset.
 
-Try changing the `max_depth` to see how the tree becomes more detailed — and how quickly it can grow complex.  
+Try changing the `max_depth` to see how the tree becomes more detailed and how quickly it can grow complex.  
 
 
 {% capture ex %}
@@ -186,7 +196,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_4_0.png' | relative_url }}"
-  alt=""
+  alt="A decision tree of the iris data. It starts with one node (one question) which then leads to two separate nodes, which can each split into two other nodes, and etcetera."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
@@ -206,7 +216,7 @@ plt.show()
 
 ### Splitting Criteria and Tree Growth
 
-Now that we understand *what* a Decision Tree is, let’s talk about *how* they are built.
+Now that we understand *what* a Decision Tree is (yes, it is as simple as the previous description makes it sound), let’s talk about *how* they are built.
 
 A Decision Tree builds itself by asking:  
 
@@ -220,12 +230,12 @@ This process is called **splitting**, and the “cleanliness” of a split is me
 
 #### What Is Impurity?
 
-At the start, our dataset is messy, containing contains a mix of different classes (like several species of flowers, for example).  
+Our starting dataset, taken as a whole, is quite messy. It contains a mix of different classes (e.g., species of flowers).  
 
 - A **pure** group contains only one class (for example, all `setosa`).  
 - An **impure** group contains a mix of classes (e.g., `setosa` and `versicolor`).
 
-We want to find a feature and threshold that separate those classes as much as possible, creating the most pure groups possible. A tree algorithm tries to maximize purity (i.e., minimize impurity) after each split.
+We want to find a feature and threshold that separate the classes as much as possible, thus creating the most pure groups possible. A tree algorithm tries to maximize purity by **minimizing impurity** as a result of each split.
 
 
 
@@ -234,17 +244,17 @@ We want to find a feature and threshold that separate those classes as much as p
 
 #### Common Measures of Impurity
 
-When building a Decision Tree, the algorithm needs a way to decide how “mixed” or “pure” a node is.
-- If **all samples in a node belong to the same class**, we will say the **node is pure (impurity = 0)**.
-- If **samples are *evenly* split among several classes**, the node is ***maximally* impure**.
+When building a Decision Tree, the algorithm needs a way to decide how “mixed” or “pure” a node is. For example,
+- If **all samples in a node belong to the same class**, we can say the **node is pure (impurity = 0)**.
+- If **samples are *evenly* split among the classes**, the node is ***maximally* impure**.
 
 To quantify this, we define impurity using one of several mathematical measures.
 
 | Measure                  | Formula                          | Conceptual Meaning                                                                                                                                                                                                                                                                                                                                                                 |
 | :----------------------- | :------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Gini Impurity**        | $$ G = 1 - \sum_i p_i^2 $$       | Think of ( p_i ) as the fraction of samples in this node that belong to class ( i ). Gini measures how often you would mislabel a randomly chosen sample if you assigned its class *at random* according to these class probabilities. <br><br>**Low Gini** means one class dominates (the node is “clean”); **high Gini** means the node is mixed.                                |
-| **Entropy**              | $$ H = -\sum_i p_i \log_2 p_i $$ | Borrowed from information theory, entropy measures **uncertainty** or “information disorder.” <br><br>When one class dominates (say ( p_i = 1 ) for one class and 0 for others), entropy = 0 because there’s no uncertainty — you know exactly what the class is. When classes are perfectly balanced (e.g., 50/50), entropy is highest because each outcome is equally uncertain. |
-| **Classification Error** | $$ E = 1 - \max(p_i) $$          | This is the simplest impurity measure — it only cares about the most common class. It tells you the fraction of samples *not* in the majority class. <br><br>However, because it ignores smaller changes in class balance, it’s less sensitive and rarely used for training (though sometimes used for quick summaries).                                                           |
+| **Gini Impurity**        | $$ G = 1 - \sum_i p_i^2 $$       | Think of $p_i$ as the fraction of samples in this node that belong to class $i$. Gini measures how often you would mislabel a randomly chosen sample if you assigned its class *at random* according to these class probabilities. <br><br>**Low Gini** means one class dominates (the node is “clean”); **high Gini** means the node is mixed.                                |
+| **Entropy**              | $$ H = -\sum_i p_i \log_2 p_i $$ | Borrowed from information theory, entropy measures **uncertainty** or “information disorder.” <br><br>When one class dominates (say $p_i = 1$ for one class and 0 for others), entropy = 0 because there’s no uncertainty — you know exactly what the class is. When classes are perfectly balanced (e.g., 50/50), entropy is highest because each outcome is equally uncertain. |
+| **Classification Error** | $$ E = 1 - \max(p_i) $$          | This is the simplest impurity measure as it only cares about the most common class. It tells you the fraction of samples *not* in the majority class. <br><br>However, because it ignores smaller changes in class balance, it’s less sensitive and rarely used for training (though sometimes used for quick summaries).                                                           |
 
 
 #### **What is $p_i$?**
@@ -255,7 +265,7 @@ $$
 p_i = \frac{\text{number of samples of class $i$}}{\text{total number of samples in the node}}
 $$
 
-So for a binary classification node with 80 samples of Class A and 20 samples of Class B:
+Example: A two-class classification node with 80 samples of Class A and 20 samples of Class B:
 
 $$
 p_A = 0.8 \qquad\qquad p_B = 0.2
@@ -306,7 +316,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_7_0.png' | relative_url }}"
-  alt=""
+  alt="A plot of impurity versus proportion of class 1 in the node. As the proportion of class 1 in the node gets bigger the impurity gets larger, until it hits 50%, where the impurity of all three measures is maximum. From there the impurity gets smaller and more and more of the node is class 1 until the impurity goes to zero when all of the node belongs to class 1."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
  
 {% endcapture %}
@@ -314,11 +324,16 @@ plt.show()
 
 
 
-Notice how impurity is **highest** when classes are evenly mixed (p = 0.5), and **lowest** when one class dominates (p = 0 or 1).
+Notice how impurity is **highest** when classes are evenly mixed ($p = 0.5$), and **lowest** when one class dominates ($p = 0$ or $1$).
 
-That’s exactly what the algorithm looks for:  
+This is exactly what the algorithm should look for! 
 
-> it tests different feature thresholds to find the split that produces the *largest drop in impurity*.
+> It tests different feature thresholds to find the split that produces the *largest drop in impurity*.
+
+
+
+
+
 
 
 #### How a Tree Chooses Its Split
@@ -329,11 +344,18 @@ At each step, the algorithm:
 3. Chooses the feature and threshold that produce the **biggest decrease in impurity**.
 4. **Repeats** the process for the new subsets until the stopping criteria are met.
 
-This is called **recursive binary splitting** — because the tree keeps splitting until it’s told to stop.
+This is called **recursive binary splitting** because the tree keeps splitting until it’s told to stop.
+
+
+
 
 ##### Visualizing a Split
 
-Let’s watch a simple 2D dataset get split by a Decision Tree.
+Let’s look at a simple 2 feature dataset get split.
+
+We will see that the construction algorithm makes a single split along the feature (Feature 1) that gave the **cleanest separation** between classes. 
+
+That is, the split if made such that it produces the largest drop in impurity.  
 
 
 {% capture ex %}
@@ -418,24 +440,19 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_10_0.png' | relative_url }}"
-  alt=""
+  alt="A scatter plot of two calsses of data.Class 0 appears mostly below 0 and class 1 appears mostly above 0. The best threshold was calculated to be at 0.13."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_10_1.png' | relative_url }}"
-  alt=""
+  alt="A plot of the reduction in Gini Impurity versus the threshold. The reduction increases until it hits 0.13 where it them begins to decrease. Thus, the threshold is set to 0.13 since it results in the largest drop in impurity. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
-
-
-
-
-The tree made a single split along the feature (Feature 1) that gave the **cleanest separation** between classes.  
 
 
 
@@ -446,11 +463,9 @@ The tree made a single split along the feature (Feature 1) that gave the **clean
 
 ### Overfitting and Pruning
 
-Decision Trees are powerful — but also dangerously flexible.
+Decision Trees are powerful, but are also dangerously flexible.
 
-If you let a tree keep growing without limits, it will keep finding smaller and smaller splits… eventually memorizing every little noise or outlier in the training data.
-
-This leads to **overfitting** — when the model fits the training data *too well* and fails to generalize to new data.
+If you let a tree keep growing without limits, it will keep finding smaller and smaller splits. This means it will eventually memorizing everything about the dataset, including any noise and outliers in the training data. This is **overfitting**!
 
 As a reminder we have:
 
@@ -460,26 +475,20 @@ As a reminder we have:
 | **Good Fit** | The tree captures the real structure of the data. | **High** training accuracy and **high** testing accuracy. |
 | **Overfitting** | The tree is too deep and memorizes noise. | ***Very* high** training accuracy, **low** testing accuracy. |
 
-Each split reduces impurity *just a little*, but even tiny gains add up. A fully grown tree can create one leaf for each training point — giving 100% training accuracy but poor generalization. The goal isn’t to make a perfect training tree — it’s to make a **useful** one.
+Each split reduces impurity *just a little*, but even tiny gains add up. A fully grown tree can create one leaf for each training point. This will give giving 100% training accuracy but poor generalization. 
+
+Remember the goal of machine learning. It isn’t to make a perfect training mode, it’s to make a **useful** and generalizable one.
 
 
-###  How We Control Tree Growth
+####  How We Control Tree Growth
 
 We use *regularization parameters* to prevent overfitting:
-- `max_depth`: limits how deep the tree can go  
+- `max_depth`: limits how deep (how many layers) the tree can go  
 - `min_samples_split`: the minimum number of samples needed to make a split  
-- `min_samples_leaf`: the smallest size allowed for a leaf  
+- `min_samples_leaf`: the minimum number of samples needed for a leaf  
 - `max_leaf_nodes`: limits the total number of leaves
 
-We can also **prune** the tree after it’s been built — removing unnecessary branches that don’t improve performance.
-
-
-
-
-
-
-
-### Underfit vs Overfit Trees:
+We can also **prune** the tree after it’s been built by removing unnecessary branches that don’t improve performance.
 
 {% capture ex %}
 ```python
@@ -521,21 +530,17 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_13_0.png' | relative_url }}"
-  alt=""
+  alt="Three plots of variaous levels of max-depth. A max depts of 1 simply splits the data in half as best it can by making a single line. The second plot is has depth 4 and fits the data well, but some misfits are still visible. The last plot has an unlimited depth and random glitchs appear that reach out and correctly classify single points, which is characteristic of overfitting."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
-
-
-
-
-Notice how:
-- The **underfit** model barely separates the classes.  
-- The **well-fit** model captures the general pattern while keeping boundaries smooth-ish.  
-- The **overfit** model draws jagged, overly complex boundaries that cling to noise.
+Notice:
+- The top plot: **underfit** model barely separates the classes.  
+- The middle plot: **well-fit** model captures the general pattern while keeping boundaries smooth-ish.  
+- The bottom plot: **overfit** model draws jagged, overly complex boundaries that cling to noise.
 
 
 
@@ -543,7 +548,9 @@ Notice how:
 
 
 
-### Check Training vs Testing Accuracy:
+#### Check Training vs Testing Accuracy:
+
+Let's check the accuracy of thes models on the training and test sets to see how good/bad these did.
 
 {% capture ex %}
 ```python
@@ -577,9 +584,9 @@ for title, model in models.items():
 {% include codeoutput.html content=ex %}  
 
 
+Notice the **overfit** model gets perfect training accuracy, but loses quite a bit on the test set. Whereas, the **underfit** model gets mediocre training and test accuracy. 
 
-
-Notice the **overfit** model gets perfect training accuracy — but loses quite a bit on the test set. The **well-fit** model achieves a balance possessing good training accuracy *and* good test accuracy.
+The **well-fit** model achieves a balance possessing good training accuracy *and* good test accuracy.
 
 This is why we use **pruning** and **regularization**. We want a tree that’s deep enough to capture structure, but not so deep that it memorizes noise.
 
@@ -589,12 +596,14 @@ This is why we use **pruning** and **regularization**. We want a tree that’s d
 
 
 
-### Pruning in Practice
+#### Pruning in Practice
 
-Scikit-learn allows pruning via:
-- `ccp_alpha` → Cost Complexity Pruning (ccp) parameter
+Scikit-learn allows pruning via,
+> `ccp_alpha`: Cost Complexity Pruning (ccp) parameter
 
-A **higher** `ccp_alpha` means **more pruning** (simpler trees). You can tune this hyperparameter using cross-validation to find the sweet spot where validation accuracy peaks.
+A **higher** `ccp_alpha` is the **more pruning** (simpler trees) will be done. 
+
+You can tune this hyperparameter by building trees for vaious values of `ccp_alpha` to find the sweet spot where validation accuracy peaks.
 
 
 {% capture ex %}
@@ -612,7 +621,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Train an unpruned (fully grown) tree
 clf = DecisionTreeClassifier(random_state=42)
 clf.fit(X_train, y_train)
-print(f"Full Tree Depth: {clf.get_depth()}, Leaves: {clf.get_n_leaves()}")
 
 # Get effective alphas (complexity parameters)
 path = clf.cost_complexity_pruning_path(X_train, y_train)
@@ -650,6 +658,7 @@ plt.show()
 # Show best alpha
 best_alpha = ccp_alphas[np.argmax(test_scores)]
 best_model = clfs[np.argmax(test_scores)]
+print(f"Full Tree Depth: {clf.get_depth()}, Leaves: {clf.get_n_leaves()}")
 print(f"Best alpha = {best_alpha:.5f}")
 print(f"Optimal Depth = {best_model.get_depth()}, Test Accuracy = {max(test_scores):.3f}")
 
@@ -659,16 +668,15 @@ print(f"Optimal Depth = {best_model.get_depth()}, Test Accuracy = {max(test_scor
 
 {% capture ex %}
 
-Full Tree Depth: 6, Leaves: 16
-
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_17_1.png' | relative_url }}"
-  alt=""
+  alt="A pot of training and test accuracy versus the cpp alpha parameter. The best accuracy for both training and test occur around a cpp alpha of 0.00295."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
 
 ```python
+    Full Tree Depth: 6, Leaves: 16
     Best alpha = 0.00295
     Optimal Depth = 4, Test Accuracy = 0.936
 ```
@@ -700,7 +708,7 @@ shallow_tree.fit(X_train, y_train)
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 for ax, model, title in zip(axes, [deep_tree, shallow_tree],
-                            ["Overfitted Tree", "Pruned Tree (max_depth=3)"]):
+                            ["Overfitted Tree", "Pruned Tree (max_depth=4)"]):
     plot_tree(model, filled=True, ax=ax, feature_names=data.feature_names,
               class_names=data.target_names, fontsize=6)
     ax.set_title(title)
@@ -714,7 +722,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_18_0.png' | relative_url }}"
-  alt=""
+  alt="The trees. On the left is the full, unpruned tree. On the right is the pruned tree."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
   
 {% endcapture %}
@@ -736,20 +744,25 @@ plt.show()
 
 ## Random Forests — Combining Many Trees
 
-By now, we’ve seen the potential that a Decision Tree can have. The only problem is that these trees are pretty unstable; change a few data points, and the tree might split differently and make different predictions. This means a single tree isn't ver generalizable in nature.
+By now, we’ve seen the potential a single Decision Tree has. The only problem is that these trees are pretty unstable; change a few data points, and the tree might split differently and make different predictions. This means a single tree isn't every really generalizable in nature.
 
 How do we make trees **more stable**, **accurate**, and **generalizable**?
 
 The answer: **build a forest**!
 
-A **Random Forest** is simply a collection of Decision Trees that work together to make predictions. This is done by creating a multiple trees, each getting slightly different data and features, and their votes are combined for a final, more reliable answer.
+A **Random Forest** is simply a collection of Decision Trees that work together to make predictions. This is done by creating a multiple trees, each getting slightly different data and possibly different features. Their votes are combined for a final, more reliable answer.
+
+
+
 
 ### The Wisdom of the Crowd
+
 Imagine you’re trying to predict tomorrow’s weather.
 
 - One person (a single tree) might be confident but wrong.
 - A group of 100 people (a forest), each with different perspectives, can average their predictions.
-- The collective judgment is often *more accurate*.
+
+The collective judgment is often *more accurate*.
 
 That’s the idea behind **ensemble learning**:
 
@@ -768,15 +781,16 @@ That’s the idea behind **ensemble learning**:
 2. **Random Feature Selection:**  
    At each split, the tree only considers a **random subset of features**.
 
-3. **Independent Trees:**  
-   Each tree...
-   - learns its own patterns independently — no two trees are identical.
-   - likely has mediocer performace as a predictive model.
+3. **Repeat Until Done**  
+   Go until the max depth is hit, or what ever else is pruning the model.
 
-5. **Voting (Classification) or Averaging (Regression):**  
+4. **Voting (Classification) or Averaging (Regression):**  
    The forest combines all trees’ predictions for a more stable, accurate result.
 
-Because no single tree sees all the data or features, their errors tend to balance out.
+As a result you will get a bunch of **independent trees** , where each tree...
+- learns its own patterns independently, no two trees are identical.
+- likely has mediocer performace as a predictive model.
+- Because no single tree sees all the data or features, their errors tend to balance out.
 
 {% capture ex %}
 ```python
@@ -820,7 +834,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_21_0.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot of two interlocked half-moon shaped data sets. A single tree, top plot, does a poor job fitting this data. A forest of random trees, the bottom plot, does a much better job."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">     
 
     
@@ -832,16 +846,11 @@ plt.show()
 
 
 
-The Random Forest’s decision boundary fits the data much better than a single tree becasue it combines the opinions of many slightly different trees.
 
 
+#### Comparing Accuracy
 
-
-
-
-
-
-### Comparing Accuracy:
+Let's compate the accuracy of the simgle tree and the forest. 
 
 {% capture ex %}
 ```python
@@ -876,11 +885,9 @@ print(f"Random Forest:".ljust(25), f"{train_acc_forest:.2f}", f"{test_acc_forest
 {% include codeoutput.html content=ex %}  
 
 
-
-
 You’ll ***typically*** see that the Random Forest:
-- Performs *almost* as well as a single Decision Tree on the **training data**
-- Performs **better** on **test data** due to less overfitting!
+- Performs *about* as well as a single Decision Tree on the **training data**
+- Performs the **same of better** on **test data** due to less overfitting!
 
 
 
@@ -890,7 +897,7 @@ You’ll ***typically*** see that the Random Forest:
 
 ### Feature Importance — Understanding What the Model Learned
 
-One of the best parts about Decision Trees and Random Forests is that they don’t just make predictions. They can tell us **why** they made them.
+One of the best parts about Decision Trees and Random Forests is that they don’t just make predictions. They can tell us **why** they made them. 
 
 This is done through something called **feature importance**.
 
@@ -899,18 +906,18 @@ This is done through something called **feature importance**.
 
 
 
-### What Is Feature Importance?
+#### What Is Feature Importance?
 
-Each time a Decision Tree splits, it chooses the feature that reduces impurity (Gini or Entropy) the most. We can track **how much impurity each feature reduces** across all splits in all trees. This gives us a sense of which features matter most for making predictions.
+Each time a Decision Tree splits, it chooses the feature that reduces impurity (e.g., Gini or Entropy) the most. We can track **how much impurity each feature reduces** across all splits in all trees. This gives us a sense of which features matter most for making predictions.
 
-In a Random Forest, we average this importance across all trees, producing a ranking of features by their **predictive power**.
-
-
+In a Random Forest, we average this importance across all trees, producing a ranking of features by their **predictive ability**.
 
 
 
 
-### How Feature Importance Is Calculated (Conceptually)
+
+
+#### How Feature Importance Is Calculated (Conceptually)
 
 | Method | Description | Pros | Cons |
 |:--------|:-------------|:------|:------|
@@ -1000,7 +1007,7 @@ print(pd.DataFrame({
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_26_0.png' | relative_url }}"
-  alt=""
+  alt="Bar chart displaying the MDI results for each feature given in the table below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
@@ -1017,7 +1024,7 @@ print(pd.DataFrame({
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_26_1.png' | relative_url }}"
-  alt=""
+  alt="Bar chart displaying the permutation importance for each feature given in the table below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">     
     
 
@@ -1031,12 +1038,9 @@ print(pd.DataFrame({
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
+From these results we can see **petal length** and **petal width** were most useful for classifying flowers in the Iris dataset.
 
 
-
-and we can compute permutation importance like this:
-
-Here we can see that **petal length** and **petal width** were most useful for classifying flowers.
 
 
 
@@ -1065,7 +1069,7 @@ Here we can see that **petal length** and **petal width** were most useful for c
 
 ### Ensemble Variants — Bagging, Boosting, and the Bias–Variance Tradeoff
 
-At this point, we’ve seen that combining multiple trees can dramatically improve performance and stability. But there’s more than one way to build an ensemble.
+At this point, we’ve seen that combining multiple trees can dramatically improve performance and, more importantly, stability. But there’s more than one way to build an ensemble.
 
 Random Forests use a method called **Bootstrapping (aka Bagging)**, which reduces variance.  Other methods, like **Boosting**, work differently.
 
@@ -1088,12 +1092,16 @@ Let’s unpack both ideas and see where they fit in the broader landscape of ens
 
 #### Bagging: Reducing Variance with Randomization
 
-Recall, in Bootstrapping (Bagging):
+In Bootstrapping (Bagging):
 1. We draw many random samples (with replacement) from the training data.
-2. We train a model — like a Decision Tree — on each sample.
+    - The randomn data samples helps prevent overfitting and smooths out noisy patterns. 
+2. We train a model, like a Decision Tree, on each sample.
+    - Random Forests add an extra twist: they also randomize **which features** each tree can use.
 3. We combine (average or vote) their results.
 
-The randomn data samples helps prevent overfitting and smooths out noisy patterns. Additionally, Random Forests add an extra twist: they also randomize **which features** each tree can use.
+
+
+
 
 
 
@@ -1106,7 +1114,7 @@ Boosting takes a totally different approach:
 3. Train the next model to focus on those mistakes.
 4. Repeat — each new model improves upon the previous ones.
 
-The result is a “team” of models, each one correcting the last.
+The result is a “team” of models, each one correcting the previous model.
 
 Boosting tends to produce *highly accurate* models, though it’s slower and more prone to overfitting.
 
@@ -1136,25 +1144,23 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_31_0.png' | relative_url }}"
-  alt=""
+  alt="A Error versus Model Complexity plot. As model complexity increases Bias descreases and Variance goes up. Combining these errors gives the total error, which starts large, decreases to a minimum and then grows again and the model gets overly complex. The minimum is the sweep spot."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
-
-
-
-
 This curve summarizes an essential truth in machine learning:
 
 - **Bias**: Error from overly simple models (e.g., shallow trees).  
 - **Variance**: Error from overly complex models (e.g., deep, overfit trees).  
-- **Total Error**: The combination — minimized at just the right level of complexity.
+- **Total Error**: The combination, which is minimized at just the right level of complexity.
 
 **Bagging** (like Random Forests) reduces variance.  
+
 **Boosting** reduces bias.  
+
 Together, these ideas cover most of modern ensemble learning.
 
 
@@ -1272,13 +1278,13 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_33_1.png' | relative_url }}"
-  alt=""
+  alt="Three scaatter plots of the same two class data. each plot is colored using a different boost method: Single tree (no boosting), AdaBoost, and Gradient Boosting. The accuracies are given above these plots."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">        
 
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_33_2.png' | relative_url }}"
-  alt=""
+  alt="A plot complaring the Test accuracy of the three methods as a function of the number of Weak Trees the model has passed through."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">        
     
 
@@ -1292,23 +1298,16 @@ plt.show()
 
 ### Choosing the Right Tool
 
-| **Scenario** | **Recommended Method** | **Why** |
-|:--------------|:----------------------|:--------|
-| High variance / noisy data | **Random Forest (Bagging)** | Averages out instability from individual trees. |
-| High bias / underfitting | **Boosting (e.g., AdaBoost, Gradient Boosting)** | Sequentially improves simple models. |
-| Fast, interpretable baseline | **Single Decision Tree** | Easy to visualize and explain results. |
-
-
-
-
-
-#### Time and Complexity
-
-- **Decision Trees:** Fast to train and easy to interpret.
-- **Random Forests:** More accurate and stable, but slower and harder to explain.
-- **Boosted Trees:** Often the best-performing models, but computationally heavier.
+| **Scenario** | **Recommended Method** | **Why** | **Time and Cmoplexity**|
+|:--------------|:----------------------|:--------|:-------------|
+| Fast, interpretable baseline | **Single Decision Tree** | Easy to visualize and explain results. | Fast to train and easy to interpret.|
+| High variance / noisy data | **Bootstrapping (Bagging)** | Averages out instability from individual trees. | More accurate and stable, but slower and harder to explain.|
+| High bias / underfitting | **Boosting (e.g., AdaBoost, Gradient Boosting)** | Sequentially improves simple models. |Often the best-performing models, but computationally heavier.|
 
 Always balance *accuracy* against *speed* and *interpretability* for your project.
+
+
+
 
 <div style="
     background-color: #f0f7f4;
@@ -1331,7 +1330,7 @@ Always balance *accuracy* against *speed* and *interpretability* for your projec
 
 
 
-#### Evaluation and Visualization
+### Evaluation and Visualization
 
 Let’s **evaluate** how well our Decision Trees and Random Forests perform and **visualize** what they’ve actually learned from the data.
 
@@ -1341,11 +1340,19 @@ We’ll use out standard array of descriptive statisitcs:
 - **Accuracy:** % of correctly predicted samples  
 - **Precision:** Of those predicted positive, how many were correct?  
 - **Recall:** Of the actual positives, how many did we catch?  
-- **F1 Score:** Harmonic mean of precision and recall — balances both.
+- **F1 Score:** Blanaced mean of precision and recall.
 
-### Side Note: When Features Overlap
 
-Highly correlated features can confuse models like trees and forests. Both Features may get similar importance scores, or the importance may appear “split” between them. One way to fix this is to use techniques like **PCA** or **Regularization** to combine correlated Features into single measurements.
+---
+**Side Note: When Features Overlap**
+
+Highly correlated features can confuse models like trees and forests! 
+
+Both Features may get similar importance scores, or the importance may appear “split” between them. 
+
+One way to fix this is to use techniques like **PCA** or **Regularization** to combine correlated Features into single measurements.
+
+---
 
 {% capture ex %}
 ```python
@@ -1412,7 +1419,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_36_1.png' | relative_url }}"
-  alt=""
+  alt="Confustion matrix with the three iris types: Setosa, Versicolor, and Virginisa. The is only one misclssification, a versivolor was misclassified as a virginica."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">        
 
 {% endcapture %}
@@ -1424,14 +1431,8 @@ plt.show()
 
 
 
-The confusion matrix shows exactly where the model succeeds and fails.
 
-
-
-
-
-
-#### Visualizing Decision Boundaries
+## Visualizing Decision Boundaries
 
 Let’s visualize how a tree or forest divides the feature space.
 
@@ -1504,13 +1505,13 @@ pd.DataFrame({"Feature": feature_names, "Importance": importances})
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_38_0.png' | relative_url }}"
-  alt=""
+  alt="Decision boundary plots. for a single tree and a randome forest. The random forest is more complex, meaning it is likely the better fitting model."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_38_2.png' | relative_url }}"
-  alt=""
+  alt="Bar chart of feature importants. Results are printed in the table below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
 
 
@@ -1532,18 +1533,13 @@ pd.DataFrame({"Feature": feature_names, "Importance": importances})
 
 
 
-#### Partial Dependence Plots
+## Partial Dependence Plots
 
 Partial Dependence Plots (PDPs) help us see *how* a feature affects predictions, holding all other features constant. They’re especially useful for explaining Random Forests.
 
 Each PDP shows how predicted probability changes as one feature varies. This can reveal trends and nonlinear relationships that might not be obvious from coefficients alone.
 
 In multiclass problems, each class has its own predicted probability curve. We must tell scikit-learn *which class* we want to visualize using the `target` argument.
-
-For example:
-- `target=0` → setosa  
-- `target=1` → versicolor  
-- `target=2` → virginica  
 
 This allows us to see how the probability of belonging to one class changes as features like petal length and sepal length vary.
 
@@ -1583,19 +1579,19 @@ for class_idx, class_name in enumerate(iris.target_names):
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_40_0.png' | relative_url }}"
-  alt=""
+  alt="Partial Dependence Plot for Setosa. Septal Length is pretty flat, but the Petal length has a big drop between 2 and 3 centimeters. Meaning petal lengths below 2 cm are useful in identifying setosas."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_40_1.png' | relative_url }}"
-  alt=""
+  alt="Partial Dependence Plot for Vesocolor. Septal Length is pretty flat, but the Petal length has a big rise between 2 and 3 centimeters and a drop at about 5 centometers. Meaning petal lengths between 2.5 cm and 5 cm are useful in identifying Vesicolors."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
     
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec05/output_40_2.png' | relative_url }}"
-  alt=""
+  alt="Partial Dependence Plot for Virginica. Septal Length is pretty flat, but the Petal length has a big rise around 5 centimeters. Meaning petal lengths above 5 cm are useful in identifying virginicas."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
    
 {% endcapture %}
@@ -1625,11 +1621,11 @@ But you’ve also seen how easily they can **overfit** when allowed to grow too 
 - **Overfitting & Pruning:** Unpruned trees memorize noise; limiting depth or leaf size improves generalization.
 - **Ensembles:**
   - **Random Forests** build many randomized trees and average their predictions to reduce variance.  
-  - **Bagging** draws multiple bootstrap samples and trains separate models.  
+  - **Bootstrapping (Bagging)** draws multiple bootstrap samples and trains separate models.  
   - **Boosting** builds trees sequentially, focusing on correcting prior errors.
 - **Feature Importance:** Random Forests reveal which variables most influence the prediction.
 - **Partial Dependence:** We can visualize how specific features impact predicted probabilities.
-- **Evaluation:** We assess performance using accuracy, precision, recall, F₁ score, and ROC/AUC.
+- **Evaluation:** We assess performance using accuracy, precision, recall, F1 score, and ROC/AUC.
 
 **When to Use**
 - When interpretability and feature importance matter.
@@ -1641,8 +1637,7 @@ But you’ve also seen how easily they can **overfit** when allowed to grow too 
 - Random Forests can be slow and less interpretable.
 - Correlated features can “split” importance scores.
 
-In practice, trees and ensembles often form the foundation for modern ML—  
-they’re powerful on their own and serve as building blocks for advanced methods like Gradient Boosting and XGBoost.
+In practice, trees and ensembles often form the foundation for modern ML. They are powerful on their own and serve as building blocks for more advanced methods.
 
 
 
@@ -1779,70 +1774,3 @@ plt.show()
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}  
-
-{% capture ex %}
-```python
-    === Decision Tree ===
-    Accuracy: 0.978
-    Classification Report:
-                  precision    recall  f1-score   support
-    
-          setosa       1.00      1.00      1.00        15
-      versicolor       1.00      0.93      0.97        15
-       virginica       0.94      1.00      0.97        15
-    
-        accuracy                           0.98        45
-       macro avg       0.98      0.98      0.98        45
-    weighted avg       0.98      0.98      0.98        45
-    
-    
-    === Random Forest ===
-    Accuracy: 0.889
-    Classification Report:
-                  precision    recall  f1-score   support
-    
-          setosa       1.00      1.00      1.00        15
-      versicolor       0.78      0.93      0.85        15
-       virginica       0.92      0.73      0.81        15
-    
-        accuracy                           0.89        45
-       macro avg       0.90      0.89      0.89        45
-    weighted avg       0.90      0.89      0.89        45
-```  
-
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec05/output_43_1.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
-    
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec05/output_43_2.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
-    
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec05/output_43_3.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
-    
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec05/output_43_4.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
-
-    
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec05/output_43_5.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">    
-   
-{% endcapture %}
-{% include codeoutput.html content=ex %}  
-
-
- 
