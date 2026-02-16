@@ -311,9 +311,9 @@ This equation shows us how we can use $\mathbf{P}$ to transform $\mathbf{A}$ int
 
 ### Conditions for Diagonalizability
 
-Something to keep in mind is that **not all matrices can be diagonalized**. Even if a matrix has a non-zero determinant and can be inverted, that does not mean it can be diagonalized! 
+Something we need to keep in mind for this lecture it that, similar to inevitability, **not all matrices can be diagonalized**. Even if a matrix has a non-zero determinant and can be inverted, that does not mean it can be diagonalized! 
 
-Notice, in the above derivation we have to assume $\mathbf{P}$ had an inverse so that we could solve for the diagonal matrix $\mathbf{D}$. This leads up to the conditions required for a matrix to be diagonalized, 
+Notice, in the above derivation we have to assume $\mathbf{P}$ had an inverse so that we could solve for the diagonal matrix $\mathbf{D}$. It turns out this is the condition required for a matrix to be diagonalized, 
 
 A matrix $\mathbf{A}$ is diagonalizable **if and only if** it 
 
@@ -322,9 +322,10 @@ A matrix $\mathbf{A}$ is diagonalizable **if and only if** it
 - the matrix $\mathbf{P}$ build from the eigenvectors is invertible.
 	- That is, the determinant of $\mathbf{P}$ is nonzero.
 
-It turns out for $\mathbf{P} to even be construicted, $mathbf{A}$ must have a non zero determinate. So, assuming the matrix is invertible, we can test if it is diagonalizable by checking to see if the determinant of the matrix $\mathbf{P}$ is zero or not.
+It turns out for $\mathbf{P}$ to even be constructed, $\mathbf{A}$ must have a non zero determinate. So, assuming the matrix is invertible, we can test if it is diagonalizable by checking to see if the determinant of the matrix $\mathbf{P}$ is zero or not.
 
 {% capture ex %}
+
 **When is a matrix diagonalizable?** Suppose you have an $n\times n$ matrix $\mathbf{A}$ with eigenvalues $\lambda_1$, ..., $\lambda_n$, and eigenvectors $\vec{v}_1$, ..., $\vec{v}_n$. You can create the matrix $\mathbf{P}$ using the **eigenvectors** as its columns:
 
 $$ \mathbf{P} = \begin{bmatrix}
@@ -337,18 +338,12 @@ $$
 A matrix $\mathbf{A}$ will be diagonalizable if $\det(\mathbf{P}) \ne 0$, meaning all of the eigenvectors of matrix $\mathbf{A}$ are linearly independent. 
 {% endcapture %}
 {% include result.html content=ex %}
-	
-	
-	
-	
-	
-
 
 Some nice rules to keep in mind about the possible diagonalizability of a matrix has to do the its eigenvalues:
 
-- If $\mathbf{A}$ has $n$ **distinct**, no-degenerate (i.e., non-repeated) eigenvalues, it is guaranteed to be diagonalizable. 
-- If $\mathbf{A}$ has repeated eigenvalues, diagonalizability depends on the number of linearly independent eigenvectors associated with each eigenvalue. This is one of the major reasons we like the eigenvectors of repeated eigenvalues to be perpendicular. 
-
+- If $\mathbf{A}$ has $n$ **distinct**, non-degenerate (i.e., non-repeated) eigenvalues, it is guaranteed to be diagonalizable. 
+- If $\mathbf{A}$ has repeated eigenvalues, diagonalizability depends on the number of linearly independent eigenvectors associated with each eigenvalue. 
+	- This is one of the major reasons we like the eigenvectors of repeated eigenvalues to be perpendicular. 
 
 If $\mathbf{A}$ is not diagonalizable, we cannot express it in the form $\mathbf{A} = \mathbf{P} \mathbf{D} \mathbf{P}^{-1}$, where $\mathbf{D}$ is diagonal. Instead, we use a **Jordan normal form**, which involves generalized eigenvectors and blocks rather than a purely diagonal representation. This is beyond the scope of our discussion but is worth noting as a more general tool.
 
@@ -362,48 +357,62 @@ If $\mathbf{A}$ is not diagonalizable, we cannot express it in the form $\mathbf
 
 
 
-## Mechanics of Transforming into the Eigenbasis
+## Process of Transforming into the Eigenbasis
 
 
-The process of transforming into the eigenbasis is ubiquitous in applications ranging from classical mechanics to quantum systems and from data analysis to control theory. Whether you're solving for normal modes of oscillation, simplifying a system of differential equations, or analyzing large datasets, diagonalization via the eigenbasis is often the go-to method. We will start with the mechanics of actually doing the transformation, and then we will explore its implications.
+The process of transforming into the eigenbasis is ubiquitous in applications ranging from classical mechanics to quantum systems and from data analysis to control theory. Whether you're solving for normal modes of oscillation, simplifying a system of differential equations, or analyzing large datasets, diagonalization via the eigenbasis is often the go-to method to simplify the problem at hand. 
+
+We will start with the mechanics of actually doing the transformation, and then we will explore its implications.
 
 
 
 
 ### Diagonalization Process
 
-Transforming a matrix into its eigenbasis requires two primary steps: constructing the eigenvector matrix $ \mathbf{P} $, which means finding the eigenvalues and eigenvectors of the working matrix, and diagonalizing the original matrix $ \mathbf{A} $. In this section, we will carefully walk through this process and provide steps for carrying it out.
+Transforming a matrix into its eigenbasis requires two primary steps: 
+1) constructing the eigenvector matrix $ \mathbf{P} $, 
+	- which means finding the eigenvalues and eigenvectors of the working matrix, and 
+2) diagonalizing the original matrix $ \mathbf{A} $ using $\mathbf{D} = \mathbf{P}^{-1} \mathbf{A} \mathbf{P}$. 
+
+In this section, we will carefully walk through this process and provide steps for carrying it out.
 
 
 
 #### Step 1: Construct the Eigenvector Matrix $ \mathbf{P} $
 
-The first step is to construct the matrix $ \mathbf{P} $, whose columns are the eigenvectors of $ \mathbf{A} $. That means we must first find the eigenvalues of the matrix, and then the eigenvectors. This is exactly what we have been working on the last Lectures. 
+The first step is to construct the matrix $ \mathbf{P} $, whose columns are the eigenvectors of $ \mathbf{A} $. That means we must first find the eigenvalues of the matrix, and then the eigenvectors. This is exactly what we have been working on in the last couple of lectures. 
 
-Just to remind us, we can find the eigenvalues by solving the characteristic equation:
+As a reminder, we can find the eigenvalues ($ \lambda_1, \lambda_2, \ldots, \lambda_n $) by solving the characteristic equation:
 
 $$
 \det\left( \mathbf{A} - \lambda \mathbf{I} \right) = 0
 $$
 
-to determine the eigenvalues $ \lambda_1, \lambda_2, \ldots, \lambda_n $.
-
 Then for each eigenvalue $ \lambda_i $, we can find the corresponding eigenvector $ \vec{v}_i $ by solving the system of equations:
+
 $$
-\left( \mathbf{A} - \lambda_i \mathbf{I} \right) \vec{v}_i = 0.
+\left( \mathbf{A} - \lambda_i \mathbf{I} \right) \vec{v}_i = 0
 $$
 
-Once we have the eigenvectors we can construct the transformation matrix $ \mathbf{P} $:
+Once we have found all of the eigenvectors we can construct the transformation matrix $ \mathbf{P} $:
 
 $$
 \mathbf{P} = \begin{bmatrix} | & | &  & | \\ \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\ | & | &  & | \end{bmatrix}
 $$
 
 
+#### Step 1.5: Check is Diagonalization is Possible
+
+Before we can just into using the diagonalization equation, we need to make sure it is even possible. This, as you will recall, is done by checking the determinant of the newly created $\mathbf{P}$ matrix. 
+
+- If the determinant is zero, then diagonilization is NOT possible and we have to stop here. 
+- If the determinant is nonzero, then diagonilization is possible and we can continue to Step 02. 
+
+
 
 #### Step 2: Diagonalize the Matrix $ \mathbf{A} $
 
-Once $ \mathbf{P} $ is constructed, the next step is to use it to diagonalize $ \mathbf{A} $ using the diagonalization formula:
+Once $ \mathbf{P} $ is constructed, and we have check its determinant, the next step is to use it to diagonalize $ \mathbf{A} $ using the diagonalization transformation:
 
 $$
 \mathbf{D} = \mathbf{P}^{-1} \mathbf{A} \mathbf{P}
@@ -434,8 +443,7 @@ To better understand the mechanics of transforming matrices into their eigenbasi
 Consider the symmetric matrix:
 
 $$
-\mathbf{A} = 
-\begin{bmatrix}
+\mathbf{A} = \begin{bmatrix}
 4 & 2 \\
 1 & 3
 \end{bmatrix}
@@ -452,15 +460,24 @@ $$
 Substituting $\mathbf{A}$ and $\mathbf{I}$, we have:
 
 $$
-\text{det}(\mathbf{A} - \lambda \mathbf{I}) = 
-\begin{vmatrix}
+\begin{aligned}
+\text{det}(\mathbf{A} - \lambda \mathbf{I}) &= \begin{vmatrix}
 4 - \lambda & 2 \\
 1 & 3 - \lambda
-\end{vmatrix} = (4 - \lambda)(3 - \lambda) - 2 = \lambda^2 - 7\lambda + 10 = (\lambda - 5 ) (\lambda - 2) = 0
-
+\end{vmatrix}\\
+&= (4 - \lambda)(3 - \lambda) - 2 \\
+&= \lambda^2 - 7\lambda + 10 \\
+&= (\lambda - 5 ) (\lambda - 2)\\
+\end{aligned}
 $$
 
-We find the eigenvalues:
+Which gives us the characteristic equation:
+
+$$
+(\lambda - 5 ) (\lambda - 2) = 0
+$$
+
+and we find the eigenvalues:
 
 $$
 \lambda_1 = 5 \qquad \text{and} \qquad \lambda_2 = 2
@@ -491,7 +508,7 @@ $$
 Row 1 gives:<br>
 
 $$
-- a + 2 b = 0 \implies a  = 2 b
+-a + 2 b = 0 \implies a  = 2 b
 $$
 
 Choosing $b = 1$ leaves us with:<br>
@@ -551,7 +568,18 @@ $$
 \end{bmatrix}
 $$
 
-Since we will need to have it for the diagonalization process, it would be useful to get $\mathbf{P}^{-1}$ now. Using a computer we get:
+Now, let's check that the diagonalization is even possible. Taking the determinant of $\mathbf{P}$ gives:
+
+$$ 
+ \begin{vmatrix}
+2 & 1 \\
+1 & -1
+\end{vmatrix} = -2 - 1 = -3
+$$
+
+This determinant is nonzero, meaning the digonalization is possible. 
+
+Since we will need it, it would be useful to get $\mathbf{P}^{-1}$ now. Using a computer we get:
 
 $$
 \mathbf{P}^{-1} = - \frac{1}{3 }
@@ -602,7 +630,7 @@ $$
 \end{aligned}
 $$
 
-which are the eigenvalues we found for each of the eigenvectors. 
+Notice, the eigenvalues we found previously are the values along the main diagonal. This supports the conclusion that we have performed the diagonalization process correctly. 
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -632,11 +660,15 @@ $$
 Substituting $\mathbf{A}$ and $\mathbf{I}$, we have:
 
 $$
-\text{det}(\mathbf{A} - \lambda \mathbf{I}) = 
+\begin{aligned}
+\text{det}(\mathbf{A} - \lambda \mathbf{I}) &= 0\\
 \begin{vmatrix}
 2 - \lambda & 1 \\
 1 & 4 - \lambda
-\end{vmatrix} = (2 - \lambda)(4 - \lambda) -1 = \lambda^2 - 6\lambda + 7 = 0
+\end{vmatrix} &= 0\\
+ (2 - \lambda)(4 - \lambda) -1 &= 0\\
+ \lambda^2 - 6\lambda + 7 &= 0
+\end{aligned}
 $$
 
 Solving the quadratic equation, we find the eigenvalues:
@@ -670,7 +702,7 @@ $$
 Row 1 gives:<br>
 
 $$
-- (1 + \sqrt{2} ) a +  b = 0 \implies b  = (1+\sqrt{2}) a
+-(1 + \sqrt{2} ) a +  b = 0 \implies b  = (1+\sqrt{2}) a
 $$
 
 Choosing $a = 1$ leaves us with:<br>
@@ -730,7 +762,18 @@ $$
 \end{bmatrix}
 $$
 
-Since we will need to have it for the diagonalization process, it would be useful to get $\mathbf{P}^{-1}$ now. Using a computer we get:
+Let's check to see if diagonalization is even possible by tkaing the determinant of $\mathbf{P}$:
+
+$$ 
+\begin{vmatrix}
+1 & 1 \\
+1 + \sqrt{2} & 1 - \sqrt{2}
+\end{vmatrix} = (1 - \sqrt{2}) - (1 + \sqrt{2}) = -2 \sqrt{2}
+$$
+
+The determinant is nonzero, so diagonilization is possible.
+
+Since we will have need for it in the next step, lets get $\mathbf{P}^{-1}$ now (using a computer/calculator):
 
 $$
 \mathbf{P}^{-1} = - \frac{1}{2\sqrt{2}}
@@ -805,7 +848,7 @@ which are the eigenvalues we found for each of the eigenvectors.
 
 ## Applications
 
-Diagonalization is not just a mathematical curiosity—it has profound implications in both theoretical and applied contexts. By transforming a matrix into its eigenbasis, we can simplify computations, reveal intrinsic properties, and gain deeper insights into physical systems. Let’s explore some key applications.
+Diagonalization is not just a mathematical curiosity, it has profound implications in both theoretical and applied contexts. By transforming a matrix into its eigenbasis, we can simplify computations, reveal intrinsic properties, and gain deeper insights into physical systems. Let’s explore some key applications.
 
 
 
@@ -831,7 +874,13 @@ As another example, consider the exponential where the power is the matrix $\mat
 
 $$e^{\mathbf{A}} =?$$
 
-Now, we only know how to multiple matrices together. We know nothing about having a matrix in the exponent. We can handle this by converting from the exponential form to multiplication, but how? By doring the MacLaurin Expansion! Performing this expansion gives:
+Presently, we only know how to multiple matrices together (well that and how to add and subtract them). We know nothing about how to handle having a matrix in the exponent. 
+
+So, if we can convert from the exponential form to some matrix multiplications, we would be in business. But, how do we do this? 
+
+By doing the MacLaurin Expansion! In fact, any smooth function can be changed to a series of multiplications (i.e., polynomials) via expansions. 
+
+Performing this expansion gives:
 
 $$ e^{\mathbf{A}}  = 1 + \frac{1}{1!} \mathbf{A} + \frac{1}{2!} \mathbf{A}^2 + \frac{1}{3!} \mathbf{A}^3 + \cdots $$
 
@@ -847,6 +896,10 @@ which can be expressed as:
 
 $$ e^{\mathbf{A}}  = \mathbf{P} e^{\mathbf{D}}  \mathbf{P}^{-1}$$
 
+Interestingly, we can repeat this process for any smooth function to get:
+
+$$ f(\mathbf{A})  = \mathbf{P} f(\mathbf{D})  \mathbf{P}^{-1}$$
+
 These, and similar, simplifications are invaluable in physics, particularly in solving differential equations and analyzing time evolution in quantum mechanics.
 
 
@@ -855,19 +908,21 @@ These, and similar, simplifications are invaluable in physics, particularly in s
 
 ### Decoupling Systems of Differential Equations
 
-Many physical systems are described by coupled differential equations. Diagonalization allows us to decouple these systems into independent equations. For example, consider a set of linear differential equations:
+Many physical systems are described by coupled differential equations. Diagonalization allows us to decouple these systems into independent equations. 
+
+For example, consider a set of linear differential equations:
 
 $$
-\frac{d\vec{x}}{dt} = \mathbf{A} \vec{x}.
+\frac{d\vec{x}}{dt} = \mathbf{A} \vec{x}
 $$
 
 By diagonalizing $\mathbf{A}$, we can transform the system into:
 
 $$
-\frac{d\vec{y}}{dt} = \mathbf{D} \vec{y},
+\frac{d\vec{y}}{dt} = \mathbf{D} \vec{y}
 $$
 
-where $\vec{y} = \mathbf{P}^{-1} \vec{x}$. This reduces the problem to solving independent differential equations for each component of $\vec{y}$. We will see examples of this in Lecture 22.
+where $\vec{y} = \mathbf{P}^{-1} \vec{x}$. This reduces the problem to solving independent differential equations for each component of $\vec{y}$. We will see examples of this in Lecture 19.
 
 
 
