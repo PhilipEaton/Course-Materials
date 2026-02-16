@@ -245,6 +245,8 @@ To quantify this, we define impurity using one of several mathematical measures.
 | **Gini Impurity**        | $$ G = 1 - \sum_i p_i^2 $$       | Think of ( p_i ) as the fraction of samples in this node that belong to class ( i ). Gini measures how often you would mislabel a randomly chosen sample if you assigned its class *at random* according to these class probabilities. <br><br>**Low Gini** means one class dominates (the node is “clean”); **high Gini** means the node is mixed.                                |
 | **Entropy**              | $$ H = -\sum_i p_i \log_2 p_i $$ | Borrowed from information theory, entropy measures **uncertainty** or “information disorder.” <br><br>When one class dominates (say ( p_i = 1 ) for one class and 0 for others), entropy = 0 because there’s no uncertainty — you know exactly what the class is. When classes are perfectly balanced (e.g., 50/50), entropy is highest because each outcome is equally uncertain. |
 | **Classification Error** | $$ E = 1 - \max(p_i) $$          | This is the simplest impurity measure — it only cares about the most common class. It tells you the fraction of samples *not* in the majority class. <br><br>However, because it ignores smaller changes in class balance, it’s less sensitive and rarely used for training (though sometimes used for quick summaries).                                                           |
+
+
 #### **What is $p_i$?**
 
 $p_i$ represents the **proportion** (or probability) of samples in the node that belong to class $i$:
