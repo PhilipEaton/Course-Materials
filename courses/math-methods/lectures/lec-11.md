@@ -108,10 +108,10 @@ While we focus on **ordinary differential equations (ODEs)** for the remainder o
 Perhaps one of the most profound differential equations in physics is the Schrödinger equation, which governs quantum mechanical systems:
 
 $$
-i \hbar \frac{d}{dt} |\psi\rangle = \hat{H} |\psi\rangle
+i \hbar \frac{d}{dt}  \vert \psi\rangle = \hat{H}  \vert \psi\rangle
 $$
 
-Here, $ |\psi\rangle $ is the quantum state of the system, and $ \hat{H} $ is the Hamiltonian operator, which is related to the energy of the system. The eigenvalues of $ \hat{H} $ correspond to the possible energy levels of the system.
+Here, $  \vert \psi\rangle $ is the quantum state of the system, and $ \hat{H} $ is the Hamiltonian operator, which is related to the energy of the system. The eigenvalues of $ \hat{H} $ correspond to the possible energy levels of the system.
 
 This equation tells us how a quantum state evolves over time and is central to our understanding of atomic, molecular, and condensed matter physics.
 
@@ -572,7 +572,7 @@ $$
 Carrying out the integrations gives:
 
 $$
-\ln |N| = -\lambda t + C
+\ln \vert N \vert = -\lambda t + C
 $$
 
 where $ C $ is the unknown constant of integration. 
@@ -649,13 +649,13 @@ $$
 Using the substitution $ u = T - T_{\text{env}} $ (with $ du = dT $), we obtain:
 
 $$
-\int \frac{du}{u} = \int -k dt \quad \implies \quad \ln|u| = - k t + C
+\int \frac{du}{u} = \int -k dt \quad \implies \quad \ln \vert u \vert  = - k t + C
 $$
 
 where $C$ is the unknown constant of integration. Subbing out $u$ leaves us with:
 
 $$
-\ln |T - T_{\text{env}}| = -kt + C
+\ln \vert T - T_{\text{env}} \vert = -kt + C
 $$
 
 Exponentiating both sides and solving for $T(t)$:
