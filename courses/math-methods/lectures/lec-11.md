@@ -13,13 +13,13 @@ nav_order: 11
 
 ## Why Do We Need Differential Equations?
 
-In physics and engineering, we often encounter systems that evolve in time, space, or both simultaneously. Whether we are tracking the motion of a falling object, the oscillations of a spring, or the rate at which a chemical reaction progresses, these processes are not best described by simple algebraic equations. Instead, they are governed by **differential equations**—**equations that relate a function to its own rate of change**.
+In physics and engineering, we often encounter systems that evolve in time, space, or both simultaneously. Whether we are tracking the motion of a falling object, the oscillations of a spring, or the rate at which a chemical reaction progresses, these processes are not best described by simple algebraic equations. Instead, they are governed by **equations that relate a function to its own rate of change**. These kinds of equations are called **differential equations**. 
 
-At their core, differential equations describe how something *changes*. If we know how a system evolves at each instant, we can predict its future behavior by solving an appropriate differential equation. These equations form the backbone of physics, and virtually every other field of applied science. 
+At their core, differential equations describe how something *changes* and form the basis for all of the mathematical models used in physics. If we know how a system evolves at each instant, we can predict its future behavior by *solving* the appropriate differential equation; that is, bby solving the appropriate mathematical model. These equations form the backbone of physics, and virtually every other field of applied science. 
 
 To motivate our study, let’s consider some key examples where differential equations naturally arise in physics.
 
-**Newton’s Second Law: Classical Mechanics**
+### Newton’s Second Law: Classical Mechanics
 
 The fundamental equation of motion in classical mechanics states that the acceleration of an object is proportional to the net force acting on it:
 
@@ -43,7 +43,7 @@ $$
 N = W = mg
 $$
 
-According to the forces drawn in the figure to the left, the net force in the horizontal direction is entirely due to the restoring force of the spring:
+According to the forces drawn in the free-body diagram, the net force in the horizontal direction is entirely due to the restoring force of the spring:
 
 $$
 F_{\text{net}, x} = F_{s, x} = - k x
@@ -52,26 +52,28 @@ $$
 where $ x $ is the displacement from equilibrium. Applying Newton’s Second Law gives:
 
 $$
-m \frac{d^2x}{dt^2} = - k x.
+m \frac{d^2x}{dt^2} = - k x
 $$
 
 
-This equation tells us that the acceleration of the mass depends on its displacement from equilibrium. Importantly, we see a direct link between the displacement of the mass and its second derivative with respect to time—meaning this is a differential equation.
+This equation tells us that the acceleration of the mass depends on its displacement from equilibrium. Importantly, we see a direct link between the displacement of the mass and its second derivative with respect to time. This is a differential equation.
 
 
-**Electrical Circuits: The RLC Circuit**
+### Electrical Circuits: The RLC Circuit
 
-In an electrical circuit containing a resistor ($ R $), inductor ($ L $), and capacitor ($ C $), Kirchhoff’s voltage law leads to the following differential equation for the charge stored on the capacitor $ Q(t) $:
+In an electrical circuit containing a resistor $ R $, inductor $ L $, and capacitor $ C $, Kirchhoff’s voltage law leads to the following differential equation for the charge stored on the capacitor $ Q(t) $:
 
 $$
 L \frac{d^2Q}{dt^2} + R\frac{dQ}{dt}  + \frac{1}{C} Q = V(t)
 $$
 
-This equation describes how the charge on the capacitor evolves in response to an applied voltage $ V(t) $. 
+where $R$ is the resistance, $L$ is the inductance, and $C$ is the capacitance. 
+
+This equation describes how the charge on the capacitor evolves in response to an applied voltage $ V(t) $. Notice how the charge, its first, and second derivatives are all related. 
 
 
 
-**Radioactive Decay: Exponential Decay Law**
+### Radioactive Decay: Exponential Decay Law
 
 In nuclear physics, the number of unstable nuclei in a sample decreases at a rate proportional to the number of remaining nuclei:
 
@@ -79,13 +81,17 @@ $$
 \frac{dN}{dt} = -\lambda N
 $$
 
-This is a **first-order differential equation**, where $ \lambda $ is the decay constant. We will show that the solution to this equation is an exponential function, describing how radioactive substances decay over time. This type of equation also appears in chemical reactions and population dynamics.
+This is a **first-order differential equation**, where $ \lambda $ is the decay constant. 
+
+We will show that the solution to this equation is an exponential function, describing how radioactive substances decay over time. This type of equation also appears in chemical reactions and population dynamics.
 
 
 
-**Fluid Flow and Heat Transfer: Partial Differential Equations**
+### Fluid Flow and Heat Transfer: Partial Differential Equations
 
-More complex physical systems involve **partial differential equations (PDEs)**, which contain derivatives with respect to multiple variables. For example, the **heat equation** describes the transfer of thermal energy in a material:
+More complex physical systems involve **partial differential equations (PDEs)**, which contain derivatives with respect to multiple variables. 
+
+For example, the **heat equation** describes the transfer of thermal energy in a material:
 
 $$
 \frac{\partial T}{\partial t} = \alpha \frac{\partial^2T}{\partial x^2}
@@ -93,11 +99,11 @@ $$
 
 This equation describes how temperature $ T(x,t) $ evolves in space and time due to thermal diffusion.
 
-While we focus on **ordinary differential equations (ODEs)** in this chapter, PDEs play a major role in many areas of physics and engineering.
+While we focus on **ordinary differential equations (ODEs)** for the remainder of this course, PDEs play a major role in many areas of physics and engineering and will be discussed in detail in Mathematical Physics.
 
 
 
-**Quantum Mechanics: The Schrödinger Equation**
+### Quantum Mechanics: The Schrödinger Equation
 
 Perhaps one of the most profound differential equations in physics is the Schrödinger equation, which governs quantum mechanical systems:
 
@@ -114,7 +120,7 @@ This equation tells us how a quantum state evolves over time and is central to o
 
 ## Classification of Ordinary Differential Equations
 
-Before we begin solving differential equations, we first need to understand how they are classified. Not all differential equations are the same—some are simple to solve, while others require more sophisticated techniques. Properly classifying differential equations helps tell us something about how difficult it will be to solve, which techniques we should consider applying, and what kinds of physical systems it can be used to describe.
+Before we begin solving differential equations, we first need to understand how they are classified. Not all differential equations are the same. Some differential equations are simple to solve, while others require more sophisticated techniques. Properly classifying differential equations helps tell us something about how difficult they will be to solve, which techniques we should consider applying, and what kinds of physical systems it can be used to describe.
 
 ### Ordinary vs. Partial Differential Equations
 
@@ -128,7 +134,7 @@ $$
 
 describes how temperature $ T(x, t) $ evolves over time in a one-dimensional space. 
 
-PDEs are a topic for another time, but it is useful to recognize their role in physics. We will focus our attention on ODEs because they form the foundation for solving PDEs later on.
+PDEs are a topic for Mathematical Physics, but it is useful to recognize their role in physics. We will focus our attention on ODEs for this course because they form the foundation for solving PDEs later on.
 
 
 
@@ -139,17 +145,23 @@ The **order** of a differential equation is determined by the **highest derivati
 - A **first-order** differential equation involves only the first derivative:
 	
 	$$
-	\frac{dx}{dt} = f(x, t)
+	b \frac{dx}{dt} = f(x, t)
 	$$
 	
 - A **second-order** differential equation involves the second derivative:
 	
 	$$
-	m \frac{d^2x}{dt^2} = -k x
+	m \frac{d^2x}{dt^2} = f(x, t)
+	$$
+
+- This is still a **second-order** differential equation since the highest derivative is the second derivative:
+	
+	$$
+	m \frac{d^2x}{dt^2} + b \frac{dx}{dt} = f(x, t)
 	$$
 
 
-The order of a differential equation provides insight into how many times we will need to integrate in order to obtain a solution. A first-order ODE requires one integration, while a second-order ODE requires two integrations to fully remove the derivatives.
+The order of a differential equation provides insight into how many times we will need to integrate to obtain a solution. A first-order ODE requires one integration, while a second-order ODE requires two integrations to fully remove the derivatives.
 
 For example, we can consider the simple differential equation:
 
@@ -174,7 +186,7 @@ where $ C $ is the constant of integration. To determine the specific value of $
 As a further example, we can extend our previous example to:
 
 $$
-\frac{d^2x}{dt^2} = b,
+\frac{d^2x}{dt^2} = b
 $$
 
 Notice this is a second-order ODE because the highest order derivative is second order. We can integrate once to get:
@@ -189,14 +201,16 @@ $$
 x(t) = \frac{1}{2} bt^2 + C_1 t + C_2
 $$
 
-Each integration introduces a new unknown constant, $C_1$ and $C_2$, each of which require a unique piece of information about the system at some point in time to be fully defined. Generally this information described how the system we set up at the beginning of its motion at $t=0$, called **initial conditions**.
+Each integration introduces a new unknown constant, $C_1$ and $C_2$, each of which require a unique piece of information about the system at some point in time to be fully defined. This information generally describes how the system was set up at the beginning of its motion at $t=0$, called **initial conditions**. Though, the conditions can be given at any time, it is just far more common to get initial conditions than anything else.
 
 
 In summary, the order of a differential equation is crucial because it dictates:
 
-- How many independent conditions are required for a unique solution. These are generally given as initial conditions describing how the system was set up at $t=0$. 
+- How many independent conditions are required for a unique solution. 
+	- These are generally given as initial conditions describing how the system was set up at $t=0$. 
 - The complexity of the solution process (higher-order equations often require special techniques).
-- The physical behavior of the system. For example, we will learn that first-order equations describe simple exponential growth or decay, while second-order equations capture oscillatory and wave-like behavior.
+- The physical behavior of the system. 
+	- For example, we will learn that first-order equations describe simple exponential growth or decay, while second-order equations capture oscillatory behavior.
 
 
 
@@ -217,6 +231,7 @@ This equation is **homogeneous** because Every term in the equation contains eit
 - The first term involves the second derivative of $ x(t) $.
 - The second term involves $ x(t) $ itself.
 
+You generally have to figure out what the function is given the context. In the previous case, we know $x(t)$ was the function since we were taking the second derivative of $x$ with respect to $t$. This means $x$ is the function and $t$ is the working variable; thus $x(t)$. 
 
 
 On the other hand, a differential equation is **inhomogeneous** if it contains terms that do not involve the function or its derivatives. For example:
@@ -227,24 +242,23 @@ $$
 
 Here, the additional term $ \cos(\omega t) $ does not involve $ x(t) $ or any of its derivatives. This makes the equation **inhomogeneous**.
 
-In physics, inhomogeneous ODEs frequently arise in systems subject to external forces. The extra term generally represents an external input or disturbance rather than an inherent property of the system. Some common examples include:
+In physics, inhomogeneous ODEs frequently arise in systems subject to external forces/influences. The extra term generally represents an external input or disturbance rather than an inherent property of the system. Some common examples include:
 
 - A **mass-spring system** with an external driving force:  
 	
 	$$
-	m \frac{d^2 x}{dt^2} + kx = F_0 \cos(\omega t).
+	m \frac{d^2 x}{dt^2} + kx = F_0 \cos(\omega t)
 	$$
 	
-	The $ F_0 \cos(\omega t) $ term represents an external periodic force acting on the system, such as a child being pushed on a swing.
+	The $ F_0 \cos(\omega t) $ term could represent an external periodic force acting on the system, such as a child being pushed on a swing.
 	
 - An **electrical circuit** with an applied voltage source:  
 	
 	$$
-	L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{1}{C} Q = V_0 \cos(\omega t).
+	L \frac{d^2 Q}{dt^2} + R \frac{dQ}{dt} + \frac{1}{C} Q = V_0 \cos(\omega t)
 	$$
 	
 	Here, $ V_0 \cos(\omega t) $ represents an external AC voltage applied to the circuit.
-
 
 In each of these cases, the driving term forces the system into motion in a way that it would not naturally move on its own.
 
@@ -254,7 +268,7 @@ In each of these cases, the driving term forces the system into motion in a way 
 
 ### Linear vs. Nonlinear Differential Equations
 
-A differential equation is classified as **linear** if each term in the equation **only involves the function or one of its derivatives**, without any cross terms. This means that:
+A differential equation is classified as **linear** if each term in the equation **only involves the function or one of its derivatives**, without any cross terms. This means:
 
 - The function $ x(t) $ and its derivatives appear **only to the first power**.
 - The function and its derivatives are **not multiplied together**.
@@ -266,15 +280,15 @@ $$
 a_n(t) \frac{d^n x}{dt^n} + a_{n-1}(t) \frac{d^{n-1} x}{dt^{n-1}} + \dots + a_1(t) \frac{dx}{dt} + a_0(t) x = f(t),
 $$
 
-where $ a_i(t) $ are functions of $ t $ and $ f(t) $ is an external forcing term.
+where $ a_i(t) $ are functions of $ t $ and $ f(t) $ is an external forcing term. Notice non of the derivatives are raised to a power and there are no mixed terms.
 
-To better understand this classification, consider the following examples of nonlinear differential equations. For example, the equation
+To better understand this classification, consider the following examples of nonlinear differential equations. For example, the equation:
 
 $$
 x \frac{dx}{dt} = 3
 $$
 
-is **nonlinear** because the function $ x(t) $ is multiplied by its derivative. Similarly, the equation
+is **nonlinear** because the function $ x(t) $ is multiplied by its derivative. Similarly, the equation:
 
 $$
 \left( \frac{d^3 x}{dt^3} \right)^2 = \frac{dx}{dt} + 7
@@ -282,9 +296,10 @@ $$
 
 is also **nonlinear** because the third derivative is squared.
 
-Nonlinear ODEs are notoriously difficult to solve—if they have a solution at all. They often require numerical methods or qualitative approaches rather than direct algebraic solutions. Identifying whether an ODE is linear or nonlinear is crucial because it determines the solution strategies available. 
+Nonlinear ODEs are notoriously difficult to solve, if they have a closed form solution at all. They often require numerical methods and qualitative approaches rather than direct algebraic solutions. Identifying whether an ODE is linear or nonlinear is crucial because it determines the solution strategies available. 
 
 One key property of linear homogeneous ODEs is that they satisfy the **superposition principle**:
+
 If $ x_1(t) $ and $ x_2(t) $ are solutions to a linear homogeneous ODE, then their sum,
 
 $$
@@ -310,10 +325,10 @@ $$
 
 These equations often admit solutions involving exponentials and trigonometric functions, making them easier to solve analytically.
 
-On the other hand, if any coefficient depends on $ t $, the equation is a **variable-coefficient differential equation**, such as:
+On the other hand, if any coefficient depends on $ t $ in any way, the equation is a **variable-coefficient differential equation**, such as:
 
 $$
-t^2 \frac{d^2 x}{dt^2} + t \frac{dx}{dt} + x = 0
+t^2 \frac{d^2 x}{dt^2} + \tau \sin(t) \frac{dx}{dt} + x = 0
 $$
 
 Variable-coefficient equations are generally more difficult to solve, requiring techniques like power series solutions.
@@ -326,7 +341,7 @@ Understanding how differential equations are classified helps us choose the righ
 
 More importantly, recognizing these structures allows us to see connections between seemingly different physical systems. The same equation might describe electrical circuits, mechanical vibrations, and even population dynamics, just with different variable names.
 
-Now that we have classified differential equations, let's move on to solving our first example: a simple first-order ODE describing flow rates of water.
+Let's consider a handful of examples:
 
 
 {% capture ex %}
@@ -408,6 +423,8 @@ This **linear, first-order, constant-coefficient, inhomogeneous, ordinary differ
 
 
 
+Now that we have classified differential equations, let's move on to solving our first example: a simple first-order ODE describing flow rates of water.
+
 
 
 
@@ -422,7 +439,7 @@ This **linear, first-order, constant-coefficient, inhomogeneous, ordinary differ
 
 Now that we have established the different classifications of differential equations, let’s start discussing solution strategies. To keep things intuitive, we will begin with a physical system that most people have encountered at some point in their lives: filling a bucket with water.
 
-Imagine you have a bucket with a small hole at the bottom, and you are filling it with water from a faucet. The rate at which water is added to the bucket, $ R_{\text{in}} $, is constant. At the same time, water is leaking out of the hole at a rate $ R_{\text{out}} $ that depends on how much water is currently in the bucket. This leakage follows a well-known physical principle: the more water in the bucket, the greater the pressure at the hole, and thus the faster the water leaks out.
+Imagine you have a bucket with a small hole at the bottom, and you are filling it with water from a faucet. The rate (liters per second) at which water is added to the bucket, $ R_{\text{in}} $, is constant. At the same time, water is leaking out of the hole at a rate $ R_{\text{out}} $ that depends on how much water is currently in the bucket. This leakage follows a well-known physical principle: the more water in the bucket, the greater the pressure at the hole, and thus the faster the water leaks out.
 
 Let $ h(t) $ represent the height of the water in the bucket as a function of time. The rate of change of $ h $ will depend on the amount of water entering and leaving the bucket. Water entering the bucket will try to fill it up, meaning the $ R_{\text{in}} $ term will lead to a positive $\frac{dh}{dt}$ if that is the only thing happening. That is, the height of the water in the bucket will rise due to $ R_{\text{in}} $. 
 
