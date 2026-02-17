@@ -439,42 +439,43 @@ Now that we have classified differential equations, let's move on to solving our
 
 Now that we have established the different classifications of differential equations, let’s start discussing solution strategies. To keep things intuitive, we will begin with a physical system that most people have encountered at some point in their lives: filling a bucket with water.
 
-Imagine you have a bucket with a small hole at the bottom, and you are filling it with water from a faucet. The rate (liters per second) at which water is added to the bucket, $ R_{\text{in}} $, is constant. At the same time, water is leaking out of the hole at a rate $ R_{\text{out}} $ that depends on how much water is currently in the bucket. This leakage follows a well-known physical principle: the more water in the bucket, the greater the pressure at the hole, and thus the faster the water leaks out.
+Imagine you have a bucket with a small hole at the bottom, and you are filling it with water from a faucet. The rate (liters per second) at which water is added to the bucket, $ R_{\text{in}} $, is constant. At the same time, water is leaking out of the hole at a rate $ R_{\text{out}} = R_{\text{out}}(h) $ that depends on how much water is currently in the bucket, specifically on the height of the water above the hole $h$. This leakage follows a well-known physical principle: the more water in the bucket, the greater the pressure at the hole, and thus the faster the water leaks out.
 
-Let $ h(t) $ represent the height of the water in the bucket as a function of time. The rate of change of $ h $ will depend on the amount of water entering and leaving the bucket. Water entering the bucket will try to fill it up, meaning the $ R_{\text{in}} $ term will lead to a positive $\frac{dh}{dt}$ if that is the only thing happening. That is, the height of the water in the bucket will rise due to $ R_{\text{in}} $. 
+Let $ h = h(t) $ represent the height of the water in the bucket above the hole as a function of time. The rate of change of $ h $ will depend on the amount of water entering and leaving the bucket. Water entering the bucket will try to fill it up, meaning the $ R_{\text{in}} $ term will lead to a positive $\frac{dh}{dt}$ if that is the only thing happening. The height of the water in the bucket will rise due to $ R_{\text{in}} $. 
 
 Similarly, $ R_{\text{out}} $ is going to try to decrease the height of the water in the bucket and will create a negative $\frac{dh}{dt}$ if there is no water being added to the bucket ($ R_{\text{in}} $). 
 
-This means the rate at which the height of the water in the bucket will depdning on the in flow and out flow rates in the following manner:
+This means the rate at which the height of the water in the bucket will depend on the difference of the in flow and out flow rates in the following manner:
 
 $$
-\frac{dh}{dt} = R_{\text{in}} - R_{\text{out}}
+\frac{dh}{dt} = R_{\text{in}} - R_{\text{out}}(h)
 $$
 
-From fluid mechanics, the outflow rate is proportional to the square root of the water height:
+From fluid mechanics we can find that the outflow rate is proportional to the square root of the height of the water:
 
 $$
-R_{\text{out}} = k \sqrt{h}.
+R_{\text{out}} = k \sqrt{h}
 $$
 
 Thus, our differential equation for the water level is:
 
 $$
-\frac{dh}{dt} = R_{\text{in}} - k\sqrt{h}.
+\frac{dh}{dt} = R_{\text{in}} - k\sqrt{h}
 $$
 
 This equation tells us how the height of water in the bucket changes over time. It is a **first-order**, **nonlinear**, **constant-coefficient**, **inhomogeneous** **ordinary** differential equation because:
-
 - It involves only the first derivative $ dh/dt $ (first-order).
 - The term $ k \sqrt{h} $ makes it nonlinear (not just a sum of $ h $ and its derivatives).
 - It has an external input $ R_{\text{in}} $ making it inhomogeneous.
 
+Despite its nonlinearity, this equation is solvable using **separation of variables**, a technique we will introduce shortly.
 
-Despite its nonlinearity, this equation is solvable using separation of variables, a technique we will introduce shortly.
+
+
 
 ### Steady-State/Equilibrium Solution
 
-Before solving the equation formally, we can gain intuition by analyzing its **steady-state** behavior. The **steady-state** solution is what results when all of the derivatives of the function are set equal to zero. This is sometimes called the **equilibrium solution**. In this case, setting the first derivative equal to zero gives:
+Before solving the equation formally, we can gain some intuition about the solution to this problem $h(t)$ by analyzing the **steady-state** behavior. The **steady-state** solution is what results when all of the derivatives of the function are set equal to zero. This is sometimes called the **equilibrium solution**. In this case, setting the first derivative equal to zero gives:
 
 $$
 \frac{dh}{dt} = 0 \quad \implies \quad R_{\text{in}} - k\sqrt{h_\text{eq}} = 0
@@ -489,12 +490,15 @@ $$
 Solving for the equilibrium height, $ h_{\text{eq}} $, we find:
 
 $$
-h_{\text{eq}} = \left( \frac{R_{\text{in}}}{k} \right)^2.
+h_{\text{eq}} = \left( \frac{R_{\text{in}}}{k} \right)^2
 $$
 
-What this solution tells us is if we let the the water run long enough, and have a big enough bucket, the water level will stabilize at $ h_{\text{eq}} $, where the inflow and outflow will be balanced.
+This tells us that if we let the the water run long enough, and have a big enough bucket, the water level will stabilize at $ h_{\text{eq}} $, where the inflow and outflow rates will be balanced.
 
-Finding the **steady-state solution** or **equilibrium solution** is one really useful technique for helping to understand and interpret the physical meaning of a differential equation.
+Finding the **steady-state solution** (**equilibrium solution**) is one really useful technique for helping to understand and interpret the physical meaning of a differential equation.
+
+
+
 
 
 
