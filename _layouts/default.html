@@ -420,7 +420,24 @@
       .warning::before {
         content: "Common Mistake.";
       }
+      
+      /* Page-break helper */
+      .page-break {
+        page-break-before: always;
+        break-before: page;
+      }
+      
+      .work-space-tiny { height: 1.2rem; }
+      .work-space-sm { height: 7rem; }
+      .work-space-md { height: 10rem; }
+      .work-space-lg { height: 13rem; }
 
+      .two-column {
+        flex-direction: row;
+      }
+      .two-column .katex {
+        font-size: 11pt;
+      }
 
     }
 
