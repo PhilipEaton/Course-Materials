@@ -24,9 +24,7 @@ a) Define a complex number in rectangular form and express it in polar form. Mak
 	
 b) Define what an eigenvalue and an eigenvector are for a given square matrix. Discuss briefly why these concepts could be important in modeling physical systems.  
 	
-c) Define the trace of a matrix and explain its relationship to the eigenvalues of the matrix.  
-	
-d) Define what is meant by basis vectors in a vector space. Additionally, explain the concept of linear independence and how the determinant of a matrix can be used to test for it.  
+c) Define what is meant by basis vectors in a vector space. Additionally, explain the concept of linear independence and how the determinant of a matrix can be used to test for it.  
 
 
 
