@@ -15,7 +15,7 @@ nav_order: 11
 
 In physics and engineering, we often encounter systems that evolve in time, space, or both simultaneously. Whether we are tracking the motion of a falling object, the oscillations of a spring, or the rate at which a chemical reaction progresses, these processes are not best described by simple algebraic equations. Instead, they are governed by **equations that relate a function to its own rate of change**. These kinds of equations are called **differential equations**. 
 
-At their core, differential equations describe how something *changes* and form the basis for all of the mathematical models used in physics. If we know how a system evolves at each instant, we can predict its future behavior by *solving* the appropriate differential equation; that is, bby solving the appropriate mathematical model. These equations form the backbone of physics, and virtually every other field of applied science. 
+At their core, differential equations describe how something *changes* and form the basis for all of the mathematical models used in physics. If we know how a system evolves at each instant, we can predict its future behavior by *solving* the appropriate differential equation; that is, by solving the appropriate mathematical model. These equations form the backbone of physics, and virtually every other field of applied science. 
 
 To motivate our study, let’s consider some key examples where differential equations naturally arise in physics.
 
