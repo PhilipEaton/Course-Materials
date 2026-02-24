@@ -117,39 +117,40 @@ By the end of this lecture, you will be able to:
 ---
 
 
-In our previous lectures, we explored the **core families of machine learning models** — from instance-based and probabilistic methods to linear, logistic, and tree-based models. Each one gave us a new way to model patterns, make predictions, and learn from data.  
+Across our previous lectures, we explored the **core families of machine learning models**: instance-based, linear models, logistic and probabilistic classification models, and tree/forest-based models. Each one gave us a new way to model patterns, make predictions, and learn from data.  
 
-Today, we’re going to take a step back from building new models and focus on **how to use them well** — responsibly, reproducibly, and communicatively.  
+Today, we’re going to take a step back from building new models and focus on **how to use them well**. That is, how to build and use models responsibly using reproducible pipelines and how to communicate the results in a sensible manner.
 
 
 
 
 ## Why This Lecture Matters  
 
-Most of the work of a real data scientist happens *after* the model is trained. Data scientists spend their time comparing approaches, tuning parameters, documenting results, and explaining what the numbers mean — and what they *don’t* mean.  
+Most of the work of a real data scientist happens *after* the model is trained. Data scientists spend their time comparing approaches, tuning parameters, documenting results, and explaining what the numbers do ad *don't* mean.
 
-Today’s lecture is about building that professional muscle:  
-> how to validate your results, improve them responsibly, and present them with honesty and clarity.  
-
-By the end of class, you’ll see that good machine learning isn’t about chasing the highest accuracy — it’s about building **trustworthy, interpretable, and communicable models**.  
+By the end of class, you’ll see that good machine learning isn’t about chasing the highest accuracy. It’s about building **trustworthy, interpretable, and communicable models**. Just as we have been advocating throughout the whole course. 
 
 
 ## What We’ll Do Today  
 
-1. **Reconnect everything** we’ve learned — where each model fits and when to use it.  
-2. Learn to **compare and validate models** using cross-validation and pipelines.  
-3. Explore **regularization and PCA** as tools for improving generalization.  
-4. Practice **communicating results** effectively through visuals and clear summaries.  
-5. Reflect on **responsible AI** — how ethics, fairness, and transparency affect real-world ML.  
+1. **Reconnect everything** we’ve learned.
+  - Where each model fits and when to use it.  
+2. Learn to **compare and validate models**.
+  - Using cross-validation and pipelines.  
+3. Explore **regularization and PCA**.
+  - As tools for improving generalization.  
+4. Practice **communicating results** effectively.
+  - Using visuals and clear summaries.  
+5. Reflect on **responsible AI**.
+  - How ethics, fairness, and transparency affect real-world ML.  
 
-
-> “A model’s value isn’t just in how well it predicts. It is in how well we understand, trust, and communicate it.”
+> A model’s value isn’t just in how well it predicts. It is in how well we understand, trust, and communicate it.
 
 
 
 ## Review & Integration
 
-Before we move forward, let’s look at the **big picture** of what we’ve covered so far in this course.  
+Let’s step back and look at the **big picture** of what we’ve learned in this course.  
 
 Across the past five lectures, we explored a range of models that fall into different families of machine learning. Each one makes different assumptions about data, but all share a similar goal: **learning from examples to make predictions or uncover structure.**
 
@@ -172,11 +173,11 @@ Every model we’ve learned shares the same basic workflow:
 
 1. **Prepare the data** (clean, encode, scale).  
 2. **Fit the model** (learn patterns).  
-3. **Evaluate the model** (accuracy, R², confusion matrix, etc.).  
+3. **Evaluate the model** (accuracy, adjusted-$R^2$, confusion matrix, etc.).  
 4. **Interpret and communicate** the results.  
 
 That means:  
-> You don’t need to learn a *new process* for every algorithm — you just plug a new model into the same framework.
+> You don’t need to learn a *new process* for every algorithm! You just need to plug a new model into the same framework.
 
 
 
@@ -196,21 +197,21 @@ That means:
 
 
 
-
-
-
-## Model Comparison & Validation
+### Model Comparison & Validation
 
 Once we’ve built multiple models (you should always use multiple models!), a natural question arises:  
 
 > “How do I know which one is "*better*"?”
 
-Evaluating and comparing models is one of the most critical — and overlooked — parts of machine learning. 
+Evaluating and comparing models is one of the most critical, and often overlooked, parts of machine learning. 
 
 
-### The Goal of Model Validation  
 
-Our goal **is not** to find the model that performs "*best*" on the training set — it’s to find the one that: 
+
+
+#### The Goal of Model Validation  
+
+Our goal **is not** to find the model that performs "**best**" on the training set. It’s to find the one that: 
 - performs **most consistently** on new, unseen data,
 - can be **easily and readily interpreted**, and
 - **makes sense** given the context of the problem.
@@ -222,15 +223,16 @@ Our goal **is not** to find the model that performs "*best*" on the training set
 
 
 
-### Why Simple Train/Test Splits Generally Aren’t Enough  
+#### Why Simple Train/Test Splits Generally Aren’t Enough  
 
 When we split data into a **training set** and a **test set**, we often get a good first estimate of model performance.  But that estimate depends **heavily on how the data was split**. If we got lucky (or unlucky) with one random split, the model’s apparent performance might not reflect reality.  
 
 To fix this, we use a more robust method called **cross-validation**.
 
-### Cross-Validation (CV)  
+##### Cross-Validation (CV)  
 
 **Idea:**  Instead of a single train/test split, we split the dataset into *k* parts (called *folds*). We then:
+
 1. Train on *k-1* folds  
 2. Test on the remaining fold  
 3. Repeat until every fold has been used for testing once
@@ -309,65 +311,47 @@ plt.show()
     Average R²: 0.253
     St. Dev. R²: 0.113
 ```
+
+<img
+  src="{{ '/courses/machine-learning-foundations/images/lec06/output_7_1.png' | relative_url }}"
+  alt="A bar chart plotting the average of the Cross-Validated adjusted-r-squared scores. The standard deviations is used as an error bar."
+  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">   
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
 
 
     
-
-
-
-<img
-  src="{{ '/courses/machine-learning-foundations/images/lec06/output_7_1.png' | relative_url }}"
-  alt=""
-  style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">   
     
 
 
-<div style="
-    background-color: #fff7e6;
-    border-left: 6px solid #e28f41;
-    padding: 10px;
-    border-radius: 5px;
-">
-<b>Discussion Prompt:</b> 
-    
-- Which model looks more stable across folds?
-- Does higher average accuracy always mean the better model?
-</div>
+
+## Building Pipelines for Reproducibility  
+
+When models require preprocessing (scaling, encoding, etc.), we often end up with separate steps scattered across cells or in different locations of our code. This is fine when you are exploring your data and poking around on your own. 
+
+However, this makes it hard (if not impossible) to reproduce or share results.
+
+To help with this consider:
+- cleaing and organizing your code before you close it for the day. 
+- Or using scikit-learn's build in **Pipeline** class 
+  - a structured way to connect preprocessing and modeling steps into one object.
 
 
-
-
-
-
-### Building Pipelines for Reproducibility  
-
-When models require preprocessing (scaling, encoding, etc.), we often end up with separate steps scattered across cells or in different location of our script. This is fine when you are exploring your data and poking around on your own. 
-
-Hoever, this makes it hard (if not impossible) to reproduce or share results.
-
-To help with this consider cleaing and organizing your code before you close it for the day. Also, scikit-learn provides a **Pipeline** class — a structured way to connect preprocessing and modeling steps into one object.
-
-
-#### Why Pipelines Matter  
+### Why Pipelines Matter  
 
 - Prevent **data leakage** (this ensures the model never “peeks” at the test data).  
 - Make experiments **repeatable** and easy to share.  
-- Allow you to integrate preprocessing and model tuning in a **single workflow**.
+- Allow you to integrate preprocessing and model tuning into a **single workflow**.
 
+Let’s looks at a few examples of using pipelines to build out you data processing into model processing to see how useful this workflow can be! 
 
-Let’s see a simple example using a pipeline with scaling + an SVM model:
-
-
-
-
+Consider first a simple example using a pipeline including automatic scaling + cross-validation of a decision tree:
 
 
 
 
-### Pipeline: Scaling + Desision Tree
+#### Pipeline: Scaling + Desision Tree
 
 {% capture ex %}
 ```python
@@ -683,32 +667,6 @@ for name, scores in results.items():
 {% include codeoutput.html content=ex %}  
 
 
-    
-
-
-
-<div style="
-    background-color: #fff7e6;
-    border-left: 6px solid #e28f41;
-    padding: 10px;
-    border-radius: 5px;
-">
-<b>Discussion Prompt:</b> 
-    
-- What are we actually doing when we tune hyperparameters?  
-- How might using a **pipeline** improve transparency and collaboration in ML projects?  
-- What other stages of your earlier projects could benefit from being wrapped in a pipeline?
-</div>
-
-
-
-
-
-
-
-
-
-
 
 
 ### Pipeline: Scaling + Feature Selection + (k-NN & Desision Tree) + Hyperparameter Tuning
@@ -830,6 +788,12 @@ for name, grid in results.items():
 {% include codeoutput.html content=ex %}  
 
 
+#### What to use when score_func
+
+- **Linear Regression models**: Use `f_regression`.
+- **Categorical Features and Targets**: Use `chi2`.
+- **Non-linear Relationships**: Use `mutual_info_classif`.
+
     
 
 
@@ -842,7 +806,7 @@ for name, grid in results.items():
 
 If we train the same model twice and get *different results*, we can’t trust the comparison.  
 
-**Many ML algorithms** (e.g., Random Forests, train/test splits) **use randomness** internally. Setting a **random seed** makes those random operations repeatable — a key part of trustworthy data science.
+**Many ML algorithms** (e.g., Random Forests, train/test splits) **use randomness** internally. Setting a **random seed** makes those random operations repeatable. This is key for trustworthy data science.
 
 {% capture ex %}
 ```python
@@ -985,8 +949,9 @@ Always record:
 - Data set being used,
 - model(s) being fit,
 - your **random state/seed** numbers,
-    - key **model parameters**, and  
-- **software versions** (possibily).
+- (possibly) key model parameters,
+- (possibily) software versions,
+- Other information to help someone understand what you are doing at a glance.
 
 Even a simple markdown cell at the top of your notebook works:
 
@@ -1007,7 +972,7 @@ Even a simple markdown cell at the top of your notebook works:
 
 - **Cross-validation** gives us a stable, fair estimate of model performance.  
 - **Pipelines** make preprocessing and modeling reproducible.  
-- **Hyperparameter tuning** (via GridSearchCV) helps find the best configuration — but it must be validated fairly.  
+- **Hyperparameter tuning** (via GridSearchCV) helps find the best configuration, but it must be validated fairly.  
 - Our goal is not just *accuracy*, but **consistency and explainability**.
 </div>
 
@@ -1019,37 +984,27 @@ Even a simple markdown cell at the top of your notebook works:
 
 ## Improving Generalization
 
-Even when two models perform similarly under cross-validation, one might still be more **trustworthy** in practice.  That difference comes from *generalization* — the ability of a model to perform well on unseen data.
+Even when two models perform similarly under cross-validation, one might still be more **trustworthy** in practice.  That difference comes from *generalization*, the ability of a model to perform well on unseen data.
+
 
 ### What Does "Generalization" Mean?
 
-Reacll, when a model memorizes noise in the training set it will look great during training but fail miserably when faced with new data. We call that **overfitting**.  
+Recall, when a model memorizes noise in the training set it will look great during training but fail miserably when faced with new data. (**overfitting**)
 
-On the other hand, a model that is too simple may miss real relationships — remember this is called **underfitting**.
+On the other hand, a model that is too simple may miss real relationships. (**underfitting**)
 
-| Behavior | Description | Visualization |
-|:----------|:-------------|:---------------|
-| **Underfitting** | Model is too simple to capture the pattern | Almost a straight line through curved data |
-| **Good Fit** | Model captures trend but ignores random noise | Smooth curve that follows general pattern |
-| **Overfitting** | Model learns every tiny fluctuation (noise) | Wiggly curve that fits all points perfectly |
-
-
-### Bias–Variance Tradeoff
-
-- **High bias** → Model assumptions are too strong (underfit).  
-- **High variance** → Model is too sensitive to training data (overfit).  
-- **Goal:** Find the sweet spot between the two.
-
+| Behavior | Description |
+|:----------|:-------------|
+| **Underfitting** | Model is too simple to capture the pattern | 
+| **Good Fit** | Model captures trend but ignores random noise | 
+| **Overfitting** | Model learns every tiny fluctuation (noise) | 
 
 ### Tools to Improve Generalization
 
 Two of the most powerful ways to help models generalize are:
 
-1. **Regularization** → Prevents models from becoming too complex.
-    - We saw this before when discussing the logistic model.  
-3. **Dimensionality Reduction (PCA)** → Simplifies data by removing redundant features.
-
-We’ll explore both next.
+1. **Regularization**: Prevents models from becoming too complex.  
+2. **Dimensionality Reduction (PCA)**: Simplifies data by removing redundant features.
 
 
 
@@ -1058,9 +1013,11 @@ We’ll explore both next.
 
 
 
-### Regularization
+#### Regularization
 
-Regularization is a way to combat model complexity by adding a penalty to large coefficients, effectively constraining the model’s complexity. The more large coefficients you have, the fewer terms you need in your model. 
+Regularization is a way to combat model complexity by **adding a penalty to large coefficients**, effectively constraining the model’s complexity. 
+
+> The more large coefficients you have, the fewer terms you need in your model. 
 
 The two most common regularization methods for regression models like linear and logistic regression are **Ridge** (aka L2) and **Lasso** (aka L1).
 
@@ -1071,10 +1028,11 @@ The two most common regularization methods for regression models like linear and
 | **Elastic Net** | Mix of Ridge and Lasso | Balances both effects |
 
 **λ (lambda)** (called `C` in `sklearn`) is a tuning parameter that controls how strong the penalty is.  
-- High λ → simpler model (less variance, more bias)  
-- Low λ → more flexible model (more variance, less bias)  
+- High λ: simpler model (less variance, more bias)  
+- Low λ: more flexible model (more variance, less bias)  
 
-Regularization doesn’t make your model “better” — it makes it **more stable and generalizable.**
+Regularization doesn’t make your model “better”. It attempts to make the model **more stable and generalizable.**
+
 
 {% capture ex %}
 ```python
@@ -1116,7 +1074,7 @@ print(f"Lasso R² (Test): {lasso.score(X_test, y_test):.3f}")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_29_0.png' | relative_url }}"
-  alt=""
+  alt="A plot showing how large parameters in an unregulated model are pulled towards zero to reduce the number of large coefficients."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">  
     
 
@@ -1134,9 +1092,9 @@ print(f"Lasso R² (Test): {lasso.score(X_test, y_test):.3f}")
 
 
 
-### Regularization Beyond Linear Models
+#### Regularization Beyond Linear Models
 
-Lasso (L1) and Ridge (L2) regularization works by penalizing large coefficients in linear models, shrinking them toward zero. However, models like k-NN and Decision Trees don’t learn explicit weights. These models are regularized by controlling complexity through their hyperparameters.
+As we said previously, regularization works by penalizing large coefficients in linear models, shrinking them toward zero. However, models like k-NN and Decision Trees don’t learn explicit weights. These models are regularized by controlling complexity through their hyperparameters.
 
 | Model Type                             | How It Regularizes                                             | Key Parameters                                | Analogy to L1/L2                                                        |
 | :------------------------------------- | :------------------------------------------------------------- | :-------------------------------------------- | :---------------------------------------------------------------------- |
@@ -1151,38 +1109,15 @@ Lasso (L1) and Ridge (L2) regularization works by penalizing large coefficients 
 
 
 
-### Principal Component Analysis
+#### Principal Component Analysis
 
-PCA (Principal Component Analysis) is a technique used to find the best way to combine multiple features using their mutual correlations. This is useful when:
+PCA (Principal Component Analysis) is a technique used to find an optimal way to combine multiple features using their mutual correlations. This is useful when:
 
 - You have **many correlated features**
-- You want to **reduce dimensionality** while preserving most of the information
+- You want to **reduce dimensionality** while preserving as much information as possible
 - You need to **visualize** high-dimensional data
 
 
-#### PCA vs. Regularization
-
-| Method | Purpose | Typical Use Case |
-|:--------|:----------|:----------------|
-| **PCA** | **Simplifies the *data*** by reducing redundant dimensions | **Preprocessing step** for visualization or clustering |
-| **Regularization/Hyperparameter Tuning** | **Simplifies the *model*** by penalizing large coefficients or tuning model construction parameters | **Model fitting** step for improving generalization in linear models |
-
-
-Both aim to **reduce overfitting**, but they act on different parts of the pipeline.  
-
-
-<div style="
-    background-color: #fff7e6;
-    border-left: 6px solid #e28f41;
-    padding: 10px;
-    border-radius: 5px;
-">
-<b>Discussion Prompt:</b> 
-    
-- How would you decide between regularization and PCA for your dataset?  
-- Could you combine both in a pipeline?  
-- What trade-offs do you see between interpretability and performance?
-</div>
 
 
 {% capture ex %}
@@ -1219,7 +1154,7 @@ plt.show()
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_32_0.png' | relative_url }}"
-  alt=""
+  alt="Bar charge showing the percent of variance each of the principal components explain of the data."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">  
     
 
@@ -1227,13 +1162,39 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_32_1.png' | relative_url }}"
-  alt=""
+  alt="Scatter plot of the multidimensional data using only 2 most explanatory principal components as the coordinates. You can see that the data is decently well separated in this corrdinate system. "
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
     
 {% endcapture %}
 {% include codeoutput.html content=ex %}  
 
 
+
+
+#### PCA vs. Regularization
+
+| Method | Purpose | Typical Use Case |
+|:--------|:----------|:----------------|
+| **PCA** | **Simplifies the *data*** | **Preprocessing step** for visualization or clustering |
+| **Regularization/Hyperparameter Tuning** | **Simplifies the *model*** | **Model fitting** step for improving generalization in linear models |
+
+
+Both aim to **reduce overfitting**, but they act on different parts of the pipeline.  
+
+
+
+<div style="
+    background-color: #fff7e6;
+    border-left: 6px solid #e28f41;
+    padding: 10px;
+    border-radius: 5px;
+">
+<b>Discussion Prompt:</b> 
+    
+- How would you decide between regularization and PCA for your dataset?  
+- Could you combine both in a pipeline?  
+- What trade-offs do you see between interpretability and performance?
+</div>
 
 
 
@@ -1256,11 +1217,14 @@ This section focuses on three key communication skills:
 
 ### Why Communication Matters
 
+
 A ***good*** model answers a *question.*  
 
 A ***great*** model tells a *story.*
 
-Whether you’re presenting to other data scientists, scientists in another field, or non-technical audiences, the goal is the same: help them understand what the model learned and what it means.
+Whether you’re presenting to other data scientists, scientists in another field, or non-technical audiences, the goal is the same: 
+> help them understand what the model learned and what it means.
+
 
 
 
@@ -1274,7 +1238,7 @@ Feature importance tells us *which variables had the most influence* on the mode
 
 In the following example, certain chemical components of wine strongly determine which class (type of wine) it belongs to.
 
-But be careful: **importance ≠ causation.**
+But be careful: **importance IS NOT causation.**
 
 A high importance score means a feature was ***useful to the model***, not necessarily ***the cause of an outcome***. 
 
@@ -1293,6 +1257,16 @@ importances = model.feature_importances_
 indices = np.argsort(importances)[::-1]
 features = np.array(data.feature_names)[indices]
 
+sorted_features = features[indices]
+sorted_importances = importances[indices]
+
+df_importance = pd.DataFrame({
+    "Feature": sorted_features,
+    "Importance": sorted_importances
+})
+
+print(df_importance)
+
 # --- Plot ---
 plt.figure(figsize=(8, 5))
 plt.barh(features, importances[indices], color="#88CCEE")
@@ -1303,15 +1277,31 @@ plt.gca().invert_yaxis()
 plt.tight_layout()
 plt.grid(False)
 plt.show()
-
 ```
 {% endcapture %}
 {% include codeinput.html content=ex %}  
 
 {% capture ex %}
+```python
+                         Feature  Importance
+0                  total_phenols    0.183580
+1           nonflavanoid_phenols    0.172865
+2              alcalinity_of_ash    0.164199
+3                     flavanoids    0.123381
+4                            ash    0.102783
+5                proanthocyanins    0.077608
+6                            hue    0.045954
+7                        proline    0.028601
+8   od280/od315_of_diluted_wines    0.028453
+9                        alcohol    0.027015
+10                     magnesium    0.022315
+11               color_intensity    0.014042
+12                    malic_acid    0.009204
+```
+
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_35_0.png' | relative_url }}"
-  alt=""
+  alt="Bar plot of the above data."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">  
     
 
@@ -1326,13 +1316,16 @@ plt.show()
 
 - Use **rankings or visual bars** instead of raw numbers.
     - Visuals are almost always better than displaying raw numbers.
-    - If you have to give the numbers, do so as parft of a visual when possible.
+    - If you have to give the numbers, do so as part of a visual when possible.
 - Describe what each feature represents in real-world terms.
     > Flavonoids are colorful, protective chemicals made by plants.
 - Connect findings back to the original question.
     > Flavonoids are quite efective in differentiating between types of wine.
 - Acknowledge uncertainty: “Feature X appears most predictive, but correlation is not causation.”
     > Flavonoids appear to be the most predicitive, but this this is only a correlation. The flavonoids do not cause the wines to be of different types.
+
+
+##### Example: Diabetes Data
 
 As another example, we can considing the diabetes data set where the target is does the patient have diabetes or not. 
 
@@ -1390,7 +1383,7 @@ plt.show()
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_38_1.png' | relative_url }}"
-  alt=""
+  alt="A plot of the above data."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
 
 {% endcapture %}
@@ -1398,24 +1391,16 @@ plt.show()
 
 
 
+**Explaining Coefficients (to Non-Experts)**
+
+Each coefficient represents how much the target changes when that feature changes.
+
+- **Larger values**: stronger influence.
+- **Positive values**: higher feature values increase the predicted value.  
+- **Negative values**: higher feature values decrease the predicted value.  
 
 
-
-
-
-    
-
-
-### Explaining Coefficients (to Non-Experts)
-
-Each coefficient represents how much the target changes when that feature changes, *holding everything else constant.*
-
-- **Positive values** → higher feature values increase the predicted value.  
-- **Negative values** → higher feature values decrease the predicted value.  
-- **Larger *magnitudes*** → stronger influence.
-
-
-#### Example Translation
+**Example Translation**
 
 Instead of saying:
 > “BMI has a coefficient of 24.7.”
@@ -1426,7 +1411,7 @@ Say:
 That translation turns abstract math into interpretable insight.
 
 
-#### Common Pitfalls
+**Common Pitfalls**
 
 - Forgetting to scale features before comparing coefficient magnitudes.  
 - Interpreting coefficients as causal relationships.  
@@ -1453,7 +1438,7 @@ Always include:
 
 > “Our decision tree correctly identifies wine types about 93% of the time. The biggest clues it uses are the wine’s flavonoids, alcohol level, and color intensity. When we try it on wines from new regions it hasn’t seen before, accuracy drops to 85%, which suggests the model learned the training examples a bit too closely (some overfitting).”
 
-That’s a *complete, transparent* statement — it reports success while acknowledging uncertainty.
+That’s a *complete, transparent* statement. It reports success while acknowledging uncertainty.
 
 
 <div style="
@@ -1477,7 +1462,7 @@ That’s a *complete, transparent* statement — it reports success while acknow
 
 ## Responsible AI: Bias, Fairness, and Transparency
 
-Machine learning models are **not neutral**.  They learn from data, and data always reflect the world as it *was*, not necessarily as it *should be.*
+Machine learning models are **not neutral**.  They learn from data, and data always reflects the world as it *was*, not necessarily as it *should be.*
 
 If our training data contain bias, our models will too. As a result, if we don’t communicate uncertainty clearly, our models can be misused or misunderstood.
 
@@ -1507,9 +1492,8 @@ Bias can creep into a machine learning system at many points:
 Bias is not always intentional, but it’s always impactful.
 
 
-For example, in am imbalanced data set, where one group has much more data than the other(s), the larger group can potentially cominate the models being generated. 
+For example, in an imbalanced data set, where one group has much more data than the other(s), the larger group can potentially contaminate the models being generated. 
 
-**For example**:
 Suppose you have a data set with two groups:
 - Group 1 (80% of the data set): Mean = 0, St.Dev. = 1
 - Group 2 (20% of the data set): Mean = 2, St.Dev. = 1 
@@ -1549,7 +1533,7 @@ print(classification_report(y_test, y_pred))
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_45_0.png' | relative_url }}"
-  alt=""
+  alt="Confusion matrix. 116 True Positives, 28 True Negatives, 3 False Negatives and 3 False Positives."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
     
 
@@ -1662,7 +1646,7 @@ print(group_acc,"\n")
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_47_0.png' | relative_url }}"
-  alt=""
+  alt="Top plot is a scatter plot of the data. The bottom plot is a bar chart of the data given below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
     
 
@@ -1676,7 +1660,7 @@ print(group_acc,"\n")
 
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_47_2.png' | relative_url }}"
-  alt=""
+  alt="Bar chart of the above accuracy for each group given below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
     
 
@@ -1694,7 +1678,7 @@ print(group_acc,"\n")
     
 
 
-## Group Imbalance and Fairness
+### Group Imbalance and Fairness
 
 These visuals show how **unequal group representation** and **different data distributions** can lead to unequal model performance:
 
@@ -1718,7 +1702,11 @@ This is why evaluating performance by subgroup — not just overall — is criti
 
 What if we tried to fix this by **resampling the data**, so that each group contributes equally to the training set?
 
-We can do that with a simple resampling technique called **bootstrapping** — it means *sampling with replacement* to build multiple training sets of equal size. Then, instead of relying on one biased model, we can average results across multiple bootstrapped models to get a fairer estimate.
+We can do that with a simple resampling technique called **bootstrapping**. 
+
+Bootstrapping, as we have seen, is *sampling from the trianing data with replacement* to build multiple training sets of equal size. 
+
+Then, instead of relying on one biased model, we can average results across multiple bootstrapped models to get a fairer estimate.
 
 {% capture ex %}
 ```python
@@ -1786,7 +1774,7 @@ boot_summary
 {% capture ex %}
 <img
   src="{{ '/courses/machine-learning-foundations/images/lec06/output_50_0.png' | relative_url }}"
-  alt=""
+  alt="Bar chart of the average accuracy of the model using bootstrapped data, numbers given in the table below."
   style="display:block; margin:1.5rem auto; max-width:1000px; width:60%;">      
     
     
@@ -1808,7 +1796,7 @@ boot_summary
 
 
 
-### Bootstrapping to Improve Fairness and Stability
+#### Bootstrapping to Improve Fairness and Stability
 
 Bootstrapping is a simple yet powerful idea:
 - We create multiple training datasets by sampling **with replacement**.
@@ -1841,7 +1829,7 @@ There’s no single definition of “fairness,” but common metrics include:
 
 ### Transparency and Documentation
 
-Responsible AI means being able to answer these questions:
+Responsible AI/ML means being able to answer these questions:
 
 1. What data was used, and how was it collected?  
 2. What assumptions were made?  
@@ -1872,7 +1860,9 @@ To ensure accountability, data scientists create **Model Cards** and **Datasheet
 
 ### Communicating Results to Non-Technical Audiences
 
-Numbers are powerful — stories are *memorable*.  As data scientists, we must translate technical results into actionable insights.
+Numbers are powerful, but stories are *memorable*.  
+
+As data scientists, we must translate technical results into actionable insights.
 
 Example 1 – Confusion Matrix (technical)
 
