@@ -10,6 +10,7 @@ nav_order: 6
 
 First, let's import the needed libraries and functions:
 
+
 {% capture ex %}
 ```python
 # ===============================================================
