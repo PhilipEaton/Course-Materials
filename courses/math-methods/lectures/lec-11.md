@@ -505,7 +505,9 @@ Finding the **steady-state solution** (**equilibrium solution**) is one really u
 
 ## Separation of Variables and Solving First-Order ODEs
 
-Now that we’ve seen examples of how first-order differential equations naturally arise in physics, let’s focus on how to solve them. One of the most straightforward and widely applicable techniques for solving a first-order ODE is called **separation of variables**. This method is particularly useful for differential equations in which all terms involving the function can be moved to one side of the equation, and all terms involving the working variable can be moved to the other.
+Now that we’ve seen examples of how first-order differential equations naturally arise in physics, let’s focus on how to solve them. 
+
+One of the most straightforward and widely applicable techniques for solving a first-order ODE is called **separation of variables**. This method is particularly useful for differential equations in which all terms involving the function can be moved to one side of the equation, and all terms involving the working variable can be moved to the other.
 
 ### The General Method
 
@@ -515,53 +517,64 @@ $$
 \frac{dy}{dx} = f(x) g(y)
 $$
 
-Here, we are taking the derivative of $ y $ with respect to $ x $, meaning $ y $ must be a function of $ x $, i.e., $ y = y(x) $. As a result, we will refer to $ y $ as the **function** and $ x $ as the **working variable**. On the right-hand side, $ f(x) $ is a function that depends only on the working variable $ x $, while $ g(y) $ is a function that depends only on $ y $. 
+Here, we are taking the derivative of $ y $ with respect to $ x $. This tells us meaning  that $ y $is the function in this problem and of $ x $ is the working variable. That is, we are looking for $y$ such that $ y = y(x) $. As a result, we will refer to $ y $ as the **function** and $ x $ as the **working variable**. On the right-hand side, $ f(x) $ is a function that depends only on the working variable $ x $, while $ g(y) $ is a function that depends only on $ y $. 
 
 A first-order ODE is said to be **separable** if it can be rearranged into the following form:
 
 $$
-\frac{dy}{g(y)} = f(x) \, dx
+\frac{dy}{g(y)} = f(x) \ dx
 $$
 
-This step involves dividing by $ g(y) $ and "multiplying" by $ dx $. Now, mathematicians tend to object when physicists and engineers perform this operation, as it is not entirely rigorous from a formal mathematical perspective. However, in practical applications, the types of functions we encounter almost always allow for this manipulation without violating any actual mathematical rules. Rather than performing a more abstract transformation, we take this convenient and effective approach—let's call it "physicist-friendly math."
+This step involves dividing by $ g(y) $ and "multiplying" by $ dx $. 
 
-Once the equation is rewritten in this separable form, both sides can be integrated independently:
+Now, mathematicians tend to object when physicists and engineers perform this operation, as it is not entirely rigorous from a formal mathematics perspective. However, in practical applications, the types of functions we encounter almost always allow for this manipulation without violating any mathematical rules. Rather than performing a more abstract transformation, we take this convenient and effective approach—let's call it "physicist-friendly math."
+
+For those who would like the technical way of doing this, we first make the observation that the differential of $y =y(x)$ is given as:
 
 $$
-\int \frac{dy}{g(y)} = \int f(x) \, dx
+dy = \frac{dy}{dx} \ dx
+$$
+
+So, we an take the initial differential equation, multiply by $dx$ and then use the abbove differential:
 
 $$
-After performing these integrations (assuming they can be evaluated), the next step is to solve for $ y(x) $, provided that the equation allows for us to solve for $y(x)$. The resulting expression for $ y(x) $ is called the **general solution** to the differential equation.
+\frac{dy}{dx} \ dx = f(x) g(y) \ dx \quad\implies\quad dy = f(x) g(y) \ dx \quad\implies\quad \frac{dy}{g(y)} = f(x) \ dx 
+$$
 
-We refer to this as the **general** solution because it describes all possible solutions for any system governed by the given differential equation. However, if we wish to describe a particular physical situation, we need additional conditions—such as initial values or boundary conditions—to determine the precise behavior of $ y(x) $. By applying these conditions, we can solve for any unknown constants introduced during integration, obtaining what is known as the **particular solution**. This particular solution is unique to the specific scenario defined by the given conditions.
+Once the equation is rewritten in this separable form, regardless of how you logic you way to it, both sides can be integrated independently:
+
+$$
+\int \frac{dy}{g(y)} = \int f(x) \ dx
+$$
+
+After performing these integrations (assuming they can be evaluated), the next step is to solve for $ y(x) $, provided the resulting equation allows for us to solve for $y(x)$ in a closed form. The resulting expression for $ y(x) $ is called the **general solution** to the differential equation.
+
+This is called the **general solution** because it describes all possible solutions for any system governed by the given differential equation. However, if we wish to describe a particular physical situation, we need additional conditions, such as initial values or boundary conditions, to determine the precise behavior of $ y(x) $. By applying these given conditions, we can solve for any unknown constants introduced during the integration process, obtaining what is known as the **particular solution**. The **particular solution** is unique to the specific scenario being injected into the general solution via the given conditions.
 
 
 
 
 
 {% capture ex %}
-Example: Solving Radioactive Decay
-
 Earlier, we wrote down the equation governing radioactive decay:
 
 $$
 \frac{dN}{dt} = -\lambda N
 $$
 
-This equation closely resembles the one we derived for the bucket problem, except that there is no inflow term ($ R_\text{in} $) in this case. Additionally, the outflow rate ($ R_\text{out} $) is written as $ \lambda N $, without any square root dependence. 
-
+This equation closely resembles the one we derived for the bucket problem, except that there is no inflow term ($ R_\text{in} $). Here, the outflow rate ($ R_\text{out} $) is written as $ \lambda N $, without any square root dependence. 
 
 What is this equation telling us? It states that the rate at which particles decay away, $ \frac{dN}{dt} $, is proportional to the number of particles currently present, $ N(t) $. This makes perfect sense! The more radioactive particles present, the more decaying particles we expect to observe at any given moment.
 
-Before solving the ODE, let's get the steady-state solution. Sett all derivatives equal to zero:
+Before solving the ODE, let's get the steady-state solution. Setting all derivatives equal to zero:
 
 $$
-0 = -\lambda N \quad \implies \quad  N_\text[Steady] = 0
+0 = -\lambda N \quad \implies \quad  N_\text{Steady} = 0
 $$
 
-This means the number of radioactive particles in the sample will eventually go to zero, which makes sense considering they are all actively trying to decay.
+The number of radioactive particles in the sample will eventually go to zero, which makes sense considering they are all actively trying to decay away.
 
-Now, let’s solve this linear, first-order, constant-coefficient, homogeneous ODE. We begin by rewriting it in separable form:
+Let’s solve this linear, first-order, constant-coefficient, homogeneous ODE. We begin by rewriting it in separable form:
 
 $$
 \frac{dN}{N} = -\lambda dt
@@ -620,34 +633,34 @@ This equation describes exponential decay, a fundamental process seen not only i
 
 
 {% capture ex %}
-Example: Cooling of an Object (Newton’s Law of Cooling). 
+Another classic application of separation of variables appears in heat transfer using Newton’s Law of Cooling. 
 
-Another classic application of separation of variables appears in heat transfer. Suppose an object, with temperature $ T(t) $, is placed in an environment that is maintained at a constant ambient temperature $ T_{\text{env}} $. Newton’s law of cooling states that the rate of change of the object's temperature is proportional to the difference between its temperature and the ambient temperature:
+Suppose an object, with temperature $ T(t) $, is placed in an environment that is maintained at a constant ambient temperature $ T_{\text{env}} $. Newton’s law of cooling states that the rate of change of the object's temperature is proportional to the difference between its temperature and the ambient temperature:
 
 $$
 \frac{dT}{dt} = -k\left(T - T_{\text{env}}\right)
 $$
 
-where $ k $ is a positive constant. The negative sign is present to force $\frac{dT}{dt}$ to be negative when $ T(t) > T_{\text{env}} $, meaning the the object decreases in temperature while losing heat to the surroundings.
+where $ k $ is a positive constant having to do with how fast energy can be transmitted from the object to the environment. The negative sign is present to force $\frac{dT}{dt}$ to be negative when $ T(t) > T_{\text{env}} $, meaning the the temperature of the object decreases as a result of losing heat its surroundings. Alternatively, if the environment is at a higher temperature than out object $ T(t) < T_{\text{env}} $, then $\left(T - T_{\text{env}}\right)$ will be negative, and the minus sign outside will make the right hand side positive. This will force the object to increase in temperature as time goes on.
 
-Before solving this differential equation, let’s determine the steady-state solution. At equilibrium, the temperature no longer changes, so we set the derivative to zero:
+Before solving this differential equation, let’s determine the steady-state solution. At equilibrium, the temperature no longer changes, so we set all derivatives of the temperature to zero:
 
 $$
 0 = -k\left(T_{\text{steady}} - T_{\text{env}}\right) \quad \implies \quad T_{\text{steady}} = T_{\text{env}}
 $$
 
-This confirms our intuition: eventually, the object's temperature will equal the ambient temperature.
+This confirms our intuition: eventually, the object's temperature will equal the ambient temperature of the environment.
 
 Next, we rewrite the differential equation in separable form. Dividing both sides by $ T - T_{\text{env}} $ and multiplying by $ dt $ gives:
 
 $$
-\frac{dT}{T - T_{\text{env}}} = -k \, dt
+\frac{dT}{T - T_{\text{env}}} = -k \ dt
 $$
 
 Now, integrate both sides:
 
 $$
-\int \frac{dT}{T - T_{\text{env}}} = \int -k \, dt
+\int \frac{dT}{T - T_{\text{env}}} = \int -k \ dt
 $$
 
 Using the substitution $ u = T - T_{\text{env}} $ (with $ du = dT $), we obtain:
@@ -711,32 +724,31 @@ This technique will serve as a foundational tool for solving many of the differe
 
 ## Interpreting Solutions: What Do They Tell Us?
 
-At this point, we’ve developed a solid understanding of how to set up and solve first-order ordinary differential equations using separation of variables. But solutions to differential equations are more than just expressions with integrals and exponentials. They contain deep physical meaning—describing how a system evolves over time, how external forces shape its behavior, and what role initial conditions play. Let’s take a step back and examine what these solutions actually represent and why they matter.
+At this point, we’ve developed a solid understanding of how to set up and solve first-order ordinary differential equations using separation of variables. But solutions to differential equations are more than just expressions with integrals and exponentials. They contain deep physical meaning by describing how a system evolves over time, how external forces shape behavior, and what role initial conditions play. Let’s take a step back and examine what these solutions actually represent and why they matter.
 
 ### The Role of Initial Conditions
 
-Unlike algebraic equations, where we solve for a single numerical value, a differential equation defines an entire family of solutions. This is because solving a first-order ODE typically involves integrating, which introduces an arbitrary constant $ C $. Mathematically, the presence of this constant reflects an important idea: differential equations describe *dynamical systems*, and to predict their exact behavior, we must specify an initial condition--what the system looked like when it was started.
+Unlike algebraic equations, where we solve for a single numerical value, a differential equation defines an entire family of solutions. This is because solving a first-order ODE typically involves integrating, which introduces an arbitrary constant $ C $. Mathematically, the presence of this constant reflects an important idea: differential equations describe *dynamical systems*, and to predict their exact behavior, we must specify an initial condition; what the system looked like when it started out.
 
-Consider the classic example of radioactive decay, governed by:
+Consider the example of radioactive decay, governed by:
 
 $$
 \frac{dN}{dt} = -\lambda N
 $$
 
-Solving this using separation of variables gives:
+Solving this using separation of variables gave us the general solution:
 
 $$
 N(t) = N_0 e^{-\lambda t}
 $$
 
-Here, $ N_0 $ is the initial condition—how much of the radioactive substance we had at $ t = 0 $. Without specifying $ N_0 $, we don’t have a unique solution! This tells us that differential equations don’t just encode how a system changes, but also demand information about where/how the system started.
+Here, $ N_0 $ how much of the radioactive substance we had at $ t = 0 $, the initial condition of the system. Without specifying $ N_0 $, we don’t have a unique solution! This tells us that differential equations don’t just encode how a system changes, but also demand information about where/how the system started.
 
 This is a universal theme across physics:
 
 - The motion of a falling object depends on its initial velocity.  
 - The charge on a capacitor in an electrical circuit depends on its initial charge.  
 - The population of a species in an ecosystem depends on the initial population size.  
-
 
 Initial conditions select which specific solution from the general family actually describes the real-world situation.
 
@@ -750,25 +762,24 @@ $$
 \frac{dT}{dt} = -k(T - T_{\text{env}})
 $$
 
-This describes how an object cools toward the temperature of its surroundings $ T_{\text{env}} $. Solving this gives:
+This describes how an object cools or warms toward the temperature of its surroundings $ T_{\text{env}} $. Solving this gives:
 
 $$
 T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) e^{-kt}
 $$
 
-Here, the initial temperature $ T_0 $ plays a crucial role in determining the system's evolution. If $ T_0 $ is much higher than $ T_{\text{env}} $, the object takes longer to cool, whereas if it starts closer to $ T_{\text{env}} $, the cooling process takes less time to complete.
+Here, the initial temperature $ T_0 $ plays a crucial role in determining the system's evolution. If $ T_0 $ is much higher than $ T_{\text{env}} $, the object takes longer to cool, whereas if it starts off lower than $ T_{\text{env}} $, the process will actually be heating and will bring the temperature of the object up towards the temperature of the environment.
 
 This underscores an important lesson:
 
-- The solution to a differential equation isn’t just a function—it’s a model of how a system behaves over time.
-- Small changes in initial conditions can result in vastly different outcomes, particularly in nonlinear systems.
-
+- The solution to a differential equation isn’t just a function! It is a model of how a system behaves over time/space.
+- Changes in initial conditions can result in vastly different outcomes! This is particularly true for nonlinear systems.
 
 In many real-world applications, understanding the range of possible solutions is just as important as solving for one particular case.
 
 ### When Analytical Solutions Aren’t Enough: The Need for Numerical Methods
 
-In the examples we’ve covered, the differential equations were nice to us—they were separable and had straightforward analytical solutions. Unfortunately, the vast majority of differential equations encountered in physics do not yield to simple algebraic tricks.
+In the examples we’ve covered, the differential equations were nice to us. They were separable and had straightforward analytical solutions. Unfortunately, the vast majority of differential equations encountered in physics do not yield their secrets as a result of simple algebraic tricks.
 
 For example, consider the logistic equation used in population dynamics:
 
@@ -776,7 +787,7 @@ $$
 \frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right)
 $$
 
-This equation describes a population growing under limited resources, where $ K $ is the carrying capacity. Unlike the simple exponential decay equation we saw earlier, this equation cannot be solved by elementary functions alone—it requires a more advanced technique known as the integrating factor method (which we will learn next lecture) or numerical approximations.
+This equation describes a population growing under limited resources, where $ K $ is the carrying capacity. Unlike the simple exponential decay equation we saw earlier, this equation cannot be solved by elementary functions alone. This solution requires noticing that this ODE as follows Bernoulli's differential equation form (which we will learn next lecture) and making the appropriate substitution to get it into a separable form, or just using numerical approximations.
 
 Similarly, the differential equations governing the motion of a pendulum in physics:
 
@@ -784,7 +795,7 @@ $$
 \frac{d^2\theta}{dt^2} + \frac{g}{L} \sin \theta = 0
 $$
 
-cannot be solved exactly **unless** we assume small-angle approximations. This is why computational techniques, such as **Euler’s method, Runge-Kutta methods, and numerical integration**, become essential when working with real-world problems.
+cannot be easily solved *unless* we assume a small-angle approximation. This is why computational techniques, such as **Euler’s method and Runge-Kutta methods**, become essential when working with real-world problems.
 
 At this stage, it’s important to recognize that analytical solutions are great when they exist, but for complex systems, numerical solutions are often the only option. This being said, we will be focusing on analytic methods for the lectures that follow.
 
