@@ -1061,12 +1061,15 @@ $$
 
 
 
->**Hint:**  
+**Hint:**  
 Recall that for a first-order linear ODE in standard form  
+
 $$
 \frac{dP}{dt} + \left(-r\right)P(t) = -H
 $$
+
 Find the integrating factor and use it to transform the equation into one that can be integrated directly.  
+
 Do not forget to apply your initial conditions!
 
 
