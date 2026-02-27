@@ -119,7 +119,7 @@ where $\mu(x)$,the integrating factor, is:
 
 $$ \mu(x) = e^{\int P(x) \, dx}  $$
 {% endcapture %}
-{% include example.html content=ex %}
+{% include result.html content=ex %}
 
 
 
