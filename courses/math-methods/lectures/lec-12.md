@@ -14,7 +14,7 @@ nav_order: 12
 
 ## The Integrating Factor Method
 
-In our previous lectures, we explored various methods for solving differential equations. We saw how separation of variables can elegantly solve many first-order ODEs when the equation neatly divides into parts that depend solely on the independent variable and parts that depend solely on the dependent variable. However, not every linear, first-order ODE is easily separable. This is where the integrating factor method becomes an invaluable tool.
+In our previous lectures, we explored various methods for solving differential equations. We saw how separation of variables can elegantly solve many first-order ODEs when the equation neatly divides into one part that depend solely on the function and another part that depend solely on the working variable. However, not every linear, first-order ODE is easily separable. This is where the integrating factor method becomes an invaluable tool. 
 
 The integrating factor method provides a systematic approach to solving linear, first-order, homogeneous/inhomogeneous, variable-coefficient ODEs in the standard form:
 
@@ -24,7 +24,7 @@ $$
 
 where $P(x)$ and $Q(x)$ are functions of the working variable $x$. 
 
-The idea is the following: Can we multiple the left hand side of the equation by a function such that the left hand side turns into a product rule, which we will clarify the specific of in the following section. This carefully chosen function is called the **integrating factor**. Once we have rewritten the left hand side using the product rule, we can then simply integrate both sides directly and obtain the general solution.
+The integrating factor method poses the following question: Can we multiple the left hand side of the differential equation above by a function such that the left hand side turns into a product rule. We will clarify the specifics of this questions in the following section. But, for the time being, this carefully chosen function is called the **integrating factor**. Once we have rewritten the left hand side using the product rule, we should be able to simply integrate both sides directly and obtain the general solution.
 
 This technique is not only mathematically elegant, but also highly practical. It is widely used in physics and engineering to analyze systems ranging from RC circuits and thermal processes to population dynamics and beyond. Mastering the integrating factor method equips you with a powerful tool to tackle a wide range of real-world problems modeled by differential equations.
 
@@ -38,53 +38,59 @@ This technique is not only mathematically elegant, but also highly practical. It
 
 ### Derivation of the Integrating Factor Method
 
-Consider a linear, first-order ODE in standard form:
+Consider a linear, first-order ODE written in **standard form**:
 
 $$
 \frac{dy}{dx} + P(x)y = Q(x)
 $$
 
-Our goal is to solve for $y(x)$. The key idea behind the integrating factor method is to multiply the entire equation by a function $\mu(x)$ (the *integrating factor*) chosen so that the left-hand side becomes the derivative of the product $\mu(x)y$.
-
-Let's figure out what $\mu(x)$ needs to be to make this possible. Multiplying the ODE by $\mu(x)$ gives:
+Our goal is to solve for $y(x)$. The idea behind the integrating factor method is to multiply the entire equation by a function $\mu(x)$ (the *integrating factor*):
 
 $$
 \mu(x)\frac{dy}{dx} + \mu(x)P(x)y(x) = \mu(x)Q(x)
 $$
 
-Now, we want $m(x)$ to be the function that will allow us to write the following:
+where $\mu(x)$ chosen such that the left-hand side becomes the derivative of the product $\mu(x)y$:
 
-$$ \mu(x)\frac{dy}{dx} + \mu(x)P(x)y(x) =  \frac{d}{dx} \left( \mu(x) y(x) \right)  $$
+$$
+\mu(x)\frac{dy}{dx} + \mu(x) P(x)y = \frac{d}{dx} \big(\mu(x) y(x) \big)
+$$
 
-We can find an equation for the integrating factor by expanding the right hand side:
+To find an equation for the integrating factor, let's begin by by expanding the right hand side:
 
 $$ \mu(x)\frac{dy}{dx} + \mu(x)P(x)y(x) =  \frac{d\mu}{dx} y(x) + \mu(x) \frac{dy}{dx}  $$
 
-Canceling out the $\mu(x)\frac{dy}{dx}$ terms and dividing out $y(x)$ leaves us with:
+We can cancel out the $\mu(x)\frac{dy}{dx}$ terms on both sides and divide out $y(x)$ to leaves us with:
 
 $$ \mu(x)P(x) =  \frac{d\mu}{dx}  $$
 
-This is a separable first-order ODE! Using separation of variables:
+This is a separable first-order ODE! Using separation of variables to solve for the integrating factor gives us:
 
-$$ \mu(x)P(x) =  \frac{d\mu}{dx}  \qquad \implies \qquad  \frac{d\mu}{\mu} = P(x) \, dx  \qquad \implies \qquad  \ln\vert \mu(x)\vert  = \int P(x) \, dx $$
+$$ 
+\begin{aligned}
+\mu(x)P(x) &=  \frac{d\mu}{dx} \\
+ \frac{d\mu}{\mu} &= P(x) \, dx  \\
+\ln\vert \mu(x)\vert  &= \int P(x) \, dx
+\end{aligned}
+$$
 
-where we will ignore the integration constant here as it will be redundant on the integration constant we will get when integrate to get $y(x)$. Solving for $\mu(x)$ gives us  integrating factor as:
+where we have ignored the integration constant here as it will be redundant considering the integration constant we will also get when we integrate to get $y(x)$. Solving for $\mu(x)$ gives us:
 
 $$
 \mu(x) = e^{\int P(x) \, dx}
 $$
 
-This is what $\mu(x)$ needs to be to allow the product rule simplification we made above possible. 
+This is what $\mu(x)$ needs to be to allow the product rule simplification we demanded be possible to simplify the differential equation. 
 
-Speaking of, using that simplification allows us to wrtie the ODE as: 
+Speaking of, using that product rule simplification allows us to write the original ODE as: 
 
 $$ \frac{d}{dx} \left( \mu(x) y(x) \right) = \mu(x)Q(x) $$
 
 which we can solve by integrating both sides with respect to $x$:
 
-$$ \int \frac{d}{dx} \left( \mu(x) y(x) \right) \, dx  = \int \mu(x)Q(x) \, dx + C $$
+$$ \int \frac{d}{dx} \left( \mu(x) y(x) \right) \, dx  = \int \mu(x)Q(x) \, dx $$
 
-we can use the fundamental theorem of calculus to use the integration to cancel out the derivative:
+we can use the fundamental theorem of calculus to use the integration to cancel out the derivative up to a additive constant $C$:
 
 $$ \mu(x) y(x) = \int \mu(x)Q(x) \, dx + C $$
 
@@ -92,24 +98,24 @@ and finally divide $\mu(x)$ to the other side to get the general solution:
 
 $$ y(x) = \frac{1}{\mu(x)} \left( \int \mu(x)Q(x) \, dx + C \right) $$
 
-where 
+where, as a reminder: 
 
 $$ \mu(x) = e^{\int P(x) \, dx}  $$
 
 
 
 {% capture ex %}
-If you have a first-order ODE of the following form: 
+If you have a first-order ODE of the following standard form: 
 
 $$
 \frac{dy}{dx} + P(x)y = Q(x)
 $$
 
-Then the following is the general solution:
+Then the general solution will be:
 
 $$ y(x) = \frac{1}{\mu(x)} \left( \int \mu(x)Q(x) \, dx + C \right) $$
 
-where $\mu(x)$ is the integrative factor, which can be found via:
+where $\mu(x)$,the integrating factor, is:
 
 $$ \mu(x) = e^{\int P(x) \, dx}  $$
 {% endcapture %}
@@ -126,7 +132,7 @@ $$ \mu(x) = e^{\int P(x) \, dx}  $$
 
 
 
-### Worked Examples for the Integrating Factor Method
+## Worked Examples for the Integrating Factor Method
 
 
 ### Example 1: An RC Circuit
@@ -139,7 +145,7 @@ $$
 
 with the initial condition $ Q(0) = 0 $. Here, $ R $ is the resistance, $ C $ is the capacitance, and $ V_0 $ is the applied constant voltage.
 
-**Step 0: Understand the Problem and Predict the Outcome**
+**Step 0: Understand the Problem, Predict the Outcome, and Find the Steady-State Solution**
 
 In this problem, the capacitor is initially uncharged ($ Q(0) = 0 $) and is then connected to a voltage source $ V_0 $. Physically, we expect the capacitor to charge over time until its voltage matches $ V_0 $. From introductory physics, we know that the maximum charge the capacitor can hold is given by:
 
@@ -149,7 +155,15 @@ $$
 
 Initially, the capacitor charges rapidly because there is little voltage across it to oppose the current. As charge accumulates, the capacitor’s voltage rises, slowing the charging process until it asymptotically approaches $ Q_{\text{max}} = V_0 C $.
 
-This conceptual analysis is crucial—it helps us anticipate that the solution will have an exponential approach to equilibrium rather than oscillatory behavior, and it reinforces our understanding of the physical process. 
+This conceptual analysis is crucial as it helps us anticipate that the solution will have an exponential approach to equilibrium rather than oscillatory behavior, and it reinforces our understanding of the physical process. 
+
+Lastly, it is generally helpful to get the steady-state solution. Setting the derivatives equal to zero gives:
+
+$$
+0 + \frac{1}{RC} Q_\text{Steady} = \frac{V_0}{R} \quad\implies\quad Q_\text{Steady} = V_0 C
+$$
+
+which agrees with what we conceptually expected to see for this particular problem.
 
 This step is not mandatory, but is highly suggested before simply solving the ODE. 
 
@@ -161,7 +175,13 @@ $$
 \frac{dQ}{dt} + \frac{1}{RC} Q = \frac{V_0}{R}
 $$
 
-In this equation, the coefficient of $ Q $ is $ P(t) = \frac{1}{RC} $ and the forcing term is $ f(t) = \frac{V_0}{R} $---we can't call it $Q(t)$ since that is being used to represent the charge on the capacitor.
+and recognize it to be written in standard form:
+
+$$
+\frac{dQ}{dt} + P(t) Q = f(t)
+$$
+
+In this equation, the coefficient of $ Q $ is $ P(t) = \frac{1}{RC} $ and the inhomogeneous forcing term is $ f(t) = \frac{V_0}{R} $—we can't call it $Q(t)$ since that is being used to represent the charge on the capacitor.
 
 **Step 2: Determine the Integrating Factor**
 
@@ -183,11 +203,11 @@ Using this integrating factor, we multiply the entire differential equation by $
 
 The general solution to this problem can be given as:
 
-$$ Q(t) = \frac{1}{\mu(t)} \left( \int \mu(t)Q(t) \, dt + A \right) $$
+$$ Q(t) = \frac{1}{\mu(t)} \left( \int \mu(t)f(t) \, dt + A \right) $$
 
 where $A$ is our unknown constant of integration (we switched from $C$ to $A$ since $C$ is being used for capacitance in this problem). 
 
-First, let's substitute in the integrating factor $\mu(x)$ and the function for $Q(t)$ we found: 
+First, let's substitute in the integrating factor $\mu(x)$ and the function for $f(t)$ we identified previously: 
 
 $$ Q(t) = \frac{1}{e^{\tfrac{t}{RC}}} \left( \int \left(e^{\tfrac{t}{RC}} \right) \left(\frac{V_0}{R}\right) \, dt + A \right) $$
 
@@ -209,7 +229,14 @@ This is the general solution to this problem.
 
 We were told the initial charge on the capacitor was $Q(0) = 0$. Applying this gives:
 
-$$ Q(0) = 0 \quad \implies \quad  0 =  V_0 C  + A e^{\tfrac{-(0)}{RC}} \quad \implies \quad  0 =  V_0 C  + A \quad \implies \quad  A = - V_0 C    $$
+$$ 
+\begin{aligned}
+Q(0) &= 0 \\
+V_0 C  + A e^{\tfrac{-(0)}{RC}} &= 0 \\
+V_0 C  + A &= 0 \\
+A &= - V_0 C    
+\end{aligned}
+$$
 
 Putting this into the general solution gives us a particular solution of:
 
@@ -225,7 +252,7 @@ The solution
 
 $$ Q(t) =  V_0 C \left( 1  - e^{\tfrac{-t}{RC}}\right) $$
 
-describes how the capacitor charges over time. As $ t \to \infty $, $ e^{\tfrac{-t}{RC}} \to 0 $ and $ Q(t) $ approaches $ V_0 C $, which is the expected maximum charge. This confirms the physical intuition that the capacitor's voltage will eventually match the voltage source $ V_0 $.
+describes how the capacitor charges over time. As $ t \to \infty $, $ e^{\tfrac{-t}{RC}} \to 0 $ and $ Q(t) $ approaches $ V_0 C $, which was what we expected to find from both out conceptual and steady-state investigations. This confirms the physical intuition that the capacitor's voltage will eventually match the voltage source $ V_0 $.
 
 This example demonstrates the systematic approach of the integrating factor method and shows how to interpret the solution in a real-world context.
 
@@ -247,23 +274,31 @@ $$
 
 with the initial condition $ T(0) = T_0 $, and $ k $ is a positive constant.
 
-**Step 0: Understand the Problem and Predict the Outcome**
+**Step 0: Understand the Problem, Predict the Outcome, and Find the Steady-State Solution**
 
 In this scenario, the object starts at an initial temperature $ T_0 $ and is placed in an environment maintained at $ T_{\text{env}} $. We expect, over time, the object's temperature will approach $ T_{\text{env}} $. For instance, if $ T_0 > T_{\text{env}} $, the object's temperature will decrease to $T_\text{env}$; if $ T_0 < T_{\text{env}} $, the object's temperature will increase to $T_\text{env}$. From basic physics, and everyday reasoning, we know the final equilibrium temperature should be $ T_{\text{env}} $.
 
+Checking this logic by finding the steady-state solution, we can take all derivatives to zero:
+
+$$
+0 = k(T_{\text{env}}-T_{\text{Steady}}) \quad\implies\quad T_{\text{Steady}} = T_{\text{env}}
+$$
+
+This agrees with our previous reasoning. 
+
 **Step 1: Write in Standard Form**
 
-The differential equation is already in standard form:
+The differential equation can be written in standard form as:
 
 $$
 \frac{dT}{dt} + kT = kT_{\text{env}}
 $$
 
-where the coefficient of $ T $ is $ P(t) = k $ and the forcing term is $ Q(t) = kT_{\text{env}} $.
+where the coefficient of $ T $ is $ P(t) = k $ and the inhomogeneous forcing term is $ Q(t) = kT_{\text{env}} $.
 
 **Step 2: Determine the Integrating Factor**
 
-The integrating factor $ \mu(t) $ is given by:
+The integrating factor $ \mu(t) $ can be found to be:
 
 $$
 \mu(t) = e^{\int P(t)\, dt} = e^{\int k\, dt} = e^{kt}
@@ -300,8 +335,8 @@ At $ t = 0 $, we are told $ T(0) = T_0 $, so:
 $$
 \begin{aligned}
 T(0) &= T_0 \\
-T_0 &= T_{\text{env}} \left(  1 + kC e^{-k(0)}  \right) \\
-T_0 &= T_{\text{env}} \left(  1 + kC \right)  \\
+T_{\text{env}} \left(  1 + kC e^{-k(0)}  \right) &= T_0 \\
+T_{\text{env}} \left(  1 + kC \right) &= T_0   \\
 k C &= \frac{T_0}{T_{\text{env}}} - 1
 \end{aligned}
 $$
@@ -336,11 +371,11 @@ describes an exponential approach of the object's temperature toward the ambient
 
 ### Example 3: A Mixing Problem in a Tank
 
-Consider a tank that initially contains $ V $ liters of water and $ A_0 $ kilograms of salt. Salt water with a constant concentration $ C_{\text{in}} $ (in kg/L) flows into the tank at a rate $ R $ (L/min), and the well-mixed solution exits the tank at the same rate $ R $, keeping the volume $ V $ constant. Let $ A(t) $ represent the amount of salt (in kilograms) in the tank at time $ t $.
+Consider a tank that initially contains $ V $ liters of water and $ A_0 $ kilograms of salt. Salt water with a constant concentration $ C_{\text{in}} $ (in kg/L) flows into the tank at a rate $ R $ (L/min), and the well-mixed solution inside the tank exits at the same rate $ R $, keeping the volume $ V $ of the solution in the tank constant. Let $ A(t) $ represent the amount of salt (in kilograms) in the tank at time $ t $.
 
 **Step 0: Understand the Problem and Predict the Outcome**
 
-In this problem, the tank is initially loaded with $ A_0 $ kg of salt. As salt water enters at a concentration of $ C_{\text{in}} $ and the solution exits at the same rate, we expect that over time the concentration of salt in the tank will approach the same value as the inflow concentration $ C_{\text{in}} $. Since the tank’s volume remains constant, the steady-state amount of salt is:
+In this problem, the tank is initially loaded with $ A_0 $ kg of salt. As salt water enters at a concentration of $ C_{\text{in}} $ and the solution exits at the same rate, we expect that over time the concentration of salt in the tank will approach the same value as the inflow concentration $ C_{\text{in}} $. Since the tank’s volume remains constant, the steady-state amount of salt will be:
 
 $$
 A_{\text{eq}} = V\, C_{\text{in}}
@@ -350,18 +385,18 @@ This is what we should expect for the long term state of whatever solution we ge
 
 **Step 1: Write in Standard Form**
 
-The rate of change of salt in the tank is the difference between the salt inflow and outflow. The inflow amount of salt will be the flow rate timed the input concentration:
+The rate of change of salt in the tank is the difference between the salt inflow and outflow. The inflow rate of salt will be the flow rate timed the input concentration:
 
-$$ A_\text{in} = R\, C_{\text{in}} $$
+$$ R_\text{in} = R\, C_{\text{in}} $$
 
-The out flow amount will be the current concentration of the salt in the tank, given by $A(t)/V$ times the out flow rate. Since the volume of water in the tank is constant we know the outflow rate of salt water will be $R$. This allows us to write the out flow amount as:
+The out flow rate will be the current concentration of the salt in the tank, given by $A(t)/V$ times the out flow rate. Since the volume of water in the tank is constant we know the outflow rate of salt water will be $R$. This allows us to write the outflow rate as:
 
-$$ A_\text{out} = R\, \left( \frac{A(t)}{V} \right) = \frac{R}{V} \, A(t)  $$
+$$ R_\text{out} = R\, \left( \frac{A(t)}{V} \right) = \frac{R}{V} \, A(t)  $$
 
-We can build an ODE for this by recognizing that the amount of salt in the tank will increase by the in flow amount and decrease by the out flow amount:
+We can build an ODE for this by recognizing that the amount of salt in the tank will increase by the inflow rate and decrease by the outflow rate:
 
 $$
-\frac{dA}{dt} = A_\text{in} - A_\text{out}
+\frac{dA}{dt} = R_\text{in} - R_\text{out}
 $$
 
 Putting what we have found give the following ODE:
@@ -380,7 +415,7 @@ We can identify $ P(t) = \frac{R}{V} $ and the forcing term is $ Q(t) = R\, C_{\
 
 **Step 2: Determine the Integrating Factor**
 
-The integrating factor $ \mu(t) $ is defined as:
+The integrating factor $ \mu(t) $ can be found to be:
 
 $$
 \mu(t) = e^{\int P(t)\, dt} = e^{\int \frac{R}{V}\, dt} = e^{\frac{R}{V} t}
@@ -413,21 +448,25 @@ $$ A(t) = V\, C_{\text{in}}  + R\, C_{\text{in}} \, C e^{-\frac{R}{V} t}$$
 We are given the initial amount of salt in the tank as $ A(0) = A_0 $. Using this gives:
 
 $$
-A(0) = V\, C_{\text{in}}  + R\, C_{\text{in}} \, C e^{-\frac{R}{V} (0)} \quad \implies \quad A_0 = V\, C_{\text{in}}  + R\, C_{\text{in}} \, C  \quad \implies \quad R\, C_{\text{in}} \, C = A_0 - V\, C_{\text{in}} 
+\begin{aligned}
+A(0) &= V\, C_{\text{in}}  + R\, C_{\text{in}} \, C e^{-\frac{R}{V} (0)} \\
+ A_0 &= V\, C_{\text{in}}  + R\, C_{\text{in}} \, C \\
+A_0 - V\, C_{\text{in}}  &= R\, C_{\text{in}} \, C
+\end{aligned}
 $$
 
 Putting this into the general solution:
 
 $$ A(t) = V\, C_{\text{in}}  + \left( A_0 - V\, C_{\text{in}} \right) e^{-\frac{R}{V} t}$$
 
-gives us out particular solution for this problem. 
+gives us the particular solution for this problem. 
 
 **Step 5: Interpretation of the Result and Verification**
 
 
-We can do a quick check of the particular solution by seeing if it goes to the correct steady state value: $ t \to \infty $, $ e^{-\frac{R}{V} t} \to 0 $ and $ A(t) $ approaches $ V\, C_{\text{in}} $, as expected.
+We can do a quick check of the particular solution by verifying it goes to the steady-state value we conceptually expected: $ t \to \infty $, $ e^{-\frac{R}{V} t} \to 0 $ and $ A(t) $ approaches $ V\, C_{\text{in}} $, as expected.
 
-This solution confirms our prediction: over time, the amount of salt in the tank stabilizes at $ A_{\text{eq}} = V\, C_{\text{in}} $. The term $ \left( A_0 - V\, C_{\text{in}} \right) e^{-\frac{R}{V} t} $ describes the transient behavior—the rate at which the system approaches equilibrium.
+This solution confirms our prediction: over time, the amount of salt in the tank stabilizes at $ A_{\text{eq}} = V\, C_{\text{in}} $. The term $ \left( A_0 - V\, C_{\text{in}} \right) e^{-\frac{R}{V} t} $ describes the transient behavior of the system; that is, the rate at which the system approaches equilibrium.
 
 
 
@@ -451,29 +490,31 @@ $$ A(y', y) y'' + B(y', y) y' + C(y', y) = 0 $$
 
 Here the $x$ dependent is hidden inside the function $y$ and its derivatives: $\frac{dy}{dx} = y'$, $\frac{d^2y}{dx^2} = y''$, and so on. 
 
-If this is the case, then we can make propose using $y$ as the working variable as opposed to $x$, which doesn't actually appear in the ODE. This would require us to update the derivatives using chain rule and what not. To help this along, and to help keep our head screwed on straight, we can make the following substitution:
+If this is the case, then we can propose using $y$ as the working variable as instead of $x$ since it doesn't even appear in the differential equation. This change of variables would require us to update the derivatives using chain rule and what not. 
+
+To help this along, and to help keep our heads screwed on straight, we can make the following substitution:
 
 $$ \text{Let: } v = y' $$
 
 where we say $v$ is a function of $y$, not $x$. That is $v = v(y)$.  
 
-Now we would like to rewrite all derivatives with respect to $x$ to be instead taken with respect to $v$. We can do this using the chain0-rule:
+Now we would like to rewrite all of the old derivatives with respect to $x$ to new derivatives being taken with respect to $y$. We can do this through the application of the chain-rule:
 
 $$
-v = y', \quad \text{so that} \quad y'' = \frac{dv}{dx} = \frac{dv}{dy}\frac{dy}{dx} = v \frac{dv}{dy}
+y' = v \quad \implies \quad y'' = \frac{dv}{dx} = \frac{dv}{dy}\frac{dy}{dx} = \frac{dv}{dy} \ y' = \frac{dv}{dy} \ v = v \ \frac{dv}{dy}
 $$
 
-The adjustments allows us to rewrite the above ODE in the following manner: 
+These adjustments allow us to rewrite the above ODE in the following manner: 
 
-$$ A(v, y) v \frac{dv}{dy}  + \Big(B(v, y) v + C(v, y)\Big) = 0 $$
+$$ A(v, y) \  v \ \frac{dv}{dy}  + B(v, y) v + C(v, y) = 0 $$
 
-where $B(v, y) v + C(v, y) = D(v, y)$ is just a new function depending on $v$ and $y$:
+However, notice that $B(v, y) v + C(v, y) = D(v, y)$ is just a function depending on $v$ and $y$. So, we can introduce a new function to replace that combination, $D(v, y) =  B(v, y) v + C(v, y)$. This gives us:
 
-$$ A(v, y) v \frac{dv}{dy}  + D(v, y) = 0 $$
+$$ A(v, y) \ v \ \frac{dv}{dy}  + D(v, y) = 0 $$
 
 We can now use first-order ODE solution techniques to solve this problem. 
 
-This is all well and good, but that general sketch of the process may not have made any sense or it may have made this process seem more difficult than it really is. Let's look at an example of this process in action to help settle any confusions. 
+This is all well and good, but this general sketch of the process may not have made any sense or it may have made this process seem more difficult than it actually is in practice. Let's look at an example of this process in action to help settle any potential confusion. 
 
 
 {% capture ex %}
@@ -486,7 +527,7 @@ $$
 Since the equation does not explicitly depend on $ x $, we will reduce its order by making the substitution suggested in the general outline:
 
 $$
-v = y', \quad \text{so that} \quad y'' = \frac{dv}{dx} = \frac{dv}{dy}\frac{dy}{dx} = v \frac{dv}{dy}
+y' = v \quad \implies \quad y'' = v \ \frac{dv}{dy}
 $$
 
 Substituting into the original equation gives:
@@ -501,21 +542,21 @@ $$
 \frac{dv}{v} = \frac{dy}{y}
 $$
 
-Integrate both sides:
+We can integrate both sides to get:
 
 $$
 \int \frac{dv}{v} = \int \frac{dy}{y} \quad \implies \quad \ln\vert v\vert  = \ln\vert y\vert  + C
 $$
 
-where $ C $ is the unknown constant of integration. Exponentiating both sides, we have:
+where $ C $ is the unknown constant of integration. Exponentiating both sides:
 
 $$
 \vert v\vert  = e^C  \vert y \vert  \quad \Longrightarrow \quad v = A y
 $$
 
-where we have called $ A $ is another arbitrary constant to replace the constant exponential $e^C$ and to also take care of the absolute valued nature of the solution.
+where $ A  $ is a new arbitrary constant to replace the constant exponential $e^C$ and to absorb any potential minus signs floating around to take care of the absolute valued nature of the solution.
 
-This is the general solution for $v(y)$, but this is not the solution for $y(x)$ that the problem was initially set up to find. Recalling that $ v = y' $, the equation becomes:
+We have sound the general solution for $v(y)$, but not the solution for $y(x)$ that the problem was initially set up to find. Recalling that $ v = y' $, the equation becomes:
 
 $$
 y' = A y
@@ -527,7 +568,9 @@ $$
 y(x) = B e^{Ax}
 $$
 
-where $ B $ is another unknown constant of integration. Notice we have two unknown constants. This makes sense since the ODE was second-order, meaning we had to integrate twice to fully solve for $y(x)$. For every integration we get an unknown constant of integration, thus two constants should appear in our solutions, which they do. To get the full particular solution we would need to be given two condition about the problem to find values for $A$ and $B$. 
+where $ B $ is yet another unknown constant of integration. 
+
+Notice we have two unknown constants of integration $A$ and $B$. This makes sense since the ODE we solved was second-order, meaning we had to integrate twice to fully solve for $y(x)$. For every integration we take we get an unknown constant, thus two constants should appear in our solution. To get a particular solution we would need to be given two condition about the problem to find values for $A$ and $B$. 
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -547,41 +590,41 @@ where $ B $ is another unknown constant of integration. Notice we have two unkno
 
 ## Exact Differential Equations
 
-With what we have learned so far, we are actually ready to tackle a first-order partial differential equation (PDE). This may seem intimidating at first, but we will be focusing on a specific form of first-order PDE called an exact differential equation.
+With what we have learned so far, we are ready to tackle a first-order partial differential equation (PDE). This may seem intimidating at first, but we will be focusing on a specific form of first-order PDE called an exact differential equation.
 
 Exact differential equations form a special class of first-order ODE/PDEs (depending on how you write it) that can be expressed in the form
 
 $$
-M(x,y)\,dx + N(x,y)\,dy = 0,
+M(x,y) \ dx + N(x,y) \ dy = 0
 $$
 
-Let's assume ther eis a function $F(x,y)$ that exists such that:
+Let's assume there is a function $F(x,y)$ that exists such that:
 
 $$
-\frac{\partial F}{\partial x} = M(x,y) \quad \text{and} \quad \frac{\partial F}{\partial y} = N(x,y).
+\frac{\partial F}{\partial x} = M(x,y) \quad \text{and} \quad \frac{\partial F}{\partial y} = N(x,y)
 $$
 
 If this is possible, we call $F(x,y)$ the potential function for this problem. (Yes, this is related to potential energies and the like, if you were wondering.)
 
-In this situation, the total differential $dF$ is given by:
+Since $F$ is a function of both $x$ and $y$, its total differential will be given as:
 
 $$
-dF = \frac{\partial F}{\partial x} \, dx + \frac{\partial F}{\partial y} \, dy 
+dF = \frac{\partial F}{\partial x} \ dx + \frac{\partial F}{\partial y} \ dy 
 $$
 
 We can then substitute in the relations between the partial derivatives of $F$ and the $M$ and $N$ functions to get:
 
 $$
-dF = M(x,y) \, dx + N(x,y) \, dy
+dF = M(x,y) \ dx + N(x,y) \ dy
 $$
 
-But, this is the original PDE that was equal to zero. This means:
+But, this is the original PDE we were given, except it was was equal to zero. This means:
 
 $$
 dF = 0
 $$
 
-The only way for a differential to be zero is for the function to be constant. Thus, the general solution of the differential equation can be written as:
+The only way for a differential of a function to be zero is if the function was actually a constant. Thus, the general solution of the differential equation can be written as:
 
 $$
 F(x,y) = C
@@ -589,7 +632,7 @@ $$
 
 where $C$ is an arbitrary constant.
 
-#### How do we know the differential equation is exact or now?
+### How do we know the differential equation is exact or now?
 
 To determine whether the equation
 
@@ -597,7 +640,7 @@ $$
 M(x,y)\,dx + N(x,y)\,dy = 0
 $$
 
-is exact, we can perform the following calculation:
+is **exact**, meaning it represents the exact differential of a function of $x$ and $y$, we can perform the following check:
 
 $$
 \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}
@@ -630,9 +673,13 @@ Since $\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}$, the equat
 
 #### Finding the Potential Function $F(x,y)$
 
-To find $F(x,y)$, we first integrate $M(x,y)$ with respect to $x$--buy why?
+To find $F(x,y)$, we first integrate $M(x,y)$ with respect to $x$. But, why?
 
-Recall, we said $M(x,y) = \frac{\partial F}{\partial x}$. So, integrating this with respect to $x$ will remove the $x$ partial derivative. The only thing we have to remember is that the constant of integration will instead be an unknown function of $y$. This is because the partial derivative with respect to $x$ of a function that only depends on $y$ will be zero. This gives us:
+Recall, we said 
+
+$$M(x,y) = \frac{\partial F}{\partial x}$$ 
+
+So, integrating this with respect to $x$ will remove the $x$ partial derivative. The only thing we have to remember is that the constant of integration will be an unknown function of $y$ instead of a simple unknown constant. This is because the partial derivative with respect to $x$ of a function that only depends on $y$ will be zero. This gives us:
 
 $$
 F(x,y) = \int (2xy + 3) \, dx = x^2y + 3x + g(y)
@@ -640,17 +687,15 @@ $$
 
 where $g(y)$ is that arbitrary function of $y$ only.
 
-Next, we can differentiate $F(x,y)$ with respect to $y$ because this should be the function $N$, recall we said $N(x,y) = \frac{\partial F}{\partial y}$. This gives:
+Next, we can partial differentiate this form for $F(x,y)$ with respect to $y$ because this should be the function $N$, recall we said 
+
+$$N(x,y) = \frac{\partial F}{\partial y}$$ 
+
+This gives:
 
 $$
-\frac{\partial F}{\partial y} = x^2 + g'(y)
-$$
-
-Since this must equal $N(x,y)$, we have:
-
-$$
-x^2 + g'(y) = x^2 + 4y
-$$
+N(x,y) = \frac{\partial F}{\partial y} \quad\implies\quad x^2 + 4y = x^2 + g'(y)
+$$ 
 
 Thus,
 
@@ -704,12 +749,12 @@ Let's consolidate our understanding of first-order differential equations by wor
 Consider a simple model of population growth where the rate of change of the population $ P(t) $ is proportional to the current population:
 
 $$
-\frac{dP}{dt} = rP,
+\frac{dP}{dt} = rP
 $$
 
 where $ r $ is the growth rate.
 
-We can solve this problem by first recognizing that we can se separation of variables to solve this problem. Separating the variables gives: 
+We can solve this problem by first recognizing that we can use separation of variables to solve this problem. Separating the variables gives: 
 
 $$
 \frac{dP}{P} = r\, dt
@@ -718,7 +763,7 @@ $$
 Integrating both sides gives us
 
 $$
-\ln \vert P \vert  = rt + C.
+\ln \vert P \vert  = rt + C
 $$
 
 which we can exponentiate and solve for $P(t)$:
@@ -751,7 +796,7 @@ This is the classic exponential growth model.
 Consider an object of mass $ m $ falling under gravity while experiencing a drag force proportional to its velocity. The drag force is given by
 
 $$
-F_{\text{drag}} = - b v,
+F_{\text{drag}} = - b v
 $$
 
 where $ b $ is the drag coefficient and $ v(t) $ is the object's velocity. Notice this is written in a one-dimensional manner, meaning the drag force points in the **opposite direction** as the velocity of the object.  According to Newton's second law, the net force can be related to the acceleration, and from a free-body diagram we can convince ourselves that the forces acting on the object will be gravity and the drag force:
@@ -764,16 +809,22 @@ m \frac{d^2 x}{dt^2} &= -mg - b \frac{dx}{dt}\\
 \end{aligned}
 $$
 
-Notice this is an autonomous ODE (the function $x(t)$ does not appear in the problem at all). In this case if we call $v = \frac{dx}{dt}$, then $\frac{d^2 x}{dt^2} = \frac{dv}{dt}$. This gives:
+Notice this is an autonomous ODE (the working variable  $t$ does not appear in the problem at all). In this case if we let: 
 
 $$
-\frac{dv}{dt} = -g - \tfrac{b}{m}  v
+v = \frac{dx}{dt} \quad\implies\quad \frac{d^2 x}{dt^2} = \frac{dv}{dt}
+$$
+
+Putting this into the original ODE gives:
+
+$$
+\frac{dv}{dt} = -g - \frac{b}{m}  v
 $$
 
 Now, writing this ODE in standard form 
 
 $$
-\frac{dv}{dt} +  \tfrac{b}{m}  v = -g
+\frac{dv}{dt} +  \frac{b}{m}  v = -g
 $$
 
 and we can identify the following functions 
@@ -788,17 +839,17 @@ $$
 \mu(t) = e^{\int P(t) \, dt} = e^{\int \frac{b}{m}\, dt} = e^{\frac{b}{m} t}
 $$
 
-Here we would normally subsititute stuff into the general solution when using an integrating factor. But what do you do if you forget what it was? In this event, we remember that the integrating factor was designed with one goal in mind: rewrite the left-hand side of the ODE  as a product rule of 
+Here we would normally substitute stuff into the general solution when using an integrating factor. But what do you do if you forgot what the genera solution for this situation looked like? In this event, we remember that the integrating factor was designed with one goal in mind: rewrite the left-hand side of the ODE in standard form as a product rule of 
 
 $$ \frac{d}{dt} \left( \mu(t) v(t)\right)  $$
 
-Remembering this, we can multiply both sides by $ e^{\frac{b}{m} t} $ to get:
+Remembering this, we can multiply our ODE by $ e^{\frac{b}{m} t} $ to get:
 
 $$
 e^{\frac{b}{m} t}\frac{dv}{dt} + \frac{b}{m}e^{\frac{b}{m} t} v = -g\,e^{\frac{b}{m} t}
 $$
 
-Recognize that the left-hand side is the derivative of $ e^{\frac{b}{m} t} v(t) $, which it better be since we designed the integrating factor to do just that! Using this gives:
+Recognize that the left-hand side is the derivative of $ e^{\frac{b}{m} t} v(t) $, which it better be since we designed the integrating factor to do just that, we rewrite get:
 
 $$
 \frac{d}{dt}\left( e^{\frac{b}{m} t} v(t) \right) = -g\, e^{\frac{b}{m} t}
@@ -830,8 +881,9 @@ $$
 v(t) = -\frac{g m}{b} + \left( v_0 + \frac{g m}{b} \right) e^{-\frac{b}{m} t}
 $$
 
+We could integrate this with respect to time again to get the equation for the position. We will leave that to the reader to do, if they are interested. 
 
-We can check this answer in a couple of different ways. First, what is the steady state, or equilibrium, solution? We can get this by setting all of the derivatives in the original ODE to zero:
+We can check this answer in a couple of different ways. First, what is the steady-state solution? We can get this by setting all of the derivatives in the original ODE to zero:
 
 $$ \frac{dv}{dt} = 0  \quad \implies \quad 0  = -g - \tfrac{b}{m}  v_\text{Steady} \quad \implies \quad  v_\text{Steady} = - \frac{gm}{b} $$
 
@@ -852,7 +904,7 @@ which agrees with our steady state solution. This offers some level of confidenc
 
 ### Advanced Application: The SIS Model in Epidemiology
 
-The SIS (Susceptible-Infected-Susceptible) model is widely used in epidemiology to describe the spread of diseases in which individuals can become infected, recover, and then return to the susceptible population. A typical formulation of the SIS model is given by:
+The SIS (Susceptible-Infected-Susceptible) model is widely used in epidemiology to describe the spread of diseases in which individuals can become infected, recover, and then return to the susceptible population. This would be a good model for a seasonal flu they everyone is susceptible every year. A typical formulation of the SIS model is given by:
 
 $$
 \frac{dI}{dt} = \beta I (N - I) - \gamma I
@@ -874,7 +926,7 @@ $$
 
 Notice that this equation is **nonlinear** due to the product $ \beta I^2 $. As a result, the integrating factor method cannot be directly applied to solve the full SIS model, and using of separation of variables will lead us to a rather unpleasant integration.
 
-In many practical situations we make a simplifying assumtion that the nonlinear terms in the ODE are so small that we can ignore them. For instance, during the early stages of an outbreak when the number of infected individuals is small relative to the total population ($ I \ll N $), we can approximate the equation by assuming $ I^2 \approx 0 $. Under this approximation, the SIS model simplifies to:
+In many practical situations we make a simplifying assumtion that the nonlinear terms in the ODE are so small that we can safely ignore them. For instance, during the early stages of an outbreak when the number of infected individuals is small relative to the total population ($ I \ll N $), we can approximate the equation by assuming $ I^2 \approx 0 $. Under this approximation, the SIS model simplifies to:
 
 $$
 \frac{dI}{dt} \approx (\beta N - \gamma)  I 
@@ -926,7 +978,7 @@ $$
 I(t) = I_0 e^{\gamma (R_0 - 1)t}
 $$
 
-where $R_0 = \frac{\beta N}{\gamma}$ is called the reproduction number. If $R_0 < 1$ then that means less than one person is infected by every 1 infected person and the disease will eventually die out. However, if $R_0 > 1$ then that means more than one person is infected by every 1 infected person and the disease will grow into a pandemic.
+where $R_0 = \frac{\beta N}{\gamma}$ is called the reproduction number. If $R_0 < 1$ that means less than one person is infected by every 1 infected person and the disease will eventually die out. However, if $R_0 > 1$ that means more than one person is infected by every 1 infected person and the disease will grow into a pandemic.
 
  
 We can be a bit more careful by examining the steady state behavior of the original ODE:
@@ -939,19 +991,23 @@ Setting the derivative to zero gives:
 
 $$
 \begin{aligned}
-\frac{dI}{dt} = 0  &= (\beta N - \gamma)  I  - \beta I^2   \\ 
-0  &= I ( (\beta N - \gamma)  - \beta I) \\
- I_\text{Steady} = 0 \quad&\text{or}\quad I_\text{Steady} = \frac{\gamma}{\beta} (R_0 - 1)
+\frac{dI}{dt} &= 0   \\ 
+(\beta N - \gamma)  I  - \beta I^2 & = 0 \\
+ ( (\beta N - \gamma)  - \beta I) \ I&= 0
 \end{aligned}
 $$
 
-Obviously, the $I_\text{Steady} = 0$ is the idea solution since this means the infection will eventually die out and there will be no infections left. 
+$$
+I_\text{Steady} = \frac{\gamma}{\beta} (R_0 - 1) \quad\text{or}\quad I_\text{Steady} = 0
+$$
 
-Of concern is the other solution: $ I_\text{Steady} = \frac{\gamma}{\beta} (R_0 - 1)$. Notice, if $R_0 < 1$, then this steady state solution will be negative, which makes no sense for the numner of infected people. This means the infection dies out. On this other hand, if $R_0 > 1$ then this steady state solution will be positive, which means there is a solution where the number of infected people never goes to zero. This is referred to as an endemic, a disease that never truly goes away. 
+Obviously, the $I_\text{Steady} = 0$ is the ideal solution since it means the infection will eventually die out and there will be no infections left. 
 
+Of concern is the other solution: $ I_\text{Steady} = \frac{\gamma}{\beta} (R_0 - 1)$. Notice, if $R_0 < 1$, then this steady state solution will be negative, which makes no sense for the number of infected people. If $R_0 > 1$ then this steady state solution will be positive, which means there is a solution where the number of infected people never goes to zero. This is referred to as an endemic, a disease that never truly goes away. 
 
 In conclusion, while the full SIS model is nonlinear and typically requires numerical or qualitative methods for analysis. In this case the steady state solution helps to shed light on possible outcomes of the model and how to possibly mitigate potentially devastating outcomes. Additionally, the linear approximation of the differential equation near the disease-free equilibrium (this process is called *linearization*) can be solved using our standard techniques and not only provides insight into the early dynamics of the disease spread but also helps us understand concepts like the basic reproduction number $ R_0 = \frac{\beta N}{\gamma} $, which determines whether an infection will die out or lead to an epidemic.
 
+For those who are interested, the solution to the full ODE can be found using a Bernoulli substitution method. We will learn this method next lecture.
 
 
 
