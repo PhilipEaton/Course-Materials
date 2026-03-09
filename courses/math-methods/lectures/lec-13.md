@@ -13,15 +13,15 @@ nav_order: 13
 
 ## Introduction
 
-In our previous lectures, we discussed the basic methods for solving first-order ordinary differential equations—namely, separation of variables and the integrating factor method. These techniques served us well in tackling a variety of linear ODEs in contexts ranging from RC circuits to disease modeling. However, as we advance our study of differential equations, we will encounter cases and models that require more sophisticated approaches. 
+In our previous lectures, we discussed the basic methods for solving first-order ordinary differential equations; specifically, separation of variables and the integrating factor method. These techniques served us well in tackling a variety of linear ODEs in contexts ranging from RC circuits to disease modeling. However, as we advance our study of differential equations, we will encounter cases and models that require more sophisticated approaches. 
 
-Let's expand our analytical toolkit by exploring several advanced topics in first-order ODEs. Our goal is to handle a broader class of equations and gain a deeper conceptual understanding of their behavior in physical systems. The topics we will cover include:
+Let's expand our analytical toolkit by exploring a few more advanced methods useful for solving first-order ODEs. Our goal is to handle a broader class of equations and gain a deeper conceptual understanding of their behavior in physical systems. The topics we will cover include:
 
-
-- **Slope Field Diagrams:** Tools that help us understand the long-term behavior of ODEs without needing an explicit solution.
-- **Bernoulli's Equation:** A special nonlinear ODE that, through a clever substitution, can be reduced to a linear ODE.
+- **Slope Field Diagrams:** helpful for understanding the long-term behavior of ODEs without needing to find an explicit solution.
+- **Bernoulli's Equation:** A special type of nonlinear ODE that, through a clever substitution, can be reduced to a solvable linear ODE.
 - **Variation of Parameters for First-Order ODEs:** An alternative method for solving inhomogeneous equations, complementing the integrating factor approach. We will see this method expanded upon when we go to solve second order ODEs.
-- **Additional Real-World Applications:** A look at models from population dynamics, chemical kinetics, and economics that illustrate the diverse applicability of first-order ODEs.
+
+We will practice these methods by solving ODEs from population dynamics, chemical kinetics, and economics that illustrate the diverse applicability of first-order ODEs.
 
 
 
@@ -30,41 +30,51 @@ Let's expand our analytical toolkit by exploring several advanced topics in firs
 
 
 
-## Slope Field Diagrams
+## Qualitative Analysis and Slope Field Diagrams
 
-Not all differential equations yield neat, closed-form solutions. In many cases, however, we do not need an explicit solution to understand the behavior of the system being modeled. Instead, qualitative analysis can provide valuable insights into the dynamics of a system. One particularly useful tool in qualitative analysis is the **slope field diagram**.
+Not all differential equations yield neat, closed-form solutions. In many cases, however, we do not need an explicit solution to understand the behavior of the system being modeled. Instead, qualitative analysis can provide valuable insights into the dynamics of a system. One particularly useful tool in qualitative analysis is the slope field diagram.
 
-Qualitative analysis involves **using logical reasoning and a solid understanding of the physical context to predict the general behavior of solutions** without having to solve the equation completely. In other words, you use your intuition and deductions about the system to anticipate features such as equilibrium points, stability, and the overall direction of change.
+Qualitative analysis involves using *logical reasoning* and an *understanding of the physical context* to predict the general behavior of solutions without having to solve the ODE. In other words, we use intuition and deductions about the system to anticipate features such as equilibrium points, stability, and the overall direction of change.
 
-For example, suppose you are solving an ODE that models the motion of a mass attached to a spring. From experience, you know the mass will oscillate when set into motion. This means, without having to solve the ODE explicitly, you can expect the solution to involve oscillatory functions like sine and cosine.
+For example, suppose you are studying an ODE that models the motion of a mass attached to a spring. From experience, you know that when the mass is set into motion it will oscillate. This means you can expect the solution to involve oscillatory behavior, often represented by functions like sine and cosine. we do not need to solve the ODE to come to this conclusion, we know it from our physical intuition. When we actually go to solve the problem, if we do not get oscillatory functions, then we should probably double check our work. It doesn't mean our answer is right or wrong, it give us the ability to "sanity check" our answers. 
 
-In addition to using logic to break down what general solutions should look like, we can use features such as equilibrium points, their stability, and the overall direction of change, to predict how a system evolves over time. This additional information can be nicely displayed in a **slope field diagram**.
+In addition to this kind of physical reasoning, we can examine mathematical features of the equation itself. In particular, equilibrium points (or nullclines), their stability, and the direction of change of the solution can tell us a great deal about how the system evolves over time. These features can be visualized using a slope field diagram.
 
-Slope field diagrams are particularly useful tools for examining first-order ODEs without having to actually solve them. Consider a general first-order ODE:
+As we have been emphasizing, slope field diagrams are useful tools for examining first-order ODEs. However, we have not yet formally defined what they are. Let’s correct that now.
+
+Consider a general first-order ODE:
 
 $$
 \frac{dy}{dt} = f(y,t)
 $$
 
-The equilibrium (or steady-state) solutions occur when: 
+Equilibrium (or steady-state) solutions occur when the solution no longer changes, that is when:
 
-$$ \frac{dy}{dt} = 0 \implies f(y,t) = 0 $$
+$$
+\frac{dy}{dt} = f(y,t) = 0
+$$
 
-We can then solve this equation for $y$ as a function of $t$. In mathematics these lines are called the **nullclines**. Nullclines represent equilibrium points/lines for the ODE. The stability of these points/lines can be revealed using the following logic:
+Solving this equation gives the values for $y$ (possibly as functions of $t$, the working variable) where the solution does not change. We have been caling these solutions the **steady-state solutions**. In mathematics, the curves defined by this condition are called **nullclines**. Nullclines represent equilibrium points or equilibrium curves of the ODE.
 
-- If $ f(y,t) > 0 \implies \frac{dy}{dt} > 0 $ in the neighborhood of an equilibrium point, the solution will increase with time.
-- If $ f(y,t) < 0 \implies \frac{dy}{dt} < 0 $ in the neighborhood, the solution will decrease in time.
+To understand the stability of these equilibria, we examine the behavior of the solution near the nullcline. In the neighborhood of a nullcline:
 
-We represent these behaviors on a slope field—a two-dimensional diagram where the equilibrium points/lines are plotted and each region is is labeled to indicate whether $ y $ is increasing or decreasing as time progresses.
+- If $f(y,t) > 0$, then $\frac{dy}{dt} > 0$, meaning the solution increases with time.
+- If $f(y,t) < 0$, then $\frac{dy}{dt} < 0$, meaning the solution decreases with time.
 
-### Constructing a Slope Field Diagram:
+To see how useful this is, consider, for example, if the slope $\frac{dy}{dt}$ is positive below the nullcline. This means solutions in that region would move upward toward the nullcline. If the slope were negative instead, solutions below the nullcline would move downward, away from it. The same reasoning can be applied to the region above the nullcline.
 
+If solutions on both sides of the nullcline move toward it, the equilibrium is stable. If solutions move away from the nullcline on either side, the equilibrium is unstable.
 
-- Identify the nullclines by solving $ f(y) = 0 $.
-- Draw the nullclines in a $y$ versus $t$ plot.
-- Determine the sign of $ f(y) $ in each interval between these points.
-- Use arrows to indicate whether solutions are increasing or decreasing in each region.
+These behaviors become much easier to interpret when we visualize them using a slope field. A slope field is a two-dimensional diagram where short line segments represent the slope $\frac{dy}{dt}$ at various points in the $(t,y)$ plane. The nullclines divide the diagram into regions, and the slopes in each region indicate whether $y$ increases or decreases as time progresses.
 
+### Constructing a Slope Field Diagram
+
+To construct a slope field diagram, follow these steps:
+
+- Identify the nullclines by solving $f(y,t) = 0$.
+- Plot the nullclines on a $y$ versus $t$ diagram.
+- Determine the sign of $f(y,t)$ in the regions between the nullclines.
+- Draw small line segments indicating the slope $\frac{dy}{dt}$ at representative points in each region.
 
 
 {% capture ex %}
@@ -74,51 +84,79 @@ $$
 \frac{dy}{dt} = y(1-y)
 $$
 
-Notice, for this ODE we have $f(y,t) = y(1-y)$. The equilibrium points/lines can be found in the following manner:
-    
-$$
-y(1-y) = 0 \qquad \implies \qquad y = 0 \quad \text{ and }\quad  y = 1
-$$ 
+For this ODE we have $f(y,t) = y(1-y)$. The equilibrium points/lines can be found by setting the derivative equal to zero and solving for $y$. This is equivalent to finding the steady-state solutions:
 
-Drawing these nulclines gives:
+$$
+y(1-y) = 0 \qquad \implies \qquad y = 0 \quad \text{and} \quad y = 1
+$$
+
+Drawing these nullclines in a $y$-versus-$t$ coordinate system gives:
 
 <img
 src="{{ '/courses/math-methods/images/lec13/SP_Example_01_1.png' | relative_url }}"
 alt="Horizontal lines at y = 0 and y = 1."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
+Next we test the sign of the slope, $f(y) = y(1-y)$, above and below each of the nullclines. This can be done by inspection, or by selecting representative values in each region and checking the sign of the result.
 
-Now, test the sign of $ f(y) = y(1-y) $:
+- For $y < 0$:
 
-- For $ y < 0 $, $ f(y) < 0 $ (solutions decrease).
-- For $ 0 < y < 1 $, both $ y > 0 $ and $ 1-y > 0 $ so $ f(y) > 0 $ (solutions increase).
-- For $ y > 1 $, $ 1-y < 0 $ so $ f(y) < 0 $ (solutions decrease).
+  Let’s choose $y = -1$. Then
 
+  $$
+  f(-1) = (-1)\big(1-(-1)\big) = (-1)(2) = -2
+  $$
+
+  So $f(y) < 0$ in this region.
+
+- For $0 < y < 1$:
+
+  We can use $y = 0.5$. This gives
+
+  $$
+  f(0.5) = (0.5)\big(1-0.5\big) = (0.5)(0.5) = 0.25
+  $$
+
+  So $f(y) > 0$ in this region.
+
+- For $y > 1$:
+
+  Let’s choose $y = 2$. Then
+
+  $$
+  f(2) = (2)\big(1-2\big) = (2)(-1) = -2
+  $$
+
+  So $f(y) < 0$ in this region.
+
+Plotting the slopes for each region gives the following slope field:
 
 <img
   src="{{ '/courses/math-methods/images/lec13/SP_Example_01_2.png' | relative_url }}"
-  alt="Horizontal lines at y = 0 and y = 1. Small arrows drawn over the entire grid point towards the y = 1 line and away from the y = 0 line."
+  alt="Horizontal lines at y = 0 and y = 1. Small arrows drawn over the grid point toward the y = 1 line and away from the y = 0 line."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-We would say this problem has **two branches**, that is two possible equilibrium for a single value of the working variable, in this cased $x$. The bottom branch located at $y=0$ appears to be unstable as solutions on either side of this branch move away from it rather than towards it. The top branch located at $y = 1$ appear to be stable since solutions approach it from both sides
+We say this problem has **two branches**, that is two possible equilibria for a single value of the working variable $t$. The bottom branch located at $y=0$ appears to be unstable as solutions on either side of this branch move away from it rather than towards it. The top branch located at $y = 1$ appears to be stable since solutions approach it from both sides.
+
+Where our solution ultimately ends up depends on the initial condition.  If the initial condition satisfies $y > 0$, the solution will move toward the equilibrium at $y = 1$ and eventually converge to that value. However, if the initial condition lies in the region $y < 0$, the solution moves downward and continues decreasing without bound, approaching $-\infty$ as time progresses.
+
+Thus, the long-term behavior of the system described by this ODE depends on the initial condition. For initial values above zero, the solution approaches the stable equilibrium at $y = 1$, these are stable. For initial values below zero, the solution diverges away from the system and decreases without bound, these are unstable.
 {% endcapture %}
 {% include example.html content=ex %}
 
 
-### Physical Significance:
-In physics and engineering, qualitative analysis and slope field diagrams provide a fast, intuitive understanding of a system's dynamics. They help answer questions such as:
 
-- What are the possible long-term behaviors of the system?
-- Which states are stable, and which are unstable?
-- How does the system respond to small perturbations (i.e., small nudges away from equilibrium)?
+### Physical Significance
 
-By taking a moment to use qualitative analysis and slope field diagrams, you can predict the overall behavior of complex systems even when finding an explicit solution is difficult or impossible. This approach not only deepens your conceptual understanding of differential equations but also prepares you for more advanced topics where qualitative behavior is as important as quantitative solutions.
+In physics and engineering, qualitative analysis and slope field diagrams provide a fast and intuitive way to understand a system's dynamics. They help answer questions such as:
 
+- What are the possible long-term, steady-state behaviors of the system?
+- Which states are stable and which are unstable?
+- How does the system respond to small perturbations (that is, small nudges away from equilibrium)?
 
+As we just saw in the previous example, we were able to determine how solutions behave over time without ever solving the differential equation explicitly. By examining the nullclines and the sign of the slope in each region, we could predict which equilibria the system moves toward and which it moves away from.
 
-
-
-
+Taking a moment to perform this kind of qualitative analysis often provides a clear picture of the system’s overall behavior, even when finding an analytic solution (a closed-form function) is difficult or impossible. This approach not only deepens our conceptual understanding of differential equations, but it also prepares us for more advanced topics where qualitative behavior is just as important as exact solutions.
 
 
 
@@ -128,21 +166,25 @@ By taking a moment to use qualitative analysis and slope field diagrams, you can
 
 ## Bernoulli's Equation
 
-Bernoulli's Equation represents a special class of nonlinear first-order differential equations that can be transformed into a linear ODE by an appropriate substitution. The general form of a Bernoulli equation is:
+While qualitative analysis helps us understand the general behavior of solutions, there are still many nonlinear differential equations that we would like to solve explicitly. One important example is Bernoulli's equation.
+
+Bernoulli's equation represents a special class of nonlinear first-order differential equations that can be transformed into a linear ODE through an appropriate substitution. The general form of a Bernoulli equation is:
 
 $$
 \frac{dy}{dx} + p(x)y = q(x)y^n
 $$
 
-Notice, if $n=0$ or $1$, then this would be a linear ODE. Since is approach is for nonlinear ODEs we will restrict $ n \neq 0,1 $.  This restriction in conjunction with the $ y^n $ term, the equation is nonlinear. However, by applying the substitution
+Notice if $n = 0$ or $n = 1$, the equation becomes linear. 
+
+Bernoulli's method is designed for nonlinear equations, so we will restrict our attention to the case where $n \neq 0, 1$. With this restriction, the presence of the $y^n$ term makes the equation nonlinear.
+
+It turns out this ODE can be transformed into a linear ODE, as if by magic, by making the following substitution:
 
 $$
-v = y^{\ 1-n}
+v = y^{\,1-n}
 $$
 
-we can reduce the equation to a linear form.
-
-
+After applying this substitution, the original differential equation can be rewritten as a linear ODE in terms of the new function $v$ that depending on the working variable $x$.
 
 
 
@@ -151,43 +193,44 @@ we can reduce the equation to a linear form.
 
 **Step 1: Write the Equation in Standard Form**
 
-We start with:
+We begin by rewriting the differential equation in the form
 
 $$
 \frac{dy}{dx} + p(x)y = q(x)y^n
 $$
 
+
 **Step 2: Perform the Substitution**
 
-Let:
+If the equation can be written in this form, then it is a Bernoulli equation. Once identified, it can be simplified, though not directly solved, by applying the following substitution:
 
 $$
 v = y^{\ 1-n}
 $$
 
-Differentiate both sides with respect to $ x $ using the chain rule:
+To find how this simplifies the ODE, we first differentiate both sides with respect to $ x $:
 
 $$
 \frac{dv}{dx} = (1-n) y^{-n} \frac{dy}{dx}
 $$
 
-where the $(1-n) y^{-n} $ comes from using the power rule and $\frac{dy}{dx}$ comes from the chain rule. Solve for $\frac{dy}{dx}$:
+where the $(1-n) y^{-n} $ comes from using the power rule and $\frac{dy}{dx}$ comes from the chain rule. Solving for $\frac{dy}{dx}$:
 
 $$
 \frac{dy}{dx} = \frac{1}{1-n} y^n \frac{dv}{dx}
 $$
 
-which gives us a way to rewrite the ODE in terms of $v(x)$. 
+gives us a way to rewrite the ODE in terms of $v(x)$. 
 
 **Step 3: Substitute into the Original Equation**
 
-Substitute $\frac{dy}{dx}$ into the Bernoulli equation:
+Substitute $\frac{dy}{dx}$ into the original ODE:
 
 $$
 \frac{1}{1-n} y^n \frac{dv}{dx} + p(x)y = q(x)y^n
 $$
 
-Divide through by $ y^n $ (assuming $ y \neq 0 $):
+and divide through by $ y^n $ (assuming $ y \neq 0 $):
 
 $$
 \frac{1}{1-n} \frac{dv}{dx} + p(x)y^{\ 1-n} = q(x)
@@ -196,34 +239,35 @@ $$
 Since $ y^{\ 1-n} = v $, this becomes:
 
 $$
-\frac{1}{1-n} \frac{dv}{dx} + p(x)v = q(x).
+\frac{1}{1-n} \frac{dv}{dx} + p(x)v = q(x)
 $$
 
-Multiply both sides by $ 1-n $ to obtain the linear ODE in $ v $:
+Finally, we can multiply both sides by $ 1-n $ to obtain a linear ODE for $ v $ in standard form:
 
 $$
-\frac{dv}{dx} + (1-n)p(x)v = (1-n)q(x)
+\frac{dv}{dx} + (1-n)p(x)\ v = (1-n)q(x)
 $$
 
 **Step 4: Solve the Linear ODE for $ v(x) $**
 
-Now that the equation is linear in $ v $, you can solve it using the integrating factor method where $P(x) =(1-n)p(x)$ and $Q(x) = (1-n)q(x) $. 
+Now that the equation is linear in $ v $, we can solve it using the integrating factor method where $P(x) =(1-n)p(x)$ and $Q(x) = (1-n)q(x) $. 
 
-Once you obtain $ v(x) $, you an use that to get $ y(x) $:
+Once we obtain $ v(x) $, it can use that to find $ y(x) $:
 
 $$
 y(x) = v(x)^{\frac{1}{1-n}}
 $$
 
+Let's put this procedure into practice by looking at an example.
 
 {% capture ex %}
-Consider the Bernoulli equation:
+Consider the following differential equation:
 
 $$
 \frac{dy}{dx} - \frac{2}{x}y = -x^3 y^3
 $$
 
-By inspection we can see that $ p(x) = -\frac{2}{x} $, $ q(x) = -x^3 $, and $ n = 3 $. Since $ n = 3 $, the equation is nonlinear, and can use the substitution $ v = y^{1-3} = y^{-2} $ to convert this into linear form.
+By inspection we can see that this is in the general form for a Bernoulli Equation. Here we have $ p(x) = -\frac{2}{x} $, $ q(x) = -x^3 $, and $ n = 3 $. Since $ n = 3 $, the equation is nonlinear, and can use the substitution $ v = y^{1-3} = y^{-2} $ to convert this into linear form.
 
 First, we can differentiate $ v = y^{-2} $ with respect to $ x $ to find the substitution for $\frac{dy}{dx}$:
 
@@ -237,7 +281,7 @@ $$
 \left(-\frac{1}{2} y^3 \frac{dv}{dx}\right) - \frac{2}{x}y = -x^3 y^3
 $$
 
-and simplifying by dividing the entire equation by $ y^3 $ and multiplying by $-2$:
+and, following the process, we divide the entire equation by $ y^3 $ and multiply by $-2$:
 
 $$
 \frac{dv}{dx} + \frac{4}{x} y^{-2} = 2x^3
@@ -255,21 +299,21 @@ $$ \mu(x) = e^{\int P(x) \  dx } = e^{\int \frac{4}{x} \  dx } =  e^{4 \ln \vert
 
 Multiplying the ODE by this integrating factor and expressing the left-hand side as a product rule gives:
 
-$$ \frac{d}{dx} \left( x^4 \  v(x) \right) = 2 x^7 $$
+$$ \frac{d}{dx} \left( x^4 \  v \right) = 2 x^7 $$
 
 Integrating both sides with respect to $x$ gives:
 
-$$  x^4 \  v(x) = \frac{1}{4} x^8 + C  $$
+$$  x^4 \  v = \frac{1}{4} x^8 + C  $$
 
 which we can solve for $v(x)$ to get:
 
 $$ v(x) = \frac{1}{4} x^4 + C x^{-4}  $$
 
-Now that we have $v(x)$, we can get $y(x)$ by using the original substitution we made: 
+Armed with $v(x)$, we can find $y(x)$ by using the original substitution we made: 
 
 $$ v(x) = y(x)^{-2}  \quad \Longrightarrow \quad  y(x) = \left( v(x) \right)^{-1/2} \quad \Longrightarrow \quad  y(x) = \left( \frac{1}{4} x^4 + C x^{-4}  \right)^{-1/2}  $$
 
-So, our general solution to the original nonlinear ODE is:
+Our general solution to the original nonlinear ODE is:
 
 $$ y(x) = \left( \frac{1}{4} x^4 + C x^{-4}  \right)^{-1/2} $$
 {% endcapture %}
@@ -286,19 +330,13 @@ $$ y(x) = \left( \frac{1}{4} x^4 + C x^{-4}  \right)^{-1/2} $$
 
 
 
-
-
-
-
-
-
-
-
 ## Variation of Parameters for First-Order ODEs
 
-The last method we will learn for solving first-order ODEs is called **variation of parameters**. This method offers an alternative approach to finding a particular solution for nonhomogeneous, linear, first-order differential equations. Although the integrating factor method is often more straightforward, variation of parameters can provide additional insight into the structure of the solution. Also, the integrating factor method is not readily useable for higher order ODEs, whereas variation of parameters is, which is why we are introducing it here at the end of our discussion of first-order ODEs.
+The last method we will learn for solving first-order ODEs is called variation of parameters. This method provides an alternative way to find a particular solution to a nonhomogeneous, linear, first-order differential equation.
 
-Here is a general overview of how this method works. Consider a first-order ODE in standard form:
+Although the integrating factor method is often more straightforward, variation of parameters can offer additional insight into the structure of the solution. More importantly, while the integrating factor method does not generalize easily to higher-order ODEs, variation of parameters does. Because of this, it is a method worth understanding early.
+
+Consider a first-order ODE written in standard form:
 
 $$
 \frac{dy}{dx} + P(x)y = Q(x)
@@ -310,18 +348,20 @@ $$
 \frac{dy}{dx} + P(x)y = 0
 $$
 
-The solution to the homogeneous equation can be found using separation of variables:
+This equation can be solved using separation of variables, giving the homogeneous solution
 
 $$
-y_h(x) = e^{-\int P(x)\ dx}
+y_h(x) = e^{-\int P(x)\,dx}
 $$
-
-
 
 
 ### Note about Homogeneous and Particular Solutions
 
-When solving ODEs, especially higher order ones, we will often find the homogeneous and particular solutions separately. In this case, the particular solution is **not** the one that satisfies some set of initial conditions, but it the solution to the ODE that satisfies the inhomogeneous term. This is a divide and conquer concept where we will use the inhomogeneous solution to satisfy the inhomogeneous term (i.e., the driving term) in the ODE, and we will use the homogeneous solution to take care of the initial conditions. 
+When solving ODEs, especially higher-order ones, it is common to find the homogeneous and particular solutions separately. In this context, the particular solution is not the solution that satisfies a specific set of initial conditions. Instead, it is the solution that accounts for the inhomogeneous (or forcing) term in the differential equation.
+
+You can think of this as a divide-and-conquer strategy. The particular solution handles the inhomogeneous or driving term in the ODE, while the homogeneous solution is used to incorporate the initial conditions.
+
+Unfortunately, the word “particular” is used in two slightly different ways when discussing differential equations. In one sense, it refers to the final solution obtained after applying initial conditions, making the solution particular to the specific physical situation. In another sense, it refers to the solution associated with the inhomogeneous term of the differential equation. Context usually makes it clear which meaning is intended.
 
 For each solution we have the following:
 
@@ -351,17 +391,25 @@ $$\frac{dy}{dx} + P(x) y = Q(x) $$
 
 Notice **this trick only works for linear ODEs**! If the ODE is nonlinear, then this trick is not valid. This is part of the reason nonlinear ODEs are so hard to solve without resorting to numerical solutions. 
 
-
-
-The idea behind variation of parameters is to look for a particular solution $ y_p(x) $ in the form:
+The central idea behind variation of parameters is to look for a particular solution $y_p(x)$ that has a form similar to the homogeneous solution, but with a coefficient that is allowed to vary with $x$. Specifically, we assume:
 
 $$
-y_p(x) = u(x) \  y_h(x)
+y_p(x) = u(x) \ y_h(x)
 $$
 
-where $ u(x) $ is an unknown function the we will need to find. But how do we do that? 
+where $y_h(x)$ is the solution to the homogeneous equation and $u(x)$ is an unknown function that we will determine.
 
-First we need an equation that $u(x)$ must satisfy, then we can solve that to get $u(x)$ and subsequently $y_p(x)$. 
+Why does this idea make sense and why does this work?
+
+Recall that the homogeneous solution $y_h(x)$ already captures the natural behavior of the system when no external forcing is present. In the homogeneous equation, this solution can be multiplied by any constant and still remain a valid solution. That is, if $y_h(x)$ is a solution, then $C\,y_h(x)$ is also a solution for any constant $C$.
+
+The key insight of variation of parameters is to relax this idea slightly. Instead of multiplying the homogeneous solution by a constant, we allow the coefficient to vary with $x$, replacing $C$ with $u(x)$.
+
+By allowing this coefficient to change with $x$, the solution gains enough flexibility to account for the inhomogeneous term in the differential equation. Intuitively, you can think of the function $u(x)$ as adjusting the amplitude of the homogeneous solution at each value of $x$ so that the resulting function satisfies the full inhomogeneous equation.
+
+In this sense, we are still using the natural structure of the homogeneous solution, but we allow its scaling to vary continuously so that it can correctly respond to the forcing term in the equation. The goal of the method is therefore to determine the function $u(x)$ that makes $y_p(x) = u(x) \ y_h(x)$ satisfy the original differential equation.
+
+We need to find the equation $u(x)$ must satisfy so can solve that to get $u(x)$ and subsequently $y_p(x)$. 
 
 **Step 1: Differentiate the Particular Solution** 
 
@@ -378,23 +426,19 @@ $$
 \frac{dy_p}{dx} + P(x)y_p = Q(x)  \quad \implies \quad  \frac{du}{dx}y_h + u \frac{dy_h}{dx} + P(x)u y_h = Q(x)
 $$
 
-Now, notice we can group things in the following manner: 
+We can group terms based on how they depend on $u$ in the following manner: 
 
 $$
 \frac{du}{dx}y_h + u \left( \frac{dy_h}{dx} + P(x)y_h \right)  = Q(x)
 $$
 
-Since the homogeneous solution satisfies
+However, the homogeneous solution satisfies
 
 $$
 \frac{dy_h}{dx} + P(x)y_h  = 0
 $$
 
-the terms involving $ u(x) $ goes to zero, leaving:
-
-$$
-\frac{du}{dx}y_h + u \left( \underbrace{\frac{dy_h}{dx} + P(x)y_h}_{=0} \right)  = Q(x) 
-$$
+which means the the term involving $ u(x) $ goes to zero. This leaves us with:
 
 $$
 \frac{du}{dx}y_h = Q(x)
@@ -402,17 +446,19 @@ $$
 
 **Step 3: Solve for $ u(x) $**
 
-Solve for $ \frac{du}{dx} $:
+This is a separable ODE! We can solve for $ \frac{du}{dx} $:
 
 $$
 \frac{du}{dx} = \frac{Q(x)}{y_h(x)}
 $$
 
-and integrate both sides to find $ u(x) $:
+and integrate both sides with respect to $dx$ to find $ u(x) $:
 
 $$
 u(x) = \int \frac{Q(x)}{y_h(x)}\ dx
 $$
+
+We will ignore the constant of integration here since we are looking for a solution to specifically satisfy the inhomogeneous term of the original ODE and nothing more. Any unknown constants we need to satisfy initial conditions will come from the homogeneous solution; divide and conquer.
 
 **Step 4: Write the General Solution**
 
@@ -432,7 +478,7 @@ $$
 \end{aligned}
 $$
 
-where $ C $ is the constant of integration.
+where the constant of integration $C$ was implicitly contained within the homogeneous solution.
 
 **Discussion:**
 
@@ -450,7 +496,7 @@ with an initial condition $ y(0) = y_0 $.
 The homogeneous differential equation to this problem is given as :
 
 $$
-\frac{dy_h}{dx} + 2y_h = 0.
+\frac{dy_h}{dx} + 2y_h = 0
 $$
 
 Its general solution is found by separation of variables or by inspection:
@@ -479,7 +525,9 @@ $$
 \frac{dy_p}{dx} =  \frac{du}{dx} \   e^{-2x} - 2u(x)e^{-2x}
 $$
 
-and then substitute the particular solution into the inhomogeneous ODE:
+Notice we did not include the constant $C$ here. This is, again, because the particular solution is only here to satisfy the inhomogeneous term of the original ODE and nothing more.
+
+We can substitute this particular solution into the inhomogeneous ODE to get:
 
 $$
 \frac{dy_p}{dx} + 2y_p = e^{-x} \qquad \implies \qquad 	\frac{du}{dx} \   e^{-2x} - 2u(x)e^{-2x}  + 2u(x)e^{-2x}  = e^{-x} 
@@ -496,18 +544,10 @@ $$ \frac{du}{dx} = e^{x}  $$
 Now we can integrate with respect to $ x $ to find an equation for $u(x)$:
 
 $$
-u(x) = \int e^{x}\ dx = e^{x} + K
+u(x) = \int e^{x}\ dx = e^{x}
 $$
 
-where $ K $ is a constant of integration. For a particular solution, we can set $ K = 0 $ (since any constant here would be absorbed into the homogeneous solution--check this is your are curious). 
-
-In the end, we have:
-
-$$
-u(x) = e^{x}
-$$
-
-and substituting this into $ y_p(x) $:
+Substituting this into $ y_p(x) $:
 
 $$
 y_p(x) = u(x)e^{-2x} = e^{x}e^{-2x} = e^{-x}
@@ -548,7 +588,7 @@ which is our solution to the initial value problem.
 
 ### Example 1: Slope Field Diagram
 
-Consider the autonomous ODE:
+Consider the following ODE:
 
 $$
 \frac{dy}{dx} = y^2 - 4x + 3
@@ -571,7 +611,7 @@ Plotting this
   alt="A parabola opening to the right."
   style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-we see that it has two branches. This nullcline breaks the plot into two regions, to the left of the nullcline and to the right of it. If we examine the sign of $f(x,y)$ in each of these regions we get:
+we see the solution has two branches (two options for a single x value, the top and bottom branches). This nullcline breaks the plot into two regions, to the left of the nullcline and to the right of it. If we examine the sign of $f(x,y)$ in each of these regions we get:
 
 - To the left of the nullcline: Choose $x = 0$ and $ y = 0$; then, $0 - 4(0) + 3 = 3 > 0$, we get positive slopes.
 - To the right of the nullcline: Choose $x = 2$ and $ y = 0$; then, $0 - 4(2) + 3 = -5 < 0$, we get negative slopes.
@@ -598,7 +638,7 @@ $$
 \frac{dy}{dx} + \frac{2}{x} y = x^3 y^3
 $$
 
-Here, $p(x)=\frac{2}{x}$, $q(x)=x^3$, and $n=3$. Since $n \neq 0,1$, the equation is nonlinear, but we can reduce it to a linear ODE via a substitution. Making the following change of functions
+Here, $p(x)=\frac{2}{x}$, $q(x)=x^3$, and $n=3$. Since $n \neq 0$ or $1$ the equation is nonlinear, but we can transform it to a linear ODE via the Bernoulli substitution. Making the following change of functions:
 
 $$
 v = y^{1-n} = y^{1-3} = y^{-2}
