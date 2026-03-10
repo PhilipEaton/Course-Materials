@@ -556,7 +556,7 @@ There are three possible outcomes:
 
 <img
 src="{{ '/courses/math-methods/images/lec14/Damped Oscillator.png' | relative_url }}"
-alt="Spiral path in phase space then converges on zero."
+alt="All three of the types of oscillators plotted on the same plot with the same initial conditions. The critically damped system goes to zero the fastest, the under-damped system osciallated as it decays to an amplitude of zero, and the over-damped system slowly decays to zero without oscillating."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
