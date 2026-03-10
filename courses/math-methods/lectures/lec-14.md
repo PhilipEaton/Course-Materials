@@ -12,9 +12,9 @@ nav_order: 14
 
 ## Introduction
 
-In many physical systems, dynamics are governed by equations that involve acceleration—that is, by second derivatives of position with respect to time--or, oddly enough, by the curvature if the fields involved--like potential energies. Unlike first-order ODEs, which typically capture rates of change, second-order ODEs can describe more complex behaviors such as oscillations and vibrations. This makes them indispensable in modeling systems ranging from mechanical oscillators (like mass-spring systems) to electrical circuits (such as RLC circuits), and even to more abstract phenomena in physics and engineering like the curvature of spacetime to explain gravity in General Relativity.
+In many physical systems, dynamics are governed by equations that involve acceleration, the second derivatives of position with respect to time, or by the curvature of the potential energy fields involved, oddly enough. Unlike first-order ODEs, which typically capture rates of change, second-order ODEs can describe more complex behaviors such as oscillations, diffusion, and waves. This makes them indispensable in modeling systems ranging from mechanical oscillators (like mass-spring systems) to electrical circuits (such as RLC circuits), and even to more abstract phenomena in physics like the curvature of spacetime to explain gravity in General Relativity.
 
-We will be begin by introducing second-order differential equations and reminding ourselves of a couple of important classifications. To start things off we will focus on the homogeneous, constant-coefficient,  second-order ODEs, where we will see a very general and effective solution strategy. Specifically, we will learn to solve homogeneous second-order ODEs using the **characteristic equation** method. As we explore the different cases—distinct real roots, repeated real roots, and complex conjugate roots—we will see how the form of the solution directly reflects the physical behavior of the system. For instance, the appearance of sine and cosine functions in the solution is directly related to oscillatory motion, while exponential terms indicate growth or decay.
+We will be begin by reintroducing second-order differential equations and reminding ourselves of a couple of classifications we covered previously. To start things off we will focus on the homogeneous, constant-coefficient,  second-order ODEs, where we will see a very general and effective solution strategy. Specifically, we will learn to solve homogeneous second-order ODEs using the **characteristic equation** method. As we explore the different cases—distinct real roots, repeated real roots, and complex conjugate roots, and we will see how the form of the solution directly reflects the physical behavior of the system. For instance, the appearance of sine and cosine functions in the solution is directly related to oscillatory motion, while exponential terms indicate growth or decay.
 
 
 
@@ -32,17 +32,17 @@ $$
 a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = 0
 $$
 
-**In a homogeneous equation, every term contains the function $ \boldsymbol{y} $ or one of its derivatives**. This type of equation typically describes the natural, unforced behavior of a system—like the free vibrations of a mass-spring system.
+**In a homogeneous equation, every term contains the function $ \boldsymbol{y} $ or one of its derivatives**. Equation like this typically describes the natural, unforced behavior of a system like the free vibrations of a mass-spring system or modified exponential growth and decay.
 
 **Inhomogeneous Equations:** 
 
 When an external force or input is present, the equation takes the form
 
 $$
-a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = f(x),
+a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = f(x)
 $$
 
-where $ f(x) $ is the inhomogeneous term representing a driving term. In this case, the solution is composed of a homogeneous part (the transient response) and a particular part (the steady-state response). Inhomogeneous equations are essential for modeling forced oscillations in mechanical systems or driven circuits in electrical engineering.
+where $ f(x) $ is the inhomogeneous term (no $y$ or any derivatives of $y$ are present with this term) representing a driving term. In this case, the solution is composed of a homogeneous part (called the *transient response*) and a particular part (the *steady-state response*). Inhomogeneous equations are essential for modeling forced oscillations in mechanical systems or driven circuits in electrical engineering.
 
 
 ### Constant vs. Variable Coefficients
@@ -52,7 +52,7 @@ where $ f(x) $ is the inhomogeneous term representing a driving term. In this ca
 These are the most common in introductory applications. The coefficients $ a $, $ b $, and $ c $ are constant:
 
 $$
-a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = 0.
+a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = 0
 $$
 
 The behavior of the physical system modeled using an equation like this can be oscillatory motion, exponential growth/decay, etc.
@@ -62,14 +62,14 @@ The behavior of the physical system modeled using an equation like this can be o
 In more complex situations, the coefficients depend on the independent variable $ x $: 
 
 $$
-a(x)\frac{d^2y}{dx^2} + b(x)\frac{dy}{dx} + c(x)\,y = 0.
+a(x)\frac{d^2y}{dx^2} + b(x)\frac{dy}{dx} + c(x)\,y = 0
 $$
 
 These equations are generally more difficult to solve and often require specialized techniques, such as power series methods. 
 
 
 ### Why do we care?
-Knowing the  classification of an ODE helps determine the appropriate solution strategy. For example, homogeneous equations with constant coefficients are typically solved using the characteristic equation method, but this method is ineffective for homogeneous equations with variable coefficients. Further, understanding whether an equation is homogeneous or nonhomogeneous is crucial because it informs you about the structure of the solution—specifically, that the general solution will be the sum of a homogeneous solution and a particular solution.
+Knowing the  classification of an ODE helps determine the appropriate solution strategy. For example, homogeneous equations with constant coefficients are typically solved using the characteristic equation method, but this method is ineffective for homogeneous equations with variable coefficients. Further, understanding whether an equation is homogeneous or nonhomogeneous is crucial because it informs you about the structure of the solution. Specifically, it tells us that the general solution will be the sum of a homogeneous solution and a particular solution, provided a particular solution is needed.
 
 These classifications lays the groundwork for solving second-order ODEs and connects directly to the physical interpretations of the solutions. Whether you’re modeling a free-falling mass, an oscillating spring, or an RLC circuit, knowing the structure of the equation helps you predict the behavior of the system before having to perform any complicated computations.
 
@@ -86,29 +86,42 @@ These classifications lays the groundwork for solving second-order ODEs and conn
 
 ## Solving Homogeneous, Constant-Coefficient, Second-Order ODEs
 
-In many physical systems, the behavior of a system is governed by a homogeneous second-order ODE with constant coefficients. Let's consider the general problem first:
+In many physical systems, the behavior of a system is governed by a homogeneous second-order ODE with constant coefficients. Let’s begin by considering the general form of such an equation:
 
 $$
-a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = 0,
+a\ \frac{d^2y}{dx^2} + b\ \frac{dy}{dx} + c\ y = 0
 $$
 
-where $a$, $b$, and $c$ are constants, and $x$ is the working variable. The key to solving these equations is to assume a solution of the form:
+where $a$, $b$, and $c$ are constants and $x$ is the independent (or working) variable.  
+
+The key to solving equations of this type is to assume a solution of the form
 
 $$
 y(x) = e^{rx}
 $$
 
-where $r$ is a **constant** to be determined. When you find a result for $r$ is **cannot** depend on the working variable. If it does, then you either made a mistake, or this strategy will not work for the ODE you are attempting to solve. 
+where $r$ is a *constant* that we must determine. The value of $r$ **cannot** depend on the working variable $x$; it must be a constant. If your result for $r$ does depend on $x$, then either a mistake has been made or the ODE is not actually a constant-coefficient equation.
 
+**This approach works for any homogeneous, constant-coefficient, second-order ODE.**
 
-**To be clear, this approach will work for any homogeneous, constant-coefficient, second-order ODE!**
+Because of this, it is one of the most common techniques used when solving differential equations in physics and engineering. When you encounter a homogeneous ODE with constant coefficients, this is usually the first method to try. In the worst case, the substitution will produce an equation that still contains the working variable, signaling that a different method is likely required.
 
->	This is one of the most popular and most useful approaches used when solving ODEs in physics and engineering!** When in doubt, try this approach. The worst that happens is you get the characteristic equation, notice the working variable is present, and realize this approach will not work. 
+You might reasonably ask why this particular guess works so well. The reason lies in a special property of the exponential function. The function $e^{rx}$ is an eigenfunction of the derivative operator:
+
+$$
+\frac{d}{dx} \ e^{rx} = r\ e^{rx}
+$$
+
+Notice this has the exact form of an eigenvalue problem. The derivative operator plays the role of the operator, $e^{rx}$ is the eigenfunction, and $r$ is the eigenvalue.
+
+Because the exponential function reproduces itself when differentiated, substituting $e^{rx}$ into the differential equation converts derivatives into simple algebraic factors of $r$. This transforms the differential equation into an algebraic equation for $r$, which is much easier to solve.
+
+This idea extends much further than this example. In more advanced courses you will see that many differential equations can be understood by expanding functions in terms of exponential eigenfunctions in the same way we can rewrite vectors in terms of the eigenvectors of a matrix operator. This perspective ultimately leads to powerful tools such as the Fourier transform, where complicated functions are represented as combinations of exponential modes.
 
 
 **Step 1: Find the Characteristic Equation**
 
-We are going to want to make the substitution $y(x) = e^{rx}$ into the ODE. To do this we will need to know the first and second derivatives of this function:
+For a constant coefficient, linear ODE, we will always substitution $y(x) = e^{rx}$ into the ODE. To do this we will need to know the first and second derivatives of this function:
 
 $$
 \frac{dy}{dx} = r e^{rx} \quad \text{and} \quad \frac{d^2y}{dx^2}  = r^2 e^{rx}
@@ -126,7 +139,7 @@ $$
 a r^2 + b r + c = 0
 $$
 
-which we call the **characteristic equation**.
+which we call the **characteristic equation** because it is solving for the eigenvalues of the eigenfunction $e^{rx}$.
 
 **Step 2: Solve the Characteristic Equation**
 
@@ -189,7 +202,7 @@ As with solving any quadratic equation, the roots can come in a variety of combi
   gives us the following general solution:
 	
   $$
-	y(x) = e^{\alpha x}\left(C_1 \cos(\beta x) + C_2 \sin(\beta x)\right)
+	y(x) = e^{\alpha x}\big(C_1 \cos(\beta x) + C_2 \sin(\beta x)\big)
 	$$
 
 
@@ -260,7 +273,7 @@ This solution perfectly captures the oscillatory nature of an undamped mass-spri
 
 ### Initial Conditions
 
-In all of the solutions we have obtained for second-order ODEs, we end up with two arbitrary constants. This should not surprise us since solving a second-order ODE requires integrating twice—each integration introduces a constant of integration. These constants reflect the generality of the solution; that is, without further information, there is a whole family of functions that satisfy the differential equation.
+In all of the solutions we have obtained for second-order ODEs, we end up with two arbitrary constants. This should not surprise us since solving a second-order ODE requires integrating twice and each integration introduces a constant of integration. These constants reflect the generality of the solution; that is, without further information, there is a whole family of functions that satisfy the differential equation.
 
 To pinpoint a unique solution that accurately describes a physical system, we need to specify two initial conditions. Typically, these are provided in the form:
 
@@ -270,7 +283,7 @@ $$
 
 where $ y_0 $ is the initial value of the function and $ y'_0 $ is the initial value of its derivative. In a physical context, these might correspond to the initial position and and initial velocity in a mechanical system, or to initial charge on and current through a capacitor in some electrical circuit.
 
-Once these initial conditions are applied to the general solution, they allow us to solve for the two unknown constants, thereby yielding a particular solution that uniquely describes the system’s behavior. Understanding and applying these initial conditions is crucial—it not only ensures that the mathematical model is well-posed but also guarantees that the model reflects the real-world situation accurately.
+Once these initial conditions are applied to the general solution, they allow us to solve for the two unknown constants, thereby yielding a particular solution that uniquely describes the system’s behavior. Understanding and applying these initial conditions is crucial since it not only ensures that the mathematical model is well-posed but also guarantees the model reflects a real-world situation accurately.
 
 
 
@@ -288,7 +301,7 @@ $$
 \frac{d^2y}{dt^2} + 5\frac{dy}{dt} + 6y = 0
 $$
 
-This differential equation describes an overdamped oscillator--think a saloon door that could swing back and forth if it wasn't for the rust in the hinges that forces it to close slowly back into place. 
+This differential equation describes an overdamped oscillator. Think doors that close automatically via an air piston that closes the door slowly wtith out swinging or slamming. 
 
 Assuming an exponential solution:
 
@@ -384,7 +397,7 @@ The transient response is **the short-term response of the system to its initial
 
 ### Steady-State (Particular) Response
 
-The steady-state response, on the other hand, is the long-term behavior of the system that persists once the transient effects have died out. This response is driven solely by the external forcing function in the differential equation. In practical terms, the steady-state solution tells us how the system behaves under continuous, persistent input—like the constant charge on a capacitor in an RC circuit, or the sustained oscillation in a forced mechanical system. This response is captured by **the particular solution to an inhomogenous differential equation**, which we will consider in more detail in the next lecture.
+The steady-state response, on the other hand, is the long-term behavior of the system that persists once the transient effects have died out. This response is driven solely by the external forcing function in the differential equation. In practical terms, the steady-state solution tells us how the system behaves under continuous, persistent input; like the constant charge on a capacitor in an RC circuit, or the sustained oscillation in a forced mechanical system. This response is captured by **the particular solution to an inhomogenous differential equation**, which we will consider in more detail in the next lecture.
 
 {% capture ex %}
 Consider a forced oscillatory system described by:
@@ -403,7 +416,7 @@ where $y_h(t)$ is the  homogeneous (transient) solution and $y_p(t)$ is the part
 
 As $ t \to \infty $, the transient component $y_h(t)$ decays to zero (provided the system is damped), leaving only the steady-state solution $y_p(t)$ that fully describes the long-term behavior of the system.
 
-If the system is undamped, additional procedures—such as averaging over one natural period—can be applied to effectively remove the transient component of the solution. This process isolates the steady-state response, which represents only the effects of the external driving force.
+If the system is undamped, additional procedures—such as averaging over one natural period—can be applied to effectively remove the transient component of the solution. This process isolates the steady-state response, which represents only the effects of external driving forces.
 
 A classic example of this approach is found in celestial mechanics. While planets continuously orbit around the system's center of mass, there are situations where we are interested in how an external force changes that motion. For instance, when studying the orbit of Mercury around the Sun, you might want to determine the impact of Jupiter's gravitational pull on Mercury's trajectory. In this case, Jupiter's gravitational force acts as an external driving force on the Sun–Mercury system, and averaging over the natural orbital period allows us to filter out the inherent undamped motion, thereby highlighting the perturbative effects.
 {% endcapture %}
@@ -416,18 +429,18 @@ A classic example of this approach is found in celestial mechanics. While planet
 
 
 
-## Energy Considerations and Phase Space Analysis}
+## Energy Considerations and Phase Space Analysis
 
-Another way to connect the mathematics of second-order ODEs to the physical behavior of a system is by considering energy and phase space. In many mechanical systems, such as mass-spring oscillators, energy conservation (or dissipation in the presence of damping) plays a crucial role in determining the system’s dynamics.
+Another way to connect the mathematics of second-order ODEs to the physical behavior of a system is by considering energy and phase space (momentum versus position space). In many mechanical systems, such as mass-spring oscillators, energy conservation (or dissipation in the presence of damping) plays a crucial role in determining the system’s dynamics.
 
 
 ### Energy Considerations
 
-For an undamped mass-spring system, the total mechanical energy—composed of kinetic energy $ \frac{1}{2} m \left(\frac{dx}{dt}\right)^2 $ and potential energy $ \frac{1}{2} k x^2 $—remains constant. We could use this to develop an ODE by writing out the total mechanical energy:
+For an undamped mass-spring system, the total mechanical energy composed of kinetic energy $ \frac{1}{2} m \left(\frac{dx}{dt}\right)^2 $ and potential energy $ \frac{1}{2} k x^2 $ remains constant. We could use this to develop an ODE by writing out the total mechanical energy:
 
 $$ E = KE + PE \quad \implies \quad E = \frac{1}{2} m \left(\frac{dx}{dt}\right)^2 +  \frac{1}{2} k x^2 $$
 
-and then take the time derivative of the whole thing. Since the energy is conserved if there is no damping we get:
+and then taking the time derivative of the whole thing. Since the energy is conserved if there is no damping we demand the rate of change of the total energy be zero, which gives us:
 
 $$ \frac{dE}{dt} = \frac{d}{dt} \left( \frac{1}{2} m \left(\frac{dx}{dt}\right)^2 +  \frac{1}{2} k x^2\right)  \quad \implies \quad 0 =  m \left(\frac{dx}{dt}\right) \left(\frac{d^2x}{dt^2}\right) +  k x\left(\frac{dx}{dt}\right) $$
 
@@ -435,7 +448,7 @@ which we can divide by the velocity to get:
 
 $$  m \frac{d^2x}{dt^2} +  k x = 0 $$
 
-When damping is introduced, energy is gradually lost due to an external work, like friction. This is reflected in the exponential decay of the homogeneous solution. This decay represents the dissipation of energy over time, explaining why the transient response fades away. We can incorporate this into our energy problem by recalling that work is written in the following manner:
+When damping is introduced, energy is gradually lost due to an external work, like friction. This is reflected in the exponential decay of the homogeneous solution. This decay represents the dissipation of energy over time, explaining why the transient response often fades away. We can incorporate this into our energy problem by recalling that work is written in the following manner:
 
 $$ W = \int \vec{F} \cdot d\vec{x} $$
 
@@ -447,15 +460,15 @@ In one dimension this would be:
 
 $$ W = \int F \frac{dx}{dt} \, dt $$ 
 
-If we assume the force if a drag force of the same form we used previously, we would be left with:
+If we assume the force is a drag force of the same form we used previously, we would be left with:
 
-$$ W = \int -b \left(\frac{dx}{dt}\right)^2 \, dt $$ 
+$$ W = \int \Big( -b \frac{dx}{dt}\Big) \frac{dx}{dt} \, dt $$ 
 
-In this case any changes in the energy would be a result of this work. Taking the time derivative gives:
+In this case any changes in the energy would be a result of this work. Taking the time derivative removes the integration to give:
 
 $$ \frac{dW}{dt} =  -b \left(\frac{dx}{dt}\right)^2 $$
 
-how the total energy will change in time. Using this in the above derivative of the total mechanical energy gives:
+which represents how the total energy will change in time. Using this in the above derivative of the total mechanical energy gives:
 
 $$ -b \left(\frac{dx}{dt}\right)^2 =  m \left(\frac{dx}{dt}\right) \left(\frac{d^2x}{dt^2}\right) +  k x\left(\frac{dx}{dt}\right) $$
 
@@ -463,7 +476,7 @@ Canceling out a velcity and rearranging gives:
 
 $$ m \frac{d^2x}{dt^2}  + b \frac{dx}{dt} +  k x = 0 $$
 
-the ODE we have been working with for a damped simple harmonic oscillator. 
+the ODE we have been working with perfectly matches the general model for a damped simple harmonic oscillator. 
 
 
 
@@ -475,14 +488,14 @@ Another valuable tool is the phase space diagram, where we plot the displacement
 	
 <img
 src="{{ '/courses/math-methods/images/lec14/Phase Space Undamped.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="Circular path in phase space.."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 	
 - In a damped system, the trajectory spirals inwards towards the equilibrium point, reflecting the gradual loss of energy.
 	
 <img
 src="{{ '/courses/math-methods/images/lec14/Phase Space Damped.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="a spiral path and converges on zero in phase space."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -501,8 +514,8 @@ Let's consider the general problem of a damped simple harmonic oscillator. This 
 
 $$
 \begin{aligned}
-	F_{\text{net}} &= F_s + F_d \[0.75ex]
-	m \, a &= - k x - b v\[0.75ex]
+	F_{\text{net}} &= F_s + F_d \\[0.75ex]
+	m \, a &= - k x - b v \\[0.75ex]
 	m \, \frac{d^2x}{dt^2} &= - k x - b \frac{dx}{dt}
 \end{aligned}
 $$
@@ -543,7 +556,7 @@ There are three possible outcomes:
 
 <img
 src="{{ '/courses/math-methods/images/lec14/Damped Oscillator.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="Spiral path in phase space then converges on zero."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -564,7 +577,7 @@ Picking some initial condition and plotting the phase space diagram of this solu
 
 <img
 src="{{ '/courses/math-methods/images/lec14/Phase Overdamped.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="An arc in phase space then goes to zero."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 Notice this does not oscillate. It just goes to rest immediately. 
@@ -585,10 +598,10 @@ Picking some initial condition and plotting the phase space diagram of this solu
 
 <img
 src="{{ '/courses/math-methods/images/lec14/Phase Critical.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="A quick spiral and goes to zero but does not oscillate."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-This looks very similar to the over damped plot, but it does takes a slightly longer path to get to rest. This is the optical phase path to get to rest in the least amount of time. 
+This looks very similar to the over damped plot, but it does takes a slightly longer path in pase space to get to rest. In fact, this is the path is phase space that brings the system to zero in the least amount of time.
 
 
 
@@ -604,7 +617,7 @@ Picking some initial condition and plotting the phase space diagram of this solu
 
 <img
 src="{{ '/courses/math-methods/images/lec14/Phase Underdamped.png' | relative_url }}"
-alt="Horizontal lines at y = 0 and y = 1."
+alt="A spiral that revolved multiple times while decaying towards zero.."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 Notice this circles around and around decaying as it goes until it comes to rest at $x = 0$ and $v = 0$. 
@@ -649,7 +662,7 @@ and the roots of the characteristic equation as:
 
 $$ r = -\gamma \pm \sqrt{\gamma^2 - \omega_0^2} $$
 
-Notice, this is identical in form to the damped simple harmonic oscillator! That means the same three siutaiton are possible -- overdamped, critically damped, and underdamped -- and the form of the general solutions are the same! 
+Notice, this is identical in form to the damped simple harmonic oscillator! That means the same three siutaiton are possible -- overdamped, critically damped, and underdamped. Importantly, the form of the general solutions are the same! 
 
 
 
@@ -668,11 +681,11 @@ Notice, this is identical in form to the damped simple harmonic oscillator! That
 
 Consider a mass-spring-damper system governed by the differential equation:
 $$
-m \frac{d^2x}{dt^2} + b \frac{dx}{dt} + kx = 0,
+m \frac{d^2x}{dt^2} + b \frac{dx}{dt} + kx = 0
 $$
 where $ m $ is the mass, $ b $ is the damping coefficient, and $ k $ is the spring constant. For this problem, assume:
 $$
-m = 1 \, \text{kg}, \quad b = 2 \, \text{N}\cdot\text{s/m}, \quad k = 5 \, \text{N/m}.
+m = 1 \ \text{kg} \qquad b = 2 \ \text{N}\cdot\text{s/m} \qquad k = 5 \ \text{N/m}
 $$
 
 **Tasks:**
