@@ -22,7 +22,7 @@ nav_order: 14
 A water tank initially contains $ V_0 $ liters of water. Water is pumped into the tank at a **constant rate** $ R_{\text{in}} = \text{a constant} $. Simultaneously, water leaks out of the tank at a rate proportional to the square root of the current water volume, given by:
 
 $$
-R_{\text{out}} = k \sqrt{V(t)}
+R_{\text{out}}(t)  = k V(t)^2
 $$
 
 where $ k $ is a positive constant and $ V(t) $ is the volume of water in the tank at time $ t $.
@@ -30,7 +30,7 @@ where $ k $ is a positive constant and $ V(t) $ is the volume of water in the ta
 
 a) Write down the differential equation that governs the change in volume $ V(t) $ in the tank.
 	
-> Hint: The rate of change of the volume ($\frac{dV}{dt}$) should have something to do with the rate of water being pored in and the rate of water leaving. This is \textit{very} similar to the height of water in a bucket example we looked at previously.
+> Hint: The rate of change of the volume ($\frac{dV}{dt}$) should have something to do with the rate of water being pored in and the rate of water leaving. This is *very* similar to the height of water in a bucket example we looked at previously.
 
 	
 b) Determine the steady-state volume $ V_{\text{Steady}} $ by setting the time derivative $ \frac{dV}{dt} $ to zero.
