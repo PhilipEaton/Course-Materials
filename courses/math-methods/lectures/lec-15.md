@@ -12,17 +12,19 @@ nav_order: 15
 
 ## Additional Advanced Techniques for Homogeneous Second-Order ODEs
 
-We have already explored how damping affects the behavior of homogeneous second-order linear ODEs and how to classify systems as underdamped, critically damped, or overdamped. One additional technique that can be very useful—especially when one solution of the homogeneous equation is known. This is called the **reduction of order** method. In addition to this, we will also examine the Wronskian, which is a tools used to test if two, or more, functions are linearly independent or not. 
+We have already explored how damping affects the behavior of homogeneous second-order linear ODEs and how to classify systems as underdamped, critically damped, or overdamped. One additional technique that can be very useful, especially when one solution of the homogeneous equation is known, is called the **reduction of order** method. In addition to this, we will also examine the Wronskian, which is a tool used to test if two, or more, functions are linearly independent. 
 
 ### Reduction of Order
 
-**Reduction of order** allows you to find a second, linearly independent solution $ y_2(x) $ without having to solve the full characteristic equation again. The method involves assuming a solution of the form:
+Reduction of order allows you to find a another, linearly independent solution to the ODE without having to completely solve the full characteristic equation or, in the worst case, the full ODE via brute force. This method assumes you know one solution to the ODE already. Whether you found this solution by solving part of the characteristic equation or by making a good guess, it doesn't matter. All we care about is that we have one known solution to the differential equation we are trying to solve. 
+
+Using the solution we already know $y_1(x)$ we can guess another solution $ y_2(x) $ of the form:
 
 $$
 y_2(x) = v(x) \, y_1(x)
 $$
 
-where $ v(x) $ is an unknown function. By substituting this form into the original ODE and using the fact that $ y_1(x) $ is already a solution, you derive an ODE for $ v(x) $ that is typically first order and can be solved by standard techniques. **This process works for variable-coefficient ODEs** as well, making this method a very valuable and general process to have in your tool kit.
+where $ v(x) $ is an unknown function that we will need to find. By substituting this form into the original ODE and using the fact that $ y_1(x) $ is a solution, we can derive an ODE for $ v(x) $ that is typically of a lower order than the initial ODE was and can hopefully be solved using simpler techniques. **This process works for variable-coefficient ODEs** as well, making this method a very valuable and general process to have in your tool kit. Let's see how it plays out in a general case.
 
 Suppose you have the following homogeneous, constant-coefficient, linear ODE:
 
@@ -30,7 +32,7 @@ $$
 a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = 0
 $$
 
-and you know one of the solutions to be $ y_1(x) $, meaning:
+and that you know one of the solutions to be $ y_1(x) $, meaning:
 
 $$
 a\frac{d^2y_1}{dx^2} + b\frac{dy_1}{dx} + c\,y_1 = 0
@@ -46,7 +48,7 @@ $$
 \end{aligned}
 $$
 
-Putting this into the ODE:
+Put this into the ODE:
 
 $$
 \begin{aligned}
@@ -56,12 +58,12 @@ $$
 $$
 
 
-and we can rearranging this equation to get:
+and rearrange:
 
 $$
 \begin{aligned}
 	a\frac{d^2v}{dx^2} \, y_1 + 2 a\frac{dv}{dx} \, \frac{dy_1}{dx}  + a v \, \frac{d^2y_1}{dx^2} + b\frac{dv}{dx} \, y_1 +  b v \, \frac{dy_1}{dx} + c \, v \, y_1 &= 0\\[1.25ex]
-	a\frac{d^2v}{dx^2} \, y_1 + \left(2 a \, \frac{dy_1}{dx} + b \, y_1\right) \frac{dv}{dx}  + v \,\,\,  \underbrace{\left( a \, \frac{d^2y_1}{dx^2} +  b \, \frac{dy_1}{dx} + c \, y_1 \right)}_{=0}  &= 0 
+	a \ y_1 \ \frac{d^2v}{dx^2} + \left(2 a \, \frac{dy_1}{dx} + b \, y_1\right) \ \frac{dv}{dx}  +  \underbrace{\left( a \, \frac{d^2y_1}{dx^2} +  b \, \frac{dy_1}{dx} + c \, y_1 \right)}_{=0} \ v  &= 0 
 \end{aligned}
 $$
 
@@ -112,7 +114,7 @@ Substituting these into the original ODE and simplifying as much as possible:
 $$
 \begin{aligned}
 	y'' - y' - 2y &= 0 \\[1.25ex]
-	\bigl[ v''(x)e^{2x} + 4v'(x)e^{2x} + 4v(x)e^{2x} \bigr] - \bigl[ v'(x)e^{2x} + 2v(x)e^{2x} \bigr] - 2\bigl[ v(x)e^{2x} \bigr] &= 0 \phantom{\hspace{5cm}} \\[1.25ex]
+	\Bigl( v''(x)e^{2x} + 4v'(x)e^{2x} + 4v(x)e^{2x} \Bigr) - \Bigl( v'(x)e^{2x} + 2v(x)e^{2x} \Bigr) - 2\Bigl( v(x)e^{2x} \Bigr) &= 0 \phantom{\hspace{5cm}} \\[1.25ex]
 	v''(x)e^{2x} + 4v'(x)e^{2x} + 4v(x)e^{2x} - v'(x)e^{2x} - 2v(x)e^{2x} - 2v(x)e^{2x} &= 0  \\[1.25ex]
 	v''(x)e^{2x} + 3v'(x)e^{2x} &= 0  \\[1.25ex]
 	\Bigl(v''(x) + 3v'(x)\Bigr)e^{2x} &= 0  \\[1.25ex]
@@ -120,7 +122,9 @@ $$
 \end{aligned}
 $$
 
-Reduce the order of the ODE by making the following substitutions $ w(x) = v'(x) $, so that $ w'(x) = v''(x) $. The equation becomes:
+where we have forced $v''(x) + 3v'(x)$ to be zero since asking $e^{2x}$ to be zero would only be true at $ \rightarrow -\infty$.
+
+Notice the function $v(x)$ itself does not show up in this new relation. we can take advantage of this by making the following substitutions $ w(x) = v'(x) $, so that $ w'(x) = v''(x) $. The equation becomes:
 
 $$
 w'(x) + 3w(x) = 0
@@ -141,16 +145,16 @@ where $ A = e^{C_1} $ is an arbitrary constant.
 Since $ w(x) = v'(x) = Ae^{-3x} $, integrate to find $ v(x) $:
 
 $$
-v(x) = \int Ae^{-3x}\,dx = -\frac{A}{3}e^{-3x} + B,
+v(x) = \int Ae^{-3x}\,dx = -\frac{A}{3}e^{-3x} + B
 $$
 
-where $ B $ is another constant of integration. The second solution becomes:
+where $ B $ is another constant of integration. Thus, we have found the second solution t the differential equation to be:
 
 $$
 y_2(x) = v(x)e^{2x} = \left(-\frac{A}{3}e^{-3x} + B\right)e^{2x} = -\frac{A}{3}e^{-x} + B e^{2x}
 $$
 
-Since $ B e^{2x} $ is just a multiple of the known solution $ y_1(x) = e^{2x} $, we discard that term (or absorb it into the constant for the homogeneous solution). Choosing $ A = 3 $ for simplicity, we obtain:
+Since $ B e^{2x} $ is just a multiple of the known solution $ y_1(x) = e^{2x} $, we discard that term (or absorb it into the constant for the homogeneous solution). We will also ignore the coefficient of the first term since it can all be absorbed into the unknown constant in the general solution. This gives:
 
 $$
 y_2(x) = e^{-x}
@@ -167,6 +171,10 @@ $$
 so the general solution to the ODE is:
 
 $$
+y(x) = C_1 y_1(x) + C_2 y_2(x)
+$$
+
+$$
 y(x) = C_1e^{2x} + C_2e^{-x}
 $$
 
@@ -178,7 +186,7 @@ $$
 
 #### Reduction of Order vs. Variation of Parameters
 
-You may recall the method we covered previously called variation of parameters, which looks very similar to this process. In fact, reduction of order is can be thought of as a subset of the more general variation of parameters method. Both are powerful techniques in the study of differential equations, but they are used in distinct contexts and serve different purposes, which is why we give n them different names.
+You may recall the method we covered previously called variation of parameters, which looks very similar to this process. In fact, reduction of order is can be thought of as a subset of the more general variation of parameters method. Both are powerful techniques in the study of differential equations, but they are used in distinctly different contexts and serve different purposes, which is why we give them different names.
 
 | Feature | Reduction of Order | Variation of Parameters |
 |---|---|---|
@@ -206,9 +214,9 @@ Two functions, similar to two vectors, are said to be linearly independent if th
 
 $$ a y_1(x) + b y_2(x) = 0 $$
 
-is only possible if the constants $a$ and $b$ are both equal zero. That is, no combination of values for $a$ and $b$ will make this equation true other than $a=0$ and $b=0$. There is a small issue here. This condition for linear independence is a condition on the constants $a$ and $b$. What we would really like is a condition on the functions we can use to test for linear independence. 
+is only possible if the constants $a$ and $b$ both equal zero. That is, no combination of values for $a$ and $b$ will make this equation true other than $a=0$ and $b=0$. There is a small issue here. This condition for linear independence is a condition on the constants $a$ and $b$. What we would really like is a condition on the functions we can use to test for linear independence. 
 
-We can find such a condition on the functions by forcing new equations from the linearly independent set up. Notice we can generate another equation involving the functions by taking the derivative of the previous equation: 
+We can find such a condition on the functions by forcing new equations from the linearly independent check above. Notice we can generate another equation involving the functions by taking the derivative of the previous equation: 
 
 $$ a y_1'(x) + b y_2'(x) = 0 $$
 
@@ -261,10 +269,14 @@ $$
 \end{aligned}
 $$
 
-By assuming the matrix on the left had an inverse, we were able to get the solution $a=0$ and $b = 0$, which is the condition that implies the two functions are linearly independent. This is the condition on the functions we were looking for! For this matrix to have an inverse, its determinant must be nonzero!
+By assuming the matrix on the left had an inverse, we were able to get the solution $a=0$ and $b = 0$, which is the condition that implies the two functions are linearly independent. This is the condition on the functions we were looking for! Recall, for this matrix to have an inverse, its determinant must be nonzero! Thus, $y_1(x)$ and $y_2(x)$ are linearly independent if:
+
+$$ \begin{vmatrix}
+	y_1(x)  & y_2(x) \\ y_1'(x) & y_2'(x)
+\end{vmatrix} \ne 0 $$
 
 {% capture ex %}
-Construct the following matrix for the functions $y_1(x)$ and $y_2(x)$:
+To check if two functions are linearly independent, construct the following matrix for the functions $y_1(x)$ and $y_2(x)$:
 
 $$ \begin{bmatrix}
 	y_1(x)  & y_2(x) \\ y_1'(x) & y_2'(x)
@@ -280,7 +292,7 @@ $$ \begin{vmatrix}
 {% include result.html content=ex %}
 
 
-This process can be generalized into one of the most powerful tools in the analysis of second-order ODEs---the **Wronskian**. The Wronskian allows us to verify the linear independence of two solutions, which is crucial since the general solution of a second-order homogeneous ODE is a linear combination of two linearly independent solutions.
+This process can be generalized into one of the most powerful tools in the analysis of ODEs, the **Wronskian**. The Wronskian allows us to verify the linear independence of two solutions, which is crucial since the general solution of a second-order homogeneous ODE should be a linear combination of two linearly independent functions.
 
 **Definition:** The Wronskian for the two functions $ y_1(x) $ and $ y_2(x) $ is defined as:
 
@@ -291,9 +303,11 @@ W(y_1, y_2)(x) = \begin{vmatrix}
 \end{vmatrix} = y_1(x)y_2'(x) - y_2(x)y_1'(x)
 $$
 
-If $ W(y_1, y_2)(x) \neq 0 $ for some $ x $ in the interval of interest, then $ y_1 $ and $ y_2 $ are linearly independent.
+If $ W(y_1, y_2)(x) \neq 0 $ for all values $ x $ in the interval of interest, then $ y_1 $ and $ y_2 $ are linearly independent.
 
-This can be generalized to any number of functions by simply taking more derivatives and adding more rows. Since you need the same number of rows as columns to take the determinant, if you have $n$ functions you are testing all together, then you will need to calculate up to the $n$-th derivative for each function. In this can the Wronskian will be:
+What do we mean by, "... in the interval of interest"? By this we mean, that the Wronskian can be zero. But, if that happens for values of $x$ that we do not care about for our model, then we can ignore it and work as if the functions are linearly independent. It turns out this is just how linear independence for functions works: they can be independent for some values of $x$, but do not have to be for all values of $x$. As long as the functions are independent for the interval of $x$ values we are interested in, then we are fine.
+
+This process can be generalized to any number of functions by simply taking more derivatives and adding more rows. Since you need the same number of rows as columns to take the determinant, if you have $n$ functions you are testing all together, then you will need to calculate up to the $n$-th derivative for each function. In this can the Wronskian will be:
 
 $$
 W(y_1, y_2, \dots, y_n)(x) = \begin{vmatrix}
@@ -304,7 +318,7 @@ W(y_1, y_2, \dots, y_n)(x) = \begin{vmatrix}
 \end{vmatrix}
 $$
 
-If $W(y_1, y_2, \dots, y_n)(x) \ne 0$ for some $ x $ in the interval of interest, then $ y_1 $, $ y_2 $, \dots $ y_n $ are all linearly independent.
+If $W(y_1, y_2, \dots, y_n)(x) \ne 0$ for all $ x $ in the interval of interest, then $ y_1 $, $ y_2 $,... $ y_n $ are all linearly independent.
 
 The Wronskian provides a quick diagnostic to confirm that the solutions obtained are not merely multiples of one another. This is particularly useful when employing methods like reduction of order, where one solution is known and the second solution must be verified for independence. Without linear independence, our general solution would fail to capture the full behavior of the system.
 
@@ -358,29 +372,35 @@ $$
 
 where $ f(x) $ represents the external driving force or input. This driving term is responsible for the **steady-state** (or forced) response of the system, while the homogeneous part of the solution still represents the **transient** behavior.
 
-Instead of trying to solve this problem all at once, we generally break it into pieces. Specifically, find a homogeneous solution $y_h(x)$ to take care of the transient behavior: 
+As we saw with inhomogeneous first-order ODEs, instead of trying to solve this problem all at once, we generally break it into pieces. Specifically, find a homogeneous solution $y_h(x)$ to take care of the transient behavior: 
 
 $$
 a\frac{d^2y_h}{dx^2} + b\frac{dy_h}{dx} + c\,y_h = 0
 $$
 
-This solution we have two unknown constants that will be used to incorporate the initial conditions of the problem. 
+The solution $y_h(x)$ will have two unknown constants that will be used to incorporate the initial conditions of the problem. 
 
-The forced behavior is covered by the particular solution $y_p(x)$ whose sole purpose is the satisfy the inhomogeneous ODE:
+This solution represented the **transient response** $ of the system. That is, this is the system's natural behavior and the response is determined by the initial conditions. In a damped system, this part of the general solution typically decays over time and eventually vanishes.
+
+The forced behavior will be covered by the particular solution $y_p(x)$ whose sole purpose is the satisfy the inhomogeneous ODE:
 
 $$
 a\frac{d^2y_p}{dx^2} + b\frac{dy_p}{dx} + c\,y_p = f(x)
 $$
 
-This solution will not have any unknown constants and will be fully defined to specially account for the driving term.
+This solution represent the **steady-state response** of the system to the driving terms and will not have any unknown constants since it is fully defined by the driving term. For example, if $ f(x) $ is sinusoidal, $ y_p(x) $ will usually be a sinusoidal function at the same frequency as $ f(x) $, but with a phase shift and possibly a different amplitude. 
 
-Since this is a linear ODE, we know that the general solution can be found being simply adding these two solutions together to get:
+A particularly interesting phenomenon occurs when the driving term is sinusoidal and has a frequency equal to the natural frequency of the system. In this case, known as **resonance**, the amplitude of the steady-state response can increase dramatically. In practical applications, resonance must be carefully managed, as excessive oscillations can lead to system failure of the parts which make up the physical system.
+
+Since this is a linear ODE, the general solution can be found being simply adding these two solutions together to get:
 
 $$
 y(x) = y_h(x) + y_p(x)
 $$
 
-where, as we discussed, $ y_h(x) $ captures the transient response (which often decays over time), while $ y_p(x) $ represents the response driven by $ f(x) $.
+
+
+
 
 
 
@@ -400,9 +420,9 @@ $$
 a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + c\,y = f(x)
 $$
 
-is of a simple, standard form (e.g., polynomials, exponentials, sines, or cosines). The idea is to **guess** a form for $ y_p(x) $ that mimics the structure of $ f(x) $, but with undetermined coefficients. This guess is substituted into the ODE, and you can solve for these coefficients by matching terms. The critical point here is that **the undetermined coefficients are constants**, and do not depend on the working variable. If you make a guess, substitute it into the ODE, and find that the undetermined coefficients depend on the working variable, then you have to restart the problem and make another guess. 
+is of a simple, standard form (e.g., polynomials, exponentials, sines, or cosines). The idea is to **guess** a form for $ y_p(x) $ that mimics the structure of $ f(x) $, but with undetermined coefficients. This guess is substituted into the ODE, and you can solve for these coefficients by matching terms. This is sometimes referred to as the "guess and check" method. The critical point here is that **the undetermined coefficients are constants**, and do not depend on the working variable. If you make a guess, substitute it into the ODE, and find that the undetermined coefficients depend on the working variable, then you have to restart the problem by making another guess. 
 
-When solving a inhomogeneous second-order ODE using the method of undetermined coefficients, the form of the driving term $ f(x) $ guides our guess for the particular solution $ y_p(x) $. This takes practice to get comfortable with, but the guesses are normally well informed. The table below summarizes several common types of $ f(x) $ and the corresponding \textit{ansatz}\footnote[1]{\textit{Ansatz} is a fancy word for ``guess'' you sometimes see thrown around when people want to avoid saying they guessed the answer.} for $ y_p(x) $.
+When solving a inhomogeneous second-order ODE using the method of undetermined coefficients, the form of the driving term $ f(x) $ guides our guess for the particular solution $ y_p(x) $. This takes practice to get comfortable with, but the guesses are normally well informed. The table below summarizes several common types of $ f(x) $ and the corresponding *ansatz*. *Ansatz* is a fancy word for ``guess'' you sometimes see thrown around when people want to avoid saying they guessed the answer. Here is a nice table of *ansatz* for $ y_p(x) $ given some specific forms of possible driving terms.
 
 
 | Driving Term $f(x)$ | Guess for Particular Solution $y_p(x)$ |
@@ -416,7 +436,7 @@ When solving a inhomogeneous second-order ODE using the method of undetermined c
 
 **Note:** $P_n(x)$, $Q_n(x)$, and $R_n(x)$ represent polynomials of degree $n$.
 
-**Note:** If your initial guess for $y_p(x)$ turns out to be a solution of the homogeneous equation, multiply your guess by $x$ (or a higher power of $x$ if necessary) to ensure linear independence.
+**Important Note:** If your initial guess for $y_p(x)$ turns out to already be a solution for the homogeneous equation, multiply your guess by $x$ (or higher powers of $x$ if necessary) to ensure linear independence.
 
 This table is a handy reference to quickly determine the form of your particular solution based on the driving term, streamlining your approach to solving nonhomogeneous ODEs in physics and engineering.
 
@@ -434,7 +454,7 @@ $$
 y'' + 4y = 0
 $$
 
-which has the solution:
+which has the solution (you should check this!):
 
 $$
 y_h(x) = A\cos(2x) + B\sin(2x)
@@ -446,7 +466,7 @@ $$
 y_p(x) = C\cos(2x) + D\sin(2x)
 $$
 
-but this is the same as the homogeneous solution. The Note under the table suggest simply multiplying this guess by $x$ and trying that instead This gives: 
+but this is the same as the homogeneous solution. The Note under the *ansatz* table suggests simply multiplying this guess by $x$ and trying that instead. This gives: 
 
 $$
 y_p(x) = x \Big(C\cos(2x) + D\sin(2x)\Big) = C x \cos(2x) + D x \sin(2x)
@@ -507,7 +527,7 @@ At this point we would apply any initial conditions given for the problem.
 
 ### Specific Example: Forced Harmonic Oscillator
 
-In many real-world systems, an external force continually acts on a system, which drive it away from its natural response. The classic example is the forced harmonic oscillator, which models situations such as a mass-spring system subject to an external periodic force, or an RLC circuit driven by an AC voltage source.
+In many real-world systems, an external force continually acts on a system, which drives it away from its natural response. The classic example is the forced harmonic oscillator, which models situations such as a mass-spring system subject to an external periodic force, or an RLC circuit driven by an AC voltage source.
 
 A forced harmonic oscillator is typically governed by an inhomogeneous, second-order ODE of the form:
 
@@ -519,24 +539,10 @@ where:
 
 - $ m $ is the mass (or inductance in an electrical circuit),
 - $ c $ is the damping coefficient (or resistance),
-- $ k $ is the spring constant (or reciprocal of capacitance), and
+- $ k $ is the spring constant (or 1 over the capacitance), and
 - $ F(t) $ is the external driving force (or applied voltage).
 
-
-**General Solution Structure:** 
-
-The general solution to this ODE is given by:
-
-$$
-x(t) = x_h(t) + x_p(t)
-$$
-
-The **transient response** $ x_h(t) $ reflects the system's natural behavior determined by its initial conditions. In a damped system, these components typically decay over time. A per usual, $ x_h(t) $ is found by solving the homogeneous equation related to the inhomogeneous ODE (i.e., the ODE with the driving term removed).  
-
-The **steady-state response** $ x_p(t) $ describes how the system behaves under the driving force $F(t)$. For example, if $ F(t) $ is sinusoidal, $ x_p(t) $ will usually be a sinusoidal function at the same frequency as $ F(t) $, but with a phase shift and possibly a different amplitude. 
-
-A particularly interesting phenomenon occurs when the driving term is sinusoidal and has a frequency equal to the natural frequency of the system. In this case, known as **resonance**, the amplitude of the steady-state response can increase dramatically. In practical applications, resonance must be carefully managed, as excessive oscillations can lead to system failure of the parts which make up the physical system.
-
+Let's work through an example with numbers to keep any potential mathematical vagueness to a minimum.
 
 {% capture ex %}
 Consider a mass-spring system with $ m = 1\,\text{kg} $, $ c = 0.5\,\text{N}\cdot\text{s/m} $, and $ k = 4\,\text{N/m} $ subject to a driving force:
