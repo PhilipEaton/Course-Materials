@@ -6,12 +6,6 @@ nav_section: lectures
 nav_order: 18
 ---
 
-
-{% capture ex %}
-
-{% endcapture %}
-{% include example.html content=ex %}
-
 # Lecture 18 – Laplace Transformations II
 
 
@@ -56,7 +50,7 @@ $$ -v_0 - s x_0 + \left(s^2 + \omega^2\right) \,  X(s) = 0 \quad\implies\quad X(
 
 We can go to a Laplace transform table to find the following transformations:
 
-$$ \mathcal{L}\left[ \sin(a t) \right](s) = \frac{a}{s^2 + a^2} \hspace{1cm} \text{and } \hspace{1cm} \mathcal{L}\left[ \cos(a t) \right](s) = \frac{s}{s^2 + a^2}  $$
+$$ \mathcal{L}\left\{ \sin(a t) \right\}(s) = \frac{a}{s^2 + a^2} \hspace{1cm} \text{and } \hspace{1cm} \mathcal{L}\left\{ \cos(a t) \right\}(s) = \frac{s}{s^2 + a^2}  $$
 
 This allows us to take the inverse transform of both sides and write $x(t)$ in the following manner:
 
