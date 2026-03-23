@@ -10,7 +10,7 @@ nav_order: 18
 
 
 
-## Introduction: Continuing the Discussion
+## Continuing the Discussion
 
 In the last lecture we were discussing the use of the Laplace Transformation in solving ODEs. Recall, the Laplace Transformation is defined in the following manner:
 
@@ -18,11 +18,11 @@ $$
 \mathcal{L}\{f(t)\}(s) = F(s) = \int\limits_0^\infty e^{-st} f(t) \, dt
 $$
 
-and has one very important property for solving ODEs:
+and has one very important property for solving ODEs; how it transforms derivatives into polynomials:
 
 $$ \mathcal{L}\left\{\frac{d^n f}{dt^n}\right\}(s) = s^n \,  F(s) - s^{n-1} f(0)  - s^{n-2} \left.\frac{df}{dt}\right|_0 \dots - s \left.\frac{d^{n-2}f}{dt^{n-2}}\right|_0 - \left.\frac{d^{n-1}f}{dt^{n-1}}\right|_0   $$
 
-it transforms derivatives in to an algebraic expression. This means we can take the Laplace transform of an ODE and turn it into an algebra problem. This leads itself to the following scheme for solving ODEs:
+This means we can take the Laplace transform of an ODE and turn it into an algebra problem. This leads itself to the following scheme for solving ODEs:
 
 
 <img
@@ -30,13 +30,13 @@ src="{{ '/courses/math-methods/images/lec18/Chart.png' | relative_url }}"
 alt="A flow chart showing how the laplace transformation gets around the issue of not being able to direction solve a differential equation by transforming it into an algebra problem, solving the algebra, and then taking the inverse of the transformation to get the solution."
 style="display:block; margin:1.5rem auto; max-width:600px; width:70%;">
 
-In the event, as indicated above, the ability to directly solve the ODE, taking the Laplace Transform can give us traction where otherwise we could end up stuck. 
+In the event, as indicated above, the ability to directly solve the ODE is not possible or is not obvious how it can be done, the Laplace Transform gives us traction where otherwise we could end up stuck. 
 
 Let's continue our discussion of this incredibly powerful tool by warming up with a simple physical application: a harmonic oscillator. 
 
 
 {% capture ex %}
-Consider a mass attached to a string without any friction:
+Consider a mass attached to a spring without any friction:
 	
 $$ \frac{d^2x}{dt^2} = - \omega^2 x $$
 
@@ -44,11 +44,11 @@ We can take the Laplace transform of this equation to get:
 
 $$ -x'(0) - s x(0) + s^2 \,  X(s) = - \omega^2 \, X(s) $$
 
-We can take the following initial conditions $x(0) = x_0$ and $x'(0) = v_0$ -- the initial position and velocity, respectively. This gives:
+Putting in the following initial conditions $x(0) = x_0$ and $x'(0) = v_0$, the initial position and velocity, respectively, gives us:
 
 $$ -v_0 - s x_0 + \left(s^2 + \omega^2\right) \,  X(s) = 0 \quad\implies\quad X(s)  = \frac{v_0 + s x_0}{s^2 + \omega^2} $$
 
-We can go to a Laplace transform table to find the following transformations:
+We can go to a Laplace transform table from the previous lecture to find the following transformations:
 
 $$ \mathcal{L}\left\{ \sin(a t) \right\}(s) = \frac{a}{s^2 + a^2} \hspace{1cm} \text{and } \hspace{1cm} \mathcal{L}\left\{ \cos(a t) \right\}(s) = \frac{s}{s^2 + a^2}  $$
 
@@ -64,7 +64,7 @@ We can take the Laplace transform of this equation to get:
 
 $$ -x'(0) - s x(0) + s^2 \,  X(s) = - \omega^2 \, X(s) - 2 \gamma \left( - x(0) + s \,  X(s)  \right) $$
 
-We will again take the following initial conditions $x(0) = x_0$ and $x'(0) = v_0$ -- the initial position and velocity, respectively -- to get:
+Again, putting in the initial conditions $x(0) = x_0$ and $x'(0) = v_0$  we get:
 
 $$ -v_0 - s x_0 + s^2 X(s) =  - \omega^2  X(s) + 2 \gamma x_0 - 2 \gamma s \,  X(s)  \quad\implies\quad \Big(s^2 + 2 \gamma s + \omega^2\Big) X(s) =  v_0 + (s + 2 \gamma) x_0   $$
 
@@ -86,7 +86,7 @@ Applying this gives:
 
 $$  X(s) =  \frac{v_0}{  (s + \gamma)^2 + \omega^2 - \gamma^2   } + \frac{(s + 2 \gamma) x_0}{  (s + \gamma)^2 + \omega^2 - \gamma^2  } $$
 
-From this we can see that $ a = \gamma $ and $ b = \sqrt{\omega^2 - \gamma^2}$. WE have to do a minor rearrangement to get the inverse transformation to perfectly align:
+From this we can see that $ a = \gamma $ and $ b = \sqrt{\omega^2 - \gamma^2}$. We have to do a minor rearrangement to get the inverse transformation to perfectly align:
 
 $$  X(s) =  \frac{\sqrt{\omega^2 - \gamma^2}}{  (s + \gamma)^2 + \omega^2 - \gamma^2   } \,\,\, \frac{v_0 + \gamma x_0}{\sqrt{\omega^2 - \gamma^2}} + \frac{s + \gamma}{  (s + \gamma)^2 + \omega^2 - \gamma^2  } \,\,\, x_0 $$
 
@@ -120,7 +120,7 @@ $$ x(t) = e^{-\gamma t} \left(\tfrac{v_0 + \gamma x_0}{\omega_d}  \, \sin(\omega
 
 ## Step Functions and Discontinuous Inputs
 
-So far, we’ve primarily dealt with differential equations where the forcing function (i.e., the inhomogeneous term in the ODE) is continuous and well-behaved. However, real-world systems often involve abrupt changes, such as turning a switch on or off, applying an instantaneous force (like kicking a ball), or engaging a control mechanism at a specific time (like rotors in self-righting robots). These situations introduce discontinuities, which we need a way to handle mathematically.
+So far, we’ve primarily dealt with differential equations where the forcing function (i.e., the inhomogeneous term in the ODE) is continuous and well-behaved. However, real-world systems often involve abrupt changes, such as turning a switch on or off, applying an instantaneous force (like kicking a ball), or engaging a control mechanism at a specific time (like rotors in self-righting robots). These situations introduce discontinuities, and we need a way to handle them mathematically.
 
 To model such behavior, we use the **Heaviside step function**, a tool that allows us to define piecewise functions in a clean and structured manner.
 
@@ -131,19 +131,19 @@ The **unit step function**, also called the Heaviside function and denoted $ U(t
 $$
 U(t-c) =
 \begin{cases}
-	0, & t < c, \\
-	1, & t \geq c.
+	0, & t < c \\
+	1, & t \geq c
 \end{cases}
 $$
 
-This function represents a switch that is off for all $t<c$ and turns on, and remains on at $ t = c $.
+This function represents a switch that is off for all $t<c$ and turns on at $ t = c $ and remains on.
 
 The Heaviside function allows us to describe piecewise-defined forcing functions compactly. For example, the function:
 
 $$
 f(t) =
 \begin{cases}
-	0, & t < 3, \\
+	0, & t < 3 \\
 	5, & t \geq 3
 \end{cases}
 $$
@@ -167,10 +167,12 @@ $$
 
 can be written as:
 
-$$ g(t) = t \left(1 - U(t-3) \right) + e^{-t} \left(U(t-3) - U(t-8) \right) + 0 \, U(t - 8)  $$
-$$ g(t) = t \left(1 - U(t-3) \right) + e^{-t} \left(U(t-3) - U(t-8) \right)  $$
+$$ g(t) = t \Big(1 - U(t-3) \Big) + e^{-t} \Big(U(t-3) - U(t-8) \Big) + 0 \, U(t - 8)  $$
 
-where terms like $\left(U(t-3) - U(t-8) \right)$ turn on at $t-3$ and off at $t = 8$. 
+
+$$ g(t) = t \Big(1 - U(t-3) \Big) + e^{-t} \Big(U(t-3) - U(t-8) \Big)  $$
+
+where terms like $\left(U(t-3) - U(t-8) \right)$ turn on at $t-3$ and off at $t = 8$. You are encouraged to check this logic out for yourself! 
 
 This notation is incredibly useful when solving differential equations with Laplace transforms because step functions have a well-defined transform.
 
@@ -189,7 +191,7 @@ $$
 \end{aligned}
 $$
 
-More generally, if we have a function $ g(t) $ that turns on at $ t = c $, we express it as $ g(t - c) U(t-c) $. Here $g(t-c)$ translates $g(t)$ to be centered on $t=c$ and the unit setp function it what turns it on at $t=c$ and keeps it off before that time. Its Laplace transform can be found to be:
+More generally, if we have a function $ g(t) $ that turns on at $ t = c $, we express it as $ g(t - c) U(t-c) $. Here $g(t-c)$ translates $g(t)$ to be centered on $t=c$ and the unit step function turns it on at $t=c$ and keeps it off before that time. Its Laplace transform can be found to be:
 
 $$
 \begin{aligned}
@@ -222,7 +224,7 @@ $$
 y'' + 2y' + 5y = 10 U(t-3)
 $$
 
-with the initial conditions $y(0) = 0$ and $y'(0) = 0$. The could represent a damped simple harmonic oscillator that is started from rest at the equilibrium position and set into motion by a constant acceleration of $10$ m/s$^2$ acting to the right. 
+with the initial conditions $y(0) = 0$ and $y'(0) = 0$. This could represent a damped simple harmonic oscillator that is started from rest at the equilibrium position and set into motion by a constant acceleration of $10$ m/s$^2$ acting to the right. 
 
 **Step 1: Take the Laplace Transform**
 
@@ -255,15 +257,17 @@ $$
 **Step 3: Invert and get the solution $ y(t) $**
 
 
-To invert this, we need to find the inverse of:
+To invert this, we will make sure of the identity we just found for the Laplace Transformation of a function multiplied by the unit step function: 
+
+$$ \mathcal{L}^{-1}\Big\{ \frac{10 e^{-3s}}{s(s^2 + 2s + 5)} \Big\} = U(t-3)\mathcal{L}^{-1}\Big\{ \frac{10}{s(s^2 + 2s + 5)} \Big\} $$
+
+So, to fully invert this we need to find the inverse of:
 
 $$
 \frac{10}{s(s^2 + 2s + 5)}
 $$
 
-since we have the following identify from the table of Laplace Transformations:
-
-$$ \mathcal{L}^{-1}\Big\{ \frac{10 e^{-3s}}{s(s^2 + 2s + 5)} \Big\} = U(t-3)\mathcal{L}^{-1}\Big\{ \frac{10}{s(s^2 + 2s + 5)} \Big\} $$
+and them put everything together.
 
 The fraction we are interested in can be simplified using partial fraction decomposition and following that up with known inverse transforms. First, partial fractions:
 
@@ -273,7 +277,12 @@ $$
 
 Taking $s = 0$ gives $ 10 = A (0 + 0 + 5) + (B(0) + C) (0) \implies A = 2 $. So we have $10 = 2 (s^2 + 2s + 5) + (Bs + C) s $.
 
-To find $B$ and $C$ we can pick two different values for $s$, like $s = 1$ giving $ 10 = 2 (1 + 2 + 5) + (B + C) \implies B + C = -6 $ and $s = -1$ giving $10 = 2 (1 - 2 + 5) - (-B + C) \implies -B + C =   -2 $. Give us the system of equations:
+To find $B$ and $C$ we can pick two different values for $s$, like 
+
+- $s = 1$ giving $ 10 = 2 (1 + 2 + 5) + (B + C) \implies B + C = -6 $, and 
+- $s = -1$ giving $10 = 2 (1 - 2 + 5) - (-B + C) \implies -B + C =   -2 $. 
+
+This gives us the system of equations:
 
 $$
 \begin{aligned}
@@ -290,11 +299,11 @@ Completing the square in denominator of the second term gives us:
 
 $$ \frac{10}{s(s^2 + 2s + 5)} = \frac{2}{s} - \frac{2s + 4 }{ (s+1)^2 + 4} = \frac{2}{s} - \frac{2(s + 1) }{ (s+1)^2 + 4} - \frac{2 }{ (s+1)^2 + 4}  $$
 
-Taking the inverse of this gives:
+Taking the inverse of this gives (verify this on your own!):
 
 $$ \mathcal{L}^{-1}\Big\{ \frac{10}{s(s^2 + 2s + 5)} \Big\} = 2 - 2 e^{-t}\cos(2t) - e^{-t}\sin(2t) $$
 
-which leaves us with, remembering we have to shift the function to start at $t=3$:
+Remembering we have to shift the function to start at $t=3$, we are left with the following solution:
 
 $$
 y(t) = U(t - 3) \Big( 2 - 2 e^{-(t-3)}\cos\big(2(t-3)\big) - e^{-(t-3)}\sin\big(2(t-3)\big) \Big)
@@ -302,7 +311,7 @@ $$
 
 **Step 4: Interpret the Solution**
 
-This result shows that before $ t = 3 $, there is no response ($ y = 0 $). After $ t = 3 $, the system oscillates with a damped sine/cosine wave, activated by the step function. Notice the steady state solution is $y_\text{Steady} = 2$, which means the system till settle slightly off center. This makes sense since the applied force is a constant force pushing to system in one direction. The systems settling in an off center position makes sense. 
+This result shows that before $ t = 3 $, there is no response ($ y = 0 $). After $ t = 3 $, the system oscillates with a damped sine/cosine wave, activated by the step function. Notice the steady state solution is $y_\text{Steady} = 2$, which means the system will settle slightly off center. This makes sense since the applied force is a constant force pushing to system in one direction. That the systems will settle in an off center position makes sense. 
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -315,11 +324,11 @@ This result shows that before $ t = 3 $, there is no response ($ y = 0 $). After
 
 ## Application to Mechanical and Electrical Systems
 
-Laplace transforms shine in physics and engineering because they provide a systematic way to solve differential equations that describe real-world systems. Mechanical oscillators, electrical circuits, and even control systems all follow the same mathematical principles—differential equations governing how a system responds to external inputs. Let's consider more examples of how physical systems respond to external driving forces of various types. 
+Laplace transforms shine in physics and engineering because they provide a systematic way to solve differential equations that describe real-world systems. Mechanical oscillators, electrical circuits, and even control systems all follow the same mathematical principles, all differential equations governing how a system responds to external inputs. Let's consider more examples of how physical systems respond to external driving forces of various types. 
 
 ### Mechanical Systems: The Damped Harmonic Oscillator
 
-We have already considered a damped simple harmonic oscillator. We can extend this example by applying an external driving force which pushes the system away from its natural oscillation and into a new and interesting steady state. This type of system can be modeled using the following ODE
+We have already considered a damped simple harmonic oscillator. We can extend this example by applying an external driving force which pushes the system away from its natural oscillation and into a new and interesting steady state. As we have previously seen, this type of system can be modeled using the following ODE:
 
 $$
 m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx = f(t)
@@ -346,7 +355,7 @@ where:
 - $ \omega_0^2 = \tfrac{k}{m} $ is the natural frequency of oscillation for the undamped system.
 
 
-For this example let's assuming zero initial conditions so that we are only considering how the system responds to the driving force $f(t)$. Taking the Laplace Transform gives:
+For this example let's assume the initial conditions are both zero (zero initial position and velocity). This means we will only be considering how the system responds to the driving force $f(t)$. Taking the Laplace Transform, using thee conditions, gives:
 
 $$
  s^2 X(s) + 2 \gamma s X(s) + \omega_0^2 X(s) = \frac{1}{m} F(s)
@@ -364,11 +373,11 @@ $$
 X(s) = \frac{F(s)}{(s + \gamma)^2 + \omega_0^2 - \gamma^2}
 $$
 
-This algebraic equation lets us directly analyze how the system responds to different types of forcing functions. For example, if $ F(t) $ is a step function (suddenly applying and sustaining a force), we can substitute $ F(s) = \frac{F_0}{s} $ and solve for $ X(s) $. The inverse Laplace transform then gives us the time-domain response.
+This algebraic equation lets us directly analyze how the system responds to different types of forcing functions. For example, if $ F(t) $ is a step function (suddenly applying and sustaining a force), we can substitute $ F(s) = \frac{F_0}{s} e^{-sc} $ and solve for $ X(s) $. The inverse Laplace transform then gives us the time-domain response.
 
 
 {% capture ex %}
-Let’s consider a unit impulse, $ F(t) = j \delta(t) $, where $j$ represents the amount of momentum transferred to the system (i.e., the impulse), applied to a mass-spring system without damping ($ \gamma = 0 $). Here $\delta(t)$ represents an instantaneous "kick" to the system at a time $t=0$. This function is called the Dirac-Delta Function. We will leave a detailed investigation into the properties of this function for a later lecture (Mathematical Physics) and must be satisfied for now with our simple conceptual understanding of this function--that being an instantaneous `kick'.  
+Let’s consider a unit impulse, $ F(t) = j \ \delta(t) $, where $j$ represents the amount of momentum transferred to the system (i.e., the impulse), applied to a mass-spring system without damping ($ \gamma = 0 $). Here $\delta(t)$ represents an instantaneous "kick" to the system at a time $t=0$. This function is called the Dirac-Delta Function. We will leave a detailed investigation into the properties of this function for a later lecture (Mathematical Physics) and must be satisfied for now with our simple conceptual understanding of this function; that being the delta function represent an instantaneous `kick'.  
 
 The governing ODE for this situation can be given as:
 
@@ -376,7 +385,7 @@ $$
 \frac{d^2x}{dt^2} + \omega_0^2 x = \frac{j}{m} \delta(t)
 $$
 
-Taking the Laplace transform:
+where we have already divided by the mass $m$. Taking the Laplace transform, using the table on the previous lecture for the transformation of the delta function:
 
 $$
 s^2 X(s) + \omega_0^2 X(s) = \frac{j}{m}
@@ -400,7 +409,7 @@ $$
 x(t) = \frac{j}{m\omega_0} \sin(\omega_0 t)
 $$
 
-This result tells us that an impulse applied at $ t = 0 $ causes the system to oscillate at its natural frequency. This is exactly the expected response: a sudden push on a mass-spring system results in free oscillations as if began from $x_0=0$ with some non-zero initial velocity $v_0 = \tfrac{j}{m}$. This makes sense since $j$ represented the momentum transferred via the `kick', which means $j/m$ is velocity the mass will possess as a result. 
+This result tells us that an impulse applied at $ t = 0 $ causes the system to oscillate at its natural frequency. This is exactly the expected response: a sudden push on a mass-spring system results in free oscillations as if it began at $x_0=0$ with some non-zero initial velocity $v_0 = \tfrac{j}{m}$. This makes sense since $j$ represented the momentum transferred via the `kick', which means $j/m$ is the velocity the mass will possess as a result of the kick. 
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -468,7 +477,13 @@ Before we can take the inverse, we will need to apply partial fractions:
 
 $$ \frac{I_0}{s(s + \omega_C^2)} = \frac{A}{s} + \frac{B}{s + \omega_C^2} \quad\implies\quad I_0 = A (s + \omega_C^2) + B s $$
 
-Taking $s = 0$ gives $I_0 = A (0 + \omega_C^2) + 0 \implies A = \frac{I_0}{\omega_C^2} $ and taking $s = - \omega_C^2$ gives $I_0 = A (0) - B \omega_C^2 \implies B = - \frac{I_0}{\omega_C^2}  $ leaving us with:
+Taking: 
+
+$s = 0$ gives $I_0 = A (0 + \omega_C^2) + 0 \implies A = \frac{I_0}{\omega_C^2} $, and 
+
+$s = - \omega_C^2$ gives $I_0 = A (0) - B \omega_C^2 \implies B = - \frac{I_0}{\omega_C^2}  $ 
+
+This leaves us with:
 
 $$ \frac{I_0}{s(s + \omega_C^2)} = \frac{I_0}{\omega_C^2} \left( \frac{1}{s} - \frac{1}{s + \omega_C^2} \right) $$
 
@@ -478,7 +493,7 @@ $$
 q(t) = \frac{I_0}{\omega_C^2}  \left( 1 - e^{-\omega_C^2 t} \right) = C V_0 \left( 1 - e^{- t/RC} \right)
 $$
 
-Since $ I(t) = dq/dt $, the current response is:
+Since $ I(t) = dq/dt $, the current response will be:
 
 $$
 I(t) = \frac{V_0}{R} e^{-t/RC}
