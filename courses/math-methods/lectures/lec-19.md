@@ -13,9 +13,11 @@ nav_order: 19
 ## Motivation: Why Study Systems of ODEs?
 
 Up until now, we've only worked with models represented by a single differential equation. For example, only one differential equation was needed to model the motion of a simple harmonic oscillator with damping, the ODE being given by an application of Newton's Second Law and force analysis. That is, we've been solving equations of the form:
+
 $$
 \frac{dy}{dt} = f(y,t)
 $$
+
 where we track a *single* unknown function, $ y(t) $, over time. However, real-world systems often involve multiple interacting components, leading to **coupled** differential equations—where two or more unknown functions evolve together. This is where **systems of ODEs** come into play. 
 
 In the context of coupled ODEs, the word ``coupled" can be interpreted as ``connected." The connection typically arises because the different variables in the system interact in some way—meaning the rate of change of one variable depends on the value of another. Often, the strength of this connection is governed by some physical constant, which we call the coupling constant. The coupling constant determines how strongly the variables influence each other. You will hear this term used anywhere coupled ODEs or coupled systems are being analyzed, from masses connected by springs to quantum fields representing protons and electrons coupling together in quantum field theory.
@@ -37,25 +39,10 @@ In all these cases, we need a way to describe the simultaneous evolution of mult
 To illustrate why coupled equations arise naturally, consider a simple example: two masses connected by a spring. In this case the coupling constant will be the spring constant of the spring holding both masses together. 
 
 <img
-src="{{ '/courses/math-methods/images/lec19/Case 1.png' | relative_url }}"
+src="{{ '/courses/math-methods/images/lec19/MassesAttachedByASpring.png' | relative_url }}"
 alt=""
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
-\begin{center}
-	\begin{tikzpicture}
-		% Draw masses
-		\filldraw[blue] (-2,0) rectangle (-1,1);
-		\filldraw[blue] (2,0) rectangle (3,1);
-		
-		% Draw spring
-		\draw[thick,decorate,decoration={coil,aspect=0.6,segment length=4mm,amplitude=3mm}] (-1,0.5) -- (2,0.5);
-		
-		% Labels
-		\node[left] at (-2,0.5) {\large $m_1$};
-		\node[right] at (3,0.5) {\large $m_2$};
-		\node[above] at (0.5,1) {\large $k$};
-	\end{tikzpicture}
-\end{center}
 
 Each mass moves according to Newton’s Second Law:
 
@@ -167,6 +154,7 @@ Let’s say we have the system:
 $$
 \frac{dx_1}{dt} = 3x_1 + 4x_2
 $$
+
 $$
 \frac{dx_2}{dt} = -x_1 + 2x_2
 $$
@@ -415,9 +403,7 @@ a \\ b
 \end{bmatrix}
 $$
 
-where we have let $\vec{v} = \begin{bmatrix}
-	a \\ b 
-\end{bmatrix}$. Taking the relation resulting from Row 2, we get:
+where we have let $\vec{v} = \begin{bmatrix} a \\ b  \end{bmatrix}$. Taking the relation resulting from Row 2, we get:
 
 $$ a + (1-\lambda)b = 0 \implies a = (\lambda - 1) b $$
 
@@ -536,9 +522,7 @@ $$
 \end{bmatrix}
 $$
 
-where we have let $\vec{v} = \begin{bmatrix}
-	a \\ b 
-\end{bmatrix}$. Taking the relation resulting from Row 1, we get:
+where we have let $\vec{v} = \begin{bmatrix} a \\ b  \end{bmatrix}$. Taking the relation resulting from Row 1, we get:
 
 $$ (5 - \lambda) a -2 b = 0 \implies b = \frac{1}{2} (5 - \lambda) a $$
 
@@ -572,7 +556,8 @@ $$ \vec{x}(t) = C_1 \begin{bmatrix}
 2 \\ \frac{9 + \sqrt{57}}{2}
 \end{bmatrix} e^{\left(\tfrac{1 - \sqrt{57}}{2}\right)  t}   $$
 
-**Interpretation of the Solution**\\
+
+**Interpretation of the Solution**
 
 Since $ \lambda_1 $ is positive and $ \lambda_2 $ is negative, this system exhibits **saddle point behavior**. That means:
 
@@ -646,6 +631,7 @@ To illustrate this, let's consider some common cases.
 If the real portion of both eigenvalues of $ \mathbf{A} $ are negative, solutions will decay toward the origin as $ t \to \infty $.
 
 Consider:
+
 $$
 \mathbf{A} =
 \begin{bmatrix}
@@ -692,6 +678,7 @@ If the real portion of both eigenvalues are positive, solutions tend away from t
 
 
 Consider:
+
 $$
 \mathbf{A} =
 \begin{bmatrix}
@@ -733,6 +720,7 @@ If the real portion of one eigenvalue is positive and the other is negative, the
 
 
 Consider:
+
 $$
 \mathbf{A} =
 \begin{bmatrix}
@@ -772,6 +760,7 @@ style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 If the eigenvalues are complex, solutions exhibit oscillatory motion. The real part determines whether the spirals decay (stable spiral) or grow (unstable spiral).
 
 Consider:
+
 $$
 \mathbf{A} =
 \begin{bmatrix}
@@ -820,19 +809,25 @@ style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 ## Inhomogeneous Systems and the Method of Undetermined Coefficients
 
 So far, we’ve focused on **homogeneous** systems of ODEs of the form:
+
 $$
 \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x}
 $$
+
 These systems describe the natural evolution of a system without any external inputs. But in many real-world applications, systems are **forced** by an external influence—be it an applied voltage in an electrical circuit, an external force in a mechanical system, or an input function in a control system.
 
 To model these effects, we consider an **inhomogeneous** system:
+
 $$
 \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x} + \vec{f}(t)
 $$
+
 where $ \vec{f}(t) $ represents the external forcing functions written as a vector. Our goal is to find a solution $ \vec{x}(t) $, which consists of two parts:
+
 $$
 \vec{x}(t) = \vec{x}_h(t) + \vec{x}_p(t),
 $$
+
 where, as we are familiar with already, $ \vec{x}_h(t) $ is the **homogeneous solution**, which solves $ \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x} $, and $ \vec{x}_p(t) $ is the **particular solution**, which accounts for the inhomogeneous term $ \vec{f}(t) $.
 
 ### Choosing a Strategy: Why Use Undetermined Coefficients?
@@ -1003,25 +998,10 @@ We now bring everything together by looking at how systems of ODEs naturally ari
 One of the simplest and most illustrative examples of a system of ODEs is a **coupled mass-spring system**. Suppose we have two masses, $ m_1 $ and $ m_2 $, connected by springs with constants $ k_1 $ and $ k_2 $, as shown below:
 
 
-IMG
-$$
-\begin{tikzpicture}
-	% Masses
-	\draw[thick] (-1,0) rectangle (0,0.5) node[pos=0.5] {$ m_1 $};
-	\draw[thick] (2,0) rectangle (3,0.5) node[pos=0.5] {$ m_2 $};
-	
-	% Springs
-	\draw[thick,decorate,decoration={coil,aspect=0.5,segment length=4mm,amplitude=3mm}] (-4,0.25) -- (-1,0.25) node[pos=0.5, above = 8] {$ k_1 $};
-	\draw[thick,decorate,decoration={coil,aspect=0.5,segment length=4mm,amplitude=3mm}] (0,0.25) -- (2,0.25)  node[pos=0.5, above = 8] {$ k_2 $};
-	
-	% Wall
-	\draw[thick] (-4,-0.2) -- (-4,0.7);
-	
-	% Positions
-	\draw[thick, -{Stealth[scale=1.1]}] (-4,-0.5) -- (-1,-0.5) node[right] {$x_1$};
-	\draw[thick, -{Stealth[scale=1.1]}] (-4,-1) -- (2,-1) node[right] {$x_2$};
-\end{tikzpicture}
-$$
+<img
+src="{{ '/courses/math-methods/images/lec19/CoupledMasses.png' | relative_url }}"
+alt=""
+style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
 
 Let $ x_1(t) $ and $ x_2(t) $ describe the displacements of the two masses from the left wall. By applying Newton’s Second Law to each mass, we obtain the system:
 
@@ -1150,6 +1130,7 @@ This gives us the following general solution:
 $$
 \vec{x}(t) = C_1 \vec{v}_1 \cos(\omega_1 t) + C_2 \vec{v}_1 \sin(\omega_1 t) + C_3 \vec{v}_2 \cos(\omega_2 t) + + C_4 \vec{v}_2 \sin(\omega_2 t)
 $$
+
 where $\omega_1$ and $\omega_2$ are the values found after removing out the imaginary $i$ when taking the square roots of their squared values found previously (i.e., the eigenvalues).
 {% endcapture %}
 {% include example.html content=ex %}
