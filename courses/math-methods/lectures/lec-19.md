@@ -18,25 +18,28 @@ $$
 \frac{dy}{dt} = f(y,t)
 $$
 
-where we track a *single* unknown function, $ y(t) $, over time. However, real-world systems often involve multiple interacting components, leading to **coupled** differential equations—where two or more unknown functions evolve together. This is where **systems of ODEs** come into play. 
+where we track a *single* unknown function, $ y(t) $, over time. However, real-world systems often involve multiple interacting components, often resulting in **coupled** differential equations where two or more unknown functions evolve together. This is where systems of ODEs come into play. 
 
-In the context of coupled ODEs, the word ``coupled" can be interpreted as ``connected." The connection typically arises because the different variables in the system interact in some way—meaning the rate of change of one variable depends on the value of another. Often, the strength of this connection is governed by some physical constant, which we call the coupling constant. The coupling constant determines how strongly the variables influence each other. You will hear this term used anywhere coupled ODEs or coupled systems are being analyzed, from masses connected by springs to quantum fields representing protons and electrons coupling together in quantum field theory.
+In the context of coupled ODEs, the word "coupled" can be interpreted as "connected." The connection typically arises because the different variables in the system interact in some way. Often, the strength of this connection is governed by some physical constant, which we call the coupling constant. For example, in the gravitational force between two objects $G$ is the coupling constant which helps dictate the strength of the force between the two objects. 
 
-Many physical, biological, and engineering systems are inherently coupled, **multi-variable problems**--or connected, multi-variable problems . These systems describe multiple dependent variables whose mutual connections influence each other as they evolve over time. Some specific examples include:
+The coupling constant determines how strongly the variables influence each other. In the case of Newtonian gravity, if $G$ were changed to 0, then gravity would vanish. If it were increased in magnitude, then the strength of gravity would increase, and etc. 
 
+You will hear the term "coupled" used often when connected/interacting objects/systems are being analyzed, from masses connected by springs to quantum fields representing protons and electrons coupling together in quantum field theory.
+
+Many physical, biological, and engineering systems are inherently coupled, multi-variable problems. These systems describe multiple dependent variables whose mutual connections influence each other as they evolve over time. Some specific examples include:
 
 - **Mechanical systems:** Two masses connected by a spring influence each other’s motion.
 - **Electrical circuits:** Current flowing through multiple components interacts through Kirchhoff’s laws.
 - **Chemical reactions:** Concentrations of different substances change in response to reaction rates.
 - **Population models:** Predator and prey populations depend on each other’s growth rates.
-- **Quantum mechanics:** The evolution of quantum states depends on how the state interact with one another if they are not orthogonal.
+- **Quantum mechanics:** The evolution of quantum states depends on how the states interact with one another if they are not orthogonal.
 
 
 In all these cases, we need a way to describe the simultaneous evolution of multiple dependent variables. That’s exactly what systems of ODEs allow us to do.
 
 ### From One Equation to Many
 
-To illustrate why coupled equations arise naturally, consider a simple example: two masses connected by a spring. In this case the coupling constant will be the spring constant of the spring holding both masses together. 
+To illustrate who coupled equations arise naturally, consider a simple example: two masses connected by a spring. In this case the coupling constant will be the spring constant of the spring holding both masses together. 
 
 <img
 src="{{ '/courses/math-methods/images/lec19/MassesAttachedByASpring.png' | relative_url }}"
@@ -54,7 +57,7 @@ $$
 m_2 \frac{d^2x_2}{dt^2} = -k(x_2 - x_1)
 $$
 
-Notice that the acceleration of $ m_1 $ depends on $ x_2 $, and vice versa. This means we **cannot** solve these equations independently. Instead, we have a **coupled system of equations**, where the two functions $ x_1(t) $ and $ x_2(t) $ must be solved together.
+Notice that the acceleration of $ m_1 $ depends on $ x_2 $, and vice versa. This means we cannot solve these equations independently. Instead, we have a **coupled system of equations**, where the two functions $ x_1(t) $ and $ x_2(t) $ must be solved together.
 
 The most efficient way to analyze and solve coupled systems like this is through **matrix notation**. To see why, let’s first rewrite the equations in a cleaner form:
 
@@ -106,14 +109,14 @@ $$
 \end{bmatrix} \vec{x}
 $$
 
-This formulation highlights the key role of the **coefficient matrix**, which encodes the coupling between the two masses. As we will see, solving this system reduces to understanding the properties of this matrix—specifically, its eigenvalues and eigenvectors.
+This formulation highlights the key role of the **coefficient matrix**, which encodes the coupling between the two masses. As we will see, solving this system reduces to understanding the properties of the coefficient matrix; specifically, its eigenvalues and eigenvectors.
 
 Before solving this problem, let’s take a step back and consider a slightly more general set up.
 
 
 ## Writing a System of ODEs in Matrix Form
 
-Now that we've seen why and how systems of ODEs naturally arise in physics and engineering, we need a structured way to express them. As we just saw, the best tool for this job is to use matrices and vectors in their compact **matrix notation** form.
+Now that we've discussed why and have seen how systems of ODEs naturally arise in physics and engineering, we need a structured way to express them. As we just saw, the best tool for this job is to use matrices and vectors in their compact **matrix notation** form.
 
 To illustrate, let’s consider a simple system of two coupled, first-order ODEs:
 
@@ -273,11 +276,11 @@ $$
 \frac{d}{dt} f(t) = a f(t)
 $$
 
-This is interesting because the derivative operator acts on $ f(t) $ and returns the same function multiplied by a constant. This mirrors the concept of **eigenvalues and eigenvectors**, except instead of a vector, we have a function acting as an *eigenfunction* of the derivative operator. This suggests that exponentials are natural candidates for solutions to differential equations, and it the main reason they seem to appear in almost every solution to an ODE we have seen thus far.
+This is interesting because the derivative operator acts on $ f(t) $ and returns the same function multiplied by a constant. This mirrors the concept of **eigenvalues and eigenvectors**, except instead of a vector, we have a function acting as an *eigenfunction* of the derivative operator. This suggests that exponentials are natural candidates for solutions to differential equations, and is the main reason they seem to appear in almost every solution to an ODE we have seen thus far.
 
-So, to answer the first question: how to best satisfy the derivative structure of our system, we can **assume the solution has an exponential dependence on the working variable**.
+So, to answer the first question: how to best satisfy the derivative structure of our system, we can assume the solution has an exponential dependence on the working variable.
 
-The second question is one we already answered in linear algebra. The best way to handle the multidimensional nature of the problem is to apply an **eigenvalue/eigenvector analysis** to the system. This leads us to an educated guess for the form of the solution:
+The second question is one we already answered in linear algebra. The best way to handle the multidimensional nature of the problem is to apply an eigenvalue/eigenvector analysis to the system. This leads us to an educated guess for the form of the solution:
 
 $$
 \vec{x}(t) = \vec{v} e^{\lambda t}
@@ -319,9 +322,10 @@ The constants $ C_1, C_2, \dots, C_n $ are determined by the initial conditions 
 
 Each term in the general solution represents a **mode** of the system’s behavior. The eigenvalues $ \lambda_1, \lambda_2, \dots, \lambda_n $ determine the growth, decay, and/or oscillation frequency of each mode in the following manners:
 
-- If all eigenvalues are negative, solutions decay to zero (stable system).
-- If any eigenvalue is positive, at least one mode grows exponentially (unstable system).
+- If all eigenvalues are real and negative, solutions decay to zero (stable system).
+- If any eigenvalue is real and positive, at least one mode grows exponentially (unstable system).
 - If eigenvalues are complex, the system oscillates.
+	- The real components of these complex eigenvalues will dictate if they are stable (negative) or unstable (positive).
 
 
 The eigenvectors $ \vec{v}_1, \vec{v}_2, \dots, \vec{v}_n $ represent the motion of the system within each of the modes. The specifics of these vectors will depend on how you parameterize the system. 
@@ -334,7 +338,7 @@ $$
 \begin{array}{l}
 	\frac{d x_1}{dt} = 4 x_1 - 2 x_2 \\
 	\frac{d x_2}{dt} = x_1 + x_2 
-\end{array} \quad\longrightarrow\quad 
+\end{array} \quad\implies\quad 
 \frac{d}{dt} \vec{x} =
 \begin{bmatrix}
 	4 & -2 \\
@@ -377,10 +381,15 @@ $$
 We can Solve this eigenvalue problem by first finding the eigenvalues of the coefficient matrix using the characteristic equation:
 
 $$
+\begin{aligned}
 \begin{vmatrix}
 	4 - \lambda & -2 \\
 	1 & 1 - \lambda
-\end{vmatrix} = (4 - \lambda)(1 - \lambda) - (-2) = 4 - 5 \lambda + \lambda^2 + 2 = \lambda^2 - 5 \lambda + 6 = 0
+\end{vmatrix} &= 0 \\
+(4 - \lambda)(1 - \lambda) - (-2) &= 0 \\
+4 - 5 \lambda + \lambda^2 + 2 &= 0 \\
+\lambda^2 - 5 \lambda + 6 &= 0
+\end{aligned}
 $$
 
 This can be factored to get:
@@ -418,7 +427,9 @@ So we have:
 
 $$ \text{For: } \lambda_1 = 2 \qquad \vec{v}_1 = \begin{bmatrix}
 1 \\1
-\end{bmatrix} \qquad\qquad\qquad \text{For: } \lambda_2 = 3 \qquad \vec{v}_2 = \begin{bmatrix}
+\end{bmatrix}$$ 
+
+$$\text{For: } \lambda_2 = 3 \qquad \vec{v}_2 = \begin{bmatrix}
 2 \\1
 \end{bmatrix}$$
 
@@ -438,7 +449,7 @@ $$ \vec{x}(t) = C_1 \begin{bmatrix}
 2\\1
 \end{bmatrix} e^{3 t}   $$
 
-In this example, both eigenvalues are positive, meaning the system grows over time in both eigen-directions.
+In this example, both eigenvalues are positive, meaning the system grows over time in both eigendirections.
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -453,7 +464,7 @@ $$
 \begin{array}{l}
 	\frac{d x_1}{dt} = 5 x_1 - 2 x_2 \\
 	\frac{d x_2}{dt} = 3 x_1 - 4 x_2 
-\end{array} \quad\longrightarrow\quad 
+\end{array} \quad\implies\quad 
 \frac{d}{dt} \vec{x} =
 \begin{bmatrix}
 	5 & -2 \\
@@ -496,10 +507,15 @@ $$
 We can Solve this eigenvalue problem by first finding the eigenvalues of the coefficient matrix using the characteristic equation:
 
 $$
+\begin{aligned}
 \begin{vmatrix}
 	5 - \lambda & -2 \\
 	3 & -4 - \lambda
-\end{vmatrix} = (5 - \lambda)(-4 - \lambda) - (-6) = -20 - \lambda + \lambda^2 + 6 = \lambda^2 -  \lambda - 14 = 0
+\end{vmatrix} &= 0 \\
+(5 - \lambda)(-4 - \lambda) - (-6) &= 0 \\
+-20 - \lambda + \lambda^2 + 6 &= 0 \\
+ \lambda^2 -  \lambda - 14 &= 0
+\end{aligned}
 $$
 
 This can be solved using the quadratic equation to get:
@@ -563,10 +579,10 @@ $$ \vec{x}(t) = C_1 \begin{bmatrix}
 Since $ \lambda_1 $ is positive and $ \lambda_2 $ is negative, this system exhibits **saddle point behavior**. That means:
 
 - The mode corresponding to $ \lambda_1 $ grows exponentially. Meaning, if the initial condition aligns in anyway with $ \vec{v}_1 $, the solution will grow over time.
-- The mode corresponding to $ \lambda_2 $ decays exponentially. Meaning, if the initial condition aligns with $ \vec{v}_2 $, the solution will decay toward zero.
+- The mode corresponding to $ \lambda_2 $ decays exponentially. Meaning, if the initial condition perfectly aligns with $ \vec{v}_2 $, the solution will decay toward zero.
 
 
-In general, the system exhibits unstable behavior unless it starts purely in the decaying mode. In a real-world system—say, a mechanical or electrical system—this tells us that even a tiny perturbation along the unstable eigenvector will cause the solution to blow up exponentially over time. This is a common characteristic of unstable equilibrium points.
+In general, the system exhibits unstable behavior unless it starts purely in the decaying mode. In a real-world system, like a mechanical or electrical system, this tells us that even a tiny perturbation (a nudge) in the direction of the unstable eigenvector will cause the solution to blow up exponentially over time. This is a common characteristic of unstable equilibrium points.
 {% endcapture %}
 {% include example.html content=ex %}
 
@@ -579,9 +595,9 @@ In general, the system exhibits unstable behavior unless it starts purely in the
 
 ## Phase Portraits and Geometric Interpretation
 
-Solving a system of ODEs analytically gives us explicit functions for $ x_1(t) $ and $ x_2(t) $, but the real insight often comes from **visualizing** how solutions behave over time. This is where **phase portraits** come into play. A phase portrait provides a geometric representation of all possible trajectories of a system in the state space.
+Solving a system of ODEs analytically gives us explicit functions for $ x_1(t) $ and $ x_2(t) $, but the real insight often comes from visualizing how solutions behave over time. This is where **phase portraits** come into play. A phase portrait provides a geometric representation of all possible trajectories of a system in the state space.
 
-A **phase portrait** is a plot of the solution trajectories in the $ (x_1, x_2) $-plane, also called the **phase plane**. Each curve in this plane represents a different solution of the system for a given initial condition. The direction of motion along these curves is indicated by arrows.
+A phase portrait is a plot of the solution trajectories in the $ (x_1, x_2) $-plane, also called the phase plane. Each curve in this plane represents a different solution of the system for a given initial condition. The direction of motion along these curves is indicated by arrows.
 
 For a general system of linear ODEs:
 
@@ -717,7 +733,7 @@ style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 **Case 3: A Saddle Point (Eigenvalues of Opposite Signs)**
 
-If the real portion of one eigenvalue is positive and the other is negative, the system exhibits **saddle behavior**, meaning some solutions approach the origin while others diverge.
+If the real portion of one eigenvalue is positive and the other is negative, the system exhibits saddle behavior, meaning some solutions approach the origin while others diverge.
 
 
 Consider:
@@ -815,7 +831,7 @@ $$
 \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x}
 $$
 
-These systems describe the natural evolution of a system without any external inputs. But in many real-world applications, systems are **forced** by an external influence—be it an applied voltage in an electrical circuit, an external force in a mechanical system, or an input function in a control system.
+These systems describe the natural evolution of a system without any external inputs. But in many real-world applications, systems are forced by an external influence. This could be an applied voltage in an electrical circuit, an external force in a mechanical system, or an input function in a control system.
 
 To model these effects, we consider an **inhomogeneous** system:
 
@@ -826,19 +842,26 @@ $$
 where $ \vec{f}(t) $ represents the external forcing functions written as a vector. Our goal is to find a solution $ \vec{x}(t) $, which consists of two parts:
 
 $$
-\vec{x}(t) = \vec{x}_h(t) + \vec{x}_p(t),
+\vec{x}(t) = \vec{x}_h(t) + \vec{x}_p(t)
 $$
 
-where, as we are familiar with already, $ \vec{x}_h(t) $ is the **homogeneous solution**, which solves $ \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x} $, and $ \vec{x}_p(t) $ is the **particular solution**, which accounts for the inhomogeneous term $ \vec{f}(t) $.
+where, as we are familiar with already, $ \vec{x}_h(t) $ is the homogeneous solution, which solves 
+
+$$ \frac{d}{dt} \vec{x} = \mathbf{A} \vec{x} $$ 
+
+and $ \vec{x}_p(t) $ is the particular solution, which accounts for the inhomogeneous term $ \vec{f}(t) $ and solves the full ODE.
+
+
+
 
 ### Choosing a Strategy: Why Use Undetermined Coefficients?
 
-As we have seen throughout our discussion of solving ODEs, there are several methods for solving inhomogeneous systems. The most direct and practical f the approaches we discussed is the **method of undetermined coefficients**. Recall, this method works well when $ \vec{f}(t) $ has a simple structure, such as:
+As we have seen throughout our discussion of solving ODEs, there are several methods for solving inhomogeneous systems. The most direct and practical f the approaches we discussed is the method of undetermined coefficients. Recall, this method works well when $ \vec{f}(t) $ has a simple structure, such as:
 
 
-- Polynomials (e.g., $ \vec{f}(t) = \vec{a}t^2 + \vec{b}t + \vec{c} $)
-- Exponentials (e.g., $ \vec{f}(t) = e^{\lambda t} \vec{a} $)
-- Sines and cosines (e.g., $ \vec{f}(t) = \vec{a} \cos(\omega t) + \vec{b} \sin(\omega t) $)
+- Polynomials (e.g., $ \vec{f}(t) = \vec{a}\ t^2 + \vec{b}\ t + \vec{c} $)
+- Exponentials (e.g., $ \vec{f}(t) = \vec{a} \ e^{\lambda t} $)
+- Sines and cosines (e.g., $ \vec{f}(t) = \vec{a}\  \cos(\omega t) + \vec{b}\  \sin(\omega t) $)
 
 
 The main idea behind the method is straightforward:
@@ -875,8 +898,11 @@ $$
 We find the eigenvalues of the coefficient matrix by solving:
 
 $$
-\begin{vmatrix} 2 - \lambda & 1 \\ -3 & 4 - \lambda \end{vmatrix}
-=  (2 - \lambda)(4 - \lambda) - (-3) = \lambda^2 - 6\lambda + 11 = 0
+\begin{aligned}
+\begin{vmatrix} 2 - \lambda & 1 \\ -3 & 4 - \lambda \end{vmatrix} &= 0 \\
+(2 - \lambda)(4 - \lambda) - (-3) &= 0 \\
+\lambda^2 - 6\lambda + 11 &= 0
+\end{aligned}
 $$
 
 Solving for $ \lambda $ using the quadratic equation, we get the roots:
@@ -888,7 +914,7 @@ $$
 Since the eigenvalues are complex, the homogeneous solution consists of oscillatory terms:
 
 $$
-\vec{x}_h(t) = \begin{bmatrix} C_1\\ C_3 \end{bmatrix} e^{3t} \cos(\sqrt{2}t) + \begin{bmatrix} C_2 \\ C_4  \end{bmatrix} e^{3t} \sin(\sqrt{2}t) 
+\vec{x}_h(t) = \begin{bmatrix} C_1\\ C_3 \end{bmatrix} e^{3t} \cos(\sqrt{2} \ t) + \begin{bmatrix} C_2 \\ C_4  \end{bmatrix} e^{3t} \sin(\sqrt{2} \ t) 
 $$
 
 Now we need to find the particular solution. Since the inhomogeneous term contains $ e^t $, we can guess an exponential function of the same form:
@@ -955,7 +981,13 @@ $$
 Putting these into the first and fourth equations give us:
 
 $$
-A + (A) = -1 \implies A = - \frac{1}{2} \qquad \qquad 3 B -4(-2B) = 2 \implies B = \frac{2}{11}
+A + (A) = -1 \implies A = - \frac{1}{2} 
+$$
+
+and 
+
+$$
+3 B -4(-2B) = 2 \implies B = \frac{2}{11}
 $$
 
 This leaves us with:
@@ -992,11 +1024,11 @@ $$
 
 ## Applications to Physics and Engineering
 
-We now bring everything together by looking at how systems of ODEs naturally arise in physics and engineering. The framework of coupled differential equations shows up everywhere—from classical mechanics and electrical circuits to population dynamics and control systems. Understanding how to solve these systems is critical for modeling and predicting real-world behavior.
+We now bring everything together by looking at how systems of ODEs naturally arise in physics and engineering. The framework of coupled differential equations shows up everywhere. Understanding how to solve these systems is critical for modeling and predicting real-world behavior.
 
 ### Coupled Mass-Spring Systems
 
-One of the simplest and most illustrative examples of a system of ODEs is a **coupled mass-spring system**. Suppose we have two masses, $ m_1 $ and $ m_2 $, connected by springs with constants $ k_1 $ and $ k_2 $, as shown below:
+One of the simplest and most illustrative examples of a system of ODEs is a coupled mass-spring system. Suppose we have two masses, $ m_1 $ and $ m_2 $, connected by springs with constants $ k_1 $ and $ k_2 $, as shown below:
 
 
 <img
@@ -1016,10 +1048,7 @@ $$
 where $\ell_{0,1}$ and $\ell_{0,2}$ are the rest lengths of the springs, respectively. This equation can be simplified if we shift our coordinates to be that $ x_1(t) $ and $ x_2(t) $ describe the displacements of the two masses from their respective equilibrium positions. This translation of coordinates $x_1 \rightarrow x_1 + \ell_{0,1}$ and $x_2 \rightarrow x_2 + \ell_{0,1} + \ell_{0,2}$ gives us the following model:
 
 $$
-\begin{aligned}
-	m_1 \frac{d^2 x_1}{dt^2} &= -k_1 (x_1 + \ell_{0,1} - \ell_{0,1}) + k_2 (x_2 + \ell_{0,1} + \ell_{0,2} - x_1 - \ell_{0,1} - \ell_{0 2}) \\
-	m_2 \frac{d^2 x_2}{dt^2} &= -k_2 (x_2 + \ell_{0,1} + \ell_{0,2} - x_1 - \ell_{0,1} - \ell_{0,2})
-\end{aligned} \quad\implies\quad \begin{aligned} m_1 \frac{d^2 x_1}{dt^2} &= -k_1 x_1 + k_2 (x_2 - x_1) \\
+\begin{aligned} m_1 \frac{d^2 x_1}{dt^2} &= -k_1 x_1 + k_2 (x_2 - x_1) \\
 m_2 \frac{d^2 x_2}{dt^2} &= -k_2 (x_2 - x_1 )
 \end{aligned}
 $$
