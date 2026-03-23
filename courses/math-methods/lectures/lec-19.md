@@ -40,7 +40,7 @@ To illustrate why coupled equations arise naturally, consider a simple example: 
 
 <img
 src="{{ '/courses/math-methods/images/lec19/MassesAttachedByASpring.png' | relative_url }}"
-alt=""
+alt="Two rectangular blocks labeled m1 and m2 are connected by a single spring labeled k. The blocks sit horizontally with the spring stretched between them, representing a simple system where the two masses are connected and can move along a line."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -49,6 +49,7 @@ Each mass moves according to Newton’s Second Law:
 $$
 m_1 \frac{d^2x_1}{dt^2} = -k(x_1 - x_2)
 $$
+
 $$
 m_2 \frac{d^2x_2}{dt^2} = -k(x_2 - x_1)
 $$
@@ -58,18 +59,18 @@ Notice that the acceleration of $ m_1 $ depends on $ x_2 $, and vice versa. This
 The most efficient way to analyze and solve coupled systems like this is through **matrix notation**. To see why, let’s first rewrite the equations in a cleaner form:
 
 $$
-\begin{array}{l}
+\begin{aligned}
 	m_1 \frac{d^2x_1}{dt^2} = -k(x_1 - x_2) \\
 	m_2 \frac{d^2x_2}{dt^2} = -k(x_2 - x_1)
-\end{array} \quad\implies\quad
-\begin{array}{l}
+\end{aligned} \quad\implies\quad
+\begin{aligned}
 	\frac{d^2x_1}{dt^2} = -\frac{k}{m_1}(x_1 - x_2) \\
 	\frac{d^2x_2}{dt^2} = -\frac{k}{m_2}(x_2 - x_1)
-\end{array} \quad\implies\quad
-\begin{array}{l}
+\end{aligned} \quad\implies\quad
+\begin{aligned}
 	\frac{d^2x_1}{dt^2} = - \omega_1 x_1 + \omega_1 x_2 \\
 	\frac{d^2x_2}{dt^2} =   \omega_2 x_1 - \omega_2 x_2
-\end{array}
+\end{aligned}
 $$
 
 where we have introduced the angular frequencies $ \omega_1 = \frac{k}{m_1} $ and $ \omega_2 = \frac{k}{m_2} $ to simplify notation. Now, we can express this system more compactly in matrix form.
@@ -663,7 +664,7 @@ $$
 
 <img
 src="{{ '/courses/math-methods/images/lec19/Case 1.png' | relative_url }}"
-alt=""
+alt="A grid-based plot with horizontal and vertical axes labeled x1 and x2. Red arrows across the plane point in different directions depending on location. In the upper region, arrows generally point downward, while in the lower region they point upward. The overall pattern shows motion that changes direction smoothly across the plane."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -708,7 +709,7 @@ $$
 	
 <img
 src="{{ '/courses/math-methods/images/lec19/Case 2.png' | relative_url }}"
-alt=""
+alt="A grid plot with axes labeled x1 and x2. Red arrows point outward from the center in many regions. In the right half, arrows tend to point to the right, while in the lower-right region they angle downward. The overall pattern suggests motion moving away from the center."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -750,7 +751,7 @@ $$
 	
 <img
 src="{{ '/courses/math-methods/images/lec19/Case 3.png' | relative_url }}"
-alt=""
+alt="A grid plot with axes labeled x1 and x2. Red arrows form a curved pattern around the center. On the right side, arrows point upward and to the right, while on the left side they point downward and to the left. The pattern suggests a rotating or swirling motion."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -790,7 +791,7 @@ $$
 	
 <img
 src="{{ '/courses/math-methods/images/lec19/Case 4.png' | relative_url }}"
-alt=""
+alt="A grid plot with axes labeled x1 and x2. Red arrows form a circular pattern around the center of the plot. The arrows are oriented so that motion follows a loop around the middle point, indicating consistent rotation."
 style="display:block; margin:1.5rem auto; max-width:600px; width:50%;">
 
 
@@ -1000,7 +1001,7 @@ One of the simplest and most illustrative examples of a system of ODEs is a **co
 
 <img
 src="{{ '/courses/math-methods/images/lec19/CoupledMasses.png' | relative_url }}"
-alt=""
+alt="A horizontal mechanical system with a fixed wall on the left connected to a spring labeled k1. The spring is attached to a block labeled m1. A second spring labeled k2 connects that block to another block labeled m2 on the right. Arrows labeled x1 and x2 indicate the horizontal directions in which each block can move."
 style="display:block; margin:1.5rem auto; max-width:600px; width:75%;">
 
 Let $ x_1(t) $ and $ x_2(t) $ describe the displacements of the two masses from the left wall. By applying Newton’s Second Law to each mass, we obtain the system:
