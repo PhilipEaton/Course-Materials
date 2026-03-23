@@ -553,7 +553,11 @@ So we have:
 
 $$ \text{For: } \lambda_1 = \frac{1 + \sqrt{57}}{2} \qquad \vec{v}_1 = \begin{bmatrix}
 	2 \\ \frac{9 - \sqrt{57}}{2}
-\end{bmatrix} \qquad\qquad\qquad \text{For: } \lambda_2 = \frac{1 - \sqrt{57}}{2} \qquad \vec{v}_2 = \begin{bmatrix}
+\end{bmatrix}
+$$
+
+$$
+\text{For: } \lambda_2 = \frac{1 - \sqrt{57}}{2} \qquad \vec{v}_2 = \begin{bmatrix}
 	2 \\ \frac{9 + \sqrt{57}}{2}
 \end{bmatrix}$$
 
@@ -1102,6 +1106,7 @@ where $\vec{v}$ is a constant vector. Putting this into the ODE gives:
 $$
 \omega^2 \vec{v} e^{\omega t} = \begin{bmatrix} -2\omega_0^2 & \omega_0^2 \\ \omega_0^2 & -\omega_0^2 \end{bmatrix} \vec{v} e^{\omega t} \quad\implies\qquad  \begin{bmatrix} -2\omega_0^2 & \omega_0^2 \\ \omega_0^2 & -\omega_0^2 \end{bmatrix} \vec{v} = \omega^2 \vec{v}
 $$
+
 which is an eigenvalue problem. Finding the eigenvalues:
 
 $$
@@ -1149,7 +1154,9 @@ $$
 \text{For: }\omega_1^2 = \Big(\frac{-2 +  \sqrt{5}}{2}\Big) \omega_0^2 \qquad \vec{v}_1 = \begin{bmatrix}
 	\sqrt{5} \\ 2
 \end{bmatrix} 
-\qquad\qquad
+$$
+
+$$
 \text{For: }\omega_2^2 = \Big(\frac{-2 -  \sqrt{5}}{2}\Big) \omega_0^2 \qquad \vec{v}_2 = \begin{bmatrix}
 	-\sqrt{5} \\ 2
 \end{bmatrix}
